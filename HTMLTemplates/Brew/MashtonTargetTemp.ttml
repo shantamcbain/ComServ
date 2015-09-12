@@ -1,0 +1,42 @@
+[%#	$Id: MashtonTargetTemp.ttml,v 1.1 2008/03/25 06:42:47 shanta Exp shanta $	%]
+
+
+[% embed('ErrorDisplayView') %]
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+[% END %]
+
+
+ [% FOREACH item = DBI.query("SELECT * FROM brew_recipe_tb
+	                                WHERE  ( sitename   =  'Brew' AND
+	                                         recipe_code   =  '
+                                     )
+                                   ORDER BY recipe_code
+	                            ")%]  
+             [% recipecode = item.recipe_code %] 
+             [% recipe_name = item.recipe_name %]
+             [% recipe_size = item.recipe_size %]
+             [% category = item.category %]
+             [%  gravity = item.gravity %]
+             [%  ingredients = item.ingredients %]
+             [%  instructions = item.instructions %]
+             [%  alcohol = item.alcohol %]
+             [%  colour = item.colour %]
+             [%  bitterness = item.bitterness %]
+             [%  maturation = item.maturation %]
+             [%  boiltime = item.boiltime %]
+             [%  description = item.description %]
+             [%  mashtontemp = item.mashtontemp %]
+             [%  spargtemp = item.spargtemp %]
+             [%  mashtemp= item.mashtemp %]
+             [%  mashduration = item.mashduration %]
+             [%   = item. %]
+             [%   = item. %]
+[% END %]
+
+MashtonTargetTemp.ttml
+mashton target temp pull from recipie
