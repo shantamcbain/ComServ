@@ -1,4 +1,9 @@
-   [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
+[%# the ENCY template
+#	$Id: HerbDetailListSQL.ttml,v 0.2 2015/09/12 19:25:15 shanta Exp $	
+#file location/cgi-bin/HTMLTemplates/ENCY
+%]
+
+[% group = data.session_object.getAttribute('-KEY','auth_groups') %]
  <table>  
 
 [% IF SiteName == 'CSCDev' %]
@@ -69,7 +74,17 @@
 
 <tr><td class="NavTableCellStyle">        
   <a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BotanicalNameView" name="Contact" target="[% link.target %]" title="back"><font   class="LeftSideBarNavStyle">Back To List</font></a>
- [% IF  group == "Apis_admin" %]  <a href="/cgi-bin/ENCY/herbs_admin.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&display_details_view.x&record_id=[% link.record_id %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Admin</font></a>   [% END %]
+ [% IF  group == "Apis_admin" OR
+        group == "BMaster_admin" OR
+        group == "ECF_admin" OR
+        group == "USBM_admin"  OR
+        group == "ENCY_admin" 
+        %] 
+
+  
+    <a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&display_details_view.x&record_id=[% link.record_id %][% link.view_name %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Edit</font></a>
+ [% END %][% IF  group == "Apis_admin" %] 
+   <a href="/cgi-bin/ENCY/herbs_admin.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&display_details_view.x&record_id=[% link.record_id %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Admin</font></a>   [% END %]
 </td>
    </tr>
 </table>

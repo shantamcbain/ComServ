@@ -115,8 +115,8 @@ use SiteSetup;
   my $UseModPerl = 0;
   my $SetupVariables  = new SiteSetup($UseModPerl);
      $Affiliate              = $SetupVariables->{-AFFILIATE};
-     $home_view              = $SetupVariables->{-HOME_VIEW}; 
-     $homeviewname           = $SetupVariables->{-HOME_VIEW_NAME};
+     $home_view              = 'BotanicalName'||View$SetupVariables->{-HOME_VIEW}; 
+     $homeviewname           = 'BotanicalName'||View$SetupVariables->{-HOME_VIEW_NAME};
      $BASIC_DATA_VIEW        = $SetupVariables->{-BASIC_DATA_VIEW};
      $page_top_view          = 'PageTopView';
      $page_bottom_view       = $SetupVariables->{-PAGE_BOTTOM_VIEW};
@@ -222,8 +222,6 @@ use OrganicSetup;
      $app_logo_height         = $SetupVariablesOrganic->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesOrganic->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesOrganic->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesOrganic->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesOrganic->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
      $APP_NAME_TITLE          = 'Plant 
 Database';
@@ -246,8 +244,6 @@ use BMasterSetup;
      $app_logo_height         = $SetupVariablesBMaster->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesBMaster->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesBMaster->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesBMaster->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesBMaster->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
      $last_update             = $SetupVariablesBMaster->{-LAST_UPDATE}; 
  #Mail settings
@@ -274,8 +270,6 @@ use BeeSafeSetup;
      $app_logo_height         = $SetupVariablesBeeSafe->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesBeeSafe->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesBeeSafe->{-APP_LOGO_ALT};
-     $home_view            = 'HomeView'||$SetupVariablesBeeSafe->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesBeeSafe->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesBeeSafe->{-CSS_VIEW_NAME};
      $last_update             = $SetupVariablesBeeSafe->{-LAST_UPDATE}; 
       $site_update              = $SetupVariablesBeeSafe->{-SITE_LAST_UPDATE};
@@ -301,9 +295,7 @@ use ECFSetup;
     $app_logo_height       = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
     $app_logo_width        = $SetupVariablesECF->{-APP_LOGO_WIDTH};
     $app_logo_alt          = $SetupVariablesECF->{-APP_LOGO_ALT};
-    $homeviewname          = $SetupVariablesECF->{-HOME_VIEW_NAME};
-    $home_view             = $SetupVariablesECF->{-HOME_VIEW};
-#Mail settings
+  #Mail settings
     $mail_from             = $SetupVariablesECF->{-MAIL_FROM};
     $mail_to               = $SetupVariablesECF->{-MAIL_TO};
     $mail_replyto          = $SetupVariablesECF->{-MAIL_REPLYTO};
@@ -347,7 +339,6 @@ use ForagerSetup;
     $app_logo_width          = $SetupVariablesForager->{-APP_LOGO_WIDTH};
     $app_logo_alt            = $SetupVariablesForager->{-APP_LOGO_ALT};
     $APP_NAME_TITLE          = $SetupVariablesForager->{-APP_NAME_TITLE};
-   $home_view               = $SetupVariablesForager->{-HOME_VIEW};
 #Mail settings
     $mail_from               = $SetupVariablesForager->{-MAIL_FROM};
      $mail_to                 = $SetupVariablesForager->{-MAIL_TO};
@@ -397,8 +388,6 @@ use GRProjectSetup;
      $app_logo_height         = $SetupVariablesGRProject->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesGRProject->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesGRProject->{-APP_LOGO_ALT};
-     $home_view            = $SetupVariablesGRProject->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesGRProject->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesGRProject->{-CSS_VIEW_NAME};
      $last_update             = $SetupVariablesGRProject->{-LAST_UPDATE}; 
       $site_update            = $SetupVariablesGRProject->{-SITE_LAST_UPDATE};
@@ -425,8 +414,6 @@ use ApisSetup;
     $CSS_VIEW_URL            = $SetupVariablesApis->{-CSS_VIEW_NAME};
     $APP_NAME                = "apis";
     $APP_NAME_TITLE          = "Apis Forage Indicator System";
-    $homeviewname            = 'ApisHomeView';
-    $home_view               = $SetupVariablesApis ->{-HOME_VIEW}; 
     $matchuser               = '1';
     $matchgroup              =1;
     $SITE_DISPLAY_NAME      = $SetupVariablesApis->{-SITE_DISPLAY_NAME};
@@ -444,8 +431,6 @@ use BeeTalkSetup;
      $app_logo_height         = $SetupVariablesBeeTalk->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesBeeTalk->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesBeeTalk->{-APP_LOGO_ALT};
-     $home_view            = 'HomeView'||$SetupVariablesBeeTalk->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesBeeTalk->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesBeeTalk->{-CSS_VIEW_NAME};
      $last_update             = $SetupVariablesBeeTalk->{-LAST_UPDATE}; 
       $site_update              = $SetupVariablesBeeTalk->{-SITE_LAST_UPDATE};
@@ -1619,7 +1604,7 @@ my @VIEW_DISPLAY_PARAMS = (
         dosage                  => 'Dosage',
         url                     => 'URL'
         },
-    -HOME_VIEW               => 'BasicDataView',
+    -HOME_VIEW               => $home_view,
     -IMAGE_ROOT_URL          => $IMAGE_ROOT_URL,
     -LINK_TARGET             => '_self',
     -ROW_COLOR_RULES         => \@ROW_COLOR_RULES,
