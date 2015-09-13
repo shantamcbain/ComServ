@@ -1,0 +1,2 @@
+ <a href ="HTTP://helpdesk.[% HostName %]/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]"target="_Blank" title="Need help get it here" ><font   class="HeaderBarNavStyle">HelpDesk </font></a>
+ 
