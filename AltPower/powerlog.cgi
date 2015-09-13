@@ -73,21 +73,20 @@ foreach ($CGI->param()) {
 ######################################################################
 #                          SITE SETUP                             #
 ######################################################################
-    my $debug = 0;
-
-    my $APP_NAME = "log"; 
-    my $last_update  = 'Febuary 21, 2007';
-    my $site_update;
-    my $APP_NAME_TITLE = "Log Manager";
-   my $FAVICON;
-    my $ANI_FAVICON;
-    my $FAVICON_TYPE;
-     my $SITE_DISPLAY_NAME = 'None Defined for this site.';
-    my $MySQLPW;
-    my $DBI_DSN;
-    my $SiteName ;
-    my $UseModPerl = 1;
-    my $AUTH_TABLE;
+my $debug = 0;
+my $APP_NAME = "log"; 
+my $last_update  = 'September 12, 2015';
+my $site_update;
+my $APP_NAME_TITLE = "Log Manager";
+my $FAVICON;
+my $ANI_FAVICON;
+my $FAVICON_TYPE;
+my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+my $MySQLPW;
+my $DBI_DSN;
+my $SiteName ;
+my $UseModPerl = 1;
+my $AUTH_TABLE;
 my $TableName;
 my $ProjectTableName;
 my $AUTH_MSQL_USER_NAME;
@@ -739,16 +738,16 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
 
     -FIELD_MAPPINGS => {
        project_code	      	=> 'Project Code',
-       todo_record_id	      	=> 'todo id',
+       todo_record_id	     	=> 'todo id',
        estimated_man_hours 	=> 'Estimated Man Hours',
-       accumulative_time 	=> 'Accumulated time',
-       start_date               => 'Start Date',
-       due_date                 => 'Due Date',
-       abstract                 => 'Subject',
-       details                  => 'Description',
-       status                   => 'Status',
-       priority                 => 'Priority',
-       comments                 => 'Comments',
+       accumulative_time     	=> 'Accumulated time',
+       start_date             => 'Start Date',
+       due_date               => 'Due Date',
+       abstract               => 'Subject',
+       details                => 'Description',
+       status                 => 'Status',
+       priority               => 'Priority',
+       comments               => 'Comments',
     },
 
     -RULES => [
@@ -1246,7 +1245,7 @@ my @PROJECT_DATASOURCE_FIELD_NAMES = qw(
 my	@PROJECT_DATASOURCE_CONFIG_PARAMS = (
 	        -TYPE         => 'DBI',
 	        -DBI_DSN      => $DBI_DSN,
-	        -TABLE        =>   $ProjectTableName||'csc_project_tb',
+	        -TABLE        => $ProjectTableName||'csc_project_tb',
 	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@PROJECT_DATASOURCE_FIELD_NAMES,
@@ -1578,7 +1577,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -MODIFY_FORM_VIEW_NAME                  => 'ModifyRecordView',
     -MODIFY_EMAIL_BODY_VIEW                 => 'ModifyEventEmailView',
     -POWER_SEARCH_VIEW_NAME                 => 'PowerSearchFormView',
-    -BILLING_SEARCH_VIEW_NAME                 => 'BillingSearchFormView',
+    -BILLING_SEARCH_VIEW_NAME               => 'BillingSearchFormView',
     -REQUIRE_AUTH_FOR_SEARCHING_FLAG        => 1,
     -REQUIRE_AUTH_FOR_ADDING_FLAG           => 1,
     -REQUIRE_AUTH_FOR_MODIFYING_FLAG        => 1,
@@ -1600,13 +1599,13 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -VIEW_DISPLAY_PARAMS                    => \@VIEW_DISPLAY_PARAMS,
     -VIEW_FILTERS_CONFIG_PARAMS             => \@VIEW_FILTERS_CONFIG_PARAMS,
     -VIEW_LOADER                            => $VIEW_LOADER,
-    -SIMPLE_SEARCH_STRING => $CGI->param('simple_search_string') || "",
-    -FIRST_RECORD_ON_PAGE => $CGI->param('first_record_to_display') || 0,
-    -LAST_RECORD_ON_PAGE  => $CGI->param('first_record_to_display') || "0",
-    -SITE_NAME            => $SiteName,
-    -PAGE_TOP_VIEW           =>  $page_top_view ,
-    -LEFT_PAGE_VIEW          =>  $page_left_view,
-    -PAGE_BOTTOM_VIEW        =>  $page_bottom_view,
+    -SIMPLE_SEARCH_STRING                   => $CGI->param('simple_search_string') || "",
+    -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
+    -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
+    -SITE_NAME                              => $SiteName,
+    -PAGE_TOP_VIEW                          =>  $page_top_view ,
+    -LEFT_PAGE_VIEW                         =>  $page_left_view,
+    -PAGE_BOTTOM_VIEW                       =>  $page_bottom_view,
     -STAT_VIEW_NAME                         => 'CSCTotalView',
     -DATETIME_CONFIG_PARAMS                 => \@DATETIME_CONFIG_PARAMS,
     -ACTION_HANDLER_PLUGINS                 => \%ACTION_HANDLER_PLUGINS,
