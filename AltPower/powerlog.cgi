@@ -73,21 +73,20 @@ foreach ($CGI->param()) {
 ######################################################################
 #                          SITE SETUP                             #
 ######################################################################
-    my $debug = 0;
-
-    my $APP_NAME = "log"; 
-    my $last_update  = 'Febuary 21, 2007';
-    my $site_update;
-    my $APP_NAME_TITLE = "Log Manager";
-   my $FAVICON;
-    my $ANI_FAVICON;
-    my $FAVICON_TYPE;
-     my $SITE_DISPLAY_NAME = 'None Defined for this site.';
-    my $MySQLPW;
-    my $DBI_DSN;
-    my $SiteName ;
-    my $UseModPerl = 1;
-    my $AUTH_TABLE;
+my $debug = 0;
+my $APP_NAME = "log"; 
+my $last_update  = 'September 12, 2015';
+my $site_update;
+my $APP_NAME_TITLE = "Log Manager";
+my $FAVICON;
+my $ANI_FAVICON;
+my $FAVICON_TYPE;
+my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+my $MySQLPW;
+my $DBI_DSN;
+my $SiteName ;
+my $UseModPerl = 1;
+my $AUTH_TABLE;
 my $TableName;
 my $ProjectTableName;
 my $AUTH_MSQL_USER_NAME;
@@ -1600,13 +1599,13 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -VIEW_DISPLAY_PARAMS                    => \@VIEW_DISPLAY_PARAMS,
     -VIEW_FILTERS_CONFIG_PARAMS             => \@VIEW_FILTERS_CONFIG_PARAMS,
     -VIEW_LOADER                            => $VIEW_LOADER,
-    -SIMPLE_SEARCH_STRING => $CGI->param('simple_search_string') || "",
-    -FIRST_RECORD_ON_PAGE => $CGI->param('first_record_to_display') || 0,
-    -LAST_RECORD_ON_PAGE  => $CGI->param('first_record_to_display') || "0",
-    -SITE_NAME            => $SiteName,
-    -PAGE_TOP_VIEW           =>  $page_top_view ,
-    -LEFT_PAGE_VIEW          =>  $page_left_view,
-    -PAGE_BOTTOM_VIEW        =>  $page_bottom_view,
+    -SIMPLE_SEARCH_STRING                   => $CGI->param('simple_search_string') || "",
+    -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
+    -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
+    -SITE_NAME                              => $SiteName,
+    -PAGE_TOP_VIEW                          =>  $page_top_view ,
+    -LEFT_PAGE_VIEW                         =>  $page_left_view,
+    -PAGE_BOTTOM_VIEW                       =>  $page_bottom_view,
     -STAT_VIEW_NAME                         => 'CSCTotalView',
     -DATETIME_CONFIG_PARAMS                 => \@DATETIME_CONFIG_PARAMS,
     -ACTION_HANDLER_PLUGINS                 => \%ACTION_HANDLER_PLUGINS,
