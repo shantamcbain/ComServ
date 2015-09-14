@@ -125,7 +125,7 @@ sub execute {
                  -KEY_FIELD                   => $params->{-KEY_FIELD},
                  -DATASOURCE_CONFIG_PARAMS    => $datasource_config_params,
                  -SORT_DIRECTION              => $params->{-SORT_DIRECTION},
-                 -RECORD_ID                   => $key_field_value,
+                 -RECORD_ID                   => $cgi->param('record_id'),
                  -SORT_FIELD1                 => $params->{-SORT_FIELD1},
                  -SORT_FIELD2                 => $params->{-SORT_FIELD2},
                  -MAX_RECORDS_PER_PAGE        => $params->{-MAX_RECORDS_PER_PAGE},
