@@ -456,8 +456,6 @@ use USBMSetup;
      $app_logo_height         = $SetupVariablesUSBM->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesUSBM->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesUSBM->{-APP_LOGO_ALT};
- #    $home_view            = $SetupVariablesUSBM->{-HOME_VIEW_NAME};
- #    $home_view               = $SetupVariablesUSBM->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesUSBM->{-CSS_VIEW_NAME};
      $SITE_DISPLAY_NAME       = $SetupVariablesUSBM->{-SITE_DISPLAY_NAME};
  }

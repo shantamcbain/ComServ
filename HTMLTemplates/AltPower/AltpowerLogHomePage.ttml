@@ -1,5 +1,5 @@
 [%#	$Id: AltpowerLogHomeView.ttml,v 1.1 2014/12/11 06:42:47 shanta Exp shanta $	%]
-
+<!-- BrewLogView  v 1.1 2014/03/18-->
        [% version = data.app_ver %]
  [% PROCESS DefaultDbi.ttml %]
 

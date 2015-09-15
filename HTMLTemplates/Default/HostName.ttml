@@ -16,7 +16,7 @@
 	      %]
 		[% HostName = 'forager.com' %]
 
-	[% ELSIF SiteName == 'OKBee'OR
+[% ELSIF SiteName == 'OKBee'OR
 	      SiteName == 'Apis'		
 	       OR
 	      SiteName == 'CertBee' OR
@@ -61,20 +61,22 @@
 		[% StoreName = 'honeydo.countrystores.ca' %] 
 	[% ELSIF SiteName == 'MW'
 	      %] 
-		[% HostName = 'macdonaldwatersystems.com' %]
+		[% HostName = 'ropurewatertechnology.com' %]
 		[% StoreName = 'mw.countrystores.ca' %]
 		
  	[% ELSIF SiteName == 'WW'
 	      %] 
 		[% HostName = 'wisewomancentre.com' %]
 		[% StoreName = 'ww.countrystores.ca' %]
-    [% ELSE %]
+ [% ELSIF SiteName == 'Grindrod	' OR
+                  SiteName == 'GrindrodProject'
+	      %]
+		[% HostName = 'grindrodbc.com' %]
+   [% ELSE %]
    [% StoreName = 'countrystores.ca' %]
 
 	[% HostName = 'computersystemconsulting.ca' %]
 	[% MailName = username %]
-	[% END %]
-[% ELSIF SiteName == 'Grindrod	' OR
-                  SiteName == 'GrindrodProject'
-	      %]
-		[% HostName = 'grindrodbc.com' %]
+
+
+[% END %]

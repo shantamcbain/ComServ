@@ -140,11 +140,11 @@
      <li>tv vcr etc
      <li>
    <ul>
-<h4>Our Power usage Log.   </h4>
+<h4>Our <a href="/cgi-bin/AltPower/power_log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=AltpowerLogHomeView" target="_blank">Power usage Log</a>.   </h4>
 
  [% embed('ProjectList') %]
  
- </table> 
+
 
 [% IF lastupdate %]
 <p>Last Update [% lastupdate %][% IF SiteName == 'Demo' %]&nbsp; This value is stored in your setup file. [% END %]

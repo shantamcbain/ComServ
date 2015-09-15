@@ -58,6 +58,8 @@
 <!--Embed page helpdeskContents-->
 [% embed('helpdeskContents') %]
 <!--end Embed page helpdeskContents-->
+</td>
+</tr></table>
 
 
 <!-- End HelpDesk View -->

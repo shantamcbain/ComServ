@@ -62,7 +62,6 @@
 <tr><td class="NavTableCellStyle">Formulas</td> <td class="NavTableCellStyle">[% link.formulas %]  </td></tr>
 <tr><td class="NavTableCellStyle">Contra Indications</td> <td class="NavTableCellStyle">[% link.contra_indications %]  </td></tr>
 <tr><td class="NavTableCellStyle">Chinese</td> <td class="NavTableCellStyle">[% link.chinese %]  </td></tr>
-<tr><td class="NavTableCellStyle">Formulas</td> <td class="NavTableCellStyle">[% link.formulas %]  </td></tr>
 <tr><td class="NavTableCellStyle">Vetrinary</td> <td class="NavTableCellStyle">[% link.vetrinary %]  </td></tr>
 <tr><td class="NavTableCellStyle">Sister Plants</td> <td class="NavTableCellStyle">[% link.sister_plants %]  </td></tr>
 <tr><td class="NavTableCellStyle">Cultivation</td> <td class="NavTableCellStyle">[% link.cultivation %]  </td></tr>
@@ -99,8 +98,8 @@
 <td class="NavTableCellStyle"> [% link.project_name %]  </td>
 <td class="NavTableCellStyle"> [% link.comments %]  </td>
 <td class="NavTableCellStyle">        
-  <a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&display_details_view.x&record_id=[% link.record_id %][% link.view_name %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Details</font></a>
-  <a href="/cgi-bin/ToDo/log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;todo_record_id=[% link.record_id %]&amp;abstract=[% link.project_name %]&amp;project_code=[% link.project_code %]&amp;details=[% link.comments %]&amp;priority=" "target="_Blank">Log</a>
+  <a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&display_details_view.x&record_id=[% $HerbCode %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Details</font></a>
+  <a href="/cgi-bin/ToDo/log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;todo_record_id=[% $HerbCode %]&amp;abstract=[% link.project_name %]&amp;project_code=[% link.project_code %]&amp;details=[% link.comments %]&amp;priority=" "target="_Blank">Log</a>
   <a href="/cgi-bin/ToDo/todo.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;record_id=[% link.record_id %]&amp;subject=[% link.project_name %]&amp;project_code=[% link.project_code %]&amp;description=[% link.comments %]&amp;priority=" "target="_Blank">Todo</a>
      </td>
    </tr>
@@ -149,7 +148,7 @@
 <td class="NavTableCellStyle"> [% link.common_names %]  </td>
 <td class="NavTableCellStyle"><img src=" [% link.image %]" WIDTH ="300"      HEIGHT ="325" /> </td>
 <td class="NavTableCellStyle">        
-  <a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&display_details_view.x&record_id=[% link.record_id %][% link.botanical_name %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Details</font></a>
+  <a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&display_details_view.x&record_id=[% link.record_id %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Details </font></a>
      </td>
    </tr> 
 

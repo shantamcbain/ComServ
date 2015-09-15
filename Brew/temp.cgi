@@ -1,6 +1,6 @@
 #!/usr/bin/perl -wT
-# 	$Id: powerlog.cgi,v 1.4 2004/01/23 22:08:42 shanta Exp shanta $	
-#CSC file location /cgi-bin/CSC
+# 	$Id: todo.cgi,v 1.5 2004/02/04 19:36:17 shanta Exp shanta $	
+
 # Copyright (C) 1994 - 2001  eXtropia.com
 #
 # This program is free software; you can redistribute it and/or
@@ -21,6 +21,8 @@
 use strict;
 
 BEGIN{
+    # Windows users must set a timezone env!
+    $ENV{'TZ'} = 'EST' if ($^O =~ /MSWin32/i);
     use vars qw(@dirs);
     @dirs = qw(../Modules/
                ../Modules/CPAN .);
@@ -34,20 +36,21 @@ my @VIEWS_SEARCH_PATH =
        ../Modules/Extropia/View/Default);
 
 my @TEMPLATES_SEARCH_PATH = 
-    qw(../HTMLTemplates/Apis
+     qw(../HTMLTemplates/Apis
        ../HTMLTemplates/AltPower
        ../HTMLTemplates/Brew
-       ../HTMLTemplates/CS
        ../HTMLTemplates/CSC
+       ../HTMLTemplates/CS
+       ../HTMLTemplates/CS
        ../HTMLTemplates/Demo
+       ../HTMLTemplates/ECF
        ../HTMLTemplates/ENCY
        ../HTMLTemplates/ECF
-       ../HTMLTemplates/Forager
-       ../HTMLTemplates/HelpDesk
        ../HTMLTemplates/HE
+       ../HTMLTemplates/HelpDesk
        ../HTMLTemplates/Organic
        ../HTMLTemplates/Shanta
-       ../HTMLTemplates/Skye
+       ../HTMLTemplates/SkyeFarm
        ../HTMLTemplates/Todo
        ../HTMLTemplates/VitalVic
        ../HTMLTemplates/WW
@@ -70,73 +73,166 @@ my $CGI = new CGI() or
 foreach ($CGI->param()) {
     $CGI->param($1,$CGI->param($_)) if (/(.*)\.x$/);
 }
+
 ######################################################################
 #                          SITE SETUP                             #
 ######################################################################
-my $debug = 0;
-my $APP_NAME = "log"; 
-my $last_update  = 'September 12, 2015';
+
+    my $debug = 0;
+
+my $APP_NAME = "todo";
+
+my $APP_NAME_TITLE = "Todo Manager";
+my $SiteName =  $CGI->param('site');
 my $site_update;
-my $APP_NAME_TITLE = "Log Manager";
-my $FAVICON;
-my $ANI_FAVICON;
-my $FAVICON_TYPE;
-my $SITE_DISPLAY_NAME = 'None Defined for this site.';
-my $MySQLPW;
-my $DBI_DSN;
-my $SiteName ;
-my $UseModPerl = 1;
-my $AUTH_TABLE;
-my $TableName;
-my $ProjectTableName;
-my $AUTH_MSQL_USER_NAME;
-my $log_tb = 'altpower_system_log_tb';
-my $TodoTB = 'todo_tb';
-my $HasMembers = 0;
- use SiteSetup;
-#my $S   = &CSCSetup::SiteVariables;
-  my $SetupVariables  = new SiteSetup($UseModPerl);
-    my $home_view             = 'AltPowerLogHomePage'||$SetupVariables->{-HOME_VIEW}; 
-    my $homeviewname          = 'AltPowerLogHomePage'||$SetupVariables->{-HOME_VIEW_NAME};
-    my $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
-    my $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
-    my $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
-    my $page_left_view        = $SetupVariables->{-LEFT_PAGE_VIEW};
+    my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+    my $last_update  = 'april 24, 2011';
+
+    my $homeviewname ;
+    my $home_view = 'BasicDataView'; 
+    my $BASIC_DATA_VIEW; 
+    my $page_top_view;
+    my $page_bottom_view;
+    my $page_left_view;
 #Mail settings
-    my $mail_from             = $SetupVariables->{-MAIL_FROM}; 
-    my $mail_to               = $SetupVariables->{-MAIL_TO};
-    my $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
-    my $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
-    my $app_logo              = $SetupVariables->{-APP_LOGO};
-    my $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
-    my $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
-    my $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
-    my $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
-    my $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
-    my $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
-    my $HTTP_HEADER_KEYWORDS  = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
-    my $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
-   $MySQLPW               = $SetupVariables->{-MySQLPW};
+    my $mail_from; 
+    my $mail_to;
+    my $mail_replyto;
+    my $CSS_VIEW_NAME = 'ApisCSSView';
+    my $app_logo;
+    my $app_logo_height;
+    my $app_logo_width;
+    my $app_logo_alt;
+    my $FAVICON;
+    my $ANI_FAVICON;
+    my $FAVICON_TYPE;
+    my $IMAGE_ROOT_URL; 
+    my $DOCUMENT_ROOT_URL;
+    my $site;
+    my $GLOBAL_DATAFILES_DIRECTORY;
+    my $TEMPLATES_CACHE_DIRECTORY;
+    my $APP_DATAFILES_DIRECTORY;
+    my $DATAFILES_DIRECTORY;
+    my $site_session;
+    my $auth;
+    my $MySQLPW;
+    my $LINK_TARGET;
+    my $HTTP_HEADER_PARAMS;
+    my $HTTP_HEADER_KEYWORDS;
+    my $HTTP_HEADER_DESCRIPTION;
+    my  $DBI_DSN;
+    my $AUTH_TABLE;
+    my  $AUTH_MSQL_USER_NAME;
+    my $DEFAULT_CHARSET; 
+    my $additonalautusernamecomments;
+    my $SetupVariables;
+	 my $TableName = "brew_temp_tb";
+ 	 my $sitename;
+    my $site;
+    my $ProjectTableName = 'csc_project_tb';
+    my $records;
+    my $frame;
+    my $droplist_tb = 'csc_droplist_tb';
+    my $log_tb      = 'csc_log-tb';
+    my $client_tb   = 'csc_client_tb';
+    my $UseModPerl = 1;
+     my $HasMembers = 0;
+
+
+use SiteSetup;
+   $SetupVariables  = new SiteSetup($UseModPerl);
+#    $home_view             = $SetupVariables->{-HOME_VIEW}; 
+#    $homeviewname          = $SetupVariables->{-HOME_VIEW_NAME};
+    $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
+    $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
+    $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
+    $page_left_view        = $SetupVariables->{-page_left_view};
+    $MySQLPW               = $SetupVariables->{-MySQLPW};
     $DBI_DSN               = $SetupVariables->{-DBI_DSN};
+    $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
+    $HTTP_HEADER_KEYWORDS  = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
+    $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+   $AUTH_TABLE             = $SetupVariables->{-AUTH_TABLE};
     $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
-     my $LocalIp            = $SetupVariables->{-LOCAL_IP};
+    $additonalautusernamecomments  = $SetupVariables->{-ADDITIONALAUTHUSERNAMECOMMENTS};
+#Mail settings
+    $mail_from             = $SetupVariables->{-MAIL_FROM}; 
+    $mail_to               = $SetupVariables->{-MAIL_TO};
+    $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
+    $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
+    $app_logo              = $SetupVariables->{-APP_LOGO};
+    $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
+    $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
+    $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
+    $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
+    $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
+    $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
+    $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
+    my $LocalIp            = $SetupVariables->{-LOCAL_IP};
+    $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
+    $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
+    $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
+    $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
+    $site_session = $DATAFILES_DIRECTORY.'/Sessions';
+    $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+    
 
-my $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
-my $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
-my $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
-#my $site = 'file';
-my $site = $SetupVariables->{-DATASOURCE_TYPE};
-my $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
-my $site_session = $DATAFILES_DIRECTORY.'/Sessions';
-my $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-    $ProjectTableName      = 'csc_project_tb';
+ 
+#Add sub aplication spacific overrides.
+# $GLOBAL_DATAFILES_DIRECTORY = "Datafiles";
+# $TEMPLATES_CACHE_DIRECTORY  = "$GLOBAL_DATAFILES_DIRECTORY/TemplatesCache";
+# $APP_DATAFILES_DIRECTORY    = "Datafiles/Todo";
+$page_top_view    = $CGI->param('page_top_view')||$page_top_view;
+$page_bottom_view = $CGI->param('page_bottom_view')||$page_bottom_view;
+#$page_left_view   = $CGI->param('page_left_view')||$page_left_view;
+$page_left_view = "LeftPageView";
+my $target;
+my $columnstoview;
+my $SortFields;
+my $SortField1;
+my $SortField2;
+my $SortDirection;
+my $RecordsToDisplay;
 
-#use CSCSetup;
 
+if ($CGI->param('page_top_view') eq'SBPageTopView'){
+$target='_content';
+ $SortField2='due_date';
+ $SortField1='priority';
+ $SortDirection='DESC' ;
+ $RecordsToDisplay=150;
+}else{
+$target='_new';
+ $columnstoview=[qw(
+       batchnumber
+       start_date
+        mastuntemp
+         linetemp
+        spargtemp
+
+        )];
+$SortFields=[qw(
+        start_date
+         batchnumber
+        )];
+ $SortField1=$CGI->param('sort_field1') ||'start_date';
+ $SortField2=$CGI->param('sort_field2') ||'batchnumber';
+ $RecordsToDisplay=250;
+ $SortDirection='DESC';#ASC
+}
+my $SESSION_DIR;
+#if ($SiteName eq "rv") {
+#  $SESSION_DIR ="../store/shops/rv/Sessions";
+#}else{
+  $SESSION_DIR = "$GLOBAL_DATAFILES_DIRECTORY/Sessions";
+#}
+$LINK_TARGET = $target;
 my $VIEW_LOADER = new Extropia::Core::View
     (\@VIEWS_SEARCH_PATH,\@TEMPLATES_SEARCH_PATH) or
     die("Unable to construct the VIEW LOADER object in " . $CGI->script_name() .
         " Please contact the webmaster.");
+
+use constant HAS_CLASS_DATE  => eval { require Class::Date; };
 
 ######################################################################
 #                          SESSION SETUP                             #
@@ -145,7 +241,7 @@ my $VIEW_LOADER = new Extropia::Core::View
 my @SESSION_CONFIG_PARAMS = (
     -TYPE            => 'File',
     -MAX_MODIFY_TIME => 60 * 60 * 2,
-    -SESSION_DIR     => "$GLOBAL_DATAFILES_DIRECTORY/Sessions",
+    -SESSION_DIR     => $SESSION_DIR,
     -FATAL_TIMEOUT   => 0,
     -FATAL_SESSION_NOT_FOUND => 1
 );
@@ -168,6 +264,7 @@ my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
 my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
+#Deal with site setup in session files. This code need taint checking.
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
       $SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $CGI->param('site')) ;
@@ -183,26 +280,28 @@ if ($CGI->param('site')){
 	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
       }
 }
-my $username =  $SESSION ->getAttribute(-KEY => 'auth_username');
+$sitename =$SiteName;
+my $GROUP_OF_POSTER = $SESSION -> getAttribute(-KEY => 'auth_groups')||'normal';
 my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
+my $username =  $SESSION ->getAttribute(-KEY => 'auth_username');
+
 
 if ($SiteName eq "Apis") {
 use ApisSetup;
-  my $UseModPerl = 0;
   my $SetupVariablesApis   = new ApisSetup($UseModPerl);
-    $CSS_VIEW_NAME           = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesApis->{-AUTH_TABLE};
-    $app_logo                = $SetupVariablesApis->{-APP_LOGO};
-    $app_logo_height         = $SetupVariablesApis->{-APP_LOGO_HEIGHT};
-    $app_logo_width          = $SetupVariablesApis->{-APP_LOGO_WIDTH};
-    $app_logo_alt            = $SetupVariablesApis->{-APP_LOGO_ALT};
-    $homeviewname            = 'HelpDeskHomeView';
-    $ProjectTableName        = 'csc_project_tb';
-    $CSS_VIEW_URL            = $SetupVariablesApis->{-CSS_VIEW_NAME};
+    $CSS_VIEW_NAME         = $SetupVariablesApis->{-CSS_VIEW_NAME};
+    $AUTH_TABLE            = $SetupVariablesApis->{-AUTH_TABLE};
+    $app_logo              = $SetupVariablesApis->{-APP_LOGO};
+    $app_logo_height       = $SetupVariablesApis->{-APP_LOGO_HEIGHT};
+    $app_logo_width        = $SetupVariablesApis->{-APP_LOGO_WIDTH};
+    $app_logo_alt          = $SetupVariablesApis->{-APP_LOGO_ALT};
     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/Apis'; 
-    $SITE_DISPLAY_NAME       = $SetupVariablesApis->{-SITE_DISPLAY_NAME};
+#    $TableName             = 'apis_todo_tb';
+#    $ProjectTableName      = 'apis_project_tb';
+     $CSS_VIEW_URL            = $SetupVariablesApis->{-CSS_VIEW_NAME};
+     $SITE_DISPLAY_NAME       = $SetupVariablesApis->{-SITE_DISPLAY_NAME};
  }
- 
+
 elsif ($SiteName eq "AltPowerDev" or
        $SiteName eq "AltPower" ) {
 use AltPowerSetup;
@@ -217,10 +316,37 @@ use AltPowerSetup;
      $app_logo_height         = $SetupVariablesAltPower->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesAltPower->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesAltPower->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesAltPower->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesAltPower->{-HOME_VIEW};
      $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/AltPower'; 
      $SITE_DISPLAY_NAME       = $SetupVariablesAltPower->{-SITE_DISPLAY_NAME};
+}
+
+elsif ($SiteName eq "BMaster") {
+use BMasterSetup;
+  my $SetupVariablesBMaster   = new BMasterSetup($UseModPerl);
+     $HasMembers               = $SetupVariablesBMaster->{-HAS_MEMBERS};
+     $HTTP_HEADER_KEYWORDS    = $SetupVariablesBMaster->{-HTTP_HEADER_KEYWORDS};
+     $HTTP_HEADER_PARAMS      = $SetupVariablesBMaster->{-HTTP_HEADER_PARAMS};
+     $HTTP_HEADER_DESCRIPTION = $SetupVariablesBMaster->{-HTTP_HEADER_DESCRIPTION};
+     $CSS_VIEW_NAME           = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
+     $AUTH_TABLE              = $SetupVariablesBMaster->{-AUTH_TABLE};
+     $app_logo                = $SetupVariablesBMaster->{-APP_LOGO};
+     $app_logo_height         = $SetupVariablesBMaster->{-APP_LOGO_HEIGHT};
+     $app_logo_width          = $SetupVariablesBMaster->{-APP_LOGO_WIDTH};
+     $app_logo_alt            = $SetupVariablesBMaster->{-APP_LOGO_ALT};
+#    $homeviewname            = 'HomeView'||$SetupVariablesBMaster->{-HOME_VIEW_NAME};
+#     $home_view               = $SetupVariablesBMaster->{-HOME_VIEW};
+     $CSS_VIEW_URL            = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
+     $last_update             = $SetupVariablesBMaster->{-LAST_UPDATE}; 
+      $site_update              = $SetupVariablesBMaster->{-SITE_LAST_UPDATE};
+#Mail settings
+     $mail_from               = $SetupVariablesBMaster->{-MAIL_FROM};
+     $mail_to                 = $SetupVariablesBMaster->{-MAIL_TO};
+     $mail_replyto            = $SetupVariablesBMaster->{-MAIL_REPLYTO};
+     $SITE_DISPLAY_NAME       = $SetupVariablesBMaster->{-SITE_DISPLAY_NAME};
+     $FAVICON                 = $SetupVariablesBMaster->{-FAVICON};
+     $ANI_FAVICON             = $SetupVariablesBMaster->{-ANI_FAVICON};
+     $page_top_view           = $SetupVariablesBMaster->{-PAGE_TOP_VIEW};
+     $FAVICON_TYPE            = $SetupVariablesBMaster->{-FAVICON_TYPE};
 }
 
  elsif ($SiteName eq "Brew") {
@@ -228,7 +354,7 @@ use AltPowerSetup;
 use  BrewSetup;
   my $SetupVariablesBrew  = new BrewSetup($UseModPerl);
     $homeviewname          = 'BrewHomeView';
-    $home_view             = $SetupVariablesBrew->{-HOME_VIEW}; 
+#    $home_view             = $SetupVariablesBrew->{-HOME_VIEW}; 
     $BASIC_DATA_VIEW       = $SetupVariablesBrew->{-BASIC_DATA_VIEW};
     $page_top_view         = $SetupVariablesBrew->{-PAGE_TOP_VIEW};
     $page_bottom_view      = $SetupVariablesBrew->{-PAGE_BOTTOM_VIEW};
@@ -242,20 +368,22 @@ use  BrewSetup;
     $HTTP_HEADER_DESCRIPTION = $SetupVariablesBrew->{-HTTP_HEADER_DESCRIPTION};
     $IMAGE_ROOT_URL        = $SetupVariablesBrew->{-IMAGE_ROOT_URL}; 
     $DOCUMENT_ROOT_URL     = $SetupVariablesBrew->{-DOCUMENT_ROOT_URL};
+    $LINK_TARGET           = $SetupVariablesBrew->{-LINK_TARGET};
     $HTTP_HEADER_PARAMS    = $SetupVariablesBrew->{-HTTP_HEADER_PARAMS};
+    $DEFAULT_CHARSET       = $SetupVariablesBrew->{-DEFAULT_CHARSET};
     $AUTH_TABLE            = $SetupVariablesBrew->{-AUTH_TABLE};
+    $DEFAULT_CHARSET       = $SetupVariablesBrew->{-DEFAULT_CHARSET};
     $APP_DATAFILES_DIRECTORY    =  $GLOBAL_DATAFILES_DIRECTORY."/Brew";
 #    $site = $SetupVariables->{-DATASOURCE_TYPE};
     $SITE_DISPLAY_NAME     = $SetupVariablesBrew->{-SITE_DISPLAY_NAME};
-    $TableName               = 'csc_project_tb';
-    $ProjectTableName      = 'csc_project_tb';
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/CSC'; 
 }
 
+
+ 
 elsif($SiteName eq "CS") {
 use CSSetup;
   my $SetupVariablesCS  = new  CSSetup($UseModPerl);
-    $homeviewname            = 'LogHomeView';
+    $homeviewname          = 'TodoHomeView';
     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/CS'; 
     $SITE_DISPLAY_NAME       = 'Country Stores';
     $HTTP_HEADER_KEYWORDS    = $SetupVariablesCS->{-HTTP_HEADER_KEYWORDS};
@@ -265,28 +393,12 @@ use CSSetup;
     $CSS_VIEW_URL            = $SetupVariablesCS->{-CSS_VIEW_NAME};
 }
 
-elsif ($SiteName eq "ECF") {
-use ECFSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesECF   = new ECFSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesECF->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesECF->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesECF->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesECF->{-APP_LOGO_ALT};
-    $CSS_VIEW_URL          = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/ECF'; 
-    $TableName             = 'ecf_todo_tb';
-    $ProjectTableName      = 'ecf_project_tb';
-     $SITE_DISPLAY_NAME       = $SetupVariablesECF->{-SITE_DISPLAY_NAME};
-   
-    }
 elsif ($SiteName eq "CSC" ||
-       $SiteName eq "CSCDev") {
+       $SiteName eq "CSCDev") 
+       {
 use CSCSetup;
-  my $SetupVariablesCSC       = new  CSCSetup($UseModPerl);
-if ($SiteName eq "CSCDev"
+  my $SetupVariablesCSC   = new  CSCSetup($UseModPerl);
+ if ($SiteName eq "CSCDev"
        ) { $AUTH_TABLE               = $SetupVariablesCSC ->{-ADMIN_AUTH_TABLE}; 
        } else {
          $AUTH_TABLE               = $SetupVariablesCSC ->{-AUTH_TABLE};
@@ -300,23 +412,59 @@ if ($SiteName eq "CSCDev"
     $page_bottom_view        = $SetupVariablesCSC->{-PAGE_BOTTOM_VIEW};
     $page_left_view          = $SetupVariablesCSC->{-LEFT_PAGE_VIEW};
     $CSS_VIEW_URL            = $SetupVariablesCSC->{-CSS_VIEW_NAME};
-    $TableName               = 'csc_project_tb';
     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/CSC'; 
     $SITE_DISPLAY_NAME       = $SetupVariablesCSC->{-SITE_DISPLAY_NAME};
+
 }
 
- elsif ($SiteName eq "ENCY") {
-use ENCYSetup;
-  my $SetupVariablesENCY     = new  ENCYSetup($UseModPerl);
-    $CSS_VIEW_URL            = $SetupVariablesENCY->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesENCY->{-AUTH_TABLE};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesENCY->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesENCY->{-HTTP_HEADER_DESCRIPTION};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/ENCY'; 
-    $SITE_DISPLAY_NAME       = $SetupVariablesENCY->{-SITE_DISPLAY_NAME};
- }
+elsif ($SiteName eq "Demo" or
+      $SiteName eq "DemoHelpDesk") {
+use DEMOSetup;
 
- elsif ($SiteName eq "HE" or
+  my $SetupVariablesDemo   = new  DEMOSetup($UseModPerl);
+    $AUTH_TABLE               = $SetupVariablesDemo ->{-AUTH_TABLE};
+    $APP_NAME_TITLE           = "Computer System Consulting.ca Demo Application";
+    $HasMembers               = $SetupVariablesDemo->{-HAS_MEMBERS};
+    $HTTP_HEADER_KEYWORDS     = $SetupVariablesDemo->{-HTTP_HEADER_KEYWORDS};
+    $HTTP_HEADER_PARAMS       = $SetupVariablesDemo->{-HTTP_HEADER_PARAMS};
+    $HTTP_HEADER_DESCRIPTION  = $SetupVariablesDemo->{-HTTP_HEADER_DESCRIPTION};
+    $CSS_VIEW_NAME            = $SetupVariablesDemo->{-CSS_VIEW_NAME};
+    $page_top_view            = $SetupVariablesDemo->{-PAGE_TOP_VIEW};
+    $page_bottom_view         = $SetupVariablesDemo->{-PAGE_BOTTOM_VIEW};
+    $page_left_view           = $SetupVariablesDemo->{-LEFT_PAGE_VIEW};
+    $app_logo                 = $SetupVariablesDemo->{-APP_LOGO};
+    $app_logo_height          = $SetupVariablesDemo->{-APP_LOGO_HEIGHT};
+    $app_logo_width           = $SetupVariablesDemo->{-APP_LOGO_WIDTH};
+    $app_logo_alt             = $SetupVariablesDemo->{-APP_LOGO_ALT};
+    $CSS_VIEW_URL             = $SetupVariablesDemo->{-CSS_VIEW_NAME};
+    $SITE_DISPLAY_NAME        = $SetupVariablesDemo->{-SITE_DISPLAY_NAME};
+#    $homeviewname             = $SetupVariablesDemo->{-HOME_VIEW_NAME};
+    $last_update              = $SetupVariablesDemo->{-SITE_LAST_UPDATE};
+    $FAVICON                  = $SetupVariablesDemo->{-FAVICON};
+    $ANI_FAVICON              = $SetupVariablesDemo->{-ANI_FAVICON};
+    $FAVICON_TYPE             = $SetupVariablesDemo->{-FAVICON_TYPE};
+
+}
+
+elsif ($SiteName eq "ECF" || 
+       $SiteName eq "ECFDev") {
+use ECFSetup;
+  my $SetupVariablesECF   = new ECFSetup($UseModPerl);
+    $CSS_VIEW_NAME           = $SetupVariablesECF->{-CSS_VIEW_NAME};
+    $AUTH_TABLE              = $SetupVariablesECF->{-AUTH_TABLE};
+    $app_logo                = $SetupVariablesECF->{-APP_LOGO};
+    $app_logo_height         = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
+    $app_logo_width          = $SetupVariablesECF->{-APP_LOGO_WIDTH};
+    $app_logo_alt            = $SetupVariablesECF->{-APP_LOGO_ALT};
+    $CSS_VIEW_URL            = $SetupVariablesECF->{-CSS_VIEW_NAME};
+    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/ECF'; 
+#    $TableName              = 'ecf_todo_tb';
+ #   $ProjectTableName       = 'ecf_project_tb';
+     $SITE_DISPLAY_NAME      = $SetupVariablesECF->{-SITE_DISPLAY_NAME};
+    
+}
+
+elsif ($SiteName eq "HE" or
        $SiteName eq "HEDev") {
 use HESetup;
   my $SetupVariablesHE   = new HESetup($UseModPerl);
@@ -330,19 +478,54 @@ use HESetup;
      $app_logo_height          = $SetupVariablesHE->{-APP_LOGO_HEIGHT};
      $app_logo_width           = $SetupVariablesHE->{-APP_LOGO_WIDTH};
      $app_logo_alt             = $SetupVariablesHE->{-APP_LOGO_ALT};
-     $home_view             = $SetupVariablesHE->{-HOME_VIEW_NAME};
-     $home_view                = $SetupVariablesHE->{-HOME_VIEW};
      $CSS_VIEW_URL             = $SetupVariablesHE->{-CSS_VIEW_NAME};
      $last_update              = $SetupVariablesHE->{-LAST_UPDATE}; 
+#     $site_update              = $SetupVariablesHE->{-SITE_LAST_UPDATE};
  #Mail settings
      $mail_from                = $SetupVariablesHE->{-MAIL_FROM};
      $mail_to                  = $SetupVariablesHE->{-MAIL_TO};
      $mail_replyto             = $SetupVariablesHE->{-MAIL_REPLYTO};
+#     $shop                     = $SetupVariablesHE->{-SHOP};
      $SITE_DISPLAY_NAME        = $SetupVariablesHE->{-SITE_DISPLAY_NAME};
 }
+elsif ($SiteName eq "Organic") {
+use OrganicSetup;
+
+  my $SetupVariablesOrganic   = new OrganicSetup($UseModPerl);
+     $HTTP_HEADER_KEYWORDS    = $SetupVariablesOrganic->{-HTTP_HEADER_KEYWORDS};
+     $HTTP_HEADER_PARAMS      = $SetupVariablesOrganic->{-HTTP_HEADER_PARAMS};
+     $HTTP_HEADER_DESCRIPTION = $SetupVariablesOrganic->{-HTTP_HEADER_DESCRIPTION};
+     $CSS_VIEW_NAME           = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
+     $AUTH_TABLE              = $SetupVariablesOrganic->{-AUTH_TABLE};
+     $app_logo                = $SetupVariablesOrganic->{-APP_LOGO};
+     $app_logo_height         = $SetupVariablesOrganic->{-APP_LOGO_HEIGHT};
+     $app_logo_width          = $SetupVariablesOrganic->{-APP_LOGO_WIDTH};
+     $app_logo_alt            = $SetupVariablesOrganic->{-APP_LOGO_ALT};
+     $homeviewname            = $SetupVariablesOrganic->{-HOME_VIEW_NAME};
+     $CSS_VIEW_URL            = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
+     $mail_to                 = $SetupVariablesOrganic->{-MAIL_TO};
+     $mail_replyto            = $SetupVariablesOrganic->{-MAIL_REPLYTO};
+    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/Orgnaic'; 
+     $SITE_DISPLAY_NAME       = $SetupVariablesOrganic->{-SITE_DISPLAY_NAME};
+ }
+
+
  
- 
- elsif ($SiteName eq "Skye" or
+elsif ($SiteName eq "VitalVic") {
+use VitalVicSetup;
+  my $SetupVariablesVitalVic     = new  VitalVicSetup($UseModPerl);
+    $CSS_VIEW_URL            = $SetupVariablesVitalVic->{-CSS_VIEW_NAME};
+    $AUTH_TABLE              = $SetupVariablesVitalVic->{-AUTH_TABLE};
+    $HTTP_HEADER_KEYWORDS    = $SetupVariablesVitalVic->{-HTTP_HEADER_KEYWORDS};
+    $HTTP_HEADER_DESCRIPTION = $SetupVariablesVitalVic->{-HTTP_HEADER_DESCRIPTION};
+    $mail_to                 = $SetupVariablesVitalVic->{-MAIL_TO};
+    $mail_replyto            = $SetupVariablesVitalVic->{-MAIL_REPLYTO};
+    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/VitalVic'; 
+    $APP_NAME_TITLE        = "Vital Victoria ToDo ";
+    $ProjectTableName      = 'vitalvic_project_tb';
+    $SITE_DISPLAY_NAME       = $SetupVariablesVitalVic->{-SITE_DISPLAY_NAME};
+}
+elsif ($SiteName eq "Skye" or
        $SiteName eq "SkyeStore") {
 use SkyeFarmSetup;
   my $SetupVariablesSkyeFarm   = new SkyeFarmSetup($UseModPerl);
@@ -355,74 +538,16 @@ use SkyeFarmSetup;
      $app_logo_height         = $SetupVariablesSkyeFarm->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesSkyeFarm->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesSkyeFarm->{-APP_LOGO_ALT};
-     $home_view               = $SetupVariablesSkyeFarm->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesSkyeFarm->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesSkyeFarm->{-CSS_VIEW_NAME};
      $last_update             = $SetupVariablesSkyeFarm->{-LAST_UPDATE}; 
  #Mail settings
+     $site_update              = $SetupVariablesSkyeFarm->{-SITE_LAST_UPDATE};
     $mail_from             = $SetupVariablesSkyeFarm->{-MAIL_FROM};
     $mail_to               = $SetupVariablesSkyeFarm->{-MAIL_TO};
     $mail_replyto          = $SetupVariablesSkyeFarm->{-MAIL_REPLYTO};
     $SITE_DISPLAY_NAME     = $SetupVariablesSkyeFarm->{-SITE_DISPLAY_NAME};
    $APP_DATAFILES_DIRECTORY= $GLOBAL_DATAFILES_DIRECTORY.'/SkyeFarm';
-  }
-
-elsif ($SiteName eq "VitalVic") {
-use VitalVicSetup;
-  my $SetupVariablesVitalVic     = new  VitalVicSetup($UseModPerl);
-    $CSS_VIEW_URL            = $SetupVariablesVitalVic->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesVitalVic->{-AUTH_TABLE};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesVitalVic->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesVitalVic->{-HTTP_HEADER_DESCRIPTION};
-    $mail_to                 = $SetupVariablesVitalVic->{-MAIL_TO};
-    $mail_replyto            = $SetupVariablesVitalVic->{-MAIL_REPLYTO};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/VitalVic'; 
-    $ProjectTableName      = 'vitalvic_project_tb';
-    $SITE_DISPLAY_NAME       = $SetupVariablesVitalVic->{-SITE_DISPLAY_NAME};
-}
-
-elsif ($SiteName eq "Organic") {
-use OrganicSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesOrganic   = new OrganicSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesOrganic->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesOrganic->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesOrganic->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesOrganic->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesOrganic->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesOrganic->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesOrganic->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesOrganic->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesOrganic->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesOrganic->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
-     $mail_to                 = $SetupVariablesOrganic->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesOrganic->{-MAIL_REPLYTO};
-     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/Orgnaic'; 
-     $SITE_DISPLAY_NAME       = $SetupVariablesOrganic->{-SITE_DISPLAY_NAME};
-}
-elsif ($SiteName eq "Forager") {
-use ForagerSetup;
-  my $UseModPerl = 1;
-  my $SetupVariablesForager  = new ForagerSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesForager->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesForager->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesForager->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesForager->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesForager->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesForager->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesForager->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesForager->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesForager->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesForager->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesForager->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesForager->{-CSS_VIEW_NAME};
-     $mail_to                 = $SetupVariablesForager->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesForager->{-MAIL_REPLYTO};
-     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/Forager'; 
-     $SITE_DISPLAY_NAME       = $SetupVariablesForager->{-SITE_DISPLAY_NAME};
-}elsif ($SiteName eq "WiseWoman") {
+  }elsif ($SiteName eq "WiseWoman") {
 use WWSetup;
   my $SetupVariablesWiseWoman   = new WWSetup($UseModPerl);
      $APP_NAME_TITLE          = "WiseWoman";
@@ -447,8 +572,31 @@ use WWSetup;
      $page_top_view           = $SetupVariablesWiseWoman->{-PAGE_TOP_VIEW};
      $FAVICON_TYPE            = $SetupVariablesWiseWoman->{-FAVICON_TYPE};
 } 
-     $homeviewname            = "LogHomeView";
 
+
+
+my $apsubmenu = 'ApplicationSubMenuView';
+if  ($CGI->param('view') eq 'ContactView'){
+ $apsubmenu ='' ;
+}
+my $modify = '1';
+my $delete = '1';
+my $add ='1';
+my $group_search = '1';
+
+ if ($username eq "Shanta"  ) {
+    $modify = '1';
+    $delete = '1';
+    $group_search = '0';
+    $add ='1';
+  }
+if ($CGI->param('embed')){
+   $page_top_view = "EmbedPageTopView";
+   $records = 1;
+   }
+if ($CGI->param('frame')){
+     $frame        = "1";
+   }
 
 ######################################################################
 #                       AUTHENTICATION SETUP                         #
@@ -462,6 +610,10 @@ my @AUTH_USER_DATASOURCE_FIELD_NAMES = qw(
     lastname
     email
 );
+
+#CSC comversion to auth swiching from SiteSetup.pm At momet this is only set to switch from
+# file to MySQL
+
 my @AUTH_USER_DATASOURCE_PARAMS;
 if ($site eq "file") {
 
@@ -484,7 +636,6 @@ else {
         -FIELD_NAMES  => \@AUTH_USER_DATASOURCE_FIELD_NAMES
     );
 }
-
 
 my @AUTH_ENCRYPT_PARAMS = (
     -TYPE => 'Crypt'
@@ -518,21 +669,27 @@ my @AUTH_CONFIG_PARAMS = (
 ######################################################################
 
 my @AUTH_VIEW_DISPLAY_PARAMS = (
-    -SITE_NAME               => $SiteName,
+    -SITE_NAME            => $SiteName,
     -CSS_VIEW_URL            => $CSS_VIEW_URL,
     -APPLICATION_LOGO        => $app_logo,
     -APPLICATION_LOGO_HEIGHT => $app_logo_height,
     -APPLICATION_LOGO_WIDTH  => $app_logo_width,
-    -APPLICATION_LOGO_ALT    => $app_logo_alt,
-    -HTTP_HEADER_PARAMS      => [-EXPIRES => '-1d'],
+    -APPLICATION_LOGO_ALT    => $APP_NAME_TITLE,
+ 	  -FAVICON                 => $FAVICON || '/images/apis/favicon.ico',
+	  -ANI_FAVICON             => $ANI_FAVICON,
+	  -FAVICON_TYPE            => $FAVICON_TYPE,
     -DOCUMENT_ROOT_URL       => $DOCUMENT_ROOT_URL,
     -HTTP_HEADER_PARAMS      => $HTTP_HEADER_PARAMS,
+    -LINK_TARGET             => $LINK_TARGET,
     -IMAGE_ROOT_URL          => $IMAGE_ROOT_URL,
+    -SITE_DISPLAY_NAME       => $SITE_DISPLAY_NAME,
     -SCRIPT_DISPLAY_NAME     => $APP_NAME_TITLE,
     -SCRIPT_NAME             => $CGI->script_name(),
     -PAGE_TOP_VIEW           => $page_top_view,
     -PAGE_BOTTOM_VIEW        => $page_bottom_view,
-    -LINK_TARGET             => '_self'
+    -page_left_view          => $page_left_view,
+    -LINK_TARGET             => $LINK_TARGET,
+    -DEFAULT_CHARSET         => $DEFAULT_CHARSET,
 );
 
 my @AUTH_REGISTRATION_DH_MANAGER_PARAMS = (
@@ -594,17 +751,16 @@ my @MAIL_PARAMS = (
 );
 
 my @USER_MAIL_SEND_PARAMS = (
-    -FROM    => '$mail_from',
-    -TO      => '$mail_to',
-    -SUBJECT => '$APP_NAME_TITLE Password Generated'
+    -FROM    => $SESSION ->getAttribute(-KEY => 'auth_email')||$mail_from,
+    -TO      => $SetupVariables->{-MAIL_TO_ADMIN}||$mail_to,
+    -SUBJECT => $APP_NAME_TITLE.' Password Generated'
 );
 
 my @ADMIN_MAIL_SEND_PARAMS = (
-    -FROM    => '$mail_from',
-    -TO      => '$mail_to',
-    -SUBJECT => '$APP_NAME_TITLE Registration Notification'
+    -FROM    => $SESSION ->getAttribute(-KEY => 'auth_email')||$mail_from,
+    -TO      => $SetupVariables->{-MAIL_TO_ADMIN}||$mail_to,
+    -SUBJECT => $APP_NAME_TITLE.' Brew temp'
 );
-
                 
 my @AUTH_MANAGER_CONFIG_PARAMS = (
     -TYPE                        => 'CGI',
@@ -621,12 +777,12 @@ my @AUTH_MANAGER_CONFIG_PARAMS = (
     -VIEW_LOADER                 => $VIEW_LOADER,
     -AUTH_PARAMS                 => \@AUTH_CONFIG_PARAMS,
     -CGI_OBJECT                  => $CGI,
-    -ALLOW_REGISTRATION          => 0,   
+    -ALLOW_REGISTRATION          => 1,   
     -ALLOW_USER_SEARCH           => 0,
     -USER_SEARCH_FIELD           => 'auth_email',
     -GENERATE_PASSWORD           => 0,
     -DEFAULT_GROUPS              => 'normal',
-    -EMAIL_REGISTRATION_TO_ADMIN => 0,
+    -EMAIL_REGISTRATION_TO_ADMIN => 1,
     -USER_FIELDS                 => \@USER_FIELDS,
     -USER_FIELD_TYPES            => \%USER_FIELD_TYPES,
     -USER_FIELD_NAME_MAPPINGS    => \%USER_FIELD_NAME_MAPPINGS,
@@ -650,28 +806,25 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
 
     -FIELD_MAPPINGS =>
       {
-       project_code	      	=> 'Project Code',
-       estimated_man_hours 	=> 'Estimated Man Hours',
-       accumulative_time 	=> 'Accumulated time',
-       owner            => 'Owner',
-       todo_record_id  	=> 'todo id',
+       sitename         => 'sitename',
        start_date       => 'Start Date',
        due_date         => 'Due Date',
-       abstract         => 'Subject',
-       details          => 'Description',
-       status           => 'Status',
-       priority         => 'Priority',
+       batchnumber      => 'batchnumber',
+       start_date       => 'Start Date',
+       due_date         => 'Due Date',
+       linetemp         => 'Line temp',
+       spargtemp        => 'Sparg temp',
+       mastuntemp       => 'Mashton temp',
        last_mod_by      => 'Last Modified By',
        last_mod_date    => 'Last Modified Date',
-       comments         => 'Comments',
       },
 
     -RULES => [
-        -ESCAPE_HTML_TAGS => [
-            -FIELDS => [qw(
-                *
-            )]
-        ],
+      #  -ESCAPE_HTML_TAGS => [
+      #      -FIELDS => [qw(
+      #          *
+      #      )]
+      #  ],
 
         -DOES_NOT_CONTAIN => [
             -FIELDS => [qw(
@@ -713,11 +866,8 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
         -IS_FILLED_IN => [
             -FIELDS => [
                         qw(
-                           owner
-                           start_time
-                           abstract
-                           status
-                           priority
+                           sitename
+                           start_date
                            last_mod_by
                            last_mod_date
                           )
@@ -737,29 +887,19 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
         )],
 
     -FIELD_MAPPINGS => {
-       project_code	      	=> 'Project Code',
-       todo_record_id	      	=> 'todo id',
-       estimated_man_hours 	=> 'Estimated Man Hours',
-       accumulative_time 	=> 'Accumulated time',
-       start_date               => 'Start Date',
-       due_date                 => 'Due Date',
-       abstract                 => 'Subject',
-       details                  => 'Description',
-       status                   => 'Status',
-       priority                 => 'Priority',
-       comments                 => 'Comments',
-    },
+       start_date       => 'Start Date',
+      },
 
     -RULES => [
-        -ESCAPE_HTML_TAGS => [
-            -FIELDS => [qw(
-                
-            )]
-        ],
+      #  -ESCAPE_HTML_TAGS => [
+      #      -FIELDS => [qw(
+      #          *
+      #      )]
+      #  ],
 
         -DOES_NOT_CONTAIN => [
             -FIELDS => [qw(
-                
+                *
             )],
 
             -CONTENT_TO_DISALLOW => '\\',
@@ -769,7 +909,7 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
 
         -DOES_NOT_CONTAIN => [
             -FIELDS => [qw(
-                
+                *
             )],
 
             -CONTENT_TO_DISALLOW => '\"',
@@ -796,11 +936,8 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
 
         -IS_FILLED_IN => [
             -FIELDS => [qw(
-                           owner
-                           start_time
-                           abstract
-                           status
-                           priority
+                           sitename
+                           start_date
                            last_mod_by
                            last_mod_date
                           )
@@ -821,23 +958,15 @@ my @DATA_HANDLER_MANAGER_CONFIG_PARAMS = (
 my @DATASOURCE_FIELD_NAMES = 
     qw(
        record_id
-       todo_record_id
-       owner
        sitename
        start_date
-       project_code
-       due_date
-       abstract
-       details
-       start_time
-       end_time
-       time
-       group_of_poster
-       status
-       priority
+       batchnumber
+       linetemp
        last_mod_by
        last_mod_date
-       comments        
+       group_of_poster
+       spargtemp
+       mastuntemp
       );
 
 # prepare the data then used in the form input definition
@@ -846,15 +975,18 @@ my @months = qw(January February March April May June July August
 my %months;
 @months{1..@months} = @months;
 my %years = ();
-$years{$_} = $_ for (2014..2020);
+$years{$_} = $_ for (2010..2020);
 my %days  = ();
 $days{$_} = $_ for (1..31);
 
 my %priority =
     (
+                 
       1 => 'LOW',
-      2 => 'MIDDLE',
-      3 => 'HIGH',
+      2 => 'MODERATE',
+      3 => 'CONSIDERABLE',
+      4 => 'HIGH',
+      5 => 'EXTREME',
     );
 
 my %status =
@@ -868,90 +1000,59 @@ my %status =
 
 my %BASIC_INPUT_WIDGET_DEFINITIONS = 
     (
-     abstract => [
+ batchnumber   => [
+        -DISPLAY_NAME => 'Place the batch here',
+        -TYPE         => 'textfield',
+        -NAME         => 'batchnumber',
+        -SIZE         => 30,
+        -MAXLENGTH    => 5
+    ],
+    
+  mastuntemp => [
+        -DISPLAY_NAME => 'Mashton temp',
+        -TYPE         => 'textfield',
+        -NAME         => 'mastuntemp',
+        -SIZE         => 30,
+        -MAXLENGTH    => 5
+    ],
+    
+    spargtemp => [
+                 -DISPLAY_NAME => 'Sparge temp',
+                 -TYPE         => 'textfield',
+                 -NAME         => 'spargtemp',
+                 -SIZE         => 30,
+                 -MAXLENGTH    => 80,
+                ],
+
+  linetemp => [
+        -DISPLAY_NAME => "Line Temp",
+        -TYPE         => 'textfield',
+        -NAME         => 'linetemp',
+        -SIZE         => 30,
+        -MAXLENGTH    => 5
+    ],
+ 
+    
+  subject => [
                  -DISPLAY_NAME => 'Subject',
                  -TYPE         => 'textfield',
-                 -NAME         => 'abstract',
+                 -NAME         => 'subject',
                  -SIZE         => 44,
                  -MAXLENGTH    => 200,
                  -INPUT_CELL_COLSPAN => 3,
                 ],
 
-    accumulative_time => [
-        -DISPLAY_NAME => 'Accumulated Please Add time to entry',
-        -TYPE         => 'textfield',
-        -NAME         => 'accumulative_time',
-        -SIZE         => 30,
-        -MAXLENGTH    => 80
-    ],
-
-    todo_record_id => [
-        -DISPLAY_NAME => 'ToDo Record Id',
-        -TYPE         => 'textfield',
-        -NAME         => 'todo_record_id',
-        -SIZE         => 30,
-        -MAXLENGTH    => 80
-    ],
-
-    comments => [
-        -DISPLAY_NAME => 'Comments',
-        -TYPE         => 'textarea',
-        -NAME         => 'comments',
-        -ROWS         => 6,
-        -COLS         => 30,
-        -WRAP         => 'VIRTUAL'
-    ],
-
-     details  => [
+     description  => [
                  -DISPLAY_NAME => 'Description',
                  -TYPE         => 'textarea',
-                 -NAME         => 'details',
+                 -NAME         => 'description',
                  -ROWS         => 8,
                  -COLS         => 42,
                  -WRAP         => 'VIRTUAL',
                  -INPUT_CELL_COLSPAN => 3,
                ],
-     sitename => [
-        -DISPLAY_NAME => 'Site',
-        -TYPE         => 'textfield',
-        -NAME         => 'sitename',
-        -VALUE        => $SiteName,
-        -SIZE         => 30,
-        -MAXLENGTH    => 80
-    ],
 
-    estimated_man_hours => [
-        -DISPLAY_NAME => 'Est. Man Hours',
-        -TYPE         => 'textfield',
-        -NAME         => 'estimated_man_hours',
-        -SIZE         => 30,
-        -MAXLENGTH    => 80
-    ],
-
-     start_time => [
-        -DISPLAY_NAME => 'Start Time',
-        -TYPE         => 'textfield',
-        -NAME         => 'start_time',
-        -SIZE         => 30,
-        -MAXLENGTH    => 80
-    ],
-
-     end_time => [
-        -DISPLAY_NAME => 'End Time',
-        -TYPE         => 'textfield',
-        -NAME         => 'end_time',
-        -SIZE         => 30,
-        -MAXLENGTH    => 80
-    ],
-
-     time => [
-        -DISPLAY_NAME => 'Time',
-        -TYPE         => 'textfield',
-        -NAME         => 'time',
-        -SIZE         => 30,
-        -MAXLENGTH    => 80
-    ],
-    start_day => [
+     start_day => [
                  -DISPLAY_NAME => 'Start Date',
                  -TYPE         => 'popup_menu',
                  -NAME         => 'start_day',
@@ -995,6 +1096,22 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
                  -VALUES       => [sort {$a <=> $b} keys %years],
                 ],
 
+  share => [
+        -DISPLAY_NAME => 'What level of sharing do you want? ',
+        -TYPE         => 'popup_menu',
+        -NAME         => 'share',
+        -LABELS  => { 
+               '' 	=> "I'm not sure",
+               'pub'		=> 'Every Body',
+               'priv'		=> 'This is personal.',
+        },
+        -VALUES       => [
+                      '',
+                      'pub',
+                      'priv',
+        ]
+    ],
+
      priority => [
                  -DISPLAY_NAME => 'Priority',
                  -TYPE         => 'popup_menu',
@@ -1004,7 +1121,6 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
                  -INPUT_CELL_COLSPAN => 3,
                 ],
 
- 
      status => [
                  -DISPLAY_NAME => 'Status',
                  -TYPE         => 'popup_menu',
@@ -1013,45 +1129,63 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
 		 -LABELS       => \%status,
                  -INPUT_CELL_COLSPAN => 3,
                 ],
+#   sitename => [
+ #       -DISPLAY_NAME => 'Site',
+#        -TYPE         => 'popup_menu',
+#        -NAME         => 'sitename',
+#        -VALUES       => [qw(All AltPower Apis BCHPA BeeMaster CSC CS ECF ENCY
+ #                         Extropia Forager Fly Marts News Organic RV Shanta 
+ #                         Skye TelMark USBM VitalVic 
+#                          )]
+#    ],
 
-    );
 
- #    [qw(due_day due_mon due_year)],
+     accumulative_time => [
+        -DISPLAY_NAME => 'Accumulated Please Add time to entry',
+        -TYPE         => 'textfield',
+        -NAME         => 'accumulative_time',
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
+
+    estimated_man_hours => [
+        -DISPLAY_NAME => 'Est. Man Hours',
+        -TYPE         => 'textfield',
+        -NAME         => 'estimated_man_hours',
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
+
+    comments => [
+        -DISPLAY_NAME => 'Comments',
+        -TYPE         => 'textarea',
+        -NAME         => 'comments',
+        -ROWS         => 6,
+        -COLS         => 30,
+        -WRAP         => 'VIRTUAL'
+    ],
+   );
+
 
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
-     qw(project_code),
-     qw(todo_record_id),
-     qw(abstract ),
-     qw(sitename),
-     [qw(start_day start_mon start_year)],
-     qw(details),
-     qw(priority),
-     [qw(status)],
-     qw(start_time),
-     qw(end_time),
-     qw(time),
-     qw(comments),
+       qw(sitename),
+       qw(batchnumber),
+       qw(subject ),
+       [qw(start_day start_mon start_year)],
+       qw(spargtemp),
+       qw(mastuntemp),
+       qw(linetemp),
     );
 
-my @SEARCH_INPUT_WIDGET_DISPLAY_ORDER = 
-    (
-      qw(project_code),
-      qw(abstract ),
-     [qw(start_day start_mon start_year)],
-     [qw(due_day due_mon due_year)],
-      qw(details),
-      qw(priority),
-     [qw(status)],
-     qw(accumulative_time),
-     qw(comments),
-    );
 
 my %ACTION_HANDLER_PLUGINS =
     (
 
      'Default::DisplayAddFormAction' =>
-     {
+     {       qw(estimated_man_hours),
+       qw(accumulative_time),
+
       -DisplayAddFormAction     => [qw(Plugin::Todo::DisplayAddFormAction)],
      },
 
@@ -1133,17 +1267,6 @@ my %ACTION_HANDLER_PLUGINS =
       -handleIncomingData_BEGIN => [qw(Plugin::Todo::InputFields2DBFields)],
      },
 
-     'Default::DisplaysBillingSearchFormAction' => 
-     {
-      -loadData_END             => [qw(Plugin::Todo::Records2Display)],
-      -handleIncomingData_BEGIN => [qw(Plugin::Todo::InputFields2DBFields)],
-     },
-
-     'Default::PerformBillingSearchAction' => 
-     {
-      -loadData_END             => [qw(Plugin::Todo::Records2Display)],
-      -handleIncomingData_BEGIN => [qw(Plugin::Todo::InputFields2DBFields)],
-     },
 
 
     );
@@ -1151,15 +1274,14 @@ my %ACTION_HANDLER_PLUGINS =
 
 my @INPUT_WIDGET_DEFINITIONS = (
     -BASIC_INPUT_WIDGET_DEFINITIONS => \%BASIC_INPUT_WIDGET_DEFINITIONS,
-    -BASIC_INPUT_WIDGET_DISPLAY_ORDER => \@BASIC_INPUT_WIDGET_DISPLAY_ORDER,
-    -SEARCH_INPUT_WIDGET_DISPLAY_ORDER => \@SEARCH_INPUT_WIDGET_DISPLAY_ORDER
+    -BASIC_INPUT_WIDGET_DISPLAY_ORDER => \@BASIC_INPUT_WIDGET_DISPLAY_ORDER
 );
+
+#$site = 'file';
 my @BASIC_DATASOURCE_CONFIG_PARAMS;
-
-
 if ($site eq "file"){
- @BASIC_DATASOURCE_CONFIG_PARAMS = (    -TYPE                       => 'File', 
-    -FILE                       => "$APP_DATAFILES_DIRECTORY/$APP_NAME.dat",
+ @BASIC_DATASOURCE_CONFIG_PARAMS = (    -TYPE                       => 'File',
+    -FILE                       => "$APP_DATAFILES_DIRECTORY/$TableName.dat",
     -FIELD_DELIMITER            => '|',
     -COMMENT_PREFIX             => '#',
     -CREATE_FILE_IF_NONE_EXISTS => 1,
@@ -1179,10 +1301,10 @@ if ($site eq "file"){
 else{
 	@BASIC_DATASOURCE_CONFIG_PARAMS = (
 	        -TYPE         => 'DBI',
-	        -DBI_DSN      =>  $DBI_DSN,
-	        -TABLE        => $log_tb,
+	        -DBI_DSN      => $DBI_DSN,
+	        -TABLE        => $TableName,
 	        -USERNAME     => $AUTH_MSQL_USER_NAME,
-	        -PASSWORD     => $MySQLPW,
+       	  -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@DATASOURCE_FIELD_NAMES,
 	        -KEY_FIELDS   => ['username'],
 	        -FIELD_TYPES  => {
@@ -1198,34 +1320,10 @@ else{
 
     }
 
-my @TODO_DATASOURCE_FIELD_NAMES = 
-    qw(
-       record_id
-       project_code
-       estimated_man_hours 
-       accumulative_time
-       due_date
-       abstract
-       details
-       status
-       priority
-       last_mod_by
-       last_mod_date
-       comments        
-      );
+######################################################################
+#                          project db  SETUP                              #
+######################################################################
 
-my	@TODO_DATASOURCE_CONFIG_PARAMS = (
-	        -TYPE         => 'DBI',
-	        -DBI_DSN      =>  $DBI_DSN,
-	        -TABLE        => $TodoTB,
-	        -USERNAME     => $AUTH_MSQL_USER_NAME,
-	        -PASSWORD     => $MySQLPW,
-	        -FIELD_NAMES  => \@TODO_DATASOURCE_FIELD_NAMES,
-	        -KEY_FIELDS   => ['username'],
-	        -FIELD_TYPES  => {
-	            record_id        => 'Autoincrement'
-	        },
-);
 my @PROJECT_DATASOURCE_FIELD_NAMES = qw(
         record_id
         status
@@ -1242,10 +1340,32 @@ my @PROJECT_DATASOURCE_FIELD_NAMES = qw(
         date_time_posted
 );
 
-my	@PROJECT_DATASOURCE_CONFIG_PARAMS = (
+my	@PROJ_DATASOURCE_CONFIG_PARAMS;
+
+if ($site eq "file"){
+	@PROJ_DATASOURCE_CONFIG_PARAMS = (
+    -TYPE                       => 'File',
+    -FILE                       => "$APP_DATAFILES_DIRECTORY/$SiteName._project_tb.dat",
+    -FIELD_DELIMITER            => '|',
+    -COMMENT_PREFIX             => '#',
+    -CREATE_FILE_IF_NONE_EXISTS => 1,
+    -FIELD_NAMES                => \@DATASOURCE_FIELD_NAMES,
+    -KEY_FIELDS                 => ['record_id'],
+    -FIELD_TYPES                => {
+                                    record_id        => 'Autoincrement',
+                                    datetime         =>
+                                    [
+                                     -TYPE  => "Date",
+                                     -STORAGE => 'y-m-d H:M:S',
+                                     -DISPLAY => 'y-m-d H:M:S',
+                                    ],
+                                   },
+);#$SiteName.
+}else{
+	@PROJ_DATASOURCE_CONFIG_PARAMS = (
 	        -TYPE         => 'DBI',
 	        -DBI_DSN      => $DBI_DSN,
-	        -TABLE        =>   $ProjectTableName||'csc_project_tb',
+	        -TABLE        => $ProjectTableName,
 	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@PROJECT_DATASOURCE_FIELD_NAMES,
@@ -1253,14 +1373,120 @@ my	@PROJECT_DATASOURCE_CONFIG_PARAMS = (
 	        -FIELD_TYPES  => {
 	            record_id        => 'Autoincrement'
 	        },
+	);
+}
+
+my @DROPLIST_DATASOURCE_FIELD_NAMES = qw(
+        record_id
+        status
+        category
+        sitename
+        app_name
+        list_name
+        display_value
+        client_name
+        comments        
+        username_of_poster
+        group_of_poster
+        date_time_posted
 );
+
+my  @DROPLIST_DATASOURCE_CONFIG_PARAMS = (
+	        -TYPE         => 'DBI',
+	        -DBI_DSN      => $DBI_DSN,
+	        -TABLE        => $droplist_tb,
+	        -USERNAME     => $AUTH_MSQL_USER_NAME,
+	        -PASSWORD     => $MySQLPW,
+	        -FIELD_NAMES  => \@DROPLIST_DATASOURCE_FIELD_NAMES,
+	        -KEY_FIELDS   => ['project_code'],
+	        -FIELD_TYPES  => {
+	            record_id        => 'Autoincrement',
+                    datetime         => 
+                                    [
+                                     -TYPE  => "Date",
+                                     -STORAGE => 'y-m-d H:M:S',
+                                     -DISPLAY => 'y-m-d H:M:S',
+                                    ],
+	        },
+	);
+
+my @LOG_DATASOURCE_FIELD_NAMES = qw(
+        record_id
+        todo_record_id
+        time
+        username_of_poster
+        group_of_poster
+);
+
+my  @LOG_DATASOURCE_CONFIG_PARAMS = (
+	        -TYPE         => 'DBI',
+	        -DBI_DSN      => $DBI_DSN,
+	        -TABLE        => $log_tb,
+	        -USERNAME     => $AUTH_MSQL_USER_NAME,
+	        -PASSWORD     => $MySQLPW,
+	        -FIELD_NAMES  => \@LOG_DATASOURCE_FIELD_NAMES,
+	        -KEY_FIELDS   => ['project_code'],
+	        -FIELD_TYPES  => {
+	            record_id        => 'Autoincrement',
+                    datetime         => 
+                                    [
+                                     -TYPE  => "Date",
+                                     -STORAGE => 'y-m-d H:M:S',
+                                     -DISPLAY => 'y-m-d H:M:S',
+                                    ],
+	        },
+	);
+my @CLIENT_DATASOURCE_FIELD_NAMES = qw(
+        category
+        record_id
+        fname
+        lname
+        phone
+        email
+        comments
+        address1
+        address2
+        city
+        prov
+        zip
+        country
+        fax
+        mobile
+        url
+	     company_code
+        company_name
+        title
+        department
+        username_of_poster
+        group_of_poster
+        date_time_posted
+);
+
+my	@CLIENT_DATASOURCE_CONFIG_PARAMS = (
+	        -TYPE         => 'DBI',
+	        -DBI_DSN      => $DBI_DSN,
+	        -TABLE        => $client_tb,
+	        -USERNAME     => $AUTH_MSQL_USER_NAME,
+	        -PASSWORD     => $MySQLPW,
+	        -FIELD_NAMES  => \@CLIENT_DATASOURCE_FIELD_NAMES,
+	        -KEY_FIELDS   => ['username'],
+	        -FIELD_TYPES  => {
+	            record_id        => 'Autoincrement'
+	        },
+	);
 
 my @DATASOURCE_CONFIG_PARAMS = (
     -BASIC_DATASOURCE_CONFIG_PARAMS     => \@BASIC_DATASOURCE_CONFIG_PARAMS,
-    -PROJECT_DATASOURCE_CONFIG_PARAMS     => \@PROJECT_DATASOURCE_CONFIG_PARAMS,
-    -TODO_DATASOURCE_CONFIG_PARAMS     => \@TODO_DATASOURCE_CONFIG_PARAMS,
-    -AUTH_USER_DATASOURCE_CONFIG_PARAMS => \@AUTH_USER_DATASOURCE_PARAMS,
-    );
+    -CLIENT_DATASOURCE_CONFIG_PARAMS   => \@CLIENT_DATASOURCE_CONFIG_PARAMS,
+    -DROPLIST_DATASOURCE_CONFIG_PARAMS  => \@DROPLIST_DATASOURCE_CONFIG_PARAMS,
+    -LOG_DATASOURCE_CONFIG_PARAMS       => \@LOG_DATASOURCE_CONFIG_PARAMS,
+    -PROJECT_DATASOURCE_CONFIG_PARAMS   => \@PROJ_DATASOURCE_CONFIG_PARAMS,
+    -AUTH_USER_DATASOURCE_CONFIG_PARAMS => \@AUTH_USER_DATASOURCE_PARAMS
+);
+
+my @PROJECT_DATASOURCE_CONFIG_PARAMS = (
+    -PROJECT_DATASOURCE_CONFIG_PARAMS     => \@PROJ_DATASOURCE_CONFIG_PARAMS,
+);
 
 ######################################################################
 #                          MAILER SETUP                              #
@@ -1272,41 +1498,35 @@ my @MAIL_CONFIG_PARAMS =
 
 my @EMAIL_DISPLAY_FIELDS = 
     qw(
-       project_code
-       abstract
+       subject
+       batchnumber
        start_date
-       priority
-       details
-       end_time
-       time
-       accumulative_time
-       comments        
+       mashtontemp
       );
 
 my @DELETE_EVENT_MAIL_SEND_PARAMS = (
-    -FROM     => "$SESSION->getAttribute(-KEY =>
-'auth_email')"||'$mail_from',
-    -TO       => '$mail_to',
-    -REPLY_TO => '$mail_replyto',
-    -SUBJECT  => "$APP_NAME_TITLE Delete"
+    -FROM     =>  $SESSION->getAttribute(-KEY =>
+'auth_email')||$mail_from,
+    -TO       => $mail_to,
+    -REPLY_TO => $mail_replyto,
+    -SUBJECT  => $APP_NAME_TITLE." Delete"
 );
 
 my @ADD_EVENT_MAIL_SEND_PARAMS = (
-    -FROM     => "$SESSION->getAttribute(-KEY =>
-'auth_email')"||'$mail_from',
-    -TO       => '$mail_to',
-    -REPLY_TO => '$mail_replyto',
-    -SUBJECT  => "$APP_NAME_TITLE Addition"
+    -FROM     =>  $SESSION->getAttribute(-KEY =>
+'auth_email')||$mail_from,
+    -TO       => $mail_to,
+    -REPLY_TO => $mail_replyto,
+    -SUBJECT  => $APP_NAME_TITLE." Addition"
 );
 
 my @MODIFY_EVENT_MAIL_SEND_PARAMS = (
-    -FROM     => "$SESSION->getAttribute(-KEY =>
-'auth_email')"||'$mail_from',
-    -TO       => '$mail_to',
-    -REPLY_TO => '$mail_replyto',
-    -SUBJECT  => "$APP_NAME_TITLE Modification"
+    -FROM     => $SESSION->getAttribute(-KEY =>
+'auth_email')||$mail_from,
+    -TO       => $mail_to,
+    -REPLY_TO => $mail_replyto,
+    -SUBJECT  => $APP_NAME_TITLE." Modification"
 );
-
 
 my @MAIL_SEND_PARAMS = (
     -DELETE_EVENT_MAIL_SEND_PARAMS => \@DELETE_EVENT_MAIL_SEND_PARAMS,
@@ -1322,7 +1542,7 @@ my @LOG_CONFIG_PARAMS = (
     -TYPE             => 'File',
     -LOG_FILE         => "$APP_DATAFILES_DIRECTORY/$APP_NAME.log",
     -LOG_ENTRY_SUFFIX => '|' . _generateEnvVarsString() . '|',
-    -LOG_ENTRY_PREFIX => 'log|'
+    -LOG_ENTRY_PREFIX =>  $APP_NAME_TITLE.' |'
 );
 
 sub _generateEnvVarsString {
@@ -1341,15 +1561,17 @@ sub _generateEnvVarsString {
 
 my @VALID_VIEWS = 
     qw(
+       BCHPACSSView
+       ECFCSSView
        ApisCSSView
-       CAPCSSVie
-       VitalVicCSSView
-       CSCTotalView
+       CSPSCSSView
+       CSCCSSView
+
        DetailsRecordView
        BasicDataView
-       LogBasicDataView
+       ContactView
 
-       AddRecordView 
+       AddRecordView
        AddRecordConfirmationView
        AddAcknowledgementView
 
@@ -1361,12 +1583,9 @@ my @VALID_VIEWS =
        ModifyAcknowledgementView
 
        PowerSearchFormView
-       BillingSearchFormView
-       BillingView
-       InvoiceView
        OptionsView
        LogoffView
-       LogHomeView
+       ToDoHomeView
       );
 
 my @ROW_COLOR_RULES = (
@@ -1377,23 +1596,16 @@ my @VIEW_DISPLAY_PARAMS = (
     -APPLICATION_LOGO_HEIGHT        => $app_logo_height,
     -APPLICATION_LOGO_WIDTH         => $app_logo_width,
     -APPLICATION_LOGO_ALT           => $app_logo_alt,
-    -FAVICON                        => $FAVICON,
-    -ANI_FAVICON                    => $ANI_FAVICON,
-    -FAVICON_TYPE                   => $FAVICON_TYPE,
+    -DEFAULT_CHARSET                => $DEFAULT_CHARSET,
     -DISPLAY_FIELDS                 => [qw(
-        project_code
-        abstract
-        details
-        start_date
-        due_date
-        status
-        time
-        priority
+      start_date
+      mastuntemp
+      linetemp
+      batchnumber
+      spargtemp
+      description
         )],
     -DOCUMENT_ROOT_URL       => $DOCUMENT_ROOT_URL,
-    -HTTP_HEADER_PARAMS      => $HTTP_HEADER_PARAMS,
-    -HTTP_HEADER_KEYWORDS    => $HTTP_HEADER_KEYWORDS,
-    -HTTP_HEADER_DESCRIPTION => $HTTP_HEADER_DESCRIPTION,
     -EMAIL_DISPLAY_FIELDS    => \@EMAIL_DISPLAY_FIELDS,
     -FIELDS_TO_BE_DISPLAYED_AS_EMAIL_LINKS => [qw(
         email
@@ -1401,42 +1613,37 @@ my @VIEW_DISPLAY_PARAMS = (
     -FIELDS_TO_BE_DISPLAYED_AS_LINKS => [qw(
         url
     )],
-    -FIELDS_TO_BE_DISPLAYED_AS_MULTI_LINE_TEXT => [qw(
-        body
+    -FIELDS_TO_BE_DISPLAYED_AS_HTML_TAG => [qw(
+        description
+	subject
     )],
+    -FIELDS_TO_BE_DISPLAYED_AS_MULTI_LINE_TEXT => [qw(
+        description
+ 	subject
+   )],
     -FIELD_NAME_MAPPINGS     => {
-        'project_code' => 'Project Code',
-        'abstract'     => 'Subject',
-        'details'      => 'Description',
-        'start_date'   => 'Start Date',
-        'due_date'     => 'Due Date',
-        'start_time'   => 'Start Time',
-        'end_time'     => 'Due Time',
-        'time'         => 'Time',
-        'status'       => 'Status',
-        'priority'     => 'Priority',
+        'site_name'          => 'Owner',
+        'batchnumber'        => 'batchnumber',
+        'linetemp'           => 'Line temp',
+        'spargtemp'          => 'Sparg temp',
+        'mastuntemp'         => 'Mashton temp',
+        'description'        => 'Description',
+        'start_date'         => 'Start Date',
+        'due_date'           => 'Due Date',
+        'priority'            => 'Priority',
         },
-    -HOME_VIEW               => $homeviewname,
+    -HOME_VIEW               => $home_view,
     -IMAGE_ROOT_URL          => $IMAGE_ROOT_URL,
-    -LINK_TARGET             => '_self',
+    -LINK_TARGET             => $LINK_TARGET,
+    -HTTP_HEADER_PARAMS      => $HTTP_HEADER_PARAMS,
+    -HTTP_HEADER_KEYWORDS    => $HTTP_HEADER_KEYWORDS,
+    -HTTP_HEADER_DESCRIPTION => $HTTP_HEADER_DESCRIPTION,
     -ROW_COLOR_RULES         => \@ROW_COLOR_RULES,
     -SCRIPT_DISPLAY_NAME     => $APP_NAME_TITLE,
-    -SITE_DISPLAY_NAME       =>  $SITE_DISPLAY_NAME,
     -SCRIPT_NAME             => $CGI->script_name(),
-    -SELECTED_DISPLAY_FIELDS => [qw(
-        project_code
-        abstract
-        start_date
-        status
-        time
-        priority
-        )],
-    -SORT_FIELDS             => [qw(
-        abstract
-        due_date
-        priority
-        start_date
-        )],
+    -SELECTED_DISPLAY_FIELDS => $columnstoview,
+    -SITE_DISPLAY_NAME       => $SITE_DISPLAY_NAME,
+    -SORT_FIELDS             => $SortFields,
 );  
 
 ######################################################################
@@ -1445,7 +1652,7 @@ my @VIEW_DISPLAY_PARAMS = (
 
 my @DATETIME_CONFIG_PARAMS = 
     (
-     -TYPE => 'ClassDate',
+     -TYPE => (HAS_CLASS_DATE ? 'ClassDate' : 'DateManip'),
     );
 
 ######################################################################
@@ -1465,7 +1672,7 @@ my @CHARSET_FILTER_CONFIG_PARAMS = (
 
 my @EMBED_FILTER_CONFIG_PARAMS = (
     -TYPE            => 'Embed',
-    -ENABLE          =>  0
+    -ENABLE          => $CGI->param('embed') || 0
 );
 
 my @VIEW_FILTERS_CONFIG_PARAMS = (
@@ -1477,20 +1684,20 @@ my @VIEW_FILTERS_CONFIG_PARAMS = (
 ######################################################################
 #                      ACTION/WORKFLOW SETUP                         #
 ######################################################################
+#CSC::PopulateInputWidgetDefinitionListWithAccumlatedLogTimeWidgetAction
 
 # note: Default::DefaultAction must! be the last one
-my @ACTION_HANDLER_LIST = 
+my @ACTION_HANDLER_LIST =
     qw(
        Default::SetSessionData
        Default::DisplayCSSViewAction
-
-       CSC::PopulateInputWidgetDefinitionListWithProjectCodeWidgetAction
-       Apis::ProcessShowAllOpenToDosAction
-       CSC::BillingStatsAction
-
-       Default::DisplayDetailsRecordViewAction
-       Apis::ProcessShowBillsRecordsAction
        
+       CSC::PopulateInputWidgetDefinitionListWithProjectCodeWidgetAction
+       CSC::PopulateInputWidgetDefinitionListWithDropListSiteNameWidgetAction
+       CSC::ProcessShowAllOpenToDosAction
+       Apis::ProcessShowBillsRecordsAction
+       Default::DisplayDetailsRecordViewAction
+
        Default::DisplayDeleteFormAction
        Default::ProcessDeleteRequestAction
        Default::DisplayDeleteRecordConfirmationAction
@@ -1507,15 +1714,13 @@ my @ACTION_HANDLER_LIST =
        Default::DisplayOptionsFormAction
        Default::DisplayPowerSearchFormAction
        Default::PerformPowerSearchAction
-       Default::DisplayBillingSearchFormAction
-       Default::PerformBillingSearchAction
 
        Default::PerformLogonAction
        Default::PerformLogoffAction
 
        Default::DisplayViewAllRecordsAction
        Default::DefaultAction
-
+  
       );
 
 
@@ -1529,34 +1734,35 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -ALLOW_DELETIONS_FLAG                   => 1,
     -ALLOW_DUPLICATE_ENTRIES                => 0,
     -ALLOW_USERNAME_FIELD_TO_BE_SEARCHED    => 1,
-    -APPLICATION_SUB_MENU_VIEW_NAME         => 'ApplicationSubMenuView',
+    -APPLICATION_SUB_MENU_VIEW_NAME         => $apsubmenu,
     -OPTIONS_FORM_VIEW_NAME                 => 'OptionsView',
     -AUTH_MANAGER_CONFIG_PARAMS             => \@AUTH_MANAGER_CONFIG_PARAMS,
     -ADD_RECORD_CONFIRMATION_VIEW_NAME      => 'AddRecordConfirmationView',
-    -BASIC_DATA_VIEW_NAME                   => 'LogHomeView',
+    -BASIC_DATA_VIEW_NAME                   => $home_view,
     -DEFAULT_ACTION_NAME                    => 'DisplayDayViewAction',
     -CGI_OBJECT                             => $CGI,
     -CSS_VIEW_URL                           => $CSS_VIEW_URL,
     -CSS_VIEW_NAME                          => $CSS_VIEW_NAME,
     -DATASOURCE_CONFIG_PARAMS               => \@DATASOURCE_CONFIG_PARAMS,
-	 -DEBUG                                  => $CGI->param('debug')||$debug,
+	 -DEBUG                                  => $CGI->param('debug')||0,
     -DELETE_ACKNOWLEDGEMENT_VIEW_NAME       => 'DeleteAcknowledgementView',
     -DELETE_RECORD_CONFIRMATION_VIEW_NAME   => 'DeleteRecordConfirmationView',
     -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
-    -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || 100,
-    -SORT_FIELD1                            => $CGI->param('sort_field1') || 'start_date',
-    -SORT_FIELD2                            => $CGI->param('sort_field2') || 'project',
-#    -SORT_DIRECTION                         => $CGI->param('sort_direction') || 'ASEN',
-    -SORT_DIRECTION                         => 'DESC',
+    -MAX_RECORDS_PER_PAGE                   => $RecordsToDisplay || 210,
+    -SORT_FIELD1                            => $SortField1,
+    -SORT_FIELD2                            => $SortField2,
+    -SORT_DIRECTION                         => $SortDirection|| 'DESC',
+#   -SORT_DIRECTION                         => 'DESC',
     -DELETE_FORM_VIEW_NAME                  => 'DetailsRecordView',
     -DELETE_EMAIL_BODY_VIEW                 => 'DeleteEventEmailView',
     -DETAILS_VIEW_NAME                      => 'DetailsRecordView',
+    -GROUP_OF_POSTER                        => $GROUP_OF_POSTER,
     -DATA_HANDLER_MANAGER_CONFIG_PARAMS     => \@DATA_HANDLER_MANAGER_CONFIG_PARAMS,
-    -DISPLAY_ACKNOWLEDGEMENT_ON_ADD_FLAG    => 0,
-    -DISPLAY_ACKNOWLEDGEMENT_ON_DELETE_FLAG => 0,
-    -DISPLAY_ACKNOWLEDGEMENT_ON_MODIFY_FLAG => 0,
-    -DISPLAY_CONFIRMATION_ON_ADD_FLAG       => 0,
-    -DISPLAY_CONFIRMATION_ON_DELETE_FLAG    => 0,
+    -DISPLAY_ACKNOWLEDGEMENT_ON_ADD_FLAG    => 1,
+    -DISPLAY_ACKNOWLEDGEMENT_ON_DELETE_FLAG => 1,
+    -DISPLAY_ACKNOWLEDGEMENT_ON_MODIFY_FLAG => 1,
+    -DISPLAY_CONFIRMATION_ON_ADD_FLAG       => 1,
+    -DISPLAY_CONFIRMATION_ON_DELETE_FLAG    => 1,
     -DISPLAY_CONFIRMATION_ON_MODIFY_FLAG    => 1,
     -ENABLE_SORTING_FLAG                    => 1,
     -HAS_MEMBERS                            => $HasMembers,
@@ -1564,11 +1770,9 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -INPUT_WIDGET_DEFINITIONS               => \@INPUT_WIDGET_DEFINITIONS,
     -BASIC_INPUT_WIDGET_DISPLAY_COLSPAN     => 4,
     -KEY_FIELD                              => 'record_id',
-    -LAST_UPDATE                            => $last_update,
-    -SITE_LAST_UPDATE                       => $site_update,
-    -LOCAL_IP                               => $LocalIp,
     -LOGOFF_VIEW_NAME                       => 'LogoffView',
     -URL_ENCODED_ADMIN_FIELDS_VIEW_NAME     => 'URLEncodedAdminFieldsView',
+    -LOCAL_IP                               => $LocalIp,
     -LOG_CONFIG_PARAMS                      => \@LOG_CONFIG_PARAMS,
     -MODIFY_ACKNOWLEDGEMENT_VIEW_NAME       => 'ModifyAcknowledgementView',
     -MODIFY_RECORD_CONFIRMATION_VIEW_NAME   => 'ModifyRecordConfirmationView',
@@ -1577,19 +1781,18 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -MODIFY_FORM_VIEW_NAME                  => 'ModifyRecordView',
     -MODIFY_EMAIL_BODY_VIEW                 => 'ModifyEventEmailView',
     -POWER_SEARCH_VIEW_NAME                 => 'PowerSearchFormView',
-    -BILLING_SEARCH_VIEW_NAME                 => 'BillingSearchFormView',
     -REQUIRE_AUTH_FOR_SEARCHING_FLAG        => 1,
     -REQUIRE_AUTH_FOR_ADDING_FLAG           => 1,
     -REQUIRE_AUTH_FOR_MODIFYING_FLAG        => 1,
     -REQUIRE_AUTH_FOR_DELETING_FLAG         => 1,
     -REQUIRE_AUTH_FOR_VIEWING_DETAILS_FLAG  => 1,
     -REQUIRE_MATCHING_USERNAME_FOR_MODIFICATIONS_FLAG => 0,
-    -REQUIRE_MATCHING_GROUP_FOR_MODIFICATIONS_FLAG    => 1,
+    -REQUIRE_MATCHING_GROUP_FOR_MODIFICATIONS_FLAG    => 0,
     -REQUIRE_MATCHING_USERNAME_FOR_DELETIONS_FLAG     => 0,
     -REQUIRE_MATCHING_GROUP_FOR_DELETIONS_FLAG        => 0,
     -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG     => 0,
-    -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG        => 1,
-    -SEND_EMAIL_ON_DELETE_FLAG              => 0,
+    -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG        => $group_search,
+    -SEND_EMAIL_ON_DELETE_FLAG              => 1,
     -SEND_EMAIL_ON_MODIFY_FLAG              => 1,
     -SEND_EMAIL_ON_ADD_FLAG                 => 1,
     -SESSION_OBJECT                         => $SESSION,
@@ -1603,10 +1806,11 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
     -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
     -SITE_NAME                              => $SiteName,
+    -SITE_LAST_UPDATE                       => $site_update,
     -PAGE_TOP_VIEW                          =>  $page_top_view ,
-    -LEFT_PAGE_VIEW                         =>  $page_left_view,
+    -PAGE_LEFT_VIEW                         =>  $page_left_view,
     -PAGE_BOTTOM_VIEW                       =>  $page_bottom_view,
-    -STAT_VIEW_NAME                         => 'CSCTotalView',
+    -SELECT_FORUM_VIEW		            => 'SelectForumView',
     -DATETIME_CONFIG_PARAMS                 => \@DATETIME_CONFIG_PARAMS,
     -ACTION_HANDLER_PLUGINS                 => \%ACTION_HANDLER_PLUGINS,
 );

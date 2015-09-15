@@ -1,5 +1,5 @@
 [%# the ENCY template
-#	$Id: BeePastureView.ttml,v 1.2 2011/09/21 19:25:15 shanta Exp $	
+#	$Id: BeePastureView.ttml,v 1.2.01 2015/09/12 19:25:15 shanta Exp $	
 #file location/cgi-bin/HTMLTemplates/ENCY
 %]
 [% PROCESS DefaultDbi.ttml %]
@@ -45,9 +45,9 @@
 <A NAME="PageTop"></A>
 </div>
 
-<p>We are looking for volunteers to help us develop this database. Your help is greatly needed and appreciated. We are looking to add pictures of pollen to the system so one can get a picture of what plants the bees are collecting from the environment. This will help users to find out what plants are in the area of the hive and how many. This data is vary useful in planing plantings to provide forager over the course of the year. Of course this is limited to plants bees use for pollen not necessary for honey production.The Monitorng system is more valuable for other pollinators.
+<p>We are looking for volunteers to help ups develop this database. Your help is greatly needed and appreciated. We are looking to add pictures of pollen to the system so one can get a picture of what plants the bees are collecting from the environment. This will help users to find out what plants are in the are of the hive. How many. This data is vary useful in planing plantings to provide forager over the course of the year. Of course this is limited to plants bees use for pollen not necessary for honey production.
 
-<p>We are also looking to add data on the effects of pollens on the bees health. A spin off of this is the medicinal use for human and other animals.
+<p>We are also looking to add data on the effects of pollen's on the bees health. A spin off of this is the medicinal use for human and other animals.
      
         <h2>Bee forage plants by Botanical name.</h2>
       

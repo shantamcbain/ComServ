@@ -46,26 +46,11 @@
 <A NAME="PageTop"></A>
 </div>
 
-<p>We are looking for volunteers to help us develop this database. Your help is greatly needed and appreciated. We are looking to add pictures of pollen to the system so one can get a picture of what plants the bees are collecting from the environment. T
-<p>We are also looking to add data on the effects of pollens on the bees health. 
      
         <h2Herb Details.</h2>
       
       
-      <form action="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName%]&[% session_string %]" METHOD =" POST"> 
-<font FACE =" " SIZE =" 2"> 
-Search our herbal Database 
-        <input TYPE="TEXT"   NAME="simple_search_string"
-               VALUE=""> 
-<input TYPE="HIDDEN" NAME="display_simple_search_results"
-               VALUE =" on"> 
-<input TYPE="SUBMIT" NAME="display_simple_search_results"
-               VALUE ="       Go        "> 
-</font> 
-
  
-</form> 
-
  <p>Herb detail
  [%  embed('HerbDetailListSQL') %]
   

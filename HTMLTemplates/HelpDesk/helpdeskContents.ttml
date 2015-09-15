@@ -1,5 +1,5 @@
 [%
-#	$Id: helpdeskContents.ttml,v 1.1 2001/12/01 04:12:07 shanta Exp shanta $
+#	$Id: helpdeskContents.ttml,v 1.1 2015/09/14 04:12:07 shanta Exp shanta $
 
 
 %]
@@ -34,25 +34,14 @@
 
 
 	<H3>Having trouble? We Can Help!</H3>
+	
+<p><a href="http://computersystemconsulting.ca/whmcs/supporttickets.php?action=open"><h4>Submit a ticket</h4></a></p>
 <h3>We have two basic lines of trouble shooting.</h3>
 <ol>
   <li>Site software problems  Search            <a href="/cgi-bin/FAQ/faq.cgi?[% session_string %]&amp;site=[% SiteName %]&amp;page_left_view=HelpDeskLeftPageView" >Application FAQ,s </a> for your  <li>Content of the [% SCRIPT_DISPLAY_NAME %] site. Please click on   
  problem.</li>
-  [% IF is_authenticated %]	
-  <li>Content of the [% SCRIPT_DISPLAY_NAME %] site. Please click on   
-  [% IF SiteName == 'Apis' OR
-       SiteName == 'ECF'  OR
-	   SiteName == 'BCHPA'
-	    %]
-<A HREF="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;[first_record_to_display=0&records_per_page=10&page_left_view=HelpDeskLeftPageView" > FAQ .
-</A>
-[% ELSE %]
-<A HREF="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&first_record_to_display=0&amp;[records_per_page=10&page_left_view=HelpDeskLeftPageView" > FAQ .
-</A>
-
-[% END %]
- <li><A HREF="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&first_record_to_display=0&amp;[records_per_page=10&page_left_view=HelpDeskLeftPageView" > FAQ .
-</A>
+	
+ 
 
 </ol>
   
@@ -60,19 +49,10 @@
 
 Still don't find it! Submit a ticket at <a href="http://computersystemconsulting.ca/whmcs/supporttickets.php?action=open">Click Here</a>. login and fill in a support ticket and we will get on your problem. To fill in a service request you must log in. You may use your [% SCRIPT_DISPLAY_NAME %][% SiteName %] username and Password. If you don't have one click register and create one. You will then be able to use this username and Password to log into both [% SCRIPT_DISPLAY_NAME %][% SiteName %] and our support ticket system.
 
- for <a name="content">content</a> and search for your problem.
- </li>
-  <li>Site software problems  Search            <a href="/cgi-bin/FAQ/faq.cgi?[% session_string %]&amp;site=[% SiteName %]&amp;page_left_view=HelpDeskLeftPageView" >Application FAQ,s </a> for your problem.</li>
 
-<ol>
-<li>Search the <a href="/cgi-bin/CSC/csr.cgi?[% session_string %]&amp;site=[% SiteName %]" name="site" rev="Help" title="Our Customer Service Requests">Service request</a> to see if your problem has been previously reported and being worked on.
-</ol>
+ 
+ 
 
-	[% IF username %]
-	
-<p>Need something added to the site that you don't have access to <a href="/cgi-bin/CSC/csr.cgi?site=[% SiteName %]&amp[% session_string %];&amp;view=CSRHomeView"  title="See Your CSR'S">Click Here</a></p>
-[% END %]
-[% ELSE %]
           [% embed( 'LiveEditAdmin')%]                        
 
  [% PROCESS HelpDeskHOMEPagesql.ttml %]
@@ -81,10 +61,11 @@ Still don't find it! Submit a ticket at <a href="http://computersystemconsulting
 
  
 
-[% END %]
+
 
 <!--End of code in helpdeskContents.ttml-->
 [% body %]
 [% embed( 'LiveEditAdmin')%]                        
 
 <!--End of code in helpdeskContents.ttml-->
+
