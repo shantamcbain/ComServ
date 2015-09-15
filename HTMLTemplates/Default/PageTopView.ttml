@@ -72,7 +72,6 @@ username = [% username %]
 <META NAME = "description" CONTENT= "[% data.http_header_description %] ">
 [% END %]
 <link rel="shortcut icon" href="[% data.favicon %]" >
-<!--<link rel="icon" href="[% data.ani_favicon %]" type="[% data.favicon_type %]" -->
  
      
 <script language="javascript" type="text/javascript">
@@ -103,6 +102,7 @@ break;
     <link rel="stylesheet" type="text/css" href="examples.min.css" />
     <link type="text/css" rel="stylesheet" href="syntaxhighlighter/styles/shCoreDefault.min.css" />
  <link rel="stylesheet" type="text/css" href="jquery.jqplot.css" />
+
 </HEAD>
 <BODY>
  <!-- PageTopView.ttml [% PageVersion %] -->
@@ -137,7 +137,9 @@ break;
 			[% embed('HelpDeskLeftPageView') %]
 			[% ELSIF data.view == 'PlanningView'  %]
 			   [% embed('PlanningLeftPageView') %]
-			  [% ELSE %]<!-- page_left_view.ttml -->
+			[% ELSIF data.view == 'DailyWorkSheetView'  %]
+			   [% embed('DWSLeftPageView') %]
+			[% ELSE %]<!-- page_left_view.ttml -->
 	 		[% embed('LeftPageView') %]
 	        [% END %]
 </td>

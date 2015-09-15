@@ -1032,6 +1032,7 @@ my @VALID_VIEWS = qw(
   AboutUsView
   LiveEdit
   CSCCSSView
+  DailyWorkSheetView
   
   ApisHomeView
   ApisProductView
