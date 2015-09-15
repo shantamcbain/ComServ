@@ -1,2 +1,25 @@
- <a href ="HTTP://helpdesk.[% HostName %]/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]"target="_Blank" title="Need help get it here" ><font   class="HeaderBarNavStyle">HelpDesk </font></a>
+ [%# 	$Id: helplink.ttml,v 0.1 2015/09/15 01:14:00 shanta Exp shanta $	%]
+
+
  
+ <form method="post">
+<select name="url" onchange="switchpage(this)">
+<option value="" selected="selected"><font   class="HeaderBarNavStyle">HelpDesk</font></option>
+<option value="href="http://computersystemconsulting.ca/whmcs/supporttickets.php?action=open"target="_Blank" title="Open Support Ticket"><font   
+<option value="HTTP://helpdesk.[% HostName %]/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]"target="_Blank" title="Need help get it here"><font   class="HeaderBarNavStyle">Our HelpDesk System</font></option>
+
+	  [% IF group    == 'BMaster_admin' OR 
+	        group    == 'CSC_admin' OR 
+	        group    == 'CSCDev_admin' OR  
+	        group    == 'ECF_admin' OR   
+	        group    == 'HE_admin' OR 
+	        group    == 'JenaBee_admin'
+	   %]	  
+<option value="/cgi-bin/ToDo/todo.cgi?site=[% SiteName %]&amp;[% session_string %]"target="_Blank" title="ToDo"><font   class="HeaderBarNavStyle">ToDo</font></option>
+<option value="/cgi-bin/ToDo/log.cgi?site=[% SiteName %]&amp;[% session_string %]"target="_Blank" title="Logs"><font   class="HeaderBarNavStyle">Log</font></option>
+<p>
+in admin loop
+
+ [% END %]	
+ </select>
+</form> 

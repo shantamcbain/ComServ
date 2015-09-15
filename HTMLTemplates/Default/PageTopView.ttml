@@ -101,9 +101,18 @@ $(document).ready(function() {
         });
 </script>
      
-
-</HEAD>
-<BODY>
+<script language="javascript" type="text/javascript">
+function switchpage(select) {
+var index;
+for(index=0; index<select.options.length; index++)
+if(select.options[index].selected)
+{
+if(select.options[index].value!="")
+window.location.href=select.options[index].value;
+break;
+}
+}
+</script>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -112,6 +121,8 @@ $(document).ready(function() {
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+</HEAD>
+<BODY>
  <!-- PageTopView.ttml [% PageVersion %] -->
  <!-- Here we start the Header page The location is  PageTopView [% PageVersion %]-->
 	
