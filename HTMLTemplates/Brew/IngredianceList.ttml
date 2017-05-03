@@ -45,7 +45,7 @@
 	       group    ==  'WB_admin' OR
 	        group     == 'MJB_Admin'        %]
 
-	   &nbsp;<a href="/cgi-bin/Brew/item.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" name="Add Incrediance"  title="Add New Link" style="AddButtonStyle">Add</a>
+	   &nbsp;<a href="/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;recipe_code=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" target="_blank" name="Add Incrediance" style="AddButtonStyle" title="Add New Link">Add </a>
 	
 	   [% END %]
 
@@ -55,9 +55,9 @@
 	<ul>
 		<li>Pale Malt </li>
 		[% FOREACH link = DBI.query("SELECT * FROM  brew_recipe_tb
-		                                  WHERE  recipe_code = '1516'
+		                                  WHERE  recipe_code = $recipe_code
 		                                  AND (sitename =  $SiteName OR sitename =  'All')
-		                                  ORDER BY order
+		                                  ORDER BY item_code
 		                                  ")%]    
 		<li>
 		      [% link.Ingrediant_name %] Amount [% link.recipe_size %]

@@ -2,75 +2,70 @@
 <!-- InharatedVariablesView.ttml -->
 <table>
 <tr>
-	<td	class="LeftNavDataCell">Group  TTML            = [% group %]</td>
-	<td	class="LeftNavDataCell">debug            = [% data.debug %]</td>
- </tr>
-<tr>	
- <td	class="LeftNavDataCell">First name  TTML       = [% firstname %]</td>
- <td	class="LeftNavDataCell">Last name  TTML        = [% lastname %]</td>
+ <td	class="InharatedVariablesCell">Group  TTML            = [% group %]</td>
+ <td	class="InharatedVariablesCell">debug            = [% data.debug %]</td>
+ <td	class="InharatedVariablesCell">First name  TTML       = [% firstname %]</td>
+ <td	class="InharatedVariablesCell">Last name  TTML        = [% lastname %]</td>
 </tr>
 <tr>
-	<td	class="LeftNavDataCell">UserName   TTML           = [% username %]</td>
-	<td	class="LeftNavDataCell">UserName            = [% data.username %] .data</td>
- </tr>
+ <td	class="InharatedVariablesCell">UserName   TTML           = [% username %]</td>
+ <td	class="InharatedVariablesCell">UserName            = [% data.username %] .data</td>
+ <td	class="InharatedVariablesCell">vertual server  TTML         = [% virtual_server_name %]</td>
+ <td	class="InharatedVariablesCell">Virtual server name          = [% data.virtual_server_name %]</td>
+</tr>
 <tr>	
- <td	class="LeftNavDataCell">SiteName  TTML         = [% SiteName %]</td>
- <td	class="LeftNavDataCell">Mobile           = [% data.mobile %]</td>
+ <td	class="InharatedVariablesCell">SiteName  TTML         = [% SiteName %]</td>
+ <td	class="InharatedVariablesCell">Mobile           = [% data.mobile %]</td>
+ <td	class="InharatedVariablesCell">Domain Name  TTML    = [% HostName %]</td>
+ <td	class="InharatedVariablesCell">Domain Name  .data   = [% data.domain_name %]</td>
 </tr>
 <tr>
-	<td	class="LeftNavDataCell">View   TTML           = [% View %]</td>
-	<td	class="LeftNavDataCell">View .data          = [% data.view   %]</td>
- </tr>
-<tr>
-	<td	class="LeftNavDataCell">Page name  TTML          = [% PAGE %]</td>
-	<td	class="LeftNavDataCell">Page Name .data          = [% data.page_name %]</td>
+ <td	class="InharatedVariablesCell">View   TTML           = [% View %]</td>
+ <td	class="InharatedVariablesCell">View .data         = [% data.view   %]</td>
+ <td	class="InharatedVariablesCell">Page name  TTML          = [% PAGE %]</td>
+ <td	class="InharatedVariablesCell">Page Name .data          = [% data.page_name %]</td>
  </tr>
 <tr>		
- <td	class="LeftNavDataCell">Record id        =  [% Record_id   %]  [% data.record_id %]</td>
- <td	class="LeftNavDataCell"> ScriptDisplayName = [%   data.script_display_name %]</td>
-</tr>
-<tr>
- <td	class="LeftNavDataCell">Session   TTML         = [% session_string %]</td>
- <td	class="LeftNavDataCell">session_id   TTML      = [% session_id %]</td>
+ <td	class="InharatedVariablesCell">Record id        =  [% Record_id   %]  [% data.record_id %]</td>
+ <td	class="InharatedVariablesCell"> ScriptDisplayName = [%   data.script_display_name %]</td>
+ <td	class="InharatedVariablesCell">Session   TTML         = [% session_string %]</td>
+ <td	class="InharatedVariablesCell">session_id   TTML      = [% session_id %]</td>
 </tr>
 <tr>		
- <td	class="LeftNavDataCell">HomeView data = [% data.home_view %]</td>
- <td	class="LeftNavDataCell">Developer status TTML  = [% developer_status %]</td>
- </tr>	
-<tr>	
- <td	class="LeftNavDataCell">Site update  TTML      = [% SiteUpdate %]</td>
-  <td	class="LeftNavDataCell">Last update   TTML     = [% LastUpdate %]</td>
+ <td	class="InharatedVariablesCell">HomeView data = [% data.home_view %]</td>
+ <td	class="InharatedVariablesCell">Developer status TTML  = [% developer_status %]</td>Host
+ <td	class="InharatedVariablesCell">Site update  TTML      = [% SiteUpdate %]</td>
+  <td	class="InharatedVariablesCell">Last update   TTML     = [% LastUpdate %]</td>
 </tr>	
 <tr>
- 	<td	class="LeftNavDataCell">Logo             =[% data.application_logo %].data</td>
-	<td	class="LeftNavDataCell">debug            = [% data.debug  %] .data</td>
+ <td	class="InharatedVariablesCell">Logo             =[% data.application_logo %] .data</td>
+ <td	class="InharatedVariablesCell">debug            = [% data.debug  %] .data</td>
+ <td	class="InharatedVariablesCell">image url             =[% data.image_root_url %] .data</td>
+ <td	class="InharatedVariablesCell">debug            = [% data.debug  %] .data</td>
 </tr>
 <tr>		
- <td	class="LeftNavDataCell">PageTopView      = [% data.page_top_view %].data</td>
- <td class="LeftNavDataCell">Page              = [% PAGE = data.page_name %]</td>
- </tr>
-<tr>
- <td	class="LeftNavDataCell">SiteDisplayName  = [% data.site_display_name %].data</td>
- <td	class="LeftNavDataCell">Favicon          = [% data.favicon %].data</td>
+ <td	class="InharatedVariablesCell">PageTopView      = [% data.page_top_view %].data</td>
+ <td    class="InharatedVariablesCell">Page              = [% PAGE = data.page_name %]</td>
+ <td	class="InharatedVariablesCell">SiteDisplayName  = [% data.site_display_name %].data</td>
+ <td	class="InharatedVariablesCell">Favicon          = [% data.favicon %].data</td>
 </tr>
 <tr>		
- <td	class="LeftNavDataCell">SiteName  = [% data.site_name %].data</td>
- <td	class="LeftNavDataCell">brewname  =[% databrewname %].data</td>
-</tr>
-<tr>
- <td	class="LeftNavDataCell">Allow addition       = [% data.allow_additions_flag %].data</td>
- <td	class="LeftNavDataCell">Allow Modification  = [% data.allow_modifications_flag %].data</td>
+ <td	class="InharatedVariablesCell">SiteName  = [% data.site_name %].data</td>
+ <td	class="InharatedVariablesCell">brewname  =[% databrewname %].data</td>
+ <td	class="InharatedVariablesCell">Allow addition       = [% data.allow_additions_flag %].data</td>
+ <td	class="InharatedVariablesCell">Allow Modification  = [% data.allow_modifications_flag %].data</td>
 </tr>
 
 <tr>
- <td	class="LeftNavDataCell">Allow Deletions       = [% data.allow_deletions_flag %].data</td>
- <td	class="LeftNavDataCell">AUTH_FOR_SEARCHING_FLAG  = [% data.require_auth_for_searching_flag %].data</td>
+ <td	class="InharatedVariablesCell">Allow Deletions       = [% data.allow_deletions_flag %].data</td>
+ <td	class="InharatedVariablesCell">AUTH_FOR_SEARCHING_FLAG  = [% data.require_auth_for_searching_flag %].data</td>
+ <td	class="InharatedVariablesCell">Favicon          = [% data.favicon %].data</td>
 </tr>
-</tr>
-
 <tr>
-
-<td	class="LeftNavDataCell">Favicon          = [% data.favicon %].data</td>
+ <td	class="InharatedVariablesCell"> -CSS_VIEW_NAME         = [% data.css_view_name %].data</td>
+ <td class="InharatedVariablesCell">-CSS_VIEW_URL        = [% data.css_view_url %].data</td>
+ <td></td>
+ <td></td>
 </tr>
 
 </table>

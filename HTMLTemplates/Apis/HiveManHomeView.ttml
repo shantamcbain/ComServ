@@ -49,17 +49,17 @@
 <p>First step is to join our site.
 [% embed('JoinUsLink') %]
 
- 
-
+  [% PROCESS ActiveQueensSQL.ttml %]
+<p>Active Queens [% ActiveQueens %]</p>
 <ul>
- <li>Number of frames of bees
- <li>Number of frames of brood
- <li>Number of frames of comb
- <li>Number of frames of pollen
- <li>Number of frames of honey
- <li>Number of frames of foundation
- <li>Number of frames of empty for brood chamber
- <li>Number of brood boxes
+ <li>Number of frames of bees [% FramesBees %]
+ <li>Number of frames of brood [% FramesBrood %]
+ <li>Number of frames of comb  [% FramesComb %]
+ <li>Number of frames of pollen [% FramesPolen %]
+ <li>Number of frames of honey [% FramesHoney %]
+ <li>Number of frames of foundation[% FramesFoundaton %]
+ <li>Number of frames of empty for brood chamber[% FramesEmpty %]
+ <li>Number of brood boxes[% BroodBoxes %]
  <li>hive type
  <li>notes
  <li>Automated data recording. This is important environmental data 

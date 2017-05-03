@@ -22,9 +22,9 @@
 	[% session_id = data.session_object.getId() %]
 	[% session_string = "session_id=$session_id" %]
    [% PAGE = data.page_name || 'HelpDeskHomeView' %]
+   [% HostName = data.domain_name %]
    
-   
-[% embed(data.page_top_view,['-PAGE_TITLE','HelpDesk']) %]
+[% embed(data.page_top_view,"$Host_Name",'HelpDesk') %]
 
 [% embed('ErrorDisplayView') %]
 
@@ -38,16 +38,16 @@
 
  <table><tr><td><!-- HelpDesk View -->
  
-		<p>Server name [% data.virtual_server_name %]</p>
+	<!--	<p>Server name [% data.domain_name %]</p>-->
 
 	[% IF username %]
 
-<h3> Hello  [% firstname%]&nbsp;  [% lastname%]! Welcome to [% SiteName %]'s HelpDesk!</h3>
+<h3> Hello  [% firstname%]&nbsp;  [% lastname%]! Welcome to  Our HelpDesk system!</h3>
 	  
 
 	[% ELSE %]
 
-	<h3>  Hello! Welcome to [% SiteName %]'s  HelpDesk!</h3
+	<h3>  Hello! Welcome to [% data.domain_name %] Our HelpDesk system!</h3
 
 	[% END %]
 

@@ -92,7 +92,7 @@ my $APP_NAME_TITLE = "CSC Extropia Methouds Base";
     my $IMAGE_ROOT_URL; 
     my $DOCUMENT_ROOT_URL;
     my $site;
-    my $GLOBAL_DATAFILES_DIRECTORY;
+    my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles" ;
     my $TEMPLATES_CACHE_DIRECTORY;
     my $APP_DATAFILES_DIRECTORY;
     my $DATAFILES_DIRECTORY;
@@ -108,10 +108,31 @@ my $APP_NAME_TITLE = "CSC Extropia Methouds Base";
     my $DEFAULT_CHARSET;
     my $HTTP_HEADER_KEYWORDS;
     my $HTTP_HEADER_DESCRIPTION;
-    my $last_update = 'January 26, 2006';
+    my $LineStatus        = "yes";
+    my $last_update       = 'March 13, 2017';
     my $TableName;
     my $HasMembers = 0;
+my $FAVICON;
+my $ANI_FAVICON;
+my $FAVICON_TYPE;
+my $HostName   = $ENV{'SERVER_NAME'};
+if ($HostName eq 'computersystemconsulting.ca'||
+    $HostName eq 'brew.computersystemconsulting.ca'){
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
+}
 
+if ($HostName eq 'beemaster.ca'||
+    $HostName eq 'jenabee.beemaster.ca'||
+    $HostName eq 'ecf.beemaster.ca'){
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles";
+}
+if ($HostName eq 'usbm.ca' ||
+    $HostName eq 'altpower.usbm.ca' ||
+    $HostName eq 'brew.usbm.ca'||
+    $HostName eq 'ency.usbm.ca'){
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/usbmca/Datafiles";
+}
+ 
 use SiteSetup;
   my $UseModPerl = 1;
   my $SetupVariables  = new SiteSetup($UseModPerl);
@@ -150,6 +171,13 @@ use SiteSetup;
     $page_bottom_view = $CGI->param('page_bottom_view')||$page_bottom_view;
     $page_left_view   = $CGI->param('left_page_view')||$page_left_view;
     my $HomePageViewName = $BASIC_DATA_VIEW;
+    $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
+$FAVICON                 = $SetupVariables->{-FAVICON};
+$ANI_FAVICON             = $SetupVariables->{-ANI_FAVICON};
+$FAVICON_TYPE            = $SetupVariables->{-FAVICON_TYPE};
+$site                    = $SetupVariables->{-DATASOURCE_TYPE};
+$CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
+my $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
 
 my $VIEW_LOADER = new Extropia::Core::View
     (\@VIEWS_SEARCH_PATH,\@TEMPLATES_SEARCH_PATH) or
@@ -201,50 +229,6 @@ if ($CGI->param('site')){
       }
 }
 
-if ($SiteName eq "CSC" ||
-    $SiteName eq "CSCDev" ){
-use CSCSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesCSC  = new CSCSetup($UseModPerl);
-  my $SetupVariablesCSC       = new  CSCSetup($UseModPerl);
-if ($SiteName eq "CSCDev"
-       ) { $AUTH_TABLE               = $SetupVariablesCSC ->{-ADMIN_AUTH_TABLE}; 
-    $SITE_DISPLAY_NAME        = "Dev.".$SetupVariablesCSC->{-SITE_DISPLAY_NAME};
-       } else {
-         $AUTH_TABLE               = $SetupVariablesCSC ->{-AUTH_TABLE};
- 
-    $SITE_DISPLAY_NAME       = $SetupVariablesCSC->{-SITE_DISPLAY_NAME};
-       }
-    $CSS_VIEW_NAME           = $SetupVariablesCSC->{-CSS_VIEW_NAME};
-    $HasMembers               = $SetupVariablesCSC->{-HAS_MEMBERS};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesCSC->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesCSC->{-HTTP_HEADER_DESCRIPTION};
-    $homeviewname            = 'HelpDeskHomeView';
-    $CSS_VIEW_NAME           = $SetupVariablesCSC->{-CSS_VIEW_NAME};
-    $page_top_view           = $SetupVariablesCSC->{-PAGE_TOP_VIEW};
-    $page_bottom_view        = $SetupVariablesCSC->{-PAGE_BOTTOM_VIEW};
-    $page_left_view          = $SetupVariablesCSC->{-LEFT_PAGE_VIEW};
-
-}
-
-elsif ($SiteName eq "eXtropia") {
-use eXtropiaSetup;
-  my $UseModPerl = 0;
-  my $SetupVariableseXtropia   = new eXtropiaSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariableseXtropia->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariableseXtropia->{-HTTP_HEADER_PARAMS};
-     $page_top_view           = $SetupVariableseXtropia->{-PAGE_TOP_VIEW};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariableseXtropia->{-HTTP_HEADER_DESCRIPTION};
-     $AUTH_TABLE              = $SetupVariableseXtropia->{-AUTH_TABLE};
-     $app_logo                = $SetupVariableseXtropia->{-APP_LOGO};
-     $app_logo_height         = $SetupVariableseXtropia->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariableseXtropia->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariableseXtropia->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariableseXtropia->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariableseXtropia->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariableseXtropia->{-CSS_VIEW_NAME};
-     $SITE_DISPLAY_NAME       = $SetupVariableseXtropia->{-SITE_DISPLAY_NAME};
-}
 
 
 ######################################################################

@@ -1,8 +1,7 @@
 [%#	$Id: PopulatepalletWithPallet.ttml,v 1.1 2015/08/12 12:53:47 shanta Exp shanta $	%]
 
 <tr><td>
-<ul>
- <li>Active Hives [% yard_code %]</li>     
+Active Hives [% yard_code %]</li>     
 [% FOREACH link = DBI.query("SELECT * FROM apis_pallet_tb
                                   WHERE (sitename = '$SiteName'
                                    AND yard_code = '$yard_code'
@@ -17,4 +16,4 @@
    <a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;submit_power_search=on&amp;simple_search_string=[% link.pallet_code %]&amp;sort_field1=pallet_code">Pallet</a>   </li> 
 
  [% END %]
-</ul></td></tr>
+</td></tr>

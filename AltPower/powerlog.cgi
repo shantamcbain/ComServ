@@ -78,13 +78,14 @@ my $APP_NAME = "log";
 my $last_update  = 'September 12, 2015';
 my $site_update;
 my $APP_NAME_TITLE = "Log Manager";
+my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles" ;
 my $FAVICON;
 my $ANI_FAVICON;
 my $FAVICON_TYPE;
 my $SITE_DISPLAY_NAME = 'None Defined for this site.';
 my $MySQLPW;
 my $DBI_DSN;
-my $SiteName ;
+my $SiteName = "AltPower";
 my $UseModPerl = 1;
 my $AUTH_TABLE;
 my $TableName;
@@ -93,44 +94,26 @@ my $AUTH_MSQL_USER_NAME;
 my $log_tb = 'altpower_system_log_tb';
 my $TodoTB = 'todo_tb';
 my $HasMembers = 0;
- use SiteSetup;
-#my $S   = &CSCSetup::SiteVariables;
-  my $SetupVariables  = new SiteSetup($UseModPerl);
-    my $home_view             = 'AltPowerLogHomePage'||$SetupVariables->{-HOME_VIEW}; 
-    my $homeviewname          = 'AltPowerLogHomePage'||$SetupVariables->{-HOME_VIEW_NAME};
-    my $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
-    my $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
-    my $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
-    my $page_left_view        = $SetupVariables->{-LEFT_PAGE_VIEW};
-#Mail settings
-    my $mail_from             = $SetupVariables->{-MAIL_FROM}; 
-    my $mail_to               = $SetupVariables->{-MAIL_TO};
-    my $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
-    my $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
-    my $app_logo              = $SetupVariables->{-APP_LOGO};
-    my $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
-    my $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
-    my $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
-    my $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
-    my $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
-    my $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
-    my $HTTP_HEADER_KEYWORDS  = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
-    my $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
-   $MySQLPW               = $SetupVariables->{-MySQLPW};
-    $DBI_DSN               = $SetupVariables->{-DBI_DSN};
-    $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
-     my $LocalIp            = $SetupVariables->{-LOCAL_IP};
+my $HostName   = $ENV{'SERVER_NAME'};
+if ($HostName eq 'computersystemconsulting.ca'||
+    $HostName eq 'brew.computersystemconsulting.ca'){
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
+}
 
-my $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
-my $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
-my $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
-#my $site = 'file';
-my $site = $SetupVariables->{-DATASOURCE_TYPE};
-my $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
-my $site_session = $DATAFILES_DIRECTORY.'/Sessions';
-my $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-    $ProjectTableName      = 'csc_project_tb';
+if ($HostName eq 'beemaster.ca'||
+    $HostName eq 'jenabee.beemaster.ca'||
+    $HostName eq 'ecf.beemaster.ca'){
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles";
+}
+if ($HostName eq 'usbm.ca' ||
+    $HostName eq 'altpower.usbm' ||
+    $HostName eq 'brew.usbm.ca'||
+    $HostName eq 'ency.usbm.ca'){
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/usbmca/Datafiles";
+}
 
+
+ 
 #use CSCSetup;
 
 my $VIEW_LOADER = new Extropia::Core::View
@@ -185,269 +168,45 @@ if ($CGI->param('site')){
 }
 my $username =  $SESSION ->getAttribute(-KEY => 'auth_username');
 my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
-
-if ($SiteName eq "Apis") {
-use ApisSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesApis   = new ApisSetup($UseModPerl);
-    $CSS_VIEW_NAME           = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesApis->{-AUTH_TABLE};
-    $app_logo                = $SetupVariablesApis->{-APP_LOGO};
-    $app_logo_height         = $SetupVariablesApis->{-APP_LOGO_HEIGHT};
-    $app_logo_width          = $SetupVariablesApis->{-APP_LOGO_WIDTH};
-    $app_logo_alt            = $SetupVariablesApis->{-APP_LOGO_ALT};
-    $homeviewname            = 'HelpDeskHomeView';
-    $ProjectTableName        = 'csc_project_tb';
-    $CSS_VIEW_URL            = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/Apis'; 
-    $SITE_DISPLAY_NAME       = $SetupVariablesApis->{-SITE_DISPLAY_NAME};
- }
- 
-elsif ($SiteName eq "AltPowerDev" or
-       $SiteName eq "AltPower" ) {
-use AltPowerSetup;
-  my $SetupVariablesAltPower   = new AltPowerSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesAltPower->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesAltPower->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesAltPower->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesAltPower=>{-CSS_VIEW_NAME};
-     $CSS_VIEW_URL            = $SetupVariablesAltPower->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesAltPower->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesAltPower->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesAltPower->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesAltPower->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesAltPower->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesAltPower->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesAltPower->{-HOME_VIEW};
-     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/AltPower'; 
-     $SITE_DISPLAY_NAME       = $SetupVariablesAltPower->{-SITE_DISPLAY_NAME};
-}
-
- elsif ($SiteName eq "Brew") {
-
-use  BrewSetup;
-  my $SetupVariablesBrew  = new BrewSetup($UseModPerl);
-    $homeviewname          = 'BrewHomeView';
-    $home_view             = $SetupVariablesBrew->{-HOME_VIEW}; 
-    $BASIC_DATA_VIEW       = $SetupVariablesBrew->{-BASIC_DATA_VIEW};
-    $page_top_view         = $SetupVariablesBrew->{-PAGE_TOP_VIEW};
-    $page_bottom_view      = $SetupVariablesBrew->{-PAGE_BOTTOM_VIEW};
-    $page_left_view        = $SetupVariablesBrew->{-LEFT_PAGE_VIEW};
+use SiteSetup;
+#my $S   = &CSCSetup::SiteVariables;
+  my $SetupVariables  = new SiteSetup($UseModPerl);
+    my $home_view               = 'AltPowerLogHomePage'||$SetupVariables->{-HOME_VIEW}; 
+    my $homeviewname            = 'AltPowerLogHomePage'||$SetupVariables->{-HOME_VIEW_NAME};
+    my $BASIC_DATA_VIEW         = $SetupVariables->{-BASIC_DATA_VIEW};
+    my $page_top_view           = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
+    my $page_bottom_view        = $SetupVariables->{-PAGE_BOTTOM_VIEW};
+    my $page_left_view          = $SetupVariables->{-LEFT_PAGE_VIEW};
 #Mail settings
-    $mail_from             = $SetupVariablesBrew->{-MAIL_FROM}; 
-    $mail_to               = $SetupVariablesBrew->{-MAIL_TO};
-    $mail_replyto          = $SetupVariablesBrew->{-MAIL_REPLYTO};
-    $CSS_VIEW_URL          = $SetupVariablesBrew->{-CSS_VIEW_NAME}||'blank';
-    $HTTP_HEADER_KEYWORDS  = $SetupVariablesBrew->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesBrew->{-HTTP_HEADER_DESCRIPTION};
-    $IMAGE_ROOT_URL        = $SetupVariablesBrew->{-IMAGE_ROOT_URL}; 
-    $DOCUMENT_ROOT_URL     = $SetupVariablesBrew->{-DOCUMENT_ROOT_URL};
-    $HTTP_HEADER_PARAMS    = $SetupVariablesBrew->{-HTTP_HEADER_PARAMS};
-    $AUTH_TABLE            = $SetupVariablesBrew->{-AUTH_TABLE};
-    $APP_DATAFILES_DIRECTORY    =  $GLOBAL_DATAFILES_DIRECTORY."/Brew";
-#    $site = $SetupVariables->{-DATASOURCE_TYPE};
-    $SITE_DISPLAY_NAME     = $SetupVariablesBrew->{-SITE_DISPLAY_NAME};
-    $TableName               = 'csc_project_tb';
-    $ProjectTableName      = 'csc_project_tb';
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/CSC'; 
-}
+    my $mail_from               = $SetupVariables->{-MAIL_FROM}; 
+    my $mail_to                 = $SetupVariables->{-MAIL_TO};
+    my $mail_replyto            = $SetupVariables->{-MAIL_REPLYTO};
+    my $CSS_VIEW_NAME           = $SetupVariables->{-CSS_VIEW_NAME};
+    my $app_logo                = $SetupVariables->{-APP_LOGO};
+    my $app_logo_height         = $SetupVariables->{-APP_LOGO_HEIGHT};
+    my $app_logo_width          = $SetupVariables->{-APP_LOGO_WIDTH};
+    my $app_logo_alt            = $SetupVariables->{-APP_LOGO_ALT};
+    my $IMAGE_ROOT_URL          = $SetupVariables->{-IMAGE_ROOT_URL}; 
+    my $DOCUMENT_ROOT_URL       = $SetupVariables->{-DOCUMENT_ROOT_URL};
+    my $HTTP_HEADER_PARAMS      = $SetupVariables->{-HTTP_HEADER_PARAMS};
+    my $HTTP_HEADER_KEYWORDS    = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
+    my $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+    $MySQLPW                    = $SetupVariables->{-MySQLPW};
+    $DBI_DSN                    = $SetupVariables->{-DBI_DSN};
+    $AUTH_MSQL_USER_NAME        = $SetupVariables->{-AUTH_MSQL_USER_NAME};
+    my $AUTH_TABLE          = $SetupVariables->{-AUTH_TABLE};
+    my $LocalIp                 = $SetupVariables->{-LOCAL_IP};
 
-elsif($SiteName eq "CS") {
-use CSSetup;
-  my $SetupVariablesCS  = new  CSSetup($UseModPerl);
-    $homeviewname            = 'LogHomeView';
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/CS'; 
-    $SITE_DISPLAY_NAME       = 'Country Stores';
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesCS->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_PARAMS      = $SetupVariablesCS->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesCS->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_NAME           = $SetupVariablesCS->{-CSS_VIEW_NAME};
-    $CSS_VIEW_URL            = $SetupVariablesCS->{-CSS_VIEW_NAME};
-}
-
-elsif ($SiteName eq "ECF") {
-use ECFSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesECF   = new ECFSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesECF->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesECF->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesECF->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesECF->{-APP_LOGO_ALT};
-    $CSS_VIEW_URL          = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/ECF'; 
-    $TableName             = 'ecf_todo_tb';
-    $ProjectTableName      = 'ecf_project_tb';
-     $SITE_DISPLAY_NAME       = $SetupVariablesECF->{-SITE_DISPLAY_NAME};
-   
-    }
-elsif ($SiteName eq "CSC" ||
-       $SiteName eq "CSCDev") {
-use CSCSetup;
-  my $SetupVariablesCSC       = new  CSCSetup($UseModPerl);
-if ($SiteName eq "CSCDev"
-       ) { $AUTH_TABLE               = $SetupVariablesCSC ->{-ADMIN_AUTH_TABLE}; 
-       } else {
-         $AUTH_TABLE               = $SetupVariablesCSC ->{-AUTH_TABLE};
-       }
-    $HasMembers               = $SetupVariablesCSC->{-HAS_MEMBERS};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesCSC->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_PARAMS      = $SetupVariablesCSC->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesCSC->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_NAME           = $SetupVariablesCSC->{-CSS_VIEW_NAME};
-    $page_top_view           = $SetupVariablesCSC->{-PAGE_TOP_VIEW};
-    $page_bottom_view        = $SetupVariablesCSC->{-PAGE_BOTTOM_VIEW};
-    $page_left_view          = $SetupVariablesCSC->{-LEFT_PAGE_VIEW};
-    $CSS_VIEW_URL            = $SetupVariablesCSC->{-CSS_VIEW_NAME};
-    $TableName               = 'csc_project_tb';
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/CSC'; 
-    $SITE_DISPLAY_NAME       = $SetupVariablesCSC->{-SITE_DISPLAY_NAME};
-}
-
- elsif ($SiteName eq "ENCY") {
-use ENCYSetup;
-  my $SetupVariablesENCY     = new  ENCYSetup($UseModPerl);
-    $CSS_VIEW_URL            = $SetupVariablesENCY->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesENCY->{-AUTH_TABLE};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesENCY->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesENCY->{-HTTP_HEADER_DESCRIPTION};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/ENCY'; 
-    $SITE_DISPLAY_NAME       = $SetupVariablesENCY->{-SITE_DISPLAY_NAME};
- }
-
- elsif ($SiteName eq "HE" or
-       $SiteName eq "HEDev") {
-use HESetup;
-  my $SetupVariablesHE   = new HESetup($UseModPerl);
-     $APP_NAME_TITLE           = " ";
-     $HTTP_HEADER_KEYWORDS     = $SetupVariablesHE->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS       = $SetupVariablesHE->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION  = $SetupVariablesHE->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME            = $SetupVariablesHE->{-CSS_VIEW_NAME};
-     $AUTH_TABLE               = $SetupVariablesHE->{-AUTH_TABLE};
-     $app_logo                 = $SetupVariablesHE->{-APP_LOGO};
-     $app_logo_height          = $SetupVariablesHE->{-APP_LOGO_HEIGHT};
-     $app_logo_width           = $SetupVariablesHE->{-APP_LOGO_WIDTH};
-     $app_logo_alt             = $SetupVariablesHE->{-APP_LOGO_ALT};
-     $home_view             = $SetupVariablesHE->{-HOME_VIEW_NAME};
-     $home_view                = $SetupVariablesHE->{-HOME_VIEW};
-     $CSS_VIEW_URL             = $SetupVariablesHE->{-CSS_VIEW_NAME};
-     $last_update              = $SetupVariablesHE->{-LAST_UPDATE}; 
- #Mail settings
-     $mail_from                = $SetupVariablesHE->{-MAIL_FROM};
-     $mail_to                  = $SetupVariablesHE->{-MAIL_TO};
-     $mail_replyto             = $SetupVariablesHE->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME        = $SetupVariablesHE->{-SITE_DISPLAY_NAME};
-}
- 
- 
- elsif ($SiteName eq "Skye" or
-       $SiteName eq "SkyeStore") {
-use SkyeFarmSetup;
-  my $SetupVariablesSkyeFarm   = new SkyeFarmSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesSkyeFarm->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesSkyeFarm->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesSkyeFarm->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesSkyeFarm->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesSkyeFarm->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesSkyeFarm->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesSkyeFarm->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesSkyeFarm->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesSkyeFarm->{-APP_LOGO_ALT};
-     $home_view               = $SetupVariablesSkyeFarm->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesSkyeFarm->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesSkyeFarm->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesSkyeFarm->{-LAST_UPDATE}; 
- #Mail settings
-    $mail_from             = $SetupVariablesSkyeFarm->{-MAIL_FROM};
-    $mail_to               = $SetupVariablesSkyeFarm->{-MAIL_TO};
-    $mail_replyto          = $SetupVariablesSkyeFarm->{-MAIL_REPLYTO};
-    $SITE_DISPLAY_NAME     = $SetupVariablesSkyeFarm->{-SITE_DISPLAY_NAME};
-   $APP_DATAFILES_DIRECTORY= $GLOBAL_DATAFILES_DIRECTORY.'/SkyeFarm';
-  }
-
-elsif ($SiteName eq "VitalVic") {
-use VitalVicSetup;
-  my $SetupVariablesVitalVic     = new  VitalVicSetup($UseModPerl);
-    $CSS_VIEW_URL            = $SetupVariablesVitalVic->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesVitalVic->{-AUTH_TABLE};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesVitalVic->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesVitalVic->{-HTTP_HEADER_DESCRIPTION};
-    $mail_to                 = $SetupVariablesVitalVic->{-MAIL_TO};
-    $mail_replyto            = $SetupVariablesVitalVic->{-MAIL_REPLYTO};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/VitalVic'; 
-    $ProjectTableName      = 'vitalvic_project_tb';
-    $SITE_DISPLAY_NAME       = $SetupVariablesVitalVic->{-SITE_DISPLAY_NAME};
-}
-
-elsif ($SiteName eq "Organic") {
-use OrganicSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesOrganic   = new OrganicSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesOrganic->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesOrganic->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesOrganic->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesOrganic->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesOrganic->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesOrganic->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesOrganic->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesOrganic->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesOrganic->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesOrganic->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
-     $mail_to                 = $SetupVariablesOrganic->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesOrganic->{-MAIL_REPLYTO};
-     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/Orgnaic'; 
-     $SITE_DISPLAY_NAME       = $SetupVariablesOrganic->{-SITE_DISPLAY_NAME};
-}
-elsif ($SiteName eq "Forager") {
-use ForagerSetup;
-  my $UseModPerl = 1;
-  my $SetupVariablesForager  = new ForagerSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesForager->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesForager->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesForager->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesForager->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesForager->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesForager->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesForager->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesForager->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesForager->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesForager->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesForager->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesForager->{-CSS_VIEW_NAME};
-     $mail_to                 = $SetupVariablesForager->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesForager->{-MAIL_REPLYTO};
-     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/Forager'; 
-     $SITE_DISPLAY_NAME       = $SetupVariablesForager->{-SITE_DISPLAY_NAME};
-}elsif ($SiteName eq "WiseWoman") {
-use WWSetup;
-  my $SetupVariablesWiseWoman   = new WWSetup($UseModPerl);
-     $APP_NAME_TITLE          = "WiseWoman";
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesWiseWoman->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesWiseWoman->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesWiseWoman->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesWiseWoman->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesWiseWoman->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesWiseWoman->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesWiseWoman->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesWiseWoman->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesWiseWoman->{-APP_LOGO_ALT};
-     $CSS_VIEW_URL            = $SetupVariablesWiseWoman->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesWiseWoman->{-LAST_UPDATE}; 
-#Mail settings
-     $mail_from               = $SetupVariablesWiseWoman->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesWiseWoman->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesWiseWoman->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = $SetupVariablesWiseWoman->{-SITE_DISPLAY_NAME};
-     $FAVICON                 = $SetupVariablesWiseWoman->{-FAVICON};
-     $ANI_FAVICON             = $SetupVariablesWiseWoman->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesWiseWoman->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE            = $SetupVariablesWiseWoman->{-FAVICON_TYPE};
-} 
-     $homeviewname            = "LogHomeView";
+   $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
+my $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
+my $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
+#my $site = 'file';
+my $site = $SetupVariables->{-DATASOURCE_TYPE};
+my $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
+my $site_session = $DATAFILES_DIRECTORY.'/Sessions';
+my $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+   $ProjectTableName      = 'csc_project_tb';
+   $homeviewname            = "LogHomeView";
 
 
 ######################################################################
@@ -654,7 +413,7 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
        estimated_man_hours 	=> 'Estimated Man Hours',
        accumulative_time 	=> 'Accumulated time',
        owner            => 'Owner',
-       todo_record_id  	=> 'todo id',
+       record_id  	=> 'todo id',
        start_date       => 'Start Date',
        due_date         => 'Due Date',
        abstract         => 'Subject',
@@ -738,7 +497,7 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
 
     -FIELD_MAPPINGS => {
        project_code	      	=> 'Project Code',
-       todo_record_id	      	=> 'todo id',
+       record_id	      	=> 'todo id',
        estimated_man_hours 	=> 'Estimated Man Hours',
        accumulative_time 	=> 'Accumulated time',
        start_date               => 'Start Date',
@@ -821,7 +580,7 @@ my @DATA_HANDLER_MANAGER_CONFIG_PARAMS = (
 my @DATASOURCE_FIELD_NAMES = 
     qw(
        record_id
-       todo_record_id
+       record_id
        owner
        sitename
        start_date
@@ -885,10 +644,10 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -MAXLENGTH    => 80
     ],
 
-    todo_record_id => [
-        -DISPLAY_NAME => 'ToDo Record Id',
+    record_id => [
+        -DISPLAY_NAME => 'Record Id',
         -TYPE         => 'textfield',
-        -NAME         => 'todo_record_id',
+        -NAME         => 'record_id',
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],
@@ -1021,7 +780,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
      qw(project_code),
-     qw(todo_record_id),
+     qw(record_id),
      qw(abstract ),
      qw(sitename),
      [qw(start_day start_mon start_year)],
@@ -1179,15 +938,15 @@ if ($site eq "file"){
 else{
 	@BASIC_DATASOURCE_CONFIG_PARAMS = (
 	        -TYPE         => 'DBI',
-	        -DBI_DSN      =>  $DBI_DSN,
-	        -TABLE        => $log_tb,
+	        -DBI_DSN      => $DBI_DSN,
+	        -TABLE        => $log_tb||'altpower_system_log_tb',
 	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@DATASOURCE_FIELD_NAMES,
 	        -KEY_FIELDS   => ['username'],
 	        -FIELD_TYPES  => {
 	            record_id        => 'Autoincrement',
-                    datetime         => 
+                datetime         => 
                                     [
                                      -TYPE  => "Date",
                                      -STORAGE => 'y-m-d H:M:S',
@@ -1245,7 +1004,7 @@ my @PROJECT_DATASOURCE_FIELD_NAMES = qw(
 my	@PROJECT_DATASOURCE_CONFIG_PARAMS = (
 	        -TYPE         => 'DBI',
 	        -DBI_DSN      => $DBI_DSN,
-	        -TABLE        =>   $ProjectTableName||'csc_project_tb',
+	        -TABLE        => $ProjectTableName||'csc_project_tb',
 	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@PROJECT_DATASOURCE_FIELD_NAMES,
@@ -1257,8 +1016,8 @@ my	@PROJECT_DATASOURCE_CONFIG_PARAMS = (
 
 my @DATASOURCE_CONFIG_PARAMS = (
     -BASIC_DATASOURCE_CONFIG_PARAMS     => \@BASIC_DATASOURCE_CONFIG_PARAMS,
-    -PROJECT_DATASOURCE_CONFIG_PARAMS     => \@PROJECT_DATASOURCE_CONFIG_PARAMS,
-    -TODO_DATASOURCE_CONFIG_PARAMS     => \@TODO_DATASOURCE_CONFIG_PARAMS,
+    -PROJECT_DATASOURCE_CONFIG_PARAMS   => \@PROJECT_DATASOURCE_CONFIG_PARAMS,
+    -TODO_DATASOURCE_CONFIG_PARAMS      => \@TODO_DATASOURCE_CONFIG_PARAMS,
     -AUTH_USER_DATASOURCE_CONFIG_PARAMS => \@AUTH_USER_DATASOURCE_PARAMS,
     );
 

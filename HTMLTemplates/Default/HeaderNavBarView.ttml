@@ -77,7 +77,6 @@
 		
 		<!-- -->		
 		&nbsp; |				
-		   <A HREF ="/cgi-bin/WebCal/webcal.cgi?&amp;site=[% SiteName%]&amp;[% session_string %]" Target ="_Blank">[% firstname %]  Cal</a>
 						&nbsp; 
 				 
 				<!-- &nbsp; |		<A HREF ="/cgi-bin/URL/url.cgi?[% session_string %]&amp;site=[% SiteName%]" target="_Blank" ><font   class="HeaderBarNavStyle">Links </font></a>  -->
@@ -90,7 +89,8 @@
 	&nbsp; |	[% embed('LogOnTopView.ttml') %]
 		<!-- end logonleftview -->
 		&nbsp; |
-			[% embed('HelpDeskLinkView') %]
+			
+      [% embed('HelpDeskLinkView') %]
 	
 		
 

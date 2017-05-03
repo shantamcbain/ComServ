@@ -37,6 +37,7 @@ my @VIEWS_SEARCH_PATH =
 my @TEMPLATES_SEARCH_PATH = 
     qw(../HTMLTemplates/ENCY
        ../HTMLTemplates/CSC
+       ../HTMLTemplates/HelpDesk
        ../HTMLTemplates/CSPS
        ../HTMLTemplates/Shanta
        ../HTMLTemplates/Todo
@@ -107,13 +108,13 @@ my $APP_NAME_TITLE = "Encyclopedia of Biological Life";
 
  
   use SiteSetup;
-  my $UseModPerl = 0;
+  my $UseModPerl = 1;
   my $SiteNameSetup = $SiteName."Setup";
-  my $SetupVariables  = new  SiteSetup($UseModPerl);
+  my $SetupVariables  = new  SiteSetup($UseModPerl, $CGI->param('site'));
   $APP_NAME_TITLE        = $SiteName.": ".$APP_NAME_TITLE;
-   $DBI_DSN               = $SetupVariables->{-DBI_DSN};
-    $AUTH_TABLE            = $SetupVariables->{-AUTH_TABLE};
-    $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
+  $DBI_DSN               = $SetupVariables->{-DBI_DSN};
+  $AUTH_TABLE            = $SetupVariables->{-AUTH_TABLE};
+  $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
 
 
   $home_view             = $SetupVariables->{-HOME_VIEW}; 
@@ -125,7 +126,7 @@ my $APP_NAME_TITLE = "Encyclopedia of Biological Life";
   #Mail settings
   $mail_from             = $SetupVariables->{-MAIL_FROM}; 
   $mail_to               = $SetupVariables->{-MAIL_TO};
-  $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
+  my  $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
   $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
   $app_logo              = $SetupVariables->{-APP_LOGO};
   $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
@@ -133,8 +134,10 @@ my $APP_NAME_TITLE = "Encyclopedia of Biological Life";
   $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
   $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
   $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
-    $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
-    $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
+  $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
+  $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
+  $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
+my $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
 
   $site = $SetupVariables->{-DATASOURCE_TYPE};
   $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
@@ -184,7 +187,7 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL;
+
 
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
@@ -217,81 +220,8 @@ if ($CGI->param('mode')){
 	$SESSION ->setAttribute(-KEY => 'PrintMode', -VALUE => $PrintMode );
       }
 }
-if ($SiteName eq "VitalVic") { 
-  use VitalVicSetup;
-  my $UseModPerl = 0;
 
-  my $SetupVariablesVitalVic  = new  VitalVicSetup($UseModPerl);
-    $APP_NAME_TITLE        = $SiteName.": ".$APP_NAME_TITLE;
-
-
-    $home_view             = $SetupVariablesVitalVic->{-HOME_VIEW}; 
-    $BASIC_DATA_VIEW       = $SetupVariablesVitalVic->{-BASIC_DATA_VIEW};
-    $page_top_view         = $SetupVariablesVitalVic->{-PAGE_TOP_VIEW}||'PageTopView';
-    $page_bottom_view      = $SetupVariablesVitalVic->{-PAGE_BOTTOM_VIEW};
-    $left_page_view        = $SetupVariablesVitalVic->{-LEFT_PAGE_VIEW};
-  #Mail settings
-    $mail_from             = $SetupVariablesVitalVic->{-MAIL_FROM}; 
-    $mail_to               = $SetupVariablesVitalVic->{-MAIL_TO};
-    $mail_replyto          = $SetupVariablesVitalVic->{-MAIL_REPLYTO};
-    $CSS_VIEW_URL          = $SetupVariablesVitalVic->{-CSS_VIEW_NAME};
-    $app_logo              = $SetupVariablesVitalVic->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesVitalVic->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesVitalVic->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesVitalVic->{-APP_LOGO_ALT};
-    $IMAGE_ROOT_URL        = $SetupVariablesVitalVic->{-IMAGE_ROOT_URL}; 
-    $DOCUMENT_ROOT_URL     = $SetupVariablesVitalVic->{-DOCUMENT_ROOT_URL};
-    $LINK_TARGET           = $SetupVariablesVitalVic->{-LINK_TARGET};
-    $HTTP_HEADER_PARAMS    = $SetupVariablesVitalVic->{-HTTP_HEADER_PARAMS};
-
-  $site = $SetupVariablesVitalVic->{-DATASOURCE_TYPE};
-  $GLOBAL_DATAFILES_DIRECTORY = $SetupVariablesVitalVic->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
-  $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariablesVitalVic->{-TEMPLATES_CACHE_DIRECTORY,};
-  $APP_DATAFILES_DIRECTORY    = $SetupVariablesVitalVic->{-APP_DATAFILES_DIRECTORY};
-
-}
-elsif ($SiteName eq "ENCY") {
-use ENCYSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesENCY   = new ENCYSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesENCY->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesENCY->{-HTTP_HEADER_PARAMS};
-     $page_top_view           = $SetupVariablesENCY->{-PAGE_TOP_VIEW};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesENCY->{-HTTP_HEADER_DESCRIPTION};
-     $mail_from               = $SetupVariablesENCY->{-MAIL_FROM}; 
-     $mail_to                 = $SetupVariablesENCY->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesENCY->{-MAIL_REPLYTO};
-     $CSS_VIEW_URL            = $SetupVariablesENCY->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesENCY->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesENCY->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesENCY->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesENCY->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesENCY->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesENCY->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesENCY->{-HOME_VIEW};
-     $SITE_DISPLAY_NAME       = $SetupVariablesENCY->{-SITE_DISPLAY_NAME};
-     $last_update             = $SetupVariablesENCY->{-LAST_UPDATE}; 
-     $site_update             = $SetupVariablesENCY->{-SITE_LAST_UPDATE}||$last_update;
-}
-elsif ($SiteName eq "USBM") {
-use USBMSetup;
-  my $SetupVariablesUSBM   = new USBMSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesUSBM->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesUSBM->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesUSBM->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesUSBM->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesUSBM->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesUSBM->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesUSBM->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesUSBM->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesUSBM->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesUSBM->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesUSBM->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesUSBM->{-CSS_VIEW_NAME};
-     $SITE_DISPLAY_NAME       = $SetupVariablesUSBM->{-SITE_DISPLAY_NAME};
-     $last_update             = $SetupVariablesUSBM->{-LAST_UPDATE};
-     $site_update             = $SetupVariablesUSBM->{-SITE_LAST_UPDATE};
- }
+  
 ######################################################################
 #                       AUTHENTICATION SETUP                         #
 ######################################################################

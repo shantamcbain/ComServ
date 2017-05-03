@@ -73,7 +73,7 @@ function QuickClick(list) {
 <OPTION VALUE="None">Select a batch --->
 
  [% FOREACH item = DBI.query("SELECT * FROM brewlog_tb
-	                                WHERE  ( sitename   =  'Brew'
+	                                WHERE  ( sitename   =  'AltPower'
                                      )
                                    ORDER BY batchnumber
 	                            ")%]  

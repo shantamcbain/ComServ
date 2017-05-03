@@ -87,7 +87,7 @@ my $APP_NAME_TITLE = "Brew Recipes";
     my $page_left_view;
 #Mail settings
     my $mail_from; 
-    my $mail_to;
+    my $mail_to ='shanta@computersystemconsulting.ca';
     my $mail_replyto;
     my $mail_bcc;
     my $CSS_VIEW_NAME;
@@ -118,56 +118,26 @@ my $APP_NAME_TITLE = "Brew Recipes";
     my $SetupVariables  ;
     my $page_left_view;
 	my $TableName;
-   my $records;
-   my $frame;
-    my $last_update  = 'October 21, 201007';
+    my $records;
+    my $frame;
+    my $last_update    = 'Novemver 16, 2016';
+    my $site_update    = 'Novemver 16, 2016';
     my $DeBug = $CGI->param('debug')|| 0;
-my $client_tb = 'csc_client_tb';
- my $Affiliate = 001;
+    my $Affiliate = 001;
     my $HasMembers = 0;
+my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles" ;
+my $HostName   = $ENV{'SERVER_NAME'};
+if ($HostName eq 'computersystemconsulting.ca'||
+    $HostName eq 'brew.computersystemconsulting.ca'){
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
+}
+if ($HostName eq 'usbm.ca' ||
+    $HostName eq 'altpower.usbm.ca' ||
+    $HostName eq 'brew.usbm.ca'||
+    $HostName eq 'ency.usbm.ca'){
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/usbmca/Datafiles";
+}
 
-use SiteSetup;
-  my $UseModPerl = 1;
-  my $SetupVariables  = new SiteSetup($UseModPerl);
-    $home_view             = 'BrewRecipeView'; 
-    $homeviewname          = 'BrewRecipeView';
-    $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
-    $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
-    $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
-    $page_left_view        = $SetupVariables->{-page_left_view};
-    $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
-    $MySQLPW               = $SetupVariables->{-MySQLPW};
-#Mail settings
-    $mail_from             = $SetupVariables->{-MAIL_FROM}; 
-    $mail_to               = $SetupVariables->{-MAIL_TO};
-    $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
-    $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
-    $app_logo              = $SetupVariables->{-APP_LOGO};
-    $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
-    $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
-    $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
-    $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
-    $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
-    my $HTTP_HEADER_KEYWORDS  = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
-    my $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
-    my $LocalIp            = $SetupVariables->{-LOCAL_IP};
-    $site = $SetupVariables->{-DATASOURCE_TYPE};
-    $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
-    $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
-    $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
-    $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
-    $site_session = $DATAFILES_DIRECTORY.'/Sessions';
-    $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-    $TableName             = 'brew_recipe_tb';
-    $DBI_DSN               = $SetupVariables->{-DBI_DSN};
-
-
-my $VIEW_LOADER = new Extropia::Core::View
-    (\@VIEWS_SEARCH_PATH,\@TEMPLATES_SEARCH_PATH) or
-    die("Unable to construct the VIEW LOADER object in " . $CGI->script_name() .
-        " Please contact the webmaster.");
 
 ######################################################################
 #                          SESSION SETUP                             #
@@ -213,81 +183,55 @@ if ($CGI->param('site')){
 	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
       }
 }
+use SiteSetup;
+  my $UseModPerl = 1;
+  my $SetupVariables  = new SiteSetup($UseModPerl);
+    $home_view                  = 'BrewRecipeView'; 
+    $homeviewname               = 'BrewRecipeView';
+    $BASIC_DATA_VIEW            = $SetupVariables->{-BASIC_DATA_VIEW};
+    $page_top_view              = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
+    $page_bottom_view           = $SetupVariables->{-PAGE_BOTTOM_VIEW};
+    $page_left_view             = $SetupVariables->{-page_left_view};
+    my $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
+    $AUTH_MSQL_USER_NAME        = $SetupVariables->{-AUTH_MSQL_USER_NAME};
+    $AUTH_TABLE                 = $SetupVariables->{-AUTH_TABLE};
+    $MySQLPW                    = $SetupVariables->{-MySQLPW};
+#Mail settings
+    $mail_from                  = $SetupVariables->{-MAIL_FROM}; 
+    $mail_to                    = $SetupVariables->{-MAIL_TO};
+    $mail_replyto               = $SetupVariables->{-MAIL_REPLYTO};
+    $CSS_VIEW_NAME              = $SetupVariables->{-CSS_VIEW_NAME};
+    my $CSS_VIEW_URL            = $SetupVariables->{-CSS_VIEW_NAME};
+    $app_logo                   = $SetupVariables->{-APP_LOGO};
+    $app_logo_height            = $SetupVariables->{-APP_LOGO_HEIGHT};
+    $app_logo_width             = $SetupVariables->{-APP_LOGO_WIDTH};
+    $app_logo_alt               = $SetupVariables->{-APP_LOGO_ALT};
+    $IMAGE_ROOT_URL             = $SetupVariables->{-IMAGE_ROOT_URL}; 
+    $DOCUMENT_ROOT_URL          = $SetupVariables->{-DOCUMENT_ROOT_URL};
+    $LINK_TARGET                = $SetupVariables->{-LINK_TARGET};
+    $HTTP_HEADER_PARAMS         = $SetupVariables->{-HTTP_HEADER_PARAMS};
+    my $HTTP_HEADER_KEYWORDS    = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
+    my $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+    my $LocalIp                 = $SetupVariables->{-LOCAL_IP};
+    $site                       = $SetupVariables->{-DATASOURCE_TYPE};
+    $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
+    $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
+    $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
+    $DATAFILES_DIRECTORY        = $APP_DATAFILES_DIRECTORY;
+    $site_session               = $DATAFILES_DIRECTORY.'/Sessions';
+    $auth                       = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+    $TableName                  = 'brew_recipe_tb';
+    $DBI_DSN                    = $SetupVariables->{-DBI_DSN};
+
+
+my $VIEW_LOADER = new Extropia::Core::View
+    (\@VIEWS_SEARCH_PATH,\@TEMPLATES_SEARCH_PATH) or
+    die("Unable to construct the VIEW LOADER object in " . $CGI->script_name() .
+        " Please contact the webmaster.");
 
 my $username =  $SESSION ->getAttribute(-KEY => 'auth_username');
 my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
 
-if ($SiteName eq "Apis") {
-use ApisSetup;
-  my $SetupVariablesApis   = new ApisSetup($UseModPerl);
-    $CSS_VIEW_NAME           = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesApis->{-AUTH_TABLE};
-    $app_logo                = $SetupVariablesApis->{-APP_LOGO};
-    $app_logo_height         = $SetupVariablesApis->{-APP_LOGO_HEIGHT};
-    $app_logo_width          = $SetupVariablesApis->{-APP_LOGO_WIDTH};
-    $app_logo_alt            = $SetupVariablesApis->{-APP_LOGO_ALT};
-    $TableName               = 'csc_project_tb';
-    $CSS_VIEW_URL            = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/Apis'; 
-    $SITE_DISPLAY_NAME       = $SetupVariablesApis->{-SITE_DISPLAY_NAME};
- } 
-
- elsif ($SiteName eq "Brew") {
-
-use  BrewSetup;
-  my $SetupVariablesBrew     = new BrewSetup($UseModPerl);
-     $BASIC_DATA_VIEW        = $SetupVariablesBrew->{-BASIC_DATA_VIEW};
-     $page_top_view          = $SetupVariablesBrew->{-PAGE_TOP_VIEW};
-     $page_bottom_view       = $SetupVariablesBrew->{-PAGE_BOTTOM_VIEW};
-    $page_left_view          = $SetupVariablesBrew->{-LEFT_PAGE_VIEW};
-#Mail settings
-    $TableName               = 'brew_recipe_tb';
-    $mail_from               = $SetupVariablesBrew->{-MAIL_FROM}; 
-    $mail_to                 = $SetupVariablesBrew->{-MAIL_TO};
-    $mail_replyto            = $SetupVariablesBrew->{-MAIL_REPLYTO};
-    $CSS_VIEW_URL            = $SetupVariablesBrew->{-CSS_VIEW_NAME}||'blank';
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesBrew->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesBrew->{-HTTP_HEADER_DESCRIPTION};
-    $IMAGE_ROOT_URL          = $SetupVariablesBrew->{-IMAGE_ROOT_URL}; 
-    $DOCUMENT_ROOT_URL       = $SetupVariablesBrew->{-DOCUMENT_ROOT_URL};
-    $LINK_TARGET             = $SetupVariablesBrew->{-LINK_TARGET};
-    $HTTP_HEADER_PARAMS      = $SetupVariablesBrew->{-HTTP_HEADER_PARAMS};
-    $DEFAULT_CHARSET         = $SetupVariablesBrew->{-DEFAULT_CHARSET};
-    $AUTH_TABLE              = $SetupVariablesBrew->{-AUTH_TABLE};
-    $DEFAULT_CHARSET         = $SetupVariablesBrew->{-DEFAULT_CHARSET};
-    $APP_DATAFILES_DIRECTORY =  $GLOBAL_DATAFILES_DIRECTORY."/Brew";
-#    $site = $SetupVariables->{-DATASOURCE_TYPE};
-    $SITE_DISPLAY_NAME       = $SetupVariablesBrew->{-SITE_DISPLAY_NAME};
-}
-
-
-elsif ($SiteName eq "Demo" or
-      $SiteName eq "DemoHelpDesk") {
-use DEMOSetup;
-  my $UseModPerl = 1;
-  my $SetupVariablesDemo   = new  DEMOSetup($UseModPerl);
-    $AUTH_TABLE               = $SetupVariablesDemo ->{-AUTH_TABLE};
-    $APP_NAME_TITLE           = "Computer System Consulting.ca Demo Application";
-    $HasMembers               = $SetupVariablesDemo->{-HAS_MEMBERS};
-    $HTTP_HEADER_KEYWORDS     = $SetupVariablesDemo->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_PARAMS       = $SetupVariablesDemo->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_DESCRIPTION  = $SetupVariablesDemo->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_NAME            = $SetupVariablesDemo->{-CSS_VIEW_NAME};
-    $page_top_view            = $SetupVariablesDemo->{-PAGE_TOP_VIEW};
-    $page_bottom_view         = $SetupVariablesDemo->{-PAGE_BOTTOM_VIEW};
-    $page_left_view           = $SetupVariablesDemo->{-LEFT_PAGE_VIEW};
-    $app_logo                 = $SetupVariablesDemo->{-APP_LOGO};
-    $app_logo_height          = $SetupVariablesDemo->{-APP_LOGO_HEIGHT};
-    $app_logo_width           = $SetupVariablesDemo->{-APP_LOGO_WIDTH};
-    $app_logo_alt             = $SetupVariablesDemo->{-APP_LOGO_ALT};
-    $CSS_VIEW_URL             = $SetupVariablesDemo->{-CSS_VIEW_NAME};
-    $SITE_DISPLAY_NAME        = $SetupVariablesDemo->{-SITE_DISPLAY_NAME};
-    $last_update              = $SetupVariablesDemo->{-SITE_LAST_UPDATE};
-    $FAVICON                  = $SetupVariablesDemo->{-FAVICON};
-    $ANI_FAVICON              = $SetupVariablesDemo->{-ANI_FAVICON};
-    $FAVICON_TYPE             = $SetupVariablesDemo->{-FAVICON_TYPE};
-
-}
 
 my $modify = '1';
 my $delete = '1';
@@ -558,7 +502,6 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
 
         -IS_FILLED_IN => [
             -FIELDS => [qw(
-                status
                 recipe_name
                 recipe_size
                 category
@@ -624,7 +567,6 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
 
         -IS_FILLED_IN => [
             -FIELDS => [qw(
-                status
                 recipe_name
                 recipe_size
                 category
@@ -685,6 +627,12 @@ my %type =
         'ipa'        =>		'India Pale Ale',
         'porter'		=> 	'Porter'      
     );
+my %size  =
+    (
+             '4.54609'  => '1 imp gallon',
+             '22.73045' => '5 imp gallon',
+             '45.4609'  => '10 imp gallon'
+    );   
 my %colour =
     (
       'chestnutbrown' => 'Chestnut Brown',
@@ -790,6 +738,7 @@ mashtemp => [
         -DISPLAY_NAME => 'Mash Target Temp',
         -TYPE         => 'textfield',
         -NAME         => 'mashtemp',
+        -VALUE        => 154,
         -SIZE         => 10,
         -MAXLENGTH    => 30
     ],
@@ -797,8 +746,9 @@ mashtemp => [
 mashtontemp => [
         -DISPLAY_NAME => 'Mashton Target Temp',
         -TYPE         => 'textfield',
-        -NAME         => 'mashtontemp',
         -SIZE         => 10,
+        -NAME         => 'mashtontemp',
+        -VALUE        => 160,
         -MAXLENGTH    => 30
     ],
 
@@ -828,11 +778,12 @@ maturation => [
     ],
 
     recipe_size => [
-        -DISPLAY_NAME => 'Size of batch in Litres',
+        -DISPLAY_NAME => 'Size of batch Shown Imp Gallons recorded in Litres',
         -TYPE         => 'popup_menu',
         -NAME         => 'recipe_size',
-        -VALUES       => [1..500],
-    ],
+         -VALUES       => [sort {$a <=> $b} keys %size],
+         -LABELS       => \%size,
+   ],
 
   category => [        
         -DISPLAY_NAME => 'Category: If not in list select other and place your suggestion in comments ',
@@ -851,18 +802,12 @@ maturation => [
         -MAXLENGTH    => 30
     ],
     
-  mashtontemp => [
-        -DISPLAY_NAME => 'Mashton Target Temp',
-        -TYPE         => 'textfield',
-        -NAME         => 'mashtontemp',
-        -SIZE         => 10,
-        -MAXLENGTH    => 30
-    ],
     
    spargtemp => [
         -DISPLAY_NAME => 'Sparge Target Temp',
         -TYPE         => 'textfield',
         -NAME         => 'spargtemp',
+        -VALUE        => 160,
         -SIZE         => 10,
         -MAXLENGTH    => 30
     ],
@@ -884,13 +829,6 @@ maturation => [
         -MAXLENGTH    => 5
     ],
     
-   spargtemp => [
-        -DISPLAY_NAME => 'Sparge Target Temp',
-        -TYPE         => 'textfield',
-        -NAME         => 'spargtemp',
-        -SIZE         => 10,
-        -MAXLENGTH    => 30
-    ],
    
     
  status => [
@@ -1011,50 +949,11 @@ my  @DROPLIST_DATASOURCE_CONFIG_PARAMS = (
 	        },
 	);
 
-my @CLIENT_DATASOURCE_FIELD_NAMES = qw(
-        category
-        record_id
-        sitename
-        fname
-        lname
-        phone
-        email
-        comments
-        address1
-        address2
-        city
-        prov
-        zip
-        country
-        fax
-        mobile
-        url
-	     company_code
-        company_name
-        title
-        department
-        username_of_poster
-        group_of_poster
-        date_time_posted
-);
 
-my	@CLIENT_DATASOURCE_CONFIG_PARAMS = (
-	        -TYPE         => 'DBI',
-	        -DBI_DSN      => $DBI_DSN,
-	        -TABLE        => $client_tb,
-	        -USERNAME     => $AUTH_MSQL_USER_NAME,
-	        -PASSWORD     => $MySQLPW,
-	        -FIELD_NAMES  => \@CLIENT_DATASOURCE_FIELD_NAMES,
-	        -KEY_FIELDS   => ['username'],
-	        -FIELD_TYPES  => {
-	            record_id        => 'Autoincrement'
-	        },
-	);
 
 
 my @DATASOURCE_CONFIG_PARAMS = (
     -BASIC_DATASOURCE_CONFIG_PARAMS     => \@BASIC_DATASOURCE_CONFIG_PARAMS,
-    -CLIENT_DATASOURCE_CONFIG_PARAMS    => \@CLIENT_DATASOURCE_CONFIG_PARAMS,
     -DROPLIST_DATASOURCE_CONFIG_PARAMS  => \@DROPLIST_DATASOURCE_CONFIG_PARAMS,
     -AUTH_USER_DATASOURCE_CONFIG_PARAMS => \@AUTH_USER_DATASOURCE_PARAMS
 );
@@ -1096,7 +995,8 @@ my @ADD_EVENT_MAIL_SEND_PARAMS = (
 my @MODIFY_EVENT_MAIL_SEND_PARAMS = (
     -FROM     =>  $SESSION->getAttribute(-KEY =>
 'auth_email')||$mail_from,
-    -TO       => $mail_to,
+    -TO       => $mail_to||$SESSION->getAttribute(-KEY =>
+'auth_email'),
     -REPLY_TO => $mail_replyto,
     -SUBJECT  => $APP_NAME_TITLE.' Modification'
 );
@@ -1273,8 +1173,7 @@ my @VIEW_FILTERS_CONFIG_PARAMS = (
 
 my @ACTION_HANDLER_LIST = 
     qw(
-       CSC::PopulateInputWidgetDefinitionListWithClientWidgetAction
- 
+      
        Default::SetSessionData
        Default::DisplayCSSViewAction
        Default::DisplaySessionTimeoutErrorAction

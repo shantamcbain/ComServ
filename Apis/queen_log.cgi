@@ -101,6 +101,7 @@ use SiteSetup;
     $HTTP_HEADER_PARAMS       = $SetupVariables->{-HTTP_HEADER_PARAMS};
     $HTTP_HEADER_KEYWORDS     = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
     $HTTP_HEADER_DESCRIPTION  = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+    $SITE_DISPLAY_NAME          = $SetupVariables->{-SITE_DISPLAY_NAME};
     $MySQLPW               = $SetupVariables->{-MySQLPW};
     $DBI_DSN               = $SetupVariables->{-DBI_DSN};
     $AUTH_TABLE            = $SetupVariables->{-AUTH_TABLE};
@@ -182,89 +183,6 @@ if ($CGI->param('site')){
   }else {
 	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
       }
-}
-if ($SiteName eq "Apis") {
-use ApisSetup;
-  my $UseModPerl = 1;
-  my $SetupVariablesApis   = new ApisSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesApis->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesApis->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesApis->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesApis->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesApis->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesApis->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesApis->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesApis->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesApis->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesApis->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesApis->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesApis->{-CSS_VIEW_NAME};
-     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/Apis'; 
- }
-elsif ($SiteName eq "CAP") { 
-    $APP_NAME_TITLE        = "CAP HelpDesk";
-    $homeviewname          = 'HelpDeskHomeView';
-}  
-elsif ($SiteName eq "CSPS") { 
-use CSPSSetup;
-  my $SetupVariablesCSPS   = new  CSPSSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesCSPS->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesCSPS->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesCSPS->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesCSPS->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesCSPS->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesCSPS->{-APP_LOGO_ALT};
-    $APP_NAME_TITLE        = "Shanta's $SiteName Log.";
-}
- elsif ($SiteName eq "ECF") {
-use ECFSetup;
-  my $SetupVariablesECF    = new  ECFSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesECF->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesECF->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesECF->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesECF->{-APP_LOGO_ALT};
-    $APP_NAME_TITLE        = "Eagle Creek Farms: Apis";
-    $homeviewname          = $SetupVariablesECF->{-HOME_VIEW_NAME};
-    $home_view             = $SetupVariablesECF->{-HOME_VIEW};
-#Mail settings
-    $mail_from             = $SetupVariablesECF->{-MAIL_FROM};
-    $mail_to               = $SetupVariablesECF->{-MAIL_TO};
-    $mail_replyto          = $SetupVariablesECF->{-MAIL_REPLYTO};
-    $HTTP_HEADER_PARAMS    = $SetupVariablesECF->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_KEYWORDS  = $SetupVariablesECF->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesECF->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_URL            = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/ECF'; 
- }
-elsif ($SiteName eq "ENCY") { 
-use ENCYSetup;
-  my $SetupVariablesENCY   = new  ENCYSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesENCY->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesENCY->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesENCY->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesENCY->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesENCY->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesENCY->{-APP_LOGO_ALT};
-    $APP_NAME_TITLE        = "$SiteName Log.";
-}
-elsif ($SiteName eq "VitalVic") { 
-use VitalVicSetup;
-  my $SetupVariablesVitalVic   = new  VitalVicSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesVitalVic ->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesVitalVic ->{-AUTH_TABLE};
-    $APP_NAME_TITLE        = " VitalVic HelpDesk";
-    $homeviewname          = 'HelpDeskHomeView';
-}  
-elsif($SiteName eq "CS") {
-    $APP_NAME_TITLE        = "Country Stores Helpdesk.";
-    $homeviewname          = 'HelpDeskHomeView';
-}
-else {
-    $APP_NAME_TITLE        = "Computer System Consulting.ca";
-    $homeviewname          = 'HelpDeskHomeView';
-
 }
 
 

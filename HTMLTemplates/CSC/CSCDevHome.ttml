@@ -31,7 +31,7 @@ CSCDevHomeView.ttml
 
  <a href="http://dev.computersystemconsulting.ca/cgi-bin/page.cgi?site=[% SiteName %]&[% session_string %]&display_modification_form=on&record_id=3" target="_blank">edit page</a>
 You can modify anything from here to the last update. You may use Html code in this area.
- 	   [% END %]
+ 	   
 	[% embed('LiveEditAdmin') %]
 
  [% FOREACH link = DBI.query("SELECT * FROM page_tb

@@ -101,6 +101,11 @@
 <!--Close Main page Table-->
   </td>
  </tr>
+[% IF data.page_name  == 'PlanningView' %]
+<tr>	
+      <td>Will be List of needed supples to do what is on left</td>
+	    </TR>
+[% END %]
 </table>
 </BODY>
 </HTML>

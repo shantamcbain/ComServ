@@ -1,7 +1,6 @@
 
 [% IF SiteName == 'Telmark'OR
 	      SiteName == 'Aktiv' OR
-	      SiteName == 'Brew' OR
 	      SiteName == 'CSPS' %]
 		[% HostName = 'forager.com' %]
 [% ELSIF   SiteName == 'Bazaar' 
@@ -64,6 +63,9 @@
 		[% HostName = 'ropurewatertechnology.com' %]
 		[% StoreName = 'mw.countrystores.ca' %]
 		
+  [% ELSIF           SiteName == 'USBM'
+	      %]
+ 		[% HostName = '' %]
  	[% ELSIF SiteName == 'WW'
 	      %] 
 		[% HostName = 'wisewomancentre.com' %]
@@ -77,6 +79,7 @@
 
 	[% HostName = 'computersystemconsulting.ca' %]
 	[% MailName = username %]
+	 
 
 
 [% END %]

@@ -22,14 +22,15 @@
 [% dbi = data.dbi_dsn||'dbi:mysql:forager:mail.computersystemconsulting.ca' %]
  
 [% ActiveQueens = 0 %]
-[%# FOREACH link = DBI.query("SELECT * FROM apis_queens_tb
-                                  WHERE  status = 'Active' OR 
+[% FOREACH link = DBI.query("SELECT * FROM apis_queens_tb
+                                  WHERE  sitename = '$SiteName' AND
+                                  (status = 'Active' OR 
                                   status = 'Breeder'OR 
-                                  status = 'Breeder_candidate'
+                                  status = 'Breeder_candidate')
                                  ")%]    
- [%# ActiveQueens = ActiveQueens + 1 %]
+ [% ActiveQueens = ActiveQueens + 1 %]
 
-[%# END %]
+[% END %]
  [% PROCESS ActiveQueensSQL.ttml %]
 
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -45,7 +46,7 @@
                                  
                                   ORDER BY yard_code
                                   ")%]    
-  [% yard_code = link.yard_code ||'Home' %]                                
+  [% yard_code = link.yard_code %]                                
                                   <tr>
    
    <td>[% yard_code %] <a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;sort_field1=yard_code&amp;sort_field2=status&amp;first_record_to_display=0&amp;records_per_page=&&amp;[% session_string %]&amp;record_id=[% link.record_id %]&display_details_view.x=15&amp;display_details_view.y=12&amp;display_details_view=on" name="Contact"  title="[% link.yard_name %] "><font   class="LeftSideBarNavStyle">[% link.yard_name %]</td>
@@ -63,11 +64,11 @@
 
 
 <tr><th>Customer Yard <a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Yard">Add</a></th><th>status</th><th>Max</th><th>Current</th><th>View pallets</th></tr>
+[% IF site == 'ECF' %]
 [% FOREACH link = DBI.query("SELECT * FROM apis_yards_tb
                                   WHERE  (developer_name = 'Shanta'
                                   OR developer_name = 'Shauna') 
                                   AND status = 'In-Use' 
-                                  AND client_name = 'Jenna'
                                   ORDER BY yard_code
                                   ")%]    
                                   
@@ -82,19 +83,14 @@
  [% CurrentSize = CurrentSize + link.current %]
    [% END %]
    </tr>
+[% END %]
    <tr><td></td><td></td><td>[% HiveCap %]</td><td>[% CurrentSize %]</td><td>Active Queens [% ActiveQueens %]    </td></tr>
     <tr><td>[% embed ('PopulateYardWithPallet') %]
  </td></tr>
 
 </table>
 <p><a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;view=FeedingView&amp;[% session_string %]">Feeding</a></p>
-<ul>
- <table>
- 
- 
- </table>  
 
-</ul>
 </td>
 </tr>
 </table>

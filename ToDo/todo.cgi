@@ -87,7 +87,7 @@ my $APP_NAME_TITLE = "Todo Manager";
 my $SiteName =  $CGI->param('site');
 my $site_update;
     my $SITE_DISPLAY_NAME = 'None Defined for this site.';
-    my $last_update  = 'Febuary 17	, 2015';
+    my $last_update  = 'April 24, 2017';
 
     my $homeviewname ;
     my $home_view = 'ToDoHomeView'; 
@@ -110,7 +110,7 @@ my $site_update;
     my $IMAGE_ROOT_URL; 
     my $DOCUMENT_ROOT_URL;
     my $site;
-    my $GLOBAL_DATAFILES_DIRECTORY;
+    my $GLOBAL_DATAFILES_DIRECTORY;# = "/home/grindrod/Datafiles";
     my $TEMPLATES_CACHE_DIRECTORY;
     my $APP_DATAFILES_DIRECTORY;
     my $DATAFILES_DIRECTORY;
@@ -127,8 +127,8 @@ my $site_update;
     my $DEFAULT_CHARSET; 
     my $additonalautusernamecomments;
     my $SetupVariables;
-	  my $TableName;
- 	  my $sitename;
+	my $TableName;
+ 	my $sitename;
     my $site;
     my $ProjectTableName;
     my $records;
@@ -174,11 +174,12 @@ use SiteSetup;
     $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
     $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
     $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
-    $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
-    $site_session = $DATAFILES_DIRECTORY.'/Sessions';
-    $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+    $DATAFILES_DIRECTORY   = $APP_DATAFILES_DIRECTORY;
+    $site_session          = $GLOBAL_DATAFILES_DIRECTORY.'/Sessions';
+    $auth                  = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
     $TableName             = 'csc_todo_tb';
     $ProjectTableName      = 'csc_project_tb';
+    my $CSS_VIEW_URL       = $SetupVariables->{-CSS_VIEW_NAME};
     
 
  
@@ -242,11 +243,7 @@ $SortFields=[qw(
  $SortDirection='DESC';#ASC
 }
 my $SESSION_DIR;
-#if ($SiteName eq "rv") {
-#  $SESSION_DIR ="../store/shops/rv/Sessions";
-#}else{
-  $SESSION_DIR = "$GLOBAL_DATAFILES_DIRECTORY/Sessions";
-#}
+
 $LINK_TARGET = $target;
 my $VIEW_LOADER = new Extropia::Core::View
     (\@VIEWS_SEARCH_PATH,\@TEMPLATES_SEARCH_PATH) or
@@ -307,337 +304,6 @@ my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
 my $username =  $SESSION ->getAttribute(-KEY => 'auth_username');
 
 
-if ($SiteName eq "Apis") {
-use ApisSetup;
-  my $SetupVariablesApis   = new ApisSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesApis->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesApis->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesApis->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesApis->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesApis->{-APP_LOGO_ALT};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/Apis'; 
-#    $TableName             = 'apis_todo_tb';
-#    $ProjectTableName      = 'apis_project_tb';
-     $CSS_VIEW_URL            = $SetupVariablesApis->{-CSS_VIEW_NAME};
-     $SITE_DISPLAY_NAME       = $SetupVariablesApis->{-SITE_DISPLAY_NAME};
- }
-
-elsif ($SiteName eq "AltPowerDev" or
-       $SiteName eq "AltPower" ) {
-use AltPowerSetup;
-  my $SetupVariablesAltPower   = new AltPowerSetup($UseModPerl);
-      $Affiliate               = $SetupVariablesAltPower->{-AFFILIATE};
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesAltPower->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesAltPower->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesAltPower->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesAltPower=>{-CSS_VIEW_NAME};
-     $CSS_VIEW_URL            = $SetupVariablesAltPower->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesAltPower->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesAltPower->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesAltPower->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesAltPower->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesAltPower->{-APP_LOGO_ALT};
-     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/AltPower'; 
-     $SITE_DISPLAY_NAME       = $SetupVariablesAltPower->{-SITE_DISPLAY_NAME};
-}
-
-elsif ($SiteName eq "BMaster") {
-use BMasterSetup;
-  my $SetupVariablesBMaster   = new BMasterSetup($UseModPerl);
-     $HasMembers               = $SetupVariablesBMaster->{-HAS_MEMBERS};
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesBMaster->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesBMaster->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesBMaster->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesBMaster->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesBMaster->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesBMaster->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesBMaster->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesBMaster->{-APP_LOGO_ALT};
-     $homeviewname            = 'HomeView'||$SetupVariablesBMaster->{-HOME_VIEW_NAME};
-#     $home_view               = $SetupVariablesBMaster->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesBMaster->{-LAST_UPDATE}; 
-      $site_update              = $SetupVariablesBMaster->{-SITE_LAST_UPDATE};
-#Mail settings
-     $mail_from               = $SetupVariablesBMaster->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesBMaster->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesBMaster->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = $SetupVariablesBMaster->{-SITE_DISPLAY_NAME};
-     $FAVICON                 = $SetupVariablesBMaster->{-FAVICON};
-     $ANI_FAVICON             = $SetupVariablesBMaster->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesBMaster->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE            = $SetupVariablesBMaster->{-FAVICON_TYPE};
-}
-
- elsif ($SiteName eq "Brew") {
-
-use  BrewSetup;
-  my $SetupVariablesBrew  = new BrewSetup($UseModPerl);
-    $homeviewname          = 'BrewHomeView';
-#    $home_view             = $SetupVariablesBrew->{-HOME_VIEW}; 
-    $BASIC_DATA_VIEW       = $SetupVariablesBrew->{-BASIC_DATA_VIEW};
-    $page_top_view         = $SetupVariablesBrew->{-PAGE_TOP_VIEW};
-    $page_bottom_view      = $SetupVariablesBrew->{-PAGE_BOTTOM_VIEW};
-    $page_left_view        = $SetupVariablesBrew->{-LEFT_PAGE_VIEW};
-#Mail settings
-    $mail_from             = $SetupVariablesBrew->{-MAIL_FROM}; 
-    $mail_to               = $SetupVariablesBrew->{-MAIL_TO};
-    $mail_replyto          = $SetupVariablesBrew->{-MAIL_REPLYTO};
-    $CSS_VIEW_URL          = $SetupVariablesBrew->{-CSS_VIEW_NAME}||'blank';
-    $HTTP_HEADER_KEYWORDS  = $SetupVariablesBrew->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesBrew->{-HTTP_HEADER_DESCRIPTION};
-    $IMAGE_ROOT_URL        = $SetupVariablesBrew->{-IMAGE_ROOT_URL}; 
-    $DOCUMENT_ROOT_URL     = $SetupVariablesBrew->{-DOCUMENT_ROOT_URL};
-    $LINK_TARGET           = $SetupVariablesBrew->{-LINK_TARGET};
-    $HTTP_HEADER_PARAMS    = $SetupVariablesBrew->{-HTTP_HEADER_PARAMS};
-    $DEFAULT_CHARSET       = $SetupVariablesBrew->{-DEFAULT_CHARSET};
-    $AUTH_TABLE            = $SetupVariablesBrew->{-AUTH_TABLE};
-    $DEFAULT_CHARSET       = $SetupVariablesBrew->{-DEFAULT_CHARSET};
-    $APP_DATAFILES_DIRECTORY    =  $GLOBAL_DATAFILES_DIRECTORY."/Brew";
-#    $site = $SetupVariables->{-DATASOURCE_TYPE};
-    $SITE_DISPLAY_NAME     = $SetupVariablesBrew->{-SITE_DISPLAY_NAME};
-}
-
-
- 
-elsif($SiteName eq "CS") {
-use CSSetup;
-  my $SetupVariablesCS  = new  CSSetup($UseModPerl);
-    $homeviewname          = 'TodoHomeView';
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/CS'; 
-    $SITE_DISPLAY_NAME       = 'Country Stores';
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesCS->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_PARAMS      = $SetupVariablesCS->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesCS->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_NAME           = $SetupVariablesCS->{-CSS_VIEW_NAME};
-    $CSS_VIEW_URL            = $SetupVariablesCS->{-CSS_VIEW_NAME};
-}
-
-elsif ($SiteName eq "CSC" ||
-       $SiteName eq "CSCDev") 
-       {
-use CSCSetup;
-  my $SetupVariablesCSC   = new  CSCSetup($UseModPerl);
- if ($SiteName eq "CSCDev"
-       ) { $AUTH_TABLE               = $SetupVariablesCSC ->{-ADMIN_AUTH_TABLE}; 
-       } else {
-         $AUTH_TABLE               = $SetupVariablesCSC ->{-AUTH_TABLE};
-       }
-    $HasMembers               = $SetupVariablesCSC->{-HAS_MEMBERS};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesCSC->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_PARAMS      = $SetupVariablesCSC->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesCSC->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_NAME           = $SetupVariablesCSC->{-CSS_VIEW_NAME};
-    $page_top_view           = $SetupVariablesCSC->{-PAGE_TOP_VIEW};
-    $page_bottom_view        = $SetupVariablesCSC->{-PAGE_BOTTOM_VIEW};
-    $page_left_view          = $SetupVariablesCSC->{-LEFT_PAGE_VIEW};
-    $CSS_VIEW_URL            = $SetupVariablesCSC->{-CSS_VIEW_NAME};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/CSC'; 
-    $SITE_DISPLAY_NAME       = $SetupVariablesCSC->{-SITE_DISPLAY_NAME};
-
-}
-
-elsif ($SiteName eq "Demo" or
-      $SiteName eq "DemoHelpDesk") {
-use DEMOSetup;
-
-  my $SetupVariablesDemo   = new  DEMOSetup($UseModPerl);
-    $AUTH_TABLE               = $SetupVariablesDemo ->{-AUTH_TABLE};
-    $APP_NAME_TITLE           = "Computer System Consulting.ca Demo Application";
-    $HasMembers               = $SetupVariablesDemo->{-HAS_MEMBERS};
-    $HTTP_HEADER_KEYWORDS     = $SetupVariablesDemo->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_PARAMS       = $SetupVariablesDemo->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_DESCRIPTION  = $SetupVariablesDemo->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_NAME            = $SetupVariablesDemo->{-CSS_VIEW_NAME};
-    $page_top_view            = $SetupVariablesDemo->{-PAGE_TOP_VIEW};
-    $page_bottom_view         = $SetupVariablesDemo->{-PAGE_BOTTOM_VIEW};
-    $page_left_view           = $SetupVariablesDemo->{-LEFT_PAGE_VIEW};
-    $app_logo                 = $SetupVariablesDemo->{-APP_LOGO};
-    $app_logo_height          = $SetupVariablesDemo->{-APP_LOGO_HEIGHT};
-    $app_logo_width           = $SetupVariablesDemo->{-APP_LOGO_WIDTH};
-    $app_logo_alt             = $SetupVariablesDemo->{-APP_LOGO_ALT};
-    $CSS_VIEW_URL             = $SetupVariablesDemo->{-CSS_VIEW_NAME};
-    $SITE_DISPLAY_NAME        = $SetupVariablesDemo->{-SITE_DISPLAY_NAME};
-#    $homeviewname             = $SetupVariablesDemo->{-HOME_VIEW_NAME};
-    $last_update              = $SetupVariablesDemo->{-SITE_LAST_UPDATE};
-    $FAVICON                  = $SetupVariablesDemo->{-FAVICON};
-    $ANI_FAVICON              = $SetupVariablesDemo->{-ANI_FAVICON};
-    $FAVICON_TYPE             = $SetupVariablesDemo->{-FAVICON_TYPE};
-
-}
-
-elsif ($SiteName eq "ECF" || 
-       $SiteName eq "ECFDev") {
-use ECFSetup;
-  my $SetupVariablesECF   = new ECFSetup($UseModPerl);
-    $CSS_VIEW_NAME           = $SetupVariablesECF->{-CSS_VIEW_NAME};
-     $Affiliate               = $SetupVariablesECF->{-AFFILIATE};
-    $AUTH_TABLE              = $SetupVariablesECF->{-AUTH_TABLE};
-    $app_logo                = $SetupVariablesECF->{-APP_LOGO};
-    $app_logo_height         = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
-    $app_logo_width          = $SetupVariablesECF->{-APP_LOGO_WIDTH};
-    $app_logo_alt            = $SetupVariablesECF->{-APP_LOGO_ALT};
-    $CSS_VIEW_URL            = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/ECF'; 
-#    $TableName              = 'ecf_todo_tb';
- #   $ProjectTableName       = 'ecf_project_tb';
-     $SITE_DISPLAY_NAME      = $SetupVariablesECF->{-SITE_DISPLAY_NAME};
-    
-}
-
-elsif ($SiteName eq "HE" or
-       $SiteName eq "HEDev") {
-use HESetup;
-  my $SetupVariablesHE   = new HESetup($UseModPerl);
-     $APP_NAME_TITLE           = " ";
-     $HTTP_HEADER_KEYWORDS     = $SetupVariablesHE->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS       = $SetupVariablesHE->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION  = $SetupVariablesHE->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME            = $SetupVariablesHE->{-CSS_VIEW_NAME};
-     $AUTH_TABLE               = $SetupVariablesHE->{-AUTH_TABLE};
-     $app_logo                 = $SetupVariablesHE->{-APP_LOGO};
-     $app_logo_height          = $SetupVariablesHE->{-APP_LOGO_HEIGHT};
-     $app_logo_width           = $SetupVariablesHE->{-APP_LOGO_WIDTH};
-     $app_logo_alt             = $SetupVariablesHE->{-APP_LOGO_ALT};
-     $CSS_VIEW_URL             = $SetupVariablesHE->{-CSS_VIEW_NAME};
-     $last_update              = $SetupVariablesHE->{-LAST_UPDATE}; 
-#     $site_update              = $SetupVariablesHE->{-SITE_LAST_UPDATE};
- #Mail settings
-     $mail_from                = $SetupVariablesHE->{-MAIL_FROM};
-     $mail_to                  = $SetupVariablesHE->{-MAIL_TO};
-     $mail_replyto             = $SetupVariablesHE->{-MAIL_REPLYTO};
-#     $shop                     = $SetupVariablesHE->{-SHOP};
-     $SITE_DISPLAY_NAME        = $SetupVariablesHE->{-SITE_DISPLAY_NAME};
-}
-elsif ($SiteName eq "LumbyThrift") {
-use LumbyThriftSetup;
-  my $SetupVariablesLumbyThrift   = new LumbyThriftSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesLumbyThrift->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesLumbyThrift->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesLumbyThrift->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesLumbyThrift->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesLumbyThrift->{-AUTH_TABLE};
-     $Affiliate               = $SetupVariablesLumbyThrift->{-AFFILIATE};
-     $app_logo                = $SetupVariablesLumbyThrift->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesLumbyThrift->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesLumbyThrift->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesLumbyThrift->{-APP_LOGO_ALT};
-     $home_view               = $SetupVariablesLumbyThrift->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesLumbyThrift->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesLumbyThrift->{-LAST_UPDATE}; 
-     $site_update              = $SetupVariablesLumbyThrift->{-SITE_LAST_UPDATE};
-#Mail settings
-     $mail_from               = $SetupVariablesLumbyThrift->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesLumbyThrift->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesLumbyThrift->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = $SetupVariablesLumbyThrift->{-SITE_DISPLAY_NAME};
-     $FAVICON                 = $SetupVariablesLumbyThrift->{-FAVICON};
-     $ANI_FAVICON             = $SetupVariablesLumbyThrift->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesLumbyThrift->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE            = $SetupVariablesLumbyThrift->{-FAVICON_TYPE};
-}
-elsif ($SiteName eq "Organic") {
-use OrganicSetup;
-
-  my $SetupVariablesOrganic   = new OrganicSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesOrganic->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesOrganic->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesOrganic->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesOrganic->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesOrganic->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesOrganic->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesOrganic->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesOrganic->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesOrganic->{-HOME_VIEW_NAME};
-     $CSS_VIEW_URL            = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
-     $mail_to                 = $SetupVariablesOrganic->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesOrganic->{-MAIL_REPLYTO};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/Orgnaic'; 
-     $SITE_DISPLAY_NAME       = $SetupVariablesOrganic->{-SITE_DISPLAY_NAME};
- }
-
-
-elsif ($SiteName eq "Noop") {
-use NoopSetup;
-
-  my $SetupVariablesNoop   = new NoopSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesNoop->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesNoop->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesNoop->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesNoop->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesNoop->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesNoop->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesNoop->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesNoop->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesNoop->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesNoop->{-HOME_VIEW_NAME};
-     $CSS_VIEW_URL            = $SetupVariablesNoop->{-CSS_VIEW_NAME};
-     $SITE_DISPLAY_NAME       = $SetupVariablesNoop->{-SITE_DISPLAY_NAME};
- }
-elsif ($SiteName eq "VitalVic") {
-use VitalVicSetup;
-  my $SetupVariablesVitalVic     = new  VitalVicSetup($UseModPerl);
-    $CSS_VIEW_URL            = $SetupVariablesVitalVic->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesVitalVic->{-AUTH_TABLE};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesVitalVic->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesVitalVic->{-HTTP_HEADER_DESCRIPTION};
-    $mail_to                 = $SetupVariablesVitalVic->{-MAIL_TO};
-    $mail_replyto            = $SetupVariablesVitalVic->{-MAIL_REPLYTO};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/VitalVic'; 
-    $APP_NAME_TITLE        = "Vital Victoria ToDo ";
-    $ProjectTableName      = 'vitalvic_project_tb';
-    $SITE_DISPLAY_NAME       = $SetupVariablesVitalVic->{-SITE_DISPLAY_NAME};
-}
-elsif ($SiteName eq "Skye" or
-       $SiteName eq "SkyeStore") {
-use SkyeFarmSetup;
-  my $SetupVariablesSkyeFarm   = new SkyeFarmSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesSkyeFarm->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesSkyeFarm->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesSkyeFarm->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesSkyeFarm->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesSkyeFarm->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesSkyeFarm->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesSkyeFarm->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesSkyeFarm->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesSkyeFarm->{-APP_LOGO_ALT};
-     $CSS_VIEW_URL            = $SetupVariablesSkyeFarm->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesSkyeFarm->{-LAST_UPDATE}; 
- #Mail settings
-     $site_update              = $SetupVariablesSkyeFarm->{-SITE_LAST_UPDATE};
-    $mail_from             = $SetupVariablesSkyeFarm->{-MAIL_FROM};
-    $mail_to               = $SetupVariablesSkyeFarm->{-MAIL_TO};
-    $mail_replyto          = $SetupVariablesSkyeFarm->{-MAIL_REPLYTO};
-    $SITE_DISPLAY_NAME     = $SetupVariablesSkyeFarm->{-SITE_DISPLAY_NAME};
-   $APP_DATAFILES_DIRECTORY= $GLOBAL_DATAFILES_DIRECTORY.'/SkyeFarm';
-  }elsif ($SiteName eq "WiseWoman") {
-use WWSetup;
-  my $SetupVariablesWiseWoman   = new WWSetup($UseModPerl);
-     $APP_NAME_TITLE          = "WiseWoman";
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesWiseWoman->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesWiseWoman->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesWiseWoman->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesWiseWoman->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesWiseWoman->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesWiseWoman->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesWiseWoman->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesWiseWoman->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesWiseWoman->{-APP_LOGO_ALT};
-     $CSS_VIEW_URL            = $SetupVariablesWiseWoman->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesWiseWoman->{-LAST_UPDATE}; 
-#Mail settings
-     $mail_from               = $SetupVariablesWiseWoman->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesWiseWoman->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesWiseWoman->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = $SetupVariablesWiseWoman->{-SITE_DISPLAY_NAME};
-     $FAVICON                 = $SetupVariablesWiseWoman->{-FAVICON};
-     $ANI_FAVICON             = $SetupVariablesWiseWoman->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesWiseWoman->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE            = $SetupVariablesWiseWoman->{-FAVICON_TYPE};
-} 
 
 
 
@@ -1063,7 +729,7 @@ my @months = qw(January February March April May June July August
 my %months;
 @months{1..@months} = @months;
 my %years = ();
-$years{$_} = $_ for (2011..2020);
+$years{$_} = $_ for (2015..2025);
 my %days  = ();
 $days{$_} = $_ for (1..31);
 
@@ -1754,7 +1420,7 @@ my @ACTION_HANDLER_LIST =
        Default::SetSessionData
        Default::DisplayCSSViewAction
        
-              CSC::PopulateInputWidgetDefinitionListWithProjectCodeWidgetAction
+       CSC::PopulateInputWidgetDefinitionListWithProjectCodeWidgetAction
        CSC::PopulateInputWidgetDefinitionListWithDropListSiteNameWidgetAction
        CSC::ProcessShowAllOpenToDosAction
        Apis::ProcessShowBillsRecordsAction

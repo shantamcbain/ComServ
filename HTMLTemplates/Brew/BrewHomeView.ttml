@@ -1,7 +1,6 @@
-[%
-#	$Id: BrewHomeView.ttml,v 1.1 2008/03/25 06:42:47 shanta Exp shanta $	%]
+[%#	$Id: BrewHomeView.ttml,v 1.1 2008/03/25 06:42:47 shanta Exp shanta $	%]
 
-[% #embed(data.page_top_view,['-PAGE_TITLE','Brew']) %]
+[% embed(data.page_top_view,['-PAGE_TITLE','Brew']) %]
 
 [% embed('ErrorDisplayView') %]
 
@@ -12,14 +11,16 @@
    [% session_string = "session_id=$session_id" %]
 
 [% END %]
+[% PROCESS DefaultDbi.ttml %]
 [% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+[% username = data.session_object.getAttribute('-KEY','auth_username')%]
+[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+[% PrintMode    = data.session_object.getAttribute('-KEY','PrintMode') %]
 [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
 [% email = data.session_object.getAttribute('-KEY','auth_email') %]
-<!-- ApisHomeView  v 1.1 2003/11/29-->
+
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td>
@@ -80,7 +81,7 @@
 	 
 			</td>
 			<td>
-<a href="/cgi-bin/Apis/apis.cgi?site=[% SiteName %]&amp;view=AppToolsView&amp;[% session_string %]" name="AppToolsView" title="Click here for details of tool this application offerers">Details of the app.</a>				
+<a href="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;view=BrewRecipeView&amp;[% session_string %]" name="AppToolsView" title="Click here for details of tool this application offerers">Recipe.</a>				
 
 
 			</td>

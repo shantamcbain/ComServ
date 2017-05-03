@@ -88,7 +88,7 @@ sub execute {
         -LAST_RECORD_ON_PAGE         => $params->{-LAST_RECORD_ON_PAGE},
         -SIMPLE_SEARCH_STRING        => $params->{-SIMPLE_SEARCH_STRING},
         -CGI_OBJECT                  => $params->{-CGI_OBJECT},
-        -SESSION_OBJECT              => $params->{-SESSION_OBJECT},
+        -SESSION_OBJECT              => $params->{-SESSION_OBJECT},       
         -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG => $params->{-REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG},
         -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG => $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}
     ));
@@ -117,6 +117,7 @@ sub execute {
         -DISPLAY_NAME => 'SiteCode Code',
         -TYPE         => 'popup_menu',
         -NAME         => 'sitename',
+        -VALUE        => '$params->{-site}',
         -VALUES       => \@project_code
     );
 

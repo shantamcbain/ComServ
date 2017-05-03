@@ -35,12 +35,14 @@
 
 	<H3>Having trouble? We Can Help!</H3>
 	
-<p><a href="http://computersystemconsulting.ca/whmcs/supporttickets.php?action=open"><h4>Submit a ticket</h4></a></p>
-<h3>We have two basic lines of trouble shooting.</h3>
+
 <ol>
-  <li>Site software problems  Search            <a href="/cgi-bin/FAQ/faq.cgi?[% session_string %]&amp;site=[% SiteName %]&amp;page_left_view=HelpDeskLeftPageView" >Application FAQ,s </a> for your  <li>Content of the [% SCRIPT_DISPLAY_NAME %] site. Please click on   
- problem.</li>
-	
+ <li><h3>Site user</h3>
+  <p>Site owner's will find resources to help you keep your site up and running.</p>   <p><A HREF ="[% data.script_name %]?session_id=[% session_id %]&amp;submit_logon=on&amp;site=[%SiteName%]" TARGET ="[% data.link_target %]"  title=" Click here to  log in"> Logon</A> </p></li>
+ <li>Site software problems  Search  <a href="/cgi-bin/FAQ/faq.cgi?[% session_string %]&amp;site=[% SiteName %]&amp;page_left_view=HelpDeskLeftPageView" >Application FAQ,s </a> for your  
+ <li>Content of the [% SCRIPT_DISPLAY_NAME %] site. 
+ </li>
+ <li><h3></h3></li>
  
 
 </ol>

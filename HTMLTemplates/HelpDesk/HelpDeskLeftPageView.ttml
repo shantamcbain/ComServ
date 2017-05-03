@@ -1,5 +1,5 @@
 [%# the Left Page template
-#	$Id: LeftPageView.ttml,v 1.1 2003/11/29 06:31:35 shanta Exp shanta $	
+#	$Id: HelpdeskLeftPageView.ttml,v 1.1 2003/11/29 06:31:35 shanta Exp shanta $	
 
 %]
 [% IF data.session_object %]
@@ -57,7 +57,7 @@
 	<td>
  
 	
-	[% embed('SQL_Hosted')%]
+	[%# embed('SQL_Hosted')%]
 
 	
 
@@ -71,13 +71,8 @@
 
 	[% embed('AdminLeftLinksView.ttml')%]
 
- 	<tr>
-	<td>
-	[% embed('HelpDeskLinkView.ttml')%]
-	
-<!-- <A HREF ="/cgi-bin/CSC/helpdesk.cgi?&amp;view=HelpDeskHomeView&amp;site=[%
-	SiteName %]" Target ="blank"> <font class="LeftSideBarNavHelpDeskStyle">HelpDesk
- 	</font></a>-->
+ 	
+
 	</td>
 	</tr>
  	 <tr>
@@ -93,7 +88,7 @@
 	 </td>
 	</tr>
 	<tr>
-	 <td  >&nbsp;Our Web Application's are 100% Microsoft Free, apps written in Perl, Extropia, MySQL and run on Linux servers.
+	 <td>&nbsp;Our Web Application's are 100% Microsoft Free, apps written in Perl, Extropia, MySQL and run on Linux servers.
 	 </td>
 	</tr>
 

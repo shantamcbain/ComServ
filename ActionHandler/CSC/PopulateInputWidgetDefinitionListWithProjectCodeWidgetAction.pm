@@ -56,14 +56,23 @@ sub execute {
     my $app = $params->{-APPLICATION_OBJECT};
     my $cgi = $params->{-CGI_OBJECT};
     my $session = $params->{-SESSION_OBJECT};
-
+    
+if ($params->{-SITE_NAME} == 'CSCDev')
+{
     $cgi->param(
         -NAME  => 'raw_search',
-        -VALUE => "status != 3 AND
-                   (sitename ==  $params->{-SITE_NAME} OR
-                    sitename == $params->{-SITE_NAME}||'All')
+        -VALUE => "status != 'Delivered' 
                     "
     );  
+
+}else{ $cgi->param(
+        -NAME  => 'raw_search',
+        -VALUE => "status != 'Delivered' AND
+                   (sitename ==  $params->{-SITE_NAME})
+                    "
+    );  
+ 
+}
 
     my @config_params = _rearrange([
         -PROJECT_DATASOURCE_CONFIG_PARAMS

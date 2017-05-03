@@ -14,16 +14,17 @@
 [% END %]
 [% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
 
-  [% BrewName = data.session_object.getAttribute('-KEY','BrewName') %]
+    [% BrewNameS = data.session_object.getAttribute('-KEY','brewname') %]
 	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
 	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
 	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
 	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-[% email = data.session_object.getAttribute('-KEY','auth_email') %]
-       [% PROCESS DefaultDbi.ttml %]
-      [% BrewName = data.recipe_code %]
-      [% RecipeCode = data.session_object.getAttribute('-KEY','recipecode') %]
+    [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+    [% HomeView =data.session_object.getAttribute('-KEY','HOME_VIEW')%]
+    [% email = data.session_object.getAttribute('-KEY','auth_email') %]
+    [% BrewName = data.recipe_code %]
+    [% RecipeCode = data.session_object.getAttribute('-KEY','recipecode') %]
+    [% PAGE = data.VIEW_NAME  %]
 <SCRIPT LANGUAGE="JavaScript">
 <!--
 
@@ -60,18 +61,21 @@ function QuickClick(list) {
 <A NAME="PageTop"></A>
 [% BrewItemListTb = 'brew_item_list_tb'%]
 <h2>Our brewing recipies</h2>
-<p>[% version  %]
 <h5>Variables</h5>
 	<ol>
 		<li>SiteName    = [% data.SiteName %].data</li>
-		<li>BrewName    = [% data.brewname %].data</li>
+		<li>Admin group = [% group  %]</li>
+		<li>homeview    = [% data.home_view %].data</li>
+		<li>page        = [%  PAGE %]</li>
+	    <li>BrewName    = [% data.brewname %].data</li>
 	    <li>Recipe Code = [%  data.recipecode %].data</li>
-	    <li>[% BrewName %]</li>
+	    <li>session       [% RecipeCode %]</li>
+	    <li>BMS           [% BrewNameS %]</li>
+	    <li>HomeVew TTML       [% HomeView %]</li>
     </ol>
 <h5>Brewing Page [% version %]</h5>
 
  
-[%# BrewName = BrewName||'1516' %]
 
 
 <FORM METHOD=POST  ACTION="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;view=BatchLogView&amp;[% session_string %]&amp;batchnumber=" NAME="frmLinkList" onSubmit="return CheckSelection()">
@@ -84,33 +88,20 @@ function QuickClick(list) {
                                      
                                    ORDER BY recipe_code
 	                            ")%]  
-<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;view=BrewRecipeView&recipecode=[% item.recipe_code %]">[% item.recipe_name %] [% item.brew_name%][% item.date%]</option>
+<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;view=BrewRecipeView&amp;[% session_string %]&recipecode=[% item.recipe_code %]">[% item.recipe_name %] [% item.brew_name%][% item.date%]</option>
 
 [% END %]
  <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
            
 
 [% IF username  == 'Shanta' OR
-	        group     == 'Apis_Admin' OR
-	        group     == 'BCHPA_Admin' OR
-	        group     == 'BMast_Admin' OR
-	        group     == 'BMast_Co-op_Admin' OR
 	        group     == 'Brew_Admin' OR
-           group     == 'CSC_Admin' OR
-	        group     == 'CS_Admin' OR
-	        group     == 'ECF_Admin' OR
-	        group     == 'Orgainc_Admin' OR
-	        group     == 'DarmaFarmsAdmin' OR
-	        group     == 'MARTS_Admin' OR
-	        group     == 'VitalVic_Admin' OR
+            group     == 'CSC_Admin' OR
 	        group     == 'ENCY_Admin' OR
 	        group     == 'USBM_Admin' OR
 	        group     == 'Shanta_Admin' OR
-	        group     == 'HoneyDo_Admin' OR
-	        group     == 'Brew_Admin' OR
-	        group     == 'Demo_admin' OR
-	       group    ==  'WB_admin' OR
-	        group     == 'MJB_Admin'        %]
+	        group     == 'Demo_admin' 
+	               %]
 
 	   &nbsp;<a href="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New Recipe" style="AddButtonStyle">Add a new recipe</a>
 	
@@ -125,30 +116,37 @@ function QuickClick(list) {
      [%  record_id    = link.record_id  %]
      [%  recipe_code  = link.recipe_code %]
      [%  recipe_name  = link.recipe_name %]
-     [%  recipe_size  = link.recipe_size %]
-     [%  mashtontemp  = link.mashtontemp %]
-     [%  spargtemp    = link.spargtemp %]
-     [%  mashtemp     = link.mashtemp %]
-     [%  mashduration = link.mashduration %]
      [%  boiltime     = link.boiltime %]
      [%  description  = link.description %]
      [%  category     = link.category %]
      [%  gravity      = link.gravity %]
-     [%  username_of_poster = link.username_of_poster %]
      [%  ingredients  = link.ingredients %]
+     [%  mashtontemp  = link.mashtontemp %]
+     [%  spargtemp    = link.spargtemp %]
      [%  instructions = link.instructions %]
      [%  alcohol      = link.alcohol %]
-     [%  colour       = link.colou %]
-     [%  ph           = link.ph %]
-     [%  bitterness   = link.bitterness %]
+     [%  colour       = link.colour %]
+     [%  ph           = link.ph  %]
      [%  maturation   = link.maturation %]
-     [%  comments     = link.comments       %] 
-	[% END %]
+     [%  comments     = link.comments    %] 
+     	[% END %]
 
 
 
 </FORM>
-<h3>Our Recipe for 	      [% recipe_name %] </h3> 	   
+<h3>Our Recipe for 	      [% recipe_name %] [% BrewName %]
+</h3> 
+<p><a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;recipecode=[% recipe_code %]&amp;batchnumber=[% recipe_code %]Date= test&amp;site=[% SiteName %]&amp;recipename=[% recipe_name %]&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New batch" style="AddButtonStyle">Add a new batch</a></p>
+<table>
+ <tr><td>Recipe Code</td> <td>[%  recipe_code   %]</td>	</tr>
+ <tr>    <td>Recipe Name</td><td>[%  recipe_name %]</td></tr>
+  <tr>   <td>Size</td><td>[%  recipe_size  %]</td></tr>
+ <tr>    <td>Boil Time</td> <td>[%  boiltime %]</td></tr>
+ <tr>    <td>Discription</td> <td>[%  description %]</td></tr>
+ <tr>    <td>category</td><td>[%  category %]</td></tr>
+ <tr>   <td>gravity </td><td>[%  gravity   %]</td></tr>
+ <tr>   <td>username_of_poster </td><td> [%  username_of_poster%]</td></tr>
+ <tr>  <td>ingrediancelist </td><td> 
 [% IF username  == 'Shanta' OR
 	        group     == 'Apis_Admin' OR
 	        group     == 'BCHPA_Admin' OR
@@ -170,40 +168,27 @@ function QuickClick(list) {
 	        group     == 'Demo_admin' OR
 	        group    ==  'WB_admin' OR
 	        group     == 'MJB_Admin'        %]
-<p>&nbsp;<a href="/cgi-bin/Brew/item.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;subject=Item_link&amp;Nav_link=1&view=BatchLogView&amp;recipecode=[% item.recipe_code %]" name="Add Ingredients"  title="Add New batch" style="AddButtonStyle">Add</a>
+&nbsp;<a href="/cgi-bin/Brew/item.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;subject=Item_link&amp;Nav_link=1&view=BatchLogView&amp;recipecode=[% item.recipe_code %]" name="Add Ingredients"  title="Add New batch" style="AddButtonStyle">Add item</a>
 	   [% END %]
+	   </td></tr>
+	   <tr><td colspan="2">  [% embed('IngredianceList') %]</td></tr>
+	<tr>   <td>ingredients</td><td> [%  ingredients %]</td></tr>
+ <tr>   <td>instruction</td> <td>[%  instructions %]</td></tr>
+ <tr>   <td>Mashton Temp</td> <td>[%  mashtontemp   %]</td></tr>
+ <tr>   <td>Sparge temp</td><td> [%  spargtemp   %]</td></tr>
+ <tr>    <td>alcohol   </td><td>[%  alcohol      %]</td></tr>
+  <tr>   <td> colour </td><td>[%  colour      %]</td></tr>
+  <tr>   <td> ph </td><td>[%  ph           %]</td></tr>
+ <tr>   <td> bitterness </td> <td>[%  bitterness   %]</td></tr>
+ <tr>   <td>maturation </td><td> [%  maturation   %]</td></tr>
+  <tr>  <td> comments</td> <td>[%  comments       %] </td></tr>
+</table>
 
-
-Ingredients list
-[% RecipeCode %]  
-
-<p> <a href="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_details_view.x=15&display_details_view.y=12&amp;record_id=[% record_id %]"  target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Details</font></a>
+<p> <a href="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_details_view.x=15&display_details_view.y=12&amp;record_id=[% record_id %]"  target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">[%  recipe_name %] Details [% record_id %]</font></a>
+<p> <a href="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_modification_form=on&amp;record_id=[% record_id %]"  target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">[%  recipe_name %] Modify [% record_id %]</font></a>
 <p> <a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;recipecode=[% recipe_code %]&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New batch" style="AddButtonStyle">Add a new batch</a>
-<ul>
-    <li> record id [%  record_id %]  </li>
-	<li> Recipe code [% recipe_code %]
-	<li>Recipre name [% recipe_name %]
-	<li>Batch size [% recipe_size %]
- 	<li>Mashton temp [% mashtontemp %]
-	<li>Sparge Temp [% spargtemp %]
-	<li>Mash Temp [% mashtemp %]
-	<li>Mash duration [% mashduration %]
-	<li>boil time [% boiltime     %]
-	<li>Description [% description   %]
-	<li>Type of brew  [% category     %]
- 	<li>Gravity [% gravity     %]
-	<li>poster   [% username_of_poster  %]
-	<li>ingrediancelist  [% embed('IngredianceList') %]
-	<li>ingrediance 	   [% ingredients   %]
-	<li>Insturtion      [% instructions  %]
-	<li>%alcohol  [% alcohol       %]
-	<li>Coulour      [% colour        %]
-	<li>PH      [% ph            %]
-	<li>Pitterness       [% bitterness    %]
-	<li>Maturation       [% maturation    %]
-	<li>Comments       [% comments     %]
-</ul>
 
+	
 
  
  
@@ -213,6 +198,8 @@ Ingredients list
 </td>
 </tr>
 </table>
+
+
 
 
 

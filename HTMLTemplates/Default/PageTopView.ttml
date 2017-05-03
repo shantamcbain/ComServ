@@ -33,12 +33,14 @@
 <head> 
 <meta charset="utf-8">
 [% IF PageSiteName %]       
- [% ELSE %]
+ [% PageSiteName = data.site_display_name %]
+[% ELSE %]
 
 [% PageSiteName = data.site_display_name %]
 	[% END %]
 
  [% IF ScriptDisplayName %]       
+[% ScriptDisplayName = data.script_display_name %]
  [% ELSE %]
 
 [% ScriptDisplayName = data.script_display_name %]
@@ -51,16 +53,12 @@ Group = [% group  %]<br>
 username = [% username %]
 -->
 
-[% IF data.mobile == 1 %]
-
-		[% embed ('PageMobileHeader') %]
-[% ELSE %]
-[% IF data.css_view_url %]
 	<LINK REL ="stylesheet" TYPE ="text/css" HREF ="[% data.css_view_url %]">
-[% END %]
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta NAME="REVISIT-AFTER" CONTENT="7 days">
 <meta NAME="ROBOTS" CONTENT="index all, follow all">
+
 [% IF keywords %]
  <META NAME = "keywords" CONTENT= "[% keywords %] ">
 
@@ -75,31 +73,7 @@ username = [% username %]
 [% END %]
 <link rel="shortcut icon" href="[% data.favicon %]" >
 <!--<link rel="icon" href="[% data.ani_favicon %]" type="[% data.favicon_type %]" -->
-  
-<script src="http://list.beemaster.ca/dada_mail_support_files/static/javascripts/jquery-1.11.3.min.js"></script>
-
-<link rel="stylesheet" href="http://list.beemaster.ca/dada_mail_support_files/static/css/colorbox/colorbox.css">
-<script src="http://list.beemaster.ca/dada_mail_support_files/static/javascripts/colorbox/jquery.colorbox-min.js"></script>
-
-<script src="http://list.beemaster.ca/dada_mail_support_files/static/javascripts/jquery.dadamail.js"></script>
-
-<script type="text/javascript">
-$(document).ready(function() {
-    
-                var targetDiv = '#dada_mail_modal_subscription_form_container';    
-                /* Initialize: */
-                if($(targetDiv).length) { 
-                    $(targetDiv).DadaMail(
-                            {
-                                targetForm: 'dada_mail_modal_subscription_form'
-                            }
-                    )
-        
-                    /* Create the form: */
-                    $(targetDiv).DadaMail('Modal');
-                }
-        });
-</script>
+ 
      
 <script language="javascript" type="text/javascript">
 function switchpage(select) {
@@ -111,9 +85,9 @@ if(select.options[index].value!="")
 window.location.href=select.options[index].value;
 break;
 }
-}
-</script>
-<div id="fb-root"></div>
+ 
+
+
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -121,17 +95,26 @@ break;
   js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="jquery.jqplot.min.js"></script>
+   <script class="include" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link class="include" rel="stylesheet" type="text/css" href="../jquery.jqplot.min.css" />
+    <link rel="stylesheet" type="text/css" href="examples.min.css" />
+    <link type="text/css" rel="stylesheet" href="syntaxhighlighter/styles/shCoreDefault.min.css" />
+ <link rel="stylesheet" type="text/css" href="jquery.jqplot.css" />
 </HEAD>
 <BODY>
  <!-- PageTopView.ttml [% PageVersion %] -->
- <!-- Here we start the Header page The location is  PageTopView [% PageVersion %]-->
+ <!-- Here we start the Header page The location is$.jqplot('chartdiv',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
+   PageTopView [% PageVersion %]-->
 	
  <!-- The main table of the PageTopView -->
 	
  <table class="MainPageTable">
  <tbody>
   [% IF data.debug == 1 %]
- <tr colspan="2"><td>
+ <tr colspan="5"><td>
  [% embed('InheretedVariablesView') %]
 </td> </tr>
  [% END %]
@@ -149,9 +132,11 @@ break;
 
  <tr>
 	<!-- page_left_view.ttml in PageTopView.ttml-->
- <td 	class="LeftNavDataCell" >
-		[% IF data.virtual_server_name == 'helpdesk.computersystemconsulting.ca' %]<!-- HelpDeskLeftPageView-->
+ <td 	class="LeftNavDataCell" >[%  data.domain_dame %]
+		[% IF data.domain_name == 'helpdesk.computersystemconsulting.ca' %]<!-- HelpDeskLeftPageView-->
 			[% embed('HelpDeskLeftPageView') %]
+			[% ELSIF data.view == 'PlanningView'  %]
+			   [% embed('PlanningLeftPageView') %]
 			  [% ELSE %]<!-- page_left_view.ttml -->
 	 		[% embed('LeftPageView') %]
 	        [% END %]
@@ -175,5 +160,5 @@ break;
 	    </TR>
 	</table>
  [% END %]
-[% END %]
+
 <!-- Page is closed in PageBottomView.ttml PageTopView-->

@@ -48,9 +48,7 @@
 
 	  [% IF group    == 'CSC_admin' 
 	   %]	  
- 		 <A HREF ="http://computersystemconsulting.ca/whmcs/admin" target="_Blank" title="Need help get it here" ><font   class="HeaderBarNavStyle">WHMCS </font></a>
-<!-- 	 /cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %] [% embed( 'helplink' ) %] 
- -->	  [% ELSE %]
+[% embed( 'helplink' ) %]   [% ELSE %]
 
 [% embed( 'helplink' ) %]
  [% END %]		
