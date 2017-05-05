@@ -61,7 +61,7 @@
 
 
 [%# query = 'SELECT * FROM page_tb WHERE  (status  = 2 AND page_code = "
-_ data.page_name  + " AND sitename = " _ data.sitename _" ) ORDER BY
+_ data.page_name"  +  AND sitename = " _ data.sitename _" ) ORDER BY
 sitename' %]
 
 [%# FOREACH link = DBI.query( query ) %]
@@ -115,10 +115,9 @@ sitename' %]
 	 [% END%]
 
 	 [% IF group    ==  'Alegro_admin' OR
-	       group    ==  'CSC_admin' OR OR
-	       group    ==  'shantaworkshop_admin'
-	       username == 'Shanta'  
-
+	       group    ==  'CSC_admin' OR 
+	       group    ==  'shantaworkshop_admin' OR
+	       username == 'Shanta' 
 	 %]
 
  <p><a href="http://dev.computersystemconsulting.ca/cgi-bin/page.cgi?site=[% SiteName %]&[% session_string %]&display_modification_form=on&record_id=[% Record_id %]" target="_blank">edit page</a>

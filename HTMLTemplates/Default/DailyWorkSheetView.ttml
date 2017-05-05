@@ -1,0 +1,196 @@
+[% #	$Id: DailyWorkSheetView.ttml,v 1.1 2002/10/08 04:23:07 shanta Exp shanta $	
+
+# Ideally this template should be converted into a static CSS file and
+# be served as /foo/bar.css and not via CGI, since it slows things
+# down and doesn't allow browsers to cache the CSS content.
+
+# otherwise this template is stand-alone, i.e. it dose't't rely on any
+# variables from outside.
+
+%]
+
+ [% PROCESS DefaultDbi.ttml %]
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+        [% session_string = "session_id=$session_id" %]
+
+[% END %] 
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+   [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+   [% SiteDisplayName = data.site_display_name %]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+	
+ [% PROCESS DefaultDbi.ttml %]
+ 
+[% IF SiteName == 'Apis' OR
+      SiteName == 'BMaster'
+      %]
+[% embed(data.page_top_view,['-PAGE_TITLE','Beemaster Daily Work Sheet View']) %]
+
+[% ELSIF SiteName == 'ECF'
+      %]
+[% embed(data.page_top_view,['-PAGE_TITLE','ECF Daily Work Sheet View.']) %]
+	[% ELSE %]
+
+[% embed(data.page_top_view,['-PAGE_TITLE','Daily Work Sheet View.']) %]
+	[% END %]
+
+[% embed('ErrorDisplayView') %]
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+	[% IF username %]
+
+<h3 > Hello  [% firstname %] &nbsp; [% lastname %]! Welcome to [% SiteDisplayName %]</h3>
+	<h3> Daily Work Sheet.</h3>
+	  
+
+	[% ELSE %]
+
+	<h3>  Hello! Welcome to [% SiteDisplayName %]</h3>
+	<h3> Daily Work Sheet.</h3>
+	[% END %]
+
+[% IF group == 'CSC_admin' OR
+                    group == 'Apis_admin' OR
+                    group == 'Bmaster_admin' OR
+                    group == 'ECF_admin' OR
+                    group == 'HE_admin' OR
+                    group == 'IM_admin'  OR
+                    group == 'CS_admin'  OR
+                    group == 'WiseWoman_admin'  OR
+                    group == 'Forager_admin' %]
+                     <a href="/cgi-bin/Inventory/inventory.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form" target = "_blank">Add</a>
+		[% END %]
+
+<A NAME="PageTop"></A>
+<br>
+
+	[% IF  SiteName == 'CSC' OR
+	       SiteName == 'CSCDev' OR
+	       SiteName == 'Demo'
+	       %]
+[% embed('DWSView') %]
+
+	[% ELSIF  SiteName == 'IM' OR
+	       SiteName == 'IMDev'
+	       %]
+	       
+[% embed('IMProductView') %]
+
+	[% ELSIF  SiteName == 'CS' OR
+	       SiteName == 'CSDev'
+	       %]
+	       
+[% embed('DWSCSView') %]
+
+	[% ELSIF SiteName == 'BMaster' OR
+	         SiteName == 'ECF'
+	         %]
+	[% embed('DWSApisView') %]
+	
+
+[% ELSIF SiteName == 'Skye' %]
+	  
+	 <p>It seems that all your products are not uploaded.  
+	
+	 
+	 <p>I have set up your  <a href="http://countrystores.ca/cgi-bin/index.cgi?site=Skye">online store</a> here. This is my application to manager stores.
+	 
+	 
+	 
+	 </p> 
+
+
+
+
+<h3>Our Current Crops</h3>
+    [% USE  DBI( data_source = 'dbi:mysql:forager:mail.computersystemconsulting.ca',
+                username = 'forager',
+                password =  'pwxx88' )
+    %]
+<table>	
+		[% FOREACH link = DBI.query("SELECT * FROM crop_tb
+		                                  WHERE   status   = 'Active'
+		                                      AND sitename = '$SiteName' 
+		                                  ORDER BY plant_code
+		                                  ")%]    
+		                                  
+		                                  <tr>
+		   <td class="NavTableCellStyle">
+		       <a href="/cgi-bin/ENCY/ency.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;" name="Contact" target="[% data.link_target %]" title=" [% link.crop_name %] "><font   class="LeftSideBarNavStyle">[% link.crop_name %]</font></a>
+		     </td>
+		   </tr>
+      </table>   
+[% END %]
+	[% ELSIF  SiteName == 'HoneyDo' OR
+	       SiteName == 'HoneyDoDev'
+	       %]
+[% embed('HoneyDoProductView') %]
+<p>The fallowing is what I setup in CSC's Computer Recycling</p>      
+[% embed('CSCRecyProductView') %]
+		[% ELSIF SiteName == 'Sky' %]
+	  
+<h3>Our Current Crops</h3>
+    [% USE  DBI( data_source = 'dbi:mysql:forager_stores',
+                username = 'forager',
+                password =  'pwxx88' )
+    %]
+<table>	
+		[% FOREACH link = DBI.query("SELECT * FROM product
+		                                  WHERE  ProductDisabled = '0'
+		                                  AND sitename =  '$SiteName' 
+		                                  ORDER BY CategoryID
+		                                  ")%]    
+		                                  
+		                                  <tr>
+		   <td class="NavTableCellStyle">
+		       <a href="/cgi-bin/ENCY/ency.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;" name="Contact" target="[% data.link_target %]" title=" [% link.crop_name %] "><font   class="LeftSideBarNavStyle">[% link.crop_name %]</font></a>
+		     </td>
+		   </tr>
+      </table>   
+
+	[% END %]
+		[% ELSIF SiteName == 'WiseWoman' %]
+<h2> We will get this working as you needed it.	  
+<h3>Our Current Crops</h3>
+    [%# USE  DBI( data_source = 'dbi:mysql:forager_stores',
+                username = 'forager',
+                password =  'pwxx88' )
+    %]
+<table>	
+		[% FOREACH link = DBI.query("SELECT * FROM product
+		                                  WHERE  ProductDisabled = '0'
+		                                  AND sitename =  '$SiteName' 
+		                                  ORDER BY CategoryID
+		                                  ")%]    
+		                                  
+		                                  <tr>
+		   <td class="NavTableCellStyle">
+		       <a href="/cgi-bin/.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;" name="Contact" target="[% data.link_target %]" title=" [% link.crop_name %] "><font   class="LeftSideBarNavStyle">[% link.crop_name %]</font></a>
+		     </td>
+		   </tr>
+      </table>   
+
+	[% END %]
+	[% ELSE %]
+	
+No Products are available for this site.
+
+	[% END %]
+[% embed('CSCCopyRight') %]
+
+
+</td>
+</tr>
+</table>
+
+
+[% embed(data.page_bottom_view) %]
+
