@@ -72,6 +72,22 @@
 <A NAME="PageTop"></A>
 <br>
 
+<ul>
+ <li>Left side bar
+   <ul>
+    <li>Left site Main links</li>
+    <li>left side links to todo list. button to add to a days list.</li>
+   </ul>
+ </li>
+ <li><h3>Main window</h3>.
+   <ul>
+    <li>Nave bar that will show todays date by default navigate next day last day or a specific date.</li> 
+    <li>List todays assigned todo  ordered by time of date. Create link table that will assign a date start time and end time to each entries with details from todo </li>
+   </ul>
+ 
+ </li>
+ <li>right side list of need associated with assigned todo.</li>
+</ul>
 	[% IF  SiteName == 'CSC' OR
 	       SiteName == 'CSCDev' OR
 	       SiteName == 'Demo'
@@ -88,7 +104,7 @@
 	       SiteName == 'CSDev'
 	       %]
 	       
-[% embed('DWSCSView') %]
+[% embed('DWSView') %]
 
 	[% ELSIF SiteName == 'BMaster' OR
 	         SiteName == 'ECF'

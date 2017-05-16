@@ -60,12 +60,12 @@
 	<tr>
 	<td>
 	
-	[% embed('DWSLinksView.ttml')%]
+	[% embed('DWSLinkView.ttml')%]
 	
 	 </td>
 	</tr>
   [% END %]
-	[%# embed('AdminLeftLinksView.ttml')%]
+	[% embed('AdminLeftLinksView.ttml')%]
 
  	<tr>
 	<td>

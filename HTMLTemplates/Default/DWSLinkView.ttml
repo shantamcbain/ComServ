@@ -35,6 +35,6 @@
 	   </tr>
 </table>	
 <!-- Main SQL Call  -->               
-	  [% embed ('ToDoList') %]
+	  [% embed ('DWSTodoSQL') %]
 	<!-- Main SQL Call ended  -->               
 <!-- endMain Links -->	  	
