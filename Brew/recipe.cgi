@@ -735,7 +735,7 @@ mashduration => [
         -MAXLENGTH    => 30
     ],
 mashtemp => [
-        -DISPLAY_NAME => 'Mash Target Temp',
+        -DISPLAY_NAME => 'Strike Temp',
         -TYPE         => 'textfield',
         -NAME         => 'mashtemp',
         -VALUE        => 154,
