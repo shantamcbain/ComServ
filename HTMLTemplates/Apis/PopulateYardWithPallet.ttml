@@ -16,4 +16,6 @@ Active Hives [% yard_code %]</li>
    <a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;submit_power_search=on&amp;simple_search_string=[% link.pallet_code %]&amp;sort_field1=pallet_code">Pallet</a>   </li> 
 
  [% END %]
+ 
+
 </td></tr>
