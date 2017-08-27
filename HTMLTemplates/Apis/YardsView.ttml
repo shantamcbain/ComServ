@@ -24,16 +24,8 @@
 [% dbi = data.dbi_dsn||'dbi:mysql:forager:mail.computersystemconsulting.ca' %]
  
  [% PROCESS ActiveQueensSQL.ttml %]
-[% FOREACH link = DBI.query("SELECT * FROM apis_queen_log_tb
-                                  WHERE  sitename =  '$SiteName' AND
-                                  status = 'Active' OR 
-                                  status = 'Breeder'OR 
-                                  status = 'Breeder_candidate'
-                                 ")%]  
-                                 
- [% ActiveQueens = ActiveQueens + 1 %]
- 
-[% END %]
+  
+
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td >
@@ -60,7 +52,7 @@
   <tr> <td>  [% embed ('PopulateYardWithPallet') %]</td>   </tr>
    [% END %]
    </tr>
-   <tr><td></td><td></td><td>[% HiveCap %]</td><td>[% CurrentSize %]</td><td>Active Queens [% ActiveQueens %] </td></tr>
+<tr><td></td><td></td><td>[% HiveCap %]</td><td>[% CurrentSize %]</td><td>Total Active Queens [% ActiveQueens %] </td></tr>
 
 
 
