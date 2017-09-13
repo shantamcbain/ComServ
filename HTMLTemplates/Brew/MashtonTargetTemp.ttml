@@ -8,7 +8,7 @@
 
 	[% session_id = data.session_object.getId() %]
    [% session_string = "session_id=$session_id" %]
-   [% BatchNumberS = data.session_object.getAttribute('-KEY','batchnumber') %]
+   [% BatchNumber = data.session_object.getAttribute('-KEY','batchnumber') %]
    
 [% END %]
 
@@ -40,7 +40,7 @@
  </td>
  <td>
   <h3>Graph<h3>
-  <img src="/image/temp.png" alt="temp graph">
+  <img src="/images/Brew/[% batchnumber %].png" alt="temp graph">
   
   
   Mashtuntemp [% total_mashtuntemp %]

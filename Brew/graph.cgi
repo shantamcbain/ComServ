@@ -1,84 +1,53 @@
-#!/usr/bin/perl -wT
-
+#!/usr/bin/perl
+use strict;
 use DBI;
-use CGI::Carp qw(fatalsToBrowser);
-use Chart::Lines;
-use DBIx::Chart;
+use GD::Graph::Data;
+use GD::Graph::bars;
+use CGI qw(:standard);
+use DBI;
+my $CGI = new CGI() or
+    die("Unable to construct the CGI object" .
+        ". Please contact the webmaster.");
 
-$|=1;
-$ENV{PATH}="";
-my $pw  = "UA=nPF8*m+T#";
-my $dsn = "DBI:mysql:shanta_forager";
-my $user = "shanta_forager";
-my $batchcode = "tbb1";
-
-print <<'END';
-Content-Type: text/html
-
-<HTML>
-  <HEAD>
-    <TITLE>MySql Test</TITLE>
-  </HEAD>
-  <BODY>
-END
-
-#open connection to MySql database
-$dbh = DBIx::Chart->connect($dsn ,$user,$pw)
-   or die "Error connecting to database: $DBI::errstr";
-
-#prepare and execute SQL statement
-#SELECT time, spargtemp,mastuntemp, linetemp 
-#                      FROM brew_temp_tb 
-#                      WHERE batchnumber = '$batchcode'
-#                      ORDER BY time
-#                      RETURNING linegraph(*)
-#                      WHERE WIDTH=400 AND HEIGHT=400 AND
-# TITLE = 'Temperature graph' AND
-# COLOR IN ('red', 'green', 'blue', 'lyellow', 'lpurple') AND
-# BACKGROUND='lgray'
-
-$rsth = $dbh->prepare (select * from brew_temp_tb
-                       WHERE batchnumber = '$batchcode'
-        returning linegraph(*)      
-        where color=red) spargtemp
-
-      (select * from from brew_temp_tb
-                       WHERE batchnumber = '$batchcode
-    returning linegraph(*)
-        where color=blue) mastuntemp
-    returning image
-    where WIDTH=500
-    AND HEIGHT=500
-    AND TITLE='Composite Dense Linegraph Test'
-    AND SIGNATURE='(C)2002, GOWI Systems'
-    AND X_AXIS='Angle (Radians)'
-    AND Y_AXIS="Sin/Cos"
-    AND FORMAT='PNG'
-);
- $rsth->execute;
-$rsth->bind_col(1, \$buf);
-$rsth->fetch;
-#$sth->execute ||
-      die "Could not execute SQL statement ... maybe invalid?";
-
-print "<center><table border>";
-#output database results
-while (@row=$sth->fetchrow_array)
-{
-print "<tr>";
-foreach (@row)
-{
-#$chart->add_dataset($_);
-print "<td>$_</td>";
+foreach ($CGI->param()) {
+    $CGI->param($1,$CGI->param($_)) if (/(.*)\.x$/);
 }
-print "</tr>\n";
+ my $SiteName = $CGI->param('site') ;
+ my $batchnumber = $CGI ->param('batchnumber')||"20170903nervana" ;
+
+my $dsn = "dbi:mysql:shanta_forager";
+my $usr  = 'shanta_forager';
+my $pw = 'UA=nPF8*m+T#'; 
+
+my $sql = '
+  SELECT time, mastuntemp, LineTemp, spargtemp 
+  FROM brew_temp_tb 
+  WHERE sitename = ? 
+    AND batchnumber = ?
+  ORDER BY time';
+
+my $dbh = dbh(); # connect
+my $sth = $dbh->prepare($sql);
+$sth->execute('Brew',$batchnumber);           
+           
+my $data = GD::Graph::Data->new();
+while (my @row = $sth->fetchrow_array){
+  $data->add_point(@row);
 }
 
-print "</table></center>";
-my $chart = new Chart::Lines(600, 400);
-$chart->png('temps.png', @data);
-$chart->set('title' => 'temperature chart');
-$dbh->disconnect or warn $dbh->errstr;
+my $chart = GD::Graph::bars->new();
+my $gd = $chart->plot($data);
+open(IMG, '>','/images/Brew/$batchnumber.png') or die $!;
+binmode IMG;
+print IMG $gd->png;
 
-print "</body></html>";
-exit;
+# connect
+sub dbh{
+
+my $dsn = "dbi:mysql:shanta_forager";
+my $usr  = 'shanta_forager';
+my $pw = 'UA=nPF8*m+T#'; 
+  my $dbh = DBI->connect($dsn, $usr, $pw, 
+     { RaiseError=>1, AutoCommit=>1 } );
+  return $dbh;
+} 
