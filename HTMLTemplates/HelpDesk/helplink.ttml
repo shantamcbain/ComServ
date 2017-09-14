@@ -11,18 +11,19 @@
 
 	      [% ELSE %]
 	      <ul id="dd">
-  <li><a href="/cgi-bin/CSC/helpdesk_debug.cgi?site=[% SiteName %]&amp;[% session_string %]"target="_Blank" title="Need help get it here" class="menu" id="mmenu1" 
+  <li><a href="HTTPS://helpdesk.[% HostName %]/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]"target="_Blank" title="Need help get it here" class="menu" id="mmenu1" 
       onmouseover="mopen(1);"
       onmouseout="mclosetime();">HelpDesk Home</a>
     <div class="submenu" id="menu1"
       onmouseover="mcancelclosetime()"
       onmouseout="mclosetime();">
-        <a href="/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]"target="_Blank" title="Need help get it here">HelpDesk</a>
+        <a href="HTTPS://helpdesk.[% HostName %]/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]"target="_Blank" title="Need help get it here">HelpDesk</a>
         <a href="#">DHTML Tutorials</a>
         <a href="#">JavaScript Tutorials</a>
         <a href="#">CSS Tutorials</a>
     </div>
   </li>
+  <!---
   <li><a href="#" class="menu" id="mmenu2" 
       onmouseover="mopen(2);"
       onmouseout="mclosetime();">Download</a>
@@ -43,8 +44,7 @@
     <div class="submenu" id="menu3"
       onmouseover="mcancelclosetime()"
       onmouseout="mclosetime();">
-        <a href="#">Office</a>
-        <a href="#">Sales</a>
+        <a href="HTTPS://helpdesk.[% HostName %]/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]"target="_Blank" title="Need help get it here"><font   class="HeaderBarNavStyle">Our HelpDesk System</font></a>
         <a href="#">Customer Service</a>
         <a href="#">Shipping</a>
     </div>
@@ -53,6 +53,7 @@
 
 	      
  <a href="HTTPS://helpdesk.[% HostName %]/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]"target="_Blank" title="Need help get it here"><font   class="HeaderBarNavStyle">Our HelpDesk System</font></a>
+ --->
   [% END %]	
  <!-- 
  <form method="post">
@@ -123,7 +124,7 @@ in admin loop
  </select>
 </form> 
 <<<<<<< ours
- -->
+
 =======
 >>>>>>> theirs
 -->
