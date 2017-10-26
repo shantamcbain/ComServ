@@ -867,7 +867,7 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
             -FIELDS => [
                         qw(
                            sitename
-                           start_date
+                           time
                            last_mod_by
                            last_mod_date
                           )
@@ -937,7 +937,6 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
         -IS_FILLED_IN => [
             -FIELDS => [qw(
                            sitename
-                           start_date
                            last_mod_by
                            last_mod_date
                           )
@@ -959,7 +958,7 @@ my @DATASOURCE_FIELD_NAMES =
     qw(
        record_id
        sitename
-       start_date
+       date
        batchnumber
        linetemp
        last_mod_by
@@ -1129,21 +1128,19 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
 		 -LABELS       => \%status,
                  -INPUT_CELL_COLSPAN => 3,
                 ],
-#   sitename => [
- #       -DISPLAY_NAME => 'Site',
-#        -TYPE         => 'popup_menu',
-#        -NAME         => 'sitename',
-#        -VALUES       => [qw(All AltPower Apis BCHPA BeeMaster CSC CS ECF ENCY
- #                         Extropia Forager Fly Marts News Organic RV Shanta 
- #                         Skye TelMark USBM VitalVic 
-#                          )]
-#    ],
+   sitename => [
+       -DISPLAY_NAME => 'Site',
+       -TYPE         => 'popup_menu',
+       -NAME         => 'sitename',
+        -VALUES       => [qw(Brew 
+                          )]
+    ],
 
 
-     accumulative_time => [
-        -DISPLAY_NAME => 'Accumulated Please Add time to entry',
+     time => [
+        -DISPLAY_NAME => 'time ',
         -TYPE         => 'textfield',
-        -NAME         => 'accumulative_time',
+        -NAME         => 'time',
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],
@@ -1165,16 +1162,16 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -WRAP         => 'VIRTUAL'
     ],
    );
+  #     [qw(start_day start_mon start_year)],
 
 
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
        qw(sitename),
        qw(batchnumber),
-       qw(subject ),
-       [qw(start_day start_mon start_year)],
-       qw(spargtemp),
+       qw(time),
        qw(mastuntemp),
+       qw(spargtemp),
        qw(linetemp),
     );
 
@@ -1183,8 +1180,8 @@ my %ACTION_HANDLER_PLUGINS =
     (
 
      'Default::DisplayAddFormAction' =>
-     {       qw(estimated_man_hours),
-       qw(accumulative_time),
+     {       qw(time),
+       qw(time),
 
       -DisplayAddFormAction     => [qw(Plugin::Todo::DisplayAddFormAction)],
      },
@@ -1686,14 +1683,15 @@ my @VIEW_FILTERS_CONFIG_PARAMS = (
 ######################################################################
 #CSC::PopulateInputWidgetDefinitionListWithAccumlatedLogTimeWidgetAction
 
-# note: Default::DefaultAction must! be the last one
+# note: Default::DefaultAction must! be the last one 
+#   CSC::PopulateInputWidgetDefinitionListWithDropListSiteNameWidgetAction
+
 my @ACTION_HANDLER_LIST =
     qw(
        Default::SetSessionData
        Default::DisplayCSSViewAction
        
        CSC::PopulateInputWidgetDefinitionListWithProjectCodeWidgetAction
-       CSC::PopulateInputWidgetDefinitionListWithDropListSiteNameWidgetAction
        CSC::ProcessShowAllOpenToDosAction
        Apis::ProcessShowBillsRecordsAction
        Default::DisplayDetailsRecordViewAction
