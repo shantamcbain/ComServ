@@ -183,7 +183,7 @@ function QuickClick(list) {
  <tr>   <td> bitterness </td> <td>[%  bitterness   %]</td></tr>
  <tr>   <td>maturation </td><td> [%  maturation   %]</td></tr>
   <tr>  <td> comments</td> <td>[%  comments       %] </td></tr>
-</table>AssB
+</table>
 
 <p> <a href="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_details_view.x=15&display_details_view.y=12&amp;record_id=[% record_id %]"  target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">[%  recipe_name %] Details [% record_id %]</font></a>
 <p> <a href="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_modification_form=on&amp;record_id=[% record_id %]"  target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">[%  recipe_name %] Modify [% record_id %]</font></a>

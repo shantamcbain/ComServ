@@ -619,6 +619,7 @@ my @DATASOURCE_FIELD_NAMES = qw(
        stock
        weight
        bill
+       unit
        username_of_poster
        last_mod_by
        last_mod_date
@@ -652,6 +653,17 @@ my %status =
       2 => 'Out of Stock',
       3 => 'Not stocked',
     );
+my %unit =
+    (
+      'lb' => 'Pounds',
+      'g' => 'Grams',
+      'kg' => 'Kilo grams',
+      'Oz' => 'Ounces',
+      'tsp' => 'TeaSpoon',
+      'tbs' => 'TableSpoon',
+      'Each' => 'Each',
+      'Tabs' => 'Tablets',
+      );
 
 my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 
@@ -784,7 +796,15 @@ stock => [
         -SIZE         => 30,        
         -MAXLENGTH    => 80    
         ],
- 
+ unit  => [        
+        -DISPLAY_NAME => 'Unit of measure ',
+        -TYPE         => 'popup_menu',        
+        -NAME         => 'unit',        
+        -VALUES       => [sort {$a <=> $b} keys %unit],
+        -LABELS       => \%unit,
+        -INPUT_CELL_COLSPAN => 3,
+        ],
+
 );
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
@@ -794,6 +814,7 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
      qw(ingrediant_name),
      qw(description),
      qw(weight),
+     qw(unit),
      qw(stock),
      qw(bill),
    #   qw(url),
