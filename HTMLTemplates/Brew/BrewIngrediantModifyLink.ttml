@@ -1,0 +1,30 @@
+<td>
+	  [% IF username  == 'Shanta' OR
+	        group     == 'Apis_Admin' OR
+	        group     == 'BCHPA_Admin' OR
+	        group     == 'BMast_Admin' OR
+	        group     == 'BMast_Co-op_Admin' OR
+	        group     == 'Brew_Admin' OR
+           group     == 'CSC_Admin' OR
+	        group     == 'CS_Admin' OR
+	        group     == 'ECF_Admin' OR
+	        group     == 'Orgainc_Admin' OR
+	        group     == 'DarmaFarmsAdmin' OR
+	        group     == 'MARTS_Admin' OR
+	        group     == 'VitalVic_Admin' OR
+	        group     == 'ENCY_Admin' OR
+	        group     == 'USBM_Admin' OR
+	        group     == 'Shanta_Admin' OR
+	        group     == 'HoneyDo_Admin' OR
+	        group     == 'Brew_Admin' OR
+	        group     == 'Demo_admin' OR
+	        group    ==  'WB_admin' OR
+	        group     == 'MJB_Admin'        %]
+<a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&display_modification_form=on&record_id=[% link.record_id %]&[% session_string %]" target="_blank" name="Modify ingrediant" style="AddButtonStyle" title="Modify ingrediant Batch">Modify</a>   [% END %]
+</td>
+
+	
+
+
+
+
