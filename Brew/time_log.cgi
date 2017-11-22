@@ -752,6 +752,13 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -MAXLENGTH    => 5
     ],
     
+   sitename => [
+       -DISPLAY_NAME => 'Site',
+       -TYPE         => 'popup_menu',
+       -NAME         => 'sitename',
+        -VALUES       => [qw(Brew 
+                          )]
+    ],
      
     time_code => [
                  -DISPLAY_NAME => 'Time Code',
@@ -1394,7 +1401,8 @@ my @VIEW_FILTERS_CONFIG_PARAMS = (
 #                      ACTION/WORKFLOW SETUP                         #
 ######################################################################
 #CSC::PopulateInputWidgetDefinitionListWithAccumlatedLogTimeWidgetAction
-
+#      CSC::PopulateInputWidgetDefinitionListWithDropListSiteNameWidgetAction
+ 
 # note: Default::DefaultAction must! be the last one
 my @ACTION_HANDLER_LIST =
     qw(
@@ -1402,7 +1410,6 @@ my @ACTION_HANDLER_LIST =
        Default::DisplayCSSViewAction
        
        CSC::PopulateInputWidgetDefinitionListWithProjectCodeWidgetAction
-       CSC::PopulateInputWidgetDefinitionListWithDropListSiteNameWidgetAction
        CSC::ProcessShowAllOpenToDosAction
        Default::DisplayDetailsRecordViewAction
 
