@@ -70,37 +70,12 @@ function QuickClick(list) {
 	    <li>BrewName    = [% data.brewname %].data</li>
 	    <li>Recipe Code = [%  data.recipecode %].data</li>
 	    <li>session       [% RecipeCode %]</li>
-	    <li>Session string [% session_string %]</li>
 	    <li>BMS           [% BrewNameS %]</li>
 	    <li>HomeVew TTML       [% HomeView %]</li>
     </ol>
 <h5>Brewing Page [% version %]</h5>
 
- Dropdown menue
- <div class="dropdown">
-  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-  <div id="myDropdown" class="dropdown-content">
- [% IF username  == 'Shanta' OR
-	        group     == 'Brew_Admin' OR
-            group     == 'CSC_Admin' OR
-	        group     == 'ENCY_Admin' OR
-	        group     == 'USBM_Admin' OR
-	        group     == 'Shanta_Admin' OR
-	        group     == 'Demo_admin' 
-	               %]
-
-	   &nbsp;<a href="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New Recipe" style="AddButtonStyle">Add a new recipe</a>
-	
-	   [% END %]
-[% FOREACH item = DBI.query(" SELECT * FROM brew_recipe_tb
-	                                WHERE  sitename = 'Brew'
-                                     
-                                   ORDER BY category, recipe_code
-	                            ")%]  
-<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;view=BrewRecipeView&amp;[% session_string %]&recipecode=[% item.recipe_code %]">[% item.category %]&nbsp; [% item.recipe_name %] [% item.brew_name%][% item.date%]</option>
-
-[% END %]    </div>
-</div>
+ 
 
 
 <FORM METHOD=POST  ACTION="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;view=BatchLogView&amp;[% session_string %]&amp;batchnumber=" NAME="frmLinkList" onSubmit="return CheckSelection()">
@@ -111,14 +86,12 @@ function QuickClick(list) {
  [% FOREACH item = DBI.query(" SELECT * FROM brew_recipe_tb
 	                                WHERE  sitename = 'Brew'
                                      
-                                   ORDER BY category, recipe_code
+                                   ORDER BY recipe_code
 	                            ")%]  
-<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;view=BrewRecipeView&amp;[% session_string %]&recipecode=[% item.recipe_code %]">[% item.category %] &nbsp;[% item.recipe_name %] [% item.brew_name%][% item.date%]</option>
+<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;view=BrewRecipeView&amp;[% session_string %]&recipecode=[% item.recipe_code %]">[% item.recipe_name %] [% item.brew_name%][% item.date%]</option>
 
 [% END %]
-
-
-<INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
+ <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
            
 
 [% IF username  == 'Shanta' OR
@@ -147,7 +120,6 @@ function QuickClick(list) {
      [%  description  = link.description %]
      [%  category     = link.category %]
      [%  gravity      = link.gravity %]
-     [%  recipe_size  = link.recipe_size%]
      [%  ingredients  = link.ingredients %]
      [%  mashtontemp  = link.mashtontemp %]
      [%  spargtemp    = link.spargtemp %]
@@ -162,19 +134,19 @@ function QuickClick(list) {
 
 
 </FORM>
-<h3>Our Recipe for 	      [% BrewName %]
+<h3>Our Recipe for 	      [% recipe_name %] [% BrewName %]
 </h3> 
 <p><a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;recipecode=[% recipe_code %]&amp;batchnumber=[% recipe_code %]Date= test&amp;site=[% SiteName %]&amp;recipename=[% recipe_name %]&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New batch" style="AddButtonStyle">Add a new batch</a></p>
 <table>
  <tr><td>Recipe Code</td> <td>[%  recipe_code   %]</td>	</tr>
  <tr>    <td>Recipe Name</td><td>[%  recipe_name %]</td></tr>
-  <tr>   <td>Size In Litres </td><td>[%  recipe_size  %]</td></tr>
+  <tr>   <td>Size</td><td>[%  recipe_size  %]</td></tr>
  <tr>    <td>Boil Time</td> <td>[%  boiltime %]</td></tr>
  <tr>    <td>Discription</td> <td>[%  description %]</td></tr>
  <tr>    <td>category</td><td>[%  category %]</td></tr>
  <tr>   <td>gravity </td><td>[%  gravity   %]</td></tr>
- <tr>   <td>username_of_poster </td><td> [%  link.username_of_poster%]</td></tr>
- <tr>  <td>Ingrediance List </td><td>  
+ <tr>   <td>username_of_poster </td><td> [%  username_of_poster%]</td></tr>
+ <tr>  <td>ingrediancelist </td><td> 
 [% IF username  == 'Shanta' OR
 	        group     == 'Apis_Admin' OR
 	        group     == 'BCHPA_Admin' OR
@@ -196,12 +168,12 @@ function QuickClick(list) {
 	        group     == 'Demo_admin' OR
 	        group    ==  'WB_admin' OR
 	        group     == 'MJB_Admin'        %]
-&nbsp;<a href="/cgi-bin/Brew/item.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;subject=Item_link&amp;Nav_link=1&view=BatchLogView&amp;recipecode=[% item.recipe_code %]" name="Add Ingredients" target=_blank  title="Add New batch" style="AddButtonStyle">Add new item</a>
+&nbsp;<a href="/cgi-bin/Brew/item.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;subject=Item_link&amp;Nav_link=1&view=BatchLogView&amp;recipecode=[% item.recipe_code %]" name="Add Ingredients"  title="Add New batch" style="AddButtonStyle">Add item</a>
 	   [% END %]
 	   </td></tr>
 	   <tr><td colspan="2">  [% embed('IngredianceList') %]</td></tr>
- <!--  <tr>   <td>ingredients</td><td> [%  ingredients %]</td></tr>-->
-<tr>   <td>instruction</td> <td>[%  instructions %]</td></tr> 
+	<tr>   <td>ingredients</td><td> [%  ingredients %]</td></tr>
+ <tr>   <td>instruction</td> <td>[%  instructions %]</td></tr>
  <tr>   <td>Mashton Temp</td> <td>[%  mashtontemp   %]</td></tr>
  <tr>   <td>Sparge temp</td><td> [%  spargtemp   %]</td></tr>
  <tr>    <td>alcohol   </td><td>[%  alcohol      %]</td></tr>

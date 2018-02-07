@@ -77,8 +77,6 @@ foreach ($CGI->param()) {
 ######################################################################
 my $SiteName =  $CGI->param('site') || "Brew";
 my $recipe_code=  $CGI->param('recipe_code');
-my $bill =  $CGI->param('bill');
-my $unit = $CGI->param('unit');
 my $APP_NAME = "ingrediant";
 my $SITE_DISPLAY_NAME = 'Site not added to session setup.';
 my $APP_NAME_TITLE = "ingrediance table";
@@ -461,7 +459,7 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
 
      -FIELD_MAPPINGS =>
       {
-       item_code	      	=> 'ingrediant Code',
+       ingrediant_code	      	=> 'ingrediant Code',
        estimated_man_hours 	=> 'Estimated Man Hours',
        accumulative_time 	=> 'Accumulated time',
        site_name                => 'Owner',
@@ -618,9 +616,7 @@ my @DATASOURCE_FIELD_NAMES = qw(
        ingrediant_name 
        description
        stock
-       weight
        bill
-       unit
        username_of_poster
        last_mod_by
        last_mod_date
@@ -654,17 +650,6 @@ my %status =
       2 => 'Out of Stock',
       3 => 'Not stocked',
     );
-my %unit =
-    (
-      'lb' => 'Pounds',
-      'g' => 'Grams',
-      'kg' => 'Kilo grams',
-      'Oz' => 'Ounces',
-      'tsp' => 'TeaSpoon',
-      'tbs' => 'TableSpoon',
-      'Each' => 'Each',
-      'Tabs' => 'Tablets',
-      );
 
 my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 
@@ -672,8 +657,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
         -DISPLAY_NAME => 'bill',        
         -TYPE         => 'popup_menu',        
         -NAME         => 'bill',        
-        -VALUE        => $bill,
-         -VALUES       => [qw(
+        -VALUES       => [qw(
             Grain
             Hops
             Adjuncts
@@ -767,7 +751,7 @@ sitename => [
         -MAXLENGTH    => 80
     ],
 stock => [
-        -DISPLAY_NAME => 'Amount',
+        -DISPLAY_NAME => 'Stock',
         -TYPE         => 'popup_menu',
         -NAME         => 'status',
         -VALUES       => [sort {$a <=> $b} keys %status],
@@ -797,16 +781,7 @@ stock => [
         -SIZE         => 30,        
         -MAXLENGTH    => 80    
         ],
- unit  => [        
-        -DISPLAY_NAME => 'Unit of measure ',
-        -TYPE         => 'popup_menu',        
-        -NAME         => 'unit',        
-        -VALUES       => [sort {$a <=> $b} keys %unit],
-        -LABELS       => \%unit,
-        -VALUE        => $unit,
-        -INPUT_CELL_COLSPAN => 3,
-        ],
-
+ 
 );
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
@@ -816,7 +791,6 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
      qw(ingrediant_name),
      qw(description),
      qw(weight),
-     qw(unit),
      qw(stock),
      qw(bill),
    #   qw(url),
@@ -855,7 +829,7 @@ else{
 	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@DATASOURCE_FIELD_NAMES,
-	        -KEY_FIELDS   => ['item_code'],
+	        -KEY_FIELDS   => ['ingrediant_code'],
 	        -FIELD_TYPES  => {
 	               # record_id        => 'Autoincrement',
                     datetime         => 
@@ -919,7 +893,7 @@ my  @DROPLIST_DATASOURCE_CONFIG_PARAMS = (
 	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@DROPLIST_DATASOURCE_FIELD_NAMES,
-	        -KEY_FIELDS   => ['item_code'],
+	        -KEY_FIELDS   => ['ingrediant_code'],
 	        -FIELD_TYPES  => {
 	            record_id        => 'Autoincrement',
                     datetime         => 
@@ -972,7 +946,7 @@ my @MAIL_CONFIG_PARAMS = (
 
 my @EMAIL_DISPLAY_FIELDS = qw(
         status
-        item_code
+        ingrediant_code
         ingrediant_name
         category
         client_name
@@ -1117,7 +1091,7 @@ my @VIEW_DISPLAY_PARAMS = (
         },
   -DISPLAY_FIELDS        => [qw(
         sitename
-        item_code
+        ingrediant_code
         commentmy @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
       qw(sitename),
@@ -1148,7 +1122,7 @@ my @VIEW_DISPLAY_PARAMS = (
         )],
     -SORT_FIELDS        => [qw(
         status
-        intem_code
+        ingrediant_code
         ingrediant_name
         category
         comments        
@@ -1259,7 +1233,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -DETAILS_VIEW_NAME                      => 'DetailsRecordView',
     -DELETE_FORM_VIEW_NAME                  => 'BasicDataView',
     -DELETE_EMAIL_BODY_VIEW                 => 'DeleteEventEmailView',
-    -DEFAULT_SORT_FIELD1                    => 'item_code',
+    -DEFAULT_SORT_FIELD1                    => 'ingrediant_code',
     -DEFAULT_SORT_FIELD2                    => 'ingrediant_name',
     -ENABLE_SORTING_FLAG                    => 1,
     -HAS_MEMBERS                            => $HasMembers,
@@ -1297,15 +1271,14 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -VIEW_LOADER                            => $VIEW_LOADER,
     -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
     -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || $records || 500,
-    -SORT_FIELD1                            => $CGI->param('sort_field1') || 'item_code',
+    -SORT_FIELD1                            => $CGI->param('sort_field1') || 'ingrediant_code',
     -SORT_FIELD2                            => $CGI->param('sort_field2') || 'status',
-    -SORT_DIRECTION                         => $CGI->param('sort_direction') || '   ',
+    -SORT_DIRECTION                         => $CGI->param('sort_direction') || 'ASC',
     -SIMPLE_SEARCH_STRING                   => $CGI->param('simple_search_string') || "",
     -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
     -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
     -KEY_FIELD                              => 'record_id',
-    -INGREDIANT_CODE                        => $CGI->param('item_code')|| 'TBB',
-    -RECIPE_CODE                            => $recipe_code,
+    -INGREDIANT_CODE                        => $CGI->param('ingrediantcode')|| 'TBB',
     -SITE_NAME                              => $SiteName,
     -PAGE_TOP_VIEW           =>  $CGI->param('page_top_view') ||  $page_top_view ,
     -PAGE_BOTTOM_VIEW        =>  $CGI->param('page_bottom_view') || $page_bottom_view,

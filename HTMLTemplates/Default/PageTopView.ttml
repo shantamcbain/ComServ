@@ -85,9 +85,8 @@ window.location.href=select.options[index].value;
 break;
 }
  
-<script>type="text/javascript" src="/javascript/menu.js"></script>
 
-<script>type="text/javascript" src="/javascript/ebay.js"></script>
+
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}

@@ -87,7 +87,7 @@ my $SiteName =  $CGI->param('site');
 my $site_update;
     my $SITE_DISPLAY_NAME = 'None Defined for this site.';
     my $last_update  = 'april 24, 2011';
-    my $time =  $CGI->param('time');
+
     my $homeviewname ;
     my $home_view = 'BasicDataView'; 
     my $BASIC_DATA_VIEW; 
@@ -867,7 +867,7 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
             -FIELDS => [
                         qw(
                            sitename
-                           time
+                           start_date
                            last_mod_by
                            last_mod_date
                           )
@@ -937,6 +937,7 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
         -IS_FILLED_IN => [
             -FIELDS => [qw(
                            sitename
+                           start_date
                            last_mod_by
                            last_mod_date
                           )
@@ -958,8 +959,7 @@ my @DATASOURCE_FIELD_NAMES =
     qw(
        record_id
        sitename
-       date
-       time
+       start_date
        batchnumber
        linetemp
        last_mod_by
@@ -1129,20 +1129,21 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
 		 -LABELS       => \%status,
                  -INPUT_CELL_COLSPAN => 3,
                 ],
-   sitename => [
-       -DISPLAY_NAME => 'Site',
-       -TYPE         => 'popup_menu',
-       -NAME         => 'sitename',
-        -VALUES       => [qw(Brew 
-                          )]
-    ],
+#   sitename => [
+ #       -DISPLAY_NAME => 'Site',
+#        -TYPE         => 'popup_menu',
+#        -NAME         => 'sitename',
+#        -VALUES       => [qw(All AltPower Apis BCHPA BeeMaster CSC CS ECF ENCY
+ #                         Extropia Forager Fly Marts News Organic RV Shanta 
+ #                         Skye TelMark USBM VitalVic 
+#                          )]
+#    ],
 
 
-     time => [
-        -DISPLAY_NAME => 'time ',
+     accumulative_time => [
+        -DISPLAY_NAME => 'Accumulated Please Add time to entry',
         -TYPE         => 'textfield',
-        -NAME         => 'time',
-        -VALUE        => $time,
+        -NAME         => 'accumulative_time',
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],
@@ -1164,16 +1165,16 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -WRAP         => 'VIRTUAL'
     ],
    );
-  #     [qw(start_day start_mon start_year)],
 
 
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
        qw(sitename),
        qw(batchnumber),
-       qw(time),
-       qw(mastuntemp),
+       qw(subject ),
+       [qw(start_day start_mon start_year)],
        qw(spargtemp),
+       qw(mastuntemp),
        qw(linetemp),
     );
 
@@ -1182,8 +1183,8 @@ my %ACTION_HANDLER_PLUGINS =
     (
 
      'Default::DisplayAddFormAction' =>
-     {       qw(time),
-       qw(time),
+     {       qw(estimated_man_hours),
+       qw(accumulative_time),
 
       -DisplayAddFormAction     => [qw(Plugin::Todo::DisplayAddFormAction)],
      },
@@ -1685,15 +1686,14 @@ my @VIEW_FILTERS_CONFIG_PARAMS = (
 ######################################################################
 #CSC::PopulateInputWidgetDefinitionListWithAccumlatedLogTimeWidgetAction
 
-# note: Default::DefaultAction must! be the last one 
-#   CSC::PopulateInputWidgetDefinitionListWithDropListSiteNameWidgetAction
-
+# note: Default::DefaultAction must! be the last one
 my @ACTION_HANDLER_LIST =
     qw(
        Default::SetSessionData
        Default::DisplayCSSViewAction
        
        CSC::PopulateInputWidgetDefinitionListWithProjectCodeWidgetAction
+       CSC::PopulateInputWidgetDefinitionListWithDropListSiteNameWidgetAction
        CSC::ProcessShowAllOpenToDosAction
        Apis::ProcessShowBillsRecordsAction
        Default::DisplayDetailsRecordViewAction
@@ -1758,10 +1758,10 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -DETAILS_VIEW_NAME                      => 'DetailsRecordView',
     -GROUP_OF_POSTER                        => $GROUP_OF_POSTER,
     -DATA_HANDLER_MANAGER_CONFIG_PARAMS     => \@DATA_HANDLER_MANAGER_CONFIG_PARAMS,
-    -DISPLAY_ACKNOWLEDGEMENT_ON_ADD_FLAG    => 0,
+    -DISPLAY_ACKNOWLEDGEMENT_ON_ADD_FLAG    => 1,
     -DISPLAY_ACKNOWLEDGEMENT_ON_DELETE_FLAG => 1,
     -DISPLAY_ACKNOWLEDGEMENT_ON_MODIFY_FLAG => 1,
-    -DISPLAY_CONFIRMATION_ON_ADD_FLAG       => 0,
+    -DISPLAY_CONFIRMATION_ON_ADD_FLAG       => 1,
     -DISPLAY_CONFIRMATION_ON_DELETE_FLAG    => 1,
     -DISPLAY_CONFIRMATION_ON_MODIFY_FLAG    => 1,
     -ENABLE_SORTING_FLAG                    => 1,
