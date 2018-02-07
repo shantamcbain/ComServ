@@ -78,7 +78,7 @@ foreach ( $CGI->param() )
 my $debug = 0;
 
 my $APP_NAME       = "log";
-my $last_update    = 'Novemver 16, 2016';
+my $last_update    = 'Febuary 02, 2018';
 my $site_update    = 'Novemver 16, 2016';
 my $APP_NAME_TITLE = "Brew Log";
 my $FAVICON;
@@ -679,6 +679,8 @@ my @DATASOURCE_FIELD_NAMES = qw(
   sitename
   batchnumber
   recipecode
+  start_date
+  status
   time
   last_mod_by
   last_mod_date
@@ -691,7 +693,7 @@ my @months = qw(January February March April May June July August
 my %months;
 @months{ 1 .. @months } = @months;
 my %years = ();
-$years{$_} = $_ for ( 2014 .. 2020 );
+$years{$_} = $_ for ( 2017 .. 2022 );
 my %days = ();
 $days{$_} = $_ for ( 1 .. 31 );
 
@@ -1417,7 +1419,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
  -MODIFY_EMAIL_BODY_VIEW                 => 'ModifyEventEmailView',
  -POWER_SEARCH_VIEW_NAME                 => 'PowerSearchFormView',
  -BILLING_SEARCH_VIEW_NAME               => 'BillingSearchFormView',
- -BATCHNUMBER                           => $batchnumber||'1',
+ -BATCHNUMBER                            => $batchnumber||'1',
  -RECIPECODE                             => $recipecode||'1',
  -REQUIRE_AUTH_FOR_SEARCHING_FLAG        => 1,
  -REQUIRE_AUTH_FOR_ADDING_FLAG           => 1,

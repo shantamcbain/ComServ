@@ -38,6 +38,7 @@ sub execute {
         -RECORD_ID,
         -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG,
         -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG,
+        -RECIPE_CODE,
         -SIMPLE_SEARCH_STRING,
         -SESSION_OBJECT,
         -SORT_DIRECTION,
@@ -56,6 +57,7 @@ sub execute {
     my $app = $params->{-APPLICATION_OBJECT};
     my $cgi = $params->{-CGI_OBJECT};
     my $session = $params->{-SESSION_OBJECT};
+    my $recipecode = $params->{-RECIPE_CODE};
 
     $cgi->param(
         -NAME  => 'raw_search',
@@ -104,6 +106,7 @@ $GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG};
         -MAX_RECORDS_PER_PAGE        => 500 || $cgi->param('records_per_page'),
         -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG =>  $params->{-REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG},
         -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG => $GroupBoolion,
+        
     ));
 
     my @recipe_code;
@@ -130,7 +133,8 @@ $GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG};
         -DISPLAY_NAME => 'Recipe Code',
         -TYPE         => 'popup_menu',
         -NAME         => 'recipe_code',
-        -VALUES       => \@recipe_code
+        -VALUES       => \@recipe_code,
+        -VALUE        => $recipecode,
     );
 
     $$input_widget_definitions{'recipe_code'} = \@recipe_code_widget;

@@ -616,11 +616,12 @@ my @DATASOURCE_FIELD_NAMES = qw(
  );
 my %type =
     (
-        ''    			=>    '', 		            
+        		            
         'stout'    	=>    'Stout',            
         'ale'    		=>    'Ale',            
         'other'    	=>    'Other',            
-        'pilsener'   =>    'Pilsener',            
+        'pilsener'   =>    'Pilsener', 
+        'gruit'      =>    'Gruit',           
         'meed'    	=>    'Meed',            
         'lager'    	=>    'Lager',            
         'wheat'    	=>    'Wheat',
@@ -671,7 +672,7 @@ bitterness => [
         -DISPLAY_NAME => 'Category: If not in list select other and place your suggestion in comments ',
         -TYPE         => 'popup_menu',        
         -NAME         => 'category',        
-        -VALUES       => [sort {$a <=> $b} keys %type],
+        -VALUES       => [sort {$::a cmp $::b} keys %type],
         -LABELS       => \%type,
         -INPUT_CELL_COLSPAN => 3,
         ],
@@ -691,7 +692,7 @@ bitterness => [
                  -DISPLAY_NAME => 'Colour of Brew',
                  -TYPE         => 'popup_menu',
                  -NAME         => 'colour',
-                 -VALUES       => [sort {$a <=> $b} keys %colour],
+                 -VALUES       => [sort {$a cmp $b} keys %colour],
                  -LABELS       => \%colour,
                  -INPUT_CELL_COLSPAN => 3,
                 ],

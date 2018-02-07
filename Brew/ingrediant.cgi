@@ -77,7 +77,8 @@ foreach ($CGI->param()) {
 ######################################################################
 my $SiteName =  $CGI->param('site') || "Brew";
 my $recipe_code=  $CGI->param('recipe_code');
-my $bill=  $CGI->param('bill');
+my $bill =  $CGI->param('bill');
+my $unit = $CGI->param('unit');
 my $APP_NAME = "ingrediant";
 my $SITE_DISPLAY_NAME = 'Site not added to session setup.';
 my $APP_NAME_TITLE = "ingrediance table";
@@ -802,6 +803,7 @@ stock => [
         -NAME         => 'unit',        
         -VALUES       => [sort {$a <=> $b} keys %unit],
         -LABELS       => \%unit,
+        -VALUE        => $unit,
         -INPUT_CELL_COLSPAN => 3,
         ],
 
@@ -1303,6 +1305,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
     -KEY_FIELD                              => 'record_id',
     -INGREDIANT_CODE                        => $CGI->param('item_code')|| 'TBB',
+    -RECIPE_CODE                            => $recipe_code,
     -SITE_NAME                              => $SiteName,
     -PAGE_TOP_VIEW           =>  $CGI->param('page_top_view') ||  $page_top_view ,
     -PAGE_BOTTOM_VIEW        =>  $CGI->param('page_bottom_view') || $page_bottom_view,

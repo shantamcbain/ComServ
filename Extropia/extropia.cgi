@@ -38,6 +38,7 @@ my @TEMPLATES_SEARCH_PATH =
        ../HTMLTemplates/CSC
        ../HTMLTemplates/CSPS
        ../HTMLTemplates/ENCY
+       ../HTMLTemplates/HelpDesk
        ../HTMLTemplates/Organic
        ../HTMLTemplates/Todo
        ../HTMLTemplates/Shanta
@@ -1090,6 +1091,7 @@ my @VALID_VIEWS =
        eXtropiaCSSView
        CSCSSView
        CSSView
+       PageView
 
        DetailsRecordView
        BasicDataView

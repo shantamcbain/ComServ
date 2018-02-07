@@ -7,7 +7,7 @@ use CGI qw(:standard);
 my $CGI = new CGI() or
     die("Unable to construct the CGI object" .
         ". Please contact the webmaster.");
-
+# print "graph attempt";
 foreach ($CGI->param()) {
     $CGI->param($1,$CGI->param($_)) if (/(.*)\.x$/);
 }

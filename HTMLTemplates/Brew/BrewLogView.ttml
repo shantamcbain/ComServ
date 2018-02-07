@@ -79,7 +79,7 @@ function QuickClick(list) {
  [%# FOREACH link = DBI.query(" SELECT * FROM  brew_batch_tb
 	 	                                  WHERE  sitename = 'Brew'
 		                                  
-		                                  ORDER BY recipecode
+		                                  ORDER BY start_date, recipecode
 		                                  ")%]    
  
     <tr> 
@@ -101,9 +101,9 @@ function QuickClick(list) {
 <OPTION VALUE="None">Select a batch --->
 
  [% FOREACH item = DBI.query("SELECT * FROM brew_batch_tb
-	                                WHERE  ( sitename   =  'Brew'
+	                                WHERE  ( sitename   =  'Brew' 
                                      )
-                                   ORDER BY batchnumber
+                                   ORDER BY start_date, batchnumber DESC
 	                            ")%]  
 <OPTION VALUE="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&[% session_string %]&view=BrewLogView&batchnumber=[% item.batchnumber %]&amp;recipecode=[% item.recipecode %]&record_id=[% item.record_id %]">[% item.batchnumber %] [% item.brewname%][% item.date%]</option>
 
@@ -126,7 +126,7 @@ function QuickClick(list) {
 [% FOREACH link = DBI.query(" SELECT * FROM  brew_batch_tb
 	 	                                  WHERE  batchnumber = '$BatchCode'
 		                                  
-		                                  ORDER BY batchnumber
+		                                  ORDER BY start_date, batchnumber
 		                                  ")%]    
      [%  batchrecord_id    = link.record_id  %]
      [%  batchnumber  = link.batchnumber %]
@@ -167,6 +167,7 @@ recipe code [%  recipecode  %]
  <li><h3>Name of brew [%  recipe_name %]</h3> 
  <p>Recipe Code	[% recipe_code %] </p>
  <li>Grains[% embed('IngredianceList') %] from recipe file  <p>[%  ingredients %] .</p></li> 
+
 <li>Fill Grain Bill  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
                                   WHERE  (batchnumber  = '$batchnumber' AND
                                          time_code = 'FGB' AND
@@ -225,10 +226,8 @@ recipe code [%  recipecode  %]
                                   ")%]    
              [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
        [% END %]                  
-       <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=SM" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+      <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=SM" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
- <li>
- <p>This will be a graph mash temp log Data will eventually come from sensors</p>
 
  [% embed('MashtonTargetTemp') %]
  

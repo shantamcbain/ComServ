@@ -12,11 +12,15 @@
    
 [% END %]
 
+ 
+ <li>
+ <p>This will be a graph mash temp log Data will eventually come from sensors</p>
 
 
 <p>Pull from temp log</p>
 
-<a href="/cgi-bin/Brew/temp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;batchnumber=[% batchnumber %]&amp;Nav_link=1" target=_blank name="Add Ingredients"  title="Add New Recipe" style="AddButtonStyle">Add new temp</a> This will open a new tab. Enter the data save and close the window refresh this page for data to show.
+<a href="/cgi-bin/Brew/temp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;batchnumber=[% batchnumber %]&amp;Nav_link=1" target=_blank name="Add Ingredients"  title="Add New Temp" style="AddButtonStyle">Add new temp</a> This will open a new tab. Enter the data save and close the window refresh this page for data to show.
+[% time = 0 %]
 <table>
  <tr><td><table id="brewtime"  >
 <th >time<th >Mashton temp</td><th >Line temp</th><th >Sparge temp</th><th >Modify</th>
@@ -34,18 +38,23 @@
 	    [%# total_mashtuntemp = total_mashtuntemp .,. value.mastuntemp %]
 	    [%# total_linetemp = total_linetemp + value.linetemp %]
 	    [%# total_spargtemp = total_spargtemp + ',' value.spargtemp %]
+[% time = time + 10 %]
 
 [% END %]
- </table>
+<tr> <td colspan="5"><a href="/cgi-bin/Brew/temp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;batchnumber=[% batchnumber %]&amp;time=[% time %]&amp;Nav_link=1" target=_blank name="Add Ingredients"  title="Add New Temp" style="AddButtonStyle">Add new temp [% time %]</a></td></tr></table>
  </td>
  <td>
   <h3>Graph<h3>
+  <a href="/cgi-bin/Brew/graph.cgi">Refresh graph</a>
+  <p>Image</p>
   <img src="/images/Brew/[% batchnumber %].png" alt="temp graph">
   
-  
-  Mashtuntemp [% total_mashtuntemp %]
-  Linetemp [% total_linetemp %]
-  Spargtemp [% total_spargtemp %]
- </td>
+  <p> call gd.ttml</p>
+  [% embed ('GD') %]
+  <ol>
+  <li>Mashtuntemp [% total_mashtuntemp %]</li>
+  <li>Linetemp [% total_linetemp %]</li>
+  <li>Spargtemp [% total_spargtemp %]</li>
+</ol> </td>
  </tr>
  </table> 

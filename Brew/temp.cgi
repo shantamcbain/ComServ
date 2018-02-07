@@ -87,7 +87,7 @@ my $SiteName =  $CGI->param('site');
 my $site_update;
     my $SITE_DISPLAY_NAME = 'None Defined for this site.';
     my $last_update  = 'april 24, 2011';
-
+    my $time =  $CGI->param('time');
     my $homeviewname ;
     my $home_view = 'BasicDataView'; 
     my $BASIC_DATA_VIEW; 
@@ -959,6 +959,7 @@ my @DATASOURCE_FIELD_NAMES =
        record_id
        sitename
        date
+       time
        batchnumber
        linetemp
        last_mod_by
@@ -1141,6 +1142,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -DISPLAY_NAME => 'time ',
         -TYPE         => 'textfield',
         -NAME         => 'time',
+        -VALUE        => $time,
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],

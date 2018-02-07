@@ -1126,6 +1126,7 @@ my @VALID_VIEWS =
        OptionsView
        LogoffView
        LogHomeView
+       PageView
       );
 
 my @ROW_COLOR_RULES = (

@@ -49,7 +49,7 @@
 	        group     == 'Demo_admin' OR
 	        group    ==  'WB_admin' OR
 	        group     == 'MJB_Admin'        %]
-&nbsp;<a href="/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;subject=Item_link&amp;Nav_link=1&view=BatchLogView&amp;recipecode=[% item.recipe_code %]" name="Add Ingredients" target=_blank  title="Add New batch" style="AddButtonStyle">Add Grain</a>
+&nbsp;<a href="/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;subject=Item_link&amp;Nav_link=1&view=BatchLogView&amp;recipecode=[% item.recipe_code %]&amp;bill=Grain&amp;unit=lb" name="Add Ingredients" target=_blank  title="Add New batch" style="AddButtonStyle">Add Grain</a>
 	   [% END %]</td></tr>
 
 		
@@ -99,7 +99,7 @@
 	        group     == 'Demo_admin' OR
 	        group    ==  'WB_admin' OR
 	        group     == 'MJB_Admin'        %]
-&nbsp;<a href="/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;subject=Item_link&amp;Nav_link=1&view=BatchLogView&amp;recipecode=[% item.recipe_code %]" name="Add Ingredients" target=_blank  title="Add New batch" style="AddButtonStyle">Add Hop</a>
+&nbsp;<a href="/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;subject=Item_link&amp;Nav_link=1&view=BatchLogView&amp;recipecode=[% recipe_code %]&amp;bill=Hops&amp;unit=g" name="Add Ingredients" target=_blank  title="Add New Hop" style="AddButtonStyle">Add Hop</a>
 	   [% END %]</td></tr>
 
 		
@@ -145,7 +145,7 @@
 	        group     == 'Demo_admin' OR
 	        group    ==  'WB_admin' OR
 	        group     == 'MJB_Admin'        %]
-&nbsp;<a href="/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;subject=Item_link&amp;Nav_link=1&view=BatchLogView&amp;recipecode=[% item.recipe_code %]" name="Add Ingredients" target=_blank  title="Add New batch" style="AddButtonStyle">Add Adjunct</a>
+&nbsp;<a href="/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;subject=Item_link&amp;Nav_link=1&view=BatchLogView&amp;recipecode=[% recipe_code %]&amp;bill=Adjuncts&amp;unit=tsp" name="Add Ingredients" target=_blank  title="Add New batch" style="AddButtonStyle">Add Adjunct</a>
 	   [% END %]
 	   </td></tr>
 
@@ -165,6 +165,7 @@
 	
 	   [% END %]
 	
-	
+</tr>	
+</table>
 	
 
