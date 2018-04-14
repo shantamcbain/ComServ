@@ -56,14 +56,16 @@ sub execute {
     my $cgi = $params->{-CGI_OBJECT};
     my $session = $params->{-SESSION_OBJECT};
     my $sitename = $cgi->param('site');
-if ($sitename = 'ECF'){
+
+
     $cgi->param(
         -NAME  => 'raw_search',
-        -VALUE => "status == 'In-Use' AND
-                   sitename == 'ECF'
-         "
-    );  
-};
+        -VALUE =>  "(status == 'In-Use' AND
+                   sitename == $sitename
+                   )"
+
+   );
+
     my @config_params = _rearrange([
         -YARD_DATASOURCE_CONFIG_PARAMS
             ],
@@ -80,7 +82,7 @@ my $user_group = $session->getAttribute(-KEY => 'auth_groups')||'normal';
 
 if ($user_group eq 'CSC_admin'){
 $GroupBoolion = 0;
-}else{ 
+}else{
 $GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||1;
 }
 
@@ -148,7 +150,7 @@ $GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||1;
 
     push (@input_widget_config_params, @new_value);
 
-    $app->{-VIEW_DISPLAY_PARAMS}= $params->{-VIEW_DISPLAY_PARAMS};    
+    $app->{-VIEW_DISPLAY_PARAMS}= $params->{-VIEW_DISPLAY_PARAMS};
 
     $cgi->param(
         -NAME  => 'raw_search',
