@@ -635,6 +635,34 @@ use OrganicSetup;
      $SITE_DISPLAY_NAME       = $SetupVariablesOrganic->{-SITE_DISPLAY_NAME};
      $site_update             = $SetupVariablesOrganic-> {-SITE_LAST_UPDATE};
  }
+ if ($SiteName eq "pihive") {
+use pihiveSetup;
+ my $SetupVariablesBMaster   = new pihiveSetup($UseModPerl);
+     $HasMembers               = $SetupVariablespihive->{-HAS_MEMBERS};
+     $HTTP_HEADER_KEYWORDS    = $SetupVariablespihive->{-HTTP_HEADER_KEYWORDS};
+     $HTTP_HEADER_PARAMS      = $SetupVariablespihive->{-HTTP_HEADER_PARAMS};
+     $HTTP_HEADER_DESCRIPTION = $SetupVariablespihive->{-HTTP_HEADER_DESCRIPTION};
+     $CSS_VIEW_NAME           = $SetupVariablespihive->{-CSS_VIEW_NAME};
+     $AUTH_TABLE              = $SetupVariablespihive->{-AUTH_TABLE};
+     $app_logo                = $SetupVariablespihive->{-APP_LOGO};
+     $app_logo_height         = $SetupVariablespihive->{-APP_LOGO_HEIGHT};
+     $app_logo_width          = $SetupVariablespihive->{-APP_LOGO_WIDTH};
+     $app_logo_alt            = $SetupVariablespihive->{-APP_LOGO_ALT};
+     $CSS_VIEW_URL            = $SetupVariablespihive->{-CSS_VIEW_NAME};
+     $last_update             = $SetupVariablespihive->{-LAST_UPDATE}; 
+#      $site_update              = $SetupVariablespihive->{-SITE_LAST_UPDATE};
+#Mail settings
+     $mail_from               = $SetupVariablespihive->{-MAIL_FROM};
+     $mail_to                 = $SetupVariablespihive->{-MAIL_TO};
+     $mail_replyto            = $SetupVariablespihive->{-MAIL_REPLYTO};
+     $SITE_DISPLAY_NAME       = $SetupVariablespihive->{-SITE_DISPLAY_NAME};
+     $FAVICON                 = $SetupVariablespihive->{-FAVICON};
+     $ANI_FAVICON             = $SetupVariablespihive->{-ANI_FAVICON};
+     $page_top_view           = $SetupVariablespihive->{-PAGE_TOP_VIEW};
+     $FAVICON_TYPE            = $SetupVariablespihive->{-FAVICON_TYPE};
+}
+ 
+ 
 if ($SiteName eq "SSeedSavers" or
        $SiteName eq "SSeedSaversDev" 
        ) {use SSeedSaversSetup;

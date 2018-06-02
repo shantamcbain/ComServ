@@ -1131,6 +1131,7 @@ my @VALID_VIEWS = qw(
   BuySellHomeView
   HelpDeskHomeView
   AltpowerLogHomePage
+  PowerLog
   PowerUsageView
   SustainableView
   UrbanBeekeepingView
