@@ -3,3 +3,7 @@
 /*v1.9
 *~
 *.orig
+/.metadata/version.ini
+/.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml
+/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.prefs
+/.metadata/.lock
