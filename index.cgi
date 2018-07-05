@@ -19,7 +19,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 1.04, March 17, 2017";
+my $AppVer = "ver 1.05, July 5, 2018";
 
 BEGIN
 {
@@ -96,6 +96,7 @@ my $BASIC_DATA_VIEW;
 my $page_top_view;
 my $page_bottom_view;
 my $page_left_view;
+my $style = $CGI->param('pagestyle');
 
 #Mail settings
 my $mail_from;
@@ -148,7 +149,28 @@ my $Header_alt;
 my $Page_tb;
 my $HasMembers = 0;
 my $OffLine    = 'yes';
+my $HostName   = $ENV{'SERVER_NAME'};
+if ($HostName eq 'computersystemconsulting.ca'||
+    $HostName eq 'brew.computersystemconsulting.ca'||
+    $HostName eq 'voip.computersystemconsulting.ca')
+    {
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
+}
+if ($HostName eq 'voip.computersystemconsulting.ca'){
+  $SiteName ='VOIP';
+}
 
+if ($HostName eq 'beemaster.ca'||
+    $HostName eq 'jenabee.beemaster.ca'||
+    $HostName eq 'ecf.beemaster.ca'){
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles";
+}
+if ($HostName eq 'usbm.ca' ||
+    $HostName eq 'altpower.usbm.ca' ||
+    $HostName eq 'brew.usbm.ca'||
+    $HostName eq 'ency.usbm.ca'){
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/usbmca/Datafiles";
+    }
 my $site_for_search = 0;
 
 #if ($HostName = 'localhost'){
@@ -163,7 +185,7 @@ my $VIEW_LOADER =
   or die(   "Unable to construct the VIEW LOADER object in "
           . $CGI->script_name()
           . " Please contact the webmaster." );
-my $HostName    = $ENV{'SERVER_NAME'};
+#my $HostName    = $ENV{'SERVER_NAME'};
 use SiteSetup;
 my $UseModPerl     = 1;
 my $SetupVariables = new SiteSetup($UseModPerl, $CGI->param('site'));
@@ -222,7 +244,7 @@ $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
 #$page_bottom_view = $CGI->param('page_bottom_view')||$page_bottom_view;
 #$page_left_view   = $CGI->param('page_left_view')||$page_left_view;
 #$page_left_view = "LeftPageView";
- 
+
 ######################################################################
 #                          SESSION SETUP                             #
 ######################################################################
@@ -238,7 +260,7 @@ my @SESSION_CONFIG_PARAMS = (
 ######################################################################
 #                     SESSION MANAGER SETUP                          #
 ######################################################################
-  
+
 my @SESSION_MANAGER_CONFIG_PARAMS = (
                                       -TYPE           => 'FormVar',
                                       -CGI_OBJECT     => $CGI,
@@ -279,7 +301,7 @@ else
  }
 }
 
- 
+
 $username = $SESSION->getAttribute( -KEY => 'auth_username' );
 $group    = $SESSION->getAttribute( -KEY => 'auth_group' );
 
@@ -409,7 +431,7 @@ my @AUTH_REGISTRATION_DH_MANAGER_PARAMS = (
 
 my @USER_FIELDS = (
  qw( -CSS_VIEW_URL                         => $CSS_VIEW_URL,
- -CSS_VIEW_NAME                        => $CSS_VIEW_NAME, 
+ -CSS_VIEW_NAME                        => $CSS_VIEW_NAME,
    auth_username
    auth_password
    auth_groups
@@ -1029,11 +1051,12 @@ my @VALID_VIEWS = qw(
   LogoffView
 
   HomeView
+  AdminHomeView
   AboutUsView
   LiveEdit
   CSCCSSView
   DailyWorkSheetView
-  
+
   ApisHomeView
   ApisProductView
   ApisPolinatorsView
@@ -1132,6 +1155,7 @@ my @VALID_VIEWS = qw(
   HelpDeskHomeView
   AltpowerLogHomePage
   PowerUsageView
+  AltpowerNodeView
   SustainableView
   UrbanBeekeepingView
   UrbanFarmingView
@@ -1214,7 +1238,7 @@ my @VIEW_DISPLAY_PARAMS = (
     start_date
     due_date
     status
-    
+
     priority
     )
  ],
@@ -1382,6 +1406,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
  -SESSION_OBJECT                                   => $SESSION,
  -SESSION_TIMEOUT_VIEW_NAME                        => 'SessionTimeoutErrorView',
  -SITE_NAME                                        => $SiteName,
+ -STYLE                                            => $style,
  -TEMPLATES_CACHE_DIRECTORY  => $TEMPLATES_CACHE_DIRECTORY,
  -VIEW                       => $View,
  -VALID_VIEWS                => \@VALID_VIEWS,
