@@ -280,7 +280,8 @@ if ( $HostName eq 'beemaster.ca' )
 {
  $GLOBAL_DATAFILES_DIRECTORY = "/home/beemast/Datafiles";
 }
-if ( $HostName eq 'usbm.ca' )
+if ( $HostName eq 'usbm.ca' or
+               eg 'altpower.usbm.ca')
 {
  $GLOBAL_DATAFILES_DIRECTORY = "/home/usbmca/Datafiles";
 }
