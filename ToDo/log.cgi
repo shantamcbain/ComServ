@@ -76,18 +76,21 @@ foreach ($CGI->param()) {
     my $debug = 0;
 
     my $APP_NAME = "log"; 
-    my $last_update  = 'April 12, 2017';
+    my $last_update  = 'Sept 19, 2018';
     my $site_update;
     my $APP_NAME_TITLE = "Log Manager";
-   my $FAVICON;
+    my $FAVICON;
     my $ANI_FAVICON;
     my $FAVICON_TYPE;
-     my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+    my $CSS_VIEW_NAME = '/styles/CSCCSSView';
+    my $CSS_VIEW_URL = $CSS_VIEW_NAME;
+    my $SITE_DISPLAY_NAME = 'None Defined for this site.';
     my $MySQLPW;
     my $DBI_DSN;
     my $SiteName = $CGI->param('site') ;
     my $UseModPerl = 1;
     my $AUTH_TABLE;
+my $home_view = 'LogHomeView';
 my $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles" ;
 my $TableName;
 my $ProjectTableName;
@@ -98,7 +101,9 @@ my $Affiliate = 001;
 my $HasMembers = 0;
 my $HostName   = $ENV{'SERVER_NAME'};
 if ($HostName eq 'computersystemconsulting.ca'||
-    $HostName eq 'brew.computersystemconsulting.ca'){
+    $HostName eq 'brew.computersystemconsulting.ca'||
+    $HostName eq 'dev.computersystemconsulting.ca'||
+    $HostName eq 'dev.altpower.usbm.ca'){
    $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
 }
 
@@ -108,7 +113,7 @@ if ($HostName eq 'beemaster.ca'||
    $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles";
 }
 if ($HostName eq 'usbm.ca' ||
-    $HostName eq 'altpower.usbm' ||
+    $HostName eq 'altpower.usbm.ca' ||
     $HostName eq 'brew.usbm.ca'||
     $HostName eq 'ency.usbm.ca'){
    $GLOBAL_DATAFILES_DIRECTORY ="/home/usbmca/Datafiles";
@@ -179,7 +184,7 @@ my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
   my $SetupVariables  = new SiteSetup($UseModPerl, $SiteName);
     $SiteName                 = $SetupVariables->{-SITE_NAME};
     my $homeview             = $SetupVariables->{-HOME_VIEW}; 
-#    my $homeviewname          = $SetupVariables->{-HOME_VIEW_NAME};
+    my $homeviewname          = $homeview||$SetupVariables->{-HOME_VIEW_NAME};
     $Affiliate                = $SetupVariables->{-AFFILIATE};
     my $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
     my $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
@@ -203,6 +208,9 @@ my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
     $DBI_DSN               = $SetupVariables->{-DBI_DSN};
     $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
      my $LocalIp            = $SetupVariables->{-LOCAL_IP};
+   $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
+$CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
+$CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
 
 my $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'/home/shanta/Datafiles"';
 my $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};

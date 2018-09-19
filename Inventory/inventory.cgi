@@ -34,12 +34,32 @@ my @VIEWS_SEARCH_PATH =
 my @TEMPLATES_SEARCH_PATH = 
     qw(../HTMLTemplates/Apis
        ../HTMLTemplates/CSC
-       ../HTMLTemplates/CSPS
-       ../HTMLTemplates/ECF
+       ../HTMLTemplates/Brew
+       ../HTMLTemplates/BuyAndSell
+       ../HTMLTemplates/CS
+       ../HTMLTemplates/CSC
+       ../HTMLTemplates/Demo
        ../HTMLTemplates/ENCY
+       ../HTMLTemplates/ECF
+       ../HTMLTemplates/Forager
+       ../HTMLTemplates/GrindrodProject
+       ../HTMLTemplates/HE
        ../HTMLTemplates/HelpDesk
+       ../HTMLTemplates/LT
+       ../HTMLTemplates/MW
+       ../HTMLTemplates/Organic
        ../HTMLTemplates/Shanta
+       ../HTMLTemplates/SB
+       ../HTMLTemplates/SkyeFarm
+       ../HTMLTemplates/Todo
+       ../HTMLTemplates/UrbanFarming
+       ../HTMLTemplates/USBM
+       ../HTMLTemplates/WB
+       ../HTMLTemplates/WW
        ../HTMLTemplates/Default);
+
+
+
 
 use CGI qw(-debug);
 
@@ -95,20 +115,21 @@ my $APP_NAME_TITLE = $SiteName."Inventory  Manager";
     my $HTTP_HEADER_PARAMS;
     my $HTTP_HEADER_KEYWORDS;
     my $HTTP_HEADER_DESCRIPTION;
-    my  $DBI_DSN;
+    my $DBI_DSN;
     my $AUTH_TABLE;
-    my  $AUTH_MSQL_USER_NAME;
+    my $AUTH_MSQL_USER_NAME;
     my $DEFAULT_CHARSET;
     my $additonalautusernamecomments;
     my $SetupVariables  ;
     my $CAL_TABLE;
-    my $TableName;
-	my $sitename;
-        my $ProjectTableName;
+    my $InventoryTableName;
+	 my $TableName; 
+	 my $sitename;
+    my $ProjectTableName;
     my $FAVICON;
     my $ANI_FAVICON;
     my $FAVICON_TYPE;
-    my $last_update = 'June 22, 2011';
+    my $last_update = 'Sept 18, 2018';
     my $SITE_DISPLAY_NAME = 'None Defined for this site.';
     my $group;
     my $site_update;
@@ -116,7 +137,7 @@ my $APP_NAME_TITLE = $SiteName."Inventory  Manager";
 
 use SiteSetup;
   my $UseModPerl = 0;
-   $SetupVariables  = new SiteSetup($UseModPerl);
+    $SetupVariables  = new SiteSetup($UseModPerl);
     $home_view             = $SetupVariables->{-HOME_VIEW}; 
     $homeviewname          = $SetupVariables->{-HOME_VIEW_NAME};
     $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
@@ -153,6 +174,7 @@ use SiteSetup;
     $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
     $page_left_view   = $CGI->param('page_left_view')||$page_left_view;
     $ProjectTableName      = 'csc_project_tb';
+    $InventoryTableName    = 'inventroy_tb';
     $FAVICON                = $SetupVariables->{-FAVICON};
     $ANI_FAVICON            = $SetupVariables->{-ANI_FAVICON};
     $FAVICON_TYPE          = $SetupVariables->{-FAVICON_TYPE};
@@ -228,94 +250,7 @@ use ApisSetup;
 
 #}
 #   $homeviewname            = 'BasicDataView';
- elsif ($SiteName eq "ECF") {
-use ECFSetup;
-  my $SetupVariablesECF    = new  ECFSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesECF->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesECF->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesECF->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesECF->{-APP_LOGO_ALT};
-    $APP_NAME_TITLE        = "Eagle Creek Farms: Apis";
-    $homeviewname          = $SetupVariablesECF->{-HOME_VIEW_NAME};
-    $home_view             = $SetupVariablesECF->{-HOME_VIEW};
-#Mail settings
-    $mail_from             = $SetupVariablesECF->{-MAIL_FROM};
-    $mail_to               = $SetupVariablesECF->{-MAIL_TO};
-    $mail_replyto          = $SetupVariablesECF->{-MAIL_REPLYTO};
-    $HTTP_HEADER_PARAMS    = $SetupVariablesECF->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_KEYWORDS  = $SetupVariablesECF->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesECF->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_URL            = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/ECF'; 
-     $TableName              = 'apis_inventory_tb';
-    $SITE_DISPLAY_NAME       = $SetupVariablesECF->{-SITE_DISPLAY_NAME};
-}
  
-elsif ($SiteName eq "BeeCoop") {
-use BMasterSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesBMaster   = new BMasterSetup($UseModPerl);
-     $HasMembers               = $SetupVariablesBMaster->{-HAS_MEMBERS};
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesBMaster->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesBMaster->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesBMaster->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesBMaster->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesBMaster->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesBMaster->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesBMaster->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesBMaster->{-APP_LOGO_ALT};
-     $homeviewname            = 'HomeView'||$SetupVariablesBMaster->{-HOME_VIEW_NAME};
-     $home_view               = 'CoopHomeView'||$SetupVariablesBMaster->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesBMaster->{-SITE_LAST_UPDATE}; 
- #Mail settings
-     $mail_from               = $SetupVariablesBMaster->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesBMaster->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesBMaster->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = 'BeeMaster.ca Co-Op';
-     $FAVICON                = $SetupVariablesBMaster->{-FAVICON};
-     $ANI_FAVICON            = $SetupVariablesBMaster->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesBMaster->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE          = $SetupVariablesBMaster->{-FAVICON_TYPE};
-}
- 
-elsif ($SiteName eq "BMaster" or
-       $SiteName eq "BMasterDev" ) {
-use BMasterSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesBMaster   = new BMasterSetup($UseModPerl);
-     $APP_NAME_TITLE          = "Beemaster.ca ";
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesBMaster->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesBMaster->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesBMaster->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesBMaster->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesBMaster->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesBMaster->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesBMaster->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesBMaster->{-APP_LOGO_ALT};
-     
-    if ($group eq "Mentoring"){
-     $home_view               = 'MentoringHomeView';
-     $homeviewname            = $home_view;
-    }else{
-     $homeviewname            = $SetupVariablesBMaster->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesBMaster->{-HOME_VIEW};
-     }
-     $CSS_VIEW_URL            = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesBMaster->{-LAST_UPDATE}; 
- #Mail settings
-    $mail_from                = $SetupVariablesBMaster->{-MAIL_FROM};
-    $mail_to                  = $SetupVariablesBMaster->{-MAIL_TO};
-    $mail_replyto             = $SetupVariablesBMaster->{-MAIL_REPLYTO};
-    $SITE_DISPLAY_NAME        = $SetupVariablesBMaster->{-SITE_DISPLAY_NAME};
-    $FAVICON                  = '/images/apis/favicon.ico'||$SetupVariablesBMaster->{-FAVICON}||'/images/apis/favicon.ico';
-    $ANI_FAVICON              = $SetupVariablesBMaster->{-ANI_FAVICON};
-    $page_top_view            = $SetupVariablesBMaster->{-PAGE_TOP_VIEW};
-}
 
 
 
@@ -950,7 +885,7 @@ if ($site eq "file"){
 	@PROJ_DATASOURCE_CONFIG_PARAMS = (
 	        -TYPE         => 'DBI',
 	        -DBI_DSN      => $DBI_DSN,
-	        -TABLE        => $ProjectTableName,
+	        -TABLE        => $InventoryTableName,
 	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@PROJECT_DATASOURCE_FIELD_NAMES,
