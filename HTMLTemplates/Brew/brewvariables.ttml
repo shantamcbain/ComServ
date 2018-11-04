@@ -1,0 +1,18 @@
+[%#	$Id: Brewvariables.ttml,v 1.0 2018/10/29 06:42:47 shanta Exp shanta $	%]
+<h5>Variables</h5>
+	<ol>
+		<li>SiteName  = [% data.site_name %].data</li>
+		<li>Admin group = [% group  %]</li>
+		<li>homeview    = [% data.home_view %].data</li>
+		<li>page        = [%  PAGE %]</li>
+		<li>Batch  Number   = [% data.batchnumber %].data</li>
+		<li>Batch number = [% Batch %]</li>
+	    <li>BrewName  = [% BrewName %].session</li>
+		<li>App verson  = [% data.app_ver %].data</li>
+	    <li>Recipe Code = [%  data.recipecode %].data</li>
+		<li>[% RecipeCode %]</li>
+	    <li>Recipe code session       [% RecipeCode %]</li>
+	    <li>BMS           [% BrewNameS %]</li>
+	    <li>HomeVew TTML       [% HomeView %]</li>
+		/<li>BatchNumberS [% BatchNumber %]</li>
+</ol>

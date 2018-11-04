@@ -1,4 +1,4 @@
-[%#	$Id: IngredianceList.ttml,v 1.1 2008/03/25 06:42:47 shanta Exp shanta $	%]
+[%#	$Id: IngredianceList.ttml,v 1.101 2018/04/09 06:42:47 shanta Exp shanta $	%]
 
 
 [% embed('ErrorDisplayView') %]
@@ -15,15 +15,21 @@
 	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
 	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
 	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% SiteName = data.site_name %]
+ [% recipe_code = data.recipecode %]
 [% email = data.session_object.getAttribute('-KEY','auth_email') %]
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td>
-<A NAME="PageTop"></A>
 
-	  [% IF username  == 'Shanta' OR
+
+<tr><td><h2>Grain Bill [% SiteName %] [% recipe_code %]</h2> </td><td> 
+
+
+	</td>
+</tr>
+
+		
+<tr><td>Ingrediant</td><td>Amount </td><td>Unit</td><td>Ingrediant</td><td>Amount g</td><td>[% IF username  == 'Shanta' OR
 	        group     == 'Apis_Admin' OR
 	        group     == 'BCHPA_Admin' OR
 	        group     == 'BMast_Admin' OR
@@ -42,34 +48,127 @@
 	        group     == 'HoneyDo_Admin' OR
 	        group     == 'Brew_Admin' OR
 	        group     == 'Demo_admin' OR
-	       group    ==  'WB_admin' OR
+	        group    ==  'WB_admin' OR
 	        group     == 'MJB_Admin'        %]
+&nbsp;<a href="/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;subject=Item_link&amp;Nav_link=1&amp;recipecode=[%  recipe_code   %]&amp;bill=Grain&amp;unit=lb" name="Add Ingredients" target=_blank  title="Add New batch" style="AddButtonStyle">Add Grain</a>
+	   [% END %]</td></tr>
 
-	   &nbsp;<a href="/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;recipe_code=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" target="_blank" name="Add Incrediance" style="AddButtonStyle" title="Add New Link">Add </a>
+		
+		 [% FOREACH link = DBI.query("SELECT * FROM  brew_ingrediant_tb
+		                                  WHERE  recipe_code = '$recipe_code' AND
+		                                  bill = 'grain'
+		                                  AND sitename =  '$SiteName' 
+		                                  ORDER BY weight DESC 
+		   ")%] 
+<tr>
+
+<td width="25%"> [% link.ingrediant_name %]</td>
+<td align="right"> [% link.weight %]</td>
+<td align="left"> [% link.unit %]</td>
+		[% embed('BrewIngrediantModifyLink') %]
+		   [% END %]
 	
+
+
+	
+<tr><td ><h2>Hops Bill</h2></td>
+
+<td>
+<A NAME="PageTop"></A>
+
+</td>
+</tr>
+
+		
+<tr><td>Ingrediant</td><td>Amount g</td><td>
+[% IF username  == 'Shanta' OR
+	        group     == 'Apis_Admin' OR
+	        group     == 'BCHPA_Admin' OR
+	        group     == 'BMast_Admin' OR
+	        group     == 'BMast_Co-op_Admin' OR
+	        group     == 'Brew_Admin' OR
+           group     == 'CSC_Admin' OR
+	        group     == 'CS_Admin' OR
+	        group     == 'ECF_Admin' OR
+	        group     == 'Orgainc_Admin' OR
+	        group     == 'DarmaFarmsAdmin' OR
+	        group     == 'MARTS_Admin' OR
+	        group     == 'VitalVic_Admin' OR
+	        group     == 'ENCY_Admin' OR
+	        group     == 'USBM_Admin' OR
+	        group     == 'Shanta_Admin' OR
+	        group     == 'HoneyDo_Admin' OR
+	        group     == 'Brew_Admin' OR
+	        group     == 'Demo_admin' OR
+	        group    ==  'WB_admin' OR
+	        group     == 'MJB_Admin'        %]
+&nbsp;<a href="/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;subject=Item_link&amp;Nav_link=1&view=BatchLogView&amp;recipecode=[% recipe_code %]&amp;bill=Hops&amp;unit=g" name="Add Ingredients" target=_blank  title="Add New Hop" style="AddButtonStyle">Add Hop</a>
+	   [% END %]</td></tr>
+
+		
+		 [% FOREACH link = DBI.query("SELECT * FROM  brew_ingrediant_tb
+		                                  WHERE  recipe_code = '$recipe_code' AND
+		                                  bill = 'hops'
+		                                  AND sitename =  '$SiteName' 
+		                                  ORDER BY  weight DESC
+		  ")%]  
+<tr>
+<td > [% link.ingrediant_name %]</td>
+<td align="right"> [% link.weight %]</td>
+<td align="left"> [% link.unit %]</td>
+		[% embed('BrewIngrediantModifyLink') %]
+
+</tr>	
 	   [% END %]
 
+<tr><td ><h2>Adjuncts</h2></td><td></td><td>
 
-[% IF BrewName == "1516" %]
+</td>
+</tr>
+
 		
-	<ul>
-		<li>Pale Malt </li>
-		[% FOREACH link = DBI.query("SELECT * FROM  brew_recipe_tb
-		                                  WHERE  recipe_code = $recipe_code
-		                                  AND (sitename =  $SiteName OR sitename =  'All')
-		                                  ORDER BY item_code
-		                                  ")%]    
-		<li>
-		      [% link.Ingrediant_name %] Amount [% link.recipe_size %]
-		</li> 
-		   [% END %]
-	</ul>
-[% END %]
+<tr><td>Ingrediant</td><td>Amount lb</td><td>Ingrediant</td><td>Amount g</td><td>[% IF username  == 'Shanta' OR
+	        group     == 'Apis_Admin' OR
+	        group     == 'BCHPA_Admin' OR
+	        group     == 'BMast_Admin' OR
+	        group     == 'BMast_Co-op_Admin' OR
+	        group     == 'Brew_Admin' OR
+           group     == 'CSC_Admin' OR
+	        group     == 'CS_Admin' OR
+	        group     == 'ECF_Admin' OR
+	        group     == 'Orgainc_Admin' OR
+	        group     == 'DarmaFarmsAdmin' OR
+	        group     == 'MARTS_Admin' OR
+	        group     == 'VitalVic_Admin' OR
+	        group     == 'ENCY_Admin' OR
+	        group     == 'USBM_Admin' OR
+	        group     == 'Shanta_Admin' OR
+	        group     == 'HoneyDo_Admin' OR
+	        group     == 'Brew_Admin' OR
+	        group     == 'Demo_admin' OR
+	        group    ==  'WB_admin' OR
+	        group     == 'MJB_Admin'        %]
+&nbsp;<a href="/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;subject=Item_link&amp;Nav_link=1&view=BatchLogView&amp;recipecode=[% recipe_code %]&amp;bill=Adjuncts&amp;unit=tsp" name="Add Ingredients" target=_blank  title="Add New batch" style="AddButtonStyle">Add Adjunct</a>
+	   [% END %]
+	   </td></tr>
 
+		
+		 [% FOREACH link = DBI.query("SELECT * FROM  brew_ingrediant_tb
+		                                  WHERE  recipe_code = '$recipe_code' AND
+		                                  bill = 'Adjuncts'
+		                                  AND sitename =  '$SiteName' 
+		                                  ORDER BY weight DESC
+		  ")%]   
+<tr>
+<td> [% link.ingrediant_name %]</td>
+<td align="right"> [% link.weight %]</td>
+<td align="left"> [% link.unit %]</td>
+[% embed('BrewIngrediantModifyLink') %]
 
-[% IF BrewName == "ODMStout" %]
-Grain
-Hops
-other
-[% END %]
+	
+	   [% END %]
+	
+</tr>	
+</table>
+	
 
