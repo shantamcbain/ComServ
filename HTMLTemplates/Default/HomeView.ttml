@@ -47,6 +47,8 @@
 		[% embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "Aktiv" %]
 			[% embed ('AktivHomeView') %]
+		[% ELSIF SiteName == "AltPower" %]
+			[% embed ('AltPowerHomeView') %]
 		[% ELSIF SiteName == "BMaster"%]
 			[% embed ('ApisHomeView') %]
 		[% ELSIF SiteName == "BMastBreeder"%]

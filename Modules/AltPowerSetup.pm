@@ -26,8 +26,8 @@ my %VALID_FORUMS = (
 my $self = {-HOME_VIEW_NAME                 => 'OrganicHome',
        -SITE_DISPLAY_NAME => "Alternate and Sustainable Power",            
 
-       -SITE_LAST_UPDATE  => 'Nov 5, 2018 ',
-	    -HOME_VIEW                      => 'PageView',
+       -SITE_LAST_UPDATE  => 'Nov 22, 2018 ',
+	    -HOME_VIEW                      => 'HomeView',
 	    -BASIC_DATA_VIEW                => 'BasicDataView',
 	    -APP_LOGO                       => '',
 	    -APP_LOGO_ALT                   => 'AltPower Logo',

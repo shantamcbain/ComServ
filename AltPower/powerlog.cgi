@@ -106,7 +106,7 @@ if ($HostName eq 'beemaster.ca'||
    $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles";
 }
 if ($HostName eq 'usbm.ca' ||
-    $HostName eq 'altpower.usbm' ||
+    $HostName eq 'altpower.usbm.ca' ||
     $HostName eq 'brew.usbm.ca'||
     $HostName eq 'ency.usbm.ca'){
    $GLOBAL_DATAFILES_DIRECTORY ="/home/usbmca/Datafiles";
