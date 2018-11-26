@@ -1154,6 +1154,7 @@ my @VALID_VIEWS = qw(
   BuySellHomeView
   HelpDeskHomeView
   AltpowerLogHomePage
+  VoltSensorDevelopment
   PowerUsageView
   AltpowerNodeView
   SustainableView
