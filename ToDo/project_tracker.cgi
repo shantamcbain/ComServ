@@ -103,7 +103,7 @@ my $ANI_FAVICON;
 my $FAVICON_TYPE;
 my $IMAGE_ROOT_URL;
 my $DOCUMENT_ROOT_URL;
-my $GLOBAL_DATAFILES_DIRECTORY = "/home/grindrod/Datafiles";
+my $GLOBAL_DATAFILES_DIRECTORY = "/home/usbmca/Datafiles";
 my $TEMPLATES_CACHE_DIRECTORY;
 my $APP_DATAFILES_DIRECTORY;
 my $DATAFILES_DIRECTORY;
@@ -128,6 +128,7 @@ my $site_update;
 my $frame;
 my $last_update = 'November 9, 2016';
 my $DeBug       = $CGI->param('debug') || 0;
+my $project     = $CGI->param('project');
 my $client_tb   = 'csc_client_tb';
 my $Affiliate   = 001;
 my $HasMembers  = 0;
@@ -1203,6 +1204,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -LAST_RECORD_ON_PAGE  => $CGI->param('first_record_to_display') || "0",
     -KEY_FIELD            => 'record_id',
     -SITE_NAME            => $SiteName,
+    -PROJECT              => $project,
     -PAGE_TOP_VIEW    => $CGI->param('page_top_view')    || $page_top_view,
     -PAGE_BOTTOM_VIEW => $CGI->param('page_bottom_view') || $page_bottom_view,
     -BASIC_INPUT_WIDGET_DISPLAY_COLSPAN => 2,
