@@ -85,7 +85,9 @@
                  %]
                      <a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&view=BasicDataView" target = "_blank">Data</a>
 		[% END %]
-		
+[% IF SiteName == 'AltPower' %]
+ [% embed ('AltPowerProjects') %]
+[% END %]		
 	      
 [% embed('LiveEditAdmin') %]
                                 

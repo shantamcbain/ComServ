@@ -1,0 +1,36 @@
+[% # 2018 Dec 12 renamed AltPowerProjets
+
+# the AltPowerProductsView template
+#	$Id: StatsView.ttml,v 1.1 2003/11/29 06:31:35 shanta Exp shanta $	
+
+%]
+[%# embed(data.page_top_view,['-PAGE_TITLE','Alt Power Products']) %]
+
+[% embed('ErrorDisplayView') %] 
+
+[% IF data.session_object %]
+
+   [% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+[% username = data.session_object.getAttribute('-KEY','auth_username') %]
+[% group = data.session_object.getAttribute('-KEY','auth_groups') %]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+ [% script_name = data.app_name %]
+[% localip = data.local_ip %]
+
+[% SiteFullName = 'Alternate Power'%]
+<div align="center"><h1>This is [% SiteFullName %] Projects page.</h1></div>
+</div>
+
+ 	   
+<br>
+
+   
+ 	 
+[% embed(data.page_bottom_view) %]
+  
+ 	   
