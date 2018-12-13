@@ -25,12 +25,23 @@
 [% SiteFullName = 'Alternate Power'%]
 <div align="center"><h1>This is [% SiteFullName %] Projects page.</h1></div>
 </div>
+<h2>Active project list</h2>
+ 
+	   
+<ul>
+ <li> 
+ [% IF project  %]
+ [% embed ('WaterHeatView') %]
+ 
+ [% project %]
+ [% ELSE %]		
+<a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProjectHomeView&amp;project=WaterHeatView">	Water heat</a></li>
+[% END %]	
 
- 	   
-<br>
+ <li> <a href="http://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=">	Buy And Sell.</a></li>
 
    
  	 
-[% embed(data.page_bottom_view) %]
+
   
  	   
