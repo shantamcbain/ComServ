@@ -229,7 +229,7 @@ recipe code [%  recipecode  %]
       <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=SM" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
 
- [%# embed('MashtonTargetTemp') %]
+ [% embed('MashtonTargetTemp') %]
  
   
 <li>Heat to stop enzimes  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
@@ -352,7 +352,7 @@ recipe code [%  recipecode  %]
                                   ")%]    
              [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
-       <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_base left out of sparge kettle emtied and installedstring %]&batchnumber=[% batchnumber %]&time_code=CE" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+       <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_basestring %]&batchnumber=[% batchnumber %]&time_code=CE" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
 <li>OTG [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
                                   WHERE  (batchnumber  = '$batchnumber' AND

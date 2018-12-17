@@ -8,15 +8,17 @@
 
 	[% session_id = data.session_object.getId() %]
    [% session_string = "session_id=$session_id" %]
-   [% BatchNumberS = data.session_object.getAttribute('-KEY','batchnumber') %]
+   [% BatchNumber = data.session_object.getAttribute('-KEY','batchnumber') %]
    
 [% END %]
 
+ 
+ <li>
+ <p>This will be a graph mash temp log Data will eventually come from sensors</p>
 
 
-<p>Pull from temp log</p>
-
-<a href="/cgi-bin/Brew/temp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;batchnumber=[% batchnumber %]&amp;Nav_link=1" target=_blank name="Add Ingredients"  title="Add New Recipe" style="AddButtonStyle">Add new temp</a> This will open a new tab. Enter the data save and close the window refresh this page for data to show.
+<a href="/cgi-bin/Brew/temp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;batchnumber=[% batchnumber %]&amp;Nav_link=1" target=_blank name="Add Ingredients"  title="Add New Temp" style="AddButtonStyle">Add new temp</a> This will open a new tab. Enter the data save and close the window refresh this page for data to show.
+[% time = 0 %]
 <table>
  <tr><td><table id="brewtime"  >
 <th >time<th >Mashton temp</td><th >Line temp</th><th >Sparge temp</th><th >Modify</th>
@@ -28,24 +30,20 @@
                                    ORDER BY time
 	                            ")%]  
  <tr><td>[% value.time %]</td><td>[% value.mastuntemp %][% total_mashtuntemp =  value.mastuntemp %]</td><td>[% value.LineTemp %]</td><td>[% value.spargtemp %]</td><td><a href="/cgi-bin/Brew/temp.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_modification_form=on&amp;&amp;record_id=[% value.record_id %]&amp;batchnumber=[% batchnumber %]" target=_blank name="_Blank"  title="Modify Temp" style="AddButtonStyle">Modify temp</a>
- </td></tr
+ </td></tr>
 
-[%# str.append(',') %]
-	    [%# total_mashtuntemp = total_mashtuntemp .,. value.mastuntemp %]
-	    [%# total_linetemp = total_linetemp + value.linetemp %]
-	    [%# total_spargtemp = total_spargtemp + ',' value.spargtemp %]
+[
+[% time = time + 10 %]
 
 [% END %]
- </table>
+<tr> <td colspan="5"><a href="/cgi-bin/Brew/temp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;batchnumber=[% batchnumber %]&amp;time=[% time %]&amp;Nav_link=1" target=_blank name="Add Ingredients"  title="Add New Temp" style="AddButtonStyle">Add new temp [% time %]</a></td></tr></table>
  </td>
  <td>
   <h3>Graph<h3>
-  <img src="/image/temp.png" alt="temp graph">
-  
-  
-  Mashtuntemp [% total_mashtuntemp %]
-  Linetemp [% total_linetemp %]
-  Spargtemp [% total_spargtemp %]
- </td>
+  <a href="/cgi-bin/Brew/graph_debug.cgi?site=[% SiteName %]&batchnumber=[% batchnumber %]">Refresh graph</a>
+<p>
+  <img src="/images/[% batchnumber %].png"width="100%" alt="temp graph">
+</p>
+  </td>
  </tr>
  </table> 
