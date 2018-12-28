@@ -22,7 +22,7 @@
  [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
  [% session_id = data.session_object.getId() %]
  [% session_string = "session_id=$session_id" %]
- [% PAGE = data.page_name ||'HomeView' %]
+ [% Page = data.page_name ||'HomeView' %]
  [% View = data.view %]
  [% HomeLink = data.home_link || '' %]
  [%# page = 'GarlicCulture' %]
@@ -35,7 +35,7 @@
 
   [% FOREACH link = DBI.query("SELECT * FROM page_tb
                                   WHERE  (status  = 2 AND
-                                         page_code = '$PAGE' AND
+                                         page_code = '$Page' AND
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
@@ -54,9 +54,25 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td colspan="5">                    
-                
+     Page name [% Page  %]     
+     [% IF username == 'Shanta' OR
+       group    == 'AltPower_admin' OR
+       group    == 'BMaster_admin' OR
+       group    == 'HE_admin' OR
+       group    == 'Brew_admin' OR
+       group    == 'ECFadmin' OR 
+       group    == 'LumbyThrift_admin' OR 
+       group    == 'SocialExp_admin'OR
+       group    == 'WiseWoman_admin'                     
+%]
+<p> 
+ <a href="/cgi-bin/ToDo/todo.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;record_id=[% link.record_id %]&amp;subject=[% link.project_name %]&amp;project_code=[% link.project_code %]&amp;description=[% link.comments %]&amp;priority=" "target="_Blank">Add New Todo</a>  
+ <br>
+<a href="/cgi-bin/ToDo/todo.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ToDoHomeView" "target="_Blank">List</a>
+[% END %]    
 [% IF username %]
 		 [% IF pagewelcome %]
+
 			[% pagewelcome %]
 		 [% ELSE %]
 			<h3 > Hello  [% firstname %] &nbsp; [% lastname %]! Welcome to [% data.site_display_name %] </h3>

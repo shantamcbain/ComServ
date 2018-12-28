@@ -68,7 +68,7 @@ function QuickClick(list) {
 		<li>homeview    = [% data.home_view %].data</li>
 		<li>page        = [%  PAGE %]</li>
 	    <li>BrewName    = [% data.brewname %].data</li>
-	    <li>Recipe Code = [%  data.recipecode %].data</li>
+	    <li>Recipe Code = [%  data.recipe_code %].data</li>
 	    <li>session       [% RecipeCode %]</li>
 	    <li>BMS           [% BrewNameS %]</li>
 	    <li>HomeVew TTML       [% HomeView %]</li>
