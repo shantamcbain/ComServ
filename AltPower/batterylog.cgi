@@ -1,4 +1,5 @@
 #!/usr/bin/perl -wT
+# 	$Id: log.cgi,v 1.41 2018/12/28 22:08:42
 # 	$Id: log.cgi,v 1.4 2004/01/23 22:08:42 shanta Exp shanta $	
 #CSC file location /cgi-bin/CSC
 # Copyright (C) 1994 - 2001  eXtropia.com
@@ -44,6 +45,7 @@ my @TEMPLATES_SEARCH_PATH =
        ../HTMLTemplates/Organic
        ../HTMLTemplates/Shanta
        ../HTMLTemplates/Todo
+       ../HTMLTemplates/HelpDesk
        ../HTMLTemplates/VitalVic
        ../HTMLTemplates/Default);
 
@@ -70,7 +72,7 @@ foreach ($CGI->param()) {
 
     my $APP_NAME = "batterylog"; 
     my $MySQLPW;
-    my $SiteName =  $CGI->param('site') || "APIS";
+    my $SiteName =  $CGI->param('site') || "AltPower";
     my $UseModPerl = 0;
     my $AUTH_TABLE;
     my $TableName;
@@ -882,9 +884,9 @@ if ($site eq "file"){
 else{
 	@BASIC_DATASOURCE_CONFIG_PARAMS = (
 	        -TYPE         => 'DBI',
-	        -DBI_DSN      => 'mysql:host=localhost;database=forager',
+	        -DBI_DSN      =>$DBI_DSN,
 	        -TABLE        => 'altpower_battery_log_tb',
-	        -USERNAME     => 'forager',
+	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@DATASOURCE_FIELD_NAMES,
 	        -KEY_FIELDS   => ['username'],
@@ -919,9 +921,9 @@ my @TODO_DATASOURCE_FIELD_NAMES =
 
 my	@TODO_DATASOURCE_CONFIG_PARAMS = (
 	        -TYPE         => 'DBI',
-	        -DBI_DSN      => 'mysql:host=localhost;database=forager',
+	        -DBI_DSN      => $DBI_DSN,
 	        -TABLE        => 'csc_todo_tb',
-	        -USERNAME     => 'forager',
+	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@TODO_DATASOURCE_FIELD_NAMES,
 	        -KEY_FIELDS   => ['username'],
@@ -946,9 +948,9 @@ my @PROJECT_DATASOURCE_FIELD_NAMES = qw(
 
 my	@PROJECT_DATASOURCE_CONFIG_PARAMS = (
 	        -TYPE         => 'DBI',
-	        -DBI_DSN      => 'mysql:host=localhost;database=forager',
+	        -DBI_DSN      => $DBI_DSN,
 	        -TABLE        =>   $ProjectTableName||'csc_project_tb',
-	        -USERNAME     => 'forager',
+	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@PROJECT_DATASOURCE_FIELD_NAMES,
 	        -KEY_FIELDS   => ['username'],
