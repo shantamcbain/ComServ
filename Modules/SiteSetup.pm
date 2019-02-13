@@ -6,7 +6,8 @@ use Extropia::Core::Base qw(_rearrange _rearrangeAsHash);
 #This is the only main difference between domain configuration.All this should move to mysql
 
 #my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
-my $GLOBAL_DATAFILES_DIRECTORY="/home/usbmca/Datafiles";
+#my $GLOBAL_DATAFILES_DIRECTORY="/home/usbmca/Datafiles";
+my $GLOBAL_DATAFILES_DIRECTORY="/home/weaver/Datafiles";
 # $site = 'file';
 #Create local Variable for use here only
 
