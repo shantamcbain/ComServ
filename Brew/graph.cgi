@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+#2019/02/23 removed sort order 
 use strict;
 use DBI;
 use GD::Graph::Data;
@@ -23,8 +24,7 @@ my $sql = '
   SELECT time, mastuntemp, LineTemp, spargtemp 
   FROM brew_temp_tb 
   WHERE sitename = ? 
-    AND batchnumber = ?
-  ORDER BY time';
+    AND batchnumber = ?';
 
 my $dbh = dbh(); # connect
 my $sth = $dbh->prepare($sql);

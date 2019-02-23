@@ -1,4 +1,6 @@
 #!/usr/bin/perl -wT
+
+# 	$Id: ingrediant.cgi,v 1.02 2019/02/23 21:22:07 shanta Exp $	fix weight addition
 # 	$Id: ingrediant.cgi,v 1.01 2019/02/16 21:22:07 shanta Exp $	added unit to list.
 # 	$Id: ingrediant.cgi,v 1.0 2015/11/29 21:22:07 shanta Exp $	cloned from recipe
 	
@@ -40,7 +42,6 @@ my @TEMPLATES_SEARCH_PATH =
        ../HTMLTemplates/Brew
        ../HTMLTemplates/CS
        ../HTMLTemplates/CSC
-       ../HTMLTemplates/CSPS
        ../HTMLTemplates/Demo
        ../HTMLTemplates/ECF
        ../HTMLTemplates/ENCY
@@ -77,7 +78,7 @@ foreach ($CGI->param()) {
 #                          PORTING SETUP                             #
 ######################################################################
 my $SiteName =  $CGI->param('site') || "Brew";
-my $recipe_code=  $CGI->param('recipe_code');
+my $recipe_code=  $CGI->param('recipecode');
 my $APP_NAME = "ingrediant";
 my $SITE_DISPLAY_NAME = 'Site not added to session setup.';
 my $APP_NAME_TITLE = "ingrediance table";
@@ -612,6 +613,7 @@ my @DATASOURCE_FIELD_NAMES = qw(
        sitename
        recipe_code
        item_code
+       weight
        unit
        ingrediant_name 
        description
@@ -675,7 +677,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
   category => [        
         -DISPLAY_NAME => 'Category: If not in list select other and place your suggestion in comments ',
         -TYPE         => 'popup_menu',        
-        -NAME         => 'category',        
+        -NAME         => 'category',
         -VALUES       => [sort {$a <=> $b} keys %type],
         -LABELS       => \%type,
         -INPUT_CELL_COLSPAN => 3,
@@ -1266,6 +1268,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -MAIL_SEND_PARAMS                       => \@MAIL_SEND_PARAMS,
     -MODIFY_FORM_VIEW_NAME                  => 'ModifyRecordView',
     -MODIFY_EMAIL_BODY_VIEW                 => 'ModifyEventEmailView',
+    -RECIPE_CODE                            => $recipe_code.
     -REQUIRE_AUTH_FOR_SEARCHING_FLAG        => 0,
     -REQUIRE_AUTH_FOR_ADDING_FLAG           => 1,
     -REQUIRE_AUTH_FOR_MODIFYING_FLAG        => 1,
