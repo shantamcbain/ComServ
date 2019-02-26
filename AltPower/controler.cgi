@@ -1,8 +1,9 @@
 #!/usr/bin/perl -wT
 
+# 	$Id: /AltPower/controler.cgi,v 0.8 2019/02/24 14:27:36 shanta Exp $	
 # 	$Id: /AltPower/voltamp.cgi,v 0.81 2019/02/ 14:27:36 shanta Exp $	
 # 	$Id: /AltPower/voltamp.cgi,v 0.8 2018/08/05 14:27:36 shanta Exp $	
-my $version = '0.81';
+my $version = '0.01';
 # Copyright (C) 1994 - 2001  eXtropia.com
 #
 # This program is free software; you can redistribute it and/or
@@ -140,8 +141,8 @@ my $site_update;
     my $salutaion;
     my $FAVICON;
     my $ANI_FAVICON;
-    my $FAVICON_TYPE;
-    my $CellCode = $CGI->param('CellCode');
+    my $FAVICON_TYPE
+    my $DeviceCode = $CGI->param('DeviceCode');
     my $ModuleCode = $CGI->param('ModuleCode');
     my $BatteryCode = $CGI->param('Battery');
 my $Affiliate = 001;
@@ -702,11 +703,13 @@ my @DATASOURCE_FIELD_NAMES =
        sitename
        start_day 	
        time 	
-       BatteryCode 
-       ModuleCode	
-       CellCode 	
+       SolarWatts 
+       SolarVolts	
+       DeviceCode 	
        Volts 	
-       Amps 	
+       Amps
+       LoadVolts
+       LoadAmps 	
        Temp 	
        location
        comments 	
@@ -762,16 +765,11 @@ my %BatteryCode =
       247  => '5',
        );
     
-my %CellCode =
+my %DeviceCode =
  (
-      1    => '7s 18650 1',  
-      2    => '7s 18650 2',
-      3    => '7s 18650 3',
-      4    => '7s 18650 4',
-      5    => '7s 18650 5',
-      6    => '7s 18650 6',
-      7    => '7s 18650 7',
-    );
+      'ML2440    => 'ML2440',  
+      'L60'    => 'L60',
+     );
 my %BASIC_INPUT_WIDGET_DEFINITIONS = 
     (
      BatteryCode => [
@@ -791,10 +789,10 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
                  -VALUES       => [sort {$a <=> $b} keys %ModuleCode],
  		         -LABELS       => \%ModuleCode,
                ],
-   CellCode => [
-                 -DISPLAY_NAME => 'CellCode',
+   DeviceCode => [
+                 -DISPLAY_NAME => 'DeviceCode',
                  -TYPE         => 'popup_menu',
-                 -NAME         => 'CellCode',
+                 -NAME         => 'DeviceCode',
                  -SIZE         => 44,
                  -VALUES       => [sort {$a <=> $b} keys %CellCode],
  		         -LABELS       => \%CellCode,
@@ -943,15 +941,43 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],
-     Volts => [
+   SolarVolts => [
+        -DISPLAY_NAME => 'Panel Voltage',
+        -TYPE         => 'textfield',
+        -NAME         => 'SolarVolts',
+        -SIZE         => 10,
+        -MAXLENGTH    => 80
+    ],
+    Volts => [
         -DISPLAY_NAME => 'Volts',
         -TYPE         => 'textfield',
         -NAME         => 'Volts',
         -SIZE         => 30,
         -MAXLENGTH    => 250
     ],
+  SolarWatts => [
+        -DISPLAY_NAME => 'Panel Watts',
+        -TYPE         => 'textfield',
+        -NAME         => 'SolarWatts',
+        -SIZE         => 10,
+        -MAXLENGTH    => 80
+    ],
 
-    location => [
+    LoadVolts => [
+        -DISPLAY_NAME => 'Load Volts',
+        -TYPE         => 'textfield',
+        -NAME         => 'LoadVolts',
+        -SIZE         => 30,
+        -MAXLENGTH    => 250
+    ],
+  LoadAmps => [
+        -DISPLAY_NAME => 'Load Amps',
+        -TYPE         => 'textfield',
+        -NAME         => 'LoadAmps',
+        -SIZE         => 10,
+        -MAXLENGTH    => 80
+    ],
+   location => [
         -DISPLAY_NAME => 'Location of item.',
         -TYPE         => 'textfield',
         -NAME         => 'location',
@@ -973,12 +999,14 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
 
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =  (
      qw(sitename), 
-     qw(BatteryCode),
-     qw(ModuleCode),
-     qw(CellCode),
+     qw(DeviceCode),
      [qw(start_day start_mon start_year)],
+     qw(SolarVolts),
+     qw(SolarWatts),
      qw(Volts),
      qw(Amps),
+     qw(LoadVolts)
+     qw(LoadAmps)
      qw(Temp),
      qw(time),
      [qw(location)],
