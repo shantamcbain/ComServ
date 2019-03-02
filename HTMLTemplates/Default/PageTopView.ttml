@@ -2,8 +2,8 @@
 [% PageVersion = 0.02 %]
 [% #setup session ifo %]
 
-[% PROCESS HostName.ttml %]
-
+[%# PROCESS HostName.ttml %]
+[% HostName = data.domain_name %]
 
 [% IF data.session_object %]
 

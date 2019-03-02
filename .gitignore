@@ -3,8 +3,17 @@
 /*v1.9
 *~
 *.orig
+<<<<<<< HEAD
 /.metadata/.lock
 /.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.prefs
 /.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml
 /.metadata/version.ini
 /smt-whitepaper.pdf
+=======
+/HTMLTemplates/CSC/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz.torrent
+/.metadata/version.ini
+/smt-whitepaper.pdf
+/.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml
+/.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.prefs
+/.metadata/.lock
+>>>>>>> ec9b81138110be10f85a1b45a99c9442cc09d6f0
