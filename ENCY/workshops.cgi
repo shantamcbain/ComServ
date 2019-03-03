@@ -1,4 +1,5 @@
 #!/usr/bin/perl -wT 
+# 	$Id: workshops.cgi,v 0.11 2019/03/02 22:40:29 shanta Exp shanta $	
 # 	$Id: workshops.cgi,v 0.1 2011/8/28 22:40:29 shanta Exp shanta $	
 #CSC file location /cgi-bin/ENCY/
 # Copyright (C) 1994 - 2001  eXtropia.com
@@ -37,7 +38,7 @@ my @VIEWS_SEARCH_PATH =
 my @TEMPLATES_SEARCH_PATH = 
     qw(../HTMLTemplates/ENCY
        ../HTMLTemplates/CSC
-       ../HTMLTemplates/CSPS
+       ../HTMLTemplates/Apis
        ../HTMLTemplates/Shanta
        ../HTMLTemplates/Todo
        ../HTMLTemplates/HelpDesk
@@ -69,8 +70,8 @@ my $SiteName =  $CGI->param('site') || "ENCY";
     my $PrintMode =  $CGI->param('mode') || "month";
 my $APP_NAME = "ency"; 
     my $SITE_DISPLAY_NAME = 'None Defined for this site.';
-    my $last_update = 'Febuary 26, 2015';
-    my $site_update = 'Feburary 26, 2015';
+    my $last_update = 'March 02, 2019';
+    my $site_update = 'March 02, 2019';
 
     my $APP_NAME_TITLE = "Work Shops";
     my $homeviewname         ;
@@ -426,7 +427,7 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
 
     -FIELD_MAPPINGS =>
       {
-       WorkShop_Code	 => 'WorkShop Code',
+       workshop_code	 => 'WorkShop Code',
        participants 	 => 'Participants',
        accumulative_time => 'Accumulated time',
        start_date        => 'Date',
@@ -506,7 +507,7 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
         )],
 
     -FIELD_MAPPINGS => {
-       WorkShop_Code	 => 'WorkShop Code',
+       workshop_code	 => 'WorkShop Code',
        participants  	 => 'Participants',
        accumulative_time => 'Accumulated time',
        start_date        => 'Date',
@@ -843,7 +844,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
                  -INPUT_CELL_COLSPAN => 3,
                 ],
 
-    WorkShop_Code => [
+    workshop_code => [
         -DISPLAY_NAME => 'WorkShop Code',
         -TYPE         => 'textfield',
         -NAME         => 'workshop_code',
@@ -874,7 +875,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
      qw(sitename),
-     qw(WorkShop_Code),
+     qw(workshop_code),
      qw(workshop_name ),
      [qw(start_day start_mon start_year start_hour start_min start_am_pm is_all_day)],
      [qw(end_day end_mon end_year end_hour end_min end_am_pm)],
@@ -1173,7 +1174,7 @@ my @VIEW_DISPLAY_PARAMS = (
         body
     )],
     -FIELD_NAME_MAPPINGS     => {
-        'WorkShop_Code' => 'WorkShop Code',
+        'workshop_code' => 'WorkShop Code',
         'workshop_name'     => 'WorkShop Name',
         'description'      => 'Description',
         'registration' => 'Registration',
@@ -1811,7 +1812,7 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
 
     -FIELD_MAPPINGS =>
       {
-       WorkShop_Code	 => 'WorkShop Code',
+       workshop_code	 => 'WorkShop Code',
        participants 	 => 'Participants',
        accumulative_time => 'Accumulated time',
        start_date        => 'Date',
@@ -1891,7 +1892,7 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
         )],
 
     -FIELD_MAPPINGS => {
-       WorkShop_Code	 => 'WorkShop Code',
+       workshop_code	 => 'WorkShop Code',
        participants  	 => 'Participants',
        accumulative_time => 'Accumulated time',
        start_date        => 'Date',
@@ -2228,7 +2229,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
                  -INPUT_CELL_COLSPAN => 3,
                 ],
 
-    WorkShop_Code => [
+    workshop_Code => [
         -DISPLAY_NAME => 'WorkShop Code',
         -TYPE         => 'textfield',
         -NAME         => 'workshop_code',
@@ -2259,7 +2260,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
      qw(sitename),
-     qw(WorkShop_Code),
+     qw(workshop_Code),
      qw(workshop_name ),
      [qw(start_day start_mon start_year start_hour start_min start_am_pm is_all_day)],
      [qw(end_day end_mon end_year end_hour end_min end_am_pm)],
@@ -2558,7 +2559,7 @@ my @VIEW_DISPLAY_PARAMS = (
         body
     )],
     -FIELD_NAME_MAPPINGS     => {
-        'WorkShop_Code' => 'WorkShop Code',
+        'workshop_code' => 'WorkShop Code',
         'workshop_name'     => 'WorkShop Name',
         'description'      => 'Description',
         'registration' => 'Registration',
