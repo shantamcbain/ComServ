@@ -1,4 +1,6 @@
 #!/usr/bin/perl -wT
+
+# 	$Id: index.cgi,v 1.13 2019/03/215 14:27:36 shanta Exp $
 # 	$Id: index.cgi,v 1.12 2014/03/20 14:27:36 shanta Exp $
 
 # Copyright (C) 1994 - 2001  eXtropia.com
@@ -48,6 +50,7 @@ my @TEMPLATES_SEARCH_PATH = qw(HTMLTemplates/AltPower
   HTMLTemplates/HelpDesk
   HTMLTemplates/LT
   HTMLTemplates/MW
+  HTMLTemplates/News
   HTMLTemplates/Organic
   HTMLTemplates/Shanta
   HTMLTemplates/SB
@@ -1123,6 +1126,7 @@ my @VALID_VIEWS = qw(
   MentorView
   MentoringHomeView
   MailView
+  NewsLetterView
   SwarmControlView
   ShantaHome
   CertificationView
