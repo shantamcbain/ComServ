@@ -22,8 +22,8 @@
 <tr>
 
 <td>[% link.status  %]</td>   
-<td>[% link.   start_date %]</td>
-<td>[% link.   end_date %]</td>
+<td>[% link.start_date %]</td>
+<td>[% link.end_date %]</td>
 
 </tr>
 <tr>
