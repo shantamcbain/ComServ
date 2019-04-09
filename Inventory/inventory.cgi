@@ -1,4 +1,5 @@
 #!/usr/bin/perl -wT
+#updated April 09, 2019
 	
 
 # Copyright (C) 1994 - 2001  eXtropia.com
@@ -134,6 +135,8 @@ use SiteSetup;
     $mail_to               = $SetupVariables->{-MAIL_TO};
     $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
     $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
+    my $CSS_VIEW_URL            = $SetupVariables->{-CSS_VIEW_NAME}||'none';
+    $SITE_DISPLAY_NAME          = $SetupVariables->{-SITE_DISPLAY_NAME};
     $app_logo              = $SetupVariables->{-APP_LOGO};
     $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
     $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
@@ -148,14 +151,15 @@ use SiteSetup;
     $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
     $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
     $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
-    $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
-    $site_session = $DATAFILES_DIRECTORY.'/Sessions';
-    $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-    $page_left_view   = $CGI->param('page_left_view')||$page_left_view;
+    $DATAFILES_DIRECTORY   = $APP_DATAFILES_DIRECTORY;
+    $site_session          = $DATAFILES_DIRECTORY.'/Sessions';
+    $auth                  = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+    $page_left_view        = $CGI->param('page_left_view')||$page_left_view;
     $ProjectTableName      = 'csc_project_tb';
-    $FAVICON                = $SetupVariables->{-FAVICON};
-    $ANI_FAVICON            = $SetupVariables->{-ANI_FAVICON};
+    $FAVICON               = $SetupVariables->{-FAVICON};
+    $ANI_FAVICON           = $SetupVariables->{-ANI_FAVICON};
     $FAVICON_TYPE          = $SetupVariables->{-FAVICON_TYPE};
+    $TableName             = $SetupVariables->{-INVENTORYTABLENAME}||'inventroy_tb';
 
 
 my $VIEW_LOADER = new Extropia::Core::View
@@ -190,7 +194,6 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
@@ -209,113 +212,6 @@ if ($CGI->param('site')){
 }
 $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
 
-if ($SiteName eq "Apis") {
-use ApisSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesApis   = new ApisSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesApis->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesApis->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesApis->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesApis->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesApis->{-APP_LOGO_ALT};
-    $APP_DATAFILES_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.'/Apis';
-     $TableName              = 'apis_inventory_tb';
- }
-#else {
-#    $APP_NAME_TITLE        = "Computer System Consulting.ca";
-#    $homeviewname          = 'HelpDeskHomeView';
-
-#}
-#   $homeviewname            = 'BasicDataView';
- elsif ($SiteName eq "ECF") {
-use ECFSetup;
-  my $SetupVariablesECF    = new  ECFSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesECF->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesECF->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesECF->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesECF->{-APP_LOGO_ALT};
-    $APP_NAME_TITLE        = "Eagle Creek Farms: Apis";
-    $homeviewname          = $SetupVariablesECF->{-HOME_VIEW_NAME};
-    $home_view             = $SetupVariablesECF->{-HOME_VIEW};
-#Mail settings
-    $mail_from             = $SetupVariablesECF->{-MAIL_FROM};
-    $mail_to               = $SetupVariablesECF->{-MAIL_TO};
-    $mail_replyto          = $SetupVariablesECF->{-MAIL_REPLYTO};
-    $HTTP_HEADER_PARAMS    = $SetupVariablesECF->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_KEYWORDS  = $SetupVariablesECF->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesECF->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_URL            = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/ECF'; 
-     $TableName              = 'apis_inventory_tb';
-    $SITE_DISPLAY_NAME       = $SetupVariablesECF->{-SITE_DISPLAY_NAME};
-}
- 
-elsif ($SiteName eq "BeeCoop") {
-use BMasterSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesBMaster   = new BMasterSetup($UseModPerl);
-     $HasMembers               = $SetupVariablesBMaster->{-HAS_MEMBERS};
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesBMaster->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesBMaster->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesBMaster->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesBMaster->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesBMaster->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesBMaster->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesBMaster->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesBMaster->{-APP_LOGO_ALT};
-     $homeviewname            = 'HomeView'||$SetupVariablesBMaster->{-HOME_VIEW_NAME};
-     $home_view               = 'CoopHomeView'||$SetupVariablesBMaster->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesBMaster->{-SITE_LAST_UPDATE}; 
- #Mail settings
-     $mail_from               = $SetupVariablesBMaster->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesBMaster->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesBMaster->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = 'BeeMaster.ca Co-Op';
-     $FAVICON                = $SetupVariablesBMaster->{-FAVICON};
-     $ANI_FAVICON            = $SetupVariablesBMaster->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesBMaster->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE          = $SetupVariablesBMaster->{-FAVICON_TYPE};
-}
- 
-elsif ($SiteName eq "BMaster" or
-       $SiteName eq "BMasterDev" ) {
-use BMasterSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesBMaster   = new BMasterSetup($UseModPerl);
-     $APP_NAME_TITLE          = "Beemaster.ca ";
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesBMaster->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesBMaster->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesBMaster->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesBMaster->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesBMaster->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesBMaster->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesBMaster->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesBMaster->{-APP_LOGO_ALT};
-     
-    if ($group eq "Mentoring"){
-     $home_view               = 'MentoringHomeView';
-     $homeviewname            = $home_view;
-    }else{
-     $homeviewname            = $SetupVariablesBMaster->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesBMaster->{-HOME_VIEW};
-     }
-     $CSS_VIEW_URL            = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesBMaster->{-LAST_UPDATE}; 
- #Mail settings
-    $mail_from                = $SetupVariablesBMaster->{-MAIL_FROM};
-    $mail_to                  = $SetupVariablesBMaster->{-MAIL_TO};
-    $mail_replyto             = $SetupVariablesBMaster->{-MAIL_REPLYTO};
-    $SITE_DISPLAY_NAME        = $SetupVariablesBMaster->{-SITE_DISPLAY_NAME};
-    $FAVICON                  = '/images/apis/favicon.ico'||$SetupVariablesBMaster->{-FAVICON}||'/images/apis/favicon.ico';
-    $ANI_FAVICON              = $SetupVariablesBMaster->{-ANI_FAVICON};
-    $page_top_view            = $SetupVariablesBMaster->{-PAGE_TOP_VIEW};
-}
 
 
 
@@ -662,7 +558,7 @@ my @DATASOURCE_FIELD_NAMES = qw(
         status
         item_code
         item_name
-        discription 
+        description 
         project_code
 	     number
         price
@@ -760,10 +656,10 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
         -MAXLENGTH    => 80
     ],
 
-  discription => [
-        -DISPLAY_NAME => 'Discription',
+  description => [
+        -DISPLAY_NAME => 'Description',
         -TYPE         => 'textfield',
-        -NAME         => 'discription',
+        -NAME         => 'description',
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],
@@ -813,7 +709,7 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = (
         qw(status),
         qw(item_code),
        qw(item_name),
-       qw(discription),
+       qw(description),
        qw(number),
        qw(price),
        qw(project_code),
