@@ -45,17 +45,16 @@
 			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %] Projects! </h3> 
 		[% END %]
 
-<h4>Our current Projects   
-                 [% IF group == 'CSC_admin' OR
-                       group == 'AltPower_admin' OR
-                       group == 'ECF_admin' OROR
-                       group == 'BeeMast_admin' 
-                       group == 'HE_admin' OR
-                       group == 'IM_admin'  OR
-                       group == 'CS_admin'  OR
-                       group == 'Forager_admin'   OR
-                       group == 'WiseWoman_admin' OR
-                       username == 'Shanta%]                    
+<h4>Our current Projects  
+
+                [% IF group == 'CSC_admin' OR
+                    group == 'CSCDev_admin' OR
+                    group == 'MW_admin' OR
+                    group == 'WiseWoman_admin' OR
+                    group == 'AltPower_admin' OR
+                    username == 'Shanta'
+                 %] 
+                             
                      <a href="/cgi-bin/Projects.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form" target = "_blank">Add</a>
 		[% END %]
 </h4>	
@@ -69,7 +68,8 @@
 		[% ELSIF SiteName == "CS" %]
 			[% embed ('CSWorkShops') %]
 		[% ELSIF SiteName == "CSC" %]
-                 Call CSC       [% IF group == 'Planning' %]
+                 Call CSC       
+          [% IF group == 'Planning' %]
 			[%# embed ('PlanningView') %]
                         [% ELSE %]
 			[%# embed ('CSCHomeView') %]

@@ -103,7 +103,7 @@ my $ANI_FAVICON;
 my $FAVICON_TYPE;
 my $IMAGE_ROOT_URL;
 my $DOCUMENT_ROOT_URL;
-my $GLOBAL_DATAFILES_DIRECTORY = "/home/usbmca/Datafiles";
+my $GLOBAL_DATAFILES_DIRECTORY ;
 my $TEMPLATES_CACHE_DIRECTORY;
 my $APP_DATAFILES_DIRECTORY;
 my $DATAFILES_DIRECTORY;
@@ -136,6 +136,18 @@ my $HostName    = $ENV{'SERVER_NAME'};
 my $OffLine     = 'yes';
 my $shop        = 'cs';
 
+if ($HostName eq 'computersystemconsulting.ca'||
+    $HostName eq 'brew.computersystemconsulting.ca'||
+    $HostName eq 'dev.altpower.usbm.ca'){
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
+}
+
+if ($HostName eq 'usbm.ca' ||
+    $HostName eq 'altpower.usbm' ||
+    $HostName eq 'brew.usbm.ca'||
+    $HostName eq 'ency.usbm.ca'){
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/usbmca/Datafiles";
+}
 
 
 
@@ -273,17 +285,13 @@ if ( $CGI->param('frame') )
 {
  $frame = "1";
 }
-if ( $HostName eq 'computersystemconsulting.ca' )
+if ( $HostName eq 'computersystemconsulting.ca')
 {
  $GLOBAL_DATAFILES_DIRECTORY = "/home/shanta/Datafiles";
 }
 if ( $HostName eq 'beemaster.ca' )
 {
  $GLOBAL_DATAFILES_DIRECTORY = "/home/beemast/Datafiles";
-}
-if ( $HostName eq 'usbm.ca' )
-{
- $GLOBAL_DATAFILES_DIRECTORY = "/home/usbmca/Datafiles";
 }
 
 ######################################################################
@@ -961,6 +969,7 @@ my @VALID_VIEWS = qw(
   SessionTimeoutErrorView
   AddRecordView
   PowerSearchFormView
+  ProjectsView
   BasicDataView
   DetailsRecordView
   ModifyRecordView

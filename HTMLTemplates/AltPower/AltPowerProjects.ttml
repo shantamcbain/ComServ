@@ -1,6 +1,7 @@
 [% # 2018 Dec 12 renamed AltPowerProjets
 
 # the AltPowerProductsView template
+#	$Id: StatsView.ttml,v 1.2 2019/04/27
 #	$Id: StatsView.ttml,v 1.1 2003/11/29 06:31:35 shanta Exp shanta $	
 
 %]
@@ -19,27 +20,42 @@
 [% username = data.session_object.getAttribute('-KEY','auth_username') %]
 [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
 [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% project = data.project %]
  [% script_name = data.app_name %]
 [% localip = data.local_ip %]
 
 [% SiteFullName = 'Alternate Power'%]
-<div align="center"><h1>This is [% SiteFullName %] Projects page.</h1></div>
+<div align="center"><h1>[% SiteFullName %] Projects page.</h1></div>
 </div>
 <h2>Active project list</h2>
  
 	   
 <ul>
  <li> 
- [% IF project  %]
- [% embed ('WaterHeatView') %]
+
+ [% IF project  == 'PiPower' %]
  
+[% project %]
+[% embed ('PiPower') %]
+ [% ELSIF project  == ('WaterHeatView') %]
+ 
+ [% embed ('WaterHeatView') %]
  [% project %]
- [% ELSE %]		
-<a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProjectHomeView&amp;project=WaterHeatView">	Water heat</a></li>
-[% END %]	
+ 
+ [% ELSE %]	
 
- <li> <a href="http://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=">	Buy And Sell.</a></li>
+ [% embed ('ProjectList') %]
 
+ 
+ <a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProjectHomeView&amp;project=PiPower">	PiPower</a></li>
+	
+<a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProjectHomeView&amp;project=WaterHeatView">	Water heat</a>
+
+</li>
+[% END %]
+
+
+</ul>
    
  	 
 

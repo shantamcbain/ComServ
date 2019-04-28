@@ -57,7 +57,7 @@
 [% END %]
 
 
-  	[% embed(data.page_top_view,["-PAGE_TITLE","$PageName",]) %]
+  	[% embed(data.page_top_view,["-PAGE_TITLE","$PageName","-project" ]) %]
 
 
   
@@ -92,7 +92,7 @@
  [% embed ('AltPowerProjects') %]
 [% END %]		
 	      
-[% embed('LiveEditAdmin') %]
+[%# embed('LiveEditAdmin') %]
                                 
                                     
       [% body %]
@@ -104,6 +104,7 @@
                     username == 'Shanta'
                  %]
   <p>                   <a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form=on" target = "_blank">Add Project</a>
+ <h2>Current ToDos</h2>
  [% embed('ToDoSQL') %] 
 		[% END %]
 <p>
