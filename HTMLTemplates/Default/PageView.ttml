@@ -26,7 +26,7 @@
  [% View = data.view %]
  [% HomeLink = data.home_link || '' %]
  [%# page = 'GarlicCulture' %]
-
+[% $ENV{'SERVER_NAME'} %]
 
  [%# embed('SiteMysql') %]   
 
