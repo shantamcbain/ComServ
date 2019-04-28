@@ -48,10 +48,10 @@
 </p>
 <!-- Nave bar to QueenViews -->
 <a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisNucQueensView">Nucs</a>
-<p><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisActiveQueensView">Active</a>
+<p><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisActiveQueensView">Active Queens</a>
 </p>
 <table>
-<tr><th>Yard <a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add</a></th><th>status</th><th>Queen code</th><th>Pallet code</th><th>View pallets</th></tr>
+<tr><th>Yard <a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add</a></th><th>status</th><th>Queen code</th><th>Pallet code</th><th>View pallets</th><th>Log</th></tr>
 [% FOREACH link = DBI.query("SELECT * FROM apis_queens_tb
                                   WHERE   client_name = '$SiteName'
                                    AND (status != 'Sold' AND 
@@ -66,9 +66,10 @@
    <td><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_details_view=on&amp;record_id=[% link.record_id %] ">[% link.queen_code %]</a> </td>
    <td>[% link.pallet_code %]</td>
    <td><a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;submit_power_search=on&amp;simple_search_string=[% link.pallet_code %] ">Pallet</a>    </td>
-[% HiveCap = HiveCap + link.total_yard_size %]
+  <td><a href="/cgi-bin/Apis/queen_log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;record_id=[% link.queen_code %] ">[% link.queen_code %]</a> </td>
+ [% HiveCap = HiveCap + link.total_yard_size %]
  [% CurrentSize = CurrentSize + 1 %]
-   [% END %]
+   </td>[% END %]
    </tr>
    <tr><td></td><td></td><td>[% HiveCap %]</td><td>[% CurrentSize %]</td><td></td></tr>
 
