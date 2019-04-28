@@ -1,4 +1,12 @@
+[% IF $ENV{'SERVER_NAME'} == 'shanta.computersystemconsulting.ca' %]
+[% USE DBI( data_source = 'dbi:mysql:forager',
+                username = 'shanta',
+                password =  'herbsrox2' )
+    %]
+[% ELSE %]
 [% USE DBI( data_source = 'dbi:mysql:shanta_forager',
                 username = 'shanta_forager',
                 password =  'UA=nPF8*m+T#' )
     %]
+ [% END %]
+[% $ENV{'SERVER_NAME'} %] server name
