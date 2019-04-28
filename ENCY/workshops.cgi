@@ -625,7 +625,7 @@ my @months = qw(January February March April May June July August
 my %months;
 @months{1..@months} = @months;
 my %years = ();
-$years{$_} = $_ for (2014..2025);
+$years{$_} = $_ for (2019..2025);
 my %days  = ();
 $days{$_} = $_ for(1..31);
 
@@ -683,7 +683,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -DISPLAY_NAME => 'Comments',
         -TYPE         => 'textarea',
         -NAME         => 'comments',
-        -ROWS         => 6,
+        -ROWS         => 10,
         -COLS         => 30,
         -WRAP         => 'VIRTUAL'
     ],
