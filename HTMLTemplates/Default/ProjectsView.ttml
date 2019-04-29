@@ -23,15 +23,16 @@
 [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
 	[% session_id = data.session_object.getId() %]
 	[% session_string = "session_id=$session_id" %]
-
+   [% project = data.project  %]
+[% ViewName  = '/Defalut/ProjectsView.ttml' %] 
 
 
 
 
 [% IF group == "Mentoring"	%]
-	[% embed(data.page_top_view,['-PAGE_TITLE',' Projects.']) %]
+	[% embed(data.page_top_view,['-PAGE_TITLE',' ProjectsView']) %]
 [% ELSE %]
-	[% embed(data.page_top_view,['-PAGE_TITLE','Projects.']) %]
+	[% embed(data.page_top_view,['-PAGE_TITLE','ProjectsView']) %]
 [% END %]
 
 [% embed('ErrorDisplayView') %]
@@ -40,12 +41,12 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td>[% IF username %]
-			<h3 > Hello  [% firstname%]  [% lastname%]! Welcome to [% data.site_display_name %] Projects!</h3>
+			<h3 > Hello  [% firstname%]  [% lastname%]! Welcome to [% data.site_display_name %] Projects! ProjectsView [% project %]</h3>
 		[% ELSE %]
 			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %] Projects! </h3> 
 		[% END %]
 
-<h4>Our current Projects  
+<h4>Our current Projects  [% ViewName  %] [% project %] </h4>
 
                 [% IF group == 'CSC_admin' OR
                     group == 'CSCDev_admin' OR
@@ -64,7 +65,7 @@
 		[% ELSIF SiteName == "AltPower" %]
 			[% embed ('AltPowerProjects') %]
 		[% ELSIF SiteName == "BMaster"%]
-			[% embed ('BMWorkshops') %]
+			[% embed ('BMmasterProjects') %]
 		[% ELSIF SiteName == "CS" %]
 			[% embed ('CSWorkShops') %]
 		[% ELSIF SiteName == "CSC" %]
@@ -81,7 +82,9 @@
 				[% embed ('CSWorkShops') %]
 		[% ELSIF SiteName == "ECF" OR
 		         SiteName == "ECFDev"  %]
-			[% embed ('ECFWorkShops') %]
+		         <p>Call ECFProjects</p>
+			[% embed ('ECFProjects') %]
+			<p>Leave [% ViewName  %] ECFProjects</p>
 			[%# embed ('SBHomeView') %]
 		[% ELSIF SiteName == "HE" OR
 		         SiteName == "HEDev"  %]

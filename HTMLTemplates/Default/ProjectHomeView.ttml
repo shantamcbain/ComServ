@@ -25,6 +25,7 @@
 	[% session_string = "session_id=$session_id" %]
    [% PAGE = data.page_name || 'ProjectHomeView' %]
    [% project = data.project  %]
+   [% ViewName =  '/Defalt/ProjectHomeView.ttml' %]
 [% embed('ErrorDisplayView') %]
 
 
@@ -80,22 +81,35 @@
 	      [% END %]
       [% END %]
 	      
-<h4>Our current Projects   </h4>
+<h4>Our current Projects  [% ViewName  %] </h4>
                  [% IF group == 'CSC_admin' OR
                     group == 'CSCDev_admin' OR
                     username == 'shanta'
                  %]
                      <a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&view=BasicDataView" target = "_blank">Data</a>
 		[% END %]
+		[% ProjectsView ='ProjectsView' %]
 		
+	[% siteproject =  "$SiteName$ProjectsView" %]	
+	 leave [% ViewName  %]
 [% IF SiteName == 'AltPower' %]
  [% embed ('AltPowerProjects') %]
+[% ELSIF SiteName == 'CSC' %]
+[% embed ('CSCProjects') %]
+[% ELSIF SiteName == 'ECF' %]
+[% embed ('ECFProjects') %]
+
+[% ELSE %]
+
+
+[% embed ( 'ProjectList' ) %]
+
 [% END %]		
 	      
 [%# embed('LiveEditAdmin') %]
                                 
                                     
-      [% body %]
+      [%# body %]
                  [% IF group == 'CSC_admin' OR
                     group == 'CSCDev_admin' OR
                     group == 'MW_admin' OR

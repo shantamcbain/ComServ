@@ -1,5 +1,5 @@
    [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
- <!-- Project list -->[% $SiteName %]
+Project list [% $SiteName %]
 <table>
 [% IF SiteName == 'CSCDev' %]
                                   <tr>

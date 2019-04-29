@@ -138,17 +138,24 @@ my $shop        = 'cs';
 
 if ($HostName eq 'computersystemconsulting.ca'||
     $HostName eq 'brew.computersystemconsulting.ca'||
+    $HostName eq 'dev.computersystemconsulting.ca'||
     $HostName eq 'dev.altpower.usbm.ca'){
    $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
 }
 
 if ($HostName eq 'usbm.ca' ||
-    $HostName eq 'altpower.usbm' ||
+    $HostName eq 'altpower.usbm.ca' ||
     $HostName eq 'brew.usbm.ca'||
     $HostName eq 'ency.usbm.ca'){
    $GLOBAL_DATAFILES_DIRECTORY ="/home/usbmca/Datafiles";
 }
 
+if ($HostName eq 'beemaster.ca' ||
+    $HostName eq 'ecf.beemaster.ca' ||
+    $HostName eq 'hivemanagment.beemaster.ca' ||
+    $HostName eq 'jennabee.beemaster.ca'){
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles";
+}
 
 
 my $VIEW_LOADER =
