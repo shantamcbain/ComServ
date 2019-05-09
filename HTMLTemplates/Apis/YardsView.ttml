@@ -1,7 +1,11 @@
 [%#	$Id: YardsView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
 [% PROCESS DefaultDbi.ttml %]
+[% IF procedure %]
+
+[% ELSE %]
 
 [% embed(data.page_top_view,['-PAGE_TITLE','Yards']) %]
+[% END %]
 
 [% embed('ErrorDisplayView') %]
 
@@ -97,7 +101,10 @@
 
 
 
+[% IF procedure %]
 
+[% ELSE %]
 
 [% embed(data.page_bottom_view) %]
+[% END %]
 

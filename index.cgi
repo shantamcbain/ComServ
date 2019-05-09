@@ -91,8 +91,9 @@ my $APP_NAME_TITLE = "Apis, Bees and Beekeeping ";
 my $SiteName       = $CGI->param('site');
 my $View           = $CGI->param('view') || 'PageView';
 my $Page           = $CGI->param('page') || 'HomeView';
-my $procedure      = $CGI->param('procedure	')||'None';
+my $procedure      = $CGI->param('procedure')||'List';
 my $project        = $CGI->param('project');
+my $title          = $CGI->param('title');
 my $site_update;
 my $username;
 my $group;
@@ -535,7 +536,7 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
                       last_mod_date       => 'Last Modified Date',
                       comments            => 'Comments',
  },
- <!-- ApisHomeView  v 1.1 2003/11/29-->
+
 
    -RULES => [
   -ESCAPE_HTML_TAGS => [
@@ -1426,6 +1427,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
  -FIRST_RECORD_ON_PAGE       => $CGI->param('first_record_to_display') || 0,
  -LAST_RECORD_ON_PAGE        => $CGI->param('first_record_to_display') || "0",
  -SHOP                       => $shop,
+ -TITLE                      => $title,
  -PROJECT                    => $project,
  -PROCEDURE                  => $procedure,
  -PAGE_TOP_VIEW              => $page_top_view,

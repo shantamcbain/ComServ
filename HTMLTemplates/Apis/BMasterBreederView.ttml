@@ -5,9 +5,12 @@
 %]
 [% PROCESS DefaultDbi.ttml %]
 
+[% IF procedure %]
+
+[% ELSE %]
 
 [% embed(data.page_top_view,['-PAGE_TITLE','Breeder program']) %]
-
+[% END %]
 [% embed('ErrorDisplayView') %] 
 
 

@@ -26,13 +26,14 @@
 	[% session_string = "session_id=$session_id" %]
    [% project = data.project  %]
    [% procedure = data.procedure %]
+   [% title = data.title %]
 [% ViewName  = '/Default/ProceduresView.ttml' %] 
 
 
 
 
 [% IF group == "Mentoring"	%]
-	[% embed(data.page_top_view,['-PAGE_TITLE',' Procedures View']) %]
+	[% embed(data.page_top_view,['-PAGE_TITLE',' Mentoring Procedures View']) %]
 [% ELSE %]
 	[% embed(data.page_top_view,['-PAGE_TITLE','Procedures View']) %]
 [% END %]
@@ -43,23 +44,26 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td>[% IF username %]
-			<h3> Hello  [% firstname%]  [% lastname%]! Welcome to [% data.site_display_name %] Procedures! View [% project %] [% procedure %]</h3>
+			<h2> Hello  [% firstname%]  [% lastname%]! Welcome to [% data.site_display_name %] Procedures! [% title %] [% procedure %]</h2>
 		[% ELSE %]
-			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %] Procedures! View [% project %] [% procedure %]</h3> 
+			<h2>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %] Procedures! [% title %] </h2> 
 		[% END %]
 
-<h4>How to [% procedure %] [% ViewName  %] [% project %] [% procedure %]</h4>
-
-                [% IF group == 'CSC_admin' OR
+<h1>How to [% title %] </h1>
+<p>
+                [% IF group == 'Apis_admin' OR
+                    group == 'BMaster_admin' OR 
+                    group == 'CSC_admin' OR
                     group == 'CSCDev_admin' OR
+                    group == 'ECF_admin' OR
                     group == 'MW_admin' OR
                     group == 'WiseWoman_admin' OR
                     group == 'AltPower_admin' OR
                     username == 'Shanta'
                  %] 
                              
-                     <a href="/cgi-bin/Projects.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form" target = "_blank">Add</a>
-		[% END %]
+                     <a href="/cgi-bin/ToDo/procedures_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form" target = "_blank">Add</a>    
+		[% END %] <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView" target = "_blank">List</a></p>
 </h4>	
 		[% SiteName = data.site_name%]
    	[% IF SiteName == "OKB" %]

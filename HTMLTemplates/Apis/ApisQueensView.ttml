@@ -1,9 +1,12 @@
 [%
 #	$Id: ApisQueensView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
  [% PROCESS DefaultDbi.ttml %]
+[% IF procedure %]
+
+[% ELSE %]
 
 [% embed(data.page_top_view,['-PAGE_TITLE','Queens']) %]
-
+[% END %]
 [% embed('ErrorDisplayView') %]
 
 
@@ -47,8 +50,8 @@
 <p>Based on data collected from your yards we can plan what needs to be done next and what you need to do it.
 </p>
 <!-- Nave bar to QueenViews -->
-<a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisNucQueensView">Nucs</a>
-<p><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisActiveQueensView">Active Queens</a>
+<a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProceduresView&procedure=ApisNucQueensView">Nucs</a>
+<p><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProceduresView&procedure=ApisActiveQueensView">Active Queens</a>
 </p>
 <table>
 <tr><th>Yard <a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add</a></th><th>status</th><th>Queen code</th><th>Pallet code</th><th>View pallets</th><th>Log</th></tr>
@@ -76,20 +79,14 @@
 
 </table>
 <p><a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;view=FeedingView&amp;[% session_string %]">Feeding</a></p>
-<ul>
- <table>
- 
- 
- </table>  
 
-</ul>
 </td>
 </tr>
 </table>
 
 
+[% IF procedure %]
 
-
-
-[% embed(data.page_bottom_view) %]
-
+[% ELSE %]
+ [% embed(data.page_bottom_view) %]
+[% END %]

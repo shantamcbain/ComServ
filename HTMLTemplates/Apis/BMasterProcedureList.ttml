@@ -30,30 +30,23 @@ Here is a list of our registered bee keepers providing pollination Products.
 <div align="center">
 <!-- Start of Pollinator SQL --> 
 <table cellpadding="0" cellspacing="1" border="0" width="100%" class="LeftNavTableStyle">
-                      <th align="center" valign="top">Country</th>
-                      <th align="center" valign="top">Prov/State</th>
-                      <th align="center" valign="top">Company</th>
-                      <th align="center" valign="top">Contact </th>
-                      <th align="center" valign="top">Phone</th>
-                      <th align="center" valign="top">Email</th>
+                      <th align="center" valign="top">Site </th>
+                      <th align="center" valign="top">Procedure Code</th>
+                      <th align="center" valign="top">Procedure Name</th>
                       <th align="center" valign="top">Link</th>
                       <th align="center" valign="top">Details</th>
  [% FOREACH link = DBI.query("SELECT * 
-                                FROM address_book_tb 
-		                          WHERE category = 'beekeeper'
-		                          AND   products LIKE '%Pollinator%'
-		                          ORDER BY company_name ASC 
+                                FROM procedures_tb 
+		                          WHERE sitename = '$SiteName'
+		                          
+		                          ORDER BY project_code ASC 
                                   ")%]    
                                   <tr>
-                                  <td class="NavTableCellStyle"> [% link.country %]</td>
-                                  <td class="NavTableCellStyle"> [% link.prov %]</td>
-                                  <td class="NavTableCellStyle"> [% link.company_name %]</td>
-                                  <td class="NavTableCellStyle"> [% link.fname %] [% link.fname %]</td>
-                                  <td class="NavTableCellStyle"> [% link.phone %]</td>
-                                  <td class="NavTableCellStyle"><a href="mailto:[% link.email %]" title="Not Showen for secuity. Click to send mail.">E-Mail</a></td>
-                                  <td class="NavTableCellStyle"><a href="http://[% link.url %]?site=[% link.company_code %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.company_name %] "><font   class="LeftSideBarNavStyle">[% link.company_name %]</font></a> </td>
-                                  <td class="NavTableCellStyle"><a href="/cgi-bin/AddressBook/address_book.cgi?site=[% SiteName %]&amp;sort_field1=category&sort_field2=fname&first_record_to_display=5&records_per_page=&amp;[% session_string %]&amp;record_id=[% link.record_id %]&amp;submit_power_search=on&amp;columns_to_view=category&amp;columns_to_view=fname&amp;columns_to_view=lname&amp%3Bcolumns_to_view=email&amp;display_details_view.x=14&amp;display_details_view.y=9">Details</a> </td>
-   </tr>
+                                   <td class="NavTableCellStyle"> [% link.sitename %]</td>
+                                   <td class="NavTableCellStyle"> [% link.project_code %]</td>
+                                   <td class="NavTableCellStyle"> [% link.project_name %]</td>
+                                   <td class="NavTableCellStyle"><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProceduresView&procedure=[% link.project_code %]&title=[% link.project_name %]" name="view" target="_blank" title=" [% link.project_name %] "><font   class="LeftSideBarNavStyle">[% link.project_name %]</font></a> </td>
+    </tr>
 </table>    [% END %]
 <!-- End of Pollinator Main SQL -->                                
 </td>

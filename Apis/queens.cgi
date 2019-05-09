@@ -986,6 +986,7 @@ my @VALID_VIEWS = qw(
        ApisHomeView
        BeeDiseaseView
        MailView
+       ProceduresView
        ApisQueensView
        ApisNucQueensView
        ApisActiveQueensView
