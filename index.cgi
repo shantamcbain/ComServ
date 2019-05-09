@@ -1,5 +1,6 @@
 #!/usr/bin/perl -wT
 
+# 	$Id: index.cgi,v 1.14 2019/04/08 14:27:36 shanta Exp $
 # 	$Id: index.cgi,v 1.13 2019/03/215 14:27:36 shanta Exp $
 # 	$Id: index.cgi,v 1.12 2014/03/20 14:27:36 shanta Exp $
 
@@ -90,6 +91,8 @@ my $APP_NAME_TITLE = "Apis, Bees and Beekeeping ";
 my $SiteName       = $CGI->param('site');
 my $View           = $CGI->param('view') || 'PageView';
 my $Page           = $CGI->param('page') || 'HomeView';
+my $procedure      = $CGI->param('procedure	')||'None';
+my $project        = $CGI->param('project');
 my $site_update;
 my $username;
 my $group;
@@ -1160,6 +1163,7 @@ my @VALID_VIEWS = qw(
   HelpDeskHomeView
   AltpowerLogHomePage
   PowerUsageView
+  ProceduresView
   AltpowerNodeView
   SustainableView
   UrbanBeekeepingView
@@ -1422,6 +1426,8 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
  -FIRST_RECORD_ON_PAGE       => $CGI->param('first_record_to_display') || 0,
  -LAST_RECORD_ON_PAGE        => $CGI->param('first_record_to_display') || "0",
  -SHOP                       => $shop,
+ -PROJECT                    => $project,
+ -PROCEDURE                  => $procedure,
  -PAGE_TOP_VIEW              => $page_top_view,
  -PAGE_LEFT_VIEW             => $page_left_view,
  -PAGE_BOTTOM_VIEW           => $page_bottom_view,
