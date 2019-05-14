@@ -52,6 +52,9 @@
  [% ELSIF procedure  == ('YardsView') %]
  
  [% embed ('YardsView') %]
+[% ELSIF procedure  == ('ClockeBoardView') %]
+ 
+ [% embed ('ClockeBoardView') %]
 
  [% ELSE %]	
 <h2>Beemaster Active procedures list</h2>

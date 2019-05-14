@@ -1,4 +1,7 @@
 #!/usr/bin/perl -wT
+
+# 	$Id: log.cgi,v 1.4 2016/01/23 22:08:42 shanta Exp shanta $
+# fix directory problem	
 # 	$Id: log.cgi,v 1.3 2016/01/23 22:08:42 shanta Exp shanta $	
 #CSC file location /cgi-bin/CSC
 # Copyright (C) 1994 - 2001  eXtropia.com
@@ -98,7 +101,8 @@ my $Affiliate = 001;
 my $HasMembers = 0;
 my $HostName   = $ENV{'SERVER_NAME'};
 if ($HostName eq 'computersystemconsulting.ca'||
-    $HostName eq 'brew.computersystemconsulting.ca'){
+    $HostName eq 'brew.computersystemconsulting.ca'||
+    $HostName eq 'dev.beemaster.ca'){
    $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
 }
 
@@ -213,7 +217,7 @@ my $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
 my $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
     $ProjectTableName      = 'csc_project_tb';
 
-     $homeviewname            = "LogHomeView";
+    my $homeviewname            = "LogHomeView";
 my $site_session = $GLOBAL_DATAFILES_DIRECTORY.'/Sessions';
 
 ######################################################################

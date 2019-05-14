@@ -7,7 +7,8 @@
 # otherwise this template is stand-alone, i.e. it dozen't rely on any
 # variables from outside.
 
-%]
+%] 
+ [%# HostName = data.domain_name %]
  [% PROCESS DefaultDbi.ttml %]
  [% username = data.session_object.getAttribute('-KEY','auth_username') %]
  [% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
@@ -26,7 +27,8 @@
  [% View = data.view %]
  [% HomeLink = data.home_link || '' %]
  [%# page = 'GarlicCulture' %]
-[% $ENV{'SERVER_NAME'} %]
+ [%#  $ENV{'SERVER_NAME'} %]
+
 
  [%# embed('SiteMysql') %]   
 
