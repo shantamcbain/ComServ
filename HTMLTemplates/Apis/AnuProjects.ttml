@@ -1,0 +1,64 @@
+[% # 2019 May 25 copied AnuProjets
+ # 2018 Dec 12 renamed AltPowerProjets
+%]
+# the AltPowerProductsView template
+#	$Id: StatsView.ttml,v 1.2 2019/04/27
+#	$Id: StatsView.ttml,v 1.1 2003/11/29 06:31:35 shanta Exp shanta $	
+
+%]
+[%# embed(data.page_top_view,['-PAGE_TITLE','Alt Power Products']) %]
+
+[% embed('ErrorDisplayView') %] 
+
+[% IF data.session_object %]
+
+   [% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+[% username = data.session_object.getAttribute('-KEY','auth_username') %]
+[% group = data.session_object.getAttribute('-KEY','auth_groups') %]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% project = data.project %]
+ [% script_name = data.app_name %]
+[% localip = data.local_ip %]
+
+[% SiteFullName = 'Alternate Power'%]
+<div align="center"><h1>[% SiteFullName %] Projects page.</h1></div>
+</div>
+<h2>Active project list</h2>
+ 
+	   
+<ul>
+ <li> 
+
+ [% IF project  == 'NucBoxConstruction' %]
+ 
+[% project %]
+[% embed ('NucBoxConstruction') %]
+ [% ELSIF project  == ('WaterHeatView') %]
+ 
+ [% embed ('WaterHeatView') %]
+ [% project %]
+ 
+ [% ELSE %]	
+
+ [% embed ('ProjectList') %]
+
+ 
+ <a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProjectHomeView&amp;project=PiPower">	PiPower</a></li>
+	
+<a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProjectHomeView&amp;project=WaterHeatView">	Water heat</a>
+
+</li>
+[% END %]
+
+
+</ul>
+   
+ 	 
+
+  
+ 	   

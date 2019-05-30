@@ -1,0 +1,23 @@
+[% 
+# /HTMLTemplates/Apis/NucBoxConstruction.ttml, v 0.01 2019/05/25
+# /HTMLTemplates/Apis/ClockeBoardView.ttml, v 0.01 2019/05/10
+
+%]
+
+
+[% IF procedure %]
+
+[% ELSE %]
+
+[% embed(data.page_top_view,['-PAGE_TITLE','Nuc Box Construction']) %]
+[% END %]
+
+
+<h2>How to build our mating nucs</h2>
+
+<p>We call this style a Kootenay nuc as its origins to us.</p> 
+
+<p>This design is for mating queens The frames are of standard Dadant depth but only the width of a standard box. The box has the side wall instead of the ends rabbited for the frame ends. We use this configuration to over winter the bees. This will be covered in the <a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=102" target="_blank">June 3 Anu workshop</a>. You can pay as you go at <a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=102" target="_blank">$30 CND</a>. or by the annual fee of <a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=98" target="_blank">$250 CND</a></p>
+
+
+
