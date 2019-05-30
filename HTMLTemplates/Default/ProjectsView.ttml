@@ -36,16 +36,18 @@
 
 [% embed('ErrorDisplayView') %]
 
- [% sessionstring %]
+
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
-	<td>[% IF username %]
+	<td> [% sessionstring %]
+	
+	[% IF username %]
 			<h3 > Hello  [% firstname%]  [% lastname%]! Welcome to [% data.site_display_name %] Projects!</h3>
 		[% ELSE %]
 			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %] Projects! </h3> 
 		[% END %]
 
-<h4>Our current Projects   
+<h4>Our current Projects   [% SiteName %]
                  [% IF group == 'CSC_admin' OR
                        group == 'AltPower_admin' OR
                        group == 'ECF_admin' OROR
@@ -59,11 +61,13 @@
                      <a href="/cgi-bin/Projects.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form" target = "_blank">Add</a>
 		[% END %]
 </h4>	
-		[% SiteName = data.site_name%]
+	<p>	[% SiteName = data.site_name%] Site [% SiteName %]</p>
    	[% IF SiteName == "OKB" %]
 		[%# embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "AltPower" %]
 			[% embed ('AltPowerProjects') %]
+		[% ELSIF SiteName == "AnuCollective" %]
+			[% embed ('AnuProjects') %]
 		[% ELSIF SiteName == "BMaster"%]
 			[% embed ('BMWorkshops') %]
 		[% ELSIF SiteName == "CS" %]
@@ -143,7 +147,6 @@
 		
 		<p>This site has no workshop at this time. </p>
 		<!-- Begin Demo Home View -->  
-		<p>Here are some of the provided by <a href="http://CountryStores.ca/cgi-bin/index.cgi?site=CS&amp;[% session_string %]&amp;view=WorkShopsView" target=_"_blank">Country Stores.ca </a>
 
 	[% embed ('CSWorkShops') %]
 			[%#embed ('DemoHomeView') %]
