@@ -39,7 +39,7 @@ my $self = {
 	    -MAIL_TO_DISCUSSION     => 'beemaster@list.beemaster.ca',
 	    -MAIL_LIST_BCC          => '',
 	    -DOCUMENT_ROOT_URL      => '/',
-	    -IMAGE_ROOT_URL         => 'http://shanta.org/images/extropia',
+	    -IMAGE_ROOT_URL         => '/images/extropia',
        -HTTP_HEADER_PARAMS     => "[-EXPIRES => '-1d']",
        -HTTP_HEADER_DESCRIPTION => "BeeMaster is a Bee Keepers application created 
                                          by a bee keeper for Bee Keepers.  ",
