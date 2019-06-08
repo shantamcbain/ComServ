@@ -40,20 +40,7 @@
 		[% ELSE %]
 			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %]! </h3> 
 		[% END %]
-[% IF username == 'Shanta' OR
-       group    == 'AltPower_admin' OR
-       group    == 'BMaster_admin' OR
-       group    == 'HE_admin' OR
-       group    == 'Brew_admin' OR
-       group    == 'ECFadmin' OR 
-       group    == 'LumbyThrift_admin' OR 
-       group    == 'SocialExp_admin'OR
-       group    == 'WiseWoman_admin'                     
-%]	 <a href="/cgi-bin/ToDo/todo.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;record_id=[% link.record_id %]&amp;subject=[% link.project_name %]&amp;project_code=[% link.project_code %]&amp;description=[% link.comments %]&amp;priority=" "target="_Blank">Add New Todo</a>  
- 
-<a href="/cgi-bin/ToDo/todo.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ToDoHomeView" "target="_Blank">List</a>
-[% END %]
-	
+[% embed ("AdminTodoListLink")%]	
 		[% SiteName = data.site_name%]
 
    	[% IF SiteName == "OKB" %]
@@ -62,6 +49,8 @@
 			[% embed ('AktivHomeView') %]
 		[% ELSIF SiteName == "AltPower" %]
 			[% embed ('AltPowerHomeView') %]
+		[% ELSIF SiteName == "AnuCollective" %]
+			[% embed ('AnuCollectiveHomeView') %]
 		[% ELSIF SiteName == "BMaster"%]
 			[% embed ('ApisHomeView') %]
 		[% ELSIF SiteName == "BMastBreeder"%]
@@ -134,24 +123,23 @@
 			[% embed ('DemoHomeView') %]
 			<!-- End Demo home view -->
 		[% END %]
+  [% embed('SiteAdminNotes') %]
+
+
+
+<p>[% group %]
+                 
+ %]
+<p>  [% embed('ToDoList') %]
+
 		
+[% embed ("AdminTodoList")%]	
 
 
 <p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %]&nbsp; This value is stored in your setup file. [% END %]
 		<br>
 		
-[% IF username == 'Shanta' OR
-       group    == 'AltPower_admin' OR
-       group    == 'BMaster_admin' OR
-       group    == 'HE_admin' OR
-       group    == 'Brew_admin' OR
-       group    == 'ECFadmin' OR 
-       group    == 'LumbyThrift_admin' OR 
-       group    == 'SocialExp_admin'OR
-       group    == 'WiseWoman_admin'                     
-%]
-<p>  [% embed('ToDoList') %]
- [% END %]
+
 [% embed('CSCCopyRight') %]
 
 	

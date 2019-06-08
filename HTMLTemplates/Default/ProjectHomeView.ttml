@@ -93,6 +93,7 @@
       [% body %]
                  [% IF group == 'CSC_admin' OR
                     group == 'CSCDev_admin' OR
+                    group == 'AnuCollective_admin' OR
                     group == 'MW_admin' OR
                     group == 'WiseWoman_admin' OR
                     username == 'shanta'
