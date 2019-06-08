@@ -134,7 +134,32 @@ my $HasMembers  = 0;
 my $HostName    = $ENV{'SERVER_NAME'};
 my $OffLine     = 'yes';
 my $shop        = 'cs';
+if ($HostName eq 'computersystemconsulting.ca'||
+    $HostName eq 'brew.computersystemconsulting.ca'||
+    $HostName eq 'voip.computersystemconsulting.ca')
+{
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
+}
+if ($HostName eq 'voip.computersystemconsulting.ca')
+{
+  $SiteName ='VOIP';
+}
 
+if ($HostName eq 'beemaster.ca'||
+    $HostName eq 'jenabee.beemaster.ca'||
+    $HostName eq 'ecf.beemaster.ca'||
+    $HostName eq 'anucollective.beemaster.ca')
+{
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles";
+}
+
+if ($HostName eq 'usbm.ca' ||
+    $HostName eq 'altpower.usbm.ca'||
+    $HostName eq 'brew.usbm.ca'||
+    $HostName eq 'ency.usbm.ca')
+{
+   $GLOBAL_DATAFILES_DIRECTORY ="/home/usbmca/Datafiles";
+}
 
 
 
@@ -272,19 +297,7 @@ if ( $CGI->param('frame') )
 {
  $frame = "1";
 }
-if ( $HostName eq 'computersystemconsulting.ca' )
-{
- $GLOBAL_DATAFILES_DIRECTORY = "/home/shanta/Datafiles";
-}
-if ( $HostName eq 'beemaster.ca' )
-{
- $GLOBAL_DATAFILES_DIRECTORY = "/home/beemast/Datafiles";
-}
-if ( $HostName eq 'usbm.ca' or
-               eg 'altpower.usbm.ca')
-{
- $GLOBAL_DATAFILES_DIRECTORY = "/home/usbmca/Datafiles";
-}
+
 
 ######################################################################
 #                       AUTHENTICATION SETUP                         #

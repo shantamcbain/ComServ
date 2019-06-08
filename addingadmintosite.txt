@@ -1,0 +1,33 @@
+Setting sql  for admin. links
+
+HomeView.ttml calls links below
+
+AdminTodoListLink.ttml
+AdminTodoList.ttml
+[% embed('LeftPageView') %] 
+
+Added anu to HostName.ttml (may discontinue it only set hostname to host.name not sup.host.name) also called PageTop
+
+PageTopView.ttml No admin serarch.
+
+PageHeaderView.ttml
+[% embed('HeaderHostingView') %] no admin
+HeaderBannerView no admin
+[% embed('HeaderNavBarView') %] 
+
+LeftPageView.ttml
+	  added [%  embed("AdminURLLink" %]	
+	  [% embed('MainLinkView') %]
+	[%#	$Id: /HTMLTemplates/Default/SQL_Hosted.ttml,v 0.1 2019/06/08 17:43:15 shanta Exp shanta $	
+	  
+[% #/HTMLTemplates/Default/MemberLeftLinksView.ttml %]
+[% #/HTMLTemplates/Default/AdminLeftLinksView.ttml %] Contains main admin conditional statement to show theses lings to client.
+
+[%#	$Id: /cgi-bin/HTMLTemplates/Default/PageView.ttml,v 0.1 2013/12/20 17:43:15 shanta Exp shanta $	
+
+[%#	$Id: /cgi-bin/HTMLTemplates/CSC/SiteAdminNotes.ttml,v 0.1 2015/02/05 17:43:15  <table>
+%]Admin for sitenotes and 
+
+[%#	$Id: /cgi-bin/HTMLTemplates/Default/ToDoList.ttml,v 0.1 2015/02/05 17:43:15  <table>
+
+[% ViewName  = '/Default/ProceduresView.ttml' %]

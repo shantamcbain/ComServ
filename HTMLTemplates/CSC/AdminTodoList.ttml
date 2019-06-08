@@ -1,0 +1,16 @@
+[%#	$Id: /HTMLTemplates/CSC/AdminTodoList.ttml,v 0.1 2019/06/08 17:43:15 shanta Exp shanta $	%]
+
+
+[% IF username == 'Shanta' OR
+       group    == 'AltPower_admin' OR
+       group    == 'AnuCollective_admin' OR
+       group    == 'BMaster_admin' OR
+       group    == 'HE_admin' OR
+       group    == 'Brew_admin' OR
+       group    == 'ECFadmin' OR 
+       group    == 'LumbyThrift_admin' OR 
+       group    == 'SocialExp_admin'OR
+       group    == 'WiseWoman_admin'                     
+%]
+<p>  [% embed('ToDoList') %]
+ [% END %]

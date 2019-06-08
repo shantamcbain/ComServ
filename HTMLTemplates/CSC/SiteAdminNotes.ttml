@@ -1,5 +1,15 @@
+[%#	$Id: /cgi-bin/HTMLTemplates/CSC/SiteAdminNotes.ttml,v 0.1 2015/02/05 17:43:15  
+%]
 
-
+[% IF username == 'Shanta' OR
+       group   == 'BMaster_admin' OR
+  	    group   == 'AnuCollective_admin' OR
+       group   == 'ECF_admin' OR
+       group   == 'LumbyThrift_admin' OR
+       group   == 'HE_admin' OR
+       group   == 'WiseWoman_admin'                     
+%]
+<table>
 
   [% FOREACH link = DBI.query("SELECT * FROM page_tb
                                   WHERE  (status  = 2 AND
@@ -13,4 +23,4 @@
  
   <p><a href="/cgi-bin/page.cgi?site=[% SiteName %]&[% session_string %]&display_modification_form=on&record_id=[% ARecord_id %]" target="_blank">edit admin notes </a>
    [% AdminNotes   %]
- 
+ [% END %]

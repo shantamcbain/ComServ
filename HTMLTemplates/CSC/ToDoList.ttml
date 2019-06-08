@@ -1,6 +1,18 @@
-[%#	$Id: /cgi-bin/HTMLTemplates/Default/ToDoList.ttml,v 0.1 2015/02/05 17:43:15  <table>
+[%#	$Id: /cgi-bin/HTMLTemplates/CSC/ToDoList.ttml,v 0.1 2015/02/05 17:43:15  
 %]
-<tr><td colspan="1" class="HeaderTableCellStyle"><h2>Current admin todos</h2>      </td>
+
+ [% IF username == 'Shanta' OR
+       group    == 'AltPower_admin' OR
+       group    == 'BMaster_admin' OR
+ 	    group    == 'AnuCollective_admin' OR
+       group    == 'HE_admin' OR
+       group    == 'Brew_admin' OR
+       group    == 'ECFadmin' OR 
+       group    == 'LumbyThrift_admin' OR 
+       group    == 'WiseWoman_admin'   %] 
+<table>
+<tr>
+<td colspan="1" class="HeaderTableCellStyle"><h2>Current admin todos</h2>      </td>
    </tr>
 
 
@@ -19,3 +31,4 @@
  [% END %]
 
 </table>
+ [% END %]

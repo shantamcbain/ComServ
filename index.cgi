@@ -87,6 +87,8 @@ my $APP_NAME_TITLE = "Apis, Bees and Beekeeping ";
 my $SiteName       = $CGI->param('site');
 my $View           = $CGI->param('view') || 'PageView';
 my $Page           = $CGI->param('page') || 'HomeView';
+my $Project        = $CGI->param('project');
+my $Procedure      = $CGI->param('procedure') || 'PageView';
 my $site_update;
 my $username;
 my $group;
@@ -162,7 +164,8 @@ if ($HostName eq 'voip.computersystemconsulting.ca'){
 
 if ($HostName eq 'beemaster.ca'||
     $HostName eq 'jenabee.beemaster.ca'||
-    $HostName eq 'ecf.beemaster.ca'){
+    $HostName eq 'ecf.beemaster.ca'||
+    $HostName eq 'anucollective.beemaster.ca'){
    $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles";
 }
 if ($HostName eq 'usbm.ca' ||
@@ -1167,6 +1170,7 @@ my @VALID_VIEWS = qw(
   ResourcesView
   HerbDetailView
   BrewLogView
+  ProceduresView
 );
 
 my @ROW_COLOR_RULES = ();
@@ -1418,6 +1422,8 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
  -FIRST_RECORD_ON_PAGE       => $CGI->param('first_record_to_display') || 0,
  -LAST_RECORD_ON_PAGE        => $CGI->param('first_record_to_display') || "0",
  -SHOP                       => $shop,
+ -PROCEDURE                  => $Procedure,
+ -Project                    => $Project,
  -PAGE_TOP_VIEW              => $page_top_view,
  -PAGE_LEFT_VIEW             => $page_left_view,
  -PAGE_BOTTOM_VIEW           => $page_bottom_view,

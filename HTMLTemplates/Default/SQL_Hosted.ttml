@@ -1,24 +1,8 @@
+[%#	$Id: /HTMLTemplates/Default/SQL_Hosted.ttml,v 0.1 2019/06/08 17:43:15 shanta Exp shanta $	
     <tr>
       <td class="NavTableHeaderStyle"> <font class="NavtableHeaderCellStyle">Hosted Sites</font>  
-  [% IF username == 'Shanta' OR
-        group    == 'Apis_Admin' OR
-        group    == 'BCHPA_Admin' OR
-        group    == 'CSC_Admin' OR
-        group    == 'CS_Admin' OR
-        group    == 'ECF_Admin' OR
-        group    == 'Orgainc_Admin' OR
-        group    == 'MARTS_Admin' OR
-        group    == 'NOK_Admin' OR
-        group    == 'VitalVic_Admin' OR
-        group    == 'ENCY_Admin' OR
-        group    == 'USBM_Admin' OR
-        group    == 'Shanta_Admin' OR
-        group    == 'RV_Admin' OR
-        group    == 'Brew_Admin'
-        %]
-  &nbsp;<a href="/cgi-bin/URL/url.cgi?site=[% SiteName %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;category=Hosted_link&amp;subject=Nav_link&amp;Nav_link=1&amp;[% session_string %]" name="Add page link" title="Add New Link"><font class="NavtableAddButtonStyle">Add</font>  </a>
+ [%  embed("AdminURLLink" %]	
 
-  [% END %]
        </td>
    </tr> 
 

@@ -1,0 +1,62 @@
+[%
+#	$Id:/HTMLTemplates/Apis/AmuProcedureList.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
+
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% email = data.session_object.getAttribute('-KEY','auth_email') %]
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td >
+<div align="center">
+Here is a list of our registered bee keepers providing pollination Products.
+    </td>
+   </tr>
+ 
+<tr>
+<td >
+<div align="center">
+<!-- Start of Pollinator SQL --> 
+<table cellpadding="0" cellspacing="1" border="0" width="100%" class="LeftNavTableStyle">
+                      <th align="center" valign="top">Site </th>
+                      <th align="center" valign="top">Procedure Code</th>
+                      <th align="center" valign="top">Procedure Name</th>
+                      <th align="center" valign="top">Link</th>
+                      <th align="center" valign="top">Details</th>
+ [% FOREACH link = DBI.query("SELECT * 
+                                FROM procedures_tb 
+		                          WHERE sitename = '$SiteName'
+		                          
+		                          ORDER BY project_code ASC 
+                                  ")%]    
+                                  <tr>
+                                   <td class="NavTableCellStyle"> [% link.sitename %]</td>
+                                   <td class="NavTableCellStyle"> [% link.project_code %]</td>
+                                   <td class="NavTableCellStyle"> [% link.project_name %]</td>
+                                   <td class="NavTableCellStyle"><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProceduresView&procedure=[% link.project_code %]&title=[% link.project_name %]" name="view" target="_blank" title=" [% link.project_name %] "><font   class="LeftSideBarNavStyle">[% link.project_name %]</font></a> </td>
+    </tr>
+</table>    [% END %]
+<!-- End of Pollinator Main SQL -->                                
+</td>
+</tr>
+</table>
+
+
+
+
+
+
+
+
