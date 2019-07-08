@@ -20,19 +20,11 @@
 [% username = data.session_object.getAttribute('-KEY','auth_username') %]
 [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
 [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-<<<<<<< HEAD
 [% procedure = data.procedure %]
  [% script_name = data.app_name %]
 [% localip = data.local_ip %]
 
 [% SiteFullName = 'Anu Collective'%]
-=======
-[% project = data.project %]
- [% script_name = data.app_name %]
-[% localip = data.local_ip %]
-
-[% SiteFullName = 'Alternate Power'%]
->>>>>>> Yards
 <div align="center"><h1>[% SiteFullName %] Procedures page.</h1></div>
 </div>
 <h2>How to.</h2>
@@ -43,7 +35,6 @@
 
  [% IF procedure  == 'NucBoxConstruction' %]
  
-<<<<<<< HEAD
 
 [% embed ('NucBoxConstruction') %]
  [% ELSIF procedure  == ('GraftingWorkShop') %]
@@ -62,18 +53,6 @@
  [% ELSE %]	
 
  [% embed ('AnuProcedureList') %]
-=======
-[% project %]
-[% embed ('NucBoxConstruction') %]
- [% ELSIF project  == ('WaterHeatView') %]
- 
- [% embed ('WaterHeatView') %]
- [% project %]
- 
- [% ELSE %]	
-
- [% embed ('ProcedureList') %]
->>>>>>> Yards
 
  
  <a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProjectHomeView&amp;project=PiPower">	PiPower</a></li>

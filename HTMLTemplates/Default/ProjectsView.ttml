@@ -37,23 +37,15 @@
 
 [% embed('ErrorDisplayView') %]
 
-
+ [% sessionstring %]
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
-<<<<<<< HEAD
 	<td>[% IF username %]
 			<h3 > Hello  [% firstname%]  [% lastname%]! Welcome to [% data.site_display_name %] Projects! ProjectsView [% project %]</h3>
-=======
-	<td> [% sessionstring %]
-	
-	[% IF username %]
-			<h3 > Hello  [% firstname%]  [% lastname%]! Welcome to [% data.site_display_name %] Projects!</h3>
->>>>>>> Yards
 		[% ELSE %]
 			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %] Projects! </h3> 
 		[% END %]
 
-<<<<<<< HEAD
 <h4>Our current Projects  [% ViewName  %] [% project %] </h4>
 
                 [% IF group == 'CSC_admin' OR
@@ -64,29 +56,14 @@
                     username == 'Shanta'
                  %] 
                              
-=======
-<h4>Our current Projects   [% SiteName %]
-                 [% IF group == 'CSC_admin' OR
-                       group == 'AltPower_admin' OR
-                       group == 'ECF_admin' OROR
-                       group == 'BeeMast_admin' 
-                       group == 'HE_admin' OR
-                       group == 'IM_admin'  OR
-                       group == 'CS_admin'  OR
-                       group == 'Forager_admin'   OR
-                       group == 'WiseWoman_admin' OR
-                       username == 'Shanta%]                    
->>>>>>> Yards
                      <a href="/cgi-bin/Projects.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form" target = "_blank">Add</a>
 		[% END %]
 </h4>	
-	<p>	[% SiteName = data.site_name%] Site [% SiteName %]</p>
+		[% SiteName = data.site_name%]
    	[% IF SiteName == "OKB" %]
 		[%# embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "AltPower" %]
 			[% embed ('AltPowerProjects') %]
-		[% ELSIF SiteName == "AnuCollective" %]
-			[% embed ('AnuProjects') %]
 		[% ELSIF SiteName == "BMaster"%]
 			[% embed ('BMmasterProjects') %]
 		[% ELSIF SiteName == "CS" %]
@@ -169,6 +146,7 @@
 		
 		<p>This site has no workshop at this time. </p>
 		<!-- Begin Demo Home View -->  
+		<p>Here are some of the provided by <a href="http://CountryStores.ca/cgi-bin/index.cgi?site=CS&amp;[% session_string %]&amp;view=WorkShopsView" target=_"_blank">Country Stores.ca </a>
 
 	[% embed ('CSWorkShops') %]
 			[%#embed ('DemoHomeView') %]

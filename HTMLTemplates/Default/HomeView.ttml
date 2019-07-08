@@ -47,11 +47,8 @@
 		[% embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "Aktiv" %]
 			[% embed ('AktivHomeView') %]
-<<<<<<< HEAD
 		[% ELSIF SiteName == "AltPower" %]
 			[% embed ('AltPowerHomeView') %]
-=======
->>>>>>> Yards
 		[% ELSIF SiteName == "AnuCollective" %]
 			[% embed ('AnuCollectiveHomeView') %]
 		[% ELSIF SiteName == "BMaster"%]
