@@ -1,0 +1,26 @@
+[% 
+# /HTMLTemplates/Apis/ClockeBoardView.ttml, v 0.01 2019/05/10
+
+%]
+
+
+[% IF procedure %]
+
+[% ELSE %]
+
+[% embed(data.page_top_view,['-PAGE_TITLE','Breeder program']) %]
+[% END %]
+
+
+<h2>Raising queens via a Clocke Board Hive</h2>
+
+<p>The Cloake board, invented by Harry Cloake of New Zealand. It is a  beekeeping system used to raise queens. This is our adaptation of the system to fit our needs</p>
+
+
+
+<ul>
+  <li><h3>Initial setup</h3></li>
+  <li><h3>Removing slide</h3> and returning brood frames to top box. From the front of the hive pull the slide from the hive. Open the box and check for number of sells started and record. Check for cells being drown on frames. Leave enough space around graft frame to place all brood frames returning. Open the incubator hive. remove one frame at a time of the brood. quick check for queen return her to the lower box if found. Shack all bees from the frame. Place around your graft frame. Feed and close.</li>
+  <li><h3>Removing Cells</h3></li>
+  <li><h3>Reworking hive</h3> for next graft.</li>
+</ul>

@@ -81,7 +81,7 @@ my $user_group = $session->getAttribute(-KEY => 'auth_groups')||'normal';
 
 if ($user_group eq 'CSC_admin'){
 $GroupBoolion = 0;
-}else{ 
+}else{
 $GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||1;
 }
 
@@ -149,7 +149,7 @@ $GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||1;
 
     push (@input_widget_config_params, @new_value);
 
-    $app->{-VIEW_DISPLAY_PARAMS}= $params->{-VIEW_DISPLAY_PARAMS};    
+    $app->{-VIEW_DISPLAY_PARAMS}= $params->{-VIEW_DISPLAY_PARAMS};
 
     $cgi->param(
         -NAME  => 'raw_search',

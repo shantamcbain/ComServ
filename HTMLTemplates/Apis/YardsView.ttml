@@ -35,7 +35,7 @@
  [% ActiveQueens = ActiveQueens + 1 %]
 
 [% END %]
- [% PROCESS ActiveQueensSQL.ttml %]
+ [%# PROCESS ActiveQueensSQL.ttml %]
 
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>

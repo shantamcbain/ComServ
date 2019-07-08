@@ -2,11 +2,19 @@
 #	$Id: NucBoxConstructionWorkShop.ttml,v 1.1 2019/05/24 06:42:47 shanta Exp shanta 
 %]
 
+<<<<<<< HEAD
 <h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&view=ProceduresView&procedure=NucBoxConstruction" target="_blank">Nuc Box Construction Beekeeping Workshop</a> June 6 2019 </h2>
+=======
+<h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&view=ProceduresView&procedure=NucBoxConstruction" target="_blank">Nuc Box Construction Beekeeping Workshop</a> May 30 </h2>
+>>>>>>> Yards
 
 <p>We will be building our mating nuc boxes Today.</p>
 
 <p>Learn to construct the breeding/urban hive equipment. Click here for a Please book ahead a sets are limited for this <a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=102">workshop</a></p>
 
 
+<<<<<<< HEAD
 <a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=102" target="_blank">Anu workshop</a>. You can pay as you go at <a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=102" target="_blank">$30 CND</a>. or by the annual fee of <a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=98" target="_blank">$250 CND</a>
+=======
+<a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=102" target="_blank">June 3 Anu workshop</a>. You can pay as you go at <a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=102" target="_blank">$30 CND</a>. or by the annual fee of <a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=98" target="_blank">$250 CND</a>
+>>>>>>> Yards

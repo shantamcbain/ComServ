@@ -1,11 +1,12 @@
 [% # 2019 May 25 copied AnuProjets
  # 2018 Dec 12 renamed AltPowerProjets
+%]
 # the AltPowerProductsView template
 #	$Id: StatsView.ttml,v 1.2 2019/04/27
 #	$Id: StatsView.ttml,v 1.1 2003/11/29 06:31:35 shanta Exp shanta $	
 
 %]
-[%# embed(data.page_top_view,['-PAGE_TITLE','Anu Collective Procedures	']) %]
+[%# embed(data.page_top_view,['-PAGE_TITLE','Alt Power Products']) %]
 
 [% embed('ErrorDisplayView') %] 
 
@@ -20,49 +21,21 @@
 [% username = data.session_object.getAttribute('-KEY','auth_username') %]
 [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
 [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-<<<<<<< HEAD
-[% procedure = data.procedure %]
- [% script_name = data.app_name %]
-[% localip = data.local_ip %]
-
-[% SiteFullName = 'Anu Collective'%]
-=======
 [% project = data.project %]
  [% script_name = data.app_name %]
 [% localip = data.local_ip %]
 
 [% SiteFullName = 'Alternate Power'%]
->>>>>>> Yards
-<div align="center"><h1>[% SiteFullName %] Procedures page.</h1></div>
+<div align="center"><h1>[% SiteFullName %] Projects page.</h1></div>
 </div>
-<h2>How to.</h2>
+<h2>Active project list</h2>
  
 	   
 <ul>
  <li> 
 
- [% IF procedure  == 'NucBoxConstruction' %]
+ [% IF project  == 'NucBoxConstruction' %]
  
-<<<<<<< HEAD
-
-[% embed ('NucBoxConstruction') %]
- [% ELSIF procedure  == ('GraftingWorkShop') %]
- 
- [% embed ('GraftingWorkShop') %]
- [% ELSIF procedure  == ('AmuAdminList') %]
- 
- [% embed ('AmuAdminList') %]
-[% ELSIF procedure  == ('HiveManHomeView') %]
- 
- [% embed ('HiveManHomeView') %]
-
- [% ELSIF procedure  == ('JoinDiscoussionList') %]
- 
- [% embed ('JoinDiscoussionList') %]
- [% ELSE %]	
-
- [% embed ('AnuProcedureList') %]
-=======
 [% project %]
 [% embed ('NucBoxConstruction') %]
  [% ELSIF project  == ('WaterHeatView') %]
@@ -72,8 +45,7 @@
  
  [% ELSE %]	
 
- [% embed ('ProcedureList') %]
->>>>>>> Yards
+ [% embed ('ProjectList') %]
 
  
  <a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProjectHomeView&amp;project=PiPower">	PiPower</a></li>
