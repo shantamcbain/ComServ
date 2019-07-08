@@ -78,7 +78,11 @@ foreach ($CGI->param()) {
 #                          PORTING SETUP                             #
 ######################################################################
 my $SiteName =  $CGI->param('site') || "Brew";
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+my $recipe_code=  $CGI->param('recipe_code');
+=======
 my $recipe_code=  $CGI->param('recipecode');
+>>>>>>> Brew/ingrediant.cgi
 my $APP_NAME = "ingrediant";
 my $SITE_DISPLAY_NAME = 'Site not added to session setup.';
 my $APP_NAME_TITLE = "ingrediance table";
@@ -461,10 +465,18 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
 
      -FIELD_MAPPINGS =>
       {
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+       ingrediant_code	      	=> 'ingrediant Code',
+=======
        item_code	      	=> 'ingrediant Code',
+>>>>>>> Brew/ingrediant.cgi
        estimated_man_hours 	=> 'Estimated Man Hours',
        accumulative_time 	=> 'Accumulated time',
        site_name                => 'Owner',
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+       ingrediant_code                 => 'Code for ingrediant',
+=======
+>>>>>>> Brew/ingrediant.cgi
        subject                  => 'Subject category  If not in list select other and place your suggestion in comments',
        share    	      	=> 'Share level',
        ingrediant_name                     => 'Name of resource',
@@ -535,10 +547,18 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
         )],
 
     -FIELD_MAPPINGS => {
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+       ingrediant_code	      	=> 'ingrediant Code',
+=======
        item_code	      	=> 'ingrediant Code',
+>>>>>>> Brew/ingrediant.cgi
        estimated_man_hours 	=> 'Estimated Man Hours',
        accumulative_time 	=> 'Accumulated time',
        site_name                => 'Owner',
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+       ingrediant_code                 => 'ingrediant code',
+=======
+>>>>>>> Brew/ingrediant.cgi
        subject                  => 'Subject category <br> If not in list select other and place your suggestion in comments',
        share    	      	=> 'Share level',
        ingrediant_name                     => 'Name of resource',
@@ -613,8 +633,11 @@ my @DATASOURCE_FIELD_NAMES = qw(
        sitename
        recipe_code
        item_code
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+=======
        weight
        unit
+>>>>>>> Brew/ingrediant.cgi
        ingrediant_name 
        description
        stock
@@ -653,6 +676,8 @@ my %status =
       3 => 'Not stocked',
     );
 
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+=======
 my %unit =
     (
       'lb' => 'LB',
@@ -663,6 +688,7 @@ my %unit =
       'Ts' => 'Tea Spoon',
     );
 
+>>>>>>> Brew/ingrediant.cgi
 my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 
    bill => [        
@@ -677,7 +703,11 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
   category => [        
         -DISPLAY_NAME => 'Category: If not in list select other and place your suggestion in comments ',
         -TYPE         => 'popup_menu',        
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+        -NAME         => 'category',        
+=======
         -NAME         => 'category',
+>>>>>>> Brew/ingrediant.cgi
         -VALUES       => [sort {$a <=> $b} keys %type],
         -LABELS       => \%type,
         -INPUT_CELL_COLSPAN => 3,
@@ -702,7 +732,11 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
         -WRAP         => 'VIRTUAL'
     ],
 
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+   ingrediant_code => [        
+=======
    item_code => [        
+>>>>>>> Brew/ingrediant.cgi
         -DISPLAY_NAME => 'item Code',        
         -TYPE         => 'textfield',        
         -NAME         => 'item_code',        
@@ -786,6 +820,9 @@ stock => [
             'member'  => 'Paid Member',
             },
     ],
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+ weight => [        
+=======
  unit => [
         -DISPLAY_NAME => 'Unit',
         -TYPE         => 'popup_menu',
@@ -795,6 +832,7 @@ stock => [
         -INPUT_CELL_COLSPAN => 3,
     ],
 weight => [        
+>>>>>>> Brew/ingrediant.cgi
         -DISPLAY_NAME => 'weight',        
         -TYPE         => 'textfield',        
         -NAME         => 'weight',        
@@ -811,7 +849,10 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
      qw(ingrediant_name),
      qw(description),
      qw(weight),
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+=======
      qw(unit),
+>>>>>>> Brew/ingrediant.cgi
      qw(stock),
      qw(bill),
    #   qw(url),
@@ -850,7 +891,11 @@ else{
 	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@DATASOURCE_FIELD_NAMES,
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+	        -KEY_FIELDS   => ['ingrediant_code'],
+=======
 	        -KEY_FIELDS   => ['item_code'],
+>>>>>>> Brew/ingrediant.cgi
 	        -FIELD_TYPES  => {
 	               # record_id        => 'Autoincrement',
                     datetime         => 
@@ -914,7 +959,11 @@ my  @DROPLIST_DATASOURCE_CONFIG_PARAMS = (
 	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@DROPLIST_DATASOURCE_FIELD_NAMES,
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+	        -KEY_FIELDS   => ['ingrediant_code'],
+=======
 	        -KEY_FIELDS   => ['item_code'],
+>>>>>>> Brew/ingrediant.cgi
 	        -FIELD_TYPES  => {
 	            record_id        => 'Autoincrement',
                     datetime         => 
@@ -967,7 +1016,11 @@ my @MAIL_CONFIG_PARAMS = (
 
 my @EMAIL_DISPLAY_FIELDS = qw(
         status
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+        ingrediant_code
+=======
         item_code
+>>>>>>> Brew/ingrediant.cgi
         ingrediant_name
         category
         client_name
@@ -1103,7 +1156,11 @@ my @VIEW_DISPLAY_PARAMS = (
     -FIELD_NAME_MAPPINGS   => {
        'record _id'         => 'record_id',
        'site_name'          => 'Owner',
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+       'ingrediant_code'          => 'ingrediant_code',
+=======
        'item_code'          => 'item_code',
+>>>>>>> Brew/ingrediant.cgi
        'subject'            => 'Subject category ',
        'ingrediant_name'          => 'Name of resource',
        'description'        => 'Description of resource',
@@ -1112,7 +1169,11 @@ my @VIEW_DISPLAY_PARAMS = (
         },
   -DISPLAY_FIELDS        => [qw(
         sitename
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+        ingrediant_code
+=======
         item_code
+>>>>>>> Brew/ingrediant.cgi
         commentmy @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
       qw(sitename),
@@ -1143,14 +1204,22 @@ my @VIEW_DISPLAY_PARAMS = (
         )],
     -SORT_FIELDS        => [qw(
         status
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+        ingrediant_code
+=======
         item_code
+>>>>>>> Brew/ingrediant.cgi
         ingrediant_name
         category
         comments        
         )],
     -SELECTED_DISPLAY_FIELDS        => [qw(
         sitename
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+        ingrediant_code
+=======
         item_code
+>>>>>>> Brew/ingrediant.cgi
         ingrediant_name
         category
         status
@@ -1254,7 +1323,11 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -DETAILS_VIEW_NAME                      => 'DetailsRecordView',
     -DELETE_FORM_VIEW_NAME                  => 'BasicDataView',
     -DELETE_EMAIL_BODY_VIEW                 => 'DeleteEventEmailView',
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+    -DEFAULT_SORT_FIELD1                    => 'ingrediant_code',
+=======
     -DEFAULT_SORT_FIELD1                    => 'item_code',
+>>>>>>> Brew/ingrediant.cgi
     -DEFAULT_SORT_FIELD2                    => 'ingrediant_name',
     -ENABLE_SORTING_FLAG                    => 1,
     -HAS_MEMBERS                            => $HasMembers,
@@ -1292,14 +1365,22 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -VIEW_LOADER                            => $VIEW_LOADER,
     -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
     -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || $records || 500,
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+    -SORT_FIELD1                            => $CGI->param('sort_field1') || 'ingrediant_code',
+=======
     -SORT_FIELD1                            => $CGI->param('sort_field1') || 'item_code',
+>>>>>>> Brew/ingrediant.cgi
     -SORT_FIELD2                            => $CGI->param('sort_field2') || 'status',
     -SORT_DIRECTION                         => $CGI->param('sort_direction') || 'ASC',
     -SIMPLE_SEARCH_STRING                   => $CGI->param('simple_search_string') || "",
     -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
     -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
     -KEY_FIELD                              => 'record_id',
+<<<<<<< /tmp/sHJGMc_ingrediant.cgi
+    -INGREDIANT_CODE                        => $CGI->param('ingrediantcode')|| 'TBB',
+=======
     -INGREDIANT_CODE                        => $CGI->param('itemcode')|| 'TBB',
+>>>>>>> Brew/ingrediant.cgi
     -SITE_NAME                              => $SiteName,
     -PAGE_TOP_VIEW           =>  $CGI->param('page_top_view') ||  $page_top_view ,
     -PAGE_BOTTOM_VIEW        =>  $CGI->param('page_bottom_view') || $page_bottom_view,

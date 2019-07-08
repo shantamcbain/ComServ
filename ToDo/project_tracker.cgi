@@ -135,6 +135,7 @@ my $HasMembers  = 0;
 my $HostName    = $ENV{'SERVER_NAME'};
 my $OffLine     = 'yes';
 my $shop        = 'cs';
+
 if ($HostName eq 'computersystemconsulting.ca'||
     $HostName eq 'brew.computersystemconsulting.ca'||
     $HostName eq 'dev.computersystemconsulting.ca'||

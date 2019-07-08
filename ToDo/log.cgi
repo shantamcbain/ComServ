@@ -108,6 +108,7 @@ if ($HostName eq 'computersystemconsulting.ca'||
     $HostName eq 'dev.computersystemconsulting.ca'||
     $HostName eq 'dev.altpower.usbm.ca'||
     $HostName eq 'dev.beemaster.ca'){
+    $HostName eq 'dev.beemaster.ca'){
 
    $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
 }

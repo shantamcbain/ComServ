@@ -1,9 +1,6 @@
-[%
-<<<<<<< HEAD
-#	$Id:PollinatorSQLView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
-=======
+[% 
+
 #	$Id:/HTMLTemplates/Apis/BMasterProcedureList.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
->>>>>>> AltPower
 
 
 
@@ -50,6 +47,7 @@ Here is a list of our registered bee keepers providing pollination Products.
                                    <td class="NavTableCellStyle"> [% link.project_code %]</td>
                                    <td class="NavTableCellStyle"> [% link.project_name %]</td>
                                    <td class="NavTableCellStyle"><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProceduresView&procedure=[% link.project_code %]&title=[% link.project_name %]" name="view" target="_blank" title=" [% link.project_name %] "><font   class="LeftSideBarNavStyle">[% link.project_name %]</font></a> </td>
+                                   <td class="NavTableCellStyle">[% link.comments %]</td>
     </tr>
 </table>    [% END %]
 <!-- End of Pollinator Main SQL -->                                

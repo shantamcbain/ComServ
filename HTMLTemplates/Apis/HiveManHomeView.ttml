@@ -1,7 +1,5 @@
 [%
 #	$Id: HiveManHomeView.ttml,v 0.01 2014/03/21 15:47:05 shanta Exp $
-
-
 %]
 [% PROCESS DefaultDbi.ttml %]
 
@@ -24,7 +22,7 @@
 [% IF procedure %]
 
 [% ELSE %]
-	[% embed(data.page_top_view,['-PAGE_TITLE','Hive managemnt.']) %]
+	[% embed(data.page_top_view,['-PAGE_TITLE','Hive management.']) %]
 [% END %]
 
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -53,7 +51,11 @@
 <p>First step is to join our site.
 [% embed('JoinUsLink') %]
 
+<h2>Your list of current yards.</h2>
+[% embed('YardsSQL') %]
+
   [% PROCESS ActiveQueensSQL.ttml %]
+  
 <p>Active Queens [% ActiveQueens %] <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisQueensView">Queens</a> <a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;[% session_string %]">Add queen</a></p>
 <ul>
  <li>Number of frames of bees [% FramesBees %]

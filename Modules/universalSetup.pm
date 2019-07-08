@@ -28,7 +28,7 @@ my $self = {-HOME_VIEW_NAME    => 'PageView',
        -DEFAULT_CHARSET   => 'ISO-8859-1', 
 	    -DOCUMENT_ROOT_URL => '/',
 	    -TEMPLATES_CACHE_DIRECTORY  => '/TemplatesCache',
-	    -APP_DATAFILES_DIRECTORY => "../../Datafiles/CSC",
+	    -APP_DATAFILES_DIRECTORY => "../../Datafiles/universal",
 	    -GLOBAL_DATAFILES_DIRECTORY => "../../Datafiles",
        -HTTP_HEADER_PARAMS => "[-EXPIRES => '-1d']",
 	    -IMAGE_ROOT_URL    => 'http://forager.com/images/extropia',
@@ -50,7 +50,6 @@ my $self = {-HOME_VIEW_NAME    => 'PageView',
        -HTTP_HEADER_PARAMS => "[-EXPIRES => '-1d']",
        -HTTP_HEADER_DESCRIPTION => " foraging, scrap removal, ",
             -HTTP_HEADER_KEYWORDS    => "universalforager.com ",
-
 	    
 	   
 	    };

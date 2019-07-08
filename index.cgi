@@ -1066,7 +1066,7 @@ my @VALID_VIEWS = qw(
   ProjectsView
   BeeTrailerView
   BeeTalk
-
+  BMasterProcedures
   BCHPAHomeView
   BCHPAAdminHomeView
   BeeTrustView

@@ -53,10 +53,7 @@
 <p>
                 [% IF group == 'Apis_admin' OR
                     group == 'BMaster_admin' OR 
-<<<<<<< HEAD
-=======
                     group    == 'AnuCollective_admin' OR
->>>>>>> AltPower
                     group == 'CSC_admin' OR
                     group == 'CSCDev_admin' OR
                     group == 'ECF_admin' OR
@@ -73,13 +70,10 @@
    	[% IF SiteName == "OKB" %]
 		[%# embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "AltPower" %]
-<<<<<<< HEAD
-			[% embed ('AltPowerProjects') %]
-=======
+
 			[% embed ('AltPowerProcedures') %]
 		[% ELSIF SiteName == "AnuCollective" %]
 			[% embed ('AnuProcedures') %]
->>>>>>> AltPower
 		[% ELSIF SiteName == "BMaster"%]
 			[% embed ('BMasterProcedures') %]
 		[% ELSIF SiteName == "CS" %]
@@ -98,9 +92,9 @@
 				[% embed ('CSWorkShops') %]
 		[% ELSIF SiteName == "ECF" OR
 		         SiteName == "ECFDev"  %]
-		         <p>Call ECFProjects</p>
-			[% embed ('ECFProjects') %]
-			<p>Leave [% ViewName  %] ECFProjects</p>
+		         <p>Call ECFProcedures</p>
+			[% embed ('ECFProcedures') %]
+			<p>Leave [% ViewName  %] ECFProcedures</p>
 			[%# embed ('SBHomeView') %]
 		[% ELSIF SiteName == "HE" OR
 		         SiteName == "HEDev"  %]

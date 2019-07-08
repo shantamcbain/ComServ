@@ -56,16 +56,15 @@ sub execute {
     my $cgi = $params->{-CGI_OBJECT};
     my $session = $params->{-SESSION_OBJECT};
     my $sitename = $cgi->param('site');
-if ($sitename = 'ECF'){
+
     $cgi->param(
         -NAME  => 'raw_search',
         -VALUE => "(status == 'In-Use' OR 
                     status == 'Inactive') AND
-                   sitename == 'ECF'
+                   sitename == '$params->{-SITE_NAME}'
          "
     );  
-};
-    my @config_params = _rearrange([
+  my @config_params = _rearrange([
         -YARD_DATASOURCE_CONFIG_PARAMS
             ],
             [

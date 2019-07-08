@@ -1380,7 +1380,7 @@ my $APP_NAME_TITLE = $SiteName."Inventory  Manager";
     my $SITE_DISPLAY_NAME = 'None Defined for this site.';
     my $CSS_VIEW_NAME;
     my $CSS_VIEW_URL = $CSS_VIEW_NAME;
-my $group;
+    my $group;
     my $site_update;
     my $HasMembers = 0;
 
@@ -1403,6 +1403,7 @@ use SiteSetup;
     $mail_from             = $SetupVariables->{-MAIL_FROM}; 
     $mail_to               = $SetupVariables->{-MAIL_TO};
     $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
+    $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
     my $CSS_VIEW_URL            = $SetupVariables->{-CSS_VIEW_NAME}||'none';
     $SITE_DISPLAY_NAME          = $SetupVariables->{-SITE_DISPLAY_NAME};
     $app_logo              = $SetupVariables->{-APP_LOGO};
@@ -1424,7 +1425,31 @@ use SiteSetup;
     $auth                  = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
     $page_left_view        = $CGI->param('page_left_view')||$page_left_view;
     $ProjectTableName      = 'csc_project_tb';
-     $TableName             = $SetupVariables->{-INVENTORYTABLENAME}||'inventroy_tb';
+    my $CSS_VIEW_URL            = $SetupVariables->{-CSS_VIEW_NAME}||'none';
+    $SITE_DISPLAY_NAME          = $SetupVariables->{-SITE_DISPLAY_NAME};
+    $app_logo              = $SetupVariables->{-APP_LOGO};
+    $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
+    $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
+    $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
+    $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
+    $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
+    $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
+    $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
+    $HTTP_HEADER_KEYWORDS  = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
+    $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+    $site = $SetupVariables->{-DATASOURCE_TYPE};
+    $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
+    $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
+    $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
+    $DATAFILES_DIRECTORY   = $APP_DATAFILES_DIRECTORY;
+    $site_session          = $DATAFILES_DIRECTORY.'/Sessions';
+    $auth                  = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+    $page_left_view        = $CGI->param('page_left_view')||$page_left_view;
+    $ProjectTableName      = 'csc_project_tb';
+    $FAVICON               = $SetupVariables->{-FAVICON};
+    $ANI_FAVICON           = $SetupVariables->{-ANI_FAVICON};
+    $FAVICON_TYPE          = $SetupVariables->{-FAVICON_TYPE};
+    $TableName             = $SetupVariables->{-INVENTORYTABLENAME}||'inventroy_tb';
      my $inventorTableName  = 'inventroy_tb';
      $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
 
@@ -1480,11 +1505,6 @@ if ($CGI->param('site')){
 $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
 
 
-
-#else {
-#    $APP_NAME_TITLE        = "Computer System Consulting.ca";
-#    $homeviewname          = 'HelpDeskHomeView';
-#}
 
 
 
@@ -2053,7 +2073,7 @@ my @CLIENT_DATASOURCE_FIELD_NAMES = qw(
         fax
         mobile
         url
-   	  company_code
+	company_code
         company_name
         title
         department

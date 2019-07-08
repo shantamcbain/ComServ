@@ -1,0 +1,60 @@
+[% # YardsSQL.ttml Created 2019/07/03 Shanta  %]
+
+<h2>Your yards. [% SiteName %]</h2>
+
+<table>
+<tr><th>Yard <a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Yard">Add</a></th><th>status</th><th>Max</th><th>Current</th><th>View pallets</th></tr>
+[% FOREACH link = DBI.query("SELECT * FROM apis_yards_tb
+                                  WHERE  (sitename = '$SiteName'
+                                 ) 
+                                  AND status != 'defunct' 
+                                 
+                                  ORDER BY yard_code
+                                  ")%]    
+  [% yard_code = link.yard_code %]                                
+                                  <tr>
+   
+   <td><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&amp;record_id=[% link.record_id %]&view=ProceduresView&procedure=YardsView" name="Contact"  title="[% link.yard_name %] "><font   class="LeftSideBarNavStyle">[% yard_code %] </td>
+  <a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;sort_field1=yard_code&amp;sort_field2=status&amp;first_record_to_display=0&amp;records_per_page=&&amp;[% session_string %]&amp;record_id=[% link.record_id %]&display_details_view.x=15&amp;display_details_view.y=12&amp;display_details_view=on" name="Contact"  title="[% link.yard_name %] "><font   class="LeftSideBarNavStyle">[% link.yard_name %]
+   <td>[% link.status  %]</td>
+   <td>[% link.total_yard_size %]</td>
+   <td>[% link.current %]</td>
+   <td><a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;submit_power_search=on&amp;simple_search_string=[% link.yard_code %]&amp;sort_field1=pallet_code">Pallet</a> 
+     
+   <a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;yard_code=[% link.yard_code %]&amp;sort_field1=pallet_code">Add</a>  
+[% HiveCap = HiveCap + link.total_yard_size %]
+ [% CurrentSize = CurrentSize + link.current %] </td>
+  <tr> 
+  <td>  [% embed ('PopulateYardWithPallet') %]</td>   </tr>
+   [% END %]
+   </tr>
+   <tr><td></td><td></td><td>[% HiveCap %]</td><td>[% CurrentSize %]</td><td>Active Queens [% ActiveQueens %] </td></tr>
+
+
+
+<tr><th>Customer Yard <a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Yard">Add</a></th><th>status</th><th>Max</th><th>Current</th><th>View pallets</th></tr>
+[% IF site == 'ECF' %]
+[% FOREACH link = DBI.query("SELECT * FROM apis_yards_tb
+                                  WHERE  (developer_name = 'Shanta'
+                                  OR developer_name = 'Shauna') 
+                                  AND status = 'In-Use' 
+                                  ORDER BY yard_code
+                                  ")%]    
+                                  
+                                  <tr>
+   
+   <td><a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;sort_field1=yard_code&amp;sort_field2=status&amp;first_record_to_display=0&amp;records_per_page=&&amp;[% session_string %]&amp;record_id=[% link.record_id %]&display_details_view.x=15&amp;display_details_view.y=12&amp;display_details_view=on" name="Contact"  title="[% link.yard_name %] "><font   class="LeftSideBarNavStyle">[% link.yard_name %]</td>
+   <td>[% link.status  %]</td>
+   <td>[% link.total_yard_size %]</td>
+   <td>[% link.current %]</td>
+   <td><a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;submit_power_search=on&amp;simple_search_string=[% link.yard_code %]&amp;sort_field1=pallet_code">Pallet</a>    </td>
+[% HiveCap = HiveCap + link.total_yard_size %]
+ [% CurrentSize = CurrentSize + link.current %]
+   [% END %]
+   </tr>
+[% END %]
+   <tr><td></td><td></td><td>[% HiveCap %]</td><td>[% CurrentSize %]</td><td>Active Queens [% ActiveQueens %]    </td></tr>
+    <tr><td>[% embed ('PopulateYardWithPallet') %]
+ </td></tr>
+
+</table>
