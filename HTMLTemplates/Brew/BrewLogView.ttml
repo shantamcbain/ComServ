@@ -174,7 +174,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-         [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+         [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]        
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=FGB" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -185,7 +185,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-         [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+         [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]        
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=FM" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -196,7 +196,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-           [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+           [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=FB" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -208,7 +208,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=GG" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -224,12 +224,12 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
       <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=SM" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
 
- [%# embed('MashtonTargetTemp') %]
+ [% embed('MashtonTargetTemp') %]
  
   
 <li>Heat to stop enzimes  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
@@ -238,7 +238,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=MH" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -249,7 +249,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=EK" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -259,7 +259,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=BBO" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -269,7 +269,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=B" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -279,7 +279,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=RB" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -289,7 +289,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=FH" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -299,7 +299,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=SH" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -309,7 +309,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=TH" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 <li>Whirlflock  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
@@ -318,7 +318,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=WF" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -328,7 +328,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=BE" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -340,7 +340,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=CS" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -350,9 +350,9 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
-       <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=CE" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+       <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_basestring %]&batchnumber=[% batchnumber %]&time_code=CE" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
 <li>OTG [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
                                   WHERE  (batchnumber  = '$batchnumber' AND
@@ -360,7 +360,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=OTG" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -370,7 +370,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=Y" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -380,7 +380,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=P" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
 </li>
@@ -390,7 +390,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=S" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>  
    </li>             
@@ -399,8 +399,8 @@ recipe code [%  recipecode  %]
                                          time_code = '2' AND
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
-                                  ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+                                  ")%]    base left out of sparge kettle emtied and installed
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=2" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>  
    </li>             
@@ -410,7 +410,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=T" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>  
    </li>
@@ -420,7 +420,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=BOT" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>  
    </li>  
@@ -430,7 +430,7 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=10" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>  
    </li>
@@ -441,38 +441,27 @@ recipe code [%  recipecode  %]
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
                                   ")%]    
-             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %] &nbsp; [% link.comments %]
        [% END %]                  
        <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=5" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>  
    </li>
-<li>notes
+   
+<li><h3>Notes</h3> 
+
+[% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'notes' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]
+                                  
+              <p> [% link.comments %] </p>
+             
+       [% END %]                  
+               <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=notes" target="_self" name="Add time" style="AddButtonStyle" title="Add Note">Add Note</a>                   
+      </li>                            
+                                      
 </ul>
-
-[% IF username  == 'Shanta' OR
-	        group     == 'Apis_Admin' OR
-	        group     == 'BCHPA_Admin' OR
-	        group     == 'BMast_Admin' OR
-	        group     == 'BMast_Co-op_Admin' OR
-	        group     == 'Brew_Admin' OR
-           group     == 'CSC_Admin' OR
-	        group     == 'CS_Admin' OR
-	        group     == 'ECF_Admin' OR
-	        group     == 'Orgainc_Admin' OR
-	        group     == 'DarmaFarmsAdmin' OR
-	        group     == 'MARTS_Admin' OR
-	        group     == 'VitalVic_Admin' OR
-	        group     == 'ENCY_Admin' OR
-	        group     == 'USBM_Admin' OR
-	        group     == 'Shanta_Admin' OR
-	        group     == 'HoneyDo_Admin' OR
-	        group     == 'Brew_Admin' OR
-	        group     == 'Demo_admin' OR
-	       group    ==  'WB_admin' OR
-	        group     == 'MJB_Admin'        %]
-
-	   &nbsp;<a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&Turcuraryamp;display_add_form=on&amp;site_name=[% SiteName %]&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" target="_self" name="Add Ingredients" style="AddButtonStyle" title="Add New Recipe">Add</a>
-	
-	   [% END %]
 
 
 

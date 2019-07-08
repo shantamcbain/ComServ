@@ -1,4 +1,5 @@
 	 [% IF group    ==  'Alegro_admin' OR
+	       group    ==  'AltPower_admin' OR
 	       group    ==  'Apis_admin' OR
 	       group    ==  'Brew_admin' OR
 	       group    ==  'CS_admin' OR
@@ -7,10 +8,8 @@
 	       group    ==  'ENCY_admin' OR
 	       group    ==  'Forager_admin' OR
 	       group    ==  'eXtropia_admin' OR
-	       group    ==  'GPMarket_admin' OR
 	       group    ==  'GrindrodBC_admin' OR
 	       group    ==  'HE_admin' OR
-	       group    ==  'IM_admin' OR
 	       group    ==  'News_admin' OR
 	       group    ==  'OKB_admin'OR
 	       group    ==  'Organic_admin' OR

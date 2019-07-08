@@ -123,11 +123,15 @@ break;
 	
  <table class="MainPageTable">
  <tbody>
+<<<<<<< HEAD
   [% IF data.debug == 1 %]
  <tr colspan="5"> width ="100%" <td>
  [% embed('InheretedVariablesView') %]
 </td> </tr>
  [% END %]
+=======
+  
+>>>>>>> Brew
  <TR >
  <td colspan="5" width ="100%">	 
 
@@ -161,7 +165,13 @@ break;
   [% IF SiteName == 'eXtropia'  %]
 	<IMG SRC = "http://www.extropia.com/graphics/template/logo.gif" alt="eXtropia logo">
   [% END %]
-	
+	[% IF data.debug == 1 %]
+	<table>
+ <tr colspan="5"><td>
+ [% embed('InheretedVariablesView') %]
+</td> </tr>
+</table>
+ [% END %]
 
  [% IF data.application_sub_menu_view_name %]
 	<table>
