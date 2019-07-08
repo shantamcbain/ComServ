@@ -25,11 +25,13 @@
 [% SiteFullName = 'Alternate Power'%]
 <div align="center"><h1>This is [% SiteFullName %] Products page.</h1></div>
 </div>
-We have many items available from <IMG SRC="http://service.bfast.com/bfast/serve?bfmid=37919549&siteid=41402687&bfpage=logos_eng" BORDER="0" WIDTH="1" HEIGHT="1" NOSAVE >
+We have many items avaible from <IMG SRC="http://service.bfast.com/bfast/serve?bfmid=37919549&siteid=41402687&bfpage=logos_eng" BORDER="0" WIDTH="1" HEIGHT="1" NOSAVE >
 <A HREF="http://service.bfast.com/bfast/click?bfmid=37919549&siteid=41402687&bfpage=logos_eng" TARGET="_top"><IMG SRC="http://www.canadiantire.ca/affiliates/available_click_60x90.gif" BORDER="0" WIDTH="60" HEIGHT="90" ALT="Canadian Tire"></A>
  	   
 <br>
 
    
  	 
-[% embed(data.page_bottom_view) %] 	   
+[% embed(data.page_bottom_view) %]
+  
+ 	   
