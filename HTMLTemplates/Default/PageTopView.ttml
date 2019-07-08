@@ -123,15 +123,11 @@ break;
 	
  <table class="MainPageTable">
  <tbody>
-<<<<<<< HEAD
   [% IF data.debug == 1 %]
  <tr colspan="5"> width ="100%" <td>
  [% embed('InheretedVariablesView') %]
 </td> </tr>
  [% END %]
-=======
-  
->>>>>>> Brew
  <TR >
  <td colspan="5" width ="100%">	 
 
