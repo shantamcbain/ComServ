@@ -1,0 +1,55 @@
+<!-- Last update November 22, 2018 Moved to view -->
+<!-- Last update October , 2018  -->
+
+<!-- Last update August 08, 2017 -->
+<!-- Last update August 03, 2017  -->
+<!-- Last update July 16, 2016 -->
+
+<h1>Sustainable Power.</h1>
+
+<h3>'In order to change an existing paradigm you do not struggle to try and change the problematic model. You create a new model and make the old one obsolete' - R. Buckminster Fuller</h3>
+
+
+<p>The world of power production and distribution has changed so much in the last few years. From a Centralized Power System to a Distributed Power System. The infrastructure has always been there. Just run under a different mandate. Change is a direct result of our rethinking our power needs. Our attitudes about the existing structure. 
+<p>The resulting reorganization of the parts have lead to complete change of direction of the existing system. System filled with many diverse power sources. The blend has been coal, Dirty Oil, Solar, hydro, Wind, geothermal, fuel cells, wave, and 'shudder' nuclear. The shift from dirty to clean is accelerating.
+
+<p>The modular design of the Grid tie system allows for the ability to be completely indented for direct use and feeding the excess power those that need it. Each <a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&view=AltpowerNodeView&amp;[% session_string %]' >node</a> can be tuned to the needs and resources at a given site. 
+
+<p>Local powers sources. Solar, wind, heat, water. Power needs, connection ability to other nodes. All contribute to the design of a given node.
+
+
+<p><a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&page=Co-generation&amp;[% session_string %]' >Co-generation</a> of power and heat maximize fuel sources. 
+
+<h3>Site Goals</h3>
+<ul>
+ <li>Education
+  <ul>
+  <li>The first is rethinking our personal power needs. Most will find that this is far less usage than you. We will provide to track your power usage. Armed with this you will be able to plan were you need to shift to obtain the desired goals.
+  <li>Tools to <a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=AltPower&page=PowerPlanning&amp;[% session_string %]' >plan</a> your power node.
+  <li>Tools to monitor power use
+  <li>Tools to manage and maintain the equipment invested in.
+  </ul>
+ <li>Systems to change
+  <ul>
+   <li>Reduce your need for power
+     <ul>
+      <li><a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&view=EVHomeView&amp;[% session_string %]&amp;[% session_string %]'> Electric Vehicles</a>
+     </ul>
+   <li>Power sources of power to clean renewable sources.
+    <ul>
+	<li>Electricity: <a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&page=SolarPower&amp;[% session_string %]' target='_blank' onmouseover='Learn about and build solar power systems.'>Solar</a>, wind, water, zero point</li>
+	<li>Gas: switch from natural gas and propane to <a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&page=Methane' target='_blank' onmouseover='How to produce Methane.'>methane</a> produced from plant material, animal and human manure. See the <a href='https://grindrodproject.grindrodbc.com' target='_blank'>grindrod project</a> for some links here </li>
+     </ul>
+   <li>Monitor and predict power needs  
+    <ul>
+     <li>Server based data storage, module control, data analysis 
+     <li>Wireless modules that monitor voltage and current thorough the system
+     <li>Modules that will do action such and move panels, start/step generators. change power routes.
+     </ul>
+    <li>Small Homes are an option in reducing power consumption. Mobile or stationary they approach the idea of having a small foot print. Here is a link to an example of a Mobile system.
+<p><a href='http://www.renewableenergyworld.com/articles/2016/10/this-mobile-off-grid-house-is-sparking-a-conversation-about-solar.html?cmpid=enl_REW_SolarEnergyNews_2016-10-08&shanta@countrystores.ca&eid=289702516&bid=1549513'><img src='http://www.renewableenergyworld.com/content/rew/en/articles/2016/10/this-mobile-off-grid-house-is-sparking-a-conversation-about-solar/_jcr_content/leftcolumn/article/headerimage.img.png/1475676890698.png' alt='Mobile small house.'></a>
+
+  </ul>
+ <li>
+</ul>
+

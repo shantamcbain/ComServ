@@ -23,7 +23,7 @@
  [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
  [% session_id = data.session_object.getId() %]
  [% session_string = "session_id=$session_id" %]
- [% PAGE = data.page_name ||'HomeView' %]
+ [% PAGE = data.page_name  %]
  [% View = data.view %]
  [% HomeLink = data.home_link || '' %]
  [%# page = 'GarlicCulture' %]
@@ -50,13 +50,13 @@
 
 
 
-   	[% embed(data.page_top_view,["-PAGE_TITLE","$Page",]) %]
+   	[% embed(data.page_top_view,["-PAGE_TITLE","$PAGE",]) %]
 [% embed('ErrorDisplayView') %]
  
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td colspan="5">                    
-                
+Page =  [%   $PAGE   %]         
 [% IF username %]
 		 [% IF pagewelcome %]
 			[% pagewelcome %]
@@ -81,8 +81,7 @@
  [% ELSE %]
 [% embed('JoinUsLink')	%]  
  [% END %]
-
-
+[% embed ("AdminTodoListLink")%]	
    
 <p> 
 [% embed('LiveEditAdmin') %]
@@ -108,32 +107,17 @@
 
 		<br>
 [% END %]
- [% IF username == 'Shanta' OR
-       group    == 'BMaster_admin' OR
-       group    == 'ECF_admin' OR
-       group    == 'LumbyThrift_admin' OR
-        group   == 'HE_admin' OR
-       group    == 'SocialExp_admin' OR
-       group    == 'WiseWoman_admin'                     
-%]
+ 
 
   [% embed('SiteAdminNotes') %]
 
-[% END %]
+
 
 <p>[% group %]
- [% IF username == 'Shanta' OR
-       group    == 'AltPower_admin' OR
-       group    == 'BMaster_admin' OR
-       group    == 'HE_admin' OR
-       group    == 'Brew_admin' OR
-       group    == 'ECFadmin' OR 
-       group    == 'LumbyThrift_admin' OR 
-       group    == 'SocialExp_admin'OR
-       group    == 'WiseWoman_admin'                     
-%]
+                 
+ %]
 <p>  [% embed('ToDoList') %]
- [% END %]
+
 
 [% IF linkedin %]<a href="http://[% linkedin %]">
       

@@ -1,0 +1,99 @@
+[%#	$Id: AltpowerNodeView.ttml,v 0.1 2018/07/05 06:42:47 shanta Exp shanta $	%]
+<!-- AltPowerNodeView  v 0.1 2018/07/05-->
+       [% version =  "v 0.1 2018/07/05" %]
+ [% PROCESS DefaultDbi.ttml %]
+
+[% embed(data.page_top_view,['-PAGE_TITLE','Our Power Log ',' $version ' ]) %]
+
+[% embed('ErrorDisplayView') %]
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+
+  [% BrewName = data.session_object.getAttribute('-KEY','BrewName') %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+        [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+        [% email = data.session_object.getAttribute('-KEY','auth_email') %]
+        [% PROCESS DefaultDbi.ttml %]
+       [% Batch = data.batch_number %]
+<h3>Ok. What is a node.</h3>
+<p>A node in its simplest form is a power source and the things that use the power.
+<p>Here are two examples of nodes.
+
+<ul>
+ <li><h3>A <a href='/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&page=BeeYardNode' >Bee yard Node</a>.</h3> Bee yards need an electric fencer. The simples would be a panel, a battery and a battery. With the addition of a inverter 110 power is now available. We of course use the power to run the fencer but we can also run any electrical need of the yard. The size of the system of source is set by the load. We can charge EV batteries Run sensors and recording devices, tools etc. Charge that electric bee truck.
+ <li><h3><a href='/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&page=RVNode'>A RV Node</a></h3>
+ <p>This is a great example because it has all the parts of any system of self sufficient power production. All system have the same basic components.
+ 
+ <ul>
+	<li>Power requirements </li>
+	<li>Power sources</li>
+	<li>Storage.</li>
+	<li>Monitoring and maintenance</li>
+	<li>Grid Tie Temporarily plug in</li>
+</ul>
+ 
+ <li><h3><a href='/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&page=HouseNode'>House Node</a></h3>
+ <p>The house node is likely the most common.
+ 
+ <ul>
+	<li>Power requirements </li>
+	<li>Power sources</li>
+	<li>Storage.</li>
+	<li>Monitoring and maintenance</li>
+	<li>Grid Tie. Permanent connection to the Grid</li>
+</ul>
+
+ 
+</ul> 
+
+
+[% IF username  == 'Shanta' OR
+	        group     == 'Apis_Admin' OR
+	        group     == 'BCHPA_Admin' OR
+	        group     == 'BMast_Admin' OR
+	        group     == 'BMast_Co-op_Admin' OR
+	        group     == 'Brew_Admin' OR
+           group     == 'CSC_Admin' OR
+	        group     == 'CS_Admin' OR
+	        group     == 'ECF_Admin' OR
+	        group     == 'Orgainc_Admin' OR
+	        group     == 'DarmaFarmsAdmin' OR
+	        group     == 'MARTS_Admin' OR
+	        group     == 'VitalVic_Admin' OR
+	        group     == 'ENCY_Admin' OR
+	        group     == 'USBM_Admin' OR
+	        group     == 'Shanta_Admin' OR
+	        group     == 'HoneyDo_Admin' OR
+	        group     == 'Brew_Admin' OR
+	        group     == 'Demo_admin' OR
+	       group    ==  'WB_admin' OR
+	        group     == 'MJB_Admin'        %]
+
+	   &nbsp;<a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New Recipe" style="AddButtonStyle">Add</a>
+	
+	   [% END %]
+
+
+
+
+[% embed('CSCCopyRight') %]
+
+
+</td>
+</tr>
+</table>
+
+
+
+
+ 

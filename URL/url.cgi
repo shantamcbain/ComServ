@@ -250,33 +250,6 @@ my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
 #                          SITE SETUP                                #
 ######################################################################
 
-if ($SiteName eq "Aktiv" or
-       $SiteName eq "AktivDev") {
-use AktivSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesAktiv   = new AktivSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS      = $SetupVariablesAktiv->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS        = $SetupVariablesAktiv->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION   = $SetupVariablesAktiv->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME             = $SetupVariablesAktiv->{-CSS_VIEW_NAME};
-     $AUTH_TABLE                = $SetupVariablesAktiv->{-AUTH_TABLE};
-     $mail_from                 = $SetupVariablesAktiv->{-MAIL_FROM};
-     $mail_to                   = $SetupVariablesAktiv->{-MAIL_TO};
-     $mail_to_admin             = $SetupVariablesAktiv->{-MAIL_TO_AMIN};
-     $mail_replyto              = $SetupVariablesAktiv->{-MAIL_REPLYTO};
-     $app_logo                  = $SetupVariablesAktiv->{-APP_LOGO};
-     $app_logo_height           = $SetupVariablesAktiv->{-APP_LOGO_HEIGHT};
-     $app_logo_width            = $SetupVariablesAktiv->{-APP_LOGO_WIDTH};
-     $app_logo_alt              = $SetupVariablesAktiv->{-APP_LOGO_ALT};
-     $homeviewname              = $SetupVariablesAktiv->{-HOME_VIEW_NAME};
-     $home_view                 = $SetupVariablesAktiv->{-HOME_VIEW};
-     $CSS_VIEW_URL              = $SetupVariablesAktiv->{-CSS_VIEW_NAME};
-     $APP_DATAFILES_DIRECTORY   = $SetupVariablesAktiv->{-APP_DATAFILES_DIRECTORY};
-     $SITE_DISPLAY_NAME         = $SetupVariablesAktiv->{-SITE_DISPLAY_NAME};
-     $last_update               = $SetupVariablesAktiv->{-LAST_UPDATE}; 
-     $last_update          = $SetupVariablesAktiv->{-SITE_LAST_UPDATE}; 
-     $APP_NAME_TITLE            ='Adventures';
- }
 
 
 	if ($CGI->param('droplist')){
@@ -285,10 +258,7 @@ use AktivSetup;
    if  ($CGI->param('Nav_link')){
 	$mail_cc = 'shanta2shanta.org' ;
 	}
-    $SITE_DISPLAY_NAME       = $SetupVariableseXtropia->{-SITE_DISPLAY_NAME};
-    $site_update              = $SetupVariableseXtropia->{-SITE_LAST_UPDATE};
-    $shop                     = $SetupVariableseXtropia->{-SHOP};
-}
+ 
 
 #$page_left_view = "LeftPageView";
 my $allowmod;

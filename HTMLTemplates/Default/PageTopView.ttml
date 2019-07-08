@@ -102,7 +102,7 @@ break;
     <link rel="stylesheet" type="text/css" href="examples.min.css" />
     <link type="text/css" rel="stylesheet" href="syntaxhighlighter/styles/shCoreDefault.min.css" />
  <link rel="stylesheet" type="text/css" href="jquery.jqplot.css" />
-
+<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/83d859a6c8cd67c740381cc0f/3fc55ca0dd649e752251b1daa.js");</script>
 </HEAD>
 <BODY>
  <!-- PageTopView.ttml [% PageVersion %] -->
@@ -121,9 +121,9 @@ break;
  <TR >
  <td colspan="2">	 
 
- <!-- Page head row Begin PageTopView -->
+ <!-- Page head row Begin PageHeaderView -->
  		[% embed ('PageHeaderView') %]
- <!--End page header row PageTopView-->
+ <!--End page header row PageHeaderView-->
 
  </td>
  </tr>  
@@ -147,7 +147,7 @@ break;
 
  <td width="85%" rowspan="15" align="left" valign="top" class="MainPageDataCell">
  <!-- content Main Page Cell PageTopView-->
-
+<h1>[%  data.domain_dame %][% HostName %]</h1>
   [% IF SiteName == 'eXtropia'  %]
 	<IMG SRC = "http://www.extropia.com/graphics/template/logo.gif" alt="eXtropia logo">
   [% END %]

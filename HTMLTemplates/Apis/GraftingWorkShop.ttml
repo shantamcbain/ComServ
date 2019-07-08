@@ -1,0 +1,24 @@
+[% 
+# /HTMLTemplates/Apis/GraftingWorkShop.ttml, v 0.01 2019/06/05
+# /HTMLTemplates/Apis/ClockeBoardView.ttml, v 0.01 2019/05/10
+
+%]
+
+
+[% IF procedure %]
+
+[% ELSE %]
+
+[% embed(data.page_top_view,['-PAGE_TITLE','Grafting WorkShop']) %]
+[% END %]
+
+<h2>Learn to graft using the clocke board method.</h2>
+<p>
+In this workshop we will be cover</p>
+<ul>
+ <li>The principles of the process of raising queens.</li>
+ <li>The preparation of the starter for  grafting.</li>   
+ <li>The selection of our graft comb</li>
+  
+</ul>
+<p><a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=102">Register for workshop,</a></p>

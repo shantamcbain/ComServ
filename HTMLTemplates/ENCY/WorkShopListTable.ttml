@@ -50,12 +50,14 @@
 %]
 <tr>
 
+
 <td> 
  <a href="/cgi-bin/ENCY/workshops.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;workshopcode=[% link.workshop_code %]&amp;display_modification_form=on&amp;record_id=[% link.record_id %]&amp;description=[% link.description %]&amp;priority=" "target="_Blank">Edit WorkShop [% link.workshop_name %]</a>  
  </td>
  <td></td>
  </tr>
  
+
  
 [% END %]
        

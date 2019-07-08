@@ -77,7 +77,7 @@
 			[%# embed ('PlanningView') %]
                         [% ELSE %]
 			[%# embed ('CSCHomeView') %]
-			[% embed ('CSWorkShops') %]
+			[% embed ('CSCWorkShops') %]
                         [% END %]
 		[% ELSIF SiteName == "CSCDev" OR
 		         SiteName == "BMasterDev"  %]
@@ -150,13 +150,13 @@
 		<!-- Begin Demo Home View -->  
 		<p>Here are some of the provided by <a href="http://CountryStores.ca/cgi-bin/index.cgi?site=CS&amp;[% session_string %]&amp;view=WorkShopsView" target=_"_blank">Country Stores.ca </a>
 
-	[% embed ('CSWorkShops') %]
 			[%#embed ('DemoHomeView') %]
 			<!-- End Demo home view -->
 		[% END %]
 		
 
-
+[% embed ('AllWorkShops') %]
+	
 
 
 

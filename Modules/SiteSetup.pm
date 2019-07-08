@@ -3,7 +3,11 @@ package SiteSetup;
 use strict;
 use CGI::Carp qw(fatalsToBrowser);
 use Extropia::Core::Base qw(_rearrange _rearrangeAsHash);
+#This is the only main difference between domain configuration.All this should move to mysql
 
+#my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
+#my $GLOBAL_DATAFILES_DIRECTORY="/home/usbmca/Datafiles";
+my $GLOBAL_DATAFILES_DIRECTORY="/home/weaver/Datafiles";
 # $site = 'file';
 #Create local Variable for use here only
 
@@ -26,6 +30,7 @@ my $AUTH_MSQL_USER_NAME;
 my $AUTH_TABLE; 
 my $SITE_DISPLAY_NAME;
 my $AUTH_TABLE;
+my $APP_NAME_TITLE;
 my $BASIC_DATA_VIEW;
 my $site_update;
 my $last_update;
@@ -52,7 +57,7 @@ my $mail_to_user;
 my $mail_to_member;
 my $mail_to_discussion;
 my $APP_DATAFILES_DIRECTORY;
-my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
+
 my $CSS_VIEW_NAME;
 my $CSS_VIEW_URL;
 my $StoreUrl;
@@ -94,6 +99,7 @@ use AltPowerSetup;
      $app_logo_height         = $SetupVariablesAltPower->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesAltPower->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesAltPower->{-APP_LOGO_ALT};
+     $APP_NAME_TITLE          = $SetupVariablesAltPower->{-APP_NAME_TITLE};
      $home_view               = 'HomeView'||$SetupVariablesAltPower->{-HOME_VIEW_NAME};
      $home_view               = $SetupVariablesAltPower->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesAltPower->{-CSS_VIEW_NAME};
@@ -108,6 +114,8 @@ use AltPowerSetup;
      $ANI_FAVICON             = $SetupVariablesAltPower->{-ANI_FAVICON};
      $page_top_view           = $SetupVariablesAltPower->{-PAGE_TOP_VIEW};
      $FAVICON_TYPE            = $SetupVariablesAltPower->{-FAVICON_TYPE};
+     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY."/AltPower";
+ 
 }
 
 if ($SiteName eq "BMaster") {
@@ -123,6 +131,7 @@ use BMasterSetup;
      $app_logo_height         = $SetupVariablesBMaster->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesBMaster->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesBMaster->{-APP_LOGO_ALT};
+     $APP_NAME_TITLE          = $SetupVariablesBMaster->{-APP_NAME_TITLE};
      $CSS_VIEW_URL            = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
      $last_update             = $SetupVariablesBMaster->{-LAST_UPDATE}; 
 #      $site_update              = $SetupVariablesBMaster->{-SITE_LAST_UPDATE};
@@ -148,6 +157,7 @@ use BMasterSetup;
      $app_logo_height         = $SetupVariablesBMaster->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesBMaster->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesBMaster->{-APP_LOGO_ALT};
+     $APP_NAME_TITLE          = $SetupVariablesBMaster->{-APP_NAME_TITLE};
  #    $home_view            = 'HomeView'||$SetupVariablesBMaster->{-HOME_VIEW_NAME};
      $home_view               = $SetupVariablesBMaster->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
@@ -182,6 +192,7 @@ use  BrewSetup;
     $app_logo_height       = $SetupVariablesBrew->{-APP_LOGO_HEIGHT};
     $app_logo_width        = $SetupVariablesBrew->{-APP_LOGO_WIDTH};
     $app_logo_alt          = $SetupVariablesBrew->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE         = $SetupVariablesBrew->{-APP_NAME_TITLE};
     $IMAGE_ROOT_URL        = $SetupVariablesBrew->{-IMAGE_ROOT_URL}; 
     $DOCUMENT_ROOT_URL     = $SetupVariablesBrew->{-DOCUMENT_ROOT_URL};
     my $LINK_TARGET        = $SetupVariablesBrew->{-LINK_TARGET};
@@ -215,6 +226,7 @@ use CSSetup;
   $app_logo_height          = $SetupVariablesCS->{-APP_LOGO_HEIGHT};
   $app_logo_width           = $SetupVariablesCS->{-APP_LOGO_WIDTH};
   $app_logo_alt             = $SetupVariablesCS->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE         = $SetupVariablesCS->{-APP_NAME_TITLE};
   $FAVICON                  = $SetupVariablesCS>{-FAVICON};
   $ANI_FAVICON              = $SetupVariablesCS->{-ANI_FAVICON};
   $FAVICON_TYPE             = $SetupVariablesCS->{-FAVICON_TYPE};
@@ -256,6 +268,7 @@ $AUTH_TABLE               = $SetupVariablesCSC ->{-ADMIN_AUTH_TABLE};
     $page_bottom_view        = $SetupVariablesCSC->{-PAGE_BOTTOM_VIEW};
     $page_left_view          = $SetupVariablesCSC->{-LEFT_PAGE_VIEW};
     $CSS_VIEW_URL            = $SetupVariablesCSC->{-CSS_VIEW_NAME};
+    $APP_NAME_TITLE          = $SetupVariablesCSC->{-APP_NAME_TITLE};
     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/CSC'; 
 
 }
@@ -283,6 +296,7 @@ use DEMOSetup;
     $app_logo_height          = $SetupVariablesDemo->{-APP_LOGO_HEIGHT};
     $app_logo_width           = $SetupVariablesDemo->{-APP_LOGO_WIDTH};
     $app_logo_alt             = $SetupVariablesDemo->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE           = $SetupVariablesDemo->{-APP_NAME_TITLE};
     $CSS_VIEW_URL             = $SetupVariablesDemo->{-CSS_VIEW_NAME};
     $SITE_DISPLAY_NAME        = $SetupVariablesDemo->{-SITE_DISPLAY_NAME};
 #    $home_view             = $SetupVariablesDemo->{-HOME_VIEW_NAME};
@@ -305,6 +319,7 @@ use ECFSetup;
      $app_logo_height         = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesECF->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesECF->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE          = $SetupVariablesECF->{-APP_NAME_TITLE};
      $FAVICON                = $SetupVariablesECF->{-FAVICON};
      $ANI_FAVICON            = $SetupVariablesECF->{-ANI_FAVICON};
      $FAVICON_TYPE          = $SetupVariablesECF->{-FAVICON_TYPE};
@@ -332,6 +347,7 @@ use ENCYSetup;
      $app_logo_height         = $SetupVariablesENCY->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesENCY->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesENCY->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE          = $SetupVariablesENCY->{-APP_NAME_TITLE};
  #    $home_view            = $SetupVariablesENCY->{-HOME_VIEW_NAME};
  #    $home_view               = $SetupVariablesENCY->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesENCY->{-CSS_VIEW_NAME};
@@ -363,6 +379,7 @@ use FeedBeesSetup;
      $app_logo_height         = $SetupVariablesFeedBees->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesFeedBees->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesFeedBees->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE          = $SetupVariablesFeedBees->{-APP_NAME_TITLE};
      $home_view               = 'HomeView'||$SetupVariablesFeedBees->{-HOME_VIEW_NAME};
      $home_view               = $SetupVariablesFeedBees->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesFeedBees->{-CSS_VIEW_NAME};
@@ -387,6 +404,7 @@ use ForagerSetup;
     $app_logo_height         = $SetupVariablesForager->{-APP_LOGO_HEIGHT};
     $app_logo_width          = $SetupVariablesForager->{-APP_LOGO_WIDTH};
     $app_logo_alt            = $SetupVariablesForager->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE          = $SetupVariablesForager->{-APP_NAME_TITLE};
     $home_view               = $SetupVariablesForager->{-HOME_VIEW};
 #Mail settings
     $mail_from               = $SetupVariablesForager->{-MAIL_FROM};
@@ -413,6 +431,7 @@ use GrindrodSetup;
      $app_logo_height         = $SetupVariablesGrindrod->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesGrindrod->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesGrindrod->{-APP_LOGO_ALT};
+     $APP_NAME_TITLE          = $SetupVariablesGrindrod->{-APP_NAME_TITLE};
      $CSS_VIEW_URL            = $SetupVariablesGrindrod->{-CSS_VIEW_NAME};
      $last_update             = $SetupVariablesGrindrod->{-LAST_UPDATE}; 
      $site_update             = $SetupVariablesGrindrod->{-SITE_LAST_UPDATE};
@@ -441,6 +460,7 @@ use GRProjectSetup;
      $app_logo_height         = $SetupVariablesGRProject->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesGRProject->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesGRProject->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE           = $SetupVariablesGRProject->{-APP_NAME_TITLE};
  #    $home_view             = $SetupVariablesGRProject->{-HOME_VIEW_NAME};
  #    $home_view               = $SetupVariablesGRProject->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesGRProject->{-CSS_VIEW_NAME};
@@ -470,7 +490,8 @@ use HESetup;
      $app_logo_height          = $SetupVariablesHE->{-APP_LOGO_HEIGHT};
      $app_logo_width           = $SetupVariablesHE->{-APP_LOGO_WIDTH};
      $app_logo_alt             = $SetupVariablesHE->{-APP_LOGO_ALT};
- #    $home_view             = $SetupVariablesHE->{-HOME_VIEW_NAME};
+     $APP_NAME_TITLE          = $SetupVariablesHE->{-APP_NAME_TITLE};
+#    $home_view             = $SetupVariablesHE->{-HOME_VIEW_NAME};
  #    $home_view                = $SetupVariablesHE->{-HOME_VIEW};
      $CSS_VIEW_URL             = $SetupVariablesHE->{-CSS_VIEW_NAME};
      $last_update              = $SetupVariablesHE->{-LAST_UPDATE}; 
@@ -497,7 +518,8 @@ use HoneyDoSetup;
      $app_logo_height         = $SetupVariablesHoneyDo->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesHoneyDo->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesHoneyDo->{-APP_LOGO_ALT};
- #    $home_view            = $SetupVariablesHoneyDo->{-HOME_VIEW_NAME};
+     $APP_NAME_TITLE          = $SetupVariablesHoneyDo->{-APP_NAME_TITLE};
+#    $home_view            = $SetupVariablesHoneyDo->{-HOME_VIEW_NAME};
  #    $home_view               = $SetupVariablesHoneyDo->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesHoneyDo->{-CSS_VIEW_NAME};
      $last_update             = $SetupVariablesHoneyDo->{-LAST_UPDATE}; 
@@ -527,6 +549,7 @@ use JennaBeeSetup;
      $app_logo_height         = $SetupVariablesJennaBee->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesJennaBee->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesJennaBee->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE          = $SetupVariablesJennaBee->{-APP_NAME_TITLE};
      $FAVICON                 = $SetupVariablesJennaBee->{-FAVICON};
      $ANI_FAVICON             = $SetupVariablesJennaBee->{-ANI_FAVICON};
      $FAVICON_TYPE            = $SetupVariablesJennaBee->{-FAVICON_TYPE};
@@ -551,6 +574,7 @@ use LTrustSetup;
     $app_logo_height         = $SetupVariablesLandTrust->{-APP_LOGO_HEIGHT};
     $app_logo_width          = $SetupVariablesLandTrust->{-APP_LOGO_WIDTH};
     $app_logo_alt            = $SetupVariablesLandTrust->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE          = $SetupVariablesLandTrust->{-APP_NAME_TITLE};
 #    $home_view          = $SetupVariablesLandTrust->{-HOME_VIEW_NAME};
 #    $home_view             = $SetupVariablesLandTrust->{-HOME_VIEW}; 
     $CSS_VIEW_URL            = $SetupVariablesLandTrust->{-CSS_VIEW_NAME};
@@ -572,6 +596,7 @@ use LumbyThriftSetup;
      $app_logo_height         = $SetupVariablesLumbyThrift->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesLumbyThrift->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesLumbyThrift->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE          = $SetupVariablesLumbyThrift->{-APP_NAME_TITLE};
      $home_view               = $SetupVariablesLumbyThrift->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesLumbyThrift->{-CSS_VIEW_NAME};
      $last_update             = $SetupVariablesLumbyThrift->{-LAST_UPDATE}; 
@@ -600,6 +625,7 @@ use MWSetup;
      $app_logo_height         = $SetupVariablesMW->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesMW->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesMW->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE          = $SetupVariablesMW->{-APP_NAME_TITLE};
      if ($group eq "Mentoring"){
      $home_view               = 'MentoringHomeView';
        }else{
@@ -629,6 +655,7 @@ use OrganicSetup;
      $app_logo_height         = $SetupVariablesOrganic->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesOrganic->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesOrganic->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE          = $SetupVariablesOrganic->{-APP_NAME_TITLE};
  #    $home_view            = $SetupVariablesOrganic->{-HOME_VIEW_NAME};
  #    $home_view               = $SetupVariablesOrganic->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
@@ -679,6 +706,7 @@ if ($SiteName eq "SSeedSavers" or
      $app_logo_height         = $SetupVariablesSSeedSavers->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesSSeedSavers->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesSSeedSavers->{-APP_LOGO_ALT};
+     $APP_NAME_TITLE          = $SetupVariablesSSeedSavers->{-APP_NAME_TITLE};
      $home_view               = $SetupVariablesSSeedSavers->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesSSeedSavers->{-CSS_VIEW_NAME};
      $last_update             = $SetupVariablesSSeedSavers->{-LAST_UPDATE};   
@@ -703,7 +731,8 @@ use SkySetup;
      $app_logo_height         = $SetupVariablesSky->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesSky->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesSky->{-APP_LOGO_ALT};
- #    $home_view            = $SetupVariablesSky->{-HOME_VIEW_NAME};
+     $APP_NAME_TITLE          = $SetupVariablesSky->{-APP_NAME_TITLE};
+#    $home_view            = $SetupVariablesSky->{-HOME_VIEW_NAME};
  #    $home_view               = $SetupVariablesSky->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesSky->{-CSS_VIEW_NAME};
      $SITE_DISPLAY_NAME       = $SetupVariablesSky->{-SITE_DISPLAY_NAME};
@@ -719,6 +748,7 @@ use ShantaSetup;
     $app_logo_height       = $SetupVariablesShanta->{-APP_LOGO_HEIGHT};
     $app_logo_width        = $SetupVariablesShanta->{-APP_LOGO_WIDTH};
     $app_logo_alt          = $SetupVariablesShanta->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE          = $SetupVariablesShanta->{-APP_NAME_TITLE};
 #    $home_view          = $SetupVariablesShanta->{-HOME_VIEW_NAME};
 #    $home_view             = $SetupVariablesShanta->{-HOME_VIEW}; 
     $CSS_VIEW_URL          = $SetupVariablesShanta->{-CSS_VIEW_NAME};
@@ -740,7 +770,8 @@ use ShantaWorkShopSetup;
      $app_logo_height         = $SetupVariablesShantaWorkShop->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesShantaWorkShop->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesShantaWorkShop->{-APP_LOGO_ALT};
-     $CSS_VIEW_URL            = $SetupVariablesShantaWorkShop->{-CSS_VIEW_NAME};
+     $APP_NAME_TITLE          = $SetupVariablesShantaWorkShop->{-APP_NAME_TITLE};
+    $CSS_VIEW_URL            = $SetupVariablesShantaWorkShop->{-CSS_VIEW_NAME};
      $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/ShantasWorkShop';
      $site_update             = $SetupVariablesShantaWorkShop>{-Site_Last_Update};
      $SiteLastUpdate          = $SetupVariablesShantaWorkShop->{-Site_Last_Update}; 
@@ -762,6 +793,7 @@ use SustainableSetup;
      $app_logo_height         = $SetupVariablesSustainable->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesSustainable->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesSustainable->{-APP_LOGO_ALT};
+    $APP_NAME_TITLE          = $SetupVariablesSustainable->{-APP_NAME_TITLE};
      $home_view               = $SetupVariablesSustainable->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesSustainable->{-CSS_VIEW_NAME};
      $last_update             = $SetupVariablesSustainable->{-LAST_UPDATE};   
@@ -786,12 +818,14 @@ use USBMSetup;
      $app_logo_height         = $SetupVariablesUSBM->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesUSBM->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesUSBM->{-APP_LOGO_ALT};
- #    $home_view            = $SetupVariablesUSBM->{-HOME_VIEW_NAME};
+     $APP_NAME_TITLE          = $SetupVariablesUSBM->{-APP_NAME_TITLE};
+#    $home_view            = $SetupVariablesUSBM->{-HOME_VIEW_NAME};
  #    $home_view               = $SetupVariablesUSBM->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesUSBM->{-CSS_VIEW_NAME};
      $SITE_DISPLAY_NAME       = $SetupVariablesUSBM->{-SITE_DISPLAY_NAME};
      $last_update             = $SetupVariablesUSBM->{-LAST_UPDATE};
      $site_update             = $SetupVariablesUSBM->{-SITE_LAST_UPDATE};
+     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY."/usbmca";
  }
 if ($SiteName eq "WB" or
        $SiteName eq "WBDev" ) {
@@ -801,6 +835,7 @@ use WBSetup;
      $HTTP_HEADER_PARAMS      = $SetupVariablesWB->{-HTTP_HEADER_PARAMS};
      $HTTP_HEADER_DESCRIPTION = $SetupVariablesWB->{-HTTP_HEADER_DESCRIPTION};
      $CSS_VIEW_NAME           = $SetupVariablesWB->{-CSS_VIEW_NAME};
+     $APP_NAME_TITLE          = $SetupVariablesWB->{-APP_NAME_TITLE};
      $AUTH_TABLE              = $SetupVariablesWB->{-AUTH_TABLE};
      $app_logo                = $SetupVariablesWB->{-APP_LOGO};
      $app_logo_height         = $SetupVariablesWB->{-APP_LOGO_HEIGHT};
@@ -838,7 +873,8 @@ use WWSetup;
      $app_logo_height         = $SetupVariablesWiseWoman->{-APP_LOGO_HEIGHT};
      $app_logo_width          = $SetupVariablesWiseWoman->{-APP_LOGO_WIDTH};
      $app_logo_alt            = $SetupVariablesWiseWoman->{-APP_LOGO_ALT};
-     $home_view               = $SetupVariablesWiseWoman->{-HOME_VIEW_NAME};
+    $APP_NAME_TITLE          = $SetupVariablesWiseWoman->{-APP_NAME_TITLE};
+    $home_view               = $SetupVariablesWiseWoman->{-HOME_VIEW_NAME};
      $home_view               = $SetupVariablesWiseWoman->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesWiseWoman->{-CSS_VIEW_NAME};
      $last_update             = $SetupVariablesWiseWoman->{-LAST_UPDATE}; 
@@ -874,7 +910,7 @@ sub new
   -APP_LOGO_ALT       => $app_logo_alt||'CSC Logo',
   -APP_LOGO_WIDTH     => $app_logo_width||'108',
   -APP_LOGO_HEIGHT    => $app_logo_height||'40',
-  -APP_NAME_TITLE     => 'ComServ',
+  -APP_NAME_TITLE     => $APP_NAME_TITLE || 'ComServ',
   -FAVICON            => $FAVICON||'/favicon.ico',
   -ANI_FAVICON        => $ANI_FAVICON||'/animated_favicon.gif',
   -FAVICON_TYPE       => $FAVICON_TYPE||'/image/x-icon',
@@ -895,8 +931,8 @@ sub new
   -MAIL_TO_DISCUSSION => $mail_to_discussion,
   -DOCUMENT_ROOT_URL  => $IMAGE_ROOT_URL||'/',
   -IMAGE_ROOT_URL     => $DOCUMENT_ROOT_URL||'/images/extropia',
-  -GLOBAL_DATAFILES_DIRECTORY => "/home/shanta/Datafiles",
-  -APP_DATAFILES_DIRECTORY    => "/home/shanta/Datafiles",
+  -GLOBAL_DATAFILES_DIRECTORY => $GLOBAL_DATAFILES_DIRECTORY,
+  -APP_DATAFILES_DIRECTORY    => $GLOBAL_DATAFILES_DIRECTORY,
   -TEMPLATES_CACHE_DIRECTORY  => '/TemplatesCache',
   -LINK_TARGET                => '_self',
   -HTTP_HEADER_PARAMS         => $HTTP_HEADER_PARAMS||"[-EXPIRES => '-1d']",

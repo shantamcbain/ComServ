@@ -1,4 +1,5 @@
 package universalSetup;
+
 #created v 0.1 2018/12/13 shanta
 
 use strict;
@@ -14,6 +15,7 @@ my $package    = shift;
 my $UseModPerl = shift || 0;
 
 # This is where you define your variable mapping.
+
 my $self = {-HOME_VIEW_NAME    => 'PageView',
 	    -HOME_VIEW         => 'PageView',
 	    -BASIC_DATA_VIEW   => 'BasicDataView',
@@ -26,7 +28,7 @@ my $self = {-HOME_VIEW_NAME    => 'PageView',
        -DEFAULT_CHARSET   => 'ISO-8859-1', 
 	    -DOCUMENT_ROOT_URL => '/',
 	    -TEMPLATES_CACHE_DIRECTORY  => '/TemplatesCache',
-	    -APP_DATAFILES_DIRECTORY => "../../Datafiles/universal",
+	    -APP_DATAFILES_DIRECTORY => "../../Datafiles/CSC",
 	    -GLOBAL_DATAFILES_DIRECTORY => "../../Datafiles",
        -HTTP_HEADER_PARAMS => "[-EXPIRES => '-1d']",
 	    -IMAGE_ROOT_URL    => 'http://forager.com/images/extropia',
@@ -48,6 +50,7 @@ my $self = {-HOME_VIEW_NAME    => 'PageView',
        -HTTP_HEADER_PARAMS => "[-EXPIRES => '-1d']",
        -HTTP_HEADER_DESCRIPTION => " foraging, scrap removal, ",
             -HTTP_HEADER_KEYWORDS    => "universalforager.com ",
+
 	    
 	   
 	    };

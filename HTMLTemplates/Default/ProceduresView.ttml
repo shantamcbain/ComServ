@@ -53,6 +53,10 @@
 <p>
                 [% IF group == 'Apis_admin' OR
                     group == 'BMaster_admin' OR 
+<<<<<<< HEAD
+=======
+                    group    == 'AnuCollective_admin' OR
+>>>>>>> AltPower
                     group == 'CSC_admin' OR
                     group == 'CSCDev_admin' OR
                     group == 'ECF_admin' OR
@@ -69,7 +73,13 @@
    	[% IF SiteName == "OKB" %]
 		[%# embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "AltPower" %]
+<<<<<<< HEAD
 			[% embed ('AltPowerProjects') %]
+=======
+			[% embed ('AltPowerProcedures') %]
+		[% ELSIF SiteName == "AnuCollective" %]
+			[% embed ('AnuProcedures') %]
+>>>>>>> AltPower
 		[% ELSIF SiteName == "BMaster"%]
 			[% embed ('BMasterProcedures') %]
 		[% ELSIF SiteName == "CS" %]

@@ -40,13 +40,17 @@
 		[% ELSE %]
 			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %]! </h3> 
 		[% END %]
-		
+[% embed ("AdminTodoListLink")%]	
 		[% SiteName = data.site_name%]
 
    	[% IF SiteName == "OKB" %]
 		[% embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "Aktiv" %]
 			[% embed ('AktivHomeView') %]
+		[% ELSIF SiteName == "AltPower" %]
+			[% embed ('AltPowerHomeView') %]
+		[% ELSIF SiteName == "AnuCollective" %]
+			[% embed ('AnuCollectiveHomeView') %]
 		[% ELSIF SiteName == "BMaster"%]
 			[% embed ('ApisHomeView') %]
 		[% ELSIF SiteName == "BMastBreeder"%]
@@ -119,7 +123,17 @@
 			[% embed ('DemoHomeView') %]
 			<!-- End Demo home view -->
 		[% END %]
+  [% embed('SiteAdminNotes') %]
+
+
+
+<p>[% group %]
+                 
+ %]
+<p>  [% embed('ToDoList') %]
+
 		
+[% embed ("AdminTodoList")%]	
 
 
 <p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %]&nbsp; This value is stored in your setup file. [% END %]

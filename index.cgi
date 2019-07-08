@@ -157,27 +157,7 @@ my $Page_tb;
 my $HasMembers = 0;
 my $OffLine    = 'yes';
 my $HostName   = $ENV{'SERVER_NAME'};
-if ($HostName eq 'computersystemconsulting.ca'||
-    $HostName eq 'brew.computersystemconsulting.ca'||
-    $HostName eq 'voip.computersystemconsulting.ca')
-    {
-   $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
-}
-if ($HostName eq 'voip.computersystemconsulting.ca'){
-  $SiteName ='VOIP';
-}
 
-if ($HostName eq 'beemaster.ca'||
-    $HostName eq 'jenabee.beemaster.ca'||
-    $HostName eq 'ecf.beemaster.ca'){
-   $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles";
-}
-if ($HostName eq 'usbm.ca' ||
-    $HostName eq 'altpower.usbm.ca' ||
-    $HostName eq 'brew.usbm.ca'||
-    $HostName eq 'ency.usbm.ca'){
-   $GLOBAL_DATAFILES_DIRECTORY ="/home/usbmca/Datafiles";
-    }
 my $site_for_search = 0;
 
 #if ($HostName = 'localhost'){
@@ -1163,8 +1143,12 @@ my @VALID_VIEWS = qw(
   BuySellHomeView
   HelpDeskHomeView
   AltpowerLogHomePage
+  VoltSensorDevelopment
   PowerUsageView
+<<<<<<< HEAD
   ProceduresView
+=======
+>>>>>>> AltPower
   AltpowerNodeView
   SustainableView
   UrbanBeekeepingView
@@ -1176,6 +1160,7 @@ my @VALID_VIEWS = qw(
   ResourcesView
   HerbDetailView
   BrewLogView
+  ProceduresView
 );
 
 my @ROW_COLOR_RULES = ();

@@ -115,8 +115,8 @@ sitename' %]
 	 [% END%]
 
 	 [% IF group    ==  'Alegro_admin' OR
-	       group    ==  'CSC_admin' OR OR
-	       group    ==  'shantaworkshop_admin'
+	       group    ==  'CSC_admin' OR 
+	       group    ==  'shantaworkshop_admin' OR
 	       username == 'Shanta'  
 
 	 %]

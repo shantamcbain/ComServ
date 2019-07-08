@@ -112,6 +112,7 @@
       [%# body %]
                  [% IF group == 'CSC_admin' OR
                     group == 'CSCDev_admin' OR
+                    group == 'AnuCollective_admin' OR
                     group == 'MW_admin' OR
                     group == 'WiseWoman_admin' OR
                     group == 'AltPower_admin' OR
@@ -122,7 +123,42 @@
  [% embed('ToDoSQL') %] 
 		[% END %]
 <p>
+<<<<<<< HEAD
  
+=======
+ <table>
+                                   <tr>
+<td class="NavTableCellStyle"> Project Code  </td>
+<td class="NavTableCellStyle"> Project Name  </td>
+<td class="NavTableCellStyle"> Comments      </td>
+<td class="NavTableCellStyle">   links       </td>
+</tr>
+
+ [% FOREACH link = DBI.query("SELECT * FROM csc_project_tb
+                                  WHERE (sitename =  '$SiteName' AND
+                                          status != 'delivered' )
+                                  ORDER BY project_code
+                                  ")%]    
+                                  
+                                   <tr>
+<td class="NavTableCellStyle"> [% link.project_code %]  </td>
+<td class="NavTableCellStyle"> [% link.project_name %]  </td>
+<td class="NavTableCellStyle"> [% link.comments %]  </td>
+<td class="NavTableCellStyle">        
+  <a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&display_details_view.x&record_id=[% link.record_id %][% link.view_name %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Details</font></a>
+  <a href="/cgi-bin/ToDo/log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;todo_record_id=[% link.record_id %]&amp;abstract=[% link.project_name %]&amp;project_code=[% link.project_code %]&amp;details=[% link.comments %]&amp;priority=" "target="_Blank">Log</a>
+  <a href="/cgi-bin/ToDo/todo.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on
+  &amp;record_id=[% link.record_id %]&amp;subject=[% link.project_name %]
+  &amp;project_code=[% link.project_code %]
+  &amp;description=[% link.comments %]
+  &amp;priority=" "target="_Blank">Todo</a>
+     </td>
+   </tr> 
+  		[% END %]
+<p> 
+ </table> 
+
+>>>>>>> AltPower
 [% IF lastupdate %]
 <p>Last Update [% lastupdate %][% IF SiteName == 'Demo' %]&nbsp; This value is stored in your setup file. [% END %]
 		<br>

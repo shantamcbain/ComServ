@@ -1,6 +1,7 @@
 Admin Event.
 --------------  
-[% username = data.cgi_object.auth_username.0 %]
+[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+[%# username = data.session_object.getAttribute('-KEY','auth_username') %]
 [% subs.sprintf("A user by the username of %s has applied to the system", username) %]
   
     

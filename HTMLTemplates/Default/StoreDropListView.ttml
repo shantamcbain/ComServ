@@ -1,0 +1,206 @@
+<section id="main-menu">
+
+    <nav id="nav" class="navbar navbar-default navbar-main" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#primary-nav">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="primary-nav">
+
+                <ul class="nav navbar-nav">
+
+                        <li menuItemName="Home" class="" id="Primary_Navbar-Home">
+       <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]" target="[% link.target %]" title=" [% link.name %] ">
+                        Home
+                                </a>
+            </li>
+    <li menuItemName="Store" class="dropdown" id="Primary_Navbar-Store">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Store
+                        &nbsp;<b class="caret"></b>        </a>
+                    <ul class="dropdown-menu">
+                            <li menuItemName="Browse Products Services" id="Primary_Navbar-Store-Browse_Products_Services">
+                    <a href="/whmcs/cart.php">
+                                                Browse All
+                                            </a>
+                </li>
+                            <li menuItemName="Shop Divider 1" class="nav-divider" id="Primary_Navbar-Store-Shop_Divider_1">
+                    <a href="">
+                                                -----
+                                            </a>
+                </li>
+                            <li menuItemName="Hosting Services" id="Primary_Navbar-Store-Hosting_Services">
+                    <a href="/whmcs/cart.php?gid=1">
+                                                Hosting Services
+                                            </a>
+                </li>
+                            <li menuItemName="Reseller Accounts" id="Primary_Navbar-Store-Reseller_Accounts">
+                    <a href="/whmcs/cart.php?gid=2">
+                                                Reseller Accounts
+                                            </a>
+                </li>
+                            <li menuItemName="Domain Name services" id="Primary_Navbar-Store-Domain_Name_services">
+                    <a href="/whmcs/cart.php?gid=3">
+                                                Domain Name services
+                                            </a>
+                </li>
+                            <li menuItemName="HelpDesk " id="Primary_Navbar-Store-HelpDesk_">
+                    <a href="/whmcs/cart.php?gid=4">
+                                                HelpDesk 
+                                            </a>
+                </li>
+                            <li menuItemName="Club  and Site Memberships" id="Primary_Navbar-Store-Club__and_Site_Memberships">
+                    <a href="/whmcs/cart.php?gid=5">
+                                                Club  and Site Memberships
+                                            </a>
+                </li>
+                            <li menuItemName="Site Development and Programing." id="Primary_Navbar-Store-Site_Development_and_Programing.">
+                    <a href="/whmcs/cart.php?gid=6">
+                                                Site Development and Programing.
+                                            </a>
+                </li>
+                            <li menuItemName="SubDomain Hosting Services" id="Primary_Navbar-Store-SubDomain_Hosting_Services">
+                    <a href="/whmcs/cart.php?gid=7">
+                                                SubDomain Hosting Services
+                                            </a>
+                </li>
+                            <li menuItemName="Store Hosting." id="Primary_Navbar-Store-Store_Hosting.">
+                    <a href="/whmcs/cart.php?gid=8">
+                                                Store Hosting.
+                                            </a>
+                </li>
+                            <li menuItemName="Workshops" id="Primary_Navbar-Store-Workshops">
+                    <a href="/whmcs/cart.php?gid=9">
+                                                Workshops
+                                            </a>
+                </li>
+                            <li menuItemName="Mentoring" id="Primary_Navbar-Store-Mentoring">
+                    <a href="/whmcs/cart.php?gid=10">
+                                                Mentoring
+                                            </a>
+                </li>
+                            <li menuItemName="ECF Products" id="Primary_Navbar-Store-ECF_Products">
+                    <a href="/whmcs/cart.php?gid=11">
+                                                ECF Products
+                                            </a>
+                </li>
+                            <li menuItemName="Client Products" id="Primary_Navbar-Store-Client_Products">
+                    <a href="/whmcs/cart.php?gid=12">
+                                                Client Products
+                                            </a>
+                </li>
+                            <li menuItemName="SiteLock" id="Primary_Navbar-Store-SiteLock">
+                    <a href="/whmcs/cart.php?gid=13">
+                                                SiteLock
+                                            </a>
+                </li>
+                            <li menuItemName="SSL Certificates" id="Primary_Navbar-Store-SSL_Certificates">
+                    <a href="/whmcs/cart.php?gid=14">
+                                                SSL Certificates
+                                            </a>
+                </li>
+                            <li menuItemName="sitelock" id="Primary_Navbar-Store-sitelock">
+                    <a href="/whmcs/index.php?rp=/store/sitelock">
+                                                Website Security
+                                            </a>
+                </li>
+                            <li menuItemName="symantec" id="Primary_Navbar-Store-symantec">
+                    <a href="/whmcs/index.php?rp=/store/ssl-certificates">
+                                                SSL Certificates
+                                            </a>
+                </li>
+                            <li menuItemName="spamexperts" id="Primary_Navbar-Store-spamexperts">
+                    <a href="/whmcs/index.php?rp=/store/email-services">
+                                                E-mail Services
+                                            </a>
+                </li>
+                            <li menuItemName="weebly" id="Primary_Navbar-Store-weebly">
+                    <a href="/whmcs/index.php?rp=/store/website-builder">
+                                                Website Builder
+                                            </a>
+                </li>
+                            <li menuItemName="Shop Divider 2" class="nav-divider" id="Primary_Navbar-Store-Shop_Divider_2">
+                    <a href="">
+                                                -----
+                                            </a>
+                </li>
+                            <li menuItemName="Register a New Domain" id="Primary_Navbar-Store-Register_a_New_Domain">
+                    <a href="/whmcs/cart.php?a=add&domain=register">
+                                                Register a New Domain
+                                            </a>
+                </li>
+                            <li menuItemName="Transfer a Domain to Us" id="Primary_Navbar-Store-Transfer_a_Domain_to_Us">
+                    <a href="/whmcs/cart.php?a=add&domain=transfer">
+                                                Transfer Domains to Us
+                                            </a>
+                </li>
+                        </ul>
+            </li>
+    <li menuItemName="Announcements" class="" id="Primary_Navbar-Announcements">
+        <a href="/whmcs/index.php?rp=/announcements">
+                        Announcements
+                                </a>
+            </li>
+    <li menuItemName="Knowledgebase" class="" id="Primary_Navbar-Knowledgebase">
+        <a href="/whmcs/index.php?rp=/knowledgebase">
+                        Knowledgebase
+                                </a>
+            </li>
+    <li menuItemName="Network Status" class="" id="Primary_Navbar-Network_Status">
+        <a href="/whmcs/serverstatus.php">
+                        Network Status
+                                </a>
+            </li>
+    <li menuItemName="Affiliates" class="" id="Primary_Navbar-Affiliates">
+        <a href="/whmcs/affiliates.php">
+                        Affiliates
+                                </a>
+            </li>
+    <li menuItemName="Contact Us" class="" id="Primary_Navbar-Contact_Us">
+        <a href="/whmcs/contact.php">
+                        Contact Us
+                                </a>
+            </li>
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+
+                        <li menuItemName="Account" class="dropdown" id="Secondary_Navbar-Account">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Account
+                        &nbsp;<b class="caret"></b>        </a>
+                    <ul class="dropdown-menu">
+                            <li menuItemName="Login" id="Secondary_Navbar-Account-Login">
+                    <a href="/whmcs/clientarea.php">
+                                                Login
+                                            </a>
+                </li>
+                            <li menuItemName="Register" id="Secondary_Navbar-Account-Register">
+                    <a href="/whmcs/register.php">
+                                                Register
+                                            </a>
+                </li>
+                            <li menuItemName="Divider" class="nav-divider" id="Secondary_Navbar-Account-Divider">
+                    <a href="">
+                                                -----
+                                            </a>
+                </li>
+                          </ul>
+            </li>
+
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav>
+
+</section>
