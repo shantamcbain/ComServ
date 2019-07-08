@@ -72,7 +72,10 @@ username = [% username %]
 <META NAME = "description" CONTENT= "[% data.http_header_description %] ">
 [% END %]
 <link rel="shortcut icon" href="[% data.favicon %]" >
+ [% IF  SiteName == "CSC" %]
+  [% embed('CSCWHMCSInterface') %]
  
+ [% END %]
      
 <script language="javascript" type="text/javascript">
 function switchpage(select) {
@@ -85,8 +88,9 @@ window.location.href=select.options[index].value;
 break;
 }
  
+<script>type="text/javascript" src="/javascript/menu.js"></script>
 
-
+<script>type="text/javascript" src="/javascript/ebay.js"></script>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) {return;}
@@ -103,6 +107,12 @@ break;
     <link type="text/css" rel="stylesheet" href="syntaxhighlighter/styles/shCoreDefault.min.css" />
  <link rel="stylesheet" type="text/css" href="jquery.jqplot.css" />
 <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/83d859a6c8cd67c740381cc0f/3fc55ca0dd649e752251b1daa.js");</script>
+
+<link rel="stylesheet" type="text/css" href="/styles/Dropdown.css" />
+ <link rel="stylesheet" href="/styles/demonstration.css" type="text/css">
+
+    <script src="/javascript/Dropdown.crc.js"></script>
+    <script src="/javascript/demonstration.js"></script>
 </HEAD>
 <BODY>
  <!-- PageTopView.ttml [% PageVersion %] -->
@@ -114,12 +124,12 @@ break;
  <table class="MainPageTable">
  <tbody>
   [% IF data.debug == 1 %]
- <tr colspan="5"><td>
+ <tr colspan="5"> width ="100%" <td>
  [% embed('InheretedVariablesView') %]
 </td> </tr>
  [% END %]
  <TR >
- <td colspan="2">	 
+ <td colspan="5" width ="100%">	 
 
  <!-- Page head row Begin PageHeaderView -->
  		[% embed ('PageHeaderView') %]

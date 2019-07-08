@@ -3,31 +3,25 @@
 /*v1.9
 *~
 *.orig
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 /.metadata/.lock
 /.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.prefs
 /.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml
 /.metadata/version.ini
 /smt-whitepaper.pdf
-=======
->>>>>>> usbm
+
 /HTMLTemplates/CSC/ubuntu-mate-16.04.2-desktop-armhf-raspberry-pi.img.xz.torrent
 /.metadata/version.ini
 /smt-whitepaper.pdf
 /.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml
 /.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.prefs
 /.metadata/.lock
-<<<<<<< HEAD
-=======
+
 /.metadata/version.ini
 /.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml
 /.metadata/.plugins/org.eclipse.core.runtime/.settings/org.eclipse.ui.prefs
 /.metadata/.lock
 /smt-whitepaper.pdf
->>>>>>> AltPower
 /HTMLTemplates/Default/ProjectLIst.ttml2
 /.gitignore_BACKUP_13779
 /.gitignore_BACKUP_13978
@@ -41,7 +35,6 @@
 /.gitignore_REMOTE_13779
 /.gitignore_REMOTE_13978
 /.gitignore_REMOTE_9124
-=======
 /.metadata/.lock
 /.metadata/.log
 /.metadata/.mylyn/repositories.xml.zip
@@ -79,7 +72,4 @@
 /Brew/.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml
 /Brew/.metadata/version.ini
 /smt-whitepaper.pdf
->>>>>>> Yards
-=======
->>>>>>> ec9b81138110be10f85a1b45a99c9442cc09d6f0
->>>>>>> usbm
+
