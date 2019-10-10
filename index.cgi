@@ -98,7 +98,7 @@ my $site_update;
 my $username;
 my $group;
 my $CustCode = $CGI->param('custcode') || "BMaster";
-my $home_view = 'PageView';
+my $home_view = ':HomeView';
 my $BASIC_DATA_VIEW;
 my $page_top_view;
 my $page_bottom_view;
