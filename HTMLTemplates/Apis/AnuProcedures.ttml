@@ -1,11 +1,4 @@
-[% # 2019 May 25 copied AnuProjets
- # 2018 Dec 12 renamed AltPowerProjets
-# the AltPowerProductsView template
-#	$Id: StatsView.ttml,v 1.2 2019/04/27
-#	$Id: StatsView.ttml,v 1.1 2003/11/29 06:31:35 shanta Exp shanta $	
-
-%]
-[%# embed(data.page_top_view,['-PAGE_TITLE','Anu Collective Procedures	']) %]
+[% # 2019/10/09 AnuProcedures.ttml %]
 
 [% embed('ErrorDisplayView') %] 
 
@@ -45,7 +38,8 @@
  [% embed ('AmuAdminList') %]
 [% ELSIF procedure  == ('HiveManHomeView') %]
  
- [% embed ('HiveManHomeView') %]
+ [% ELSIF procedure  == ('LandingPage') %]
+[% embed ('LandingPage') %]
 
  [% ELSIF procedure  == ('JoinDiscoussionList') %]
  

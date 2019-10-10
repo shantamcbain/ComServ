@@ -1,8 +1,6 @@
 [%
-<<<<<<< HEAD
+
 #	$Id: AnuCollectiveHomeView.ttml,v 1.12 2019/06/05 06:42:47 shanta Exp shanta 
-=======
->>>>>>> Yards
 #	$Id: AnuCollectiveHomeView.ttml,v 1.11 2019/05/25 06:42:47 shanta Exp shanta 
 #	$Id: AnuCollectiveHomeView.ttml,v 1.1 2019/05/23 06:42:47 shanta Exp shanta 
 #	$Id: ApisHomeView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
@@ -40,11 +38,9 @@
 </p>
 <p>Members may contribute to the sites contend and Join committees monitor content of the diff rent databases hosted on the site. Create logs that certification organizations need to access to maintain certification. Available logs will vary according to the need of your certification organization. 
 	</p>	[% ELSE %]
-<<<<<<< HEAD
-<p>Member home. Thank you for logging in. </p>
-=======
-<p>Member home</p>
->>>>>>> Yards
+
+<p>Anu Member Home. Thank you for logging in. </p>
+
 			[% END %]
 
 
@@ -54,12 +50,8 @@
  	
 <p><font size="-2">To get the most from this application you will need to create an account.
 <A HREF = "[% data.script_name %]?session_id=[% session_id %]&amp;submit_logon=on&amp;site=[%SiteName%]"
-<<<<<<< HEAD
-                 TARGET = "[% data.link_target %]">Logon</A> Creating an account will give access to more feature's.</font>
-=======
                  TARGET = "[% data.link_target %]">Logon</A> </font>
->>>>>>> Yards
-                 
+                
                  
                <a href="/cgi-bin/FAQ/faq.cgi?site=[%SiteName%]&amp;[% session_string %]&amp;sort_field1=category &amp;sort_field2=fname &amp;first_record_to_display=0&amp;records_per_page= &amp;record_id=2&amp;columns_to_view=category &amp;columns_to_view=question&amp;display_details_view.x=8 &amp;display_details_view.y=9&amp;display_details_view=on" onmousedown="click Here for info on what we collect">Why should I create an account</a>
     
@@ -80,45 +72,39 @@
 	[% END %]
 
             <h3>  This Web Application  is for Anu Collective Students and Members to learn beekeeping. </h3>
-<<<<<<< HEAD
+
             
            <p>
-           [% IF group == Anu_Admin %]
+           [% IF group == AnuCollective_Admin %]
            [% ELSE %]
            <a href="http://anucollective.beemaster.ca/cgi-bin/index.cgi?site=AnuCollective&view=ProceduresView&procedure=AmuAdminList"> Join our mailing list.</a></p>
            [% END%]
             <p> The Anu Collective will be hosting Beekeeping WorkShops every 2 weeks. There will other hands on events with partnering beekeepers. We are currently working on an apprenticeship with a queen rearing company in the area. You can come catch queens, develop your brood eye and learn what it is like to work in an active bee breeding and honey operation.
 
             </p>
-            
-            <p>We have created a new yard for the Anu collective. We are developing this into a active teaching and production operation. We will be planting the farm with bees in mind. You will see what the bees need to survive in our damaging agricultural environment. We will help you learn the tricks to keep your bees healthy and thriving.</p> 
+     
+            <p>Our Active outside season is almost over. We have a few outdoor chores to do Be for direct beekeeping will be over for the season.</p> 
              <img src="/images/apis/shanta4nuc.JPG" width="50%" alt="Yarrow hiveing a nuc." lingth="50%">                                       
-=======
-             
-            <p> We will be hosting Beekeeping WorkShops every 2 weeks as well as other hands on events with partnering beekeepers. We are currently working on an apprenticeship with a queen rearing company in the area. You can come catch queens, develop your brood eye and learn what it is like to work in an active bee breeding and honey operation.
+   [% embed('ApisWaxView') %]    
+   [% embed('WinterizingYard') %]
+ 
 
-            </p>
-            <p>We have just created a new yard for the Anu collective. We will be developing this into a active teaching and production operation. We will be planting the farm with bees in mind. You will see what the bees need to survive in our damaging agricultural environment. We will help you learn the tricks to keep your bees healthy and thriving. <img src="/images/Anu/shanta4nuc.JPG" lingth="50%" alt="Yarrow hiveing a nuc."><video src="/images/Anu/workshop.MOV" poster="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&page=EarthHeartColective" controls width="200" height="200"></video></p>                                        
->>>>>>> Yards
-            <p>We will be developing Tools you can use to help you manage your bee keeping and bee breeding operations. </p>
 <h1>Our next event.</h1>
 
-[% embed('NucBoxConstructionWorkShop') %]
-<<<<<<< HEAD
-[% embed('June15WorkShop') %]
-            <ul>
-            <li><a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&session_id=XVOFG89BXXUVKC99&view=ProceduresView&procedure=HiveManHomeView">Apiary Management System</a>. <br>Track what is happening in your yards</li>
-=======
-[% embed('June3WorkShop') %]
-            <ul>
-            <li>Apiary Management System. <br>Track what is happening in your yards</li>
->>>>>>> Yards
- <!--            <li><a href="/cgi-bin/WebCal/webcal.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=MonthView&amp;submit_power_search=on&amp;amp;simple_search_string=" target="Blank">
-            <font class="LeftSideBarNavStyle">Apis Calendar</font></a></li>
- -->            <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
+
+<h2>Wax Processing an Candle Making.</h2>
+<p>Coming mid to end of October.</p>
+
+[%# embed('June3WorkShop') %]
+
+
+             <p>We will be developing Tools you can use to help you manage your bee keeping and bee breeding operations. </p>
+           <ul>
+            <li><a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&session_id=XVOFG89BXXUVKC99&view=ProceduresView&procedure=HiveManHomeView">Apiary Management System</a>. <br>Track what is happening in your yards</li>        
+            <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
             <li><a href="/cgi-bin/BBS/bbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
             <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
-            <li>
+           </ul>
 			<h3>News</h3>
 			<table align="center">
 			<tbody align="center">
@@ -136,28 +122,10 @@
 			
 <a href="/cgi-bin/Apis/apis.cgi?site=Apis&amp;view=AppToolsView&amp;[% session_string %]" name="AppToolsView" title="Click here for details of tool this application offerers">Details of the app.</a>				
 
-<<<<<<< HEAD
+
 
 [% embed('JoinDiscussionList') %]
 
-=======
-<H2><B>Join Our Anu Beekeeping Discussion list</b></H2>
- <FORM Method=POST ACTION="http://beemaster.ca/mailman/subscribe/anubeekeeping_anucollective.beemaster.ca"><br>
- Your E-mail address: <INPUT type="Text" name="email" size="30" value="[% email %]"><br>
- Your Name (optional): <INPUT type="Text" name="fullname" size="30" value="[% firstname %]&nbsp; [% lastname%]"><br><br>
- You may enter a privacy password below. This provides only mild security, but should<br>
- prevent others from messing with your subscription. <b>Do not use a valuable password</b> as it<br>
- will occasionally be emailed back to you in cleartext.<br><br>
- If you choose not to enter a password, one will be automatically generated for you, and it will<br>
- be sent to you once you've confirmed your subscription. You can always request a mail-back<br>
- of your password when you edit your personal options.<br><br>
- Password choice: <INPUT type="Password" name="pw" size="15"><BR>
- Confirm Password: <INPUT type="Password" name="pw-conf" size="15"><BR><BR>
- Would you like to receive list mail batched in a daily digest? (You may choose NoMail after you join.)<BR><br>
- <input type=radio name="digest" value="0" CHECKED> No <input type=radio name="digest" value="1"> Yes<br><br>
- <INPUT type="Submit" name="email-button" value="Subscribe">
- </FORM>
->>>>>>> Yards
 
 
 			
