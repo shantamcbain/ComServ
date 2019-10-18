@@ -18,7 +18,7 @@
                                   ORDER BY sitename
                                   ")%]    
                [% PROCESS AdminNotes.ttml %]
- [% END%]
+ [% END %]
 
  
   <p><a href="/cgi-bin/page.cgi?site=[% SiteName %]&[% session_string %]&display_modification_form=on&record_id=[% ARecord_id %]" target="_blank">edit admin notes </a>

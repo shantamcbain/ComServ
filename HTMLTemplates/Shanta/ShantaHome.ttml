@@ -1,4 +1,7 @@
 [%
+
+#	$Id: ShantaHome.ttml,v 1.11 2019/10/10 03:45:30 shanta Exp shanta $	
+
 #	$Id: ShantaHome.ttml,v 1.1 2001/12/16 03:45:30 shanta Exp shanta $	
 
 # Ideally this template should be converted into a static CSS file and
@@ -10,7 +13,6 @@
 
 %]
 
-[%# embed(data.page_top_view,['-PAGE_TITLE',' Home page.']) %]
 
 [% embed('ErrorDisplayView') %]
 
@@ -53,7 +55,9 @@
 
 <a href="http://forager.com/usbm/usbm.html" target="_Blank" >USBM</a>. We are proud to sponsor The Universal School of Biological Life Site.
 <br>
-<br>                      <script type=" text/javascript" src="/cgi-bin/News/news.cgi?embed=1&amp;site=Shanta&amp;simple_search_string=Shanta&amp;records_per_page=20">
+<br>                      
+
+<script type=" text/javascript" src="/cgi-bin/News/news.cgi?embed=1&amp;site=Shanta&amp;simple_search_string=Shanta&amp;records_per_page=20">
 </script>
 
 <br>

@@ -1,4 +1,5 @@
 #!/usr/bin/perl -wT
+
 # 	$Id: page.cgi,v 1.02 2018/12/20
 #  1.01 2015/08/30 14:27:36 shanta Exp $	
 
@@ -143,7 +144,10 @@ my $NEWS_TB;
 my $search = 0;
 my $Affiliate = 001;
 my $StoreUrl = 'countrystores.ca';
-
+my $allow_add;
+my $allow_mod;
+my $allow_del;
+my $HasMembers;
 use SiteSetup;
   my $UseModPerl = 1;
   my $SetupVariables  = new SiteSetup($UseModPerl, $SiteName);
