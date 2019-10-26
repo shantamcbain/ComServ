@@ -15,7 +15,11 @@
  &nbsp;<a href="/cgi-bin/AltPower/powerlog.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" name="Add voltage" target="_blank" title="Add New Voltage" style="AddButtonStyle">Add New Voltage Main Pack</a>
  <p> 
  <table>
-  <tr><td>datetime</td><td>Pannel Volts</td><td>Pannel Watts</td><td>Battery Volts</td><td>Charge amps</td><td>Battery level </td></tr>
+  <tr><td>datetime</td><td>Pannel Volts</td><td>Pannel Watts</td>
+  <td>Battery Volts</td><td>Charge amps</td><td>Battery level </td>
+  <td>AC Amps from inverter</td>
+  <td>DC Amps</td>
+  </tr>
  
  [% FOREACH value = DBI.query(" SELECT * FROM altpower_system_log_tb
 	                                WHERE  (sitename = 'AltPower' AND
@@ -30,6 +34,8 @@
 <td>  [%value.battery_voltage %]</td>
 <td> [% value.battery_amp %] </td>
 <td> [% value.battery_level %]</td>
+<td> [% value.ac_amp %] </td>
+<td> [% value.dc_amp %] </td>
 <tr>        
 [% totalrecords = totalrecords+1 %]
 [% pannel_voltst = pannel_voltst + value.pannel_volts %]

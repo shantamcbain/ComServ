@@ -1,4 +1,5 @@
 #!/usr/bin/perl -wT
+# 	$Id: powerlog.cgi,v 1.4 2019/10/26 22:08:42 shanta Exp shanta $	
 # 	$Id: powerlog.cgi,v 1.4 2004/01/23 22:08:42 shanta Exp shanta $	
 #CSC file location /cgi-bin/CSC
 # Copyright (C) 1994 - 2001  eXtropia.com
@@ -587,6 +588,8 @@ my @DATASOURCE_FIELD_NAMES =
        battery_voltage
        battery_amp
        battery_level
+       ac_amp
+       dc_amp
        details
        start_time
        group_of_poster
@@ -672,7 +675,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -MAXLENGTH    => 80
     ],
 
-pannel_amps => [
+pannel_watts => [
         -DISPLAY_NAME => 'Pannel  Watts',
         -TYPE         => 'textfield',
         -NAME         => 'pannel_watts',
@@ -700,6 +703,21 @@ battery_level => [
         -DISPLAY_NAME => 'Battery  level',
         -TYPE         => 'textfield',
         -NAME         => 'battery_level',
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
+ac_amp => [
+        -DISPLAY_NAME => 'AC Amps',
+        -TYPE         => 'textfield',
+        -NAME         => 'ac_amp',
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
+
+dc_amp => [
+        -DISPLAY_NAME => 'DC  Amps',
+        -TYPE         => 'textfield',
+        -NAME         => 'dc_amp',
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],
@@ -835,11 +853,13 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
      qw(project_code),
      qw(battery_code),
      qw(pannel_volts),
-     qw(pannel_amps),
+     qw(pannel_watts),
      qw(battery_voltage),
      qw(battery_amp),
      qw(battery_level),
-     [qw(start_day start_mon start_year)],
+     qw(ac_amp),
+     qw(dc_amp),
+    [qw(start_day start_mon start_year)],
      qw(start_time),
      qw(details),
 #     qw(priority),
