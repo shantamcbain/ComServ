@@ -1,7 +1,8 @@
+[%#	$Id: CellLogView.ttml,v 1.01 2019/10/25 06:42:47 shanta Exp shanta $	%]
 [%#	$Id: CellLogView.ttml,v 1.0 2018/08/05 06:42:47 shanta Exp shanta $	%]
   [% PROCESS DefaultDbi.ttml %]      [% version = data.version %]
-[% displayversion = 'v 1.0 ' %]
-[% embed(data.page_top_view,['-PAGE_TITLE','Our Cell Log']) %]
+[% displayversion = 'v 1.01 ' %]
+[%# embed(data.page_top_view,['-PAGE_TITLE','Our Cell Log']) %]
 
 [% embed('ErrorDisplayView') %]
 
@@ -85,7 +86,7 @@ function QuickClick(list) {
                                      
                                    ORDER BY item_code
 	                            ")%]  
-<OPTION VALUE="/cgi-bin/AltPower/controler.cgi?site=[% SiteName %]&amp;[% session_string %]&Battery=[% item.item_code %]"> [% item.item_name%]</option>
+<OPTION VALUE="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;[% session_string %]&Battery=[% item.item_code %]"> [% item.item_name%]</option>
 
 [% END %]
  <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
