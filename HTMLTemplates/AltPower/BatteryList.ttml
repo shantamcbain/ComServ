@@ -1,6 +1,7 @@
+[%#	$Id: BatteryList.ttml,v 0.111 2019/10/27 11:42:47 shanta Exp shanta $	%]
 [%#	$Id: BatteryList.ttml,v 0.110 2019/10/25 11:42:47 shanta Exp shanta $	%]
 
-<h2>Our goal here is to show a dynamic list of </h2>
+<h2>Dynamic list of our Power usage based on Charge controller and loads.</h2>
 
 
 <ul> 
@@ -8,17 +9,21 @@
 	                                WHERE  sitename = 'AltPower'
                                      
                                    ORDER BY code
-	                            ")%]  
- <li><a href="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;[% session_string %]&Battery=[% item.item_code %]"> 
+	                            ")%] 
+	                            [%# this link takes you to item record. %] 
+ <li><a href="/cgi-bin/AltPower/item.cgi?site=[% SiteName %]&amp;[% session_string %]&Battery=[% item.item_code %]"> 
  [% item.name %]</a>
  [% name = item.Code %]
  &nbsp;<a href="/cgi-bin/AltPower/powerlog.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" name="Add voltage" target="_blank" title="Add New Voltage" style="AddButtonStyle">Add New Voltage Main Pack</a>
  <p> 
  <table>
-  <tr><td>datetime</td><td>Pannel Volts</td><td>Pannel Watts</td>
-  <td>Battery Volts</td><td>Charge amps</td><td>Battery level </td>
+  <tr><td>datetime</td><td>Pannel Volts</td>
+  <td>Pannel Watts</td>
+  <td>Battery Volts</td>
+  <td>Charge amps</td><td>Battery level </td>
   <td>AC Amps from inverter</td>
   <td>DC Amps</td>
+  <td>Modify</td>
   </tr>
  
  [% FOREACH value = DBI.query(" SELECT * FROM altpower_system_log_tb
@@ -28,21 +33,25 @@
                                    ORDER BY start_date
 	                            ")%]  
 	                            
-<tr>
-<td>[% value.start_time %] &nbsp; [% value.start_date %]</td><td>	 [% value.pannel_volts %]  </td>
-<td>   [% value.pannel_watts %]</td>
-<td>  [%value.battery_voltage %]</td>
-<td> [% value.battery_amp %] </td>
-<td> [% value.battery_level %]</td>
-<td> [% value.ac_amp %] </td>
-<td> [% value.dc_amp %] </td>
-<tr>        
+ <tr>
+   <td> [% value.start_time %] &nbsp; [% value.start_date %]</td>
+   <td> [% value.pannel_volts %]  </td>
+   <td> [% value.pannel_watts %]</td>
+   <td> [%value.battery_voltage %]</td>
+	<td> [% value.battery_amp %] </td>
+	<td> [% value.battery_level %]</td>
+	<td> [% value.ac_amp %] </td>
+	<td> [% value.dc_amp %] </td>
+	<td> <a href="/cgi-bin/AltPower/powerlog.cgi?site=[% SiteName %]&display_modification_form=on&record_id=[% value.record_id %]&[% session_string %]" name="Modify item"  title="Modify Item" style="AddButtonStyle">Modify</a>  
+	</td>
+ <tr>        
 [% totalrecords = totalrecords+1 %]
 [% pannel_voltst = pannel_voltst + value.pannel_volts %]
-
+[% pannel_wattst = pannel_wattst + value.pannel_watts %]
+[% battery_voltst = battery_voltst + value.battery_volts %.2f %]
  
  [% END %] 
- <tr><td>Average </td> <td> [% pannel_voltst / totalrecords %]</td></tr>
+ <tr><td>Average </td> <td> [% pannel_voltst / totalrecords %]</td><td> [% pannel_wattst / totalrecords %]</td><td> [% battery_voltst / totalrecords %]</td></tr>
  </table>
 <p>
  &nbsp;<a href="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;batery=[% item.item_code %]&amp;subject=Item_link&amp;Nav_link=1" name="Add voltage" target="_blank" title="Add New Voltage" style="AddButtonStyle">Add New Voltage to Module</a>

@@ -418,7 +418,6 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
        record_id  	=> 'todo id',
        start_date       => 'Start Date',
        due_date         => 'Due Date',
-       abstract         => 'Subject',
        details          => 'Description',
        status           => 'Status',
        priority         => 'Priority',
@@ -474,7 +473,6 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
         -IS_FILLED_IN => [
             -FIELDS => [
                         qw(
-                           
                            start_time
                            last_mod_by
                            last_mod_date
@@ -501,10 +499,8 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
        accumulative_time 	=> 'Accumulated time',
        start_date               => 'Start Date',
        due_date                 => 'Due Date',
-       abstract                 => 'Subject',
-       details                  => 'Description',
+        details                  => 'Description',
        status                   => 'Status',
-       priority                 => 'Priority',
        comments                 => 'Comments',
     },
 
@@ -556,9 +552,7 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
             -FIELDS => [qw(
                            owner
                            start_time
-                           abstract
                            status
-                           priority
                            last_mod_by
                            last_mod_date
                           )
@@ -872,7 +866,7 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
 my @SEARCH_INPUT_WIDGET_DISPLAY_ORDER = 
     (
       qw(project_code),
-      qw(abstract ),
+  #    qw(abstract ),
      [qw(start_day start_mon start_year)],
      [qw(due_day due_mon due_year)],
       qw(details),
@@ -1241,7 +1235,6 @@ my @VIEW_DISPLAY_PARAMS = (
     )],
     -FIELD_NAME_MAPPINGS     => {
         'project_code' => 'Project Code',
-        'abstract'     => 'Subject',
         'details'      => 'Description',
         'start_date'   => 'Start Date',
         'due_date'     => 'Due Date',
@@ -1260,7 +1253,7 @@ my @VIEW_DISPLAY_PARAMS = (
     -SCRIPT_NAME             => $CGI->script_name(),
     -SELECTED_DISPLAY_FIELDS => [qw(
         project_code
-        abstract
+        
         start_date
         status
         time
