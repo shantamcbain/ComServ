@@ -93,7 +93,7 @@
 [% embed('BatteryList') %]
  	
 
-[% embed('VoltAmpView') %]
+[%# embed('VoltAmpView') %]
 
                  
  

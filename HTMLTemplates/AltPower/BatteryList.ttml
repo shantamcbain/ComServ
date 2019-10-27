@@ -20,7 +20,8 @@
   <tr><td>datetime</td><td>Pannel Volts</td>
   <td>Pannel Watts</td>
   <td>Battery Volts</td>
-  <td>Charge amps</td><td>Battery level </td>
+  <td>Charge amps</td>
+  <td>Battery level </td>
   <td>AC Amps from inverter</td>
   <td>DC Amps</td>
   <td>Modify</td>
@@ -48,10 +49,25 @@
 [% totalrecords = totalrecords+1 %]
 [% pannel_voltst = pannel_voltst + value.pannel_volts %]
 [% pannel_wattst = pannel_wattst + value.pannel_watts %]
-[% battery_voltst = battery_voltst + value.battery_volts %.2f %]
- 
+[% battery_voltaget = battery_voltaget + value.battery_voltage %]
+[% battery_levelt = battery_levelt + value.battery_level %]
+[% battery_ampt = battery_ampt + value.battery_amp %][% battery_levelt = battery_levelt + value.battery_level %]
+[% ac_ampt = ac_ampt + value.ac_amp %]
+[% dc_ampt = dc_ampt + value.dc_amp %]
+
  [% END %] 
- <tr><td>Average </td> <td> [% pannel_voltst / totalrecords %]</td><td> [% pannel_wattst / totalrecords %]</td><td> [% battery_voltst / totalrecords %]</td></tr>
+ <tr><td>Average </td> 
+ <td> [% pannel_voltst / totalrecords %]</td>
+ <td> [% pannel_wattst / totalrecords %]</td>
+ <td> [% battery_voltaget / totalrecords %]</td>
+ <td> [% battery_ampt / totalrecords %]</td>
+ <td> [% battery_levelt / totalrecords %]</td>
+ <td> [% ac_ampt / totalrecords %]</td>
+ <td> [% dc_ampt / totalrecords %]</td>
+ 
+ 
+ </tr>
+ 
  </table>
 <p>
  &nbsp;<a href="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;batery=[% item.item_code %]&amp;subject=Item_link&amp;Nav_link=1" name="Add voltage" target="_blank" title="Add New Voltage" style="AddButtonStyle">Add New Voltage to Module</a>
