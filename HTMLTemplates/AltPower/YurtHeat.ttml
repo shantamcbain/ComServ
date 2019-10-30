@@ -1,3 +1,4 @@
+[%#	$Id: YurtHeat.ttml, v0.01 2019/10/29
 [%#	$Id: WaterHeatView.ttml, v0.02 2018/12/13 
 #cloned to  v0.01 2018/12/12 shanta,
 # EVHomeView.ttml,v 1.0 2002/11/08 17:43:15 shanta Exp shanta $	
@@ -59,7 +60,7 @@ Variable ative in DevHomeView
 <A NAME="PageTop"></A>
 <br>
 <br>
-<p>Thanks for your interest in our  Hot water solutions.</p>
+<p>Thanks for your interest in our  yurt heating project.</p>
 
 
 
@@ -74,38 +75,43 @@ Variable ative in DevHomeView
     </p>
 	[% END %]
 
-<p>Heating water and using it. We heat water for many reasons  Check out our list.
+<p>Our current iteration is a solar powered water drum in the middle of the Yurt.
 </p>
 
 <font size="+2">Key projects in the works.</font> 
 <ol>
-	<li><h2>Evnode heating system</h2>
-	<p> Goal of this project is to heat the entire rvNode with solar. The current solar array and battery pack are not large enough yet so we will include alternate power sources.</p>
+	<li><h2>50 Drum</h2>
+	<p> </p>
 	  <ul>
-	   <li><h2>Primary heat source</h2> This will be a repurposed hot tub heater. The main inlet and out let are 2 1/4” inlet and outlet. There is also a 3/4” jet pump outlet. This will be used to speculate water though the heaters.</p></li>
-	   <li><h2>Heat resivours.</h2> <p> This is 6 50 gallon drums. </p></li>
-	   <li><h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProceduresView&procedure=YurtHeat" target="_blank">Yurt heat.</a></h2></li>
+	   <li><h2>Direct Solar</h2> Barrel is placed in the centre of the yurt in full sun. from the south roof. This roof is clear to allow light and heat to enter when the sun is shining.</li>
+	   <li><h2>Direct solar dc.</h2> A 220 restrictive hot water tank element was placed in the bottom barrel. This element is wired directly to  2 285 watt solar panels wired in series. The tank will begin heating as soon as the sun shines on the panel. We will begin to monitor the temp of the tank and the voltage amp into the element. </p></li>
+	   <li><h2>Circulating pump</h2>This pump will distribute the heat 
+	  <ol>
+	    <li>Coach</li>
+	    <li>To primary barrel by coach</li>
+	    <li>To secondary storage.</li>
 	  
+	  </ol>
+	  </li>
 	<li><h2>Supplies needed</h2>
 	  <ul>
-	   <li>4 each 3/4 x 100 black plastic pipe</li>
-	   <li>8 each 3/4 Ts</li>
-	   <li>8 each 3/4 90</li>
-	   <li>8 each 3/4 inline</li>
-	   <li>heater adapter likely 1/2 to 3/4<li>
-	    
-	   <li>24 + 18 +16 3/4 hose clamps</li>
-	   <li>2 each 2 1/4 barrel adapter for attaching main pump inlet and outlet to primary storage barrel.</li>
-	   <li>2 1/4 id flexible pipe for connecting pump to barrel.
-	   <li>Hot water heater for trailer. </li>
+	   <li>2 24v 285 watt Panels</li>
+	   <li>220 hot water heater element Matched to panels</li>
+	   <li>Wire to connect panel to element.</li>
+	   <li>Hot water circulating pump.</li>
+	   <li>Piping for circulating system.<li>
+	   <li><a href="http://dev.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView&procedure=YurtHeatMonitor" target="_blank">System to record data from the system</a></li>
 	 </ul>
+ </ul>
 	
 	</li>
-	<li> <h2>Supplimental Heat and power</h2> <p> There are several. </p>
+
+	</li>	
+
+<li> <h2>Supplimental Heat and power</h2> <p> There are several. </p>
 	 <ul>
-	  <li><h2>Coach Generator</h2> provides both power to run the pump and hot air to heat the space Simple cogeneration </li>
-         <li><h2>Wood heat</h2> This is as simple as a barrel on the wood stove that the return line of the heating circuit.</li>
-	  <li> <h2> 3 way Rv Hotwater heater </h2> <p>One can use a 3 way 110 v 12 volt propaine. It would be installed to heat the resivour.</li>
+        <li><h2>Wood heat</h2> This is as a porcelain stove top single burner wide. This stove would provide eat and minor cooking, Coffee tea.</li>
+        <li><h2>Electrical heat.</h2>Ceramic </li>
 	  </ul>
 	  </li>
 	</ul>

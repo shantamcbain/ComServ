@@ -32,6 +32,20 @@ currently only DevCSC Not working right yet miss forming the first after login d
 	[% END %]
 	  </ul>
     </li>
+<li>             <span>HelpDesk</span>
+  <ul>
+   <li>
+        <a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]" target=.blank' ><font   class="LeftSideBarNavStyle">Main page</font></font></a>
+    </li>
+    <li>
+        <a href="https://www.computersystemconsulting.ca/shmcs/index.php?rp=/knowledgebase" target="_blank" ><font   class="LeftSideBarNavStyle">Knowlage base</font></a>
+        
+    </li>
+    <li>
+        <a href="https://www.computersystemconsulting.ca/whmcs/supportticket.php?action=open" target='_blank' ><font   class="LeftSideBarNavStyle">Sumbmit a support ticket.</font></a> 
+    </li>
+   </ul>
+</li>
 
 <li><span>Global</span>
   <ul>
@@ -167,20 +181,6 @@ currently only DevCSC Not working right yet miss forming the first after login d
 </li>
  [% END %]		
  [% END %]	
-<li>
-             <span>HelpDesk</span>
-  <ul>
-   <li>
-        <a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]" target=.blank' ><font   class="LeftSideBarNavStyle">Main page</font></font></a>
-    </li>
-    <li>
-        <a href="https://www.computersystemconsulting.ca/shmcs/index.php?rp=/knowledgebase" target="_blank" ><font   class="LeftSideBarNavStyle">Knowlage base</font></a>
-        
-    </li>
-    <li>
-        <a href="https://www.computersystemconsulting.ca/whmcs/supportticket.php?action=open" target='_blank' ><font   class="LeftSideBarNavStyle">Sumbmit a support ticket.</font></a> 
-    </li>
-   </ul>
-</li>
+</ul>
  
     </div>
