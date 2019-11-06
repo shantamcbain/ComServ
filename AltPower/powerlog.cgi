@@ -605,6 +605,7 @@ $days{$_} = $_ for (1..31);
 my %battery =
     (
       'Main24Pack' => 'Main24Pack',
+      'Main12Pack' => 'Main12Pack',
       1 => 'Module 1',
       3 => 'Module 2',
     );

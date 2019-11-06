@@ -17,8 +17,9 @@
  &nbsp;<a href="/cgi-bin/AltPower/powerlog.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" name="Add voltage" target="_blank" title="Add New Voltage" style="AddButtonStyle">Add New Voltage Main Pack</a>
  <p> 
  <table>
-  <tr><td>datetime</td><td>Pannel Volts</td>
-  <td>Pannel Watts</td>
+  <tr><td>datetime</td>
+  <td>Panel Volts</td>
+  <td>Panel Watts</td>
   <td>Battery Volts</td>
   <td>Charge amps</td>
   <td>Battery level </td>
@@ -56,7 +57,16 @@
 [% dc_ampt = dc_ampt + value.dc_amp %]
 
  [% END %] 
- <tr><td>Average </td> 
+  <tr><td>datetime</td><td>Panel Volts</td>
+  <td>Panel Watts</td>
+  <td>Battery Volts</td>
+  <td>Charge amps</td>
+  <td>Battery level </td>
+  <td>AC Amps from inverter</td>
+  <td>DC Amps</td>
+  <td>Modify</td>
+  </tr>
+<tr><td>Average </td> 
  <td> [% pannel_voltst / totalrecords %]</td>
  <td> [% pannel_wattst / totalrecords %]</td>
  <td> [% battery_voltaget / totalrecords %]</td>
