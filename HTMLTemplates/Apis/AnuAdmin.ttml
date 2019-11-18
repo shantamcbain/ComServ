@@ -1,0 +1,31 @@
+	[% IF username == 'Shanta' %]
+         
+           [% ELSE %]
+          
+          
+Personalized for shanta
+		       [% END%]			 		
+ 	[% IF username == 	'mnickers' %]
+  Personalized for Michelle      
+     
+          
+		       [% END%]			 		
+ [% embed('NotesView') %]
+  
+<p></p>
+
+<H2>Site related</H2>
+
+ <ul>
+  <li>developing The admin view of the site.</li> 
+ </ul>
+<H2><B>Bee Management</b></H2>
+
+ <ul>
+ 
+  <li>developing The Management System.</li> 
+ </ul>
+ <H2><B>Bee Education</b></H2> <ul>
+ 
+  <li>developing The Educational System.</li> 
+ </ul>

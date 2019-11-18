@@ -29,7 +29,6 @@
 <td>
 <A NAME="PageTop"></A>
 
-<h3> Welcome to the Anu Beekeeping Site. </h3>
 
 	[% IF username %]
 			[% IF  group == 'normal'%]
@@ -39,14 +38,21 @@
 <p>Members may contribute to the sites contend and Join committees monitor content of the diff rent databases hosted on the site. Create logs that certification organizations need to access to maintain certification. Available logs will vary according to the need of your certification organization. 
 	</p>	[% ELSE %]
 
-<p>Anu Member Home. Thank you for logging in. </p>
+<p>Thank you for logging in. </p>
 
 			[% END %]
+        
 
 
-	[% ELSE %]
 
-				 		<h2>Explore the world of Bees and Keeping with us at the Anu Collective</h2>
+[% IF group == 'AnuCollective_admin' %]
+[% embed('AnuAdmin') %]   
+ 
+
+
+[% ELSE %]
+
+<h2>Explore the world of Bees and Keeping with us at the Anu Collective</h2>
  	
 <p><font size="-2">To get the most from this application you will need to create an account.
 <A HREF = "[% data.script_name %]?session_id=[% session_id %]&amp;submit_logon=on&amp;site=[%SiteName%]"
@@ -69,16 +75,13 @@
 					
 				
 
-	[% END %]
+
 
             <h3>  This Web Application  is for Anu Collective Students and Members to learn beekeeping. </h3>
 
-            
+           
            <p>
-           [% IF group == AnuCollective_Admin %]
-           [% ELSE %]
-           <a href="http://anucollective.beemaster.ca/cgi-bin/index.cgi?site=AnuCollective&view=ProceduresView&procedure=AmuAdminList"> Join our mailing list.</a></p>
-           [% END%]
+          
             <p> The Anu Collective will be hosting Beekeeping WorkShops every 2 weeks. There will other hands on events with partnering beekeepers. We are currently working on an apprenticeship with a queen rearing company in the area. You can come catch queens, develop your brood eye and learn what it is like to work in an active bee breeding and honey operation.
 
             </p>
@@ -161,14 +164,14 @@
 
 [% embed('CSCCopyRight') %]
  
-<script type="text/javascript"
+<script type="text/javascript"	
 src="http://ss.webring.com/navbar?f=j;y=shanta;u=10140815"></script>
 <noscript><center><table bgcolor='gray' cellspacing=0 border=2 >
 <tr><td><table cellpadding=2 cellspacing=0 border=0><tr><td align=center>
 <font face=arial size=-1>This site is a member of WebRing. 
 To browse visit <a href="http://ss.webring.com/navbar?f=l;y=shanta;u=10132800">
 here</a>.</font></td></tr></table></td></tr></table></center></noscript>
-
+[% END %]
 
 </td>
 </tr>

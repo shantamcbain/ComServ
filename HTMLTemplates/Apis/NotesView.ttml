@@ -1,0 +1,15 @@
+	[% IF username == Shanta%]
+         
+           [% ELSE %]
+ 
+		       [% END%]			 		
+
+<p></p>
+
+<H2>Notes</H2>
+This page will display  your Personal notes.
+ <ul>
+  <li>Create data base for notes</li> 
+  <li>Create add form and place on this page. Clone from Log??</li>
+  <li>Add user sorted list of notes.</li>
+ </ul>
