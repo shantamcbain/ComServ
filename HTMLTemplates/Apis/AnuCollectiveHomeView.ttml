@@ -30,7 +30,7 @@
 <A NAME="PageTop"></A>
 
 
-	[% IF username %]
+[% IF username %]
 			[% IF  group == 'normal'%]
 
 <p>As a registered guest you may view the FAQ, Plant and other database . Contribute to Forums, Calendar of announcements, Buy and Sell, and Links.
@@ -42,7 +42,7 @@
 
 			[% END %]
         
-
+[% END %]
 
 
 [% IF group == 'AnuCollective_admin' %]
