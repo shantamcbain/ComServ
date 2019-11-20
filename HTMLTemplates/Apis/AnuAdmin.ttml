@@ -1,16 +1,19 @@
+[% embed ("AdminTodoListLink")%]	
 	[% IF username == 'Shanta' %]
          
            [% ELSE %]
           
-          
+    [%# embed('AmuAdminList') %]	      
 Personalized for shanta
 		       [% END%]			 		
  	[% IF username == 	'mnickers' %]
   Personalized for Michelle      
-     
+     [% embed('AmuAdminList') %]	
           
 		       [% END%]	
-		       		 		
+		       
+ [% embed('AmuAdminList') %]	  
+      		 		
  [% embed('NotesView') %]
   
 <p></p>
@@ -30,3 +33,11 @@ Personalized for shanta
  
   <li>developing The Educational System.</li> 
  </ul>
+ 
+   [% embed('SiteAdminNotes') %]
+                  
+<!-- <p>Default/ToDoList located in  -->
+[% embed('ToDoList') %]
+
+<!-- <p> 	/CSC/AdminTodoList	 -->
+[%# embed ("AdminTodoList")%]	

@@ -26,7 +26,7 @@
  
 [% ELSE %]
 
- 
+ [%# This file is in /Default %]
   [% embed ('SiteTodoSQL' )   %]
  [% END %]
 

@@ -1,3 +1,4 @@
+[%#	$Id: HomeView.ttml,v 1.93 2019/11/19 17:43:15 shanta Exp shanta $	
 [%#	$Id: HomeView.ttml,v 1.92 2019/10/09 17:43:15 shanta Exp shanta $	
 [%#	$Id: HomeView.ttml,v 1.91 2014/10/22 17:43:15 shanta Exp shanta $	
 
@@ -41,7 +42,11 @@
 		[% ELSE %]
 			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %]! </h3> 
 		[% END %]
-[% embed ("AdminTodoListLink")%]	
+[%# Move to embed ("SiteAdminHome")%]
+[%# embed ("AdminTodoListLink")%]	
+
+<!-- <p>process HomePage for site currently line 52  replace </p> -->
+
 		[% SiteName = data.site_name%]
 
    	[% IF SiteName == "OKB" %]
@@ -124,18 +129,13 @@
 			[% embed ('DemoHomeView') %]
 			<!-- End Demo home view -->
 		[% END %]
-  [% embed('SiteAdminNotes') %]
+  [%# embed('SiteAdminNotes') %]
 
 
 
 <p>[% group %]
-                 
- %]
-<p>  [% embed('ToDoList') %]
-
-		
-[% embed ("AdminTodoList")%]	
-
+ 
+<!--  Todo lists moved to SiteAdmin -->
 
 <p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %]&nbsp; This value is stored in your setup file. [% END %]
 		<br>
