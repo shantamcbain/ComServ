@@ -4,6 +4,7 @@
 <!-- Last update August 08, 2017 -->
 <!-- Last update August 03, 2017  -->
 <!-- Last update July 16, 2016 -->
+[% group = data.session_object.getAttribute('-KEY','auth_groups') %]
 
 <h1>Sustainable Power.</h1>
 
@@ -16,7 +17,13 @@
 <p>The modular design of the Grid tie system allows for the ability to be completely indented for direct use and feeding the excess power those that need it. Each <a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&view=AltpowerNodeView&amp;[% session_string %]' >node</a> can be tuned to the needs and resources at a given site. 
 
 <p>Local powers sources. Solar, wind, heat, water. Power needs, connection ability to other nodes. All contribute to the design of a given node.
+[%  group  %]
 
+[% IF group == 'AltPower_Admin %]
+			[% embed ('AltPowerAdmin') %]
+
+
+[% ELSE $]
 
 <p><a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&page=Co-generation&amp;[% session_string %]' >Co-generation</a> of power and heat maximize fuel sources. 
 
@@ -53,3 +60,4 @@
  <li>
 </ul>
 
+[% END %]
