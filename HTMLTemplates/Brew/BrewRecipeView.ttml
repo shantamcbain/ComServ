@@ -15,10 +15,10 @@
 [% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
 
     [% BrewNameS = data.session_object.getAttribute('-KEY','brewname') %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+	 [% username = data.session_object.getAttribute('-KEY','auth_username')%]
+	 [% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+  	 [% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	 [% group = data.session_object.getAttribute('-KEY','auth_groups')%]
     [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
     [% HomeView =data.session_object.getAttribute('-KEY','HOME_VIEW')%]
     [% email = data.session_object.getAttribute('-KEY','auth_email') %]
@@ -66,10 +66,11 @@ function QuickClick(list) {
 		<li>SiteName    = [% data.SiteName %].data</li>
 		<li>Admin group = [% group  %]</li>
 		<li>homeview    = [% data.home_view %].data</li>
+		<li>Recipe C</li>
 		<li>page        = [%  PAGE %]</li>
 	    <li>BrewName    = [% data.brewname %].data</li>
 	    <li>Recipe Code = [%  data.recipe_code %].data</li>
-	    <li>session       [% RecipeCode %]</li>
+	    <li>Recipe Code session   =    [% RecipeCode %]</li>
 	    <li>BMS           [% BrewNameS %]</li>
 	    <li>HomeVew TTML       [% HomeView %]</li>
     </ol>
@@ -88,7 +89,7 @@ function QuickClick(list) {
                                      
                                    ORDER BY recipe_code
 	                            ")%]  
-<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;view=BrewRecipeView&amp;[% session_string %]&recipecode=[% item.recipe_code %]">[% item.recipe_name %] [% item.brew_name%][% item.date%]</option>
+<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;view=BrewRecipeView&amp;[% session_string %]&recipecode=[% item.recipe_code %]">[% item.recipe_name %] [% item.brew_name%][% item.date %]</option>
 
 [% END %]
  <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
@@ -107,7 +108,7 @@ function QuickClick(list) {
 	
 	   [% END %]
  [% BrewName %]
-
+Add variables.
 	[% FOREACH link = DBI.query(" SELECT * FROM  brew_recipe_tb
 	 	                                  WHERE  recipe_code = '$BrewName'
 		                                  
@@ -135,9 +136,9 @@ function QuickClick(list) {
 
 
 </FORM>
-<h3>Our Recipe for 	      [% BrewName %]
+<h3>Our Recipe for 	&nbsp;      [% recipe_name %]
 </h3> 
-<p><a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;recipecode=[% recipe_code %]&amp;batchnumber=[% recipe_code %]Date= test&amp;site=[% SiteName %]&amp;recipename=[% recipe_name %]&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New batch" style="AddButtonStyle">Add a new batch</a></p>
+<p><a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;recipecode=[% recipe_code %]&amp;batchnumber=[% recipe_code %]&amp;site=[% SiteName %]&amp;recipename=[% recipe_name %]&amp;subject[%  recipe_code   %]=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New batch" style="AddButtonStyle">Add a new batch</a></p>
 <table>
  <tr><td>Recipe Code</td> <td>[%  recipe_code   %]</td>	</tr>
  <tr>    <td>Recipe Name</td><td>[%  recipe_name %]</td></tr>
