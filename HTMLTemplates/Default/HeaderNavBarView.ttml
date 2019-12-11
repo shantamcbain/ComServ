@@ -25,81 +25,14 @@
 
 
   
-
+<!-- Call HeaderBannerView and HeaderHostingView -->
 [% IF data.header_image != "none"%]
   [% embed('HeaderBannerView')%]	
   			[% embed('HeaderHostingView') %] 
+<!-- End Call HeaderBannerView and HeaderHostingView -->
 
 [% END %]
 [% embed('TopDropListView')%]
-			[% IF SiteName == 'Skye' OR
-			      SiteName == 'Noop' %]
-				<A HREF ="?[% session_string %]&amp;view=[% data.home_view %]&amp;site=[% Organic%]">[% HostName %]</A>
-				&nbsp; |
-			[% END %]
-			
-[% embed('AffiliateLinkView') %]&nbsp;
-   <a href="http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&domain=register&amp;aff=[% data.affiliate_number %]" target="_blank"title="Domain registration services.">Domains</a>
-	        &nbsp; 
-[% IF SiteName == 'CSC'%]
-     [% embed('StoreDropListView') %]
-[% END %]
-     
-			
-		<!-- embed JobLinkView -->
-		[% embed('JobLinkView') %]&nbsp;
-		<!-- end JobLinkView -->
-
-		[% IF group == 'Dev_admin' OR
-                      group == 'CSC_Developer'OR
-                      username  == 'Shanta' %]
-			[% IF data.debug == "1"  %]
-					
-					<A HREF ="?site=[% SiteName %]&amp;debug=0&amp;[% IF data.page_name %]
-					&amp;page=[% data.page_name %]
-					[% ELSE %]
-					&amp;view=[% data.view %]
-					[% END %]&amp;[% session_string %]">NonDebug</A>
-				&nbsp; 
-            [% ELSE %]
-
-				<A HREF ="?site=[% SiteName %]&amp;debug=1[% IF data.view %]
-					&amp;page=[% data.page_name %]
-					[% ELSE %]
-					&amp;view=[% data.view %]
-					[% END %]&amp;[% session_string %]">Debug</A> 
-				&nbsp; 
-      	    [% END %]
-      			<a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;view=AdminHomeView&amp;[% session_string %]" target="_blank" name="Administer your site.">Admin</a>
-
-		&nbsp; |<a href="http://dev.[% HostName %]/cgi-bin/index.cgi?site=CSCDev" name="DevSite" title="DevSite See what we are working on." Target ="_Blank"><font   class="HeaderBarNavStyle">CSCDev</font></a>
-		[% END %]
-		[% IF firstname %]	
-				|&nbsp;<A HREF ="http://webmail.[% HostName %]:2096"target="_Blank">Mail</a>	
-         [% ELSE %]
-	  |<A  HREF ="?site=[% SiteName %]&amp;[% session_string %]&amp;view=MailView" >Mail</a>		   
-		[% END %]
-
-			[% embed('SQLHeaderNav') %]
-		
-		<!-- -->		
-		&nbsp; |				
-		   <A HREF ="/cgi-bin/WebCal/webcal.cgi?&amp;site=[% SiteName%]&amp;[% session_string %]" Target ="_Blank">[% firstname %]  Cal</a>
-						&nbsp; 
-				 
-				<!-- &nbsp; |		<A HREF ="/cgi-bin/URL/url.cgi?[% session_string %]&amp;site=[% SiteName%]" target="_Blank" ><font   class="HeaderBarNavStyle">Links </font></a>  -->
-				[% IF firstname %]	
-		&nbsp; |<a href="http://dev.[% HostName %]/cgi-bin/index.cgi?site=[% SiteName %]" target="_Blank" name="DevSite" title="DevSite See what we are working on."><font   class="HeaderBarNavStyle">Dev</font></a>
- 		
-		
-	 [% END %]
-	<!-- embed onleftview -->
-	&nbsp; |	[% embed('LogOnTopView.ttml') %]
-		<!-- end logonleftview -->
-		&nbsp; |
-			[% embed('HelpDeskLinkView') %]
-	
-		
 
  
    

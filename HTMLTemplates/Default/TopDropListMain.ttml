@@ -1,0 +1,29 @@
+[%# /HTMLTemplates/Default/TopDropListMain.ttml %]
+[%# 	$Id: TopDropListMain.ttml,v 0.01 2019/12/09 06:33:25 shanta Exp shanta $	%]
+ 
+ <!-- Start /HTMLTemplates/Default/TopDropListMain.ttml -->
+ <span><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]" name="Home page" onmouseover="Home" title="HOME">Main</a></span>
+      <ul>
+      <!-- populate from Page_tb -->
+       [% FOREACH link = DBI.query("SELECT * FROM page_tb
+	                                  WHERE  menu = 'Main'
+	                                  AND (sitename =  '$SiteName' OR sitename =  'All')
+	                                  ORDER BY link_order
+	                                  ")%]    
+	   <li>
+	       <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=[% link.page_code %]" name="Contact" target="[% link.target %]" title=" [% linkview_.name %] "><font   class="LeftSideBarNavStyle">[% link.view_name %]</font></a>
+	   </li>
+
+	[% END %]
+	      <!-- populate from links_tb -->
+	  [% FOREACH link = DBI.query("SELECT * FROM internal_links_tb
+	                                  WHERE  category = 'Main_links'
+	                                  AND (sitename =  '$SiteName' OR sitename =  'All')
+	                                  ORDER BY link_order
+	                                  ")%]    
+	   <li>
+	       <a href="[% link.url %]?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
+	   </li>
+	[% END %]
+       </ul>
+       <!-- End /HTMLTemplates/Default/TopDropListMain.ttml -->

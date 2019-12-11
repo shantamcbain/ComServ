@@ -1,0 +1,41 @@
+  [%# /HTMLTemplates/Default/TopDropListGlobal.ttml %]
+[%# 	$Id: TopDropListGlobal.ttml,v 0.01 2019/12/09 06:33:25 shanta Exp shanta $	%]
+<li><span>Global</span>
+  <ul>
+   <li>		
+    [% IF firstname %]	
+     <A HREF ="http://webmail.[% HostName %]:2096"target="_Blank"><font   class="LeftSideBarNavStyle">Mail</font></a>	
+    [% ELSE %]
+	   <A  HREF ="?site=[% SiteName %]&amp;[% session_string %]&amp;view=MailView" ><font   class="LeftSideBarNavStyle">Mail</font></a>		   
+	 [% END %]
+   </li>
+   <li><a href="/cgi-bin/index.cgi?[% session_string %]&amp;site=[% SiteName%]&amp;view=JobView" Target ="_Blank"> <font   class="LeftSideBarNavStyle">Jobs</font></a>	
+   </li>
+   <li>[% embed('AffiliateLinkView') %]
+   </li>
+   
+   <li><a href="http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&domain=register&amp;aff=[% data.affiliate_number %]"  target="_blank"title="Domain registration services."><font   class="LeftSideBarNavStyle">Register Domains</font></a>
+   </li>
+
+ 	[% IF group == 'Dev_admin' OR
+         group == 'CSC_Developer'OR
+         username  == 'Shanta' %]
+      [% IF data.debug == "1"  %]    
+	<li>
+	 <a HREF ="?site=[% SiteName %]&amp;debug=0&amp;page=[% data.page_name %]&amp;view=[% data.view %]&amp;[% session_string %]"><font   class="LeftSideBarNavStyle">NonDebug</font></a>
+	</li>     	 
+      [% ELSE %]
+   <li>
+	<a HREF ="?site=[% SiteName %]&amp;debug=1&amp;page=[% data.page_name %]&amp;view=[% data.view %]&amp;[% session_string %]"><font   class="LeftSideBarNavStyle"><font   class="LeftSideBarNavStyle">Debug</font></a> 
+	</li> 	 
+      [% END %]          
+   [% END %]   
+   
+   [%# IF firstname %]
+ <!--   <li> <a href="http://dev.[% HostName %]/cgi-bin/index.cgi?site=[% SiteName %]" target="_Blank" name="DevSite" title="DevSite See what we are working on."><font   class="HeaderBarNavStyle">What we are working on.</font></a>
+   </li> -->
+   	     
+   [%# END %]          
+
+   </ul>  
+   </li>
