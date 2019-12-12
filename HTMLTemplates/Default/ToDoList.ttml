@@ -1,3 +1,5 @@
+[%#	$Id: /cgi-bin/HTMLTemplates/Default/ToDoList.ttml,v 0.1 2019/11/20 17:43:15  
+%]
 [%#	$Id: /cgi-bin/HTMLTemplates/CSC/ToDoList.ttml,v 0.1 2015/02/05 17:43:15  
 %]
   [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
@@ -21,13 +23,16 @@
 </td>
 
 [% IF SiteName == 'CSCDev' %]
+call ldev
 [% embed ('CSCDevToDoSQL' ) %]
 
- [% ELSIF SiteName == 'AltPower' %]
- [% embed ('SQLAll' )   %]
- 
+ [% ELSIF SiteName == "AltPower" %]
+ Call AltPower admin 
+ [% embed ('DepartmentTodoSQL' )   %]
+ [% ELSIF SiteName == "AnuCollective" %]
+ [% embed ('DepartmentToDoSQL' )   %]
 [% ELSE %]
-
+This file is in /Default 
  [%# This file is in /Default %]
   [% embed ('SiteTodoSQL' )   %]
  [% END %]

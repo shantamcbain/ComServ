@@ -1,18 +1,24 @@
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
 [% embed ("AdminTodoListLink")%]	
-	[% IF username == 'Shanta' %]
-         
-           [% ELSE %]
+
+Test for userfilterd rights
+	[% IF username == "Shanta" %]
+  Personalized for shanta       
           
-    [%# embed('AmuAdminList') %]	      
-Personalized for shanta
-		       [% END%]			 		
- 	[% IF username == 	'mnickers' %]
-  Personalized for Michelle      
-     [% embed('AmuAdminList') %]	
           
-		       [% END%]	
+		      		 		
+ 	[% ELSIF username == "mnickers" %]
+  <h3> Michelle   </h3>
+  <p>Please create accounts  in these two list. One is for the general pubic the other is for all who are admin. This list is for communicating will all Admin. Once you have completed this I will remove this from your admin view.</p>
+  
+          [% embed('AmuAdminList') %]	
+     
+   [% ELSE %]   
+       [% embed('AmuAdminList') %]	
 		       
- [% embed('AmuAdminList') %]	  
+ [% END%]	
+		       
+   
       		 		
  [% embed('NotesView') %]
   
@@ -36,7 +42,7 @@ Personalized for shanta
  
    [% embed('SiteAdminNotes') %]
                   
-<!-- <p>Default/ToDoList located in  -->
+<!-- <p> /Default/ToDoList located in  -->
 [% embed('ToDoList') %]
 
 <!-- <p> 	/CSC/AdminTodoList	 -->

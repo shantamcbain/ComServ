@@ -133,7 +133,7 @@
 
 
 
-<p>[% group %]
+<p>[%# group %]
  
 <!--  Todo lists moved to SiteAdmin -->
 
