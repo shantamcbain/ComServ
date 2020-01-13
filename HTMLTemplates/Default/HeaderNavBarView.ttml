@@ -22,10 +22,54 @@
 
 %]
 
-
+<style type="text/css">
+        
+            .red {
+                
+                color:red;
+                
+            }
+            
+            .large {
+                
+                font-size: 200%;
+                
+            }
+            
+            #green {
+                
+                color:green;
+            }
+        
+            .underlined {
+                
+                text-decoration: underline;
+                
+            }
+            
+            #menu {
+                
+                color:blue;
+                background-color: pink;
+                width:100%;
+                position:fixed;
+                
+            }
+            
+            #second-section {
+                
+                background-color: yellow;
+                
+            }
+  .clear-float {
+                
+                clear:both;
+                
+            }          
+        </style>
 
   
-
+<div id="menu">
 [% IF data.header_image != "none"%]
   [% embed('HeaderBannerView')%]	
   			[% embed('HeaderHostingView') %] 
@@ -68,7 +112,7 @@
 					[% ELSE %]
 					&amp;view=[% data.view %]
 					[% END %]&amp;[% session_string %]">Debug</A> 
-				&nbsp; 
+				&nbsp; shanta@computersystemconsulting.ca
       	    [% END %]
       			<a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;view=AdminHomeView&amp;[% session_string %]" target="_blank" name="Administer your site.">Admin</a>
 
@@ -100,9 +144,9 @@
 			[% embed('HelpDeskLinkView') %]
 	
 		
-
+</div>
  
-   
+   <div class="clear-float"></div> 
 
 <!--This is the end of TopNavBarView.ttml-->
 

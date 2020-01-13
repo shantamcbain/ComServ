@@ -1,0 +1,186 @@
+[%# /HTMLTemplates/Default/TopBBCMenu.ttml 
+version .01 2020/01/12 -shanta
+This file creates the BBS  drop list on all sites using it.
+currently only DevCSC Not working right yet miss forming the first after login drop list, and admin list.
+
+%]    <div id="demonstration">
+      
+
+<ul class="dropdown" id="dropdownCentred">
+    <li>
+              <span><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]" name="Home page" onmouseover="Home" title="HOME">Main</a></span>
+      <ul>
+       [% FOREACH link = DBI.query("SELECT * FROM page_tb
+	                                  WHERE  menu = 'Main'
+	                                  AND (sitename =  '$SiteName' OR sitename =  'All')
+	                                  ORDER BY link_order
+	                                  ")%]    
+	   <li>
+	       <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=[% link.page_code %]" name="Contact" target="[% link.target %]" title=" [% linkview_.name %] "><font   class="LeftSideBarNavStyle">[% link.view_name %]</font></a>
+	   </li>
+
+	[% END %]
+	
+	  [% FOREACH link = DBI.query("SELECT * FROM internal_links_tb
+	                                  WHERE  category = 'Main_links'
+	                                  AND (sitename =  '$SiteName' OR sitename =  'All')
+	                                  ORDER BY link_order
+	                                  ")%]    
+	   <li>
+	       <a href="[% link.url %]?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
+	   </li>
+	[% END %]
+	  </ul>
+    </li>
+<li>             <span>HelpDesk</span>
+  <ul>
+   <li>
+        <a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]" target=.blank' ><font   class="LeftSideBarNavStyle">Main page</font></font></a>
+    </li>
+    <li>
+        <a href="https://www.computersystemconsulting.ca/shmcs/index.php?rp=/knowledgebase" target="_blank" ><font   class="LeftSideBarNavStyle">Knowlage base</font></a>
+        
+    </li>
+    <li>
+        <a href="https://www.computersystemconsulting.ca/whmcs/supportticket.php?action=open" target='_blank' ><font   class="LeftSideBarNavStyle">Sumbmit a support ticket.</font></a> 
+    </li>
+   </ul>
+</li>
+
+<li><span>Global</span>
+  <ul>
+   <li>		
+    [% IF firstname %]	
+     <A HREF ="http://webmail.[% HostName %]:2096"target="_Blank"><font   class="LeftSideBarNavStyle">Mail</font></a>	
+    [% ELSE %]
+	   <A  HREF ="?site=[% SiteName %]&amp;[% session_string %]&amp;view=MailView" ><font   class="LeftSideBarNavStyle">Mail</font></a>		   
+	 [% END %]
+   </li>
+   <li><a href="/cgi-bin/index.cgi?[% session_string %]&amp;site=[% SiteName%]&amp;view=JobView" Target ="_Blank"> <font   class="LeftSideBarNavStyle">Jobs</font></a>	</li>
+   <li>[% embed('AffiliateLinkView') %]</li>
+   <li><a href="http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&domain=register&amp;aff=[% data.affiliate_number %]"  target="_blank"title="Domain registration services."><font   class="LeftSideBarNavStyle">Register Domains</font></a></li>
+
+ 	[% IF group == 'Dev_admin' OR
+         group == 'CSC_Developer'OR
+         username  == 'Shanta' %]
+      [% IF data.debug == "1"  %]    
+	<li>
+	 <a HREF ="?site=[% SiteName %]&amp;debug=0&amp;page=[% data.page_name %]&amp;view=[% data.view %]&amp;[% session_string %]"><font   class="LeftSideBarNavStyle">NonDebug</font></a>
+	</li>     	 
+      [% ELSE %]
+   <li>
+	<a HREF ="?site=[% SiteName %]&amp;debug=1&amp;page=[% data.page_name %]&amp;view=[% data.view %]&amp;[% session_string %]"><font   class="LeftSideBarNavStyle"><font   class="LeftSideBarNavStyle">Debug</font></a> 
+	</li> 	 
+      [% END %]          
+   [% IF firstname %]
+   <li> <a href="http://dev.[% HostName %]/cgi-bin/index.cgi?site=[% SiteName %]" target="_Blank" name="DevSite" title="DevSite See what we are working on."><font   class="HeaderBarNavStyle">What we are working on.</font></a></li>
+   [% END %]   	     
+  </ul>  
+</li>
+<li>
+  <span>Member</span>
+   <ul>
+     <li>    <a href="?site=[% SiteName %]&amp;[% session_string %]&amp;view=MembersView" target="_blank" name="Member_link" onmousemove="test"title="Member Info">Member Info</a></li>
+          
+     [% FOREACH link = DBI.query("SELECT * FROM internal_links_tb
+                                  WHERE  category = 'Member_links'
+                                   AND (sitename =  '$SiteName' and
+                                        share = 'public')
+                                  ORDER BY link_order
+                                  ")%]    
+                                  
+     <li>
+       <a href="[% link.url %]?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
+     </li>
+ 	  [% END %]
+     [% FOREACH link = DBI.query("SELECT * FROM page_tb
+	                                  WHERE  menu = 'member'
+	                                  AND share  = 2 
+	                                  AND (sitename =  '$SiteName' 
+	                                  OR sitename =  'All')
+	                                  ORDER BY link_order
+	                                  ")%]    
+	  <li>
+	    <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=[% link.page_code %]" name="Contact" target="[% link.target %]" title=" [% linkview_.name %] "><font   class="LeftSideBarNavStyle">[% link.view_name %]</font></a>
+	  </li>
+	  [% END %]
+	   </ul>
+</li>	
+
+<li><span> Logon	 </span>
+
+  <ul>
+   <li>
+    [% IF username %]
+    <a href="[% data.script_name %]?session_id=[% session_id %]&amp;submit_logoff=on&amp;site=[%SiteName%]" target="[% data.link_target %]"><font   class="LeftSideBarNavStyle">Logoff</font></A>
+    [% ELSE %]
+  	 <A HREF ="[% data.script_name %]?session_id=[% session_id %]&amp;submit_logon=on&amp;site=[%SiteName%]" TARGET ="[% data.link_target %]" title="To get the most from this application you will need to create an account. Click here to create one or logon" ><font   class="LeftSideBarNavStyle">Logon</font></A> 	               	    
+    [% END %]  
+   </li>
+   <li><a href="/cgi-bin/FAQ/faq.cgi?site=[%SiteName%]&amp;[% session_string %]&amp;sort_field1=category&amp;sort_field2=fname &amp;first_record_to_display=0&amp;records_per_page=&amp;record_id=2&amp;columns_to_view=category&amp;columns_to_view=question&amp;display_details_view.x=8&amp;display_details_view.y=9&amp;display_details_view=on" title="Why should I create an account?"><font class="HeaderBarNavStyle"size="-2">Why create an account</font></a>
+   </li>
+            [%# embed('LogOnTopView.ttml') %]
+  </ul>
+</li>     
+	 
+
+
+[% IF group    ==  'Alegro_admin' OR
+	       group    ==  'Apis_admin' OR
+	       group    ==  'BCHPA_admin' OR
+	       group    ==  'Brew_admin' OR
+	       group    ==  'CS_admin' OR
+	       group    ==  'CSC_admin' OR
+	       group    ==  'CSPS_admin' OR
+	       group    ==  'ENCY_admin' OR
+	       group    ==  'Forager_admin' OR
+	       group    ==  'eXtropia_admin' OR
+	       group    ==  'GPMarket_admin' OR
+	       group    ==  'HE_admin' OR
+	       group    ==  'NOWD_admin' OR
+	       group    ==  'News_admin' OR
+	       group    ==  'OKB_admin'OR
+	       group    ==  'Organic_admin' OR
+	       group     == 'DarmaFarmsAdmin' OR
+	       group    ==  'Shanta_admin' OR
+	       group    ==  'Stawns_admin' OR
+	       group    ==  'VitalVic_admin' OR
+	       group    ==  'rv_admin' OR
+	       group    == 'MJB_Admin' OR
+	       group    ==  'WB_admin' OR
+	       group    ==  'WW_admin' OR
+	       username == 'Shanta' OR
+	      group    == 'Demo_admin'
+	 %]
+
+<li> 
+            <span>Admin links</span>
+    <ul>
+     <li><a href="http://dev.[% HostName %]/cgi-bin/index.cgi?site=CSCDev" name="DevSite" title="DevSite See what we are working on." Target ="_Blank"><font   class="LeftSideBarNavStyle">CSCDev</font></a></li>
+       [% FOREACH link = DBI.query("SELECT * FROM internal_links_tb
+                                  WHERE  category = 'Admin_links'
+                                  AND (sitename =  '$SiteName' OR sitename =  'All')
+                                  ORDER BY link_order
+                                  ")%]    
+     <li>
+                  <a href="[% link.url %]?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
+     </li>
+        [% END %]
+        [% FOREACH link = DBI.query("SELECT * FROM page_tb
+                                  WHERE  menu = 'Admin_links'
+                                  AND (sitename =  '$SiteName' OR sitename =  'All')
+                                  ORDER BY link_order
+                                  ")%]    
+                                  
+                                 
+     <li>
+         <a href="[% link.url %]?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
+     </li>
+         [% END %]
+     </ul>
+</li>
+ [% END %]		
+ [% END %]	
+</ul>
+ 
+    </div>

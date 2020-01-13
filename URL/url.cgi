@@ -1384,6 +1384,7 @@ my @VIEW_DISPLAY_PARAMS = (
     -HOME_VIEW               => 'BasicDataView',
     -SELECTED_DISPLAY_FIELDS => [qw(
         name 
+        sitename
         description
         url
         )],
