@@ -1,0 +1,24 @@
+[%# /HTMLTemplates/Default/TopListMainSQL.ttml %]
+
+
+
+[% FOREACH link = DBI.query("SELECT * FROM page_tb
+	                                  WHERE  menu = 'Main'
+	                                  AND (sitename =  '$SiteName' OR sitename =  'All')
+	                                  ORDER BY link_order
+	                                  ")%]    
+	   <li>
+	       <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=[% link.page_code %]" name="Contact" target="[% link.target %]" title=" [% linkview_.name %] "><font   class="LeftSideBarNavStyle">[% link.view_name %]</font></a>
+	   </li>
+
+	[% END %]
+	
+	  [% FOREACH link = DBI.query("SELECT * FROM internal_links_tb
+	                                  WHERE  category = 'Main_links'
+	                                  AND (sitename =  '$SiteName' OR sitename =  'All')
+	                                  ORDER BY link_order
+	                                  ")%]    
+	   <li>
+	       <a href="[% link.url %]?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
+	   </li>
+	[% END %]

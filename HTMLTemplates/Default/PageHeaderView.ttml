@@ -8,7 +8,7 @@
 		<tr align="top" >
 		<td > 	  <!-- LogoHomeLink -->[% embed ('') %]
 <!-- LogoHomeLink -->
-		<br> Hosting
+
 	<!-- HeaderHostingView -->
 			[% embed('HeaderHostingView') %] 
 		<!-- HeaderHostingView -->

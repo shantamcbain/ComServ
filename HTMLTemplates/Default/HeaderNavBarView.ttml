@@ -22,51 +22,6 @@
 
 %]
 
-<style type="text/css">
-        
-            .red {
-                
-                color:red;
-                
-            }
-            
-            .large {
-                
-                font-size: 200%;
-                
-            }
-            
-            #green {
-                
-                color:green;
-            }
-        
-            .underlined {
-                
-                text-decoration: underline;
-                
-            }
-            
-            #menu {
-                
-                color:blue;
-                background-color: pink;
-                width:100%;
-                position:fixed;
-                
-            }
-            
-            #second-section {
-                
-                background-color: yellow;
-                
-            }
-  .clear-float {
-                
-                clear:both;
-                
-            }          
-        </style>
 
   
 <div id="menu">
@@ -75,75 +30,92 @@
   			[% embed('HeaderHostingView') %] 
 
 [% END %]
-[% embed('TopDropListView')%]
-			[% IF SiteName == 'Skye' OR
+
+[%# embed('TopDropListView')%]
+
+[% IF SiteName == 'Skye' OR
 			      SiteName == 'Noop' %]
 				<A HREF ="?[% session_string %]&amp;view=[% data.home_view %]&amp;site=[% Organic%]">[% HostName %]</A>
 				&nbsp; |
-			[% END %]
-			
-[% embed('AffiliateLinkView') %]&nbsp;
-   <a href="http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&domain=register&amp;aff=[% data.affiliate_number %]" target="_blank"title="Domain registration services.">Domains</a>
-	        &nbsp; 
-[% IF SiteName == 'CSC'%]
-     [% embed('StoreDropListView') %]
 [% END %]
-     
-			
-		<!-- embed JobLinkView -->
-		[% embed('JobLinkView') %]&nbsp;
-		<!-- end JobLinkView -->
 
-		[% IF group == 'Dev_admin' OR
-                      group == 'CSC_Developer'OR
-                      username  == 'Shanta' %]
-			[% IF data.debug == "1"  %]
-					
-					<A HREF ="?site=[% SiteName %]&amp;debug=0&amp;[% IF data.page_name %]
-					&amp;page=[% data.page_name %]
-					[% ELSE %]
-					&amp;view=[% data.view %]
-					[% END %]&amp;[% session_string %]">NonDebug</A>
-				&nbsp; 
-            [% ELSE %]
+<ul class="dropdown" id="dropdownCentred">
+		    <li>
+              <span><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]" name="Home page" onmouseover="Home" title="HOME">Main</a></span>
+<ul>
+[% embed('TopListMainSQL') %]
+	  </ul>
+</li>
+ 
+ <li>          <span>Logon</span>
+	  
+<ul>
+[% embed('LogOnTopView.ttml') %]	 
 
-				<A HREF ="?site=[% SiteName %]&amp;debug=1[% IF data.view %]
-					&amp;page=[% data.page_name %]
-					[% ELSE %]
-					&amp;view=[% data.view %]
-					[% END %]&amp;[% session_string %]">Debug</A> 
-				&nbsp; shanta@computersystemconsulting.ca
-      	    [% END %]
-      			<a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;view=AdminHomeView&amp;[% session_string %]" target="_blank" name="Administer your site.">Admin</a>
+</ul>
+</li>
 
-		&nbsp; |<a href="http://dev.[% HostName %]/cgi-bin/index.cgi?site=CSCDev" name="DevSite" title="DevSite See what we are working on." Target ="_Blank"><font   class="HeaderBarNavStyle">CSCDev</font></a>
-		[% END %]
-		[% IF firstname %]	
-				|&nbsp;<A HREF ="http://webmail.[% HostName %]:2096"target="_Blank">Mail</a>	
-         [% ELSE %]
-	  |<A  HREF ="?site=[% SiteName %]&amp;[% session_string %]&amp;view=MailView" >Mail</a>		   
-		[% END %]
+[%# embed('TopDropListGlobal') %]
+<li><span>Global</span>
+  <ul>
+   <li>	
+   	
+ [% IF firstname %]	
+     <A HREF ="http://webmail.[% HostName %]"target="_Blank"><font   class="LeftSideBarNavStyle">Mail</font></a>	
+ [% ELSE %]
+	   <A  HREF ="?site=[% SiteName %]&amp;[% session_string %]&amp;view=MailView" ><font   class="LeftSideBarNavStyle">Mail</font></a>		   
+ [% END %]
+ 
+   </li>
+   <li><a href="/cgi-bin/index.cgi?[% session_string %]&amp;site=[% SiteName%]&amp;view=JobView" Target ="_Blank"> <font   class="LeftSideBarNavStyle">Jobs</font></a>	</li>
+   <li>[% embed('AffiliateLinkView') %]</li>
+   <li><a href="http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&domain=register&amp;aff=[% data.affiliate_number %]"  target="_blank"title="Domain registration services."><font   class="LeftSideBarNavStyle">Register Domains</font></a></li>
 
-			[% embed('SQLHeaderNav') %]
-		
-		<!-- -->		
-		&nbsp; |				
-		   <A HREF ="/cgi-bin/WebCal/webcal.cgi?&amp;site=[% SiteName%]&amp;[% session_string %]" Target ="_Blank">[% firstname %]  Cal</a>
-						&nbsp; 
-				 
-				<!-- &nbsp; |		<A HREF ="/cgi-bin/URL/url.cgi?[% session_string %]&amp;site=[% SiteName%]" target="_Blank" ><font   class="HeaderBarNavStyle">Links </font></a>  -->
-				[% IF firstname %]	
-		&nbsp; |<a href="http://dev.[% HostName %]/cgi-bin/index.cgi?site=[% SiteName %]" target="_Blank" name="DevSite" title="DevSite See what we are working on."><font   class="HeaderBarNavStyle">Dev</font></a>
- 		
-		
-	 [% END %]
-	<!-- embed onleftview -->
-	&nbsp; |	[% embed('LogOnTopView.ttml') %]
-		<!-- end logonleftview -->
-		&nbsp; |
-			[% embed('HelpDeskLinkView') %]
+[% IF group == 'Dev_admin' OR
+         group == 'CSC_Developer'OR
+         username  == 'Shanta' %]
+  
+  [% IF data.debug == "1"  %]    
+	<li>
+	 <a HREF ="?site=[% SiteName %]&amp;debug=0&amp;page=[% data.page_name %]&amp;view=[% data.view %]&amp;[% session_string %]"><font   class="LeftSideBarNavStyle">NonDebug</font></a>
+	</li>     	 
+  [% ELSE %]
+   <li>
+	<a HREF ="?site=[% SiteName %]&amp;debug=1&amp;page=[% data.page_name %]&amp;view=[% data.view %]&amp;[% session_string %]"><font   class="LeftSideBarNavStyle">Debug</font></a> 
+	</li> 	 
+  [% END %]  
+          
+   [% IF firstname %]
+   <li> <a href="http://dev.[% HostName %]/cgi-bin/index.cgi?site=[% SiteName %]" target="_Blank" name="DevSite" title="DevSite See what we are working on."><font   class="HeaderBarNavStyle">What we are working on.</font></a></li>
+   [% END %] 
+   
+[% END %]  
+    	     
+  </ul>  
+</li>
+
+<li><span>Member</span>
+[% embed('TopDropListMember') %]
+</li>
+
+[%# embed('TopDropListAdmin') %]
+
+
+	<li>             <span>HelpDesk</span>
+  <ul>
+   <li>
+        <a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]" target=.blank' ><font   class="LeftSideBarNavStyle">Main page</font></font></a>
+ 
+    <li>
+        <a href="https://www.computersystemconsulting.ca/shmcs/index.php?rp=/knowledgebase" target="_blank" ><font   class="LeftSideBarNavStyle">Knowlage base</font></a>
+        
+    </li>
+    <li>
+        <a href="https://www.computersystemconsulting.ca/whmcs/supportticket.php?action=open" target='_blank' ><font   class="LeftSideBarNavStyle">Sumbmit a support ticket.</font></a> 
+    </li>
+   </ul>
+</li>
 	
-		
 </div>
  
    <div class="clear-float"></div> 

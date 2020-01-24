@@ -36,7 +36,8 @@ currently only DevCSC Not working right yet miss forming the first after login d
   <ul>
    <li>
         <a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]" target=.blank' ><font   class="LeftSideBarNavStyle">Main page</font></font></a>
-    </li>
+ <li>             <span>HelpDesk</span>
+  <ul>   </li>
     <li>
         <a href="https://www.computersystemconsulting.ca/shmcs/index.php?rp=/knowledgebase" target="_blank" ><font   class="LeftSideBarNavStyle">Knowlage base</font></a>
         
