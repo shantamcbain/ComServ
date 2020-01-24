@@ -31,7 +31,7 @@
 
 		<li><span>       [% SiteName %] Admin Tools  </span>
 	<ul> <li>      
-	[%#  embed("AdminURLLink") %]	
+	[%  embed("AdminURLLink") %]	
 </li>
 	
 	  [% IF group    == 'Demo_admin' %]

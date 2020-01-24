@@ -2,7 +2,11 @@
 
 
   <ul>
-     <li>    <a href="?site=[% SiteName %]&amp;[% session_string %]&amp;view=MembersView" target="_blank" name="Member_link" onmousemove="test"title="Member Info">Member Info</a></li>
+ <li>
+
+ [%  embed("AdminURLLink") %]	
+
+ </li>    <li>    <a href="?site=[% SiteName %]&amp;[% session_string %]&amp;view=MembersView" target="_blank" name="Member_link" onmousemove="test"title="Member Info">Member Info</a></li>
           
     [% FOREACH link = DBI.query("SELECT * FROM internal_links_tb
                                   WHERE  category = 'Member_links'

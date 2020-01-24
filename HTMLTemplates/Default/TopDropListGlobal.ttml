@@ -1,10 +1,14 @@
 [%# /HTMLTemplates/Default/TopDropListGlobal.ttml %]
-</li>
 
-[% embed('TopDropListGlobal') %]
+
 <li><span>Global</span>
   <ul>
-   <li>	
+<li>
+
+ [%  embed("AdminURLLink") %]	
+
+ </li>   
+ <li>	
    	
  [% IF firstname %]	
      <A HREF ="http://webmail.[% HostName %]:2096"target="_Blank"><font   class="LeftSideBarNavStyle">Mail</font></a>	
