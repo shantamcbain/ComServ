@@ -1,4 +1,5 @@
 #!/usr/bin/perl -wT
+# 	$Id: url.cgi,v 1.71 2020/01/24 20:11:35 shanta Exp $	
 # 	$Id: url.cgi,v 1.7 2004/01/25 20:11:35 shanta Exp $	
 #URL file location /cgi-bin/URL
 # Copyright (C) 1994 - 2001  eXtropia.com
@@ -20,6 +21,8 @@
 
 
 # not Email for ECF cc to nother has been disabled. enable before upload.
+my $ver="1.71";
+
 use strict;
 
 BEGIN{
@@ -86,8 +89,8 @@ foreach ($CGI->param()) {
 ######################################################################
 
 my $APP_NAME = "url"; 
-my $SiteName =  $CGI->param('site'||'SLT');
-my $AppVer = "ver 1.01, Dec 13, 2006";
+my $SiteName =  $CGI->param('site');
+my $AppVer = "ver ".$ver." 1.71,January 24, 2020";
 my $APP_NAME_TITLE = "Links Database";
     my $homeviewname ;
     my $home_view; 
@@ -1560,7 +1563,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
     -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
     -SITE_NAME                              => $SiteName,
-    -SHOP                    =>  $shop,
+    -SHOP                                   =>  $shop,
     -APP_NAME                               => 'url',
     -PAGE_TOP_VIEW                          => $page_top_view ,
     -LEFT_PAGE_VIEW                         => $page_left_view,
