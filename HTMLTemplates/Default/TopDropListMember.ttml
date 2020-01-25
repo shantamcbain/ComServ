@@ -1,6 +1,6 @@
-[%# /HTMLTemplates/Default/TopDropListMember.ttml %] 
+[%# /HTMLTemplates/Default/TopDropListMember.ttml v 0.1 2020/01/24 17:43:15 shanta Exp shanta $	%] 
 
-
+<li><span>Member</span>
   <ul>
  <li>
 
@@ -29,4 +29,4 @@
 	  </li>
 	  [% END %]
 	   </ul>
-	
+</li>

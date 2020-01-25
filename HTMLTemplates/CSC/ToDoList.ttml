@@ -20,7 +20,7 @@
 </td>
 
 [% IF SiteName == 'CSCDev' %]
-
+<td>
 
  [% embed ('CSCDevToDoSQL' )   %]
  
@@ -28,6 +28,7 @@
 
  
   [% embed ('SiteTodoSQL' )   %]
+ </td>
  [% END %]
 
 </table>

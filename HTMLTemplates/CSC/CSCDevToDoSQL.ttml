@@ -1,4 +1,4 @@
-<tr><td>Sitename</td><td>Project code</td><td>Project name</td><td>Priority </td><td>Comments</td><td>Links </td></tr>
+<table><tr><td>Sitename</td><td>Project code</td><td>Project name</td><td>Priority </td><td>Comments</td><td>Links </td></tr>
  <tr><td colspan="6">Sort by site.</td></tr>
  
  [% FOREACH link = DBI.query("SELECT * FROM csc_todo_tb
@@ -21,5 +21,5 @@
  
   <a href="/cgi-bin/ToDo/todo.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;record_id=[% link.record_id %]&amp;subject=[% link.project_name %]&amp;project_code=[% link.project_code %]&amp;description=[% link.comments %]&amp;priority=" "target="_Blank">Todo</a>
      </td>
-   </tr> 
+   </tr> </table>
  [% END %] 
