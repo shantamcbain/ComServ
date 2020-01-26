@@ -1,5 +1,6 @@
- [%#	$Id: /cgi-bin/HTMLTemplates/CSC/CSCDevToDoSQL.ttml,v 0.1 2015/02/05 17:43:15  <table>
-%]
+ [%#	$Id: /cgi-bin/HTMLTemplates/CSC/SiteToDoSQL.ttml,v 0.1 2020/01/26 17:43:15 %]
+
+
 <table><tr><td colspan="5"> <a href="/cgi-bin/ToDo/todo.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on "target="_Blank">Todo</a>
  </td></tr>
 <tr><td>Sitename [% SiteName %]</td><td>Project code</td><td>Project name</td><td>Priority </td><td>Comments</td><td>Links</td></tr>
@@ -7,11 +8,11 @@
     [%# FOREACH link = DBI.query("SELECT * FROM csc_todo_tb
                                   WHERE ( status != '3' AND
                                           sitename = 'CSC' )
-                                  ORDER BY priority DESC,  
+                                  ORDER BY priority DESC  
                                           
                                   ")%]    
   [% FOREACH link = DBI.query("SELECT * FROM csc_todo_tb
-                                  WHERE ( status != '3'AND
+                                  WHERE ( status != '3' AND
                                           sitename = '$SiteName')
                                   ORDER BY priority DESC, sitename 
                                           
