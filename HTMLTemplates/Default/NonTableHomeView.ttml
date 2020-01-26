@@ -132,7 +132,7 @@
 <p>  [% embed('ToDoList') %]
 
 		
-[% embed ("AdminTodoList")%]	
+[%# embed ("AdminTodoList")%]	
 
 
 <p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %] &nbsp; This value is stored in your setup file. [% END %]

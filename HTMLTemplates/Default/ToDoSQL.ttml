@@ -4,6 +4,8 @@
 
 <table>
                                    <tr>
+<td class="NavTableCellStyle"> SiteName </td>
+<td class="NavTableCellStyle"> Priority  </td>
 <td class="NavTableCellStyle"> Project Code  </td>
 <td class="NavTableCellStyle"> Project Name  </td>
 <td class="NavTableCellStyle"> Comments      </td>
@@ -13,10 +15,12 @@
  [% FOREACH link = DBI.query("SELECT * FROM csc_project_tb
                                   WHERE (sitename =  '$SiteName' AND
                                           status != 'delivered' )
-                                  ORDER BY project_code
+                                  ORDER BY priority, project_code
                                   ")%]    
                                   
                                    <tr>
+                                   <tdclass="NavTableCellStyle"> [% link.sitename %]</td>
+<td class="NavTableCellStyle"> [% link.priority %]  </td>
 <td class="NavTableCellStyle"> [% link.project_code %]  </td>
 <td class="NavTableCellStyle"> [% link.project_name %]  </td>
 <td class="NavTableCellStyle"> [% link.comments %]  </td>
