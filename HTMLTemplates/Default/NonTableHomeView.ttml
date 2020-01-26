@@ -22,6 +22,7 @@
 [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
 	[% session_id = data.session_object.getId() %]
 	[% session_string = "session_id=$session_id" %]
+	[% LeftPageView = data.leftpageview %]
 [% PROCESS DefaultDbi.ttml %]
 
 
