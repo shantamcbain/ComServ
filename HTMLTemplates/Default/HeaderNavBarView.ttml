@@ -32,7 +32,7 @@
 
 [% END %]
 [% embed('TopDropListView')%]
-			[% IF SiteName == 'Skye' OR
+<!-- 			[% IF SiteName == 'Skye' OR
 			      SiteName == 'Noop' %]
 				<A HREF ="?[% session_string %]&amp;view=[% data.home_view %]&amp;site=[% Organic%]">[% HostName %]</A>
 				&nbsp; |
@@ -98,7 +98,7 @@
 		<!-- end logonleftview -->
 		&nbsp; |
 			[% embed('HelpDeskLinkView') %]
-	
+	 -->
 		
 
  

@@ -1,7 +1,5 @@
-[%
-#	$Id: ApisWaxView.ttml,v 0.1 2019/10/09 06:42:47 shanta Exp shanta $	%]
+[%#	$Id: ApisWaxView.ttml,v 0.1 2019/10/09 06:42:47 shanta Exp shanta $	%]
 
-[%# embed(data.page_top_view,['-PAGE_TITLE','Bees Wax']) %]
 
 [% embed('ErrorDisplayView') %]
 
