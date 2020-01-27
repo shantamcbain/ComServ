@@ -9,4 +9,3 @@
                 password =  'UA=nPF8*m+T#' )
     %]
  [% END %]
-[%# $ENV{'SERVER_NAME'} %] server name
