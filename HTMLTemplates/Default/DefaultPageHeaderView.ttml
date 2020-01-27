@@ -3,7 +3,7 @@
 
 [%# All content of this view is confined to a table cell in PageTopView %]
 	<!-- PageHeadView 0.01 Begin -->
-	[% embed('HeaderNavBarView') %] 
+	[% embed('DefaultHeaderNavBarView') %] 
 	  <table CLASS="tablePageTopHeaderStyle">
 		<tr align="top" >
 		<td > 	  <!-- LogoHomeLink -->[% embed ('') %]

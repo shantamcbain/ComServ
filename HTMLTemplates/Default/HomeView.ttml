@@ -1,6 +1,9 @@
-[%#	$Id: HomeView.ttml,v 1.91 2014/10/22 17:43:15 shanta Exp shanta $	
 
-# Ideally this template should be converted into a static CSS file and
+[%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.93 2019/10/10 17:43:15 shanta Exp shanta $	%]
+[%#	$Id: HomeView.ttml,v 1.92 2019/10/09 17:43:15 shanta Exp shanta $	%]
+[%#	$Id: HomeView.ttml,v 1.91 2014/10/22 17:43:15 shanta Exp shanta $	%]
+[% ViewVersion ="1.93" %]
+[% # Ideally this template should be converted into a static CSS file and
 # be served as /foo/bar.css and not via CGI, since it slows things
 # down and dozen't allow browsers to cache the CSS content.
 
@@ -26,9 +29,9 @@
 
 
 [% IF group == "Mentoring"	%]
-	[% embed(data.page_top_view,['-PAGE_TITLE','Mentor home.']) %]
+	[% embed(data.page_top_view,['$SiteName','Mentor home.']) %]
 [% ELSE %]
-	[% embed(data.page_top_view,['-PAGE_TITLE','Home page.']) %]
+	[% embed(data.page_top_view,['$SiteName','Home page.']) %]
 [% END %]
 
 [% embed('ErrorDisplayView') %]
@@ -129,14 +132,14 @@
 
 <p>[% group %]
                  
- %]
-<p>  [% embed('ToDoList') %]
+ 
+ [% embed('ToDoList') %]
 
-		
-[% embed ("AdminTodoList")%]	
+  [%# embed ('SiteTodoSQL' )   %]		
 
 
-<p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %]&nbsp; This value is stored in your setup file. [% END %]
+
+<p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %] &nbsp; This value is stored in your setup file. [% END %]
 		<br>
 		
 

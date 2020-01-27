@@ -1,6 +1,6 @@
-[%# /HTMLTemplates/Default/TopDropListView.ttml 
-version .01 2019/05/08 -shanta
-This file creates the standard drop list on all sites using it.
+[%# /HTMLTemplates/Default/TopBBCMenu.ttml 
+version .01 2020/01/12 -shanta
+This file creates the BBS  drop list on all sites using it.
 currently only DevCSC Not working right yet miss forming the first after login drop list, and admin list.
 
 %]    <div id="demonstration">
@@ -36,8 +36,7 @@ currently only DevCSC Not working right yet miss forming the first after login d
   <ul>
    <li>
         <a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]" target=.blank' ><font   class="LeftSideBarNavStyle">Main page</font></font></a>
- <li>             <span>HelpDesk</span>
-  <ul>   </li>
+    </li>
     <li>
         <a href="https://www.computersystemconsulting.ca/shmcs/index.php?rp=/knowledgebase" target="_blank" ><font   class="LeftSideBarNavStyle">Knowlage base</font></a>
         

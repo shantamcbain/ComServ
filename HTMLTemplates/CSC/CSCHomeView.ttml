@@ -61,7 +61,8 @@ You can modify anything from here to the last update. You may use Html code in t
 
  [% FOREACH link = DBI.query("SELECT * FROM page_tb
                                   WHERE  (status  = 2 AND
-                                         page_code = 'CSC_Home_View' )
+                                         site=CSC AND
+                                         page_code = 'HomeView' )
                                   ORDER BY sitename
                                   ")%]    
       [% link.body %]

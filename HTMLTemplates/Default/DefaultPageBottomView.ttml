@@ -1,5 +1,5 @@
 [%
-#	$Id: PageBottomView.ttml,v 1.1 2003/11/29 06:32:11 shanta Exp shanta $	
+#	$Id: PageBottomView.ttml,v 1.1 2003/11/29 06:32:11 shanta Exp shanta $
 # location /cgi-bin/Htmltemplates/default
 # the bottom template
 
@@ -29,20 +29,20 @@
 		<A HREF ="[% data.script_name %]?[% session_string %]&amp;submit_logon=on&amp;site=[% SiteName%]" TARGET ="[% data.link_target %]">Logon </A> &nbsp;|
 [% END %]
 
-<!-- 
+
 		<A HREF ="http://dev.computersystemconsulting.ca/cgi-bin/WebCal/webcal.cgi?&amp;site=[% SiteName%]&amp;view=MonthView&amp;submit_power_search=on&amp;simple_search_string=[% username %]&amp;[% session_string %]" Target ="_Blank">[% fname%]  Cal</a>
 		&nbsp; |
 
- -->
-		[% embed('MailLinkView') %]	
+
+		[% embed('MailLinkView') %]
 
 &nbsp; |
 [% IF group == "Apis_admin" OR
       group == "BMaster_admin" OR
       group == "CSC_admin"  OR
       group == "CS_admin" OR
-      group == "ECF_admin" 
-%]	  
+      group == "ECF_admin"
+%]
 
 	<A HREF ="/cgi-bin/store/manager.cgi?shop=[% data.shop %]" target="_blank"> Shop admin</A>	&nbsp; |
 [% END %]
@@ -53,61 +53,58 @@
       SiteName == "CS" OR
       SiteName == "ECF"  OR
       SiteName == "HE" OR
-      SiteName == "Demo" 
-%]	   
-<!-- 	&nbsp; |<a href="/cgi-bin/store/store.cgi?shop=[% data.shop %]" target="_blank">Shop</A>	
- -->
+      SiteName == "Demo"
+%]
+	&nbsp; |<a href="/cgi-bin/store/store.cgi?shop=[% data.shop %]" target="_blank">Shop</A>
+
 [% END %]
 
 
-[% IF fname %]	
+[% IF fname %]
 
 	[% ELSE %]
 	[% END %]
 
 <!--Start calls-->
-<!--BCHPABottomAdminLinksView-->
-[% IF group == 'BCHPA_admin' OR
-      group == 'ECF_admin'  %]
-<!--BCHPABottomAdminLinksView-->
 
-    <br> [%# embed('BCHPABottomAdminLinksView') %]
-[% END %]
-<!--CSPSAdminBottomLinksView.ttml-->
-[% IF group == 'CSPS_admin' OR username == 'Shanta' %]
-	<!--CSPSAdminBottomLinksView.ttml-->
-	<br>[%# embed('CSPSAdminBottomLinksView.ttml') %]
-[% END %]
+
+
 <!--embedCSCBottomAdminLinksView-->
 [% IF group == 'CSC_admin' OR username == 'Shanta' %]
-	<!--embedCSCBottomAdminLinksView-->	
-	<br>[% embed('CSCBottomAdminLinksView') %]	
+	<!--embedCSCBottomAdminLinksView-->
+	<br>[% embed('CSCBottomAdminLinksView') %]
 [% END %]
 
 <!--embedShantasPrivateBottomAdminLinks	-->
 
 [% IF  username == 'Shanta' %]
 	<!--embedShantasPrivateBottomAdminLinks	-->
-		<br>[%  embed('ShantasPrivateBottomAdminLinks' )  %]	
+		<br>[%  embed('ShantasPrivateBottomAdminLinks' )  %]
 	<!--end Call to shantaPrivetBottom links -->
 [% END %]
 
 &nbsp;		[% embed('HelpDeskLinkView') %]&nbsp;
-	
 
-<br> [% data.APP_VER %] 
+
+<br> [% data.APP_VER %]
 
 
 <!--Close Main page Table-->
   </td>
  </tr>
 [% IF data.page_name  == 'PlanningView' %]
-<tr>	
+<tr>
       <td>Will be List of needed supples to do what is on left</td>
 	    </TR>
 [% END %]
 </table>
+[% IF SiteName == 'CSC' OR
+      SiteName == 'Forager' OR
+      Sitename == 'Beemast' OR
+      SiteName == 'USBM' %]
+
 <script type="text/javascript" async="async" defer="defer" data-cfasync="false" src="https://mylivechat.com/chatinline.aspx?hccid=98668549"></script>
+[% END %]
 </BODY>
 </HTML>
 

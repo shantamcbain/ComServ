@@ -1,5 +1,5 @@
 [%
-#	$Id: PageBottomView.ttml,v 1.1 2003/11/29 06:32:11 shanta Exp shanta $	
+#	$Id: NonTablePageBottomView.ttml,v 0.1 2020/01/13 06:32:11 shanta Exp shanta $	
 # location /cgi-bin/Htmltemplates/default
 # the bottom template
 
@@ -98,16 +98,14 @@
 <br> [% data.APP_VER %] 
 
 
-<!--Close Main page Table-->
-  </td>
- </tr>
+
 [% IF data.page_name  == 'PlanningView' %]
-<tr>	
-      <td>Will be List of needed supples to do what is on left</td>
-	    </TR>
+Will be List of needed supplies to do what is on left
 [% END %]
-</table>
+
 <script type="text/javascript" async="async" defer="defer" data-cfasync="false" src="https://mylivechat.com/chatinline.aspx?hccid=98668549"></script>
+</div>
+
 </BODY>
 </HTML>
 

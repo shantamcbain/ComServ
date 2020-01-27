@@ -1,5 +1,6 @@
 #!/usr/bin/perl -wT
-# 	$Id: item.cgi,v 1.0 2015/11/29 21:22:07 shanta Exp $	cloned from recipe
+# 	$Id: /AltPower/item.cgi,v 1.01 2019/10/25 21:22:07 shanta Exp $	cloned from recipe
+# 	$Id: /AltPower/item.cgi,v 1.0 2015/11/29 21:22:07 shanta Exp $	cloned from recipe
 	
   
 # Copyright (C) 1994 - 2001  eXtropia.com
@@ -101,7 +102,6 @@ my $APP_NAME_TITLE = "Items database";
     my $FAVICON_TYPE;
     my $IMAGE_ROOT_URL; 
     my $DOCUMENT_ROOT_URL;
-    my $GLOBAL_DATAFILES_DIRECTORY;
     my $TEMPLATES_CACHE_DIRECTORY;
     my $APP_DATAFILES_DIRECTORY;
     my $DATAFILES_DIRECTORY;
@@ -118,10 +118,11 @@ my $APP_NAME_TITLE = "Items database";
     my $additonalautusernamecomments;
     my $SetupVariables  ;
     my $page_left_view;
-	my $TableName;
+    my $TableName;
+    my $ProjectTableName;
    my $records;
    my $frame;
-    my $last_update  = 'November 29, 2015';
+    my $last_update  = 'October 25, 2019';
     my $DeBug = $CGI->param('debug')|| 0;
 my $client_tb = 'csc_client_tb';
  my $Affiliate = 001;
@@ -129,6 +130,7 @@ my $client_tb = 'csc_client_tb';
 my $HostName   = $ENV{'SERVER_NAME'};
 if ($HostName eq 'computersystemconsulting.ca'||
     $HostName eq 'brew.computersystemconsulting.ca'||
+    $HostName eq 'dev.computersystemconsulting.ca'||
     $HostName eq 'dev.altpower.usbm.ca'){
    $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
 }
@@ -222,7 +224,8 @@ use SiteSetup;
     $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
     $site_session = $DATAFILES_DIRECTORY.'/Sessions';
     $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-    $TableName             = 'item_tb';
+    $TableName             = 'altpower_item';
+    $ProjectTableName      = 'csc_project_tb';
     $DBI_DSN               = $SetupVariables->{-DBI_DSN};
     my $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
 
@@ -517,7 +520,7 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
 
         -IS_FILLED_IN => [
             -FIELDS => [qw(
-                item_name
+                name
             )]
         ]
     ]
@@ -592,7 +595,7 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
 
         -IS_FILLED_IN => [
             -FIELDS => [qw(
-                item_name
+                name
                 
             )]
         ]
@@ -611,8 +614,11 @@ my @DATA_HANDLER_MANAGER_CONFIG_PARAMS = (
 my @DATASOURCE_FIELD_NAMES = qw(
        record_id
        sitename
-       item_code
-       item_name 
+       Code
+       project_code
+       type
+       name 
+       is_container
        description
        stock
        username_of_poster
@@ -625,10 +631,10 @@ my @DATASOURCE_FIELD_NAMES = qw(
 my %type =
     (
         ''    			=>    '', 		            
-        'stout'    	=>    'Stout',            
-        'ale'    		=>    'Ale',            
+        'main'    	=>    'Main',            
+        'module'        =>    'Module',            
         'other'    	=>    'Other',            
-        'pilsener'   =>    'Pilsener',            
+        'panel'         =>    'Panel',            
         'meed'    	=>    'Meed',            
         'lager'    	=>    'Lager',            
         'wheat'    	=>    'Wheat',
@@ -642,6 +648,12 @@ my %colour =
       'db' => 'Dark Brown',
       'blond' => 'Blond',
     );
+my %container =
+    (
+      1 => 'Yes',
+      2 => 'No',
+    );
+
 my %status =
     (
       1 => 'IN Stock',
@@ -651,10 +663,10 @@ my %status =
 
 my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 
-  category => [        
-        -DISPLAY_NAME => 'Category: If not in list select other and place your suggestion in comments ',
+  type => [        
+        -DISPLAY_NAME => 'type: If not in list select other and place your suggestion in comments ',
         -TYPE         => 'popup_menu',        
-        -NAME         => 'category',        
+        -NAME         => 'type',        
         -VALUES       => [sort {$a <=> $b} keys %type],
         -LABELS       => \%type,
         -INPUT_CELL_COLSPAN => 3,
@@ -678,20 +690,27 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
         -COLS         => 30,
         -WRAP         => 'VIRTUAL'
     ],
+ is_container => [
+        -DISPLAY_NAME => 'Container',
+        -TYPE         => 'popup_menu',
+        -NAME         => 'is_container',
+        -VALUES       => [sort {$a <=> $b} keys %container],
+        -LABELS       => \%container,
+   ],
 
-   item_code => [        
-        -DISPLAY_NAME => 'Item Code',        
+   Code => [        
+        -DISPLAY_NAME => 'Code',        
         -TYPE         => 'textfield',        
-        -NAME         => 'item_code',        
+        -NAME         => 'Code',        
         -SIZE         => 30,        
         -MAXLENGTH    => 80    
         ],
    
 
-   item_name => [
-        -DISPLAY_NAME => 'Item Name',
+   name => [
+        -DISPLAY_NAME => 'Name',
         -TYPE         => 'textfield',
-        -NAME         => 'item_name',
+        -NAME         => 'name',
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],
@@ -750,14 +769,16 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
      qw(sitename),
-     qw(item_code),
-     qw(item_name),
-   #   qw(subject),
-      qw(share),
-      qw(description),
+     qw(Code),
+     qw(name),
+     qw(project_code),
+     qw(type),
+     qw(is_container),
+     qw(share),
+     qw(description),
    #   qw(keywords),
-      qw(url),
-      qw(comments),
+     qw(url),
+     qw(comments),
     );
 
 my @INPUT_WIDGET_DEFINITIONS = (
@@ -805,6 +826,63 @@ else{
 	);
 
     }
+######################################################################
+#                          project db  SETUP                              #
+######################################################################
+
+my @PROJECT_DATASOURCE_FIELD_NAMES = qw(
+        record_id
+        status
+        sitename
+        project_code
+        project_name
+        project_size
+        estimated_man_hours
+        developer_name
+        client_name
+        comments        
+        username_of_poster
+        group_of_poster
+        date_time_posted
+);
+
+my	@PROJ_DATASOURCE_CONFIG_PARAMS;
+
+if ($site eq "file"){
+	@PROJ_DATASOURCE_CONFIG_PARAMS = (
+    -TYPE                       => 'File',
+    -FILE                       => "$APP_DATAFILES_DIRECTORY/$SiteName._project_tb.dat",
+    -FIELD_DELIMITER            => '|',
+    -COMMENT_PREFIX             => '#',
+    -CREATE_FILE_IF_NONE_EXISTS => 1,
+    -FIELD_NAMES                => \@DATASOURCE_FIELD_NAMES,
+    -KEY_FIELDS                 => ['record_id'],
+    -FIELD_TYPES                => {
+                                    record_id        => 'Autoincrement',
+                                    datetime         =>
+                                    [
+                                     -TYPE  => "Date",
+                                     -STORAGE => 'y-m-d H:M:S',
+                                     -DISPLAY => 'y-m-d H:M:S',
+                                    ],
+                                   },
+);#$SiteName.
+}else{
+	@PROJ_DATASOURCE_CONFIG_PARAMS = (
+	        -TYPE         => 'DBI',
+	        -DBI_DSN      => $DBI_DSN,
+	        -TABLE        => $ProjectTableName,
+	        -USERNAME     => $AUTH_MSQL_USER_NAME,
+	        -PASSWORD     => $MySQLPW,
+	        -FIELD_NAMES  => \@PROJECT_DATASOURCE_FIELD_NAMES,
+	        -KEY_FIELDS   => ['username'],
+	        -FIELD_TYPES  => {
+	            record_id        => 'Autoincrement'
+	        },
+	);
+}
+
+    
 my @SUBJECT_DATASOURCE_FIELD_NAMES = qw(
         record_id
         status
@@ -915,6 +993,7 @@ my	@CLIENT_DATASOURCE_CONFIG_PARAMS = (
 
 my @DATASOURCE_CONFIG_PARAMS = (
     -BASIC_DATASOURCE_CONFIG_PARAMS     => \@BASIC_DATASOURCE_CONFIG_PARAMS,
+    -PROJECT_DATASOURCE_CONFIG_PARAMS   => \@PROJ_DATASOURCE_CONFIG_PARAMS,
     -CLIENT_DATASOURCE_CONFIG_PARAMS    => \@CLIENT_DATASOURCE_CONFIG_PARAMS,
     -DROPLIST_DATASOURCE_CONFIG_PARAMS  => \@DROPLIST_DATASOURCE_CONFIG_PARAMS,
     -SUBJECT_DATASOURCE_CONFIG_PARAMS   => \@SUBJECT_DATASOURCE_CONFIG_PARAMS,
@@ -931,8 +1010,8 @@ my @MAIL_CONFIG_PARAMS = (
 
 my @EMAIL_DISPLAY_FIELDS = qw(
         status
-        item_code
-        item_name
+        code
+        name
         category
         client_name
         comments        
@@ -1067,33 +1146,33 @@ my @VIEW_DISPLAY_PARAMS = (
     -FIELD_NAME_MAPPINGS   => {
        'record _id'         => 'record_id',
        'site_name'          => 'Owner',
-       'item_code'          => 'item_code',
+       'code'          => 'code',
        'subject'            => 'Subject category ',
-       'item_name'          => 'Name of resource',
+       'name'          => 'Name of resource',
        'description'        => 'Description of resource',
        'url'                => 'URL',
        'comments'           => 'Comments'
         },
   -DISPLAY_FIELDS        => [qw(
         sitename
-        item_code
+        code
         comment
-        item_ name 
+        name 
         description
         url
          category
         )],
     -SORT_FIELDS        => [qw(
         status
-        item_code
-        item_name
+        code
+        name
         category
         comments        
         )],
     -SELECTED_DISPLAY_FIELDS        => [qw(
         sitename
-        item_code
-        item_name
+        code
+        name
         category
         status
         )],
@@ -1132,7 +1211,8 @@ my @VIEW_FILTERS_CONFIG_PARAMS = (
 my @ACTION_HANDLER_LIST = 
     qw(
        CSC::PopulateInputWidgetDefinitionListWithClientWidgetAction
- 
+       CSC::PopulateInputWidgetDefinitionListWithProjectCodeWidgetAction
+
        Default::SetSessionData
        Default::DisplayCSSViewAction
        Default::DisplaySessionTimeoutErrorAction
@@ -1194,8 +1274,8 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -DETAILS_VIEW_NAME                      => 'DetailsRecordView',
     -DELETE_FORM_VIEW_NAME                  => 'BasicDataView',
     -DELETE_EMAIL_BODY_VIEW                 => 'DeleteEventEmailView',
-    -DEFAULT_SORT_FIELD1                    => 'item_code',
-    -DEFAULT_SORT_FIELD2                    => 'item_name',
+    -DEFAULT_SORT_FIELD1                    => 'code',
+    -DEFAULT_SORT_FIELD2                    => 'name',
     -ENABLE_SORTING_FLAG                    => 1,
     -HAS_MEMBERS                            => $HasMembers,
     -HIDDEN_ADMIN_FIELDS_VIEW_NAME          => 'HiddenAdminFieldsView',
@@ -1232,7 +1312,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -VIEW_LOADER                           => $VIEW_LOADER,
     -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
     -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || $records || 500,
-    -SORT_FIELD1                            => $CGI->param('sort_field1') || 'item_code',
+    -SORT_FIELD1                            => $CGI->param('sort_field1') || 'code',
     -SORT_FIELD2                            => $CGI->param('sort_field2') || 'status',
     -SORT_DIRECTION                         => $CGI->param('sort_direction') || 'ASC',
     -SIMPLE_SEARCH_STRING                   => $CGI->param('simple_search_string') || "",

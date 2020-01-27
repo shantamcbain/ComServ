@@ -1,7 +1,7 @@
-[%#	$Id: CellLogView.ttml,v 1.01 2019/10/25 06:42:47 shanta Exp shanta $	%]
+[%#	$Id: YurtHeatMonitor.ttml,v 0.01 2019/10/29 06:42:47 shanta Exp shanta $	%]
 [%#	$Id: CellLogView.ttml,v 1.0 2018/08/05 06:42:47 shanta Exp shanta $	%]
   [% PROCESS DefaultDbi.ttml %]      [% version = data.version %]
-[% displayversion = 'v 1.01 ' %]
+[% version = 'v 1.01 ' %]
 [%# embed(data.page_top_view,['-PAGE_TITLE','Our Cell Log']) %]
 
 [% embed('ErrorDisplayView') %]
@@ -24,7 +24,7 @@
     [% HomeView =data.session_object.getAttribute('-KEY','HOME_VIEW')%]
     [% email = data.session_object.getAttribute('-KEY','auth_email') %]
     [% BrewName = data.recipe_code %]
-    [% BatteryCode = data.session_object.getAttribute('-KEY','Battery')  %]
+    [% procedure = data.session_object.getAttribute('-KEY','procedure')  %]
 
     [% PAGE = data.VIEW_NAME  %]
 <SCRIPT LANGUAGE="JavaScript">
@@ -60,26 +60,38 @@ function QuickClick(list) {
 
 <A NAME="PageTop"></A>
 [% BrewItemListTb = 'brew_item_list_tb'%]
-<h2>Our cells display</h2>
+<h2>Monitoring Yurt heating system.</h2>
 <h5>Variables</h5>
 	<ol>
 		<li>SiteName    = [% data.SiteName %].data</li>
 		<li>Admin group = [% group  %]</li>
 		<li>homeview    = [% data.home_view %].data</li>
 		<li>page        = [%  PAGE %]</li>
-	    <li>BatteryCode = [% BatteryCode %]</li>
+	    <li>Procedure  = [% procedure %]</li>
 	    <li>BatteryCode = [% data.battery %].data</li>
 	    <li>HomeVew TTML       [% HomeView %]</li>
     </ol>
-<h5>Cell log [% version %] display version [% displayversion %]</h5>
+<h5>Cell Monitor [% version %]version [% displayversion %]</h5>
 
  
+<p>Here we will look at ways of collecting data from the heating system. This data will be collected in a mysql format. For addition to monitoring system. We will be using first an arduino </p>
+
+<h3>Arduino Will have code to monitor </h3>
+
+<ol>
+  <li>Voltage at element</li>
+  <li>Amperage at element</li>
+  <li>wattage used. Calculated</li>
+  <li>temperature  of water. </li>
+  <li>Power to pump This will tell us if we are circulating the water.</li>
+</ol>
 
 
-<FORM METHOD=POST  ACTION="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;view=BatchLogView&amp;[% session_string %]&amp;batchnumber=" NAME="frmLinkList" onSubmit="return CheckSelection()">
+
+<!-- <FORM METHOD=POST  ACTION="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;view=BatchLogView&amp;[% session_string %]&amp;batchnumber=" NAME="frmLinkList" onSubmit="return CheckSelection()">
 
 <SELECT  NAME="FileName" WIDTH=20>
-<OPTION VALUE="None">Select a Battery --->
+<OPTION VALUE="None">Select a Battery 
 
  [% FOREACH item = DBI.query(" SELECT * FROM item_tb
 	                                WHERE  sitename = 'AltPower'
@@ -106,7 +118,7 @@ function QuickClick(list) {
 	   [% END %]
  [% BatteryCode =  data.item_code %]
  
- 
+
 [% BatteryCode %] 
 	[% FOREACH link = DBI.query(" SELECT * FROM  voltamp_tb
 	 	                                  WHERE  BatteryCode = '$BatteryCode'
@@ -174,18 +186,18 @@ function QuickClick(list) {
 <p> <a href="/cgi-bin/AltPower/item.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_details_view.x=15&display_details_view.y=12&amp;record_id=[% record_id %]"  target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">[%  BatteryCode %] Details [% record_id %]</font></a>
 <p> <a href="/cgi-bin/AltPower/item.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_modification_form=on&amp;record_id=[% record_id %]"  target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">[%  recipe_name %] Modify [% record_id %]</font></a>
 <p> <a href="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;recipecode=[% recipe_code %]&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New batch" style="AddButtonStyle">Add a new voltage</a>
-
-	
+ 
+	 -->
 
  
  
-[% embed('CSCCopyRight') %]
+
 
 
 </td>
 </tr>
 </table>
-
+</ul>
 
 
 

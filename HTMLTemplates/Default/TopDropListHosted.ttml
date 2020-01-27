@@ -1,0 +1,30 @@
+[%#	$Id: /HTMLTemplates/Default/TopHostedList.ttml,v 0.1 2020/01/24 17:43:15 shanta Exp shanta $	 %]	
+
+<li><span> Hosted Sites </span>
+  
+  <ul>
+<li>
+
+ [%  embed("AdminURLLink") %]	
+
+ </li>
+
+  [% IF username != 'nothosted' %]
+ <li>
+    <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;view=HostingView&amp;[% session_string %]" target="_blank">Host with Us!</a>
+ </li>
+[% END %]
+
+[% FOREACH link = DBI.query("SELECT * FROM internal_links_tb
+                                WHERE  category = 'Hosted_link' AND (username_of_poster = '$username' OR share = 'public')
+                                  AND (sitename =  '$SiteName')
+                                  ORDER BY link_order
+                                    ")%]    
+                                
+  <li>
+       <a href="[% link.url %]" name="Contact" target="[%link.target %]"title="[% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
+  </li>
+
+  [% END %]
+ </ul>
+</li>

@@ -1,6 +1,7 @@
+[%#	$Id: PowerUsageView.ttml,v 0.111 2019/10/25 11:42:47 shanta Exp shanta $	%]
 [%#	$Id: PowerUsageView.ttml,v 0.11 2018/11/07 11:42:47 shanta Exp shanta $	%]
  [%#	$Id: PowerUsageView.ttml,v 0.10 2014/12/11 06:42:47 shanta Exp shanta $	%]      
- [% version = 0.11 %]
+ [% version = 0.111%]
  [% PROCESS DefaultDbi.ttml %]
 [% embed(data.page_top_view,['-PAGE_TITLE','Power Usage  ' data.app_ver $version]) %]
 
@@ -28,7 +29,10 @@
 
 <A NAME="PageTop"></A>
 [% BrewItemListTb = 'brew_item_list_tb'%]
-<h2>Our Power Logs [% version %]</h2>
+
+<h2> [% SiteName %] Power log  [% version %] </h2>
+
+
 <h5>Variables</h5>
 	<ol>
 		<li>SiteName  = [% data.SiteName %].data</li>
@@ -40,6 +44,24 @@
 
  
 
+
+</FORM>
+
+<p>This is our power system logging system. Here we will at first track the development our power usage and the process of how we got to were we are now.</p>
+
+<ul>
+  <li><h3>Voltage acquisition and logging</h3>
+  
+  <p>We will collect data from sensors via both <a href="/cgi-bin/index.cgi?site=AltPower&view=VoltSensorDevelopment" target="<popup window>">Arduino and Raspberry pi.</a> </p>
+  </li>
+  <li><h3>amp acquisition and logging. </h3>
+  <p>Similar to voltage collection but using amp sensors</p></li>
+  <li><h3>Recording data from solar chargers</h3>
+  <p>This will use the serial connector supplied on the charge controller. </p></li>
+</ul>
+
+
+<h2>Our List of batteries.</h2>
 
 [% IF username  == 'Shanta' OR
 	        group     == 'Apis_Admin' OR
@@ -63,32 +85,15 @@
 	       group    ==  'WB_admin' OR
 	        group     == 'MJB_Admin'        %]
 
-	   &nbsp;<a href="/cgi-bin/AltPower/item.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New Recipe" style="AddButtonStyle">Add</a>
+	   &nbsp;<a href="/cgi-bin/AltPower/item.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New Recipe" style="AddButtonStyle">Add New Battery</a>
 	
 	   [% END %]
 
 
-
-</FORM>
-<h2>Our Power log 	[% SiteName %] </h2>
-
-<p>This is our power system logging system. Here we will at first track the development our power usage and the process of how we got to were we are now.</p>
-
-<ul>
-  <li><h3>Voltage acquisition and logging</h3>
-  
-  <p>We will collect data from sensors via both <a href="/cgi-bin/index.cgi?site=AltPower&view=VoltSensorDevelopment" target="<popup window>">Arduino and Raspberry pi.</a> </p>
-  </li>
-  <li><h3>amp acquisition and logging. </h3>
-  <p>Similar to voltage collection but using amp sensors</p></li>
-  <li><h3>Recording data from solar chargers</h3>
-  <p>This will use the serial connector supplied on the charge controller. </p></li>
-</ul>
-
-
-
-[%# embed('IngredianceList') %]
+[% embed('BatteryList') %]
  	
+
+[%# embed('VoltAmpView') %]
 
                  
  
