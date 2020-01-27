@@ -888,6 +888,7 @@ use WWSetup;
      $ANI_FAVICON             = $SetupVariablesWiseWoman->{-ANI_FAVICON};
      $page_top_view           = $SetupVariablesWiseWoman->{-PAGE_TOP_VIEW};
      $FAVICON_TYPE            = $SetupVariablesWiseWoman->{-FAVICON_TYPE};
+     $GLOBAL_DATAFILES_DIRECTORY= $SetupVariablesWiseWoman->{-GLOBAL_DATAFILES_DIRECTORY};
 } 
 
 sub new
