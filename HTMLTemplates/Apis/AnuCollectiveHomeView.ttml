@@ -12,6 +12,19 @@
 
 
 
+<<<<<<< HEAD
+=======
+[% END %]
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% email = data.session_object.getAttribute('-KEY','auth_email') %]
+<!-- ApisHomeView  v 1.1 2003/11/29-->
+<div id=body > 
+>>>>>>> master
 <A NAME="PageTop"></A>
 
 
@@ -46,10 +59,7 @@
                  
                <a href="/cgi-bin/FAQ/faq.cgi?site=[%SiteName%]&amp;[% session_string %]&amp;sort_field1=category &amp;sort_field2=fname &amp;first_record_to_display=0&amp;records_per_page= &amp;record_id=2&amp;columns_to_view=category &amp;columns_to_view=question&amp;display_details_view.x=8 &amp;display_details_view.y=9&amp;display_details_view=on" onmousedown="click Here for info on what we collect">Why should I create an account</a>
     
-		</td >
-		</tr>
-		<tr>
-		<td >
+
 
 
 
@@ -159,6 +169,11 @@ here</a>.</font></td></tr></table></td></tr></table></center></noscript>
 [% END %]
 
 
+<<<<<<< HEAD
+=======
+</div>
+
+>>>>>>> master
 
 
 

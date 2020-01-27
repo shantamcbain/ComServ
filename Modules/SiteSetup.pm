@@ -7,7 +7,8 @@ use Extropia::Core::Base qw(_rearrange _rearrangeAsHash);
 
 #my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
 #my $GLOBAL_DATAFILES_DIRECTORY="/home/usbmca/Datafiles";
-my $GLOBAL_DATAFILES_DIRECTORY="/home/weaver/Datafiles";
+#my $GLOBAL_DATAFILES_DIRECTORY="/home/weaver/Datafiles";
+my $GLOBAL_DATAFILES_DIRECTORY="/home/wisewoma/Datafiles";
 # $site = 'file';
 #Create local Variable for use here only
 
@@ -664,7 +665,7 @@ use OrganicSetup;
  }
  if ($SiteName eq "pihive") {
 use pihiveSetup;
- my $SetupVariablesBMaster   = new pihiveSetup($UseModPerl);
+ my $SetupVariablespihive  = new pihiveSetup($UseModPerl);
      $HasMembers               = $SetupVariablespihive->{-HAS_MEMBERS};
      $HTTP_HEADER_KEYWORDS    = $SetupVariablespihive->{-HTTP_HEADER_KEYWORDS};
      $HTTP_HEADER_PARAMS      = $SetupVariablespihive->{-HTTP_HEADER_PARAMS};
@@ -888,6 +889,7 @@ use WWSetup;
      $ANI_FAVICON             = $SetupVariablesWiseWoman->{-ANI_FAVICON};
      $page_top_view           = $SetupVariablesWiseWoman->{-PAGE_TOP_VIEW};
      $FAVICON_TYPE            = $SetupVariablesWiseWoman->{-FAVICON_TYPE};
+     $GLOBAL_DATAFILES_DIRECTORY  = $SetupVariablesWiseWoman->{-GLOBAL_DATAFILES_DIRECTORY};
 } 
 
 sub new
@@ -939,17 +941,17 @@ sub new
   -HTTP_HEADER_KEYWORDS       => $HTTP_HEADER_KEYWORDS||"eXtropia HelpDesk,eXtropia, HelpDesk,Web applications, Application hosting, hosting, support,shanta mcbain, shanta, McBain, csps, organic farming, bee keeping, beekeeping ",
   -HTTP_HEADER_DESCRIPTION    => $HTTP_HEADER_DESCRIPTION||"forager.com, computersystemconsulting.ca, webcthelpdesk.com, organicfarming.ca, shanta.org",
   -DATASOURCE_TYPE            => $datesourcetype,
-  #-DBI_DSN                    => 'mysql:database=shanta_forager',
+  -DBI_DSN                    => 'mysql:database=shanta_forager',
   -DBI_DSN_STORES             => 'mysql:database=forager',
-  #-MySQLPW                    => 'UA=nPF8*m+T#',
-  -DBI_DSN                    => 'mysql:database=shanta',
-  -MySQLPW                    => 'herbsrox2,
+  -MySQLPW                    => 'UA=nPF8*m+T#',
+  #-DBI_DSN                    => 'mysql:database=shanta',
+  #-MySQLPW                    => 'herbsrox2,
   -PAGE_DBI                   => 'mysql:database=shanta_forager',
   -PAGE_MSQL_USER_NAME        => $AUTH_MSQL_USER_NAME||'shanta_forager',
   -PAGE_MySQLPW               => $MySQLPW||'UA=nPF8*m+T#',
   -AUTH_TABLE                 => $AUTH_TABLE||'csc_user_auth_tb',
-  #-AUTH_MSQL_USER_NAME        => 'shanta_forager',
-  -AUTH_MSQL_USER_NAME        => 'shanta',
+  -AUTH_MSQL_USER_NAME        => 'shanta_forager',
+  #-AUTH_MSQL_USER_NAME        => 'shanta',
   -DEFAULT_CHARSET            => 'ISO-8859-1',
   -CAL_TABLE                  => 'cal_event',
   -STORE_URL                  => $StoreUrl,
