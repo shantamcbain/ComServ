@@ -664,7 +664,7 @@ use OrganicSetup;
  }
  if ($SiteName eq "pihive") {
 use pihiveSetup;
- my $SetupVariablesBMaster   = new pihiveSetup($UseModPerl);
+ my $SetupVariablespihive  = new pihiveSetup($UseModPerl);
      $HasMembers               = $SetupVariablespihive->{-HAS_MEMBERS};
      $HTTP_HEADER_KEYWORDS    = $SetupVariablespihive->{-HTTP_HEADER_KEYWORDS};
      $HTTP_HEADER_PARAMS      = $SetupVariablespihive->{-HTTP_HEADER_PARAMS};
