@@ -9,9 +9,7 @@
 
 
 <!-- ApisHomeView  v 1.1 2003/11/29-->
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td>
+<div id=body > 
 <A NAME="PageTop"></A>
 
 
@@ -34,10 +32,7 @@
                  
                <a href="/cgi-bin/FAQ/faq.cgi?site=[%SiteName%]&amp;[% session_string %]&amp;sort_field1=category &amp;sort_field2=fname &amp;first_record_to_display=0&amp;records_per_page= &amp;record_id=2&amp;columns_to_view=category &amp;columns_to_view=question&amp;display_details_view.x=8 &amp;display_details_view.y=9&amp;display_details_view=on" onmousedown="click Here for info on what we collect">Why should I create an account</a>
     
-		</td >
-		</tr>
-		<tr>
-		<td >
+
 
 
 
@@ -146,9 +141,7 @@ To browse visit <a href="http://ss.webring.com/navbar?f=l;y=shanta;u=10132800">
 here</a>.</font></td></tr></table></td></tr></table></center></noscript>
 [% END %]
 
-</td>
-</tr>
-</table>
+</div>
 
 
 
