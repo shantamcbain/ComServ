@@ -25,10 +25,7 @@
 [% localip = data.local_ip %]
 
 [% SiteFullName = 'Alternate Power'%]
-<div align="center"><h1>[% SiteFullName %] Projects page.</h1></div>
-</div>
-<h2>Active project list</h2>
- 
+
 	   
 <ul>
  <li> 
