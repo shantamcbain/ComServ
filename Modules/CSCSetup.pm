@@ -17,8 +17,8 @@ sub new
  # This is where you define your variable mapping.
  my $self = {
   -HOME_VIEW_NAME                 => 'HomeView',
-  -SITE_LAST_UPDATE               => 'October 6, 2011',
-  -HOME_VIEW                      => 'PageView',
+  -SITE_LAST_UPDATE               => 'January 28, 2020',
+  -HOME_VIEW                      => 'HomeView',
   -BASIC_DATA_VIEW                => 'BasicDataView',
   -ADDITIONALAUTHUSERNAMECOMMENTS => 'Please do not use spaces.',
   -APP_LOGO                       => '/images/csc/cscbig.gif',

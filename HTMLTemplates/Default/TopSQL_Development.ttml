@@ -17,6 +17,6 @@
 	                                  ORDER BY link_order
 	                                  ")%]    
 	   <li>
-	       <a href="[% link.url %]?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
+	       <a href="http://[% link.url %]?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
 	   </li>
 	[% END %]

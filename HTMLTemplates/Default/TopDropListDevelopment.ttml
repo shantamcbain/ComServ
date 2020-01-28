@@ -30,16 +30,24 @@
 	 %]
  
  
-<li><span>       [% SiteName %] Development  </span>
+<li><span>       [%# SiteName %] Development  </span>
 <ul> <li>
 
  [%  embed("AdminURLLink") %]	
-
+ 
  </li> 
- <li>
-   <a href="dev.[% data.domain_name %]/cgi-bin/index.cgi?site=[% SiteName %]">dev.[% data.domain_name %]</a>
+ [% IF data.debug == "1"  %]    
+	<li>
+	 <a HREF ="?site=[% SiteName %]&amp;debug=0&amp;page=[% data.page_name %]&amp;view=[% data.view %]&amp;[% session_string %]"><font   class="LeftSideBarNavStyle">NonDebug</font></a>
+	</li>     	 
+  [% ELSE %]
+   <li>
+	<a HREF ="?site=[% SiteName %]&amp;debug=1&amp;page=[% data.page_name %]&amp;view=[% data.view %]&amp;[% session_string %]"><font   class="LeftSideBarNavStyle">Debug</font></a> 
+	</li> 	 
+  [% END %] <li>
+   <a href="http://dev.[% data.domain_name %]/cgi-bin/index.cgi?site=[% SiteName %]" target="_blank">dev.[% data.domain_name %]</a>
  </li>
-	<li><a href="http://dev.[% HostName %]/cgi-bin/index.cgi?site=CSCDev" name="DevSite" title="DevSite See what we are working on." Target ="_Blank"><font   class="HeaderBarNavStyle">CSCDev</font></a>
+	<li><a href="http://dev.computersystemconsulting.ca/cgi-bin/index.cgi?site=CSCDev" name="DevSite" title="DevSite See what we are working on." Target ="_Blank"><font   class="HeaderBarNavStyle">CSCDev</font></a>
 	</li>
 	
 	  [% IF group    == 'Demo_admin' %]

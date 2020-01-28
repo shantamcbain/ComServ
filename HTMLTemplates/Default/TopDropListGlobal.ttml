@@ -25,15 +25,7 @@
          group == 'CSC_Developer'OR
          username  == 'Shanta' %]
   
-  [% IF data.debug == "1"  %]    
-	<li>
-	 <a HREF ="?site=[% SiteName %]&amp;debug=0&amp;page=[% data.page_name %]&amp;view=[% data.view %]&amp;[% session_string %]"><font   class="LeftSideBarNavStyle">NonDebug</font></a>
-	</li>     	 
-  [% ELSE %]
-   <li>
-	<a HREF ="?site=[% SiteName %]&amp;debug=1&amp;page=[% data.page_name %]&amp;view=[% data.view %]&amp;[% session_string %]"><font   class="LeftSideBarNavStyle">Debug</font></a> 
-	</li> 	 
-  [% END %]  
+  
           
    [% IF firstname %]
    <li> <a href="http://dev.[% HostName %]/cgi-bin/index.cgi?site=[% SiteName %]" target="_Blank" name="DevSite" title="DevSite See what we are working on."><font   class="HeaderBarNavStyle">What we are working on.</font></a></li>

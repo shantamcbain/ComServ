@@ -29,7 +29,7 @@
 	      group    == 'Demo_admin'
 	 %]
 
-		<li><span>       [% SiteName %] Admin Tools  </span>
+		<li><span>        Admin Tools  </span>
 	<ul> <li>      
 	[%  embed("AdminURLLink") %]	
 </li>
