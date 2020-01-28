@@ -19,6 +19,7 @@ foreach ( $CGI->param() )
 if ($HostName eq "computersystemconsulting.ca") {
 my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
 };
+my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
 #my $GLOBAL_DATAFILES_DIRECTORY="/home/usbmca/Datafiles";
 #my $GLOBAL_DATAFILES_DIRECTORY="/home/weaver/Datafiles";
 #my $GLOBAL_DATAFILES_DIRECTORY="/home/wisewoma/Datafiles";
