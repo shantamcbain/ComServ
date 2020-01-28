@@ -16,7 +16,7 @@ foreach ( $CGI->param() )
  $CGI->param( $1, $CGI->param($_), $HostName ) if (/(.*)\.x$/);
 }
 
-if ($HostName eq "http://computersystemconsulting.ca") {
+if ($HostName eq "computersystemconsulting.ca") {
 my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
 };
 #my $GLOBAL_DATAFILES_DIRECTORY="/home/usbmca/Datafiles";
