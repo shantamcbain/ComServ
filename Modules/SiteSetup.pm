@@ -15,7 +15,7 @@ foreach ( $CGI->param() )
 {
  $CGI->param( $1, $CGI->param($_) ) if (/(.*)\.x$/);
 }
-$HostName;
+my $HostName =$ENV{'SERVER_NAME'};
 if ($HostName eq "computersystemconsulting.ca") {
 my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
 };
