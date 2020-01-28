@@ -27,7 +27,7 @@
 <div id="menu">
 [% IF data.header_image != "none"%]
   [% embed('HeaderBannerView')%]	
-  			[% embed('HeaderHostingView') %] 
+  			[%# embed('HeaderBannerView') %] 
 
 [% END %]
 
