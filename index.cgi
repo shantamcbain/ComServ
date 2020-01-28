@@ -175,7 +175,7 @@ my $VIEW_LOADER =
 #my $HostName    = $ENV{'SERVER_NAME'};
 use SiteSetup;
 my $UseModPerl     = 1;
-my $SetupVariables = new SiteSetup($UseModPerl, $CGI->param('site'));
+my $SetupVariables = new SiteSetup($UseModPerl, $CGI->param('site'), $HostName);
 $SiteName            = $SiteName || $SetupVariables->{-SITE_NAME};
 $Affiliate           = $SetupVariables->{-AFFILIATE};
 $APP_NAME_TITLE      = $SetupVariables->{-APP_NAME_TITLE};
