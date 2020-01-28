@@ -5,13 +5,6 @@ use CGI::Carp qw(fatalsToBrowser);
 use Extropia::Core::Base qw(_rearrange _rearrangeAsHash);
 #This is the only main difference between domain configuration.All this should move to mysql
 
-#my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
-#my $GLOBAL_DATAFILES_DIRECTORY="/home/usbmca/Datafiles";
-#my $GLOBAL_DATAFILES_DIRECTORY="/home/weaver/Datafiles";
-my $GLOBAL_DATAFILES_DIRECTORY="/home/wisewoma/Datafiles";
-# $site = 'file';
-#Create local Variable for use here only
-
 # $datasourcetype = 'file';
 #my $datesourcetype = 'file';
 my $CGI = new CGI()
@@ -22,6 +15,15 @@ foreach ( $CGI->param() )
 {
  $CGI->param( $1, $CGI->param($_) ) if (/(.*)\.x$/);
 }
+$HostName;
+if ($HostName eq "computersystemconsulting.ca") {
+my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
+};
+#my $GLOBAL_DATAFILES_DIRECTORY="/home/usbmca/Datafiles";
+#my $GLOBAL_DATAFILES_DIRECTORY="/home/weaver/Datafiles";
+#my $GLOBAL_DATAFILES_DIRECTORY="/home/wisewoma/Datafiles";
+# $site = 'file';
+#Create local Variable for use here only
 
 my $datesourcetype = 'MySQL';
 my $Affiliate;
