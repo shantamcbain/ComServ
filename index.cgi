@@ -89,8 +89,8 @@ foreach ( $CGI->param() )
 my $APP_NAME       = "apis";
 my $APP_NAME_TITLE = "Apis, Bees and Beekeeping ";
 my $SiteName       = $CGI->param('site');
-my $View           = $CGI->param('view') || 'PageView';
-my $Page           = $CGI->param('page') || 'HomeView';
+my $View           = $CGI->param('view') ;
+my $Page           = $CGI->param('page');
 my $procedure      = $CGI->param('procedure')||'List';
 my $project        = $CGI->param('project');
 my $title          = $CGI->param('title');
