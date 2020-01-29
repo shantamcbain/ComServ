@@ -113,9 +113,9 @@ Page =  [%   PAGE   %]   -->
 
 
 
-<p>[% group %]
+
                  
- %]
+
 <p>  [% embed('ToDoList') %]
 
 
