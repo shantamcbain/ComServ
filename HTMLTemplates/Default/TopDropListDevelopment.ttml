@@ -44,18 +44,15 @@
    <li>
 	<a HREF ="?site=[% SiteName %]&amp;debug=1&amp;page=[% data.page_name %]&amp;view=[% data.view %]&amp;[% session_string %]"><font   class="LeftSideBarNavStyle">Debug</font></a> 
 	</li> 	 
-  [% END %] <li>
+  [% END %] 
+  
+<li>
    <a href="http://dev.[% data.domain_name %]/cgi-bin/index.cgi?site=[% SiteName %]" target="_blank">dev.[% data.domain_name %]</a>
- </li>
-	<li><a href="http://dev.computersystemconsulting.ca/cgi-bin/index.cgi?site=CSCDev" name="DevSite" title="DevSite See what we are working on." Target ="_Blank"><font   class="HeaderBarNavStyle">CSCDev</font></a>
-	</li>
+</li>
+
+<li><a href="http://dev.computersystemconsulting.ca/cgi-bin/index.cgi?site=CSCDev" name="DevSite" title="DevSite See what we are working on." Target ="_Blank"><font   class="HeaderBarNavStyle">CSCDev</font></a>
+</li>
 	
-	  [% IF group    == 'Demo_admin' %]
-		 [% embed ('SQL_Demo_Admin') %]
-	  [% ELSE %]
-	 	[% embed ('TopSQL_Development') %]
-	
-	  [% END %]
 </ul>	  
 </li>
 [% END %]

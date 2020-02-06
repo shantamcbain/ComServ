@@ -72,8 +72,12 @@
             Pollination practices, Marketing. And it goes on.
 
             </p>
-            <p>We are constantly barraged with </p>                                        
-            <p>Tools you can use to help you manage your bee keeping and bee breeding operations. </p>
+            <p>We are constantly barraged with </p>  
+            
+            <h2>Join us this season at the <a href="https://anucollective.beemaster.ca" target="_blank" name="Anucollective">Anu collective</a></h2>                                    
+            
+            
+            <h2>Tools you can use to help you manage your bee keeping and bee breeding operations. </h2>
 
             <ul>
             <li>Apiary Management System. <br>Track what is happening in your yards</li>
@@ -83,6 +87,7 @@
             <li><a href="/cgi-bin/Apis/apis.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
             <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
             <li>
+            </ul>
 			<h3>News</h3>
 			<table align="center">
 			<tbody align="center">
