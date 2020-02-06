@@ -87,8 +87,6 @@ if(select.options[index].value!="")
 window.location.href=select.options[index].value;
 break;
 }
-<script>type="text/javascript" src="/javascript/ws
-3menu.js"></script>
  
 <script>type="text/javascript" src="/javascript/menu.js"></script>
 
@@ -112,7 +110,6 @@ break;
 
 <link rel="stylesheet" type="text/css" href="/styles/Dropdown.css" />
  <link rel="stylesheet" href="/styles/demonstration.css" type="text/css">
-<link rel="stylesheet" type="text/css" href="/styles/w3menu.css" />
 
     <script src="/javascript/Dropdown.crc.js"></script>
     <script src="/javascript/demonstration.js"></script>

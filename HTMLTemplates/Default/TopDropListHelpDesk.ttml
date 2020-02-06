@@ -1,4 +1,3 @@
-
 [% #	$Id: HeaderNavBarView.ttml v 0.1 2018/18/19 v 0.02 2020/01/25 22:59:04 shanta Exp $	%]
 
 
@@ -7,22 +6,12 @@
    <li>
         <a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]" target=.blank' ><font   class="LeftSideBarNavStyle">Main page</font></font></a>
  
-
-      [%# /HTMLTemplates/Default/TopDropListHelpDesk.ttml %]
-[%# 	$Id: TopDropListHelpDesk.ttml,v 0.01 2019/12/09 06:33:25 shanta Exp shanta $	%]
-
- <span><a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]" name="Home page" onmouseover="HelpDesk" title="HelpDesk">HelpDesk</a></span>
-
-  <ul>
-   
     <li>
         <a href="https://www.computersystemconsulting.ca/shmcs/index.php?rp=/knowledgebase" target="_blank" ><font   class="LeftSideBarNavStyle">Knowlage base</font></a>
         
     </li>
+    <li>
+        <a href="https://www.computersystemconsulting.ca/whmcs/supportticket.php?action=open" target='_blank' ><font   class="LeftSideBarNavStyle">Sumbmit a support ticket.</font></a> 
     </li>
-
-        <a href="https://www.computersystemconsulting.ca/whmcs/supportticket.php?action=open" target='_blank' ><font   class="LeftSideBarNavStyle">Sumbmit  Support Ticket</a>
-    </li>  
    </ul>
-
-
+</li>

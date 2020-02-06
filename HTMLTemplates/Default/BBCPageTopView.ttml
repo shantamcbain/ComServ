@@ -144,9 +144,7 @@ break;
 
  
 	<!-- page_left_view.ttml in PageTopView.ttml-->
-	
- [%  data.domain_dame %][% LeftPageView %]
- 
+ [%  data.domain_dame %]
 		[% IF data.domain_name == 'helpdesk.computersystemconsulting.ca' %]<!-- HelpDeskLeftPageView-->
 			[% embed('HelpDeskLeftPageView') %]
 			[% ELSIF data.view == 'PlanningView'  %]
@@ -154,7 +152,7 @@ break;
 			[% ELSIF data.view == 'DailyWorkSheetView'  %]
 			   [%# embed('DWSLeftPageView') %]
 			[% ELSE %]<!-- page_left_view.ttml -->
-	 		<nav  id=Left>[%# embed('NonTableLeftPageView') %]</nav>
+	 		[%# embed('LeftPageView') %]
 	        [% END %]
 
   	<!-- Close Left Page Cell PageTopView-->

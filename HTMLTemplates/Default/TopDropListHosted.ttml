@@ -3,14 +3,16 @@
 <li><span> Hosted Sites </span>
   
   <ul>
-   <li>
-    [%  embed("AdminURLLink") %]	
-   </li>
+<li>
+
+ [%  embed("AdminURLLink") %]	
+
+ </li>
 
   [% IF username != 'nothosted' %]
-   <li>
+ <li>
     <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;view=HostingView&amp;[% session_string %]" target="_blank">Host with Us!</a>
-   </li>
+ </li>
 [% END %]
 
 [% FOREACH link = DBI.query("SELECT * FROM internal_links_tb
@@ -19,9 +21,9 @@
                                   ORDER BY link_order
                                     ")%]    
                                 
-   <li>
+  <li>
        <a href="[% link.url %]" name="Contact" target="[%link.target %]"title="[% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
-   </li>
+  </li>
 
   [% END %]
  </ul>

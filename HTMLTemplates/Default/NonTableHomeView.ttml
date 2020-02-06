@@ -22,7 +22,6 @@
 [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
 	[% session_id = data.session_object.getId() %]
 	[% session_string = "session_id=$session_id" %]
-	[% LeftPageView = data.leftpageview %]
 [% PROCESS DefaultDbi.ttml %]
 
 
@@ -127,13 +126,13 @@
 
 
 
-
+<p>[% group %]
                  
  
 <p>  [% embed('ToDoList') %]
 
 		
-[%# embed ("AdminTodoList")%]	
+[% embed ("AdminTodoList")%]	
 
 
 <p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %] &nbsp; This value is stored in your setup file. [% END %]

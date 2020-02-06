@@ -14,16 +14,14 @@
 		<!-- HeaderHostingView -->
 	 		         
 		</td> 
-	   </tr>
-	   <tr>
-	   <td width="100%" align="center" valign="middle">
+		<td align="center" valign="middle" >
 
 			   
 
 
 		   
 			
-[%# embed('DefaultHeaderBannerView')%]	
+[%# embed('HeaderBannerView')%]	
 
 
 	<!-- end Call HeaderNaveBarView -->
