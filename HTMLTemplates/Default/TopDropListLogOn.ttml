@@ -1,0 +1,13 @@
+  [%# /HTMLTemplates/Default/TopDropListLogOn.ttml %]
+[%# 	$Id: TopDropListLogOn.ttml,v 0.01 2019/12/09 06:33:25 shanta Exp shanta $	%]
+<span> 
+[% IF username %]
+    <a href="[% data.script_name %]?session_id=[% session_id %]&amp;submit_logoff=on&amp;site=[%SiteName%]" target="[% data.link_target %]"><font   class="LeftSideBarNavStyle">Logoff</font></A>
+    [% ELSE %]
+  	 <A HREF ="[% data.script_name %]?session_id=[% session_id %]&amp;submit_logon=on&amp;site=[%SiteName%]" TARGET ="[% data.link_target %]" title="To get the most from this application you will need to create an account. Click here to create one or logon" ><font   class="LeftSideBarNavStyle">Logon</font></A> 	               	    
+    [% END %]	 </span>
+
+  <ul>
+  
+   <li><a href="/cgi-bin/FAQ/faq.cgi?site=[%SiteName%]&amp;[% session_string %]&amp;sort_field1=category&amp;sort_field2=fname &amp;first_record_to_display=0&amp;records_per_page=&amp;record_id=2&amp;columns_to_view=category&amp;columns_to_view=question&amp;display_details_view.x=8&amp;display_details_view.y=9&amp;display_details_view=on" title="Why should I create an account?"><font class="HeaderBarNavStyle"size="-2">Why create an account</font></a>
+  </ul>

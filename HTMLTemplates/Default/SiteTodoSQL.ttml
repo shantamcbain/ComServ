@@ -7,6 +7,7 @@
  </td></tr>
 <tr><td>Sitename</td><td>Project code</td><td>Project name</td><td>Priority </td><td>Comments</td><td>Links</td></tr>
 [% FOREACH link = DBI.query("SELECT * FROM csc_todo_tb
+<<<<<<< HEAD
                                   WHERE ( status != '3' AND
                                           sitename = $sitename )
                                      ORDER BY priority DESC                                           
@@ -31,6 +32,16 @@
                                   ORDER BY priority DESC, sitename 
                                           
                                   ")%]                                                                   
+=======
+                                  WHERE (sitename =  '$SiteName' and 
+                                         status != '3')
+                                  ORDER BY  priority DESC,
+                                           due_date
+                                  ")%]    
+                                   
+ 
+                                 
+>>>>>>> origin/Brew
                                  
                                    <tr>
 <td > [% link.sitename %]  </td>

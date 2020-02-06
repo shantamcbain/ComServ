@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [% #/HTMLTemplates/Default/TopAdminLinksView.ttml %]
 	 [% IF group    ==  'Alegro_admin' OR
 	       group    ==  'Apis_admin' OR
@@ -43,3 +44,35 @@
 </ul>	  </li>
 [% END %]
 
+=======
+[%# /HTMLTemplates/Default/TopDropListAdmin.ttml %]
+[%# 	$Id: HeaderHostingView.ttml,v 0.01 2003/11/29 06:33:25 shanta Exp shanta $	%]
+<li> 
+            <span>Admin links</span>
+    <ul>
+     <li><a href="http://dev.[% HostName %]/cgi-bin/index.cgi?site=CSCDev" name="DevSite" title="DevSite See what we are working on." Target ="_Blank"><font   class="LeftSideBarNavStyle">CSCDev</font></a></li>
+       [% FOREACH link = DBI.query("SELECT * FROM internal_links_tb
+                                  WHERE  category = 'Admin_links'
+                                  AND (sitename =  '$SiteName' OR sitename =  'All')
+                                  ORDER BY link_order
+                                  ")%]    
+     <li>
+                  <a href="[% link.url %]?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
+     </li>
+        [% END %]
+        [% FOREACH link = DBI.query("SELECT * FROM page_tb
+                                  WHERE  menu = 'Admin_links'
+                                  AND (sitename =  '$SiteName' OR sitename =  'All')
+                                  ORDER BY link_order
+                                  ")%]    
+                                  
+                                 
+     <li>
+         <a href="[% link.url %]?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
+     </li>
+         [% END %]
+     </ul>
+</li>
+		
+	
+>>>>>>> origin/Brew

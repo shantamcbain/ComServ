@@ -24,14 +24,23 @@
 
 
   
+<<<<<<< HEAD
 <div id="menu">
 [% IF data.header_image != "none"%]
   [% embed('HeaderBannerView')%]	
   			[%# embed('HeaderBannerView') %] 
+=======
+<!-- Call HeaderBannerView and HeaderHostingView -->
+[% IF data.header_image != "none"%]
+  [% embed('HeaderBannerView')%]	
+  			[% embed('HeaderHostingView') %] 
+<!-- End Call HeaderBannerView and HeaderHostingView -->
+>>>>>>> origin/Brew
 
 [% END %]
 <<<<<<< HEAD
 [% embed('TopDropListView')%]
+<<<<<<< HEAD
 <!-- 			[% IF SiteName == 'Skye' OR
 =======
 
@@ -127,6 +136,9 @@
 [% embed('TopDropListHelpDesk') %]
 	
 </div>
+=======
+
+>>>>>>> origin/Brew
  
    <div class="clear-float"></div> 
 

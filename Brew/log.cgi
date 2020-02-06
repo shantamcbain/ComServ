@@ -709,7 +709,7 @@ my %status = (
 
 my %BASIC_INPUT_WIDGET_DEFINITIONS = (
  batchnumber => [
-               -DISPLAY_NAME => 'Batch code Must be unique. ODMStout11,20,2014',
+               -DISPLAY_NAME => 'Batch code Must be unique. 2020/01/01RecipeCode',
                -TYPE         => 'textfield',
                -NAME         => 'batchnumber',
                -VALUE        => $batchnumber,
