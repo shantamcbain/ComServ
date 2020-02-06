@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-[%#	$Id: HomeView.ttml,v 1.93 2019/11/19 17:43:15 shanta Exp shanta $	
-[%#	$Id: HomeView.ttml,v 1.92 2019/10/09 17:43:15 shanta Exp shanta $	
-[%#	$Id: HomeView.ttml,v 1.91 2014/10/22 17:43:15 shanta Exp shanta $	
-=======
->>>>>>> master
-
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.93 2019/10/10 17:43:15 shanta Exp shanta $	%]
+[%#	$Id: HomeView.ttml,v 1.93 2019/11/19 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: HomeView.ttml,v 1.92 2019/10/09 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: HomeView.ttml,v 1.91 2014/10/22 17:43:15 shanta Exp shanta $	%]
+
 [% ViewVersion ="1.93" %]
 [% # Ideally this template should be converted into a static CSS file and
 # be served as /foo/bar.css and not via CGI, since it slows things
@@ -147,11 +142,7 @@
 			[% embed ('DemoHomeView') %]
 			<!-- End Demo home view -->
 		[% END %]
-<<<<<<< HEAD
-  [%# embed('SiteAdminNotes') %]
 
-
-=======
 	 [% IF group    ==  'Alegro_admin' OR
 	       group    ==  'Apis_admin' OR
 	       group    ==  'BCHPA_admin' OR
@@ -191,11 +182,7 @@
  
  
 
-  [%# embed ('SiteTodoSQL' )   %]		
 
->>>>>>> master
-
-<p>[%# group %]
  
 <!--  Todo lists moved to SiteAdmin -->
 
