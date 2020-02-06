@@ -24,35 +24,24 @@
 
 
   
-<<<<<<< HEAD
+
 <div id="menu">
 [% IF data.header_image != "none"%]
   [% embed('HeaderBannerView')%]	
   			[%# embed('HeaderBannerView') %] 
-=======
+
 <!-- Call HeaderBannerView and HeaderHostingView -->
 [% IF data.header_image != "none"%]
   [% embed('HeaderBannerView')%]	
   			[% embed('HeaderHostingView') %] 
 <!-- End Call HeaderBannerView and HeaderHostingView -->
->>>>>>> origin/Brew
+
 
 [% END %]
-<<<<<<< HEAD
+
 [% embed('TopDropListView')%]
-<<<<<<< HEAD
-<!-- 			[% IF SiteName == 'Skye' OR
-=======
 
-[%# embed('TopDropListView')%]
 
-[% IF SiteName == 'Skye' OR
->>>>>>> master
-			      SiteName == 'Noop' %]
-				<A HREF ="?[% session_string %]&amp;view=[% data.home_view %]&amp;site=[% Organic%]">[% HostName %]</A>
-				&nbsp; |
-[% END %]
-<<<<<<< HEAD
      
 			
 		<!-- embed JobLinkView -->
@@ -108,9 +97,7 @@
 		&nbsp; |
 			[% embed('HelpDeskLinkView') %]
 	 -->
-		
-=======
->>>>>>> master
+
 
 <ul class="dropdown" id="dropdownCentred">
 		    <li>
@@ -136,10 +123,7 @@
 [% embed('TopDropListHelpDesk') %]
 	
 </div>
-=======
 
->>>>>>> origin/Brew
- 
    <div class="clear-float"></div> 
 
 <!--This is the end of TopNavBarView.ttml-->
