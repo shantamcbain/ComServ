@@ -3,11 +3,11 @@
 
 <li><span>Member</span>
   <ul>
- <li>
-
- [%  embed("AdminURLLink") %]	
-
- </li>    <li>    <a href="?site=[% SiteName %]&amp;[% session_string %]&amp;view=MembersView" target="_blank" name="Member_link" onmousemove="test"title="Member Info">Member Info</a></li>
+   <li>
+     [%  embed("AdminURLLink") %]	
+   </li>    
+   <li>    <a href="?site=[% SiteName %]&amp;[% session_string %]&amp;view=MembersView" target="_blank" name="Member_link" onmousemove="test"title="Member Info">Member Info</a>
+   </li>
           
     [% FOREACH link = DBI.query("SELECT * FROM internal_links_tb
                                   WHERE  category = 'Member_links'
@@ -18,7 +18,8 @@
      <li>
        <a href="[% link.url %]?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] ">[% link.name %]</a>
      </li>
- 	  [% END %]
+     [% END %]
+     
  [% FOREACH link = DBI.query("SELECT * FROM page_tb
 	                                  WHERE  menu = 'member'
 	                                  AND share  = 2 
@@ -29,6 +30,6 @@
 	    <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=[% link.page_code %]" name="Contact" target="[% link.target %]" title=" [% linkview_.name %] ">[% link.view_name %]</a>
 	  </li>
 	  [% END %]
-	   </ul>
+	 </ul>
 
   </li>
