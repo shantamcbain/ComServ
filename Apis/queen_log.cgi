@@ -81,8 +81,8 @@ foreach ($CGI->param()) {
 use SiteSetup;
 #my $S   = &CSCSetup::SiteVariables;
   my $SetupVariables  = new SiteSetup($UseModPerl);
-    my $home_view             = $SetupVariables->{-HOME_VIEW}; 
-    my $homeviewname          = $SetupVariables->{-HOME_VIEW_NAME};
+    my $home_view             = 'ApisQueenLogView'||$SetupVariables->{-HOME_VIEW}; 
+    my $homeviewname            = 'ApisQueenLogView'||$SetupVariables->{-HOME_VIEW_NAME};
     my $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
     my $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
     my $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
@@ -92,6 +92,7 @@ use SiteSetup;
     my $mail_to               = $SetupVariables->{-MAIL_TO};
     my $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
     my $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
+    my $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
     my $app_logo              = $SetupVariables->{-APP_LOGO};
     my $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
     my $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
@@ -101,7 +102,7 @@ use SiteSetup;
     $HTTP_HEADER_PARAMS       = $SetupVariables->{-HTTP_HEADER_PARAMS};
     $HTTP_HEADER_KEYWORDS     = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
     $HTTP_HEADER_DESCRIPTION  = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
-    $SITE_DISPLAY_NAME          = $SetupVariables->{-SITE_DISPLAY_NAME};
+    my $SITE_DISPLAY_NAME          = $SetupVariables->{-SITE_DISPLAY_NAME};
     $MySQLPW               = $SetupVariables->{-MySQLPW};
     $DBI_DSN               = $SetupVariables->{-DBI_DSN};
     $AUTH_TABLE            = $SetupVariables->{-AUTH_TABLE};
@@ -152,7 +153,6 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
@@ -561,13 +561,31 @@ my @DATASOURCE_FIELD_NAMES =
        abstract
        box_1_bees
        box_1_brood
+       box_1_broodadded
        box_1_foundation
+       box_1_comb
+       box_1_empty
+       box_1_honey
        box_2_bees
        box_2_brood
+       box_2_brood_x
+       box_2_broodadded
        box_2_foundation
+       box_2_comb
+       box_2_empty
+       box_2_honey
+       box_x_bees
+       box_x_brood
+       box_x_broodadded
+       box_x_foundation
+       box_x_comb
+       box_x_empty
+       box_x_honey
+       brood_given_x
        honey_box
        honey_box_foundation
        honey_removed
+       honey_added
        details
        start_time
        group_of_poster
@@ -616,6 +634,28 @@ my %frames =
       9  => '9',
       10 => '10',
     );
+
+ my %xframes =
+    (
+      0  => 'None',
+      1  => '1',
+      2  => '2',
+      3  => '3',
+      4  => '4',
+      5  => '5',
+      6  => '6',
+      7  => '7',
+      8  => '8',
+      9  => '9',
+      10 => '10',
+      11  => '1',
+      12  => '2',
+      13  => '3',
+      14  => '4',
+      15  => '5',
+      16  => '6',
+      17  => '7',
+   );
 
 
 
@@ -688,7 +728,15 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -LABELS       => \%frames
      
     ],
-    box_1_foundation => [
+      box_1_broodadded => [
+        -DISPLAY_NAME => 'Frames of Brood added',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'box_1_broodadded',
+        -VALUES       =>  => [0..10],
+        -LABELS       => \%frames
+     
+    ],
+  box_1_foundation => [
         -DISPLAY_NAME => 'Frames of Foundation in Box 1',
         -TYPE         => 'checkbox_group',
         -NAME         => 'box_1_foundation',
@@ -696,7 +744,32 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -LABELS       => \%frames
      
     ],
-    box_2_bees => [
+ box_1_comb => [
+        -DISPLAY_NAME => 'Frames of Comb in Box 1',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'box_1_comb',
+        -VALUES       =>  => [0..10],
+        -LABELS       => \%frames
+     
+    ],
+  box_1_honey => [
+        -DISPLAY_NAME => 'Frames of Honey in Box 1',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'box_1_honey',
+        -VALUES       =>  => [0..10],
+        -LABELS       => \%frames
+     
+    ],
+box_1_empty => [
+        -DISPLAY_NAME => 'Frames of Empty in Box 1',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'box_1_empty',
+        -VALUES       =>  => [0..10],
+        -LABELS       => \%frames
+     
+    ],
+   
+box_2_bees => [
         -DISPLAY_NAME => 'Frames of Bees in Box 2',
         -TYPE         => 'checkbox_group',
         -NAME         => 'box_2_bees',
@@ -704,7 +777,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -LABELS       => \%frames
      
     ],
-    box_2_brood => [
+ box_2_brood => [
         -DISPLAY_NAME => 'Frames of Brood in Box 2',
         -TYPE         => 'checkbox_group',
         -NAME         => 'box_2_brood',
@@ -712,7 +785,89 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -LABELS       => \%frames
      
     ],
-    brood_given => [
+ box_2_comb => [
+        -DISPLAY_NAME => 'Frames of Comb in Box 2',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'box_2_comb',
+        -VALUES       =>  => [0..10],
+        -LABELS       => \%frames
+     
+    ],
+ box_2_empty => [
+        -DISPLAY_NAME => 'Frames of Empty in Box 2',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'box_2_empty',
+        -VALUES       =>  => [0..10],
+        -LABELS       => \%frames
+     
+    ],
+ box_2_honey => [
+        -DISPLAY_NAME => 'Frames of honey in Box 2',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'box_2_honey',
+        -VALUES       =>  => [0..10],
+        -LABELS       => \%frames
+     
+    ],
+box_x_bees => [
+        -DISPLAY_NAME => 'Frames of Bees in x',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'box_x_bees',
+        -VALUES       =>  => [0..17],
+        -LABELS       => \%xframes
+     
+    ],
+ box_x_brood => [
+        -DISPLAY_NAME => 'Frames of Brood in  xBox ',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'box_x_brood',
+        -VALUES       =>  => [0..17],
+        -LABELS       => \%xframes
+     
+    ],
+ box_x_comb => [
+        -DISPLAY_NAME => 'Frames of Comb in x Box ',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'box_x_comb',
+        -VALUES       =>  => [0..17],
+        -LABELS       => \%xframes
+     
+    ],
+ box_x_empty => [
+        -DISPLAY_NAME => 'Frames of Empty in x Box ',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'box_x_empty',
+        -VALUES       =>  => [0..17],
+        -LABELS       => \%xframes
+     
+    ], 
+ box_x_honey => [
+        -DISPLAY_NAME => 'Frames of honey in x Box ',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'box_x_honey',
+        -VALUES       =>  => [0..17],
+        -LABELS       => \%xframes
+     
+    ],
+box_x_foundation => [
+        -DISPLAY_NAME => 'Frames of Foundation in  xBox ',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'box_x_foundation',
+        -VALUES       =>  => [0..17],
+        -LABELS       => \%xframes
+     
+    ],
+
+brood_given_x => [
+        -DISPLAY_NAME => 'Frames of X Brood Given',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'brood_given_x',
+        -VALUES       =>  => [0..17],
+        -LABELS       => \%xframes
+     
+    ],
+
+  brood_given => [
         -DISPLAY_NAME => 'Frames of Brood Given',
         -TYPE         => 'checkbox_group',
         -NAME         => 'brood_given',
@@ -720,6 +875,8 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -LABELS       => \%frames
      
     ],
+   
+ 
    box_2_foundation => [
         -DISPLAY_NAME => 'Frames of Foundation in Box 2',
         -TYPE         => 'checkbox_group',
@@ -728,7 +885,16 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -LABELS       => \%frames
      
     ],
-    honey_box => [
+
+  brood_added => [
+        -DISPLAY_NAME => 'Frames of Brood added',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'brood_added',
+        -VALUES       =>  => [0..10],
+        -LABELS       => \%frames
+     
+    ],
+ honey_box => [
         -DISPLAY_NAME => 'Frames of honey',
         -TYPE         => 'checkbox_group',
         -NAME         => 'honey_box',
@@ -745,6 +911,14 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -LABELS       => \%frames
      
     ],
+     honey_added => [
+        -DISPLAY_NAME => 'Frames of honey box added',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'honey_added',
+        -VALUES       =>  => [0..10],
+        -LABELS       => \%frames
+     
+    ],
      honey_removed => [
         -DISPLAY_NAME => 'Frames of honey box Removed',
         -TYPE         => 'checkbox_group',
@@ -752,8 +926,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
      
-    ],
-   estimated_man_hours => [
+    ],  estimated_man_hours => [
         -DISPLAY_NAME => 'Est. Man Hours',
         -TYPE         => 'textfield',
         -NAME         => 'estimated_man_hours',
@@ -843,7 +1016,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
                  -TYPE         => 'checkbox_group',
                  -NAME         => 'status',
                  -VALUES       => [sort {$a <=> $b} keys %status],
-		 -LABELS       => \%status,
+		           -LABELS       => \%status,
                  -INPUT_CELL_COLSPAN => 3,
                 ],
 
@@ -854,23 +1027,38 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (      
      qw(sitename),
-      qw(queen_code),
+     qw(queen_code),
      qw(queen_record_id),
-      qw(pallet_code),
+     qw(pallet_code),
      qw(abstract ),
      [qw(start_day start_mon start_year)],
-      qw(details),
-      qw(box_1_bees),
-      qw(box_1_brood),
-      qw(box_1_foundation),
-      qw(box_2_bees),
-      qw(box_2_brood),
-      qw(box_2_foundation),
-      qw(honey_box),
-      qw(honey_box_foundation),
-      qw(honey_removed),
+     qw(details),
+     qw(box_1_bees),
+     qw(box_1_brood),
+     qw(box_1_broodadded),
+     qw(box_1_foundation),
+     qw(box_1_comb),
+     qw(box_1_empty),
+     qw(box_1_honey),
+     qw(box_2_bees),
+     qw(box_2_brood),
+     qw(box_2_foundation),
+     qw(box_2_comb),
+     qw(box_2_empty),
+     qw(box_2_honey),
+     qw(box_x_bees),
+     qw(box_x_brood),
+     qw(box_x_foundation),
+     qw(box_x_comb),
+     qw(box_x_empty),
+     qw(box_x_honey),
+     qw(honey_box),
+     qw(honey_box_foundation),
+     qw(honey_added),
+     qw(honey_removed),
      [qw(status)],
      qw(brood_given),
+     qw(brood_given_x),
      qw(comments),
     );
 
@@ -1247,7 +1435,7 @@ my @VALID_VIEWS =
        ApisCSSView
        ENCYCSSView
        BCAFCSSView
-       
+       ApisQueenLogView
        DetailsRecordView
        BasicDataView
 
@@ -1459,7 +1647,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -OPTIONS_FORM_VIEW_NAME                 => 'OptionsView',
     -AUTH_MANAGER_CONFIG_PARAMS             => \@AUTH_MANAGER_CONFIG_PARAMS,
     -ADD_RECORD_CONFIRMATION_VIEW_NAME      => 'AddRecordConfirmationView',
-    -BASIC_DATA_VIEW_NAME                   => 'BasicDataView',
+    -BASIC_DATA_VIEW_NAME                   => $homeviewname||'BasicDataView',
     -DEFAULT_ACTION_NAME                    => 'DisplayDayViewAction',
     -CGI_OBJECT                             => $CGI,
     -CSS_VIEW_URL                           => $CSS_VIEW_URL,

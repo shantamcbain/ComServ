@@ -1,5 +1,7 @@
 #!/usr/bin/perl -wT
-# 	$Id: page.cgi,v 1.01 2015/08/30 14:27:36 shanta Exp $	
+
+# 	$Id: page.cgi,v 1.02 2018/12/20
+#  1.01 2015/08/30 14:27:36 shanta Exp $	
 
 # Copyright (C) 1994 - 2001  eXtropia.com
 #
@@ -142,28 +144,10 @@ my $NEWS_TB;
 my $search = 0;
 my $Affiliate = 001;
 my $StoreUrl = 'countrystores.ca';
-my $allow_add = 0;
-my $allow_mod = 0;
-my $allow_del = 0;  
-my $HasMembers = 0;   
-my $HostName   = $ENV{'SERVER_NAME'};
-if ($HostName eq 'computersystemconsulting.ca'||
-    $HostName eq 'brew.computersystemconsulting.ca'){
-   $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
-}
-
-if ($HostName eq 'beemaster.ca'||
-    $HostName eq 'jenabee.beemaster.ca'||
-    $HostName eq 'ecf.beemaster.ca'){
-   $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles";
-}
-if ($HostName eq 'usbm.ca' ||
-    $HostName eq 'altpower.usbm.ca' ||
-    $HostName eq 'brew.usbm.ca'||
-    $HostName eq 'ency.usbm.ca'){
-   $GLOBAL_DATAFILES_DIRECTORY ="/home/usbmca/Datafiles";
-}
-
+my $allow_add;
+my $allow_mod;
+my $allow_del;
+my $HasMembers;
 use SiteSetup;
   my $UseModPerl = 1;
   my $SetupVariables  = new SiteSetup($UseModPerl, $SiteName);
@@ -689,6 +673,7 @@ my @DATASOURCE_FIELD_NAMES =
        news
        status
        share
+       mailchimp
        lastupdate
        last_mod_by
        last_mod_date
@@ -867,6 +852,13 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -SIZE         => 30,
         -MAXLENGTH    => 80
      ],
+     mailchimp => [
+        -DISPLAY_NAME => 'MailChimp url.',
+        -TYPE         => 'textfield',
+        -NAME         => 'mailchimp',
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
 
      start_mon => [
                  -DISPLAY_NAME => '',
@@ -976,6 +968,7 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
       qw(status),
       qw(facebook),
       qw(linkedin),
+      qw(mailchimp),
       qw(news),
       qw(lastupdate),   
       qw(comments),
@@ -1266,6 +1259,7 @@ my @VIEW_DISPLAY_PARAMS = (
         'view_name'    => 'Page Name',
         'lastupdate'   => 'Last update',
         'status'       => 'Status',
+        'share'        => 'Share',
         'priority'     => 'Priority',
         'pageheader'   => 'Page Header',
        },
@@ -1285,11 +1279,13 @@ my @VIEW_DISPLAY_PARAMS = (
         body
         lastupdate
         status
+        share
         )],
     -SORT_FIELDS             => [qw(
         sitename
         view_name
         status
+        share
         )],
 );  
 

@@ -106,7 +106,7 @@
 			<h3>  Hello!  Welcome to [% MailServer %]'s Mail Page!</h3
 		<h2> We offer to our members one free </a> email address. <h2>
 <p>When you join any of the hosted sites at [% MailServerName %] you will be given an email address based on your username, if available. You may access your mail by either your local mail reader for reading off line or you can use the Mail link's on our sites. Once you log the application will know who you are and take you to your mail.</p>
-<p>To join <a href="http://countrystores.ca/cgi-bin/store/store.cgi?shop=[% SiteName%]&amp;L=eng&amp;Category=[% cat %]" Target="_blank">[% SiteName%]</a> </p>	
+<p>To join <a href="https://www.computersystemconsulting.ca/whmcs/cart.php?gid=5" Target="_blank">[% SiteName%]</a> </p>	
 			[% END %]
 		</div>
 		</td >

@@ -20,7 +20,7 @@
 	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
 	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
 [% email = data.session_object.getAttribute('-KEY','auth_email') %]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% SiteName = data.session_object.getAttribute('-KEY','site')|| data.site %]
     
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
@@ -41,7 +41,7 @@ browser or from withing the applications setup files.</p>
   <li><a href="/cgi-bin/FAQ/faq.cgi?site=Demo&amp;Display_details_view=on&amp;record_id=42" target="_blank" name="FAQ on SiteName" title="Click here for our FAQ on how we use the SiteName">SiteName</a>. This value controls were the application gets its setup values. These Values are set it the site setup file. The application looks to the passed Value site=SiteName comparis it to it programed set of SiteNames and changes key values to it. Primaily to appearance is the name and location of the CSS file. 
   </li>
   <li>CSS is the main control of the look and feel. We use W3.org standards for controlling the look of your site. This ensures that your site is displayed similarly in all browsers.</li>
-  <li>We use TTML for the 'Views' or pages of the application. The page is divided into sections that are the same or similar on all pages of the application. Such as the Header bar at the top, The left Navigation, the Main area of the page and the Footer. TTML is an advanced Perl module that allows easy programmable content in your page. Although it can be used for extensive programing we only use it for display. All application Logic in contained in Action Handlers. Search our FAQ, and  <a href="/cgi-bin/Extropia/extropia.cgi?site=eXtropia" target="_blank" title="eXtropia HelpDesk is our online support. It concontains details on Module usage and Examples of code.' name="eXtropia HelpDesk">eXtropia HelpDesk</a> for more details.</li>
+  <li>We use TTML for the 'Views' or pages of the application. The page is divided into sections that are the same or similar on all pages of the application. Such as the Header bar at the top, The left Navigation, the Main area of the page and the Footer. TTML is an advanced Perl module that allows easy programmable content in your page. Although it can be used for extensive programing we only use it for display. All application Logic in contained in Action Handlers. Search our FAQ, and  <a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/CSC/helpdesk.cgi?site=Demo" target="_blank" title="eXtropia HelpDesk is our online support. It concontains details on Module usage and Examples of code.' name=" HelpDesk"> HelpDesk</a> for more details.</li>
 </ol>
 
 <p>Examples of how this works.</p>

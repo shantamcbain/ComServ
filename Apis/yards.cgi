@@ -488,7 +488,7 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
         'status'              => 'Status',
         'yard_name'           => 'Yard Name',
         'yard_size'           => 'Yard Size',
-        'total_yard_size' => 'Max Yard Size',
+        'total_yard_size'     => 'Max Yard Size',
         'developer_name'      => 'Developer Name',
         'client_name'         => 'Client Name',
         'comments'            => 'Comments'
@@ -978,6 +978,7 @@ my @VALID_VIEWS = qw(
        InventoryView
        FeedingView
        OUCView
+       ProceduresView
 );
 
 my @ROW_COLOR_RULES = (

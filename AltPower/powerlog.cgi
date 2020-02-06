@@ -1,4 +1,5 @@
 #!/usr/bin/perl -wT
+# 	$Id: powerlog.cgi,v 1.4 2019/10/26 22:08:42 shanta Exp shanta $	
 # 	$Id: powerlog.cgi,v 1.4 2004/01/23 22:08:42 shanta Exp shanta $	
 #CSC file location /cgi-bin/CSC
 # Copyright (C) 1994 - 2001  eXtropia.com
@@ -106,7 +107,7 @@ if ($HostName eq 'beemaster.ca'||
    $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles";
 }
 if ($HostName eq 'usbm.ca' ||
-    $HostName eq 'altpower.usbm' ||
+    $HostName eq 'altpower.usbm.ca' ||
     $HostName eq 'brew.usbm.ca'||
     $HostName eq 'ency.usbm.ca'){
    $GLOBAL_DATAFILES_DIRECTORY ="/home/usbmca/Datafiles";
@@ -149,7 +150,7 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
+my $CSS_VIEW_URL;# = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
@@ -191,6 +192,7 @@ use SiteSetup;
     my $HTTP_HEADER_PARAMS      = $SetupVariables->{-HTTP_HEADER_PARAMS};
     my $HTTP_HEADER_KEYWORDS    = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
     my $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+    my $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
     $MySQLPW                    = $SetupVariables->{-MySQLPW};
     $DBI_DSN                    = $SetupVariables->{-DBI_DSN};
     $AUTH_MSQL_USER_NAME        = $SetupVariables->{-AUTH_MSQL_USER_NAME};
@@ -416,7 +418,6 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
        record_id  	=> 'todo id',
        start_date       => 'Start Date',
        due_date         => 'Due Date',
-       abstract         => 'Subject',
        details          => 'Description',
        status           => 'Status',
        priority         => 'Priority',
@@ -472,11 +473,7 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
         -IS_FILLED_IN => [
             -FIELDS => [
                         qw(
-                           owner
                            start_time
-                           abstract
-                           status
-                           priority
                            last_mod_by
                            last_mod_date
                           )
@@ -502,10 +499,8 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
        accumulative_time 	=> 'Accumulated time',
        start_date               => 'Start Date',
        due_date                 => 'Due Date',
-       abstract                 => 'Subject',
-       details                  => 'Description',
+        details                  => 'Description',
        status                   => 'Status',
-       priority                 => 'Priority',
        comments                 => 'Comments',
     },
 
@@ -557,9 +552,7 @@ my @MODIFY_FORM_DHM_CONFIG_PARAMS = (
             -FIELDS => [qw(
                            owner
                            start_time
-                           abstract
                            status
-                           priority
                            last_mod_by
                            last_mod_date
                           )
@@ -580,23 +573,23 @@ my @DATA_HANDLER_MANAGER_CONFIG_PARAMS = (
 my @DATASOURCE_FIELD_NAMES = 
     qw(
        record_id
-       record_id
-       owner
        sitename
        start_date
        project_code
-       due_date
-       abstract
+       battery_code
+       pannel_volts
+       pannel_watts
+       battery_voltage
+       battery_amp
+       battery_level
+       ac_amp
+       dc_amp
        details
        start_time
-       end_time
-       time
        group_of_poster
        status
-       priority
        last_mod_by
        last_mod_date
-       comments        
       );
 
 # prepare the data then used in the form input definition
@@ -605,9 +598,18 @@ my @months = qw(January February March April May June July August
 my %months;
 @months{1..@months} = @months;
 my %years = ();
-$years{$_} = $_ for (2014..2020);
+$years{$_} = $_ for (2014..2022);
 my %days  = ();
 $days{$_} = $_ for (1..31);
+
+my %battery =
+    (
+      'Main24Pack' => 'Main24Pack',
+      '12vMain' => 'Main12Pack',
+      1 => 'Module 1',
+      3 => 'Module 2',
+    );
+
 
 my %priority =
     (
@@ -644,10 +646,73 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -MAXLENGTH    => 80
     ],
 
-    record_id => [
+  battery_code => [
+                 -DISPLAY_NAME => 'Battery Code',
+                 -TYPE         => 'popup_menu',
+                 -NAME         => 'battery_code',
+                 -VALUES       => [sort {$a cmp $b} keys %battery],
+		 -LABELS       => \%battery,
+                 -INPUT_CELL_COLSPAN => 3,
+                ],
+   record_id => [
         -DISPLAY_NAME => 'Record Id',
         -TYPE         => 'textfield',
         -NAME         => 'record_id',
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
+
+ pannel_volts => [
+        -DISPLAY_NAME => 'Pannel  Voltage',
+        -TYPE         => 'textfield',
+        -NAME         => 'pannel_volts',
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
+
+pannel_watts => [
+        -DISPLAY_NAME => 'Pannel  Watts',
+        -TYPE         => 'textfield',
+        -NAME         => 'pannel_watts',
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
+
+battery_amp => [
+        -DISPLAY_NAME => 'Battery  Amps',
+        -TYPE         => 'textfield',
+        -NAME         => 'battery_amp',
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
+
+battery_voltage => [
+        -DISPLAY_NAME => 'Battery  Voltage',
+        -TYPE         => 'textfield',
+        -NAME         => 'battery_voltage',
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
+
+battery_level => [
+        -DISPLAY_NAME => 'Battery  level',
+        -TYPE         => 'textfield',
+        -NAME         => 'battery_level',
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
+ac_amp => [
+        -DISPLAY_NAME => 'AC Amps',
+        -TYPE         => 'textfield',
+        -NAME         => 'ac_amp',
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
+
+dc_amp => [
+        -DISPLAY_NAME => 'DC  Amps',
+        -TYPE         => 'textfield',
+        -NAME         => 'dc_amp',
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],
@@ -779,28 +844,34 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
 
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
-     qw(project_code),
-     qw(record_id),
-     qw(abstract ),
      qw(sitename),
-     [qw(start_day start_mon start_year)],
-     qw(details),
-     qw(priority),
-     [qw(status)],
+     qw(project_code),
+     qw(battery_code),
+     qw(pannel_volts),
+     qw(pannel_watts),
+     qw(battery_voltage),
+     qw(battery_amp),
+     qw(battery_level),
+     qw(ac_amp),
+     qw(dc_amp),
+    [qw(start_day start_mon start_year)],
      qw(start_time),
-     qw(end_time),
-     qw(time),
-     qw(comments),
+     qw(details),
+#     qw(priority),
+     [qw(status)],
+#     qw(end_time),
+#     qw(time),
+#     qw(comments),
     );
 
 my @SEARCH_INPUT_WIDGET_DISPLAY_ORDER = 
     (
       qw(project_code),
-      qw(abstract ),
+  #    qw(abstract ),
      [qw(start_day start_mon start_year)],
      [qw(due_day due_mon due_year)],
       qw(details),
-      qw(priority),
+#      qw(priority),
      [qw(status)],
      qw(accumulative_time),
      qw(comments),
@@ -1032,7 +1103,7 @@ my @MAIL_CONFIG_PARAMS =
 my @EMAIL_DISPLAY_FIELDS = 
     qw(
        project_code
-       abstract
+       battery_voltage
        start_date
        priority
        details
@@ -1141,13 +1212,13 @@ my @VIEW_DISPLAY_PARAMS = (
     -FAVICON_TYPE                   => $FAVICON_TYPE,
     -DISPLAY_FIELDS                 => [qw(
         project_code
-        abstract
-        details
+        battery_volts
+       
         start_date
-        due_date
+       
         status
         time
-        priority
+        
         )],
     -DOCUMENT_ROOT_URL       => $DOCUMENT_ROOT_URL,
     -HTTP_HEADER_PARAMS      => $HTTP_HEADER_PARAMS,
@@ -1165,7 +1236,6 @@ my @VIEW_DISPLAY_PARAMS = (
     )],
     -FIELD_NAME_MAPPINGS     => {
         'project_code' => 'Project Code',
-        'abstract'     => 'Subject',
         'details'      => 'Description',
         'start_date'   => 'Start Date',
         'due_date'     => 'Due Date',
@@ -1173,7 +1243,7 @@ my @VIEW_DISPLAY_PARAMS = (
         'end_time'     => 'Due Time',
         'time'         => 'Time',
         'status'       => 'Status',
-        'priority'     => 'Priority',
+        'batery_voltage'     => 'Battery voltge',
         },
     -HOME_VIEW               => $homeviewname,
     -IMAGE_ROOT_URL          => $IMAGE_ROOT_URL,
@@ -1184,16 +1254,13 @@ my @VIEW_DISPLAY_PARAMS = (
     -SCRIPT_NAME             => $CGI->script_name(),
     -SELECTED_DISPLAY_FIELDS => [qw(
         project_code
-        abstract
+        
         start_date
         status
         time
-        priority
+        
         )],
     -SORT_FIELDS             => [qw(
-        abstract
-        due_date
-        priority
         start_date
         )],
 );  

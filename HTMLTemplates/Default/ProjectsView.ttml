@@ -23,57 +23,54 @@
 [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
 	[% session_id = data.session_object.getId() %]
 	[% session_string = "session_id=$session_id" %]
-
+   [% project = data.project  %]
+[% ViewName  = '/Defalut/ProjectsView.ttml' %] 
 
 
 
 
 [% IF group == "Mentoring"	%]
-	[% embed(data.page_top_view,['-PAGE_TITLE',' Projects.']) %]
+	[% embed(data.page_top_view,['-PAGE_TITLE',' ProjectsView']) %]
 [% ELSE %]
-	[% embed(data.page_top_view,['-PAGE_TITLE','Projects.']) %]
+	[% embed(data.page_top_view,['-PAGE_TITLE','ProjectsView']) %]
 [% END %]
 
 [% embed('ErrorDisplayView') %]
 
-
+ [% sessionstring %]
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
-	<td> [% sessionstring %]
-	
-	[% IF username %]
-			<h3 > Hello  [% firstname%]  [% lastname%]! Welcome to [% data.site_display_name %] Projects!</h3>
+	<td>[% IF username %]
+			<h3 > Hello  [% firstname%]  [% lastname%]! Welcome to [% data.site_display_name %] Projects! ProjectsView [% project %]</h3>
 		[% ELSE %]
 			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %] Projects! </h3> 
 		[% END %]
 
-<h4>Our current Projects   [% SiteName %]
-                 [% IF group == 'CSC_admin' OR
-                       group == 'AltPower_admin' OR
-                       group == 'ECF_admin' OROR
-                       group == 'BeeMast_admin' 
-                       group == 'HE_admin' OR
-                       group == 'IM_admin'  OR
-                       group == 'CS_admin'  OR
-                       group == 'Forager_admin'   OR
-                       group == 'WiseWoman_admin' OR
-                       username == 'Shanta%]                    
+<h4>Our current Projects  [% ViewName  %] [% project %] </h4>
+
+                [% IF group == 'CSC_admin' OR
+                    group == 'CSCDev_admin' OR
+                    group == 'MW_admin' OR
+                    group == 'WiseWoman_admin' OR
+                    group == 'AltPower_admin' OR
+                    username == 'Shanta'
+                 %] 
+                             
                      <a href="/cgi-bin/Projects.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form" target = "_blank">Add</a>
 		[% END %]
 </h4>	
-	<p>	[% SiteName = data.site_name%] Site [% SiteName %]</p>
+		[% SiteName = data.site_name%]
    	[% IF SiteName == "OKB" %]
 		[%# embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "AltPower" %]
 			[% embed ('AltPowerProjects') %]
-		[% ELSIF SiteName == "AnuCollective" %]
-			[% embed ('AnuProjects') %]
 		[% ELSIF SiteName == "BMaster"%]
-			[% embed ('BMWorkshops') %]
+			[% embed ('BMmasterProjects') %]
 		[% ELSIF SiteName == "CS" %]
 			[% embed ('CSWorkShops') %]
 		[% ELSIF SiteName == "CSC" %]
-                 Call CSC       [% IF group == 'Planning' %]
+                 Call CSC       
+          [% IF group == 'Planning' %]
 			[%# embed ('PlanningView') %]
                         [% ELSE %]
 			[%# embed ('CSCHomeView') %]
@@ -85,7 +82,9 @@
 				[% embed ('CSWorkShops') %]
 		[% ELSIF SiteName == "ECF" OR
 		         SiteName == "ECFDev"  %]
-			[% embed ('ECFWorkShops') %]
+		         <p>Call ECFProjects</p>
+			[% embed ('ECFProjects') %]
+			<p>Leave [% ViewName  %] ECFProjects</p>
 			[%# embed ('SBHomeView') %]
 		[% ELSIF SiteName == "HE" OR
 		         SiteName == "HEDev"  %]
@@ -147,6 +146,7 @@
 		
 		<p>This site has no workshop at this time. </p>
 		<!-- Begin Demo Home View -->  
+		<p>Here are some of the provided by <a href="http://CountryStores.ca/cgi-bin/index.cgi?site=CS&amp;[% session_string %]&amp;view=WorkShopsView" target=_"_blank">Country Stores.ca </a>
 
 	[% embed ('CSWorkShops') %]
 			[%#embed ('DemoHomeView') %]

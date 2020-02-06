@@ -1,7 +1,5 @@
-[%
-#	$Id: ApisQueensView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
+[%#	$Id: ApisWaxView.ttml,v 0.1 2019/10/09 06:42:47 shanta Exp shanta $	%]
 
-[% embed(data.page_top_view,['-PAGE_TITLE','Bees Wax']) %]
 
 [% embed('ErrorDisplayView') %]
 
@@ -26,19 +24,19 @@
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td >
-<h3>This is our Wax view.</h3>
-<p>Learn about and find Bees wax
-<p></p>
+<h2>Wax view and how to use it.</h2>
+<p>Learn about Bees wax. Over the season we have been harvesting wax from our colonies directly and from Honey extraction.
+</p>
+<h3>Where we got our wax.</h3>
+<ul>
+ <li><h3>Burr comb.</h3> harvested it the course of our bee work. This is our prime source of cosmetic and medicinal wax. The darkness of the comb dictates the amount of propolis in the wax.</li>
+ <li><h3>Broken comb.</h3> acquired through the season.</li>
+ <li><h3>Discontinued comb.</h3> This comb is contaminated with both disease and pesticides. This is best processed for firestaters, composted, or put in a methane digester. </li>
+ <li><h3>Honey extraction.</h3> <p>This is our primary source of candle wax </p></li>
+</ul>
 
-
-<h2>beemaster.ca Member List </h2>
-
-<ol>
-	<li><a href="http://ecf.beemaster.ca/cgi-bin/index.cgi?site=[% ECF %]&amp;[% session_string %]&amp;view=ProductView#Wax" title="Learn more about honey!">Eagle Creek Farms</a></li>
-	<li></li>
-	<li></li>
-</ol>
-
+<h2>We will explore this in an upcoming workshop in mid to late October.</h2>
+ 
 
 </td>
 </tr>
@@ -48,5 +46,5 @@
 
 
 
-[% embed(data.page_bottom_view) %]
+[%# embed(data.page_bottom_view) %]
 

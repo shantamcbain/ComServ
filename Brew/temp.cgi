@@ -33,7 +33,7 @@ unshift @INC, @dirs unless $INC[0] eq $dirs[0];
 
 my @VIEWS_SEARCH_PATH = 
     qw(../Modules/Extropia/View/Todo
-       ../Modules/Extropia/View/Default);
+       ../Modules/Extropia/View/Default);0
 
 my @TEMPLATES_SEARCH_PATH = 
      qw(../HTMLTemplates/Apis

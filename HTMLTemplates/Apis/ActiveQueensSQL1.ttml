@@ -1,0 +1,14 @@
+[% FOREACH link = DBI.query("SELECT * FROM apis_queens_tb
+                                  WHERE  client_name =  '$SiteName' AND
+                                  status = 'Active' OR
+                                  status = 'Breeder' OR
+                                  status = 'Breeder_candidate'
+                                  ")%] 
+                                                 
+                                                 
+     [% ActiveQueens = ActiveQueens + 1 %]
+     [% QueenCode = link.queen_code %]
+ 
+[% END %]
+
+ 

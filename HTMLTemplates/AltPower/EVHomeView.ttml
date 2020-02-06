@@ -79,8 +79,16 @@ Variable ative in DevHomeView
 <font size="+2">Some to look for.</font> 
 <ol>
 	<li>Charging network and costs</li>
-	<li>EV's available. </li>
+	<li>EV's available. Great time to get a <a href="https://www.nissanusa.com/electric-cars/leaf/" target="_blank">Nissan leaf</a>
+ they are clearing old modles in antisipation of the next version in late fall.</li>
 	<li>cost comparison EV Electric vehicle to ICE (internal combustion engine)</li>
+	<li>List of EV convertion companies and kits.
+	 <ul>
+       <li><a href="http://canev.com/kits.php" target="_blank">Canadian Electric Vehicles</a></li>
+       <li><a href="http://www.evwest.com" target="_blank">EV West</a></li>
+ 
+     </ul>
+    </li>
 	<li>National and local policies </li>
 	<li> <a href="http://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BuySellHomeView">	Buy And Sell.</a> 
 	Find an EV posted on our system</li>

@@ -108,7 +108,7 @@ $GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG};
 
     my @recipe_code;
     foreach my $record (@$ra_records) {
-        my $username = $record->{'recipe_code'};
+        my $username = $record->{'recipecode'};
         push (@recipe_code, $username);
     }
 

@@ -52,7 +52,7 @@ my $mail_to_user;
 my $mail_to_member;
 my $mail_to_discussion;
 my $APP_DATAFILES_DIRECTORY;
-my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
+my $GLOBAL_DATAFILES_DIRECTORY="/home/usbmca/Datafiles";
 my $CSS_VIEW_NAME;
 my $CSS_VIEW_URL;
 my $StoreUrl;
@@ -635,6 +635,34 @@ use OrganicSetup;
      $SITE_DISPLAY_NAME       = $SetupVariablesOrganic->{-SITE_DISPLAY_NAME};
      $site_update             = $SetupVariablesOrganic-> {-SITE_LAST_UPDATE};
  }
+ if ($SiteName eq "pihive") {
+use pihiveSetup;
+ my $SetupVariablespihive   = new pihiveSetup($UseModPerl);
+     $HasMembers               = $SetupVariablespihive->{-HAS_MEMBERS};
+     $HTTP_HEADER_KEYWORDS    = $SetupVariablespihive->{-HTTP_HEADER_KEYWORDS};
+     $HTTP_HEADER_PARAMS      = $SetupVariablespihive->{-HTTP_HEADER_PARAMS};
+     $HTTP_HEADER_DESCRIPTION = $SetupVariablespihive->{-HTTP_HEADER_DESCRIPTION};
+     $CSS_VIEW_NAME           = $SetupVariablespihive->{-CSS_VIEW_NAME};
+     $AUTH_TABLE              = $SetupVariablespihive->{-AUTH_TABLE};
+     $app_logo                = $SetupVariablespihive->{-APP_LOGO};
+     $app_logo_height         = $SetupVariablespihive->{-APP_LOGO_HEIGHT};
+     $app_logo_width          = $SetupVariablespihive->{-APP_LOGO_WIDTH};
+     $app_logo_alt            = $SetupVariablespihive->{-APP_LOGO_ALT};
+     $CSS_VIEW_URL            = $SetupVariablespihive->{-CSS_VIEW_NAME};
+     $last_update             = $SetupVariablespihive->{-LAST_UPDATE}; 
+#      $site_update              = $SetupVariablespihive->{-SITE_LAST_UPDATE};
+#Mail settings
+     $mail_from               = $SetupVariablespihive->{-MAIL_FROM};
+     $mail_to                 = $SetupVariablespihive->{-MAIL_TO};
+     $mail_replyto            = $SetupVariablespihive->{-MAIL_REPLYTO};
+     $SITE_DISPLAY_NAME       = $SetupVariablespihive->{-SITE_DISPLAY_NAME};
+     $FAVICON                 = $SetupVariablespihive->{-FAVICON};
+     $ANI_FAVICON             = $SetupVariablespihive->{-ANI_FAVICON};
+     $page_top_view           = $SetupVariablespihive->{-PAGE_TOP_VIEW};
+     $FAVICON_TYPE            = $SetupVariablespihive->{-FAVICON_TYPE};
+}
+ 
+ 
 if ($SiteName eq "SSeedSavers" or
        $SiteName eq "SSeedSaversDev" 
        ) {use SSeedSaversSetup;
@@ -867,8 +895,8 @@ sub new
   -MAIL_TO_DISCUSSION => $mail_to_discussion,
   -DOCUMENT_ROOT_URL  => $IMAGE_ROOT_URL||'/',
   -IMAGE_ROOT_URL     => $DOCUMENT_ROOT_URL||'/images/extropia',
-  -GLOBAL_DATAFILES_DIRECTORY => "/home/shanta/Datafiles",
-  -APP_DATAFILES_DIRECTORY    => "/home/shanta/Datafiles",
+  -GLOBAL_DATAFILES_DIRECTORY => $GLOBAL_DATAFILES_DIRECTORY||"/home/shanta/Datafiles",
+  -APP_DATAFILES_DIRECTORY    => $GLOBAL_DATAFILES_DIRECTORY||"/home/shanta/Datafiles",
   -TEMPLATES_CACHE_DIRECTORY  => '/TemplatesCache',
   -LINK_TARGET                => '_self',
   -HTTP_HEADER_PARAMS         => $HTTP_HEADER_PARAMS||"[-EXPIRES => '-1d']",
@@ -959,3 +987,4 @@ sub new
 }
 
 1;
+si

@@ -1,0 +1,15 @@
+[%#	$Id: /HTMLTemplates/AdminTodoListLink.ttml,v 0.1 2019/06/08 17:43:15 shanta Exp shanta $	%]
+[% IF username == 'Shanta' OR
+       group    == 'AltPower_admin' OR
+       group    == 'AnuCollective_admin' OR
+       group    == 'BMaster_admin' OR
+       group    == 'HE_admin' OR
+       group    == 'Brew_admin' OR
+       group    == 'ECFadmin' OR 
+       group    == 'LumbyThrift_admin' OR 
+       group    == 'SocialExp_admin'OR
+       group    == 'WiseWoman_admin'                     
+%]	 <a href="/cgi-bin/ToDo/todo.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;record_id=[% link.record_id %]&amp;subject=[% link.project_name %]&amp;project_code=[% link.project_code %]&amp;description=[% link.comments %]&amp;priority=" "target="_Blank">Add New Todo</a>  
+ 
+<a href="/cgi-bin/ToDo/todo.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ToDoHomeView" "target="_Blank">List</a>
+[% END %]

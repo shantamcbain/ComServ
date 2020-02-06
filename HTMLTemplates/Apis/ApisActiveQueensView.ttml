@@ -61,15 +61,16 @@
  [% CurrentSize = CurrentSize + 1 %]
    [% END %]
    </tr>
-   <tr><td></td><td></td><td>[% HiveCap %]</td><td>[% CurrentSize %]</td><td></td></tr>
-
-
+   <tr><td></td>[% HiveCap %]<td></td><td>Number of Queens</td><td>[% CurrentSize %]</td><td></td></tr>
+   <tr><td>Total bees</td><td>[% totalbees %]</td></tr>
 
 
 [% IF CurrentSize == 0 %]
 <tr><td>You Have no queens!</td><td>
+[% ELSE %]
+
 [% END %]
-<tr><td><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add a New Queen</a>
+<tr><td><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add a New Queen</a> tttt
 </td></tr>
 
 <tr><td><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisNucQueensView">Nucs</a>

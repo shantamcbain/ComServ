@@ -35,7 +35,7 @@
 [% IF group == "Mentoring"	%]
 	[% embed(data.page_top_view,['-PAGE_TITLE',' Mentoring Procedures View']) %]
 [% ELSE %]
-	[% embed(data.page_top_view,['-PAGE_TITLE','Procedures View']) %]
+	[%# embed(data.page_top_view,['-PAGE_TITLE','Procedures View']) %]
 [% END %]
 
 [% embed('ErrorDisplayView') %]
@@ -53,6 +53,7 @@
 <p>
                 [% IF group == 'Apis_admin' OR
                     group == 'BMaster_admin' OR 
+                    group    == 'AnuCollective_admin' OR
                     group == 'CSC_admin' OR
                     group == 'CSCDev_admin' OR
                     group == 'ECF_admin' OR
@@ -69,6 +70,7 @@
    	[% IF SiteName == "OKB" %]
 		[%# embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "AltPower" %]
+
 			[% embed ('AltPowerProcedures') %]
 		[% ELSIF SiteName == "AnuCollective" %]
 			[% embed ('AnuProcedures') %]
@@ -90,9 +92,9 @@
 				[% embed ('CSWorkShops') %]
 		[% ELSIF SiteName == "ECF" OR
 		         SiteName == "ECFDev"  %]
-		         <p>Call ECFProjects</p>
-			[% embed ('ECFProjects') %]
-			<p>Leave [% ViewName  %] ECFProjects</p>
+		         <p>Call ECFProcedures</p>
+			[% embed ('ECFProcedures') %]
+			<p>Leave [% ViewName  %] ECFProcedures</p>
 			[%# embed ('SBHomeView') %]
 		[% ELSIF SiteName == "HE" OR
 		         SiteName == "HEDev"  %]

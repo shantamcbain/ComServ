@@ -1,4 +1,7 @@
 #!/usr/bin/perl -wT
+
+# 	$Id: log.cgi,v 1.4 2016/01/23 22:08:42 shanta Exp shanta $
+# fix directory problem	
 # 	$Id: log.cgi,v 1.3 2016/01/23 22:08:42 shanta Exp shanta $	
 #CSC file location /cgi-bin/CSC
 # Copyright (C) 1994 - 2001  eXtropia.com
@@ -76,19 +79,22 @@ foreach ($CGI->param()) {
     my $debug = 0;
 
     my $APP_NAME = "log"; 
-    my $last_update  = 'April 12, 2017';
+    my $last_update  = 'Sept 19, 2018';
     my $site_update;
     my $APP_NAME_TITLE = "Log Manager";
-   my $FAVICON;
+    my $FAVICON;
     my $ANI_FAVICON;
     my $FAVICON_TYPE;
-     my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+    my $CSS_VIEW_NAME = '/styles/CSCCSSView';
+    my $CSS_VIEW_URL = $CSS_VIEW_NAME;
+    my $SITE_DISPLAY_NAME = 'None Defined for this site.';
     my $MySQLPW;
     my $DBI_DSN;
     my $SiteName = $CGI->param('site') ;
     my $UseModPerl = 1;
     my $AUTH_TABLE;
-my $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles" ;
+my $home_view = 'LogHomeView';
+my $GLOBAL_DATAFILES_DIRECTORY;
 my $TableName;
 my $ProjectTableName;
 my $AUTH_MSQL_USER_NAME;
@@ -97,27 +103,8 @@ my $TodoTB = 'todo_tb';
 my $Affiliate = 001;
 my $HasMembers = 0;
 my $HostName   = $ENV{'SERVER_NAME'};
-if ($HostName eq 'computersystemconsulting.ca'||
-    $HostName eq 'brew.computersystemconsulting.ca'){
-   $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
-}
 
-if ($HostName eq 'beemaster.ca'||
-    $HostName eq 'jenabee.beemaster.ca'||
-    $HostName eq 'ecf.beemaster.ca'){
-   $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles";
-}
-if ($HostName eq 'usbm.ca' ||
-    $HostName eq 'altpower.usbm' ||
-    $HostName eq 'brew.usbm.ca'||
-    $HostName eq 'ency.usbm.ca'){
-   $GLOBAL_DATAFILES_DIRECTORY ="/home/usbmca/Datafiles";
-}
-if ($HostName eq 'grindrodbc.com' ||
-    $HostName eq 'project.grindrodbc.com'||
-    $HostName eq 'shantasworkshop.grindrodbc.com'){
-   $GLOBAL_DATAFILES_DIRECTORY ="/home/grindrod/Datafiles";
-}
+
 
 #use CSCSetup;
 
@@ -125,6 +112,49 @@ my $VIEW_LOADER = new Extropia::Core::View
     (\@VIEWS_SEARCH_PATH,\@TEMPLATES_SEARCH_PATH) or
     die("Unable to construct the VIEW LOADER object in " . $CGI->script_name() .
         " Please contact the webmaster.");
+
+ use SiteSetup;
+#my $S   = &CSCSetup::SiteVariables;
+  my $SetupVariables  = new SiteSetup($UseModPerl, $SiteName);
+    $SiteName                 = $SetupVariables->{-SITE_NAME};
+    my $homeview             = $SetupVariables->{-HOME_VIEW}; 
+    my $homeviewname          = $homeview||$SetupVariables->{-HOME_VIEW_NAME};
+    $Affiliate                = $SetupVariables->{-AFFILIATE};
+    my $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
+    my $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
+    my $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
+    my $page_left_view        = $SetupVariables->{-LEFT_PAGE_VIEW};
+#Mail settings
+    my $mail_from             = $SetupVariables->{-MAIL_FROM}; 
+    my $mail_to               = $SetupVariables->{-MAIL_TO};
+    my $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
+    my $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
+    my $app_logo              = $SetupVariables->{-APP_LOGO};
+    my $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
+    my $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
+    my $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
+    my $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
+    my $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
+    my $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
+    my $HTTP_HEADER_KEYWORDS  = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
+    my $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+   $MySQLPW               = $SetupVariables->{-MySQLPW};
+    $DBI_DSN               = $SetupVariables->{-DBI_DSN};
+    $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
+     my $LocalIp            = $SetupVariables->{-LOCAL_IP};
+   $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
+$CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
+$CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
+my $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
+my $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
+my $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
+#my $site = 'file';
+my $site = $SetupVariables->{-DATASOURCE_TYPE};
+my $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
+my $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+    $ProjectTableName      = 'csc_project_tb';
+
+    my $homeviewname            = "LogHomeView";
 
 ######################################################################
 #                          SESSION SETUP                             #
@@ -172,49 +202,9 @@ if ($CGI->param('site')){
       }
 }
 my $username =  $SESSION ->getAttribute(-KEY => 'auth_username');
+my $site_session = $GLOBAL_DATAFILES_DIRECTORY.'/Sessions';
 my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
 
- use SiteSetup;
-#my $S   = &CSCSetup::SiteVariables;
-  my $SetupVariables  = new SiteSetup($UseModPerl, $SiteName);
-    $SiteName                 = $SetupVariables->{-SITE_NAME};
-    my $homeview             = $SetupVariables->{-HOME_VIEW}; 
-#    my $homeviewname          = $SetupVariables->{-HOME_VIEW_NAME};
-    $Affiliate                = $SetupVariables->{-AFFILIATE};
-    my $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
-    my $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
-    my $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
-    my $page_left_view        = $SetupVariables->{-LEFT_PAGE_VIEW};
-#Mail settings
-    my $mail_from             = $SetupVariables->{-MAIL_FROM}; 
-    my $mail_to               = $SetupVariables->{-MAIL_TO};
-    my $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
-    my $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
-    my $app_logo              = $SetupVariables->{-APP_LOGO};
-    my $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
-    my $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
-    my $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
-    my $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
-    my $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
-    my $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
-    my $HTTP_HEADER_KEYWORDS  = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
-    my $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
-   $MySQLPW               = $SetupVariables->{-MySQLPW};
-    $DBI_DSN               = $SetupVariables->{-DBI_DSN};
-    $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
-     my $LocalIp            = $SetupVariables->{-LOCAL_IP};
-
-my $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'/home/shanta/Datafiles"';
-my $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
-my $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
-#my $site = 'file';
-my $site = $SetupVariables->{-DATASOURCE_TYPE};
-my $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
-my $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-    $ProjectTableName      = 'csc_project_tb';
-
-     $homeviewname            = "LogHomeView";
-my $site_session = $GLOBAL_DATAFILES_DIRECTORY.'/Sessions';
 
 ######################################################################
 #                       AUTHENTICATION SETUP                         #

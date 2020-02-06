@@ -1,9 +1,12 @@
 [%
 #	$Id: ApisQueensView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
  [% PROCESS DefaultDbi.ttml %]
+[% IF procedure %]
+
+[% ELSE %]
 
 [% embed(data.page_top_view,['-PAGE_TITLE','Queens']) %]
-
+[% END %]
 [% embed('ErrorDisplayView') %]
 
 
@@ -47,11 +50,11 @@
 <p>Based on data collected from your yards we can plan what needs to be done next and what you need to do it.
 </p>
 <!-- Nave bar to QueenViews -->
-<a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisNucQueensView">Nucs</a>
-<p><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisActiveQueensView">Active</a>
+<a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProceduresView&procedure=ApisNucQueensView">Nucs</a>
+<p><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProceduresView&procedure=ApisActiveQueensView">Active Queens</a>
 </p>
 <table>
-<tr><th>Yard <a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add</a></th><th>status</th><th>Queen code</th><th>Pallet code</th><th>View pallets</th></tr>
+<tr><th>Yard <a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add</a></th><th>status</th><th>Queen code</th><th>Pallet code</th><th>View pallets</th><th>Log</th></tr>
 [% FOREACH link = DBI.query("SELECT * FROM apis_queens_tb
                                   WHERE   client_name = '$SiteName'
                                    AND (status != 'Sold' AND 
@@ -66,29 +69,24 @@
    <td><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_details_view=on&amp;record_id=[% link.record_id %] ">[% link.queen_code %]</a> </td>
    <td>[% link.pallet_code %]</td>
    <td><a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;submit_power_search=on&amp;simple_search_string=[% link.pallet_code %] ">Pallet</a>    </td>
-[% HiveCap = HiveCap + link.total_yard_size %]
+  <td><a href="/cgi-bin/Apis/queen_log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;record_id=[% link.queen_code %] ">[% link.queen_code %]</a> </td>
+ [% HiveCap = HiveCap + link.total_yard_size %]
  [% CurrentSize = CurrentSize + 1 %]
-   [% END %]
+   </td>[% END %]
    </tr>
    <tr><td></td><td></td><td>[% HiveCap %]</td><td>[% CurrentSize %]</td><td></td></tr>
 
 
 </table>
 <p><a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;view=FeedingView&amp;[% session_string %]">Feeding</a></p>
-<ul>
- <table>
- 
- 
- </table>  
 
-</ul>
 </td>
 </tr>
 </table>
 
 
+[% IF procedure %]
 
-
-
-[% embed(data.page_bottom_view) %]
-
+[% ELSE %]
+ [% embed(data.page_bottom_view) %]
+[% END %]

@@ -16,16 +16,16 @@
 		[% HostName = 'forager.com' %]
 
 [% ELSIF SiteName == 'OKBee'OR
-	      SiteName == 'Apis'		
-	       OR
+	      SiteName == 'Apis'OR
+	      SiteName == 'AnuCollective OR
 	      SiteName == 'CertBee' OR
 	      SiteName == 'ECF' OR
 	      SiteName == 'BMaster' OR
-	      SiteName == 'BMasterDev'OR
-	      SiteName == 'BeeCoop' 
+	      SiteName == 'BMasterDev' OR
+	      SiteName == 'BeeCoop'
 	      %]
 		[% HostName = 'beemaster.ca' %]
-		[% StoreName = 'ecf.countrystores.ca' %]
+		[%# StoreName = 'ecf.countrystores.ca' %]
 	[% ELSIF   SiteName == 'Skye' 
 	       
 	      %]

@@ -1,4 +1,4 @@
-[%#	$Id: IngredianceList.ttml,v 1.1 2008/03/25 06:42:47 shanta Exp shanta $	%]
+[%#	$Id: IngredianceList.ttml,v 1.101 2018/04/09 06:42:47 shanta Exp shanta $	%]
 
 
 [% embed('ErrorDisplayView') %]
@@ -15,7 +15,8 @@
 	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
 	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
 	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% SiteName = data.site_name %]
+ [% recipe_code = data.recipecode %]
 [% email = data.session_object.getAttribute('-KEY','auth_email') %]
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -59,7 +60,7 @@
 	        group     == 'HoneyDo_Admin' OR
 	        group     == 'Brew_Admin' OR
 	        group     == 'Demo_admin' OR
-	       group    ==  'WB_admin' OR
+	        group    ==  'WB_admin' OR
 	        group     == 'MJB_Admin'        %]
 <a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&display_modification_form=on&record_id=[% link.record_id %]&[% session_string %]" name="Modify ingrediant"  title="Modify ingrediant Batch" style="AddButtonStyle">Modify</a>   [% END %]
 </td>

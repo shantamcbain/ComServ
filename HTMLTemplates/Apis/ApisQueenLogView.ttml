@@ -1,0 +1,133 @@
+[%
+#	$Id: ApisActiveQueensView.ttml,v 1.1 2015/09/08 06:42:47 shanta Exp shanta $	%]
+ [% PROCESS DefaultDbi.ttml %]
+
+[% embed(data.page_top_view,['-PAGE_TITLE','Active Queens']) %]
+
+[% embed('ErrorDisplayView') %]
+
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% email = data.session_object.getAttribute('-KEY','auth_email') %]
+  
+
+ 
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td >
+
+
+[% CurrentSize = 0 %][% totalbees = 0  %][% totalcomb = 0 %]
+<h2>This is your Queens Management view.</h2>
+<p>See how and where your queens are. What needs to be done and plan how to get it done.</p>
+
+<p>You will need to track what your bees are doing.</p>
+
+<p>The Queen system records Queens and there rates of production. 
+</p>
+<p>Based on data collected from your yards we can plan what needs to be done next and what you need to do it.
+</p>
+<h2>Active Queens.</h2>
+<p>Your list of active Queens.</p><!-- Nave bar to QueenViews -->
+<table>
+<tr><th>Yard <a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add</a></th><th>status</th><th>Queen code</th><th>Pallet code</th><th>View pallets</th><th>Graph of frames number of frames</th></tr>
+[% FOREACH link = DBI.query("SELECT * FROM apis_queens_tb
+                                  WHERE   client_name = '$SiteName'
+                                   AND (status != 'Sold' AND 
+                                   status     != 'Dead')
+                                   ORDER BY queen_code 
+                                  ")%]    
+                                  
+                                  <tr>
+   
+   <td><a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;sort_field1=yard_code&amp;sort_field2=status&amp;first_record_to_display=0&amp;records_per_page=&&amp;[% session_string %]&amp;record_id=[% link.record_id %]&display_details_view.x=15&amp;display_details_view.y=12&amp;display_details_view=on" name="Contact"  title="[% link.yard_code %] "><font   class="LeftSideBarNavStyle">[% link.yard_code %]</td>
+   <td>[% link.status  %]</td>
+   <td><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_details_view=on&amp;record_id=[% link.record_id %] ">[% link.queen_code %]</a> </td>
+   <td>[% link.pallet_code %]</td>
+   <td><a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;submit_power_search=on&amp;simple_search_string=[% link.pallet_code %] ">Pallet</a>    </td>
+   [% queen_code = link.queen_code %]
+   <td>[% PROCESS CurrentFrames.ttml ['-QUEEN_CODE', $queen_code ] %]  
+     Date [% date %]<a href="/cgi-bin/Apis/queen_log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;queen_record_id=[% link.queen_record_id %]&amp;queen_code=[%link.queen_code%]&amp;[% link.pallet_code %]"> Add log [% link.queen_code %]</a>        <table>
+             <tr><td>box 1 bees     </td><td> 	[% box_1_bees %]</td></tr>
+             <tr><td>box 1 brood    </td><td> 	[% box_1_brood %]</td></tr>
+             <tr><td>box 1 broodadded</td><td> 	[% box_1_broodadded %]</td></tr>
+             <tr><td>box 1 foundation</td><td> 	[% box_1_foundation %]</td></tr>
+             <tr><td>box 1 comb    </td><td> 	[% box_1_comb %]</td></tr>
+             <tr><td>box 1 empty   </td><td> 	[% box_1_empty %]</td></tr>
+             <tr><td>box 1 Honey    </td><td> 	[% box_1_honey %]</td></tr>
+             <tr><td>box 2 bees    </td><td> 	[% box_2_bees %]</td></tr>
+             <tr><td>box 2 brood   </td><td> 	[% box_2_brood %]</td></tr>
+             <tr><td>box 2 broodadded</td><td> 	[% box_2_broodadded %]</td></tr>
+             <tr><td>box 2 foundation</td><td> 	[% box_2_foundation %]</td></tr>
+             <tr><td>box 2 comb     </td><td> 	[% box_2_comb %]</td></tr>
+             <tr><td>box 2 empty</td><td> 	[% box_2_empty %]</td></tr>
+             <tr><td>box 2 honey    </td><td> 	[% box_2_honey %]</td></tr>
+             <tr><td>box x bees</td><td> 	[% box_x_bees %]</td></tr>
+             <tr><td>box x brood</td><td> 	[% box_x_brood %]</td></tr>
+             <tr><td>box x broodadded</td><td> 	[% box_x_broodadded %]</td></tr>
+             <tr><td>box x brood_given_x</td><td> 	[% brood_given_x  %]</td></tr>
+             <tr><td>box x foundation</td><td> 	[% box_x_foundation %]</td></tr>
+             <tr><td>box x comb</td><td> 	[% box_x_comb %]</td></tr>
+             <tr><td>box x empty</td><td> 	[% box_x_empty %]</td></tr>
+             <tr><td> box_x_honey </td><td> [% box_x_honey %]</td></tr>
+             <tr><td> honey_box  </td><td>[%   link.honey_box %]</td></tr>
+             <tr><td>honey_box  =</td><td>[% link.honey_box %]</td></tr>
+             <tr><td>honey_box_foundation  =</td><td>[% link.honey_box_foundation %]</td></tr>
+             <tr><td>honey__added  = </td><td>[%  link.honey_added %]</td></tr>
+             <tr><td>honey_removed = </td><td> [% link.honey_removed %]</td></tr>
+             <tr><td>brood_given = </td><td>[%  link.brood_given %]</td></tr>
+             <tr><td>brood_taken = </td><td>[%  link.brood_taken %]</td></tr>
+             <tr><td>brood_taken_x = </td><td>[%  link.brood_taken_x %]</td></tr>
+             
+        </td></table>
+[% HiveCap = HiveCap + link.total_yard_size %]
+ [% CurrentSize = CurrentSize + 1 %]
+[%END %]
+   </tr>
+   <tr><td></td><td></td><td>[% HiveCap %]</td><td>[% CurrentSize %]</td><td></td></tr>
+
+
+
+
+[% IF CurrentSize == 0 %]
+<tr><td>You Have no queens!</td><td>
+[% ELSE %]
+   <tr><td>Total bees</td><td>[% totalbees %]</td><td>brood</td><td>[% totalbrood %]<td>Comb</td><td>[% totalcomb %]</td><td>honey</td><td>[% totalhoney %]</td><td>Xbees</td><td>[% totalbeesx  %]</td></td> <td>Xbrood</td><td>[% totalbroodx  %]</td></td><td>xComb</td><td>[% totalcombx %]</td><td>honeyx</td><td>[% totalhoneyx %]</td></tr>
+
+[% END %]
+<tr><td><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add a New Queen</a>
+</td></tr>
+
+<tr><td><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisNucQueensView">Nucs</a>
+</td></tr>
+<tr><td><a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;view=FeedingView&amp;[% session_string %]">Feeding</a>
+</td></tr>
+</table>
+ <table>
+ 
+ 
+ </table>  
+
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+[% embed(data.page_bottom_view) %]
+

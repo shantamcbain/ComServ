@@ -1,0 +1,193 @@
+[%#	$Id: CellLogView.ttml,v 1.01 2019/10/25 06:42:47 shanta Exp shanta $	%]
+[%#	$Id: CellLogView.ttml,v 1.0 2018/08/05 06:42:47 shanta Exp shanta $	%]
+  [% PROCESS DefaultDbi.ttml %]      [% version = data.version %]
+[% displayversion = 'v 1.01 ' %]
+[%# embed(data.page_top_view,['-PAGE_TITLE','Our Cell Log']) %]
+
+[% embed('ErrorDisplayView') %]
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+
+    [% BatteryName = data.session_object.getAttribute('-KEY','batteryname') %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+    [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+    [% HomeView =data.session_object.getAttribute('-KEY','HOME_VIEW')%]
+    [% email = data.session_object.getAttribute('-KEY','auth_email') %]
+    [% BrewName = data.recipe_code %]
+    [% BatteryCode = data.session_object.getAttribute('-KEY','Battery')  %]
+
+    [% PAGE = data.VIEW_NAME  %]
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+// document.frmLinkList.FileName.options[1].selected = true
+
+function CheckSelection() {
+    var selection = document.frmLinkList.FileName.options[document.frmLinkList.FileName.selectedIndex].value
+    if (selection != "None") {
+        location.href = selection;
+        return false;
+    }
+    else
+        return false;
+}
+
+function QuickClick(list) {
+    return false
+    //var selection = list.options[list.selectedIndex].value
+    //if (selection != "None") 
+    //    location.href = selection
+}
+
+//-->
+</SCRIPT>
+ 
+ 
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+
+<A NAME="PageTop"></A>
+[% BrewItemListTb = 'brew_item_list_tb'%]
+<h2>Our cells display</h2>
+<h5>Variables</h5>
+	<ol>
+		<li>SiteName    = [% data.SiteName %].data</li>
+		<li>Admin group = [% group  %]</li>
+		<li>homeview    = [% data.home_view %].data</li>
+		<li>page        = [%  PAGE %]</li>
+	    <li>BatteryCode = [% BatteryCode %]</li>
+	    <li>BatteryCode = [% data.battery %].data</li>
+	    <li>HomeVew TTML       [% HomeView %]</li>
+    </ol>
+<h5>Cell log [% version %] display version [% displayversion %]</h5>
+
+ 
+
+
+<FORM METHOD=POST  ACTION="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;view=BatchLogView&amp;[% session_string %]&amp;batchnumber=" NAME="frmLinkList" onSubmit="return CheckSelection()">
+
+<SELECT  NAME="FileName" WIDTH=20>
+<OPTION VALUE="None">Select a Battery --->
+
+ [% FOREACH item = DBI.query(" SELECT * FROM item_tb
+	                                WHERE  sitename = 'AltPower'
+                                     
+                                   ORDER BY item_code
+	                            ")%]  
+<OPTION VALUE="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;[% session_string %]&Battery=[% item.item_code %]"> [% item.item_name%]</option>
+
+[% END %]
+ <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
+           
+
+[% IF username  == 'Shanta' OR
+	        group     == 'Brew_Admin' OR
+            group     == 'CSC_Admin' OR
+	        group     == 'ENCY_Admin' OR
+	        group     == 'USBM_Admin' OR
+	        group     == 'Shanta_Admin' OR
+	         group     == 'Demo_admin' 
+	               %]
+
+	   &nbsp;<a href="/cgi-bin/AltPower/item.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;category=Battey&amp;subject=Item_link&amp;Nav_link=1" name="add Battery"  title="Add New Recipe" style="AddButtonStyle">Add a new Battery</a>
+	
+	   [% END %]
+ [% BatteryCode =  data.item_code %]
+ 
+ 
+[% BatteryCode %] 
+	[% FOREACH link = DBI.query(" SELECT * FROM  voltamp_tb
+	 	                                  WHERE  BatteryCode = '$BatteryCode'
+		                                  
+		                                  ORDER BY time
+		                                  ")%]    
+     [%  record_id    = link.record_id  %]
+     [%  BatteryCode = link.BatteryCode %]
+     [%  Voltage      = link.Volts %]
+     [%  Amps         = link.Amps %]
+     [%  Time         = link.time %]
+     [%  description  = link.description %]
+     [%  Temperature  = link.Temp %]
+     [%  Location     = link.location %]
+     [%  ModuleCode  = link.ModuleCode %]
+     [%  Poster       = link.username_of_poster %]
+     [%  DateStamp    = link.date_time_posted %]
+     [%  CellCode    = link.CellCode %]
+     [%  alcohol      = link.alcohol %]
+     [%  colour       = link.colour %]
+     [%  ph           = link.ph  %]
+     [%  maturation   = link.maturation %]
+     [%  comments     = link.comments    %] 
+     	[% END %]
+
+
+
+</FORM>
+<h3>Our details on  	      [% BatteryCode %] [% BrewName %]
+</h3> 
+<p><a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;recipecode=[% recipe_code %]&amp;batchnumber=[% recipe_code %]Date= test&amp;site=[% SiteName %]&amp;recipename=[% recipe_name %]&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New batch" style="AddButtonStyle">Add a new batch</a></p>
+<table>
+ <tr><td>Battery Code</td> <td>[%  BatteryCode   %]</td>	</tr>
+ <tr>    <td>Battery Name</td><td>[%  Battery_name %]</td></tr>
+  <tr    <td>Capacity</td><td>[%  battery_size  %]</td></tr>
+ <tr>    <td>Discription</td> <td>[%  description %]</td></tr>
+ <tr>  <td>Current Voltage </td><td> [%  Voltage %]
+[% IF username  == 'Shanta' OR
+	        group     == 'Apis_Admin' OR
+	        group     == 'BCHPA_Admin' OR
+	        group     == 'BMast_Admin' OR
+	        group     == 'BMast_Co-op_Admin' OR
+	        group     == 'Brew_Admin' OR
+           group     == 'CSC_Admin' OR
+	        group     == 'CS_Admin' OR
+	        group     == 'ECF_Admin' OR
+	        group     == 'Orgainc_Admin' OR
+	        group     == 'DarmaFarmsAdmin' OR
+	        group     == 'MARTS_Admin' OR
+	        group     == 'VitalVic_Admin' OR
+	        group     == 'ENCY_Admin' OR
+	        group     == 'USBM_Admin' OR
+	        group     == 'Shanta_Admin' OR
+	        group     == 'HoneyDo_Admin' OR
+	        group     == 'Brew_Admin' OR
+	        group     == 'Demo_admin' OR
+	        group    ==  'WB_admin' OR
+	        group     == 'MJB_Admin'        %]
+&nbsp;<a href="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;subject=Item_link&amp;Nav_link=1&view=BatchLogView&amp;batterycode=[% BatteryCode %]" name="Add Voltage"  title="Add New Item" style="AddButtonStyle">Add Voltage</a>
+	   [% END %]
+	   </td></tr>
+ <tr>  <td> comments</td> <td>[%  comments       %] </td></tr>
+</table>
+
+<p> <a href="/cgi-bin/AltPower/item.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_details_view.x=15&display_details_view.y=12&amp;record_id=[% record_id %]"  target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">[%  BatteryCode %] Details [% record_id %]</font></a>
+<p> <a href="/cgi-bin/AltPower/item.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_modification_form=on&amp;record_id=[% record_id %]"  target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">[%  recipe_name %] Modify [% record_id %]</font></a>
+<p> <a href="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;recipecode=[% recipe_code %]&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New batch" style="AddButtonStyle">Add a new voltage</a>
+
+	
+
+ 
+ 
+[% embed('CSCCopyRight') %]
+
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+

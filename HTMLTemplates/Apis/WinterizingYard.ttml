@@ -1,0 +1,55 @@
+[%
+#	$Id: WinterizingYard.ttml,v 0.1 2019/10/09 06:42:47 shanta Exp shanta $	%]
+
+[%# embed(data.page_top_view,['-PAGE_TITLE','Bees Wax']) %]
+
+[% embed('ErrorDisplayView') %]
+
+ [% PROCESS DefaultDbi.ttml %]
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% email = data.session_object.getAttribute('-KEY','auth_email') %]
+  
+
+ 
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td >
+<h3>Winterizing your yard.</h3>
+<p>Our tutorial on winterizing your yard.</p>
+<p>When your bees have clustered it is time to wrap them if you chose to do that. There are advantages and disadvantages of doing so depending on your area. </p>
+
+<h3>Factors to chose to warp.</h3>
+
+<ul>
+  <li>You are in a damp area.</li>
+  <li>You are in an excessively windy and/or cold area.</li>
+  <li>You are placing hives on top of hives.</li>
+</ul>
+
+<h2>Upcoming workshop in November we will cover this.</h2>
+
+
+
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+[%# embed(data.page_bottom_view) %]
+

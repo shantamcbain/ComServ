@@ -57,14 +57,13 @@ sub execute {
     my $session = $params->{-SESSION_OBJECT};
     my $sitename = $cgi->param('site');
 
-
     $cgi->param(
         -NAME  => 'raw_search',
-        -VALUE =>  "(status == 'In-Use' AND
-                   sitename == $sitename
-                   )"
+        -VALUE => "status == 'In-Use' AND
+                   sitename == '$params->{-SITE_NAME}'
+         "
+    );  
 
-   );
 
     my @config_params = _rearrange([
         -YARD_DATASOURCE_CONFIG_PARAMS

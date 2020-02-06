@@ -1,0 +1,144 @@
+[%#	$Id: WaterHeatView.ttml, v0.02 2018/12/13 
+#cloned to  v0.01 2018/12/12 shanta,
+# EVHomeView.ttml,v 1.0 2002/11/08 17:43:15 shanta Exp shanta $	
+
+# Ideally this template should be converted into a static CSS file and
+# be served as /foo/bar.css and not via CGI, since it slows things
+# down and dozen't allow browsers to cache the CSS content.
+
+# otherwise this template is stand-alone, i.e. it dozen't rely on any
+# variables from outside.
+
+%]
+[%# embed('InheretedVariablesView') %] 
+
+ [% PROCESS DefaultDbi.ttml %]
+ [% username = data.session_object.getAttribute('-KEY','auth_username') %]
+ [% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+ [% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+ [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+ [% site = SiteName %]
+ [% SiteDisplayName = data.site_display_name %]
+[% session_id = data.session_object.getId() %]
+ [% session_string = "session_id=$session_id" %]
+
+[% IF group == "Mentoring"	%]
+[% embed(data.page_top_view,['-PAGE_TITLE','Mentor home.']) %]
+[% ELSE %]
+
+[%# embed(data.page_top_view,['-PAGE_TITLE','Electrical Vehicle Home page.']) %]
+[% END %]
+[% embed('ErrorDisplayView') %]
+
+[%# embed('InheretedVariablesView') %]
+
+
+ <!-- Begin EV Home View -->  
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+
+[%# embed('InheretedVariablesView') %]
+[% IF username %]
+
+<h3 > Hello  [% firstname%]  [% lastname%]! Welcome to [% data.site_display_name %]</h3>
+
+	[% ELSE %]
+
+	<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %] Electric Vehicle Page! </h3> 
+	[% END %]
+
+[% SiteName = data.site_name%]
+[% IF data.debug == 1 %]
+Variable ative in DevHomeView
+[% embed('InheretedVariablesView') %]
+[% END %]
+ [%# embed ('CSCDevHomeView') %]
+ 
+
+<A NAME="PageTop"></A>
+<br>
+<br>
+<p>Thanks for your interest in our  Hot water solutions.</p>
+
+
+
+   [% IF username %]
+   
+ 	
+	 
+ 	[% ELSE %]
+  
+   <p>You will now need to create an account on the system.
+   click on one of the Logon links then click register.
+    </p>
+	[% END %]
+
+<p>Heating water and using it. We heat water for many reasons  Check out our list.
+</p>
+
+<font size="+2">Key projects in the works.</font> 
+<ol>
+	<li><h2>Evnode heating system</h2>
+	<p> Goal of this project is to heat the entire rvNode with solar. The current solar array and battery pack are not large enough yet so we will include alternate power sources.</p>
+	  <ul>
+	   <li><h2>Primary heat source</h2> This will be a repurposed hot tub heater. The main inlet and out let are 2 1/4” inlet and outlet. There is also a 3/4” jet pump outlet. This will be used to speculate water though the heaters.</p></li>
+	   <li><h2>Heat resivours.</h2> <p> This is 6 50 gallon drums. </p></li>
+	   <li><h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProceduresView&procedure=YurtHeat" target="_blank">Yurt heat.</a></h2></li>
+	  
+	<li><h2>Supplies needed</h2>
+	  <ul>
+	   <li>4 each 3/4 x 100 black plastic pipe</li>
+	   <li>8 each 3/4 Ts</li>
+	   <li>8 each 3/4 90</li>
+	   <li>8 each 3/4 inline</li>
+	   <li>heater adapter likely 1/2 to 3/4<li>
+	    
+	   <li>24 + 18 +16 3/4 hose clamps</li>
+	   <li>2 each 2 1/4 barrel adapter for attaching main pump inlet and outlet to primary storage barrel.</li>
+	   <li>2 1/4 id flexible pipe for connecting pump to barrel.
+	   <li>Hot water heater for trailer. </li>
+	 </ul>
+	
+	</li>
+	<li> <h2>Supplimental Heat and power</h2> <p> There are several. </p>
+	 <ul>
+	  <li><h2>Coach Generator</h2> provides both power to run the pump and hot air to heat the space Simple cogeneration </li>
+         <li><h2>Wood heat</h2> This is as simple as a barrel on the wood stove that the return line of the heating circuit.</li>
+	  <li> <h2> 3 way Rv Hotwater heater </h2> <p>One can use a 3 way 110 v 12 volt propaine. It would be installed to heat the resivour.</li>
+	  </ul>
+	  </li>
+	</ul>
+	
+</ol>
+
+
+
+
+
+
+<br>
+[% IF SiteName != 'CSC' %]
+<!-- Call Subscrib list -->
+[%# embed ('SubscribeListView') %]
+<!-- End call subscribe list -->
+<br>
+<br>
+	[% END %]
+
+<p>Last Update [% data.site_last_update %] [% IF SiteName == 'Demo' %]&nbsp; This value is stored in your setup file. [% END %]
+<br>
+<!-- Call CScCopyRight -->
+[% embed('CSCCopyRight') %]
+<!-- End Call CSCCopyRight -->
+<br>
+<!-- close Home page table  -->
+</td>
+</tr>
+</table>
+
+
+<!-- End EV home view -->
+
+[% embed(data.page_bottom_view) %]
+

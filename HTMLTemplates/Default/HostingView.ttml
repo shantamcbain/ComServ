@@ -46,7 +46,8 @@
 	
 </ul> 
 			<h3> Hosting with us.</h3
-
+<p>We offer discounted hosting services to our members. We have Three types of services.
+</p>
 
 <ol>
 	<li>Sub domain. Your URL to the site will look like this <a href="http://ecf.beemaster.ca" target="_blank" name="subdomain link" title = "Click here to see what this site looks like.">Http://ecf.beemaster.ca</a> You get 5 email addresess, Web space, and more. Order your sub domain <a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=21&amp;aff=[% AffiliateID %]">here</a></li>
@@ -54,10 +55,8 @@
 	<li><a href="http://wwcomputersystemconsulting.ca/whmcs/cart.php?a=add&pid=3'&amp;aff=[% AffiliateID %]">Reseller accounts</a></li> Run your own hosting service for your customers.
 </ol>
 			<h3> Domains.</h3
-<p>We offer discounted hosting services to our members. We have Three types of services.
-</p>
 
-<p> Register or tranfer your <a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&domain=register&amp;aff=[% AffiliateID %]" target="_new">domain</a> to us.</a>
+<p> Register or transfer your <a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&domain=register&amp;aff=[% AffiliateID %]" target="_new">domain</a> to us.</a>
 		</td>
 			</tr>
 		</table>

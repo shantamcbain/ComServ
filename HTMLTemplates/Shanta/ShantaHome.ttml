@@ -1,4 +1,7 @@
 [%
+
+#	$Id: ShantaHome.ttml,v 1.11 2019/10/10 03:45:30 shanta Exp shanta $	
+
 #	$Id: ShantaHome.ttml,v 1.1 2001/12/16 03:45:30 shanta Exp shanta $	
 
 # Ideally this template should be converted into a static CSS file and
@@ -10,7 +13,6 @@
 
 %]
 
-[% embed(data.page_top_view,['-PAGE_TITLE',' Home page.']) %]
 
 [% embed('ErrorDisplayView') %]
 
@@ -33,6 +35,9 @@
 [% IF username == 'Shanta' %]
 <h3>Things you need to do.</h3>
 [% embed(todolistview) %]
+
+<h2>My Personal notes.</h2>
+<p></p>
 [% ELSE %]
 
 	[% IF username %]
@@ -47,12 +52,12 @@
 	[% END %]
 
 <p>This is my personal site. You will find some of the things I am into here.
-<br>
-<br>
-<br>
+
 <a href="http://forager.com/usbm/usbm.html" target="_Blank" >USBM</a>. We are proud to sponsor The Universal School of Biological Life Site.
 <br>
-<br>                      <script type=" text/javascript" src="/cgi-bin/News/news.cgi?embed=1&amp;site=Shanta&amp;simple_search_string=Shanta&amp;records_per_page=20">
+<br>                      
+
+<script type=" text/javascript" src="/cgi-bin/News/news.cgi?embed=1&amp;site=Shanta&amp;simple_search_string=Shanta&amp;records_per_page=20">
 </script>
 
 <br>
@@ -74,5 +79,5 @@
 </table>
 
 
-[% embed(data.page_bottom_view) %]
+[%# embed(data.page_bottom_view) %]
 

@@ -1,6 +1,15 @@
+<<<<<<< HEAD
+[%#	$Id: HomeView.ttml,v 1.93 2019/11/19 17:43:15 shanta Exp shanta $	
+[%#	$Id: HomeView.ttml,v 1.92 2019/10/09 17:43:15 shanta Exp shanta $	
 [%#	$Id: HomeView.ttml,v 1.91 2014/10/22 17:43:15 shanta Exp shanta $	
+=======
+>>>>>>> master
 
-# Ideally this template should be converted into a static CSS file and
+[%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.93 2019/10/10 17:43:15 shanta Exp shanta $	%]
+[%#	$Id: HomeView.ttml,v 1.92 2019/10/09 17:43:15 shanta Exp shanta $	%]
+[%#	$Id: HomeView.ttml,v 1.91 2014/10/22 17:43:15 shanta Exp shanta $	%]
+[% ViewVersion ="1.93" %]
+[% # Ideally this template should be converted into a static CSS file and
 # be served as /foo/bar.css and not via CGI, since it slows things
 # down and dozen't allow browsers to cache the CSS content.
 
@@ -8,6 +17,17 @@
 # variables from outside.
 
 %]
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% email = data.session_object.getAttribute('-KEY','auth_email') %]
+
 	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
 	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
    [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
@@ -26,9 +46,9 @@
 
 
 [% IF group == "Mentoring"	%]
-	[% embed(data.page_top_view,['-PAGE_TITLE','Mentor home.']) %]
+	[% embed(data.page_top_view,['$SiteName','Mentor home.']) %]
 [% ELSE %]
-	[% embed(data.page_top_view,['-PAGE_TITLE','Home page.']) %]
+	[% embed(data.page_top_view,['$SiteName','Home page.']) %]
 [% END %]
 
 [% embed('ErrorDisplayView') %]
@@ -40,13 +60,19 @@
 		[% ELSE %]
 			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %]! </h3> 
 		[% END %]
-		
+[%# Move to embed ("SiteAdminHome")%]
+[%# embed ("AdminTodoListLink")%]	
+
+<!-- <p>process HomePage for site currently line 52  replace </p> -->
+
 		[% SiteName = data.site_name%]
 
    	[% IF SiteName == "OKB" %]
 		[% embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "Aktiv" %]
 			[% embed ('AktivHomeView') %]
+		[% ELSIF SiteName == "AltPower" %]
+			[% embed ('AltPowerHomeView') %]
 		[% ELSIF SiteName == "AnuCollective" %]
 			[% embed ('AnuCollectiveHomeView') %]
 		[% ELSIF SiteName == "BMaster"%]
@@ -121,10 +147,59 @@
 			[% embed ('DemoHomeView') %]
 			<!-- End Demo home view -->
 		[% END %]
-		
+<<<<<<< HEAD
+  [%# embed('SiteAdminNotes') %]
 
 
-<p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %]&nbsp; This value is stored in your setup file. [% END %]
+=======
+	 [% IF group    ==  'Alegro_admin' OR
+	       group    ==  'Apis_admin' OR
+	       group    ==  'BCHPA_admin' OR
+	       group    ==  'AltPower_admin' OR
+	       group    == 'AnuCollective_admin' OR
+	       group    ==  'Brew_admin' OR
+	       group    ==  'CS_admin' OR
+	       group    ==  'CSC_admin' OR
+	       group    ==  'CSPS_admin' OR
+	       group    ==  'ENCY_admin' OR
+	       group    ==  'Forager_admin' OR
+	       group    ==  'eXtropia_admin' OR
+	       group    ==  'GPMarket_admin' OR
+	       group    ==  'HE_admin' OR
+	       group    ==  'NOWD_admin' OR
+	       group    ==  'News_admin' OR
+	       group    ==  'OKB_admin'OR
+	       group    ==  'Organic_admin' OR
+	       group     == 'DarmaFarmsAdmin' OR
+	       group    ==  'Shanta_admin' OR
+	       group    ==  'Stawns_admin' OR
+	       group    ==  'VitalVic_admin' OR
+	       group    ==  'rv_admin' OR
+	       group    == 'MJB_Admin' OR
+	       group    ==  'WB_admin' OR
+	       group    ==  'WW_admin' OR
+	       username == 'Shanta' OR
+	      group    == 'Demo_admin'
+	 %] 
+  [% embed('SiteAdminNotes') %]
+	[% embed('ToDoList') %]
+	[% END %]
+
+
+
+                 
+ 
+ 
+
+  [%# embed ('SiteTodoSQL' )   %]		
+
+>>>>>>> master
+
+<p>[%# group %]
+ 
+<!--  Todo lists moved to SiteAdmin -->
+
+<p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %] &nbsp; This value is stored in your setup file. [% END %]
 		<br>
 		
 

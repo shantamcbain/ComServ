@@ -1,0 +1,62 @@
+[%#	$Id: CurrentFrames.ttml,v 1.1 2019/0/25 06:42:47 shanta Exp shanta $	
+   %]
+<p>Queen [% queen_code %]</p>
+[%# AND (queen_code = '$queen_code') %]
+[% FOREACH link = DBI.query("SELECT * FROM apis_queen_log_tb
+                                  WHERE   sitename = '$SiteName'
+                                   AND (status = 4)
+                                   ORDER BY start_date  
+                                  ")%]  
+                        [% date = link.start_date %]  
+                      	[% box_1_bees = link.box_1_bees %]
+                      	[% box_1_brood = link.box_1_brood %]
+                      	[% box_1_broodadded = link.box_1_broodadded %]
+                      	[% box_1_foundation = link.box_1_foundation %]
+                      	[% box_1_comb = link.box_1_comb %]
+                      	[% box_1_empty = link.box_1_empty %]
+                       	[% box_1_honey = link.box_1_honey %]
+                     	[% box_2_bees = link.box_2_bees %]
+                      	[% box_2_brood = link.box_2_brood %]
+                      	[% box_2_broodadded = link.box_2_broodadded %]
+                      	[% box_2_foundation = link.box_2_foundation %]
+                      	[% box_2_comb = link.box_2_comb %]
+                      	[% box_2_empty = link.box_2_empty %]
+                      	[% box_2_honey = link.box_2_honey %]
+                     	[% box_x_bees = link.box_x_bees %]
+                      	[% box_x_brood = link.box_x_brood %]
+                      	[% brood_given_x  = link.brood_given_x  %]
+                       	[% box_x_broodadded = link.box_x_broodadded %]
+                    	   [% box_x_foundation = link.box_x_foundation %]
+                      	[% box_x_comb = link.box_x_comb %]
+                      	[% box_x_empty = link.box_x_empty %]
+                      	[% box_x_honey = link.box_x_honey %]
+                     	[% honey_box  = link.honey_box %]
+                        [% honey_box_foundation  = link.honey_box_foundation %]
+                        [% honey__added  = link.honey_added %]
+                        [% honey_removed = link.honey_removed %]
+                        [% brood_given = link.brood_given %]
+                        [% brood_taken = link.brood_taken %]
+                        [% brood_taken_x = link.brood_taken_x %]
+    [%bees = box_1_bees + box_2_bees %] 
+    [%comb = box_1_comb + box_2_comb %]
+    [%brood = box_1_brood + box_2_brood %] 
+    [%honey = box_1_honey + box_2_honey %] 
+    [%beesx = box_x_bees %] 
+    [%honeyx = box_x_honey %] 
+    [%combx = box_x_comb %] 
+    [%broodx = box_x_brood %] 
+ 
+    
+    
+  [% END %]                    	
+   
+ [% totalbees = totalbees + bees %]
+ [% totalcomb  = totalcomb + comb %]
+ [% totalbrood = totalbrood + brood %]
+ [% totalhoney = totalhoney + honey%]
+ [% totalcombx  = totalcombx + totalcombx %]
+ [% totalbroodx = totalbroodx + broodx %]
+ [% totalhoneyx = totalhoneyx +honeyx%]
+ [% totalbeesx = totalbeesx + beesx %]
+
+ 

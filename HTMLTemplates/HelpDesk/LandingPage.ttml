@@ -1,0 +1,82 @@
+[%
+#	$Id: LandingPage.ttml,v 0.01 2019/10/09 15:47:05 shanta Exp $
+
+
+%]
+
+[% embed('ErrorDisplayView') %] 
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+        [% session_string = "session_id=$session_id" %]
+[% END %] 
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+
+[%# embed(data.page_top_view,['-PAGE_TITLE','Landing Page']) %]
+
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td >
+</CENTER>
+<A NAME="PageTop"></A>
+<h2 align="center">What is a landing page and how to use it.</h2>
+
+<p>Landing pages are the first page that a url will bring. 
+</p>
+
+<h3>For example.</h3>
+<p>Type in https://forager.com will deliver the default page of that site. Usually index.html</p>
+
+<p>Here is a plain text way to feed your users into your site. You begin setting the tone of what your site is all about. </p><h3>Key links here are </h3>
+<ul><a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&view=BasicDataView" target = "_blank">Data</a>
+		
+ <li><h3>Your  [% embed ('helplink') %]</h3> link for user to obtain help. This link exist on all headers and at the bottom of the left side bar. Once in the application it appears in the same paces on all pages.</li>
+ <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]" target="_blank">Home Page</a></h3><p>This is the live view of your site NOT the landing page. </p></li>
+ <li><h3>[% embed ('LogOnLeftView') %]</h3><p>This link appears on all pages in the site. We want to encourage log as it will Bring up more site options that are based on the login users group.</p></li>
+ <li><h3>Products</h3> <p>You may have on offer</p></li>
+ </ul></p>
+ 
+ <p>The links and content this page should be used to funnel your viewers to the right place. </p>
+<p>How you edit this page will dependent on your point of view.</p>
+<ol>
+ <li><h2>Your local hardware.</h2> <p>This is http://localhost will deliver /home/username/html/index.html Use as your defalut landing page.</p
+ <p>To edit this file use any text editor. 
+   <ul>
+     <li><h3>LibreOffice</h3><p>All word processors give a more WISIYG view of editing. To learn more about word possessor doses this! Edit  /home/username/html/index.html using LibreOffice. Save your file as an html document.</p></li>
+     <li>BlueFish is a programming editor used to edit all files on the server. Our developers us this for all site editing.</li> 
+   </ul><p>
+ </li>
+ <li><h2>Your web server.</h2>
+ <p>This is the first thing your public viewers will see. </p>
+ <p>To edit from the web you will use the web based editor provided with your account. Open your <a href="https://cpanel.beemaster.ca" target="_blank">cPanel account</a> </p> You may up/download the file. From your Git directly for editing and version control.  </li>
+</ol>
+
+
+
+
+
+[% IF SiteName == 'BCHPA' %]
+<script type = "text/javascript"
+ src="/cgi-bin/Apis/address_book.cgi?embed=1&amp;site=BCHPA&amp;records_per_page=1&amp;&amp;columns_to_view=fname&amp;columns_to_view=lname&amp;columns_to_view=company_name&amp;columns_to_view=email&amp;columns_to_view=url&amp;submit_power_search=on&amp;simple_search_string=Honey_Producer">
+</script>
+    [% ELSE %]<li><a href="/cgi-bin/index.cgi?site=ECF&amp;[% session_string %]&amp;view=ProductView#Honey" title="Order from a supporting company!">Eagle Creek Farms</a>
+[% END %]
+</ul>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+[% embed(data.page_bottom_view) %]
+

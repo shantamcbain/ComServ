@@ -1,8 +1,13 @@
 [%
+#	$Id: ApisNucQueensView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
+
 #	$Id: ApisQueensView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
+[% IF procedure %]
 
-[% embed(data.page_top_view,['-PAGE_TITLE','Queens']) %]
+[% ELSE %]
 
+[% embed(data.page_top_view,['-PAGE_TITLE','Nuc Queens']) %]
+[% END %]
 [% embed('ErrorDisplayView') %]
 
 
@@ -19,7 +24,7 @@
 	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
 [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
 [% email = data.session_object.getAttribute('-KEY','auth_email') %]
-    [% USE DBI( data_source = 'dbi:mysql:forager',
+    [%# USE DBI( data_source = 'dbi:mysql:forager',
                 username = 'forager',
                 password = 'pwxx88' )
     %]
@@ -46,12 +51,12 @@
 
 <p>You will need to track what your bees are doing in each nuc.</p>
 
-<p>The Nuc system records Nucs and there rates of porduction. 
+<p>The Nuc system records Nucs and their rates of production. 
 </p>
-<p>Based on data colected from your yards we can plan what needs to be done next and what you need to do it.
+<p>Based on data collocated from your yards we can plan what needs to be done next and what you need to do.
 </p>
 <!-- Nave bar to QueenViews -->
-<a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&ap;view=ApisNucQueensView">Nucs</a>&nbsp;<a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisActiveQueensView">Active Queens</a>
+<a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisNucQueensView">Nucs</a>&nbsp;<a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisActiveQueensView">Active Queens</a>
 <table>
 <tr><th>Yard <a href="/cgi-bin/Apis/quens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add</a></th><th>status</th><th>Queen code</th><th>Pallet code</th><th>View pallets</th></tr>
 [% FOREACH link = DBI.query("SELECT * FROM apis_queens_tb

@@ -1,4 +1,7 @@
 #!/usr/bin/perl -wT
+# 	$Id: index.cgi,v 1.15 2020/01/13 14:27:36 shanta Exp $
+# 	$Id: index.cgi,v 1.14 2019/04/08 14:27:36 shanta Exp $
+# 	$Id: index.cgi,v 1.13 2019/03/215 14:27:36 shanta Exp $
 # 	$Id: index.cgi,v 1.12 2014/03/20 14:27:36 shanta Exp $
 
 # Copyright (C) 1994 - 2001  eXtropia.com
@@ -19,7 +22,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 1.04, March 17, 2017";
+my $AppVer = "ver 1.06, Jan 13, 2020";
 
 BEGIN
 {
@@ -48,6 +51,7 @@ my @TEMPLATES_SEARCH_PATH = qw(HTMLTemplates/AltPower
   HTMLTemplates/HelpDesk
   HTMLTemplates/LT
   HTMLTemplates/MW
+  HTMLTemplates/News
   HTMLTemplates/Organic
   HTMLTemplates/Shanta
   HTMLTemplates/SB
@@ -85,17 +89,21 @@ foreach ( $CGI->param() )
 my $APP_NAME       = "apis";
 my $APP_NAME_TITLE = "Apis, Bees and Beekeeping ";
 my $SiteName       = $CGI->param('site');
-my $View           = $CGI->param('view') || 'PageView';
-my $Page           = $CGI->param('page') || 'HomeView';
+my $View           = $CGI->param('view') ;
+my $Page           = $CGI->param('page');
+my $procedure      = $CGI->param('procedure')||'List';
+my $project        = $CGI->param('project');
+my $title          = $CGI->param('title');
 my $site_update;
 my $username;
 my $group;
 my $CustCode = $CGI->param('custcode') || "BMaster";
-my $home_view = 'PageView';
+my $home_view ;
 my $BASIC_DATA_VIEW;
 my $page_top_view;
 my $page_bottom_view;
 my $page_left_view;
+my $style = $CGI->param('pagestyle');
 
 #Mail settings
 my $mail_from;
@@ -131,7 +139,7 @@ my $mail_to_user;
 my $mail_to_member;
 my $mail_to_discussion;
 my $LineStatus        = "yes";
-my $last_update       = 'November 07, 2016';
+my $last_update       = 'January 13, 2020';
 my $SITE_DISPLAY_NAME = 'None Defined for this site.';
 my $FAVICON;
 my $ANI_FAVICON;
@@ -148,6 +156,7 @@ my $Header_alt;
 my $Page_tb;
 my $HasMembers = 0;
 my $OffLine    = 'yes';
+my $HostName   = $ENV{'SERVER_NAME'};
 
 my $site_for_search = 0;
 
@@ -163,10 +172,10 @@ my $VIEW_LOADER =
   or die(   "Unable to construct the VIEW LOADER object in "
           . $CGI->script_name()
           . " Please contact the webmaster." );
-my $HostName    = $ENV{'SERVER_NAME'};
+#my $HostName    = $ENV{'SERVER_NAME'};
 use SiteSetup;
 my $UseModPerl     = 1;
-my $SetupVariables = new SiteSetup($UseModPerl, $CGI->param('site'));
+my $SetupVariables = new SiteSetup($UseModPerl, $CGI->param('site'), $HostName);
 $SiteName            = $SiteName || $SetupVariables->{-SITE_NAME};
 $Affiliate           = $SetupVariables->{-AFFILIATE};
 $APP_NAME_TITLE      = $SetupVariables->{-APP_NAME_TITLE};
@@ -222,7 +231,7 @@ $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
 #$page_bottom_view = $CGI->param('page_bottom_view')||$page_bottom_view;
 #$page_left_view   = $CGI->param('page_left_view')||$page_left_view;
 #$page_left_view = "LeftPageView";
- 
+
 ######################################################################
 #                          SESSION SETUP                             #
 ######################################################################
@@ -238,7 +247,7 @@ my @SESSION_CONFIG_PARAMS = (
 ######################################################################
 #                     SESSION MANAGER SETUP                          #
 ######################################################################
-  
+
 my @SESSION_MANAGER_CONFIG_PARAMS = (
                                       -TYPE           => 'FormVar',
                                       -CGI_OBJECT     => $CGI,
@@ -279,7 +288,7 @@ else
  }
 }
 
- 
+
 $username = $SESSION->getAttribute( -KEY => 'auth_username' );
 $group    = $SESSION->getAttribute( -KEY => 'auth_group' );
 
@@ -409,7 +418,7 @@ my @AUTH_REGISTRATION_DH_MANAGER_PARAMS = (
 
 my @USER_FIELDS = (
  qw( -CSS_VIEW_URL                         => $CSS_VIEW_URL,
- -CSS_VIEW_NAME                        => $CSS_VIEW_NAME, 
+ -CSS_VIEW_NAME                        => $CSS_VIEW_NAME,
    auth_username
    auth_password
    auth_groups
@@ -507,7 +516,7 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
                       last_mod_date       => 'Last Modified Date',
                       comments            => 'Comments',
  },
- <!-- ApisHomeView  v 1.1 2003/11/29-->
+
 
    -RULES => [
   -ESCAPE_HTML_TAGS => [
@@ -1029,11 +1038,13 @@ my @VALID_VIEWS = qw(
   LogoffView
 
   HomeView
+  NonTableHomeView
+  AdminHomeView
   AboutUsView
   LiveEdit
   CSCCSSView
   DailyWorkSheetView
-  
+
   ApisHomeView
   ApisProductView
   ApisPolinatorsView
@@ -1056,7 +1067,7 @@ my @VALID_VIEWS = qw(
   ProjectsView
   BeeTrailerView
   BeeTalk
-
+  BMasterProcedures
   BCHPAHomeView
   BCHPAAdminHomeView
   BeeTrustView
@@ -1100,6 +1111,7 @@ my @VALID_VIEWS = qw(
   MentorView
   MentoringHomeView
   MailView
+  NewsLetterView
   SwarmControlView
   ShantaHome
   CertificationView
@@ -1119,6 +1131,7 @@ my @VALID_VIEWS = qw(
   LtrustHomeView
   NucView
   SiteLogView
+  Resources
   WorkShopsView
   RegistrationView
   MailListView
@@ -1131,7 +1144,13 @@ my @VALID_VIEWS = qw(
   BuySellHomeView
   HelpDeskHomeView
   AltpowerLogHomePage
+  VoltSensorDevelopment
   PowerUsageView
+<<<<<<< HEAD
+  ProceduresView
+=======
+>>>>>>> AltPower
+  AltpowerNodeView
   SustainableView
   UrbanBeekeepingView
   UrbanFarmingView
@@ -1142,6 +1161,7 @@ my @VALID_VIEWS = qw(
   ResourcesView
   HerbDetailView
   BrewLogView
+  ProceduresView
 );
 
 my @ROW_COLOR_RULES = ();
@@ -1214,7 +1234,7 @@ my @VIEW_DISPLAY_PARAMS = (
     start_date
     due_date
     status
-    
+
     priority
     )
  ],
@@ -1336,7 +1356,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
  -DISPLAY_CONFIRMATION_ON_DELETE_FLAG    => 1,
  -DISPLAY_CONFIRMATION_ON_MODIFY_FLAG    => 1,
  -ENABLE_SORTING_FLAG                    => 1,
- -Domain_Name                            => $HostName,
+ -DOMAIN_NAME                            => $HostName,
  -GROUP                                  => $group,
  -HAS_MEMBERS                            => $HasMembers,
  -HTTP_HEADER_PARAMS                     => $HTTP_HEADER_PARAMS || 'test',
@@ -1382,6 +1402,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
  -SESSION_OBJECT                                   => $SESSION,
  -SESSION_TIMEOUT_VIEW_NAME                        => 'SessionTimeoutErrorView',
  -SITE_NAME                                        => $SiteName,
+ -STYLE                                            => $style,
  -TEMPLATES_CACHE_DIRECTORY  => $TEMPLATES_CACHE_DIRECTORY,
  -VIEW                       => $View,
  -VALID_VIEWS                => \@VALID_VIEWS,
@@ -1392,6 +1413,9 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
  -FIRST_RECORD_ON_PAGE       => $CGI->param('first_record_to_display') || 0,
  -LAST_RECORD_ON_PAGE        => $CGI->param('first_record_to_display') || "0",
  -SHOP                       => $shop,
+ -TITLE                      => $title,
+ -PROJECT                    => $project,
+ -PROCEDURE                  => $procedure,
  -PAGE_TOP_VIEW              => $page_top_view,
  -PAGE_LEFT_VIEW             => $page_left_view,
  -PAGE_BOTTOM_VIEW           => $page_bottom_view,

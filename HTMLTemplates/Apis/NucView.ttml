@@ -1,5 +1,5 @@
-[%
-#	$Id: NucView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
+[%#	$Id: NucView.ttml,v 1.1 2019/04/25 06:42:47 shanta Exp shanta 
+   $Id: NucView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta %]
 [% PROCESS DefaultDbi.ttml %]
 
 [% embed(data.page_top_view,['-PAGE_TITLE','Nucs']) %]
@@ -27,7 +27,16 @@
 <td >
 <h3>This is Nucs.</h3>[% data.dbi_dsn %]
 <p>There two types of nucs we will be tracking. Mating nucs and sale nucs
+[% PROCESS CurrentFrames.ttml ['-QUEEN_CODE', $queen_code ] %] 
 
+ [% totalbees = totalbees + bees %]
+ [% totalcomb  = totalcomb + comb %]
+ [% totalbrood = totalbrood + brood %]
+ [% totalhoney = totalhoney + honey%]
+ [% totalcombx  = totalcombx + totalcombx %]
+ [% totalbroodx = totalbroodx + broodx %]
+ [% totalhoneyx = totalhoneyx +honeyx%]
+ [% totalbeesx = totalbeesx + beesx %]
 
 [%  embed ('MatingNuc')%]
 

@@ -1,0 +1,111 @@
+[%#	$Id: PowerUsageView.ttml,v 0.111 2019/10/25 11:42:47 shanta Exp shanta $	%]
+[%#	$Id: PowerUsageView.ttml,v 0.11 2018/11/07 11:42:47 shanta Exp shanta $	%]
+ [%#	$Id: PowerUsageView.ttml,v 0.10 2014/12/11 06:42:47 shanta Exp shanta $	%]      
+ [% version = 0.111%]
+ [% PROCESS DefaultDbi.ttml %]
+[% embed(data.page_top_view,['-PAGE_TITLE','Power Usage  ' data.app_ver $version]) %]
+
+[% embed('ErrorDisplayView') %]
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+
+  [% BrewName = data.session_object.getAttribute('-KEY','BrewName') %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% email = data.session_object.getAttribute('-KEY','auth_email') %]
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+
+<A NAME="PageTop"></A>
+[% BrewItemListTb = 'brew_item_list_tb'%]
+
+<h2> [% SiteName %] Power log  [% version %] </h2>
+
+
+<h5>Variables</h5>
+	<ol>
+		<li>SiteName  = [% data.SiteName %].data</li>
+		<li>BrewName  = [% data.brewname %].data</li>
+     <li>BrewName  = [% BrewName %].session</li>
+		<li>App verson  = [% data.app_ver %].data</li>
+</ol>
+<h5></h5>
+
+ 
+
+
+</FORM>
+
+<p>This is our power system logging system. Here we will at first track the development our power usage and the process of how we got to were we are now.</p>
+
+<ul>
+  <li><h3>Voltage acquisition and logging</h3>
+  
+  <p>We will collect data from sensors via both <a href="/cgi-bin/index.cgi?site=AltPower&view=VoltSensorDevelopment" target="<popup window>">Arduino and Raspberry pi.</a> </p>
+  </li>
+  <li><h3>amp acquisition and logging. </h3>
+  <p>Similar to voltage collection but using amp sensors</p></li>
+  <li><h3>Recording data from solar chargers</h3>
+  <p>This will use the serial connector supplied on the charge controller. </p></li>
+</ul>
+
+
+<h2>Our List of batteries.</h2>
+
+[% IF username  == 'Shanta' OR
+	        group     == 'Apis_Admin' OR
+	        group     == 'BCHPA_Admin' OR
+	        group     == 'BMast_Admin' OR
+	        group     == 'BMast_Co-op_Admin' OR
+	        group     == 'Brew_Admin' OR
+           group     == 'CSC_Admin' OR
+	        group     == 'CS_Admin' OR
+	        group     == 'ECF_Admin' OR
+	        group     == 'Orgainc_Admin' OR
+	        group     == 'DarmaFarmsAdmin' OR
+	        group     == 'MARTS_Admin' OR
+	        group     == 'VitalVic_Admin' OR
+	        group     == 'ENCY_Admin' OR
+	        group     == 'USBM_Admin' OR
+	        group     == 'Shanta_Admin' OR
+	        group     == 'HoneyDo_Admin' OR
+	        group     == 'Brew_Admin' OR
+	        group     == 'Demo_admin' OR
+	       group    ==  'WB_admin' OR
+	        group     == 'MJB_Admin'        %]
+
+	   &nbsp;<a href="/cgi-bin/AltPower/item.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New Recipe" style="AddButtonStyle">Add New Battery</a>
+	
+	   [% END %]
+
+
+[% embed('BatteryList') %]
+ 	
+
+[%# embed('VoltAmpView') %]
+
+                 
+ 
+ 
+ 
+[% embed('CSCCopyRight') %]
+
+
+</td>
+</tr>
+</table>
+
+
+
+

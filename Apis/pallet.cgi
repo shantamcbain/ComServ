@@ -562,7 +562,7 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
         -IS_FILLED_IN => [
             -FIELDS => [qw(
                 status
-                yard_code
+                
                 pallet_code
             )]
         ]
@@ -1142,7 +1142,7 @@ my @ACTION_HANDLER_LIST =
     qw(
        CSC::PopulateInputWidgetDefinitionListWithClientWidgetAction
        Apis::PopulateInputWidgetDefinitionListWithQueenCodeWidgetAction
-Apis::PopulateInputWidgetDefinitionListWithYardCodeWidgetAction
+       Apis::PopulateInputWidgetDefinitionListWithYardCodeWidgetAction
        Default::SetSessionData
        Default::DisplayCSSViewAction
        Default::DisplaySessionTimeoutErrorAction
