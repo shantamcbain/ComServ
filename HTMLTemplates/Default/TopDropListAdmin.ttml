@@ -1,50 +1,4 @@
-<<<<<<< HEAD
-[% #/HTMLTemplates/Default/TopAdminLinksView.ttml %]
-	 [% IF group    ==  'Alegro_admin' OR
-	       group    ==  'Apis_admin' OR
-	       group    ==  'BCHPA_admin' OR
-	       group    ==  'AltPower_admin' OR
-	       group    == 'AnuCollective_admin' OR
-	       group    ==  'Brew_admin' OR
-	       group    ==  'CS_admin' OR
-	       group    ==  'CSC_admin' OR
-	       group    ==  'CSPS_admin' OR
-	       group    ==  'ENCY_admin' OR
-	       group    ==  'Forager_admin' OR
-	       group    ==  'eXtropia_admin' OR
-	       group    ==  'GPMarket_admin' OR
-	       group    ==  'HE_admin' OR
-	       group    ==  'NOWD_admin' OR
-	       group    ==  'News_admin' OR
-	       group    ==  'OKB_admin'OR
-	       group    ==  'Organic_admin' OR
-	       group     == 'DarmaFarmsAdmin' OR
-	       group    ==  'Shanta_admin' OR
-	       group    ==  'Stawns_admin' OR
-	       group    ==  'VitalVic_admin' OR
-	       group    ==  'rv_admin' OR
-	       group    == 'MJB_Admin' OR
-	       group    ==  'WB_admin' OR
-	       group    ==  'WW_admin' OR
-	       username == 'Shanta' OR
-	      group    == 'Demo_admin'
-	 %]
 
-		<li><span>        Admin Tools  </span>
-	<ul> <li>      
-	[%  embed("AdminURLLink") %]	
-</li>
-	
-	  [% IF group    == 'Demo_admin' %]
-		 [% embed ('SQL_Demo_Admin') %]
-	  [% ELSE %]
-	 	[% embed ('TopSQL_Admin') %]
-	
-	  [% END %]
-</ul>	  </li>
-[% END %]
-
-=======
 [%# /HTMLTemplates/Default/TopDropListAdmin.ttml %]
 [%# 	$Id: HeaderHostingView.ttml,v 0.01 2003/11/29 06:33:25 shanta Exp shanta $	%]
 <li> 
@@ -74,5 +28,4 @@
      </ul>
 </li>
 		
-	
->>>>>>> origin/Brew
+
