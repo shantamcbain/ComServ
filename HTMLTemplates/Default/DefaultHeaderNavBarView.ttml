@@ -32,11 +32,6 @@
   [% embed('HeaderBannerView')%]	
 [% END %]
 
-			[% IF SiteName == 'Skye' OR
-			      SiteName == 'Noop' %]
-				<A HREF ="?[% session_string %]&amp;view=[% data.home_view %]&amp;site=[% Organic%]">[% HostName %]</A>
-				&nbsp; |
-			[% END %]
 			
 [% embed('AffiliateLinkView') %]&nbsp;
    <a href="http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&domain=register&amp;aff=[% data.affiliate_number %]" target="_blank"title="Domain registration services.">Domains</a>
