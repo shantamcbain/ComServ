@@ -76,3 +76,4 @@
 SiteSetup.pm
 Modules/SiteSetup.pm
 /..gitignore.swp
+/HTMLTemplates/Default/ToDoList.ttml~HEAD
