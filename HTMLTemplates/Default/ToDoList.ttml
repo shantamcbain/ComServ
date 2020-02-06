@@ -25,24 +25,16 @@
 [% IF SiteName == 'CSCDev' %]
 [% embed ('CSCDevToDoSQL' ) %]
 
-<<<<<<< HEAD:HTMLTemplates/CSC/ToDoList.ttml
- [% ELSIF SiteName == 'AltPower' %]
- [% embed ('SQLAll' )   %]
+ [% embed ("SiteTodoSQL")%]	
  
 [% ELSE %]
 
- [%# This file is in /Default %]
-  [% embed ('SiteTodoSQL' )   %]
-=======
-
- [% embed ('CSCDevToDoSQL' )   %]
-  [% embed ("SiteTodoSQL")%]	
-[% ELSE %]
+ [
 
  [% embed ("SiteTodoSQL")%]	
 
  
->>>>>>> master:HTMLTemplates/Default/ToDoList.ttml
+
  [% END %]
 </td>
 </table>
