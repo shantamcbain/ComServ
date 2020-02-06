@@ -1,6 +1,7 @@
+/defalut/SQLAl.ttml
 [% FOREACH link = DBI.query("SELECT * FROM csc_todo_tb
                                   WHERE  status = '1' or '3'
-                                  AND (sitename =  '$SiteName' OR sitename =  'All') ORDER BY priority AND status
+                                  AND (SiteName =  '$SiteName' OR sitename =  'All') ORDER BY priority AND status
                                     ")%]  
                                      
 <tr><td>[% link.priority %] </td><td>[% link.status %] </td><td>

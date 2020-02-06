@@ -1,5 +1,6 @@
 [%#	$Id: /cgi-bin/HTMLTemplates/CSC/ToDoList.ttml,v 0.1 2015/02/05 17:43:15  
 %]
+  [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
 
  [% IF username == 'Shanta' OR
        group    == 'AltPower_admin' OR
@@ -20,7 +21,17 @@
 </td>
 <td>
 [% IF SiteName == 'CSCDev' %]
+[% embed ('CSCDevToDoSQL' ) %]
 
+<<<<<<< HEAD:HTMLTemplates/CSC/ToDoList.ttml
+ [% ELSIF SiteName == 'AltPower' %]
+ [% embed ('SQLAll' )   %]
+ 
+[% ELSE %]
+
+ [%# This file is in /Default %]
+  [% embed ('SiteTodoSQL' )   %]
+=======
 
  [% embed ('CSCDevToDoSQL' )   %]
   [% embed ("SiteTodoSQL")%]	
@@ -29,6 +40,7 @@
  [% embed ("SiteTodoSQL")%]	
 
  
+>>>>>>> master:HTMLTemplates/Default/ToDoList.ttml
  [% END %]
 </td>
 </table>

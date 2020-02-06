@@ -1,46 +1,19 @@
 [%
-
+#	$Id: AnuCollectiveHomeView.ttml,v 1.12 2020/01/26 06:42:47 shanta Exp shanta 
 #	$Id: AnuCollectiveHomeView.ttml,v 1.12 2019/06/05 06:42:47 shanta Exp shanta 
 #	$Id: AnuCollectiveHomeView.ttml,v 1.11 2019/05/25 06:42:47 shanta Exp shanta 
 #	$Id: AnuCollectiveHomeView.ttml,v 1.1 2019/05/23 06:42:47 shanta Exp shanta 
 #	$Id: ApisHomeView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
 
-[% #embed(data.page_top_view,['-PAGE_TITLE','Anu Collective Beekeeping']) %]
-
-[% embed('ErrorDisplayView') %]
 
 
 
-
-<<<<<<< HEAD
-=======
-[% END %]
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-[% email = data.session_object.getAttribute('-KEY','auth_email') %]
 <!-- ApisHomeView  v 1.1 2003/11/29-->
 <div id=body > 
->>>>>>> master
 <A NAME="PageTop"></A>
 
 
-[% IF username %]
-			[% IF  group == 'normal'%]
 
-<p>As a registered guest you may view the FAQ, Plant and other database . Contribute to Forums, Calendar of announcements, Buy and Sell, and Links.
-</p>
-<p>Members may contribute to the sites contend and Join committees monitor content of the diff rent databases hosted on the site. Create logs that certification organizations need to access to maintain certification. Available logs will vary according to the need of your certification organization. 
-	</p>	[% ELSE %]
-
-<p>Thank you for logging in. </p>
-
-			[% END %]
-        
-[% END %]
 
 
 [% IF group == 'AnuCollective_admin' %]
@@ -82,7 +55,7 @@
             </p>
      
             <p>Our Active outside season is almost over. We have a few outdoor chores to do Be for direct beekeeping will be over for the season.</p> 
-             <img src="/images/apis/shanta4nuc.JPG" width="50%" alt="Yarrow hiveing a nuc." lingth="50%">                                       
+             <img src="http://anucollective.beemaster.ca/images/apis/shanta4nuc.JPG" width="50%" alt="Shanata hiving a nuc." lingth="50%">                                       
    [% embed('ApisWaxView') %]    
    [% embed('WinterizingYard') %]
  
@@ -168,12 +141,8 @@ To browse visit <a href="http://ss.webring.com/navbar?f=l;y=shanta;u=10132800">
 here</a>.</font></td></tr></table></td></tr></table></center></noscript>
 [% END %]
 
-
-<<<<<<< HEAD
-=======
 </div>
 
->>>>>>> master
 
 
 
