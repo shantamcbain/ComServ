@@ -23,27 +23,27 @@
 %]
 
 
-
   
-
+<div id="menu">
 [% IF data.header_image != "none"%]
   [% embed('HeaderBannerView')%]	
-  			[% embed('HeaderHostingView') %] 
+  			[%# embed('HeaderBannerView') %] 
 
 [% END %]
+<<<<<<< HEAD
 [% embed('TopDropListView')%]
 <!-- 			[% IF SiteName == 'Skye' OR
+=======
+
+[%# embed('TopDropListView')%]
+
+[% IF SiteName == 'Skye' OR
+>>>>>>> master
 			      SiteName == 'Noop' %]
 				<A HREF ="?[% session_string %]&amp;view=[% data.home_view %]&amp;site=[% Organic%]">[% HostName %]</A>
 				&nbsp; |
-			[% END %]
-			
-[% embed('AffiliateLinkView') %]&nbsp;
-   <a href="http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&domain=register&amp;aff=[% data.affiliate_number %]" target="_blank"title="Domain registration services.">Domains</a>
-	        &nbsp; 
-[% IF SiteName == 'CSC'%]
-     [% embed('StoreDropListView') %]
 [% END %]
+<<<<<<< HEAD
      
 			
 		<!-- embed JobLinkView -->
@@ -100,9 +100,35 @@
 			[% embed('HelpDeskLinkView') %]
 	 -->
 		
+=======
+>>>>>>> master
 
+<ul class="dropdown" id="dropdownCentred">
+		    <li>
+              <span><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]" name="Home page" onmouseover="Home" title="HOME">Main</a></span>
+<ul>
+[% embed('TopListMainSQL') %]
+	  </ul>
+</li>
  
-   
+ <li>          <span>Logon</span>
+	  
+<ul>
+[% embed('LogOnTopView.ttml') %]	 
+
+</ul>
+</li>
+
+[% embed('TopDropListGlobal') %]
+[% embed('TopDropListDevelopment') %]
+[% embed('TopDropListHosted') %]
+[% embed('TopDropListMember') %]
+[% embed('TopDropListAdmin') %]
+[% embed('TopDropListHelpDesk') %]
+	
+</div>
+ 
+   <div class="clear-float"></div> 
 
 <!--This is the end of TopNavBarView.ttml-->
 

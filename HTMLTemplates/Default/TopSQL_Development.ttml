@@ -1,0 +1,22 @@
+[% #	$Id: HeaderNavBarView.ttml v 0.1 2018/18/19 v 0.02 2020/01/25 22:59:04 shanta Exp $	%]
+
+[% FOREACH link = DBI.query("SELECT * FROM page_tb
+	                                  WHERE  menu = 'Dev'
+	                                  AND (sitename =  '$SiteName' )
+	                                  ORDER BY link_order
+	                                  ")%]    
+	   <li>
+	       <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=[% link.page_code %]" name="Contact" target="[% link.target %]" title=" [% linkview_.name %] "><font   class="LeftSideBarNavStyle">[% link.view_name %]</font></a>
+	   </li>
+
+	[% END %]
+	
+	  [% FOREACH link = DBI.query("SELECT * FROM internal_links_tb
+	                                  WHERE  category = 'Dev_links'
+	                                  AND (sitename =  '$SiteName' )
+	                                  ORDER BY link_order
+	                                  ")%]    
+	   <li>
+	       <a href="http://[% link.url %]?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
+	   </li>
+	[% END %]

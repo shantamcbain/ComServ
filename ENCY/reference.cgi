@@ -32,10 +32,13 @@ my @VIEWS_SEARCH_PATH =
        Modules/Extropia/View/Default);
 
 my @TEMPLATES_SEARCH_PATH = 
-    qw(../HTMLTemplates/ENCY
+    qw(../HTMLTemplates/AltPower
+       ../HTMLTemplates/ENCY
        ../HTMLTemplates/CSC
        ../HTMLTemplates/CSPS
+       ../HTMLTemplates/HelpDesk
        ../HTMLTemplates/AddressBook
+       ../HTMLTemplates/Shanta
        ../HTMLTemplates/Default);
 
 use CGI qw(-debug);
@@ -62,7 +65,9 @@ my $SiteName =  $CGI->param('site') || "ENCY";
 
 my $APP_NAME          = "reference";
 my $APP_NAME_TITLE    = 'Refrence';
+my $Affiliate = 001;
 my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+my $site_update;
 
 #ViewNames
 my $home_view         = 'BasicDataView'; 
@@ -73,7 +78,8 @@ my $left_page_view    = 'LeftPageView';
 my $mail_from         = "$CGI->param('email')||'encyreference\@forager.com'";
 my $mail_to           = 'encyreference\@forager.com';
 my $mail_replyto      = 'encyadmin\@forager.com';
- 
+my $auth_mail_to;
+
 
 #Style
 my $CSS_VIEW_NAME     = "CSSView",
@@ -91,12 +97,29 @@ my $TABLE_BG_FONT_COLOR_2   = 'BLACK';
 my $HTTP_HEADER_KEYWORDS;
 my $HTTP_HEADER_PARAMS;
 my $HTTP_HEADER_DESCRIPTION;
+my $HeaderImage;
+my $Header_height;
+my $Header_width;
+my $Header_alt;
+my $FAVICON;
+my $ANI_FAVICON;
+my $FAVICON_TYPE;
+
+
+my $SiteLastUpdate;
+my $shop = 'cs';
+
+my $HasMembers = 0;
+
 my $matchuser = 0;
 my $matchgroup = 0;
-my $last_update = 'January 28, 2006';
+my $last_update = 'January 12, 2020';
     my $LINK_TARGET;
     my $DEFAULT_CHARSET;
- 
+ my $LineStatus        = "yes";
+my $Page_tb;
+my $StoreUrl  = 'countrystores.ca';
+
 
 use SiteSetup;
   my $UseModPerl = 1;
@@ -131,16 +154,10 @@ use SiteSetup;
     $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
 
 
-  my $GLOBAL_DATAFILES_DIRECTORY = "../../Datafiles";       
-  my $TEMPLATES_CACHE_DIRECTORY  = "$GLOBAL_DATAFILES_DIRECTORY/TemplatesCache";
-  my $APP_DATAFILES_DIRECTORY    = "../../Datafiles/AddressBook";
-#my $site = 'file';
+  my $GLOBAL_DATAFILES_DIRECTORY = "/home/shanta/Datafiles";       
+  #my $site = 'file';
   my $site = 'MySQL';
-  my $DATAFILES_DIRECTORY = "../../Datafiles";
-  my $site_session = $DATAFILES_DIRECTORY.'/Sessions';
-  my $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-  my $datafile = $DATAFILES_DIRECTORY.'/csc_todo_tracker.dat';
-
+  
 ######################################################################
 #                          SESSION SETUP                             #
 ######################################################################
@@ -187,110 +204,64 @@ if ($CGI->param('site')){
 	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
       }
 }
+my $SetupVariables = new SiteSetup($UseModPerl, $CGI->param('site'));
+$SiteName            = $SiteName || $SetupVariables->{-SITE_NAME};
+$Affiliate           = $SetupVariables->{-AFFILIATE};
+$APP_NAME_TITLE      = $SetupVariables->{-APP_NAME_TITLE};
+$home_view           = $SetupVariables->{-HOME_VIEW};
+$BASIC_DATA_VIEW     = $SetupVariables->{-BASIC_DATA_VIEW};
+$DBI_DSN             = $SetupVariables->{-DBI_DSN};
+$AUTH_TABLE          = $SetupVariables->{-AUTH_TABLE};
+$AUTH_MSQL_USER_NAME = $SetupVariables->{-AUTH_MSQL_USER_NAME};
+$LineStatus          = $SetupVariables->{-Line_Status} || $LineStatus;
+$page_top_view       = $SetupVariables->{-PAGE_TOP_VIEW};
+$page_bottom_view    = $SetupVariables->{-PAGE_BOTTOM_VIEW};
+$page_left_view      = $SetupVariables->{-page_left_view};
+$MySQLPW             = $SetupVariables->{-MySQLPW};
+$Page_tb             = $SetupVariables->{-PAGE_TB} || 'page_tb';
 
-if ($SiteName eq "Organic") {
-use OrganicSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesOrganic   = new OrganicSetup($UseModPerl);
-     $page_top_view         = $SetupVariablesOrganic->{-PAGE_TOP_VIEW};
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesOrganic->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesOrganic->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesOrganic->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesOrganic->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesOrganic->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesOrganic->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesOrganic->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesOrganic->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesOrganic->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesOrganic->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
-     $SITE_DISPLAY_NAME       = $SetupVariablesOrganic->{-SITE_DISPLAY_NAME};
- }
- elsif ($SiteName eq "ECF") {
-use ECFSetup;
-  my $SetupVariablesECF    = new  ECFSetup($UseModPerl);
-    $CSS_VIEW_NAME           = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesECF->{-AUTH_TABLE};
-    $app_logo                = $SetupVariablesECF->{-APP_LOGO};
-    $app_logo_height         = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
-    $app_logo_width          = $SetupVariablesECF->{-APP_LOGO_WIDTH};
-    $app_logo_alt            = $SetupVariablesECF->{-APP_LOGO_ALT};
-    $homeviewname            = $SetupVariablesECF->{-HOME_VIEW_NAME};
-    $home_view               = $SetupVariablesECF->{-HOME_VIEW};
 #Mail settings
-    $mail_from               = $SetupVariablesECF->{-MAIL_FROM};
-    $mail_to                 = $SetupVariablesECF->{-MAIL_TO};
-    $mail_replyto            = $SetupVariablesECF->{-MAIL_REPLYTO};
-    $HTTP_HEADER_PARAMS      = $SetupVariablesECF->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesECF->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesECF->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_URL            = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $SITE_DISPLAY_NAME       = $SetupVariablesECF->{-SITE_DISPLAY_NAME};
- }
- elsif ($SiteName eq "ENCY") {
-use ENCYSetup;
-  my $SetupVariablesENCY    = new  ENCYSetup($UseModPerl);
-     $CSS_VIEW_URL            = $SetupVariablesENCY->{-CSS_VIEW_NAME};
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesENCY->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesENCY->{-HTTP_HEADER_PARAMS};
-     $page_top_view           = $SetupVariablesENCY->{-PAGE_TOP_VIEW};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesENCY->{-HTTP_HEADER_DESCRIPTION};
-     $mail_from               = $SetupVariablesENCY->{-MAIL_FROM}; 
-     $mail_to                 = $SetupVariablesENCY->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesENCY->{-MAIL_REPLYTO};
-     $AUTH_TABLE              = $SetupVariablesENCY->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesENCY->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesENCY->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesENCY->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesENCY->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesENCY->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesENCY->{-HOME_VIEW};
-     $SITE_DISPLAY_NAME       = $SetupVariablesENCY->{-SITE_DISPLAY_NAME};
- }
+$mail_from               = $SetupVariables->{-MAIL_FROM};
+$mail_to                 = $SetupVariables->{-MAIL_TO};
+$auth_mail_to            = $SetupVariables->{-MAIL_TO_AUTH};
+$mail_replyto            = $SetupVariables->{-MAIL_REPLYTO};
+$app_logo                = $SetupVariables->{-APP_LOGO};
+$app_logo_height         = $SetupVariables->{-APP_LOGO_HEIGHT};
+$app_logo_width          = $SetupVariables->{-APP_LOGO_WIDTH};
+$app_logo_alt            = $SetupVariables->{-APP_LOGO_ALT};
+$HeaderImage             = $SetupVariables->{-HEADER_IMAGE};
+$Header_height           = $SetupVariables->{-HEADER_HEIGHT};
+$Header_width            = $SetupVariables->{-HEADER_WIDTH};
+$Header_alt              = $SetupVariables->{-HEADER_ALT};
+$IMAGE_ROOT_URL          = $SetupVariables->{-IMAGE_ROOT_URL};
+$DOCUMENT_ROOT_URL       = $SetupVariables->{-DOCUMENT_ROOT_URL};
+$LINK_TARGET             = $SetupVariables->{-LINK_TARGET};
+$HTTP_HEADER_PARAMS      = $SetupVariables->{-HTTP_HEADER_PARAMS};
+$HTTP_HEADER_KEYWORDS    = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
+$HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+$FAVICON                 = $SetupVariables->{-FAVICON};
+$ANI_FAVICON             = $SetupVariables->{-ANI_FAVICON};
+$FAVICON_TYPE            = $SetupVariables->{-FAVICON_TYPE};
+$site                    = $SetupVariables->{-DATASOURCE_TYPE};
+$SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
 
- elsif ($SiteName eq "SB") {
-use SBSetup;
-  my $SetupVariablesSB    = new  SBSetup($UseModPerl);
-    $CSS_VIEW_URL            = $SetupVariablesSB->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesSB->{-AUTH_TABLE};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesSB->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesSB->{-HTTP_HEADER_DESCRIPTION};
-    $APP_NAME                = "vitavic";
-    $mail_to                 = $SetupVariablesSB->{-MAIL_TO};
-    $mail_replyto            = $SetupVariablesSB->{-MAIL_REPLYTO};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/VitalVic'; 
-    $SITE_DISPLAY_NAME       = $SetupVariablesSB->{-SITE_DISPLAY_NAME};
- }
-elsif ($SiteName eq "VitalVic") {
-use VitalVicSetup;
-  my $SetupVariablesVitalVic     = new  VitalVicSetup($UseModPerl);
-    $CSS_VIEW_URL            = $SetupVariablesVitalVic->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesVitalVic->{-AUTH_TABLE};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesVitalVic->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesVitalVic->{-HTTP_HEADER_DESCRIPTION};
-    $mail_to                 = $SetupVariablesVitalVic->{-MAIL_TO};
-    $mail_replyto            = $SetupVariablesVitalVic->{-MAIL_REPLYTO};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/VitalVic'; 
-    $SITE_DISPLAY_NAME       = $SetupVariablesVitalVic->{-SITE_DISPLAY_NAME};
-}
-elsif ($SiteName eq "Apis") {
-use ApisSetup;
-  my $SetupVariablesApis  = new  ApisSetup($UseModPerl);
-    $CSS_VIEW_NAME           = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesApis->{-AUTH_TABLE};
-    $page_top_view           = $SetupVariablesApis->{-PAGE_TOP_VIEW};
-    $page_bottom_view        = $SetupVariablesApis->{-PAGE_BOTTOM_VIEW};
-    $page_left_view          = $SetupVariablesApis->{-PAGE_LEFT_VIEW};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesApis->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesApis->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_URL            = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $homeviewname            = 'ApisHomeView';
-    $home_view               = $SetupVariablesApis ->{-HOME_VIEW}; 
-    $matchuser               = '1';
-    $matchgroup              =1;
-    $SITE_DISPLAY_NAME       = $SetupVariablesApis->{-SITE_DISPLAY_NAME};
-}  
+$GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY};
+$TEMPLATES_CACHE_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY . $SetupVariables->{ -TEMPLATES_CACHE_DIRECTORY, };
+$APP_DATAFILES_DIRECTORY = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
+my $LocalIp = $SetupVariables->{-LOCAL_IP};
+$shop          = $SetupVariables->{-SHOP};
+$StoreUrl      = $SetupVariables->{-STORE_URL};
+$site_update   = $SetupVariables->{-SITE_LAST_UPDATE};
+$last_update   = $SetupVariables->{-LAST_UPDATE};
+$HasMembers    = $SetupVariables->{-HAS_MEMBERS};
+$CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
+$CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
+
+my $DATAFILES_DIRECTORY = "$GLOBAL_DATAFILES_DIRECTORY/Datafiles";  
+my $TEMPLATES_CACHE_DIRECTORY  = "$GLOBAL_DATAFILES_DIRECTORY/TemplatesCache";
+my $site_session = $DATAFILES_DIRECTORY.'/Sessions';
+my $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+my $datafile = $DATAFILES_DIRECTORY.'/csc_todo_tracker.dat';
 
 
 ######################################################################
@@ -671,13 +642,13 @@ reference_code => [
         -WRAP         => 'VIRTUAL'
     ],
 
-#    isbn => [
-#        -DISPLAY_NAME => 'Book refrence number. use isbn',
-#        -TYPE         => 'textfield',
-#        -NAME         => 'isbm',
- #       -SIZE         => 30,
- #       -MAXLENGTH    => 15
- #   ],
+    isbn => [
+        -DISPLAY_NAME => 'Book refrence number. use isbn',
+        -TYPE         => 'textfield',
+       -NAME         => 'isbm',
+        -SIZE         => 30,
+        -MAXLENGTH    => 15
+    ],
 
     date_of_publication => [
         -DISPLAY_NAME => 'Date of publication',
@@ -1051,10 +1022,10 @@ my @VIEW_FILTERS_CONFIG_PARAMS = (
 ######################################################################
 #                      ACTION/WORKFLOW SETUP                         #
 ######################################################################
-
+#ENCY::PopulateInputWidgetDefinitionListWithBookISBMWidgetAction
 my @ACTION_HANDLER_LIST = 
     qw(
-       ENCY::PopulateInputWidgetDefinitionListWithBookISBMWidgetAction
+       
        Default::SetSessionData
        Default::DisplayCSSViewAction
        Default::ProcessConfigurationAction

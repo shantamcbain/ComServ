@@ -1,0 +1,116 @@
+[%#	$Id: BatteryList.ttml,v 0.111 2019/10/27 11:42:47 shanta Exp shanta $	%]
+[%#	$Id: BatteryList.ttml,v 0.110 2019/10/25 11:42:47 shanta Exp shanta $	%]
+
+<h2>Dynamic list of our Power usage based on Charge controller and loads.</h2>
+
+
+<ul> 
+  [% FOREACH item = DBI.query(" SELECT * FROM altpower_item
+	                                WHERE  sitename = 'AltPower'
+                                     
+                                   ORDER BY code
+	                            ")%] 
+	                            [%# this link takes you to item record. %] 
+ <li><a href="/cgi-bin/AltPower/item.cgi?site=[% SiteName %]&amp;[% session_string %]&Battery=[% item.item_code %]"> 
+ [% item.name %]</a>
+ [% name = item.Code %]
+ &nbsp;<a href="/cgi-bin/AltPower/powerlog.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" name="Add voltage" target="_blank" title="Add New Voltage" style="AddButtonStyle">Add New Voltage Main Pack</a>
+ <p> 
+ <table>
+  <tr><td>datetime</td>
+  <td>Panel Volts</td>
+  <td>Panel Watts</td>
+  <td>Battery Volts</td>
+  <td>Charge amps</td>
+  <td>Battery level </td>
+  <td>AC Amps from inverter</td>
+  <td>DC Amps</td>
+  <td>Modify</td>
+  </tr>
+ 
+ [% FOREACH value = DBI.query(" SELECT * FROM altpower_system_log_tb
+	                                WHERE  (sitename = 'AltPower' AND
+	                                        battery_code = '$name')
+                                     
+                                   ORDER BY start_date
+	                            ")%]  
+	                            
+ <tr>
+   <td> [% value.start_time %] &nbsp; [% value.start_date %]</td>
+   <td> [% value.pannel_volts %]  </td>
+   <td> [% value.pannel_watts %]</td>
+   <td> [%value.battery_voltage %]</td>
+	<td> [% value.battery_amp %] </td>
+	<td> [% value.battery_level %]</td>
+	<td> [% value.ac_amp %] </td>
+	<td> [% value.dc_amp %] </td>
+	<td> <a href="/cgi-bin/AltPower/powerlog.cgi?site=[% SiteName %]&display_modification_form=on&record_id=[% value.record_id %]&[% session_string %]" name="Modify item"  title="Modify Item" style="AddButtonStyle">Modify</a>  
+	</td>
+ <tr>        
+[% totalrecords = totalrecords+1 %]
+[% pannel_voltst = pannel_voltst + value.pannel_volts %]
+[% pannel_wattst = pannel_wattst + value.pannel_watts %]
+[% battery_voltaget = battery_voltaget + value.battery_voltage %]
+[% battery_levelt = battery_levelt + value.battery_level %]
+[% battery_ampt = battery_ampt + value.battery_amp %][% battery_levelt = battery_levelt + value.battery_level %]
+[% ac_ampt = ac_ampt + value.ac_amp %]
+[% dc_ampt = dc_ampt + value.dc_amp %]
+
+ [% END %] 
+  <tr><td>datetime</td><td>Panel Volts</td>
+  <td>Panel Watts</td>
+  <td>Battery Volts</td>
+  <td>Charge amps</td>
+  <td>Battery level </td>
+  <td>AC Amps from inverter</td>
+  <td>DC Amps</td>
+  <td>Modify</td>
+  </tr>
+<tr><td>Average </td> 
+ <td> [% pannel_voltst / totalrecords %]</td>
+ <td> [% pannel_wattst / totalrecords %]</td>
+ <td> [% battery_voltaget / totalrecords %]</td>
+ <td> [% battery_ampt / totalrecords %]</td>
+ <td> [% battery_levelt / totalrecords %]</td>
+ <td> [% ac_ampt / totalrecords %]</td>
+ <td> [% dc_ampt / totalrecords %]</td>
+ 
+ 
+ </tr>
+ 
+ </table>
+<p>
+ &nbsp;<a href="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;batery=[% item.item_code %]&amp;subject=Item_link&amp;Nav_link=1" name="Add voltage" target="_blank" title="Add New Voltage" style="AddButtonStyle">Add New Voltage to Module</a>
+</p>
+[% END %]
+</ul>
+<p>
+<FORM METHOD=POST  ACTION="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;view=BatchLogView&amp;[% session_string %]&amp;batchnumber=" NAME="frmLinkList" onSubmit="return CheckSelection()">
+
+<SELECT  NAME="FileName" WIDTH=20>
+
+ <OPTION VALUE="None">Select a Battery --->
+
+ [% FOREACH item = DBI.query(" SELECT * FROM item_tb
+	                                WHERE  sitename = 'AltPower'
+                                     
+                                   ORDER BY item_code
+	                            ")%]  
+ <OPTION VALUE="/cgi-bin/AltPower/voltamp.cgi?site=[% SiteName %]&amp;[% session_string %]&Battery=[% item.item_code %]"> [% item.item_name%]</option>
+
+[% END %]
+ <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
+           
+
+[% IF username  == 'Shanta' OR
+	        group     == 'Brew_Admin' OR
+            group     == 'CSC_Admin' OR
+	        group     == 'ENCY_Admin' OR
+	        group     == 'USBM_Admin' OR
+	        group     == 'Shanta_Admin' OR
+	         group     == 'Demo_admin' 
+	               %]
+
+	   &nbsp;<a href="/cgi-bin/AltPower/item.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;category=Battey&amp;subject=Item_link&amp;Nav_link=1" name="add Battery"  title="Add New Recipe" style="AddButtonStyle">Add a new Battery</a>
+	
+	   [% END %]

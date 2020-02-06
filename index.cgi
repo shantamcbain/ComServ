@@ -1,5 +1,5 @@
 #!/usr/bin/perl -wT
-
+# 	$Id: index.cgi,v 1.15 2020/01/13 14:27:36 shanta Exp $
 # 	$Id: index.cgi,v 1.14 2019/04/08 14:27:36 shanta Exp $
 # 	$Id: index.cgi,v 1.13 2019/03/215 14:27:36 shanta Exp $
 # 	$Id: index.cgi,v 1.12 2014/03/20 14:27:36 shanta Exp $
@@ -22,7 +22,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 1.05, July 5, 2018";
+my $AppVer = "ver 1.06, Jan 13, 2020";
 
 BEGIN
 {
@@ -89,8 +89,8 @@ foreach ( $CGI->param() )
 my $APP_NAME       = "apis";
 my $APP_NAME_TITLE = "Apis, Bees and Beekeeping ";
 my $SiteName       = $CGI->param('site');
-my $View           = $CGI->param('view') || 'PageView';
-my $Page           = $CGI->param('page') || 'HomeView';
+my $View           = $CGI->param('view') ;
+my $Page           = $CGI->param('page');
 my $procedure      = $CGI->param('procedure')||'List';
 my $project        = $CGI->param('project');
 my $title          = $CGI->param('title');
@@ -98,7 +98,7 @@ my $site_update;
 my $username;
 my $group;
 my $CustCode = $CGI->param('custcode') || "BMaster";
-my $home_view = ':HomeView';
+my $home_view ;
 my $BASIC_DATA_VIEW;
 my $page_top_view;
 my $page_bottom_view;
@@ -139,7 +139,7 @@ my $mail_to_user;
 my $mail_to_member;
 my $mail_to_discussion;
 my $LineStatus        = "yes";
-my $last_update       = 'November 07, 2016';
+my $last_update       = 'January 13, 2020';
 my $SITE_DISPLAY_NAME = 'None Defined for this site.';
 my $FAVICON;
 my $ANI_FAVICON;
@@ -175,7 +175,7 @@ my $VIEW_LOADER =
 #my $HostName    = $ENV{'SERVER_NAME'};
 use SiteSetup;
 my $UseModPerl     = 1;
-my $SetupVariables = new SiteSetup($UseModPerl, $CGI->param('site'));
+my $SetupVariables = new SiteSetup($UseModPerl, $CGI->param('site'), $HostName);
 $SiteName            = $SiteName || $SetupVariables->{-SITE_NAME};
 $Affiliate           = $SetupVariables->{-AFFILIATE};
 $APP_NAME_TITLE      = $SetupVariables->{-APP_NAME_TITLE};
@@ -1038,6 +1038,7 @@ my @VALID_VIEWS = qw(
   LogoffView
 
   HomeView
+  NonTableHomeView
   AdminHomeView
   AboutUsView
   LiveEdit
