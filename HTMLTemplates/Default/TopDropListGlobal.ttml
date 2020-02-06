@@ -36,7 +36,7 @@
     	     
   </ul>  
 </li>
-=======
+
   [%# /HTMLTemplates/Default/TopDropListGlobal.ttml %]
 [%# 	$Id: TopDropListGlobal.ttml,v 0.01 2019/12/09 06:33:25 shanta Exp shanta $	%]
 <li><span>Global</span>
@@ -78,4 +78,3 @@
 
    </ul>  
    </li>
->>>>>>> origin/Brew

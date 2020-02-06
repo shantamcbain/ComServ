@@ -4,46 +4,12 @@ This file creates the standard drop list on all sites using it.
 currently only DevCSC Not working right yet miss forming the first after login drop list, and admin list.
 
 %] 
-<!--  /HTMLTemplates/Default/TopDropListView.ttml   -->
-<!-- <div class="header">
-	<div id="menu-container">	
-		<ul id="drop_down_menu">
-			<li class="menu">Menu 1
-				<ul class="links">
-					<li><a href="#">Link 1</a></li>
-					<li><a href="#">Link 2</a></li>
-				</ul>
-			</li>
-			<li class="menu">Menu 2
-				<ul class="links">
-					<li><a href="#">Link 1</a></li>
-					<li><a href="#">Link 2</a></li>
-					<li><a href="#">Link 3</a></li>
-				</ul>
-			</li>
-			<li class="menu">Menu 3
-				<ul class="links">
-					<li><a href="#">Link 1</a></li>
-					<li><a href="#">Link 2</a></li>
-					<li><a href="#">Link 3</a></li>
-					<li><a href="#">Link 4</a></li>
-				</ul>
-			</li>
-			<li class="menu">Menu 4
-				<ul class="links">
-					<li><a href="#">Link 1</a></li>
-					<li><a href="#">Link 2</a></li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-</div>
- -->
+
 <div id="demonstration">
       
 <ul class="dropdown" id="dropdownCentred">
 
-<<<<<<< HEAD
+
 	[% END %]
 	
 	  [% FOREACH link = DBI.query("SELECT * FROM internal_links_tb
