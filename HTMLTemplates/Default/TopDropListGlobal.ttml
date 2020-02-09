@@ -8,7 +8,7 @@
  [%  embed("AdminURLLink") %]	
 
  </li>   
- <li>	[% HostName %]
+ <li>
    	
  [% IF firstname %]	
      <A HREF ="http://webmail.[% HostName %]"target="_Blank"><font   class="LeftSideBarNavStyle">Mail</font></a>	
