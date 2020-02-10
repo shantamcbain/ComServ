@@ -417,8 +417,7 @@ my @AUTH_REGISTRATION_DH_MANAGER_PARAMS = (
 );
 
 my @USER_FIELDS = (
- qw( -CSS_VIEW_URL                         => $CSS_VIEW_URL,
- -CSS_VIEW_NAME                        => $CSS_VIEW_NAME,
+ qw( 
    auth_username
    auth_password
    auth_groups
@@ -427,7 +426,14 @@ my @USER_FIELDS = (
    auth_email
    )
 );
-
+my @ADMIN_EMAIL_DISPLAY_FIELDS = qw(
+  username
+  password
+  groups
+  firstname
+  lastname
+  email
+);
 my %USER_FIELD_NAME_MAPPINGS = (
                                  'auth_username'  => 'Username no spaces',
                                  'auth_password'  => 'Password',
@@ -1146,10 +1152,7 @@ my @VALID_VIEWS = qw(
   AltpowerLogHomePage
   VoltSensorDevelopment
   PowerUsageView
-<<<<<<< HEAD
   ProceduresView
-=======
->>>>>>> AltPower
   AltpowerNodeView
   SustainableView
   UrbanBeekeepingView
@@ -1190,6 +1193,7 @@ my @VIEW_DISPLAY_PARAMS = (
  ],
  -DOCUMENT_ROOT_URL                     => $DOCUMENT_ROOT_URL,
  -EMAIL_DISPLAY_FIELDS                  => \@EMAIL_DISPLAY_FIELDS,
+ -ADMIN_EMAIL_DISPLAY_FIELDS            => \@ADMIN_EMAIL_DISPLAY_FIELDS,
  -FIELDS_TO_BE_DISPLAYED_AS_EMAIL_LINKS => [
   qw(
     email
@@ -1359,7 +1363,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
  -DOMAIN_NAME                            => $HostName,
  -GROUP                                  => $group,
  -HAS_MEMBERS                            => $HasMembers,
- -HTTP_HEADER_PARAMS                     => $HTTP_HEADER_PARAMS || 'test',
+ -HTTP_HEADER_PARAMS                     => $HTTP_HEADER_PARAMS ,
  -HTTP_HEADER_KEYWORDS                   => $HTTP_HEADER_KEYWORDS,
  -HTTP_HEADER_DESCRIPTION                => $HTTP_HEADER_DESCRIPTION,
  -HIDDEN_ADMIN_FIELDS_VIEW_NAME          => 'HiddenAdminFieldsView',

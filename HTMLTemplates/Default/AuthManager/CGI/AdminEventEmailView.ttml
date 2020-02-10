@@ -1,9 +1,15 @@
 Admin Event.
 --------------  
-[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-[%# username = data.session_object.getAttribute('-KEY','auth_username') %]
-[% subs.sprintf("A user by the username of %s has applied to the system", username) %]
-  
+[%# firstname = data.session_object.getAttribute('-KEY','auth_firstname') || 'FirstName' %]
+[%# username = data.session_object.getAttribute('-KEY','auth_username') || 'UserName' %]
+[%# lastname = data.session_object.getAttribute('-KEY','auth_lastname') || 'LastName' %]
+ [% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+ 
+[%#FOR field = data.admin_email_display_fields -%]
+[%#subs.sprintf("%-30s %s",field,data.cgi_object.param(field).array.join(", ")) %]
+[%#END %]  
+ 
+[% subs.sprintf("A user by the username of $username %s has applied to the system. Use phpmyadmin to view data in your cPanel account", username )  %]
     
-   
        
