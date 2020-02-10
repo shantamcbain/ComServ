@@ -138,6 +138,7 @@ my $site_update;
     my $client_tb   = 'csc_client_tb';
     my $UseModPerl = 1;
     my $HasMembers = 0;
+    my $SESSION_DIR;
 ######################################################################
 #                          SESSION SETUP                             #
 ######################################################################
@@ -287,7 +288,7 @@ $SortFields=[qw(
  $RecordsToDisplay=250;
  $SortDirection='DESC';#ASC
 }
-my $SESSION_DIR;
+
 
 $LINK_TARGET = $target;
 my $VIEW_LOADER = new Extropia::Core::View
