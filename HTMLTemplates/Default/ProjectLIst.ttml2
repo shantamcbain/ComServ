@@ -1,0 +1,29 @@
+%#	$Id: ProjectList.ttml, v0.02 2019/04/28
+#cloned to  v0.01 2018/12/12 shanta,
+# EVHomeView.ttml,v 1.0 2002/11/08 17:43:15 shanta Exp shanta $	
+
+# Ideally this template should be converted into a static CSS file and
+# be served as /foo/bar.css and not via CGI, since it slows things
+# down and dozen't allow browsers to cache the CSS content.
+
+# otherwise this template is stand-alone, i.e. it dozen't rely on any
+# variables from outside.
+%]
+Projectlist
+<table>  
+
+ [% FOREACH link = DBI.query("SELECT * FROM csc_project_tb
+                                  WHERE ( status != '3' AND
+                                          sitename == $sitename)
+                                  ORDER BY priority DESC
+                                           
+                                  ")%]  
+  <tr>         
+   <td>                      
+                                    <a href="/cgi-bin/ToDo/project_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProjectView&amp;project=[% link.project_code %]">[%	link.project_name %]</a></td>
+ 
+  </tr>
+<td>[%link.comments %]</td>
+[% END %] 
+</table>
+endprojectlist
