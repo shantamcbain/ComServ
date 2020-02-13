@@ -1,6 +1,6 @@
 #!/usr/bin/perl -wT
+# 	$Id: todo.cgi,v 1.6 2020/02/13 19:36:17 shanta Exp shanta $	
 # 	$Id: todo.cgi,v 1.5 2004/02/04 19:36:17 shanta Exp shanta $	
-
 # Copyright (C) 1994 - 2001  eXtropia.com
 #
 # This program is free software; you can redistribute it and/or
@@ -19,16 +19,18 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
+my $AppVer = "ver 1.6, Feb 13, 2020";
 
-BEGIN{
-    # Windows users must set a timezone env!
-    $ENV{'TZ'} = 'EST' if ($^O =~ /MSWin32/i);
-    use vars qw(@dirs);
-    @dirs = qw(../Modules/
-               ../Modules/CPAN .);
+BEGIN
+{
+ use vars qw(@dirs);
+ @dirs = qw(../Modules/
+   ../Modules/CPAN .);
 }
 use lib @dirs;
 unshift @INC, @dirs unless $INC[0] eq $dirs[0];
+
+
 
 
 my @VIEWS_SEARCH_PATH = 
@@ -79,18 +81,18 @@ foreach ($CGI->param()) {
 ######################################################################
 
     my $debug = 0;
-
+my $HostName   = $ENV{'SERVER_NAME'};
+my $SiteName       = $CGI->param('site');
 my $APP_NAME = "todo";
 my $Affiliate = 001;
 
 my $APP_NAME_TITLE = "Todo Manager";
-my $SiteName =  $CGI->param('site');
 my $site_update;
     my $SITE_DISPLAY_NAME = 'None Defined for this site.';
-    my $last_update  = 'April 24, 2017';
-
+    my $last_update  = 'Febuary 13, 2020';
     my $homeviewname ;
     my $home_view = 'ToDoHomeView'; 
+    my $procedure      = $CGI->param('procedure')||"ToDoHomeView";
     my $BASIC_DATA_VIEW; 
     my $page_top_view;
     my $page_bottom_view;
@@ -106,11 +108,11 @@ my $site_update;
     my $app_logo_alt;
     my $FAVICON;
     my $ANI_FAVICON;
+    my $style = $CGI->param('pagestyle');
     my $FAVICON_TYPE;
     my $IMAGE_ROOT_URL; 
     my $DOCUMENT_ROOT_URL;
-    my $site;
-    my $GLOBAL_DATAFILES_DIRECTORY;# = "/home/grindrod/Datafiles";
+    my $GLOBAL_DATAFILES_DIRECTORY;
     my $TEMPLATES_CACHE_DIRECTORY;
     my $APP_DATAFILES_DIRECTORY;
     my $DATAFILES_DIRECTORY;
@@ -128,7 +130,6 @@ my $site_update;
     my $additonalautusernamecomments;
     my $SetupVariables;
 	my $TableName;
- 	my $sitename;
     my $site;
     my $ProjectTableName;
     my $records;
@@ -139,6 +140,8 @@ my $site_update;
     my $UseModPerl = 1;
     my $HasMembers = 0;
     my $SESSION_DIR;
+    my $CustCode = $CGI->param('custcode') || "BMaster";
+    
 ######################################################################
 #                          SESSION SETUP                             #
 ######################################################################
@@ -167,7 +170,6 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
 #Deal with site setup in session files. This code need taint checking.
 if ($CGI->param('site')){
@@ -188,10 +190,10 @@ if ($CGI->param('site')){
 
 use SiteSetup;
    $SetupVariables  = new SiteSetup($UseModPerl);
-#    $home_view             = $SetupVariables->{-HOME_VIEW}; 
+    $home_view             = $SetupVariables->{-HOME_VIEW}; 
     $homeviewname          = $SetupVariables->{-HOME_VIEW_NAME};
-    $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
-    $Affiliate                = $SetupVariables->{-AFFILIATE};
+    $SITE_DISPLAY_NAME     = $SetupVariables->{-SITE_DISPLAY_NAME};
+    $Affiliate             = $SetupVariables->{-AFFILIATE};
     $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
     $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW};
     $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
@@ -201,7 +203,7 @@ use SiteSetup;
     $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
     $HTTP_HEADER_KEYWORDS  = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
     $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
-   $AUTH_TABLE             = $SetupVariables->{-AUTH_TABLE};
+    $AUTH_TABLE             = $SetupVariables->{-AUTH_TABLE};
     $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
     $additonalautusernamecomments  = $SetupVariables->{-ADDITIONALAUTHUSERNAMECOMMENTS};
 #Mail settings
@@ -216,7 +218,6 @@ use SiteSetup;
     $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
     $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
     $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
-    $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
     my $LocalIp            = $SetupVariables->{-LOCAL_IP};
     $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
     $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
@@ -236,8 +237,7 @@ use SiteSetup;
 # $APP_DATAFILES_DIRECTORY    = "Datafiles/Todo";
 $page_top_view    = $CGI->param('page_top_view')||$page_top_view;
 $page_bottom_view = $CGI->param('page_bottom_view')||$page_bottom_view;
-#$page_left_view   = $CGI->param('page_left_view')||$page_left_view;
-$page_left_view = "LeftPageView";
+$page_left_view   = $SetupVariables->{-page_left_view};
 my $target;
 my $columnstoview;
 my $SortFields;
@@ -300,7 +300,7 @@ my $VIEW_LOADER = new Extropia::Core::View
 use constant HAS_CLASS_DATE  => eval { require Class::Date; };
 
 
-$sitename =$SiteName;
+
 my $GROUP_OF_POSTER = $SESSION -> getAttribute(-KEY => 'auth_groups')||'normal';
 my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
 my $username =  $SESSION ->getAttribute(-KEY => 'auth_username');
@@ -321,7 +321,7 @@ my $group_search = '1';
  if ($username eq "Shanta"  ) {
     $modify = '1';
     $delete = '1';
-    $group_search = '0';
+    $group_search = '1';
     $add ='1';
   }
 if ($CGI->param('embed')){
@@ -409,15 +409,14 @@ my @AUTH_VIEW_DISPLAY_PARAMS = (
     -APPLICATION_LOGO_HEIGHT => $app_logo_height,
     -APPLICATION_LOGO_WIDTH  => $app_logo_width,
     -APPLICATION_LOGO_ALT    => $APP_NAME_TITLE,
- 	  -FAVICON                 => $FAVICON || '/images/apis/favicon.ico',
-	  -ANI_FAVICON             => $ANI_FAVICON,
-	  -FAVICON_TYPE            => $FAVICON_TYPE,
+ 	 -FAVICON                 => $FAVICON || '/images/apis/favicon.ico',
+	 -ANI_FAVICON             => $ANI_FAVICON,
+	 -FAVICON_TYPE            => $FAVICON_TYPE,
     -DOCUMENT_ROOT_URL       => $DOCUMENT_ROOT_URL,
     -HTTP_HEADER_PARAMS      => $HTTP_HEADER_PARAMS,
     -LINK_TARGET             => $LINK_TARGET,
     -IMAGE_ROOT_URL          => $IMAGE_ROOT_URL,
     -SITE_DISPLAY_NAME       => $SITE_DISPLAY_NAME,
-    -SCRIPT_DISPLAY_NAME     => $APP_NAME_TITLE,
     -SCRIPT_NAME             => $CGI->script_name(),
     -PAGE_TOP_VIEW           => $page_top_view,
     -PAGE_BOTTOM_VIEW        => $page_bottom_view,
@@ -1088,7 +1087,7 @@ if ($site eq "file"){
                                      -DISPLAY => 'y-m-d H:M:S',
                                     ],
                                    },
-);#$SiteName.
+);
 }else{
 	@PROJ_DATASOURCE_CONFIG_PARAMS = (
 	        -TYPE         => 'DBI',
@@ -1339,6 +1338,9 @@ my @VIEW_DISPLAY_PARAMS = (
         )],
     -DOCUMENT_ROOT_URL       => $DOCUMENT_ROOT_URL,
     -EMAIL_DISPLAY_FIELDS    => \@EMAIL_DISPLAY_FIELDS,
+ 	 -FAVICON                 => $FAVICON || '/images/apis/favicon.ico',
+    -ANI_FAVICON             => $ANI_FAVICON,
+	 -FAVICON_TYPE            => $FAVICON_TYPE,
     -FIELDS_TO_BE_DISPLAYED_AS_EMAIL_LINKS => [qw(
         email
     )],
@@ -1362,7 +1364,7 @@ my @VIEW_DISPLAY_PARAMS = (
         'status'      => 'Status',
         'priority'    => 'Priority',
         },
-    -HOME_VIEW               => 'TodoHomeView',
+    -HOME_VIEW               => $home_view,
     -IMAGE_ROOT_URL          => $IMAGE_ROOT_URL,
     -LINK_TARGET             => $LINK_TARGET,
     -HTTP_HEADER_PARAMS      => $HTTP_HEADER_PARAMS,
@@ -1466,11 +1468,10 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -ALLOW_DUPLICATE_ENTRIES                => 0,
     -ALLOW_USERNAME_FIELD_TO_BE_SEARCHED    => 1,
     -APPLICATION_SUB_MENU_VIEW_NAME         => $apsubmenu,
-    -OPTIONS_FORM_VIEW_NAME                 => 'OptionsView',
     -AUTH_MANAGER_CONFIG_PARAMS             => \@AUTH_MANAGER_CONFIG_PARAMS,
     -ADD_RECORD_CONFIRMATION_VIEW_NAME      => 'AddRecordConfirmationView',
     -BASIC_DATA_VIEW_NAME                   => 'ToDoHomeView',
-    -DEFAULT_ACTION_NAME                    => 'DisplayDayViewAction',
+    -BASIC_INPUT_WIDGET_DISPLAY_COLSPAN     => 4,
     -CGI_OBJECT                             => $CGI,
     -CSS_VIEW_URL                           => $CSS_VIEW_URL,
     -CSS_VIEW_NAME                          => $CSS_VIEW_NAME,
@@ -1478,16 +1479,10 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
 	 -DEBUG                                  => $CGI->param('debug')||0,
     -DELETE_ACKNOWLEDGEMENT_VIEW_NAME       => 'DeleteAcknowledgementView',
     -DELETE_RECORD_CONFIRMATION_VIEW_NAME   => 'DeleteRecordConfirmationView',
-    -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
-    -MAX_RECORDS_PER_PAGE                   => $RecordsToDisplay || 210,
-    -SORT_FIELD1                            => $SortField1,
-    -SORT_FIELD2                            => $SortField2,
-    -SORT_DIRECTION                         => $SortDirection|| 'DESC',
-#   -SORT_DIRECTION                         => 'DESC',
+    -DEFAULT_ACTION_NAME                    => 'DisplayDayViewAction',
     -DELETE_FORM_VIEW_NAME                  => 'DetailsRecordView',
     -DELETE_EMAIL_BODY_VIEW                 => 'DeleteEventEmailView',
     -DETAILS_VIEW_NAME                      => 'DetailsRecordView',
-    -GROUP_OF_POSTER                        => $GROUP_OF_POSTER,
     -DATA_HANDLER_MANAGER_CONFIG_PARAMS     => \@DATA_HANDLER_MANAGER_CONFIG_PARAMS,
     -DISPLAY_ACKNOWLEDGEMENT_ON_ADD_FLAG    => 1,
     -DISPLAY_ACKNOWLEDGEMENT_ON_DELETE_FLAG => 1,
@@ -1495,14 +1490,16 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -DISPLAY_CONFIRMATION_ON_ADD_FLAG       => 1,
     -DISPLAY_CONFIRMATION_ON_DELETE_FLAG    => 1,
     -DISPLAY_CONFIRMATION_ON_MODIFY_FLAG    => 1,
+    -DOMAIN_NAME                            => $HostName,
     -ENABLE_SORTING_FLAG                    => 1,
+    -GROUP                                  => $group,
+    -GROUP_OF_POSTER                        => $GROUP_OF_POSTER,
     -HAS_MEMBERS                            => $HasMembers,
     -HIDDEN_ADMIN_FIELDS_VIEW_NAME          => 'HiddenAdminFieldsView',
     -INPUT_WIDGET_DEFINITIONS               => \@INPUT_WIDGET_DEFINITIONS,
-    -BASIC_INPUT_WIDGET_DISPLAY_COLSPAN     => 4,
     -KEY_FIELD                              => 'record_id',
     -LOGOFF_VIEW_NAME                       => 'LogoffView',
-    -URL_ENCODED_ADMIN_FIELDS_VIEW_NAME     => 'URLEncodedAdminFieldsView',
+    -LAST_UPDATE                            => $last_update,
     -LOCAL_IP                               => $LocalIp,
     -LOG_CONFIG_PARAMS                      => \@LOG_CONFIG_PARAMS,
     -MODIFY_ACKNOWLEDGEMENT_VIEW_NAME       => 'ModifyAcknowledgementView',
@@ -1511,7 +1508,10 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -MAIL_SEND_PARAMS                       => \@MAIL_SEND_PARAMS,
     -MODIFY_FORM_VIEW_NAME                  => 'ModifyRecordView',
     -MODIFY_EMAIL_BODY_VIEW                 => 'ModifyEventEmailView',
+    -MAX_RECORDS_PER_PAGE                   => $RecordsToDisplay || 210,
+    -OPTIONS_FORM_VIEW_NAME                 => 'OptionsView',
     -POWER_SEARCH_VIEW_NAME                 => 'PowerSearchFormView',
+    -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
     -REQUIRE_AUTH_FOR_SEARCHING_FLAG        => 0,
     -REQUIRE_AUTH_FOR_ADDING_FLAG           => 1,
     -REQUIRE_AUTH_FOR_MODIFYING_FLAG        => 1,
@@ -1528,7 +1528,14 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -SEND_EMAIL_ON_ADD_FLAG                 => 1,
     -SESSION_OBJECT                         => $SESSION,
     -SESSION_TIMEOUT_VIEW_NAME              => 'SessionTimeoutErrorView',
+    -SITE_NAME                              => $SiteName,
+    -SITE_LAST_UPDATE                       => $site_update,
+    -SORT_FIELD1                            => $SortField1,
+    -SORT_FIELD2                            => $SortField2,
+    -SORT_DIRECTION                         => $SortDirection|| 'DESC',
+#   -SORT_DIRECTION                         => 'DESC',
     -TEMPLATES_CACHE_DIRECTORY              => $TEMPLATES_CACHE_DIRECTORY,
+    -URL_ENCODED_ADMIN_FIELDS_VIEW_NAME     => 'URLEncodedAdminFieldsView',
     -VALID_VIEWS                            => \@VALID_VIEWS,
     -VIEW_DISPLAY_PARAMS                    => \@VIEW_DISPLAY_PARAMS,
     -VIEW_FILTERS_CONFIG_PARAMS             => \@VIEW_FILTERS_CONFIG_PARAMS,
@@ -1536,12 +1543,10 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -SIMPLE_SEARCH_STRING                   => $CGI->param('simple_search_string') || "",
     -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
     -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
-    -SITE_NAME                              => $SiteName,
-    -SITE_LAST_UPDATE                       => $site_update,
     -PAGE_TOP_VIEW                          =>  $page_top_view ,
     -PAGE_LEFT_VIEW                         =>  $page_left_view,
     -PAGE_BOTTOM_VIEW                       =>  $page_bottom_view,
-    -SELECT_FORUM_VIEW		            => 'SelectForumView',
+    -SELECT_FORUM_VIEW		                 => 'SelectForumView',
     -DATETIME_CONFIG_PARAMS                 => \@DATETIME_CONFIG_PARAMS,
     -ACTION_HANDLER_PLUGINS                 => \%ACTION_HANDLER_PLUGINS,
 );
