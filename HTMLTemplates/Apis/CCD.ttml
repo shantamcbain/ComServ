@@ -1,0 +1,28 @@
+[%
+#	$Id: CCD.ttml,v 1.1 2020/02/13 06:42:47 shanta Exp shanta $	%]
+
+[%# embed(data.page_top_view,['-PAGE_TITLE','Nucs']) %]
+
+[% embed('ErrorDisplayView') %]
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% email = data.session_object.getAttribute('-KEY','auth_email') %]
+
+ <h1>Colony Collapse </h1>
+<p>Colony Collapse is a stress disorder. The highest form of stress histrionically has been drought. Lack of food and quality of the food leads to sensitivity to disease, pesticide poisoning, predators etc.</p>
+
+<p>Currently commercial agricultural practices are leading to a drought in available and quality food sources. The use of herbicides greatly effect the amounts of nectar and pollen available for the bees to harvest. Bees depend on abundant varied food sources for health. Cutting practices such as harvesting Alfalfa at flower has a deviating effect on bees, the plant and the animals that eat it. The dairy industry is exceptionally bad for this practice. take a look at our <a href="http://grindrodproject.grindrodbc.com/" target="_blank">Feed the Bees project</a></p>
+
+<p>The next major stress for bees is the contamination of food sources with pesticides. Chemicals like neo nics, used on seed to kill fungus and insects, effect the ability to feed the young. This is why a healthy hive in the summer will have a large population of seeming healthy bees going into winter. These winter bees are not capable of feeding their replacement bees in the spring. They look strong on the first visit the next they are gone. You can counter this by removing all honey from the hive at harvest time. Then feed sysop for winter. Honey harvested will have pesticides in it the syrup dose not. This Helps the bees to raise healthy winter bees. Treating, if necessary, for varoa this time is also recommended. </p>

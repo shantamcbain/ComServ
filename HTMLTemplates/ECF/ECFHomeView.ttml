@@ -1,8 +1,8 @@
-[%
-#	$Id: ECFHomeView.ttml,v 1.4 2010/09/28 13:40:30 shanta Exp $	
+[%#	$Id: ECFHomeView.ttml,v 1.5 2020/092/112 13:40:30 shanta Exp $ %]
+[%#	$Id: ECFHomeView.ttml,v 1.4 2010/09/28 13:40:30 shanta Exp $ %]
 
 
-%][% embed(data.page_top_view,['-PAGE_TITLE','Home']) %]
+[%# embed(data.page_top_view,['-PAGE_TITLE','Home']) %]
 
 [% embed('ErrorDisplayView') %] 
 
@@ -50,8 +50,7 @@
    <li>Garlic, 
    <li>Hops 
    <li>Seed production.
-   <li><b>New for 20012</b> Urban farming.
-   </ul>     
+    </ul>     
            <p> We provide a variety of services to Bee keepers, Farmers,  Health practitioner , and the general public.
 
             </p>                                            
@@ -60,7 +59,7 @@
  <ul>
    <li>
    <a href="/cgi-bin/index.cgi?site=ECF&amp;[% session_string %]&amp;view=ProductView">new Wood ware</a></li>
-   <li><a href="/cgi-bin/index.cgi?site=ECF&amp;[% session_string %]&amp;view=ProductView">Apiary Management Services</a></li>
+   <li><a href="/cgi-bin/index.cgi?site=ECF&amp;[% session_string %]&amp;view=ProductView">Apiary Management Services</a> See <a href="http://anucollectiv.beemaster.ca" target="_blank" name="Anu Collective" onmouseover="AnuCollective">Anu Collective</a> for an example</li>
    <li><a href="/cgi-bin/index.cgi?site=ECF&amp;[% session_string
 %]&amp;view=ProductView">Bees and Bee Queens</a></li>
    <li><a href="/cgi-bin/index.cgi?site=ECF&amp;[% session_string %]&amp;view=ProductView">Pollination Products</a>

@@ -38,7 +38,7 @@
 	                                  ")%]    
 	   <tr>
 	   <td class="NavTableCellStyle">
-	       <a href="[% link.url %]?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
+	       <a href="[% link.url %]/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;[% link.view_name %]" name="Contact" target="[% link.target %]" title=" [% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
 	   </td>
 	   </tr>
 	[% END %]
