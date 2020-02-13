@@ -70,7 +70,8 @@
                VALUE="      Logon      ">
           <INPUT TYPE="HIDDEN" NAME="site"
                VALUE = "[% SiteName %]">
-
+<INPUT TYPE="HIDDEN" NAME="session_id"
+               VALUE = "[% session_id %]">
 [% IF data.allow_registration %]
         <INPUT TYPE="SUBMIT" NAME="auth_submit_registration_request"
                VALUE="     Register     ">
