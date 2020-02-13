@@ -1,5 +1,6 @@
 #!/usr/bin/perl -wT
 
+# 	$Id: log.cgi,v 1.41 2020/01/13 22:08:42 shanta Exp shanta $
 # 	$Id: log.cgi,v 1.4 2016/01/23 22:08:42 shanta Exp shanta $
 # fix directory problem	
 # 	$Id: log.cgi,v 1.3 2016/01/23 22:08:42 shanta Exp shanta $	
@@ -20,6 +21,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, 
 # Boston, MA  02111-1307, USA.
+my $AppVer = "ver 1.41, Jan 13, 2020";
 
 use strict;
 
@@ -37,7 +39,7 @@ my @VIEWS_SEARCH_PATH =
        ../Modules/Extropia/View/Default);
 
 my @TEMPLATES_SEARCH_PATH = 
-    qw(../HTMLTemplates/Apis
+    qw(../HTMLTemplates/Apis•••••
        ../HTMLTemplates/AltPower
        ../HTMLTemplates/Brew
        ../HTMLTemplates/CS
@@ -79,7 +81,7 @@ foreach ($CGI->param()) {
     my $debug = 0;
 
     my $APP_NAME = "log"; 
-    my $last_update  = 'Sept 19, 2018';
+    my $last_update  = 'Feb 13, 2020';
     my $site_update;
     my $APP_NAME_TITLE = "Log Manager";
     my $FAVICON;
@@ -88,13 +90,14 @@ foreach ($CGI->param()) {
     my $CSS_VIEW_NAME = '/styles/CSCCSSView';
     my $CSS_VIEW_URL = $CSS_VIEW_NAME;
     my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+    my $style = $CGI->param('pagestyle');
     my $MySQLPW;
     my $DBI_DSN;
     my $SiteName = $CGI->param('site') ;
     my $UseModPerl = 1;
     my $AUTH_TABLE;
-my $home_view = 'LogHomeView';
-my $GLOBAL_DATAFILES_DIRECTORY;
+    my $home_view = 'LogHomeView';
+    my $GLOBAL_DATAFILES_DIRECTORY;
 my $TableName;
 my $ProjectTableName;
 my $AUTH_MSQL_USER_NAME;
@@ -115,7 +118,7 @@ my $VIEW_LOADER = new Extropia::Core::View
 
  use SiteSetup;
 #my $S   = &CSCSetup::SiteVariables;
-  my $SetupVariables  = new SiteSetup($UseModPerl, $SiteName);
+    my $SetupVariables  = new SiteSetup($UseModPerl, $SiteName);
     $SiteName                 = $SetupVariables->{-SITE_NAME};
     my $homeview             = $SetupVariables->{-HOME_VIEW}; 
     my $homeviewname          = $homeview||$SetupVariables->{-HOME_VIEW_NAME};
@@ -128,7 +131,6 @@ my $VIEW_LOADER = new Extropia::Core::View
     my $mail_from             = $SetupVariables->{-MAIL_FROM}; 
     my $mail_to               = $SetupVariables->{-MAIL_TO};
     my $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
-    my $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
     my $app_logo              = $SetupVariables->{-APP_LOGO};
     my $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
     my $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
@@ -138,20 +140,20 @@ my $VIEW_LOADER = new Extropia::Core::View
     my $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
     my $HTTP_HEADER_KEYWORDS  = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
     my $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
-   $MySQLPW               = $SetupVariables->{-MySQLPW};
-    $DBI_DSN               = $SetupVariables->{-DBI_DSN};
-    $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
-     my $LocalIp            = $SetupVariables->{-LOCAL_IP};
-   $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
-$CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
-$CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
-my $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
-my $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
-my $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
+    $MySQLPW                  = $SetupVariables->{-MySQLPW};
+    $DBI_DSN                  = $SetupVariables->{-DBI_DSN};
+    $AUTH_MSQL_USER_NAME      = $SetupVariables->{-AUTH_MSQL_USER_NAME};
+    my $LocalIp               = $SetupVariables->{-LOCAL_IP};
+    $SITE_DISPLAY_NAME        = $SetupVariables->{-SITE_DISPLAY_NAME};
+    $CSS_VIEW_NAME            = $SetupVariables->{-CSS_VIEW_NAME};
+    $CSS_VIEW_URL             = $SetupVariables->{-CSS_VIEW_NAME};
+    my $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
+    my $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
+    my $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
 #my $site = 'file';
-my $site = $SetupVariables->{-DATASOURCE_TYPE};
-my $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
-my $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+    my $site = $SetupVariables->{-DATASOURCE_TYPE};
+    my $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
+    my $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
     $ProjectTableName      = 'csc_project_tb';
 
     my $homeviewname            = "LogHomeView";
@@ -184,7 +186,7 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
+
 
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
@@ -1286,6 +1288,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -ALLOW_DELETIONS_FLAG                   => 1,
     -ALLOW_DUPLICATE_ENTRIES                => 0,
     -ALLOW_USERNAME_FIELD_TO_BE_SEARCHED    => 1,
+    -APP_VER                              => $AppVer,
     -APPLICATION_SUB_MENU_VIEW_NAME         => 'ApplicationSubMenuView',
     -OPTIONS_FORM_VIEW_NAME                 => 'OptionsView',
     -AUTH_MANAGER_CONFIG_PARAMS             => \@AUTH_MANAGER_CONFIG_PARAMS,
@@ -1364,6 +1367,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -LEFT_PAGE_VIEW          =>  $page_left_view,
     -PAGE_BOTTOM_VIEW        =>  $page_bottom_view,
     -STAT_VIEW_NAME                         => 'CSCTotalView',
+    -STYLE                                            => $style,
     -DATETIME_CONFIG_PARAMS                 => \@DATETIME_CONFIG_PARAMS,
     -ACTION_HANDLER_PLUGINS                 => \%ACTION_HANDLER_PLUGINS,
 );
