@@ -55,7 +55,7 @@
 
             </p>
      
-            <p>We are now about to start our active outdoor season. We will be starting with our first visit to the yard. Here we will see just how many our our girls got through the winter. These numbers will help us plan the season ahead. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView&procedure=FirstEval">Details here.</a></p> 
+            <p>We are now about to start our active outdoor season. We will be starting with our first visit to the yard. Here we will see just how many our our girls got through the winter. These numbers will help us plan the season ahead. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView&procedure=FirstEval" target="_blank">Details here.</a></p> 
              <img src="http://anucollective.beemaster.ca/images/apis/shanta4nuc.JPG" width="50%" alt="Shanta hiving a nuc." lingth="50%">                                       
  
 
@@ -64,10 +64,10 @@
 
 <h2>Spring Yard Evaluation.</h2>
 <p>Coming mid to end of Febuary 2020.</p>
-<p></p>
 
 
-[%# embed('June3WorkShop') %]
+
+[% embed('FirstEval') %]
 
 
              <p>We will be developing Tools you can use to help you manage your bee keeping and bee breeding operations. </p>

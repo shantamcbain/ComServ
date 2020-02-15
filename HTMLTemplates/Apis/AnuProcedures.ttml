@@ -38,6 +38,10 @@
  [% embed ('AmuAdminList') %]
 [% ELSIF procedure  == ('HiveManHomeView') %]
  
+  [% embed ('HiveManHomeView') %]
+ [% ELSIF procedure  == ('FirstEval') %]
+   [% embed ('FirstEval') %]
+
  [% ELSIF procedure  == ('LandingPage') %]
 [% embed ('LandingPage') %]
 
