@@ -1,3 +1,4 @@
+<!-- Last update Febuary 15, 20120 fixed errors -->
 <!-- Last update November 22, 2018 Moved to view -->
 <!-- Last update October , 2018  -->
 
@@ -19,7 +20,7 @@
 <p>Local powers sources. Solar, wind, heat, water. Power needs, connection ability to other nodes. All contribute to the design of a given node.
 [%  group  %]
 
-[% IF group == 'AltPower_Admin %]
+[% IF group == 'AltPower_Admin' %]
 			[% embed ('AltPowerAdmin') %]
 
 
