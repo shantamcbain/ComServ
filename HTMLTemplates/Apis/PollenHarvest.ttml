@@ -1,0 +1,36 @@
+[% 
+# /HTMLTemplates/Apis/PollenHarvest.ttml, v 0.02 2020/02/15
+# /HTMLTemplates/Apis/PollenHarvest.ttml, v 0.01 2020/02/14
+# /HTMLTemplates/Apis/ClockeBoardView.ttml, v 0.01 2019/05/10
+
+%]
+
+
+[% IF procedure %]
+
+[% ELSE %]
+
+[% embed(data.page_top_view,['-PAGE_TITLE','Pollen Harvest']) %]
+[% END %]
+
+
+<h2>Pollen Collection</h2>
+
+<p>Pollen is a valuable resource for your beekeeping business. The health value to humans is vast. If you only had one food pollen would be it. Your bees required it to live. You will need it to feed pollen to the bees in the spring. See  <a href="/cgi-bin/index.cgi?site=[% SiteName %]&view=ProceduresView&procedure=PollenPatties" target="_blank">for details.</a> </p>
+
+
+
+<p>Pollen provides the bees with the nutrition for the development of larvae. Because of this you will need to take it from only your strongest hives. These hives should be in your cleanest yards with the greatest bio diversity. You what this for two reason. Keeping chemical contamination to a minimum. This is both for feeding your bees and for pollen sales to your customers.</p>
+
+<p>As we will be making <a href="/cgi-bin/index.cgi?site=[% SiteName %]&view=ProceduresView&procedure=PollenPatties" target="_blank">Pollen Patties</a> to our bees you will also want to chose your healthiest hive for the job. Doing so will help prevent the transfer of disease to other colonies. We will be feeding patties to all our hives and in our weak ones many times the pollen needs to be as disease free as possible. </p>
+
+<p>When you collect your pollen it is a good idea to mark each harvest from a given hive with the date of harvest,the hive, general weather condition and the amount taken. This dose two vary important things for you. We like to harvest on a 7 day cycle. </p>
+
+<ol>
+ <li>You will have a separated samples by date and hive. This will allow you to see what pollens were harvested and in what quantities during the harvest cycle. By having the sample tested for contaminates you will see what time of the year the bees are exposed to chemical and the quantity of the exposure. The broader the range of pollen's in your harvest the higher the quality.</li>
+ <li>You will be able to sell the pollen just before the harvest to help your customers desensitize themselves for the pollen's coming up. This greatly assists your asthmatic and hay fever customers. Generally speaking the daily dose is about one table spoon. You could package your pollen into a 7 to 14 day Depending on your harvest schedule.</li>
+</ol>
+
+<p>You need to freeze your pollen immediately after harvest. Pollen is alive and will deteriorate quickly if not preserved. Frozen is the best. The drying process will lose a lot of its nutritional and medicinal values. This will lead to marketing problems as you will need to keep the pollen frozen until sale. One reason many beekeepers chose to dry their pollen even though it is of lesser quality.</p>
+
+<p>Keep in mind you are tacking away from the pollen that the hive is bringing in. Most traps are only about 50% to 60%  efficient. This is usually not a great hindrance for the hive. It is an added stress so when you work your pollen collectors watch for the stored pollen in the hive. Keep a close eye on disease. I you see signs of it you will what to turn the trap off for a cycle. You are stressing the hive and you don't want to harm the hive or introduce disease into the pollen. There are beekeepers who alternate by habit. <p>

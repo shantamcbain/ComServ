@@ -1,0 +1,40 @@
+[% 
+# /HTMLTemplates/Apis/PollenPatties.ttml, v 0.01 2020/02/14
+# /HTMLTemplates/Apis/ClockeBoardView.ttml, v 0.01 2019/05/10
+
+%]
+
+
+[% IF procedure %]
+
+[% ELSE %]
+
+[% embed(data.page_top_view,['-PAGE_TITLE','Pollen Patties']) %]
+[% END %]
+
+
+<h2>Pollen Patties</h2>
+
+<p>Pollen patties are a great feed to stimulate the production of brood. The best ones are made from honey and pollen harvested from you cleanest hives. They are also a way to vector honey into a small colony that has run out of honey and it is too cool for them to leave the cluster and get  syrup from a feeder.</p>
+
+<p>There are many ways to make patties. The best of course is a sticky mass of honey and pollen. This makes for a vary expensive spring feed.  Yet its ability to get you brood as early as possible in the season can be worth the expense. </p> 
+
+
+<h3>Ingredients</h3>
+<ol>
+ <li><strong>Honey</strong> is important to the mix. It is the primary food for bees in the spring. Its presence in the pastie provides the sugars necessary for feeding the larvae. The base % is 50%.   </li>
+ <li><strong>Pollen</strong> Is the next important part of the mix. It simulates the presence of pollen in the environment. This stimulates the production of brood. </li>
+ <li><strong>Sugar</strong>  replaces honey in the mix. This is done to lower the cost of the patties. Or stretches your honey. The bees like it less than honey so it will reduce the acceptance. Don't use to high a concentration. </li>
+ <li><strong>Powdered commercial mix. </strong>One brand is promix. It is sold as a replacement for pollen. Its primary ingredient is soybeans. Unfortunately it is not liked by the bees vary much. Past experience show it is a poor substitute for pollen. But it dose work to a point and if your pollen supplies are short or you suspect chemical contamination you can use it. </li>
+ 
+</ol>
+
+<p> Patties are an important part of your spring feeding so you should have a plan for harvest of pollen during the year just for this purpose. </p>
+<p>Because pollen patties stimulate brood production you should be conscious of using the on your large hive. Unless of course you are expanding your operations, have lots of week hive that will need boosting. Are selling brood and bees. Early stimulation of brood production may seem like a good idea but will create a need for some place for that brood to go later in the season. To many bees in a hive will increase dramatically your swarm control. This is especially true if your bees will be going into pollination. For the duration of pollination you will not be able to work your hives and they will swarm. See <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView&procedure=SwarmControl"" target="_blank">Swarm Control</a> for more details</p>
+
+<p></p>
+
+
+
+
+
