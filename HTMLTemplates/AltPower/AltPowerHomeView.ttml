@@ -24,7 +24,7 @@
 			[% embed ('AltPowerAdmin') %]
 
 
-[% ELSE $]
+[% ELSE %]
 
 <p><a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&page=Co-generation&amp;[% session_string %]' >Co-generation</a> of power and heat maximize fuel sources. 
 
