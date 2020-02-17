@@ -35,7 +35,7 @@
                                   <tr>
                                   <td class="NavTableCellStyle"> [% link.project_code %]</td>
                                   <td class="NavTableCellStyle"> [% link.project_name %]</td>
-                                  <td class="NavTableCellStyle"><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProceduresView&procedure=[% link.project_code %]&title=[% link.project_name %]" name="view" target="_blank" title=" [% link.project_name %] "><font   class="LeftSideBarNavStyle">[% link.project_name %]</font></a> </td>
+                                  <td class="NavTableCellStyle"><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=[% link.project_code %]&title=[% link.project_name %]" name="view" target="_blank" title=" [% link.project_name %] "><font   class="LeftSideBarNavStyle">[% link.project_name %]</font></a> </td>
     </tr>
   [% END %]
   

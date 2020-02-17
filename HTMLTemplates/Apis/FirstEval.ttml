@@ -18,13 +18,10 @@
 	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
 [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
 [% procedure = data.procedure %]
-[%  procedure %]
-[% IF procedure %]
+[%#  procedure %]
 
-[% ELSE %]
-	[% embed(data.page_top_view,['-PAGE_TITLE','First Evaluation Of the season.']) %]
-[% END %]
-[% IF procedure %]
+	[%# embed(data.page_top_view,['-PAGE_TITLE','First Evaluation Of the season.']) %]
+
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 [% embed('ErrorDisplayView') %]
 
@@ -75,10 +72,6 @@
 
 
 
-
-[% ELSE %]
-	[% embed(data.page_bottom_view) %]
-[% END %]
 
 
 
