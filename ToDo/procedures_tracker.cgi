@@ -157,6 +157,7 @@ if ($HostName eq 'usbm.ca' ||
 if ($HostName eq 'beemaster.ca' ||
     $HostName eq 'ecf.beemaster.ca' ||
     $HostName eq 'hivemanagment.beemaster.ca' ||
+    $HostName eq 'anucollective.beemaster.ca' ||
     $HostName eq 'jennabee.beemaster.ca'){
    $GLOBAL_DATAFILES_DIRECTORY ="/home/beemast/Datafiles";
 }
