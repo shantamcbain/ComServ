@@ -7,15 +7,17 @@
 #	$Id: ApisHomeView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
 
 [% Version = ' ApisHomeView  v 1.13 2020/02/12' %]
-
+[% procedure = data.procedure %]
 
 <!-- [% Version %]-->
 <div id=body > 
 <A NAME="PageTop"></A>
+[%  procedure %]
 
+[% IF procedure %]
 
-
-
+[% embed(data.procedure) %] 
+[% ELSE %]
 
 [% IF group == 'AnuCollective_admin' %]
 [% embed('AnuAdmin') %]   
@@ -55,7 +57,7 @@
 
             </p>
      
-            <p>We are now about to start our active outdoor season. We will be starting with our first visit to the yard. Here we will see just how many our our girls got through the winter. These numbers will help us plan the season ahead. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView&procedure=FirstEval" target="_blank">Details here.</a></p> 
+            <p>We are now about to start our active outdoor season. We will be starting with our first visit to the yard. Here we will see just how many our our girls got through the winter. These numbers will help us plan the season ahead. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=FirstEval" target="_blank">Details here.</a></p> 
              <img src="http://anucollective.beemaster.ca/images/apis/shanta4nuc.JPG" width="50%" alt="Shanta hiving a nuc." lingth="50%">                                       
  
 
@@ -63,7 +65,7 @@
 
 
 <h2>Spring Yard Evaluation.</h2>
-<p>Coming mid to end of Febuary 2020.</p>
+<p>Coming mid to end of February 2020.</p>
 
 
 
@@ -72,7 +74,7 @@
 
              <p>We will be developing Tools you can use to help you manage your bee keeping and bee breeding operations. </p>
            <ul>
-            <li><a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&view=ProceduresView&procedure=HiveManHomeView">Apiary Management System</a>. <br>Track what is happening in your yards</li>        
+            <li><a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&procedure=HiveManHomeView">Apiary Management System</a>. <br>Track what is happening in your yards</li>        
             <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
             <li><a href="/cgi-bin/BBS/bbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
             <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
@@ -143,7 +145,7 @@ src="http://ss.webring.com/navbar?f=j;y=shanta;u=10140815"></script>
 To browse visit <a href="http://ss.webring.com/navbar?f=l;y=shanta;u=10132800">
 here</a>.</font></td></tr></table></td></tr></table></center></noscript>
 [% END %]
-
+[% END %]
 </div>
 
 
