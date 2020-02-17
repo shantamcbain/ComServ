@@ -13,12 +13,11 @@
 [% END %]
 
 
-<h2>Pollen Patties</h2>
+<h2>Swarm Control</h2>
 
-<p>Pollen patties are a great feed to stimulate the production of brood. The best ones are made from honey and pollen harvested from you cleanest hives. They are also a way to vector honey into a small colony that has run out of honey and it is too cool for them to leave the cluster and get  syrup from a feeder.</p>
+<p>This can be one of the most time consuming chores you will do on good years.</p>
 
-<p>There are many ways to make patties. The best of course is a sticky mass of honey and pollen. This makes for a vary expensive spring feed.  Yet its ability to get you brood as early as possible in the season can be worth the expense. </p> 
-
+<p>There are many stratagies to 
 
 <h3>Ingredients</h3>
 <ol>
@@ -30,7 +29,7 @@
 </ol>
 
 <p> Patties are an important part of your spring feeding so you should have a plan for harvest of pollen during the year just for this purpose. </p>
-<p>Because pollen patties stimulate brood production you should be conscious of using the on your large hive. Unless of course you are expanding your operations, have lots of week hive that will need boosting. Are selling brood and bees. Early stimulation of brood production may seem like a good idea but will create a need for some place for that brood to go later in the season. To many bees in a hive will increase dramatically your swarm control. This is especially true if your bees will be going into pollination. For the duration of pollination you will not be able to work your hives and they will swarm. See <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView&procedure=SwarmControl"" target="_blank">Swarm Control</a> for more details</p>
+<p>Because pollen patties stimulate brood production you should be conscious of using the on your large hive. Unless of course you are expanding your operations, have lots of week hive that will need boosting. Are selling brood and bees. Early stimulation of brood production may seem like a good idea but will create a need for some place for that brood to go later in the season. To many bees in a hive will increase dramatically your swarm control. This is especially true if your bees will be going into pollination. For the duration of pollination you will not be able to work your hives and they will swarm. See <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=SwarmControl"" target="_blank">Swarm Control</a> for more details</p>
 
 <p></p>
 

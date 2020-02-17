@@ -129,7 +129,8 @@ my $site_update;
 my $frame;
 my $last_update = 'May 9, 2019';
 my $DeBug       = $CGI->param('debug') || 0;
-my $project     = $CGI->param('project');
+my $project     = $CGI->param('project')||'none';
+my $title       = $CGI->param('title');
 my $client_tb   = 'csc_client_tb';
 my $Affiliate   = 001;
 my $HasMembers  = 0;
@@ -193,8 +194,7 @@ my $SESSION_MGR =
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL =
-  $CGI->script_name() . "?display_css_view=on&session_id=$SESSION_ID";
+my $CSS_VIEW_URL ;
 
 if ( $CGI->param('site') )
 {
@@ -270,7 +270,7 @@ $site_update                = $SetupVariables->{-SITE_LAST_UPDATE};
 $last_update                = $SetupVariables->{-LAST_UPDATE};
 $HasMembers                 = $SetupVariables->{-HAS_MEMBERS};
 $CSS_VIEW_NAME              = $SetupVariables->{-CSS_VIEW_NAME};
-my $CSS_VIEW_URL            = $SetupVariables->{-CSS_VIEW_NAME};
+$CSS_VIEW_URL               = $SetupVariables->{-CSS_VIEW_NAME};
 
 my $modify       = '1';
 my $delete       = '1';
@@ -1200,6 +1200,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -SESSION_OBJECT                                   => $SESSION,
     -SESSION_TIMEOUT_VIEW_NAME   => 'SessionTimeoutErrorView',
     -SIMPLE_SEARCH_BOX_VIEW_NAME => 'SimpleSearchBoxView',
+    -TITAL                       => $title,
     -VIEW_FILTERS_CONFIG_PARAMS  => \@VIEW_FILTERS_CONFIG_PARAMS,
     -VIEW_DISPLAY_PARAMS         => \@VIEW_DISPLAY_PARAMS,
     -TEMPLATES_CACHE_DIRECTORY   => $TEMPLATES_CACHE_DIRECTORY,

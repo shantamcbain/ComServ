@@ -24,7 +24,7 @@
 [% ELSE %]
 	[% embed(data.page_top_view,['-PAGE_TITLE','First Evaluation Of the season.']) %]
 [% END %]
-
+[% IF procedure %]
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 [% embed('ErrorDisplayView') %]
 
@@ -36,7 +36,7 @@
 	<h1>Our First Look at the bees of the season.</h1>
   
 
-	<p>As beekeepers in an industrial age of farming this is likely the most dreaded visit to your bees. Here we see how many bees will made it though the winter. The riggers of the weather nothing compared to the damage done by Agra bis. Over the next two visits or so we will see the effects of <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView&procedure=CCD" target="_blank" name="CCD">CCD (colony collapse disorder)</a>.</p>
+	<p>As beekeepers in an industrial age of farming this is likely the most dreaded visit to your bees. Here we see how many bees will made it though the winter. The riggers of the weather nothing compared to the damage done by Agra bis. Over the next two visits or so we will see the effects of <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=CCD" target="_blank" name="CCD">CCD (colony collapse disorder)</a>.</p>
 	
 <p>On this visit we  will not actually not do much more than look at the cluster size and the weight of the hive. </p>
 <p>Our primary interest are.</p>
@@ -61,7 +61,7 @@
 
 <h2>Equipment and supplies.</h2>
 <ul>
- <li>You will need pollen patties one for each hive. 2 for each large one if you are not going to back for more than 2 weeks. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&view=ProceduresView&procedure=PollenPatties" target="_blank">How to Make</a> </li>
+ <li>You will need pollen patties one for each hive. 2 for each large one if you are not going to back for more than 2 weeks. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&procedure=PollenPatties" target="_blank">How to Make</a> </li>
  
  <li>
   Fence fixing equipment. Shovel, Electric fencer, Battery and charging. 
@@ -74,7 +74,7 @@
 </ul>
 
 
-[% IF procedure %]
+
 
 [% ELSE %]
 	[% embed(data.page_bottom_view) %]

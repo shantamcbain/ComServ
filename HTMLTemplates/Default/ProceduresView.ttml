@@ -35,7 +35,7 @@
 [% IF group == "Mentoring"	%]
 	[% embed(data.page_top_view,['-PAGE_TITLE',' Mentoring Procedures View']) %]
 [% ELSE %]
-	[%# embed(data.page_top_view,['-PAGE_TITLE','Procedures View']) %]
+	[% embed(data.page_top_view,['-PAGE_TITLE','Procedures View']) %]
 [% END %]
 
 [% embed('ErrorDisplayView') %]
@@ -49,7 +49,7 @@
 			<h2>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %] Procedures! [% title %] </h2> 
 		[% END %]
 
-<h1>How to [% title %] </h1>
+
 <p>
                 [% IF group == 'Apis_admin' OR
                     group == 'BMaster_admin' OR 
@@ -67,6 +67,7 @@
 		[% END %] <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView" target = "_blank">List</a></p>
 </h4>	
 		[% SiteName = data.site_name%]
+		
    	[% IF SiteName == "OKB" %]
 		[%# embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "AltPower" %]
