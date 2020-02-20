@@ -1,4 +1,5 @@
 #!/usr/bin/perl -wT
+# 	$Id: powerlog.cgi,v 1.41 202/02/20 22:08:42 shanta Exp shanta $	
 # 	$Id: powerlog.cgi,v 1.4 2019/10/26 22:08:42 shanta Exp shanta $	
 # 	$Id: powerlog.cgi,v 1.4 2004/01/23 22:08:42 shanta Exp shanta $	
 #CSC file location /cgi-bin/CSC
@@ -76,8 +77,10 @@ foreach ($CGI->param()) {
 ######################################################################
 my $debug = 0;
 my $APP_NAME = "log"; 
-my $last_update  = 'September 12, 2015';
+my $last_update  = 'Febuary 20, 2020';
 my $site_update;
+my $CSS_VIEW_URL = $CSS_VIEW_NAME;
+my $CSS_VIEW_NAME = '/styles/CSCCSSView';
 my $APP_NAME_TITLE = "Log Manager";
 my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles" ;
 my $FAVICON;
@@ -150,7 +153,7 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL;# = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
+
 
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
@@ -171,44 +174,45 @@ my $username =  $SESSION ->getAttribute(-KEY => 'auth_username');
 my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
 use SiteSetup;
 #my $S   = &CSCSetup::SiteVariables;
-  my $SetupVariables  = new SiteSetup($UseModPerl);
-    my $home_view               = 'AltPowerLogHomePage'||$SetupVariables->{-HOME_VIEW}; 
-    my $homeviewname            = 'AltPowerLogHomePage'||$SetupVariables->{-HOME_VIEW_NAME};
-    my $BASIC_DATA_VIEW         = $SetupVariables->{-BASIC_DATA_VIEW};
-    my $page_top_view           = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
-    my $page_bottom_view        = $SetupVariables->{-PAGE_BOTTOM_VIEW};
-    my $page_left_view          = $SetupVariables->{-LEFT_PAGE_VIEW};
+my $SetupVariables  = new SiteSetup($UseModPerl);
+  my $home_view               = 'AltPowerLogHomePage'||$SetupVariables->{-HOME_VIEW}; 
+  my $homeviewname            = 'AltPowerLogHomePage'||$SetupVariables->{-HOME_VIEW_NAME};
+  my $BASIC_DATA_VIEW         = $SetupVariables->{-BASIC_DATA_VIEW};
+  $CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
+  $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
+  my $page_top_view           = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
+  my $page_bottom_view        = $SetupVariables->{-PAGE_BOTTOM_VIEW};
+  my $page_left_view          = $SetupVariables->{-LEFT_PAGE_VIEW};
 #Mail settings
-    my $mail_from               = $SetupVariables->{-MAIL_FROM}; 
-    my $mail_to                 = $SetupVariables->{-MAIL_TO};
-    my $mail_replyto            = $SetupVariables->{-MAIL_REPLYTO};
-    my $CSS_VIEW_NAME           = $SetupVariables->{-CSS_VIEW_NAME};
-    my $app_logo                = $SetupVariables->{-APP_LOGO};
-    my $app_logo_height         = $SetupVariables->{-APP_LOGO_HEIGHT};
-    my $app_logo_width          = $SetupVariables->{-APP_LOGO_WIDTH};
-    my $app_logo_alt            = $SetupVariables->{-APP_LOGO_ALT};
-    my $IMAGE_ROOT_URL          = $SetupVariables->{-IMAGE_ROOT_URL}; 
-    my $DOCUMENT_ROOT_URL       = $SetupVariables->{-DOCUMENT_ROOT_URL};
-    my $HTTP_HEADER_PARAMS      = $SetupVariables->{-HTTP_HEADER_PARAMS};
-    my $HTTP_HEADER_KEYWORDS    = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
-    my $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
-    my $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
-    $MySQLPW                    = $SetupVariables->{-MySQLPW};
-    $DBI_DSN                    = $SetupVariables->{-DBI_DSN};
-    $AUTH_MSQL_USER_NAME        = $SetupVariables->{-AUTH_MSQL_USER_NAME};
-    my $AUTH_TABLE          = $SetupVariables->{-AUTH_TABLE};
-    my $LocalIp                 = $SetupVariables->{-LOCAL_IP};
+  my $mail_from               = $SetupVariables->{-MAIL_FROM}; 
+  my $mail_to                 = $SetupVariables->{-MAIL_TO};
+  my $mail_replyto            = $SetupVariables->{-MAIL_REPLYTO};
+  my $app_logo                = $SetupVariables->{-APP_LOGO};
+  my $app_logo_height         = $SetupVariables->{-APP_LOGO_HEIGHT};
+  my $app_logo_width          = $SetupVariables->{-APP_LOGO_WIDTH};
+  my $app_logo_alt            = $SetupVariables->{-APP_LOGO_ALT};
+  my $IMAGE_ROOT_URL          = $SetupVariables->{-IMAGE_ROOT_URL}; 
+  my $DOCUMENT_ROOT_URL       = $SetupVariables->{-DOCUMENT_ROOT_URL};
+  my $HTTP_HEADER_PARAMS      = $SetupVariables->{-HTTP_HEADER_PARAMS};
+  my $HTTP_HEADER_KEYWORDS    = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
+  my $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+  my $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
+  $MySQLPW                    = $SetupVariables->{-MySQLPW};
+  $DBI_DSN                    = $SetupVariables->{-DBI_DSN};
+  $AUTH_MSQL_USER_NAME        = $SetupVariables->{-AUTH_MSQL_USER_NAME};
+  my $AUTH_TABLE          = $SetupVariables->{-AUTH_TABLE};
+  my $LocalIp                 = $SetupVariables->{-LOCAL_IP};
 
-   $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
-my $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
-my $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
+  $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
+  my $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
+  my $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
 #my $site = 'file';
-my $site = $SetupVariables->{-DATASOURCE_TYPE};
-my $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
-my $site_session = $DATAFILES_DIRECTORY.'/Sessions';
-my $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-   $ProjectTableName      = 'csc_project_tb';
-   $homeviewname            = "LogHomeView";
+  my $site = $SetupVariables->{-DATASOURCE_TYPE};
+  my $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
+  my $site_session = $DATAFILES_DIRECTORY.'/Sessions';
+  my $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+  $ProjectTableName      = 'csc_project_tb';
+  $homeviewname            = "LogHomeView";
 
 
 ######################################################################
@@ -1450,4 +1454,4 @@ my $APP = Extropia::Core::App::DBApp->new(
              $CGI->script_name() .  ". Please contact the webmaster.");
 
 #print "Content-type: text/html\n\n";
-print $APP->execute();
+print $APP->execute();my $CSS_VIEW_NAME = '/styles/CSCCSSView';
