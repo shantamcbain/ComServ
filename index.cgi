@@ -66,7 +66,7 @@ my @TEMPLATES_SEARCH_PATH = qw(HTMLTemplates/AltPower
 use CGI qw(-debug);
 
 #Carp commented out due to Perl 5.60 bug. Uncomment when using Perl 5.61.
-#use CGI::Carp qw(fatalsToBrowser);
+use CGI::Carp qw(fatalsToBrowser);
 
 use Extropia::Core::App::DBApp;
 use Extropia::Core::View;
