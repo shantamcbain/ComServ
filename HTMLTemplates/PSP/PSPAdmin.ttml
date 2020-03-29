@@ -1,0 +1,49 @@
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+[% embed ("AdminTodoListLink")%]	
+
+Test for userfilterd rights
+	[% IF username == "Shanta" %]
+  Personalized for shanta       
+          
+          
+		      		 		
+ 	[% ELSIF username == "mnickers" %]
+  <h3> Michelle   </h3>
+  <p>Please create accounts  in these two list. One is for the general pubic the other is for all who are admin. This list is for communicating will all Admin. Once you have completed this I will remove this from your admin view.</p>
+  
+          [% embed('AmuAdminList') %]	
+     
+   [% ELSE %]   
+       [% embed('AmuAdminList') %]	
+		       
+ [% END%]	
+		       
+   
+      		 		
+ [% embed('NotesView') %]
+  
+<p></p>
+
+<H2>Site related</H2>
+
+ <ul>
+  <li>developing The admin view of the site.</li> 
+ </ul>
+<H2><B>Bee Management</b></H2>
+
+ <ul>
+ 
+  <li>developing The Management System.</li> 
+ </ul>
+ <H2><B>Bee Education</b></H2> <ul>
+ 
+  <li>developing The Educational System.</li> 
+ </ul>
+ 
+   [% embed('SiteAdminNotes') %]
+                  
+<!-- <p> /Default/ToDoList located in  -->
+[% embed('ToDoList') %]
+
+<!-- <p> 	/CSC/AdminTodoList	 -->
+[%# embed ("AdminTodoList")%]	
