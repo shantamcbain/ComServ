@@ -157,7 +157,8 @@ seeds, and be nourished in your relationship with the earth.</span></strong></sp
 
 
 [% embed('CSCCopyRight') %]
- </div>
+ [% END %]
+[% END %]</div>
 
 
 
