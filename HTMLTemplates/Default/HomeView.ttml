@@ -1,4 +1,4 @@
-
+[%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.95 2020/03/29 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.94 2019/10/15 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.93 2019/10/10 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: HomeView.ttml,v 1.92 2019/10/09 17:43:15 shanta Exp shanta $	%]
@@ -109,6 +109,8 @@
 		[% ELSIF SiteName == "LandTrust" OR
 		         SiteName == "LandTrustDev"  %]
 			[% embed ('LtrustHomeView') %]
+		[% ELSIF SiteName == "PSP"%]
+			[% embed ('PSPHome') %]
 		[% ELSIF SiteName == "Skye" %]
 			[% embed ('SkyHomeView') %]
 		[% ELSIF SiteName == "Shanta"%]
