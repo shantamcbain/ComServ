@@ -1,4 +1,5 @@
 [% 
+# BMasterProcedures, v 1.13 2020/03/10
 # BMasterProcedures, v 1.12 2019/05/09
 # BMasterProcedures, v 1.1 2019/05/08 
 # 2018 Dec 12 renamed AltPowerProjets
@@ -42,7 +43,7 @@
  [% embed ('ApisQueensView') %]
 [% ELSIF procedure  == ('ApisQueensNucView') %]
  
- [% embed ('ApisQueensNucView') %] [% project %]
+ [% embed ('ApisQueensNucView') %] 
 [% ELSIF procedure  == ('ApisActiveQueensView') %]
  
  [% embed ('ApisQueensView') %]
@@ -55,6 +56,9 @@
 [% ELSIF procedure  == ('ClockeBoardView') %]
  
  [% embed ('ClockeBoardView') %]
+[% ELSIF procedure  == ('YardManagementSystem') %]
+ 
+ [% embed ('YardManagementSystem') %]
 
  [% ELSE %]	
 <h2>Beemaster Active procedures list</h2>

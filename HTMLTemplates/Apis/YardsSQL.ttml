@@ -7,8 +7,7 @@
 [% FOREACH link = DBI.query("SELECT * FROM apis_yards_tb
                                   WHERE  (sitename = '$SiteName'
                                  ) 
-                                  AND status != 'defunct' 
-                                 
+                                  AND status != 'defunct'                                  
                                   ORDER BY yard_code
                                   ")%]    
   [% yard_code = link.yard_code %]                                

@@ -53,6 +53,7 @@ my @TEMPLATES_SEARCH_PATH = qw(HTMLTemplates/AltPower
   HTMLTemplates/MW
   HTMLTemplates/News
   HTMLTemplates/Organic
+  HTMLTemplates/PSP
   HTMLTemplates/Shanta
   HTMLTemplates/SB
   HTMLTemplates/SkyeFarm

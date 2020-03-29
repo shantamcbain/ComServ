@@ -48,6 +48,10 @@
  [% ELSIF procedure  == ('JoinDiscoussionList') %]
  
  [% embed ('JoinDiscoussionList') %]
+ [% ELSIF procedure  == ('YardManagementSystem') %]
+ 
+ [% embed ('YardManagementSystem') %]
+ 
  [% ELSE %]	
 
  [% embed ('AnuProcedureList') %]
