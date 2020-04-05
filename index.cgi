@@ -180,7 +180,7 @@ my $SetupVariables = new SiteSetup($UseModPerl, $CGI->param('site'), $HostName);
 $SiteName            = $SiteName || $SetupVariables->{-SITE_NAME};
 $Affiliate           = $SetupVariables->{-AFFILIATE};
 $APP_NAME_TITLE      = $SetupVariables->{-APP_NAME_TITLE};
-$home_view           = $SetupVariables->{-HOME_VIEW};
+$home_view           = $SetupVariables->{-HOME_VIEW}||'HomeView"';
 $BASIC_DATA_VIEW     = $SetupVariables->{-BASIC_DATA_VIEW};
 $DBI_DSN             = $SetupVariables->{-DBI_DSN};
 $AUTH_TABLE          = $SetupVariables->{-AUTH_TABLE};
@@ -1224,7 +1224,7 @@ my @VIEW_DISPLAY_PARAMS = (
                            'status'       => 'Status',
                            'priority'     => 'Priority',
  },
- -HOME_VIEW               => $home_view,
+ -HOME_VIEW               => $home_view||'HomeView',
  -IMAGE_ROOT_URL          => $IMAGE_ROOT_URL,
  -LINK_TARGET             => $LINK_TARGET,
  -ROW_COLOR_RULES         => \@ROW_COLOR_RULES,

@@ -8,7 +8,7 @@ currently only DevCSC Not working right yet miss forming the first after login d
 
 <ul class="dropdown" id="dropdownCentred">
     <li>
-              <span><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]" name="Home page" onmouseover="Home" title="HOME">Main</a></span>
+              <span><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=HomePage" "Home page" onmouseover="Home" title="HOME">Main</a></span>
       <ul>
        [% FOREACH link = DBI.query("SELECT * FROM page_tb
 	                                  WHERE  menu = 'Main'

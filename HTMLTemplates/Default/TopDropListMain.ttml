@@ -2,7 +2,7 @@
 [%# 	$Id: TopDropListMain.ttml,v 0.01 2019/12/09 06:33:25 shanta Exp shanta $	%]
  
  <!-- Start /HTMLTemplates/Default/TopDropListMain.ttml -->
- <span><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]" name="Home page" onmouseover="Home" title="HOME">Main</a></span>
+ <span><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=HomePage" name="Home page" onmouseover="Home" title="HOME">Main</a></span>
       <ul>
       <!-- populate from Page_tb -->
        [% FOREACH link = DBI.query("SELECT * FROM page_tb
