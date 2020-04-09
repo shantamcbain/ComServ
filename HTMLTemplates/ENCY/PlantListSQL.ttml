@@ -30,7 +30,7 @@
                                   ")%]  
 <table  width="100%">
  <tr>  
- <td class="NavTableCellStyle" colspan = 2> <t2>[% link.botanical_name %] </t2> </td>
+ <td class="NavTableCellStyle" colspan = 2> <t2 class="botanical_name"><i>[% link.botanical_name %]</i></t2> </td>
 </tr>
 <td class="NavTableCellStyle" rowspan=5> <IMG SRC ="[% link.image %]"  WIDTH ="300"      HEIGHT ="325"> 	         </td>
 </tr>
@@ -102,7 +102,7 @@
                                   
 
                                    <tr>
-<td class="NavTableCellStyle"> [% link.botanical_name %]  </td>
+<td class="NavTableCellStyle"><i> [% link.botanical_name %] </i> </td>
 <td class="NavTableCellStyle"> [% link.common_names %]  </td>
 <td class="NavTableCellStyle"><img src=" [% link.image %]" WIDTH ="300"      HEIGHT ="325" /> </td>
 <td class="NavTableCellStyle">        
