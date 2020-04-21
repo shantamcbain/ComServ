@@ -1,3 +1,4 @@
+[%#	$Id: ProceduresView.ttml,v 0.01 2020/04/20 17:43:15 shanta Exp shanta %]
 [%#	$Id: ProceduresView.ttml,v 0.01 2019/5/08 17:43:15 shanta Exp shanta
     $Id: ProjectsView.ttml,v 1.9 2013/1/14 17:43:15 shanta Exp shanta $	
 
@@ -35,7 +36,7 @@
 [% IF group == "Mentoring"	%]
 	[% embed(data.page_top_view,['-PAGE_TITLE',' Mentoring Procedures View']) %]
 [% ELSE %]
-	[% embed(data.page_top_view,['-PAGE_TITLE','Procedures View']) %]
+	[%# embed(data.page_top_view,['-PAGE_TITLE','Procedures View']) %]
 [% END %]
 
 [% embed('ErrorDisplayView') %]
@@ -169,4 +170,4 @@
 
 
 
-[% embed(data.page_bottom_view) %]
+[%# embed(data.page_bottom_view) %]

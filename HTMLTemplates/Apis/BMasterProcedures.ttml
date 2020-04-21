@@ -23,6 +23,7 @@
 [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
 [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
 [% procedure = data.procedure %]
+[%# procedure = Page %]
 [% script_name = data.app_name %]
 [% localip = data.local_ip %]
 
@@ -30,10 +31,8 @@
 <div align="center">
 </div>
 
- 
+ page = [% Page %]
 	   
-<ul>
- <li> 
 
  [% IF procedure  == 'HiveManHomeView' %]
 
@@ -48,17 +47,118 @@
  
  [% embed ('ApisQueensView') %]
 [% ELSIF procedure  == ('ApisActiveQueensView') %]
+  [% embed ('ApisActiveQueensView') %]
+   [% ELSIF Page  == ('BeeProducts') %]
+   [% FOREACH link = DBI.query("SELECT * FROM page_tb
+                                  WHERE  (
+                                         page_code = 'BeeProducts' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+                [% PROCESS pagefields.ttml %]
+       [% END %]                  
+
  
- [% embed ('ApisQueensView') %]
- [% ELSIF procedure  == ('YardsView') %]
+[%# PageName %]
+[% body %]
+
+[% ELSIF Page  == ('HiveEvaluationLost') %]
+ [%# embed ('HiveEvaluationLost') %]
+
+  [% FOREACH link = DBI.query("SELECT * FROM page_tb
+                                  WHERE  (
+                                         page_code = 'HiveEvaluationLost' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+                [% PROCESS pagefields.ttml %]
+       [% END %]                  
+
  
- [% embed ('YardsView') %]
+[%# PageName %]
+[% body %]
+
 [% ELSIF procedure  == ('ClockeBoardView') %]
  
  [% embed ('ClockeBoardView') %]
+   [% ELSIF Page  == ('Disease') %]
+   [% FOREACH link = DBI.query("SELECT * FROM page_tb
+                                  WHERE  (
+                                         page_code = $Page AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+                [% PROCESS pagefields.ttml %]
+       [% END %]                  
+
+ 
+[%# PageName %]
+[% body %]
+
+[% ELSIF Page  == ('FirstVisit') %]
+[% Page %]
+   [% FOREACH link = DBI.query("SELECT * FROM page_tb
+                                  WHERE  (
+                                         page_code = $Page AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+                [% PROCESS pagefields.ttml %]
+       [% END %]                  
+
+ 
+[%# PageName %]
+[% body %]
+
+
+   [% ELSIF Page  == ('NucMakingWorkshop') %]
+   [% FOREACH link = DBI.query("SELECT * FROM page_tb
+                                  WHERE  (
+                                         page_code = 'NucMakingWorkshop' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+                [% PROCESS pagefields.ttml %]
+       [% END %]                  
+
+ 
+[%# PageName %]
+[% body %]
+   [% ELSIF Page  == ('BeeProductsStock') %]
+   [% FOREACH link = DBI.query("SELECT * FROM page_tb
+                                  WHERE  (
+                                         page_code = 'BeeProductsStock' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+                [% PROCESS pagefields.ttml %]
+       [% END %]                  
+
+ 
+[%# PageName %]
+[% body %]
+
+
+   [% ELSIF Page  == ('SwarmControl') %]
+   [% FOREACH link = DBI.query("SELECT * FROM page_tb
+                                  WHERE  (
+                                         page_code = 'SwarmControl' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+                [% PROCESS pagefields.ttml %]
+       [% END %]                  
+
+ 
+[%# PageName %]
+[% body %]
+
 [% ELSIF procedure  == ('YardManagementSystem') %]
  
  [% embed ('YardManagementSystem') %]
+[% ELSIF procedure  == ('YardsView') %]
+ 
+ [% embed ('YardsView') %]
 
  [% ELSE %]	
 <h2>Beemaster Active procedures list</h2>
@@ -69,13 +169,7 @@
 	
 <a href="/cgi-bin/ToDo/procedures_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProceduresView&amp;project=WaterHeatView">	Water heat</a>
 
-</li>
 [% END %]
-<li>[%# embed ('BMasterProcedureList') %]
-</li>
-
-
-</ul>
    
  	 
 

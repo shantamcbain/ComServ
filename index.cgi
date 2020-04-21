@@ -228,6 +228,10 @@ $HasMembers    = $SetupVariables->{-HAS_MEMBERS};
 $CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
 $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
 
+#if ($Page = 'page'){
+#	$home_view = 'PageView',
+#}
+
 #$page_top_view    = $CGI->param('page_top_view')||$page_top_view;
 #$page_bottom_view = $CGI->param('page_bottom_view')||$page_bottom_view;
 #$page_left_view   = $CGI->param('page_left_view')||$page_left_view;
@@ -1071,7 +1075,7 @@ my @VALID_VIEWS = qw(
   ForumsView
   ContactView
   ProductView
-  ProjectsView
+  ProjectsView 
   BeeTrailerView
   BeeTalk
   BMasterProcedures
@@ -1143,7 +1147,7 @@ my @VALID_VIEWS = qw(
   RegistrationView
   MailListView
   BotanicalNameView
-  BeePastureView
+  BeePastureView 
   FeedTheBeesView
   ForumulaView
   JobView
@@ -1160,7 +1164,7 @@ my @VALID_VIEWS = qw(
   UrbanFarmingView
   ModulesView
   ToDoHomeView
-  ENCYHomeView
+  ENCYHomeView PAGE = 
   MonitoringView
   ResourcesView
   HerbDetailView

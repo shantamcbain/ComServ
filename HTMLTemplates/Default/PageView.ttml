@@ -1,3 +1,4 @@
+[%#	$Id: /cgi-bin/HTMLTemplates/Default/PageView.ttml,v 0.12 2020/04/20 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/PageView.ttml,v 0.1 2013/12/20 17:43:15 shanta Exp shanta $	
 
 # Ideally this template should be converted into a static CSS file and
@@ -23,7 +24,7 @@
  [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
  [% session_id = data.session_object.getId() %]
  [% session_string = "session_id=$session_id" %]
- [% PAGE = data.page_name  %]
+ [% Page = data.page_name  %]
  [% View = data.view %]
  [% HomeLink = data.home_link || '' %]
  [%# page = 'GarlicCulture' %]
@@ -34,7 +35,7 @@
 
 [% process = 'None defined' %]
 
-
+Calling for page in database with a variable
   [% FOREACH link = DBI.query("SELECT * FROM page_tb
                                   WHERE  (status  = 2 AND
                                          page_code = '$Page' AND
@@ -50,9 +51,9 @@
 
 
 
-   	[% embed(data.page_top_view,["-PAGE_TITLE","$PAGE",]) %]
+   	[%# embed(data.page_top_view,["-PAGE_TITLE","$PAGE",]) %]
 [% embed('ErrorDisplayView') %]
- 
+ This is in PageView
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td colspan="5">  <!--                   
@@ -63,7 +64,7 @@ Page =  [%   PAGE   %]   -->
 		 [% ELSE %]
 			<h3 > Hello  [% firstname %] &nbsp; [% lastname %]! Welcome to [% data.site_display_name %] </h3>
 		 [% END %]
-		[% ELSE %]
+		[% ELSE %]$home_view 
 			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %]! </h3> 
  	[% END %]
      [% IF SiteName == 'CSC' %]
@@ -137,10 +138,10 @@ Page =  [%   PAGE   %]   -->
 <p>Last Update [% lastupdate %][% IF SiteName == 'Demo' %]&nbsp; This value is stored in your setup file. [% END %]
 		<br>
 [% END %]
-[% embed('CSCCopyRight') %]
+[%# embed('CSCCopyRight') %]
 
 	
 
 
 
-[% embed(data.page_bottom_view) %]
+[%# embed(data.page_bottom_view) %]
