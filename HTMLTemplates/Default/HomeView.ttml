@@ -51,7 +51,7 @@
 		[% END %]
 [% embed ("AdminTodoListLink")%]	
 		[% SiteName = data.site_name%]
-[% IF Page %]
+[% IF Page != 'HomeView' %]
 
 [% embed('ProceduresView') %]
 [% ELSE %]
