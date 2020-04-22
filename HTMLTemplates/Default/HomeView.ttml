@@ -62,7 +62,7 @@
 [% embed('PageView') %]
 
 [% ELSE %]
- Call HomeView [%  SiteName %]
+[%# Call HomeView%] [%#  SiteName %]
    	[% IF SiteName == "OKB" %]
 		[% embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "Aktiv" %]
