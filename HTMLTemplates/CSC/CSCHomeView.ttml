@@ -60,7 +60,7 @@ You can modify anything from here to the last update. You may use Html code in t
  	   [% END %]
 
  [% FOREACH link = DBI.query("SELECT * FROM page_tb
-                                  WHERE  (status  = '2' AND
+                                  WHERE  (status  = '1' AND
                                          sitename='CSC' AND
                                          page_code = 'HomeView' )
                                   
