@@ -99,7 +99,9 @@
 		[% ELSIF SiteName == "Coop" OR
 		         SiteName == "Noop" %]
 			[% embed ('CoopHomeView') %]		
-		[% ELSIF SiteName == "ENCY" %]
+		[% ELSIF SiteName == "ECF" %]
+			[% embed ('ECFHomeView') %]
+	[% ELSIF SiteName == "ENCY" %]
 			[% embed ('ENCYHome') %]
 		[% ELSIF SiteName == "GrindrodBC" %]
 			[% embed ('GrindrodHomeView') %]
