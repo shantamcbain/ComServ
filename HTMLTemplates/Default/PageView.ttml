@@ -34,10 +34,10 @@
  [%# embed('SiteMysql') %]   
 
 [% process = 'None defined' %]
-
+ [%# IN PAGEVIEW Call page%]    [%# Page %]
 
   [% FOREACH link = DBI.query("SELECT * FROM page_tb
-                                  WHERE  (status  = 2 AND
+                                  WHERE  (
                                          page_code = '$Page' AND
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
@@ -51,20 +51,11 @@
 
 
 
-   	[% embed(data.page_top_view,["-PAGE_TITLE","$PAGE",]) %]
+   	[%# embed(data.page_top_view,["-PAGE_TITLE","$PAGE",]) %]
 [% embed('ErrorDisplayView') %]
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td colspan="5">      
-[% IF username %]
-		 [% IF pagewelcome %]
-			[% pagewelcome %]
-		 [% ELSE %]
-			<h3 > Hello  [% firstname %] &nbsp; [% lastname %]! Welcome to [% data.site_display_name %] </h3>
-		 [% END %]
-		[% ELSE %]
-			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %]! </h3> 
- 	[% END %]
      [% IF SiteName == 'CSC' %]
                              
        [% IF data.session_object.getAttribute('-KEY','Developer') == 1 %]
@@ -74,13 +65,7 @@
 	      [% END %]
       [% END %]
 <p>  
- [% IF username AND	
-      group != 'normal'
-       %] 
- [% ELSE %]
-[% embed('JoinUsLink')	%]  
- [% END %]
-[% embed ("AdminTodoListLink")%]	
+ 
    
 <p> 
 [% embed('LiveEditAdmin') %]
@@ -108,15 +93,11 @@
 [% END %]
  
 
-  [% embed('SiteAdminNotes') %]
+  
 
 
 
-
-                 
-
-<p>  [% embed('ToDoList') %]
-
+ 
 
 [% IF linkedin %]<a href="http://[% linkedin %]">
       

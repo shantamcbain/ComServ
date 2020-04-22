@@ -1,5 +1,5 @@
-[%
-#	$Id: CSCDevHomeView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
+[%#	$Id: CSCDevHomeView.ttml,v 1.901 2020/04/22 17:43:15 shanta Exp shanta $	 %]
+[%#	$Id: CSCDevHomeView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
 
 # Ideally this template should be converted into a static CSS file and
 # be served as /foo/bar.css and not via CGI, since it slows things
@@ -9,19 +9,20 @@
 # variables from outside.
 
 %]
-
+[% PageVersion = 1.901 %]
 
 [% embed('ErrorDisplayView') %]
 <A NAME="PageTop"></A>
 
 [% IF data.debug == 1 %]
-CSCDevHomeView.ttml
+
 [% embed('InheretedVariablesView') %]
 [% END %]
 
 <table>
 <tr>
-	<td>
+	<td>[%# PageVersion %]
+	
 	      [% IF data.session_object.getAttribute('-KEY','Developer') == 1 %]
 	      <a href="?site=[% SiteName %]&amp;view=DeveloperView &amp;[% session_string %]" target="_blank" title="CSC Developer page">[% FirstName %]'s Developer Home</a>
 	      [% ELSE %]

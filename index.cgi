@@ -177,7 +177,7 @@ my $VIEW_LOADER =
 use SiteSetup;
 my $UseModPerl     = 1;
 my $SetupVariables = new SiteSetup($UseModPerl, $CGI->param('site'), $HostName);
-$SiteName            = $SiteName || $SetupVariables->{-SITE_NAME};
+#$SiteName            = $SiteName || $SetupVariables->{-SITE_NAME};
 $Affiliate           = $SetupVariables->{-AFFILIATE};
 $APP_NAME_TITLE      = $SetupVariables->{-APP_NAME_TITLE};
 $home_view           = $SetupVariables->{-HOME_VIEW}||'HomeView';
@@ -1157,6 +1157,7 @@ my @VALID_VIEWS = qw(
   AltpowerLogHomePage
   VoltSensorDevelopment
   PowerUsageView
+  SolarPowerView
   ProceduresView
   AltpowerNodeView
   SustainableView
