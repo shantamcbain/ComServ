@@ -1,0 +1,94 @@
+[% Version = '/HTMLTemplates/AltPower/SolarPowerView.ttml, v0.021 2020/04/22' %]
+[%#	$Id: SolarPowerView.ttml, v0.02 2018/12/13 
+#cloned to  v0.01 2018/12/12 shanta,
+# EVHomeView.ttml,v 1.0 2002/11/08 17:43:15 shanta Exp shanta $	
+
+# Ideally this template should be converted into a static CSS file and
+# be served as /foo/bar.css and not via CGI, since it slows things
+# down and dozen't allow browsers to cache the CSS content.
+
+# otherwise this template is stand-alone, i.e. it dozen't rely on any
+# variables from outside. %]
+
+
+[%# embed('InheretedVariablesView') %] 
+
+ [% PROCESS DefaultDbi.ttml %]
+ [% username = data.session_object.getAttribute('-KEY','auth_username') %]
+ [% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+ [% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+ [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+ [% site = SiteName %]
+ [% SiteDisplayName = data.site_display_name %]
+[% session_id = data.session_object.getId() %]
+ [% session_string = "session_id=$session_id" %]
+
+[% IF group == "Mentoring"	%]
+[% embed(data.page_top_view,['-PAGE_TITLE','Mentor home.']) %]
+[% ELSE %]
+
+[% embed(data.page_top_view,['-PAGE_TITLE','Solar Power.']) %]
+[% END %]
+[% embed('ErrorDisplayView') %]
+
+[%# embed('InheretedVariablesView') %]
+
+
+ <!-- Begin EV Home View -->  
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+[% Version %]
+[%# embed('InheretedVariablesView') %]
+[% IF username %]
+
+<h3 > Hello  [% firstname%]  [% lastname%]! Welcome to [% data.site_display_name %]</h3>
+
+	[% ELSE %]
+
+	<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %] Electric Vehicle Page! </h3> 
+	[% END %]
+
+[% SiteName = data.site_name%]
+[% IF data.debug == 1 %]
+Variable ative in DevHomeView
+[% embed('InheretedVariablesView') %]
+[% END %]
+ [%# embed ('CSCDevHomeView') %]
+ 
+
+<A NAME="PageTop"></A>
+<br>
+<br>
+
+
+
+
+   [% IF username %]
+   
+ 	
+	 
+ 	[% ELSE %]
+  
+   <p>You will now need to create an account on the system.
+   click on one of the Logon links then click register.
+    </p>
+	[% END %]
+<h1>Solar Power the next base power source.</h1>
+
+<p> Watch for more soon.</p>
+<p><>
+<!-- Call CScCopyRight -->
+[% embed('CSCCopyRight') %]
+<!-- End Call CSCCopyRight -->
+<br>
+<!-- close Home page table  -->
+</td>
+</tr>
+</table>
+
+
+<!-- End EV home view -->
+
+[% embed(data.page_bottom_view) %]
+
