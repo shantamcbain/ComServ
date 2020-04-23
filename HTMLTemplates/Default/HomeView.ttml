@@ -1,10 +1,11 @@
+[% ViewVersion = '/cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.965 2020/04/22 17:43:15 shanta Exp '%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.965 2020/04/22 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.95 2020/03/29 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.94 2019/10/15 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.93 2019/10/10 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: HomeView.ttml,v 1.92 2019/10/09 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: HomeView.ttml,v 1.91 2014/10/22 17:43:15 shanta Exp shanta $	%]
-[% ViewVersion ="1.965" %]
+
 [% # Ideally this template should be converted into a static CSS file and
 # be served as /foo/bar.css and not via CGI, since it slows things
 # down and dozen't allow browsers to cache the CSS content.
@@ -31,7 +32,7 @@
 [% PROCESS DefaultDbi.ttml %]
 [% Page = data.page_name  %]
 
-[% ViewVersion = "HomeView 1.965" %]
+
 
 [% IF group == "Mentoring"	%]
 	[% embed(data.page_top_view,['$SiteName','Mentor home.']) %]
@@ -101,7 +102,7 @@
 			[% embed ('CoopHomeView') %]		
 		[% ELSIF SiteName == "ECF" %]
 			[% embed ('ECFHomeView') %]
-	[% ELSIF SiteName == "ENCY" %]
+	    [% ELSIF SiteName == "ENCY" %]
 			[% embed ('ENCYHome') %]
 		[% ELSIF SiteName == "GrindrodBC" %]
 			[% embed ('GrindrodHomeView') %]
