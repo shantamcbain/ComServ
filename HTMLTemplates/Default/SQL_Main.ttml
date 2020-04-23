@@ -2,7 +2,7 @@
 [%#<ul id="navlist"> %]
 
 [%# FOREACH link = DBI.query("SELECT * FROM internal_links_tb
-                                 WHERE  (category = 'Main_links' AND status = 2
+                                 WHERE  (category = 'Main_links' AND share = public )
                                   AND (sitename =  '$SiteName' OR sitename =  'All')
                                   ORDER BY link_order
                                   ")%]    
