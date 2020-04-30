@@ -60,7 +60,7 @@
 <select name="url" onchange="switchpage(this)">
 <option value="" selected="selected"><font   class="HeaderBarNavStyle">HelpDesk</font></option>
 <option value="HTTPS://helpdesk.[% HostName %]/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]"target="_Blank" title="Need help get it here"><font   class="HeaderBarNavStyle">Our HelpDesk System</font></option>
-<option value="HTTPS://computersystemconsulting.ca/whmcs/supporttickets.php" target="_Blank" title="Open Support Ticket"><font  class="HeaderBarNavStyle"> Open Support Ticket</font></option>
+<option value="HTTPS://computersystemconsulting.ca/whmcs/supporttickets.php?step=2&deptid=2" target="_Blank" title="Open Support Ticket"><font  class="HeaderBarNavStyle"> Open Support Ticket</font></option>
 submitticket.php
 	  [% IF group    == 'BMaster_admin' OR 
 	        group    == 'CSC_admin' OR 

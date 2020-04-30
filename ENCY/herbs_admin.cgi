@@ -1033,27 +1033,30 @@ if ($SiteName	 eq "Organic"){
         reference
 );
 }
-elsif ($SiteName eq "Apis" || $SiteName eq "BMaster" || $SiteName eq "ECF")
-{
- @BASIC_INPUT_WIDGET_DISPLAY_ORDER = qw(
-        botanical_name
-        common_names
-        image
-        apis
-        nectar
-        pollen
-        distribution
-        cultivation
-        history
-        harvest
-        comments
-        reference
-);
-}else{
+#elsif ($SiteName eq "Apis" || $SiteName eq "BMaster" || $SiteName eq "ECF")
+#{
+# @BASIC_INPUT_WIDGET_DISPLAY_ORDER = qw(
+#        botanical_name
+#        common_names
+#        image
+#        apis
+#        nectar
+#        pollen
+#        distribution
+#        cultivation
+#        history
+#        harvest
+#        comments
+#        reference
+#);
+#}else{
  @BASIC_INPUT_WIDGET_DISPLAY_ORDER = qw(
         botanical_name
         common_names
         key_name
+        apis
+        nectar
+        pollen
         ident_character
         image
         stem
@@ -1085,7 +1088,7 @@ elsif ($SiteName eq "Apis" || $SiteName eq "BMaster" || $SiteName eq "ECF")
         comments
         reference
 );
-}
+#}
 
 
 my @INPUT_WIDGET_DEFINITIONS = (
@@ -1242,7 +1245,7 @@ my @MAIL_CONFIG_PARAMS = (
 
 my @EMAIL_DISPLAY_FIELDS = qw(
         therapeutic_action
-        botanical_name
+        botanical_nameclass="NavTableCellStyle"
         common_names
         key_name
         parts_used

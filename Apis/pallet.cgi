@@ -1,6 +1,6 @@
 #!/usr/bin/perl -wT
 	
-
+# 	$Id: /cgi-bin/apis/palltet.cgi,v 01 2020/03/10 21:26:43 shanta Exp shanta $	
 # Copyright (C) 1994 - 2001  eXtropia.com
 #
 # This program is free software; you can redistribute it and/or
@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA  02111-1307, USA.
- 
+ $version = "v 01";
 use strict;
 BEGIN{
     use vars qw(@dirs);
@@ -686,7 +686,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 
     pallet_name => [
         -DISPLAY_NAME => 'Pallet Name',
-        -TYPE         => 'textfield',
+        -TYPE         => 'textfield',v 01 
         -NAME         => 'pallet_name',
         -SIZE         => 30,
         -MAXLENGTH    => 80
@@ -707,7 +707,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
                  -LABELS       => \%type_code,
                  -INPUT_CELL_COLSPAN => 3, 
     ],
-
+v 01 
 #    yard_code => [
 #        -DISPLAY_NAME => 'Yard Code',
 #        -TYPE         => 'popup_menu',
@@ -728,7 +728,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
         -NAME         => 'developer_name',
         -VALUE        => 'Shanta', 
         -SIZE         => 30,
-        -MAXLENGTH    => 80
+        -MAXLENGTH    => 80v 01 
     ],
 
 #    client_name => [
@@ -882,7 +882,7 @@ my	@PALLET_DATASOURCE_CONFIG_PARAMS = (
 	        -KEY_FIELDS   => ['username'],
 	        -FIELD_TYPES  => {
 	            record_id        => 'Autoincrement'
-	        },
+	        },v 01 
 	);
 my @QUEENS_DATASOURCE_FIELD_NAMES = qw(
         status
@@ -929,7 +929,7 @@ my @DATASOURCE_CONFIG_PARAMS = (
 
 ######################################################################
 #                          MAILER SETUP                              #
-######################################################################
+######################################################################v 01 
            
 my @MAIL_CONFIG_PARAMS = (     
     -TYPE         => 'Sendmail'

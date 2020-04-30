@@ -1,13 +1,22 @@
 [% ActiveQueens = 0 %]
 [% FramesBees = 0 %]
+[% total_nuccombinuse = 0 %]
+[% FramesBrood = 0  %]
+[% FramesComb = 0  %]
+[% FramesPolen = 0  %]
+[% FramesHoney  = 0 %]
+[% FramesFoundaton = 0  %]
+[% FramesEmpty  = 0 %]
+[% BroodBoxes = 0  %]
 
- [%# FOREACH link = DBI.query("SELECT * FROM apis_queens_tb
-                                  WHERE   client_name = '$SiteName' AND 
+
+ [% FOREACH link = DBI.query("SELECT * FROM apis_queens_tb
+                                  WHERE   client_name = '$SiteName'  AND 
                                   (status != 'Sold' AND 
                                    status     != 'Dead')
                                    ORDER BY queen_code 
                                   ")%]    
-   [% FOREACH link = DBI.query("SELECT * FROM apis_yards_tb
+   [%# FOREACH link = DBI.query("SELECT * FROM apis_yards_tb
                                   WHERE  (developer_name = 'Shanta'
                                   OR developer_name = 'Shauna') 
                                   AND status = 'In-Use' 
@@ -17,7 +26,8 @@
 
 
  [% FOREACH item = DBI.query("SELECT * FROM apis_queens_log_tb
-	                                WHERE   sitename =  '$SiteName' AND queen_record_id = link.queen_code 
+	                                WHERE   sitename =  '$SiteName' AND 
+	                                queen_record_id = link.queen_code 
 	                                        )
  	                            ")%]  
  	    [% FramesBees = item.box_1_bees + item.box_2_bees + FramesBees %]

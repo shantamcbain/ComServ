@@ -53,6 +53,7 @@ my @TEMPLATES_SEARCH_PATH = qw(HTMLTemplates/AltPower
   HTMLTemplates/MW
   HTMLTemplates/News
   HTMLTemplates/Organic
+  HTMLTemplates/PSP
   HTMLTemplates/Shanta
   HTMLTemplates/SB
   HTMLTemplates/SkyeFarm
@@ -176,11 +177,11 @@ my $VIEW_LOADER =
 use SiteSetup;
 my $UseModPerl     = 1;
 my $SetupVariables = new SiteSetup($UseModPerl, $CGI->param('site'), $HostName);
-$SiteName            = $SiteName || $SetupVariables->{-SITE_NAME};
+#$SiteName            = $SiteName || $SetupVariables->{-SITE_NAME};
 $Affiliate           = $SetupVariables->{-AFFILIATE};
 $APP_NAME_TITLE      = $SetupVariables->{-APP_NAME_TITLE};
-$home_view           = $SetupVariables->{-HOME_VIEW};
-$BASIC_DATA_VIEW     = $SetupVariables->{-BASIC_DATA_VIEW};
+$home_view           = $SetupVariables->{-HOME_VIEW}||'HomeView';
+$BASIC_DATA_VIEW     = $SetupVariables->{-HOME_VIEW}  ||$SetupVariables->{-BASIC_DATA_VIEW};
 $DBI_DSN             = $SetupVariables->{-DBI_DSN};
 $AUTH_TABLE          = $SetupVariables->{-AUTH_TABLE};
 $AUTH_MSQL_USER_NAME = $SetupVariables->{-AUTH_MSQL_USER_NAME};
@@ -226,6 +227,10 @@ $last_update   = $SetupVariables->{-LAST_UPDATE};
 $HasMembers    = $SetupVariables->{-HAS_MEMBERS};
 $CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
 $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
+
+#if ($Page = 'page'){
+#	$home_view = 'PageView',
+#}
 
 #$page_top_view    = $CGI->param('page_top_view')||$page_top_view;
 #$page_bottom_view = $CGI->param('page_bottom_view')||$page_bottom_view;
@@ -1070,7 +1075,7 @@ my @VALID_VIEWS = qw(
   ForumsView
   ContactView
   ProductView
-  ProjectsView
+  ProjectsView 
   BeeTrailerView
   BeeTalk
   BMasterProcedures
@@ -1142,7 +1147,7 @@ my @VALID_VIEWS = qw(
   RegistrationView
   MailListView
   BotanicalNameView
-  BeePastureView
+  BeePastureView 
   FeedTheBeesView
   ForumulaView
   JobView
@@ -1152,6 +1157,7 @@ my @VALID_VIEWS = qw(
   AltpowerLogHomePage
   VoltSensorDevelopment
   PowerUsageView
+  SolarPowerView
   ProceduresView
   AltpowerNodeView
   SustainableView
@@ -1159,7 +1165,7 @@ my @VALID_VIEWS = qw(
   UrbanFarmingView
   ModulesView
   ToDoHomeView
-  ENCYHomeView
+  ENCYHomeView PAGE = 
   MonitoringView
   ResourcesView
   HerbDetailView
@@ -1223,7 +1229,7 @@ my @VIEW_DISPLAY_PARAMS = (
                            'status'       => 'Status',
                            'priority'     => 'Priority',
  },
- -HOME_VIEW               => $home_view,
+ -HOME_VIEW               => $home_view||'HomeView',
  -IMAGE_ROOT_URL          => $IMAGE_ROOT_URL,
  -LINK_TARGET             => $LINK_TARGET,
  -ROW_COLOR_RULES         => \@ROW_COLOR_RULES,
@@ -1332,7 +1338,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
  -OPTIONS_FORM_VIEW_NAME               => 'OptionsView',
  -AUTH_MANAGER_CONFIG_PARAMS           => \@AUTH_MANAGER_CONFIG_PARAMS,
  -ADD_RECORD_CONFIRMATION_VIEW_NAME    => 'AddRecordConfirmationView',
- -BASIC_DATA_VIEW_NAME                 => $home_view,
+ -BASIC_DATA_VIEW_NAME                 => $BASIC_DATA_VIEW,
  -DEFAULT_ACTION_NAME                  => 'DisplayDayViewAction',
  -CGI_OBJECT                           => $CGI,
  -CSS_VIEW_URL                         => $CSS_VIEW_URL||'empty',

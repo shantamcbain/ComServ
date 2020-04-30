@@ -1,3 +1,4 @@
+[%#	$Id: /cgi-bin/HTMLTemplates/Default/PageView.ttml,v 0.12 2020/04/20 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/PageView.ttml,v 0.1 2013/12/20 17:43:15 shanta Exp shanta $	
 
 # Ideally this template should be converted into a static CSS file and
@@ -23,7 +24,7 @@
  [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
  [% session_id = data.session_object.getId() %]
  [% session_string = "session_id=$session_id" %]
- [% PAGE = data.page_name  %]
+ [% Page = data.page_name  %]
  [% View = data.view %]
  [% HomeLink = data.home_link || '' %]
  [%# page = 'GarlicCulture' %]
@@ -33,10 +34,10 @@
  [%# embed('SiteMysql') %]   
 
 [% process = 'None defined' %]
-
+ [%# IN PAGEVIEW Call page%]    [%# Page %]
 
   [% FOREACH link = DBI.query("SELECT * FROM page_tb
-                                  WHERE  (status  = 2 AND
+                                  WHERE  (
                                          page_code = '$Page' AND
                                          sitename = '$SiteName' )
                                   ORDER BY sitename
@@ -50,22 +51,11 @@
 
 
 
-   	[% embed(data.page_top_view,["-PAGE_TITLE","$PAGE",]) %]
+   	[%# embed(data.page_top_view,["-PAGE_TITLE","$PAGE",]) %]
 [% embed('ErrorDisplayView') %]
- 
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
-	<td colspan="5">  <!--                   
-Page =  [%   PAGE   %]   -->       
-[% IF username %]
-		 [% IF pagewelcome %]
-			[% pagewelcome %]
-		 [% ELSE %]
-			<h3 > Hello  [% firstname %] &nbsp; [% lastname %]! Welcome to [% data.site_display_name %] </h3>
-		 [% END %]
-		[% ELSE %]
-			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %]! </h3> 
- 	[% END %]
+	<td colspan="5">      
      [% IF SiteName == 'CSC' %]
                              
        [% IF data.session_object.getAttribute('-KEY','Developer') == 1 %]
@@ -75,13 +65,7 @@ Page =  [%   PAGE   %]   -->
 	      [% END %]
       [% END %]
 <p>  
- [% IF username AND	
-      group != 'normal'
-       %] 
- [% ELSE %]
-[% embed('JoinUsLink')	%]  
- [% END %]
-[% embed ("AdminTodoListLink")%]	
+ 
    
 <p> 
 [% embed('LiveEditAdmin') %]
@@ -109,15 +93,11 @@ Page =  [%   PAGE   %]   -->
 [% END %]
  
 
-  [% embed('SiteAdminNotes') %]
+  
 
 
 
-
-                 
-
-<p>  [% embed('ToDoList') %]
-
+ 
 
 [% IF linkedin %]<a href="http://[% linkedin %]">
       
@@ -137,10 +117,10 @@ Page =  [%   PAGE   %]   -->
 <p>Last Update [% lastupdate %][% IF SiteName == 'Demo' %]&nbsp; This value is stored in your setup file. [% END %]
 		<br>
 [% END %]
-[% embed('CSCCopyRight') %]
+[%# embed('CSCCopyRight') %]
 
 	
 
 
 
-[% embed(data.page_bottom_view) %]
+[%# embed(data.page_bottom_view) %]

@@ -640,7 +640,7 @@ if ( $group eq "CSC_admin" ||
          $SiteName eq "CSC" 
        ){
       %site_code = (
-       $SiteName  => $SiteName,
+      $SiteName  => $SiteName,
         Altpower  => 'Alternat Power',
         Apis      => 'Apis beekeepig',
         Brew      => 'Brewing',

@@ -154,7 +154,7 @@ use SiteSetup;
     $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
 
 
-  my $GLOBAL_DATAFILES_DIRECTORY = "/home/shanta/Datafiles";       
+ # my $GLOBAL_DATAFILES_DIRECTORY = "/home/shanta/Datafiles";       
   #my $site = 'file';
   my $site = 'MySQL';
   

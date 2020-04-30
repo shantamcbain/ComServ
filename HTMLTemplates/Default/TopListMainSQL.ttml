@@ -7,8 +7,9 @@
  </li>
 
 [% FOREACH link = DBI.query("SELECT * FROM page_tb
-	                                  WHERE  menu = 'Main'
-	                                  AND (sitename =  '$SiteName' OR sitename =  'All')
+	                                  WHERE  (menu = 'Main'  AND status = 2)
+	                                  AND (sitename =  '$SiteName' OR sitename =  'All'
+	                                  )
 	                                  ORDER BY link_order
 	                                  ")%]    
 	   <li>

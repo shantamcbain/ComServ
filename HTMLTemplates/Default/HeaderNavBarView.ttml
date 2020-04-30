@@ -4,7 +4,6 @@
 
 
 <!-- This is HeaderNavBar of each page. v 0.02 /home/www/cgi-bin-->
-
 [% # this template generates the top of HTML,
 
 # if -PAGE_TITLE is defined, it gets used in the <title>
@@ -41,7 +40,7 @@
 
 <ul class="dropdown" id="dropdownCentred">
 		    <li>
-              <span><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]" name="Home page" onmouseover="Home" title="HOME">Main</a></span>
+              <span><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=HomeView" name="Home page" onmouseover="Home" title="HOME">Main</a></span>
 <ul>
 [% embed('TopListMainSQL') %]
 	  </ul>

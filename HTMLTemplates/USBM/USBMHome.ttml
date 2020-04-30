@@ -1,3 +1,4 @@
+[% ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.10 2020/04/22 17:43:15 shanta Exp'%]
 [%# the ENCY template
 #	$Id: USBMHome.ttml,v 1.1 2012/09/21 19:25:15 shanta Exp $	
 #file location/cgi-bin/HTMLTemplates/USBM
@@ -24,15 +25,21 @@
 
 
 </div>
-<div ALIGN="center">
+<div ALIGN="center">[%# ViewVersion %]
 <A NAME="PageTop"></A>
 </div>
 <h2>Our Virtual School House</h2>
+<ul>  
+<li> <b></b> <a href="https://altpower.usbm.ca/cgi-bin/index.cgi?site=AltPower">Alt Power </a> Join us in our adventure into Alternate power creation and use. </li>
 
-  <p> Our <a href="/cgi-bin/ENCY/ency.cgi?site=USBM&[% session_string %]">Encyclopidia of life </a></p>
-  <p>   <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BotanicalNameView">Herbs by botanical name</a></p>
+  <li> <b>New</b> <a href="https://3d.usbm.ca">3D Printing. </a> We now have a 3d printing department Have a look. </li>
+  <li>
+  <p> Our <a href="/cgi-bin/ENCY/ency.cgi?site=USBM&[% session_string %]">Encyclopidia of life </a></p>  </li>
+  <li>  <p>   <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BotanicalNameView">Herbs by botanical name</a> </li>
+  <li></p> 
 <a href="http://helpdesk.computersystemc"onsulting.ca" target="_Blank" > HelpDesk</a>
-
+ </li>
+</ul>
 [%# embed('CSCCopyRight') %]
 [%# embed(data.page_bottom_view) %]
 

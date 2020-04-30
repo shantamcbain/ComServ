@@ -1,5 +1,7 @@
 #!/usr/bin/perl -wT
-# 	$Id: csc_log.cgi,v 1.8 2002/11/03 21:26:43 shanta Exp shanta $	
+# 	$Id: queen_log.cgi,v 1.91 2020/03/10 21:26:43 shanta Exp shanta $	
+# 	$Id: queen_log.cgi,v 1.9 2020/03/10 21:26:43 shanta Exp shanta $	
+# 	$Id: queen_log.cgi,v 1.8 2002/11/03 21:26:43 shanta Exp shanta $	
 #CSC file location /cgi-bin/CSC
 # Copyright (C) 1994 - 2001  eXtropia.com
 #
@@ -64,7 +66,7 @@ foreach ($CGI->param()) {
 #                          SITE SETUP                             #
 ######################################################################
 
-    my $APP_NAME = "queen_log"; 
+my $APP_NAME = "queen_log"; 
     my $MySQLPW;
     my $SiteName =  $CGI->param('site') || "CSC";
     my $UseModPerl = 0;
@@ -72,12 +74,13 @@ foreach ($CGI->param()) {
     my $AUTH_TABLE;
     my  $AUTH_MSQL_USER_NAME;
     my $DEFAULT_CHARSET;
-
     my $APP_NAME_TITLE = $SiteName."; Queen log";
     my $HTTP_HEADER_PARAMS;
     my $HTTP_HEADER_KEYWORDS;
     my $HTTP_HEADER_DESCRIPTION;
     my $HasMembers = 0;
+my $QueenCode      = $CGI->param('record_id');
+
 use SiteSetup;
 #my $S   = &CSCSetup::SiteVariables;
   my $SetupVariables  = new SiteSetup($UseModPerl);
@@ -184,7 +187,7 @@ if ($CGI->param('site')){
 	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
       }
 }
-
+my $group    =  $SESSION ->getAttribute(-KEY => 'auth_groups');
 
 ######################################################################
 #                       AUTHENTICATION SETUP                         #
@@ -601,7 +604,7 @@ my @months = qw(January February March April May June July August
 my %months;
 @months{1..@months} = @months;
 my %years = ();
-$years{$_} = $_ for (2011..2020);
+$years{$_} = $_ for (2011..2025);
 my %days  = ();
 $days{$_} = $_ for (1..31);
 
@@ -611,7 +614,9 @@ my %priority =
       2 => 'MIDDLE',
       3 => 'HIGH',
     );
-
+    
+    my %queencode  = ();
+my %queencode{$_} = $_ for (0..100);
 my %status =
     (
       1 => 'New',
@@ -648,19 +653,50 @@ my %frames =
       8  => '8',
       9  => '9',
       10 => '10',
-      11  => '1',
-      12  => '2',
-      13  => '3',
-      14  => '4',
-      15  => '5',
-      16  => '6',
-      17  => '7',
+      11  => '11',
+      12  => '12',
+      13  => '13',
+      14  => '14',
+      15  => '15',
+      16  => '16',
+      17  => '17',
    );
-
+my %site_code;
+if ( $group eq "CSC_admin" ||
+         $SiteName eq "CSC" 
+       ){
+      %site_code = (
+       $SiteName  => $SiteName,
+        Altpower  => 'Alternat Power',
+        Apis      => 'Apis beekeepig',
+        Brew      => 'Brewing',
+        CSC       => 'Computer System Consultin.ca',
+        CS        => 'Country Stores',
+        Demo      => "Computer System Consultin.ca Demo",
+        Forager   => 'Forager.com',
+        OKB       => 'Okanagan Beekeepers',
+        Organic   => 'Organic Farming',
+        Stawns    => "Stawn's Honey",
+        VitalVic  => 'Vital Victoria',
+        );
+        
+}else{
+    %site_code = (
+       $SiteName => $SiteName,
+       );
+}
 
 
 my %BASIC_INPUT_WIDGET_DEFINITIONS = 
     (
+     sitename => [
+        -DISPLAY_NAME => 'Site Name *',
+        -TYPE         => 'popup_menu',
+        -NAME         => 'sitename',
+        -VALUES       => [sort {$a <=> $b} keys %site_code],
+        -LABELS       => \%site_code,
+        -INPUT_CELL_COLSPAN => 3, 
+    ],
      abstract => [
                  -DISPLAY_NAME => 'What was done.',
                  -TYPE         => 'textfield',
@@ -677,18 +713,26 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],
-
-#     pallet_code => [
-#        -DISPLAY_NAME => 'Pallet Code',
-#        -TYPE         => 'textfield',
-#        -NAME         => 'pallet_code',
-#        -SIZE         => 30,
-#        -MAXLENGTH    => 80
-#    ],
+     queen_code => [
+       -DISPLAY_NAME => 'Queen code',
+       -TYPE         => 'checkbox_group',
+        -NAME         => 'queen_code',
+        -VALUES       => [sort {$a <=> $b} keys %queencode],
+        -LABELS       => \%queencode
+     
+    ],
+     pallet_code => [
+        -DISPLAY_NAME => 'Pallet Code',
+        -TYPE         => 'textfield',
+        -NAME         => 'pallet_code',
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
    queen_record_id => [
         -DISPLAY_NAME => 'Queen Record Id',
         -TYPE         => 'textfield',
         -NAME         => 'queen_record_id',
+        -value        =>  $QueenCode,
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],
@@ -750,6 +794,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -NAME         => 'box_1_comb',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
+        
      
     ],
   box_1_honey => [
@@ -1016,7 +1061,7 @@ brood_given_x => [
                  -TYPE         => 'checkbox_group',
                  -NAME         => 'status',
                  -VALUES       => [sort {$a <=> $b} keys %status],
-		           -LABELS       => \%status,
+		         -LABELS       => \%status,
                  -INPUT_CELL_COLSPAN => 3,
                 ],
 
@@ -1592,6 +1637,9 @@ my @VIEW_FILTERS_CONFIG_PARAMS = (
 ######################################################################
 #                      ACTION/WORKFLOW SETUP                         #
 ######################################################################
+ #     Default::PopulateInputWidgetDefinitionListWithSiteWidgetAction
+#      Apis::PopulateInputWidgetDefinitionListWithQueenCodeWidgetAction
+  #     Apis::PopulateInputWidgetDefinitionListWithPalletCodeWidgetAction
 
 # note: Default::DefaultAction must! be the last one
 my @ACTION_HANDLER_LIST = 
@@ -1599,10 +1647,7 @@ my @ACTION_HANDLER_LIST =
        Default::SetSessionData
        Default::DisplayCSSViewAction
 
-       Apis::PopulateInputWidgetDefinitionListWithQueenCodeWidgetAction
-       Apis::PopulateInputWidgetDefinitionListWithPalletCodeWidgetAction
-       Default::PopulateInputWidgetDefinitionListWithSiteWidgetAction
-       CSC::BillingStatsAction
+        CSC::BillingStatsAction
 
        Default::DisplayDetailsRecordViewAction
 

@@ -1,3 +1,4 @@
+[% ViewVersion = '/cgi-bin/HTMLTemplates/CSC/CSCHomeView.ttml,v 1.91 2020/04/22 17:43:15 shanta Exp shanta '%]
 [%
 #	$Id: CSCHomeView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
 
@@ -42,7 +43,7 @@ My persal stuff
 	       group    ==  'CSCDev_admin' OR
 	       group    ==  'News_admin' OR
 	       group    ==  'OKB_admin'OR
-	       group    ==  'Organic_admin' OR
+	       group    ==  'Organic_admin' OR$Id: ECFHomeView.
 	       group     == 'DarmaFarmsAdmin' OR
 	       group    ==  'Shanta_admin' OR
 	       group    ==  'Stawns_admin' OR
@@ -60,7 +61,7 @@ You can modify anything from here to the last update. You may use Html code in t
  	   [% END %]
 
  [% FOREACH link = DBI.query("SELECT * FROM page_tb
-                                  WHERE  (status  = '2' AND
+                                  WHERE  (status  = '1' AND
                                          sitename='CSC' AND
                                          page_code = 'HomeView' )
                                   

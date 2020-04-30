@@ -1,9 +1,11 @@
-
+[% ViewVersion = '/cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.965 2020/04/22 17:43:15 shanta Exp '%]
+[%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.965 2020/04/22 17:43:15 shanta Exp shanta $	%]
+[%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.95 2020/03/29 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.94 2019/10/15 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.93 2019/10/10 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: HomeView.ttml,v 1.92 2019/10/09 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: HomeView.ttml,v 1.91 2014/10/22 17:43:15 shanta Exp shanta $	%]
-[% ViewVersion ="1.93" %]
+
 [% # Ideally this template should be converted into a static CSS file and
 # be served as /foo/bar.css and not via CGI, since it slows things
 # down and dozen't allow browsers to cache the CSS content.
@@ -20,33 +22,48 @@
    [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
    [% SiteDisplayName = data.site_display_name %]
    [% site = SiteName %]
+   [% Page = data.page_name  %]
    [% username = data.session_object.getAttribute('-KEY','auth_username') %]
    [% PrintMode    = data.session_object.getAttribute('-KEY','PrintMode') %]
 [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
 	[% session_id = data.session_object.getId() %]
 	[% session_string = "session_id=$session_id" %]
+   [% procedure = data.procedure %]
 [% PROCESS DefaultDbi.ttml %]
+[% Page = data.page_name  %]
 
 
 
 [% IF group == "Mentoring"	%]
 	[% embed(data.page_top_view,['$SiteName','Mentor home.']) %]
 [% ELSE %]
-	[% embed(data.page_top_view,['$SiteName','Home page.']) %]
+	[% embed(data.page_top_view,['$SiteName $ViewVersion ','Home page. ']) %]
 [% END %]
 
 [% embed('ErrorDisplayView') %]
 
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
-	<td>[% IF username %]
+	<td>
+	
+[%# ViewVersion %]	
+	
+	[% IF username %]
 			<h3 > Hello  [% firstname%] &nbsp; [% lastname%]! Welcome to [% data.site_display_name %]</h3>
 		[% ELSE %]
 			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %]! </h3> 
 		[% END %]
 [% embed ("AdminTodoListLink")%]	
 		[% SiteName = data.site_name%]
+[% IF procedure %]
+[%# Open prodeduresview %]	
+	[% embed('ProdeduresView') %]
+[% ELSIF Page  %]
+[%# Open PageView in HomePage%]
+[% embed('PageView') %]
 
+[% ELSE %]
+[%# Call HomeView%] [%#  SiteName %]
    	[% IF SiteName == "OKB" %]
 		[% embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "Aktiv" %]
@@ -60,7 +77,7 @@
 		[% ELSIF SiteName == "BMastBreeder"%]
 			[% embed ('BMasterBreederHomeView') %]
 		[% ELSIF SiteName == "Forager" %]
-			[% embed ('ForagerHomeView') %]
+ 			[% embed ('ForagerHomeView') %]
 		[% ELSIF SiteName == "Brew" %]
 			[% embed ('BrewHomeView') %]
 		[% ELSIF SiteName == "CertBee" %]
@@ -78,11 +95,14 @@
                         [% END %]
 		[% ELSIF SiteName == "CSCDev" OR
 		         SiteName == "BMasterDev"  %]
+		    
 			[% embed ('CSCDevHome') %]
 		[% ELSIF SiteName == "Coop" OR
 		         SiteName == "Noop" %]
 			[% embed ('CoopHomeView') %]		
-		[% ELSIF SiteName == "ENCY" %]
+		[% ELSIF SiteName == "ECF" %]
+			[% embed ('ECFHomeView') %]
+	    [% ELSIF SiteName == "ENCY" %]
 			[% embed ('ENCYHome') %]
 		[% ELSIF SiteName == "GrindrodBC" %]
 			[% embed ('GrindrodHomeView') %]
@@ -109,6 +129,8 @@
 		[% ELSIF SiteName == "LandTrust" OR
 		         SiteName == "LandTrustDev"  %]
 			[% embed ('LtrustHomeView') %]
+		[% ELSIF SiteName == "PSP"%]
+			[% embed ('PSPHome') %]
 		[% ELSIF SiteName == "Skye" %]
 			[% embed ('SkyHomeView') %]
 		[% ELSIF SiteName == "Shanta"%]
@@ -159,6 +181,7 @@
   [% embed('SiteAdminNotes') %]
 	[% embed('ToDoList') %]
 	[% END %]
+[% END %]
 
 
 
@@ -168,12 +191,12 @@
 
   [%# embed ('SiteTodoSQL' )   %]		
 
-
+[% IF data.site_last_update %]
 
 <p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %] &nbsp; This value is stored in your setup file. [% END %]
 		<br>
 		
-
+[% END %]
 [% embed('CSCCopyRight') %]
 
 	

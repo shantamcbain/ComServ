@@ -1,0 +1,168 @@
+[%
+#	$Id: PSPHome.ttml,v 0.1 2020/03/29:42:47 shanta Exp shanta $	%]
+
+[% #embed(data.page_top_view,['-PAGE_TITLE','Apis @ shanta.org']) %]
+
+[% embed('ErrorDisplayView') %]
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+	[% procedure = data.procedure %]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% email = data.session_object.getAttribute('-KEY','auth_email') %]
+<!-- ApisHomeView  v 1.1 2003/11/29-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+<A NAME="PageTop"></A>
+   
+ [%#	$Id: PSPHomeView.ttml,v o.1 2020/03/29 06:42:47 shanta Exp shanta %]
+
+[% Version = ' ApisHomeView  v 1.13 2020/02/12' %]
+[% procedure = data.procedure %]
+
+<!-- [% Version %]-->
+<div id=body > 
+<A NAME="PageTop"></A>
+
+
+[% IF procedure %]
+
+[% embed(data.procedure) %] 
+[% ELSE %]
+
+[% IF group == 'PSP_admin' %]
+[% embed('PSPAdmin') %]   
+ 
+
+
+[% ELSE %]
+<table width="960" cellspacing="0" cellpadding="0" border="0" align="center">
+<tbody><tr>
+	<td colspan="2">
+  	<table style="background-image:url(http://plantingseedsproject.ca/images/header.jpg); width:960px; height:150px;" cellspacing="0" cellpadding="0">
+    	<tbody><tr>
+      	<td width="210px">&nbsp;</td>
+      	<td width="540px">
+        	<div style="float:left;">
+        	<span class="header2">"Putting the Culture back into Agriculture"</span><br>
+        	<span class="header1">Planting Seeds Project <br>
+        	(PSP)</span><br>
+          <span class="header2">since 1991</span>
+          </div>
+          <div style="float:right; text-align:right;" class="header3">
+          Open-pollinated<br>
+          Certified Organic <br>
+          Seeds          </div>
+				</td>
+      	<td width="210px">&nbsp;</td>
+    </tr></tbody></table>
+	</td>
+</tr>
+<tr>
+	<td class="nav" colspan="2">
+  	<a href="cgi-bin/index.cgi?site=PSP" class="nav">Home</a> | <a href="http://plantingseedsproject.ca/seeds.php" class="nav">Seeds</a> | <a href="/cgi-bin/index.cgi?site=PSP&view=BotanicalNameView" target="_blank" name="herbal database">Herbal</a> | <a href="http://plantingseedsproject.ca/gallery.php" class="nav">Gallery</a> | <a href="http://plantingseedsproject.ca/contact.php" class="nav">Contact Us</a> | <a href="http://plantingseedsproject.ca/links.php" class="nav">Links</a> 
+  </td>
+</tr><tr>
+<td valign="top" bgcolor="#FFFFFF">
+<table width="700px" border="0" align="center">
+	<tbody><tr>
+  	<td>
+    	<div class="ui-widget">
+      	<div class="ui-state-highlight ui-corner-all" style="margin-top:20px; margin-bottom:10px; padding: 0 .7em; width: 680px; height:545px; font-size:14px">
+        	<h2 style="margin-bottom:0px" align="center">Current Information</h2>
+          <hr>
+            <div id="messages" style="overflow:auto;width: 680px; height:470px; font-size:14px;">
+<p></p><h1 style="text-align: center;">
+	<span style="font-size:24px;"><span style="font-family: comic sans ms,cursive;"><span style="font-weight: bold;">Welcome to Planting Seeds Project 2020!</span></span></span></h1>
+<p style="text-align: center;">
+	<span style="font-size: 16px;"><span style="font-family: comic sans ms,cursive;">FEATURING LOCAL "ECO-LOGICALLY" HOMEGROWN&nbsp; </span></span></p>
+<p style="text-align: center;">
+	<span style="font-size: 16px;"><span style="font-family: comic sans ms,cursive;">&nbsp;OPEN-POLLINATED, HEIRLOOM, AND HERITAGE VEGETABLE, FLOWER, AND HERB SEEDS.</span></span></p>
+<p style="text-align: center;">
+	<span style="font-size: 16px;"><span style="font-family: comic sans ms,cursive;">We
+ have some great new seeds available for this year, including bringing a
+ few wilds into our gardens, as well as many we've been taking care of 
+for a long time.</span></span></p>
+<p style="text-align: center;">
+	<span style="font-family: &quot;comic sans ms&quot;, cursive; font-size: 16px;">Here is your invitation to visit seedwarrioress.wordpress.ca as we work on this website.</span></p>
+<p style="text-align: center;">
+	<span style="font-size: 16px;"><span style="font-family: comic sans ms,cursive;">&nbsp;Please revisit soon as I'll be posting this years seed list and simple order instructions,</span></span></p>
+<p style="text-align: center;">
+	<span style="font-size: 16px;"><span style="font-family: comic sans ms,cursive;">Also Visit and Like Planting Seeds Project facebook page for current postings of featured seeds,&nbsp;</span></span></p>
+<p style="text-align: center;">
+	<span style="font-size: 16px;"><span style="font-family: comic sans ms,cursive;">planning your garden for seed collection, seedgrowing insights and how to's, photos, and more!&nbsp;</span></span></p>
+<p style="text-align: center;">
+	&nbsp;</p>
+<p style="text-align: center;">
+	<span style="font-size:12px;"><span style="font-family:comic sans ms,cursive;">Planting
+ Seeds Project participates in &nbsp;the safe seed pledge. This 
+means&nbsp;All seeds are GMO free to the best ofAll seeds are grown 
+utilizing best seed growing practices, isolation opportunities, 
+attention to population sizes, and seed purity. &nbsp;Seeds are 
+guarenteed for packet replacement. All are grown by earth friendly, 
+ethical, and certified organic standards, in fertile earth, with clean 
+air and clean water.&nbsp; Packages are labeled as to the certification 
+level of the contents: British Columbia Certified Organic, Organic 
+(National Certification and ISO compliant), Certified Naturally Grown, 
+Eco-Logically Grown, or Traditionally Grown.&nbsp;our knowledge&nbsp;</span></span></p>
+<p style="text-align: center;">
+	&nbsp;</p>
+<p style="text-align: center;">
+	&nbsp;</p>
+<p style="text-align: center;">
+	<span style="font-size:14px;"><strong><span style="font-family: comic sans ms,cursive;">May
+ you Dream (and work) your Garden Dreams True, experiment with saving 
+seeds, and be nourished in your relationship with the earth.</span></strong></span></p>
+<p style="text-align: center;">
+	<span style="font-size:16px;"><span style="font-family: comic sans ms,cursive;">Many Blessings, Mojave</span></span></p>
+<p style="text-align: center;">
+	<span style="font-size:16px;"><span style="font-family: arial,helvetica,sans-serif;">&nbsp;</span></span></p>
+<p></p><p></p><div align="center">
+	&nbsp;&nbsp;</div>
+<p></p>            </div>
+        </div>
+      </div>    
+    </td>
+  </tr>
+</tbody></table></td>
+
+<td width="200px" valign="top" bgcolor="#FFFFFF" align="center">
+	<img src="http://plantingseedsproject.ca/index_files/psp.jpg">
+	<div id="datepicker" width="200px"></div>
+	<div class="ui-widget">
+   	<div class="ui-state-highlight ui-corner-all" style="margin-top:20px; margin-bottom:10px; padding: 0 .7em; height:200px; overflow:auto; font-size:12px">
+    click on a date
+    <div id="calinfo" style="text-align:left;">
+    </div>
+  </div>
+</div></td></tr>
+<tr>
+	<td class="footer" colspan="2">
+  	<div style="float:left;"> &nbsp; Copyright (c) Planting Seeds Project All rights reserved</div>
+    <div style="float:right;">Privacy Policy | User Agreement | Copyright Info &nbsp; </div>
+  </td>
+</tr>
+</tbody></table>
+
+
+[% embed('CSCCopyRight') %]
+ [% END %]
+[% END %]</div>
+
+
+
+
+
+
+
