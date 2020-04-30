@@ -1,0 +1,23 @@
+<H2><B>Join Our [% SiteName %] Beekeeping Discussion list</b></H2>
+[% IF SiteName = AnuCollective %]
+[% MailList = http://beemaster.ca/mailman/subscribe/anubeekeeping_anucollective.beemaster.ca %]
+[% ELSE %]
+[% MailList = http://beemaster.ca/mailman/subscribe/beekeeping.beemaster.ca %]
+
+[% END %]
+ <FORM Method=POST ACTION="">[% MailList %]<br>
+ Your E-mail address: <INPUT type="Text" name="email" size="30" value="[% email %]"><br>
+ Your Name (optional): <INPUT type="Text" name="fullname" size="30" value="[% firstname %]&nbsp; [% lastname%]"><br><br>
+ You may enter a privacy password below. This provides only mild security, but should<br>
+ prevent others from messing with your subscription. <b>Do not use a valuable password</b> as it<br>
+ will occasionally be emailed back to you in cleartext.<br><br>
+ If you choose not to enter a password, one will be automatically generated for you, and it will<br>
+ be sent to you once you've confirmed your subscription. You can always request a mail-back<br>
+ of your password when you edit your personal options.<br><br>
+ Password choice: <INPUT type="Password" name="pw" size="15"><BR>
+ Confirm Password: <INPUT type="Password" name="pw-conf" size="15"><BR><BR>
+ Would you like to receive list mail batched in a daily digest? (You may choose NoMail after you join.)<BR><br>
+ <input type=radio name="digest" value="0" CHECKED> No <input type=radio name="digest" value="1"> Yes<br><br>
+ <INPUT type="Submit" name="email-button" value="Subscribe">
+ </FORM>
+
