@@ -1,4 +1,4 @@
-[% version = 'AnuCollectiveHomeView.ttml,v 1.141 2020/02/15' %]
+[% Version = 'AnuCollectiveHomeView.ttml,v 1.141 2020/02/15' %]
 [%#	$Id: AnuCollectiveHomeView.ttml,v 1.14 2020/02/15 06:42:47 shanta Exp shanta %]
 [%#Id: AnuCollectiveHomeView.ttml,v 1.13 2020/02/12 06:42:47 shanta Exp shanta 
 #	$Id: AnuCollectiveHomeView.ttml,v 1.12 2020/01/26 06:42:47 shanta Exp shanta 
@@ -7,14 +7,14 @@
 #	$Id: AnuCollectiveHomeView.ttml,v 1.1 2019/05/23 06:42:47 shanta Exp shanta 
 #	$Id: ApisHomeView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
 
-[% Version = ' ApisHomeView  v 1.13 2020/02/12' %]
+[%# Version = ' ApisHomeView  v 1.13 2020/02/12' %]
 [% procedure = data.procedure %]
 
 <!-- [% Version %]-->
 <div id=body > 
 <A NAME="PageTop"></A>
 
-[% version %]
+[%# Version %]
 [% IF procedure %]
 
 [% embed(data.procedure) %] 
