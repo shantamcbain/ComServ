@@ -1,3 +1,4 @@
+[% version = 'AnuCollectiveHomeView.ttml,v 1.141 2020/02/15' %]
 [%#	$Id: AnuCollectiveHomeView.ttml,v 1.14 2020/02/15 06:42:47 shanta Exp shanta %]
 [%#Id: AnuCollectiveHomeView.ttml,v 1.13 2020/02/12 06:42:47 shanta Exp shanta 
 #	$Id: AnuCollectiveHomeView.ttml,v 1.12 2020/01/26 06:42:47 shanta Exp shanta 
@@ -13,7 +14,7 @@
 <div id=body > 
 <A NAME="PageTop"></A>
 
-
+[% version %]
 [% IF procedure %]
 
 [% embed(data.procedure) %] 
@@ -64,20 +65,20 @@
 <h1>Our next event.</h1>
 
 
-<h2>Spring Yard Evaluation.</h2>
-<p>Coming mid to end of February 2020.</p>
+<h2>Building for Queen and nuc production.</h2>
+<p>May 2 or 3 2020 Location Muddy Meddows Grindrod BC </p>
 
+[% embed('BuildingWorkshop') %]
 
-
-[% embed('FirstEval') %]
+[%# embed('FirstEval') %]
 
 
              <p>We will be developing Tools you can use to help you manage your bee keeping and bee breeding operations. </p>
            <ul>
             <li><a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&procedure=HiveManHomeView">Apiary Management System</a>. <br>Track what is happening in your yards</li>        
             <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
-            <li><a href="/cgi-bin/BBS/bbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
-            <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
+        <!--     <li><a href="/cgi-bin/BBS/bbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
+         -->    <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
            </ul>
 			<h3>News</h3>
 			<table align="center">

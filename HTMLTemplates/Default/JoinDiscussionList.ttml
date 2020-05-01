@@ -1,8 +1,9 @@
+[% version = 'AnuCollectiveHomeView.ttml,v 1.141 2020/02/15' %]
 <H2><B>Join Our [% SiteName %] Beekeeping Discussion list</b></H2>
-[% IF SiteName = AnuCollective %]
+[% IF SiteName == AnuCollective %]
 [% MailList = http://beemaster.ca/mailman/subscribe/anubeekeeping_anucollective.beemaster.ca %]
 [% ELSE %]
-[% MailList = http://beemaster.ca/mailman/subscribe/beekeeping.beemaster.ca %]
+[% MailList = http://beemaster.ca/mailman/subscribe/apis.discussion.beemaster.beemaster.ca %]
 
 [% END %]
  <FORM Method=POST ACTION="">[% MailList %]<br>

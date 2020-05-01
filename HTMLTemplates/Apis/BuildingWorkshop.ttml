@@ -1,0 +1,30 @@
+[% version = 'BuildingWorkshop.ttml,v 0.11 2020/04/30' %]
+[% 
+# /HTMLTemplates/Apis/PollenPatties.ttml, v 0.01 2020/02/14
+# /HTMLTemplates/Apis/ClockeBoardView.ttml, v 0.01 2019/05/10
+
+%]
+[% version %]
+
+[% IF procedure %]
+
+[% ELSE %]
+
+[%# embed(data.page_top_view,['-PAGE_TITLE','Building Colonies for Nuc and Queen Production']) %]
+[% END %]
+
+
+<h2>Building Colonies</h2>
+
+<p>In this weekends workshop we will be covering the manipulation of the collonies for maximum brood production. We will look at strategies on getting the most build up as possible so we have brood and bees to first make queens at the end of May into June make nucs for sale and for expation of the opperation. Our Goal is to have as many well feed strong hives going into winter.  </p>
+
+<p> On previous visits to the yard we filled feeders, evaluated the hives and added crossways frames to our bigest hives. We feed to maintain brood production. This feed is also there to encourage build out of comb.</p>
+
+
+<p>In this workshop we will be reviewing how to set up your <a href="/cgi-bin/index.cgi?site=AnuCollective&page=EvaluationWorkstation" target="_blank">work station</a> to evaluate the bees. </p>
+<p>This page is in the works. Tune in often to see the changes.</p>
+
+
+
+
+
