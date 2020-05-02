@@ -58,7 +58,7 @@
 
             </p>
      
-            <p>We are now about to start our active outdoor season. We will be starting with our first visit to the yard. Here we will see just how many our our girls got through the winter. These numbers will help us plan the season ahead. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=FirstEval" target="_blank">Details here.</a></p> 
+            <p>We well into our active outdoor season. We will be starting with our first visit to the yard. Here we will see just how many our our girls got through the winter. These numbers will help us plan the season ahead. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=FirstEval" target="_blank">Details here.</a></p> 
              <img src="http://anucollective.beemaster.ca/images/apis/shanta4nuc.JPG" width="50%" alt="Shanta hiving a nuc." lingth="50%">                                       
  
 
@@ -134,17 +134,17 @@
 
 <p>
 <!-- hhmts start -->
-<!-- hhmts end -->
+<!-- hhmts end 
 
 [% embed('CSCCopyRight') %]
- 
+ <!-- 
 <script type="text/javascript"	
 src="http://ss.webring.com/navbar?f=j;y=shanta;u=10140815"></script>
 <noscript><center><table bgcolor='gray' cellspacing=0 border=2 >
 <tr><td><table cellpadding=2 cellspacing=0 border=0><tr><td align=center>
 <font face=arial size=-1>This site is a member of WebRing. 
 To browse visit <a href="http://ss.webring.com/navbar?f=l;y=shanta;u=10132800">
-here</a>.</font></td></tr></table></td></tr></table></center></noscript>
+here</a>.</font></td></tr></table></td></tr></table></center></noscript>-->
 [% END %]
 [% END %]
 </div>
