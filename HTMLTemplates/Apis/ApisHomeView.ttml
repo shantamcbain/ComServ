@@ -127,6 +127,8 @@
  <INPUT type="Submit" name="email-button" value="Subscribe">
  </FORM>
 
+<iframe src="https://calendar.google.com/calendar/embed?src=tabvviq9l1ncflbcedl78qa114%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>			
+<a href="/cgi-bin/Apis/apis.cgi?site=Apis&amp;view=AppToolsView&amp;[% session_string %]" name="AppToolsView" title="Click here for details of tool this application offerers">Details of the app.</a>				
 
 			
 			</li>

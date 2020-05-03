@@ -1,15 +1,16 @@
+[% ViewVersion = 'v 0.02 2020/05/03' %]
 [% 
 # /HTMLTemplates/Apis/GraftingWorkShop.ttml, v 0.01 2019/06/05
 # /HTMLTemplates/Apis/ClockeBoardView.ttml, v 0.01 2019/05/10
 
 %]
-
+[% ViewVersion %]
 
 [% IF procedure %]
 
 [% ELSE %]
 
-[% embed(data.page_top_view,['-PAGE_TITLE','Grafting WorkShop']) %]
+[%# embed(data.page_top_view,['-PAGE_TITLE','Grafting WorkShop']) %]
 [% END %]
 
 <h2>Learn to graft using the clocke board method.</h2>
@@ -17,8 +18,12 @@
 In this workshop we will be cover</p>
 <ul>
  <li>The principles of the process of raising queens.</li>
- <li>The preparation of the starter for  grafting.</li>   
+ <li>Prepare bars with cells for garfting.</li>
+ <li>The preparation of the starter for  grafting. We will create a clocke Hive. See Creating a <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ClockeBoardView" target="_blank">starter finisher</a> for details. </li>   
  <li>The selection of our graft comb</li>
+ <li>Graft eggs into bar. </li>
+ <li>Place bar into bars position in the top box above the clocke board.</li>
+ <li>Feed the hive with syrup and pollen</li>
   
 </ul>
 <p><a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=102">Register for workshop,</a></p>
