@@ -43,7 +43,7 @@
 				
 <h2>First Graft of the season </h2>
 <p>This event went well! We Grafted one bar of 15 cells. </p>
-[% embed('GraftingWorkShop') %]
+[%# embed('GraftingWorkShop') %]
 
 
 
