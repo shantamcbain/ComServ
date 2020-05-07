@@ -41,39 +41,37 @@
 					
 					
 				
+<h2>First Graft of the season </h2>
+<p>This event went well! We Grafted one bar of 15 cells. </p>
+[% embed('GraftingWorkShop') %]
 
 
 
-            <h3> Activities in the yard. </h3>
-
+       
            
 <ul>          
 <li>
 <h1>Our next event.</h1>
 </li>
 
-<li><h2>Building for Queen and nuc production.</h2>
-<p>May 5, 2020 Location Muddy Meadows Grindrod BC </p>
-</li>
-<li>[% embed('BuildingWorkshop') %]
 
-</li>
-<li>
-<h2>First Graft of the season </h2>
-<p>May 5 2020 Location Muddy Meadows Grindrod BC </p>
-[% embed('GraftingWorkShop') %]
-</li>
+
 <li>
 <h2>Pull Clocke board.</h2>
 <p>May 8, 2020 Location Muddy Meadows Grindrod BC </p>
 [%# embed('GraftingWorkShop') %]
+</li>
+<li><h2>Second Graft</h2>
+May 13 2020 Location Muddy Meadows Grindrod BC
 </li>
 <li>
 <h2>Create mating nucs  </h2>
 <p>May 16 2020 Location Muddy Meadows Grindrod BC </p>
 [% embed('MatingNucCreation') %]
 </li>
-
+<li><h2>Second Graft</h2>
+May 13 2020 Location Muddy Meadows Grindrod BC
+</li>
 <li>
 <h2>Create Expantion nucs  </h2>
 <p>May 20 2020 Location Muddy Meadows Grindrod BC </p>
