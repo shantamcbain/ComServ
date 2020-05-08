@@ -1,4 +1,5 @@
-[% Version = 'v 1.142 2020/05/05' %]
+[% Version = 'v 1.143 2020/05/08' %]
+[%# Version = 'v 1.142 2020/05/05' %]
 [%# Version = 'AnuCollectiveHomeView.ttml,v 1.141 2020/02/15' %]
 [%#	$Id: AnuCollectiveHomeView.ttml,v 1.14 2020/02/15 06:42:47 shanta Exp shanta %]
 [%#Id: AnuCollectiveHomeView.ttml,v 1.13 2020/02/12 06:42:47 shanta Exp shanta 
@@ -58,7 +59,9 @@
 
 <li>
 <h2>Pull Clocke board.</h2>
-<p>May 8, 2020 Location Muddy Meadows Grindrod BC </p>
+<p>May 8, 2020 Location Muddy Meadows Grindrod BC We will return the brood to the hive and count cells. Only the newly created nuc needed feed. We have 7 cells which will be all we will have avaible brood for.  </p>
+<p>On returning the brood cells were found on the incubated brood. On checking the hive no eggs were found. The student who did the hive did not notice the lack of eggs. The hive was split as we had more than two frames with cells. The top box we removed a frame the bottom 2. Into each box we placed a frame with a cell. The bottom box got a feeder and some feed was placed in the feeder. </p>
+<p>These by splitting the box we have utilized the bees to create a replacement queen and a new nuc for expansion. If enough bees you could split it down further to accomidate each frame with a cell. We will do this with the capped cells in the creation of mating nucs on the 16th. We have a 2 nuc top boxs that we can activate on that day.</p>
 [%# embed('GraftingWorkShop') %]
 </li>
 <li><h2>Second Graft</h2>
@@ -70,15 +73,22 @@ May 13 2020 Location Muddy Meadows Grindrod BC
 [% embed('MatingNucCreation') %]
 </li>
 <li><h2>Second Graft</h2>
-May 13 2020 Location Muddy Meadows Grindrod BC
-</li>
-<li>
-<h2>Create Expantion nucs  </h2>
-<p>May 20 2020 Location Muddy Meadows Grindrod BC </p>
-<p>Our queens will be mated and have been laying. Our cells we grafted in the second graft  a place to go. We will catch queens. Intoduce cells and Create Sales expantion nucs to take the queens and cells if needed. </p>
-[% embed('NucCreation') %]
+<p>May 13 2020 Location Muddy Meadows Grindrod BC</p>
+<p>We will review the working of the starter/finisher Then after the queenless time of 3 4 hours we will graft into it.</p>
 </li>
 
+<li><h2>Prepare Anu Yard for bees.</h2>
+<p>Saturday May 23 Location Anu Collective yard.</p></li>
+<li>
+<h2>Create Expantion nucs  </h2>
+<p>May 30 2020 Location Muddy Meadows Grindrod BC </p>
+<p>Our queens will be mated and have been laying. Our cells we grafted in the second graft  a place to go. We will catch queens. Intoduce cells and Create Sales expantion nucs to take the queens and cells if needed. </p>
+[% embed('NucCreation') %]
+<p>Deliver created nucs to Anu Yard.</p>
+</li>
+<li><h2>Third Graft</h2>
+Wednesday June 3 2020 Location Muddy Meadows Grindrod BC
+</li>
 
 </ul>
              <p>We will be developing Tools you can use to help you manage your bee keeping and bee breeding operations. </p>
