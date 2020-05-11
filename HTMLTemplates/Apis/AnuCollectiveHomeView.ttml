@@ -73,18 +73,27 @@
 <li><h2>Prepare Anu Yard for bees.</h2>
 <p>Saturday May 23 Location Anu Collective yard.</p></li>
 <li>
-<h2>Create Expantion nucs  </h2>
+<h2>Create Expansion nucs  </h2>
 <p>May 30 2020 Location Muddy Meadows Grindrod BC </p>
-<p>Our queens will be mated and have been laying. Our cells we grafted in the second graft  a place to go. We will catch queens. Intoduce cells and Create Sales expantion nucs to take the queens and cells if needed. </p>
+<p>Our queens will be mated and have been laying. Our cells we grafted in the second graft will have a place to go. We will catch queens. Introduce cells and Create Sales expansion nucs to take the queens and cells if needed. </p>
 [% embed('NucCreation') %]
 <p>Deliver created nucs to Anu Yard.</p>
 </li>
 <li><h2>Third Graft</h2>
-Wednesday June 3 2020 Location Muddy Meadows Grindrod BC
+<p>Wednesday June 3 2020 Location Muddy Meadows Grindrod BC</p>
+<p>These will be our second round of sale queens.</p>
 </li>
+<li><h2>June 6 2020Evaluate and feed Created nucs</h2>
+<p>Each week for the next few weeks we will evaluate and feed theses nucs.</p>
 
+</li>
+<li><h2>June 13 2020 Catch queens and cell up</h2>
+<p>These queens are for sale Please reserve yours now.</p>
+</li>
+<li><h2>June 26 4th Graft.</h2></li>
+<li><h2>July 06 2020 Catch queens and cell up.</h2></li>
 </ul>
-             <p>We will be developing Tools you can use to help you manage your bee keeping and bee breeding operations. </p>
+             <p> We will be developing Tools you can use to help you manage your bee keeping and bee breeding operations. </p>
            <ul>
             <li><a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&procedure=HiveManHomeView">Apiary Management System</a>. <br>Track what is happening in your yards</li>        
             <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
