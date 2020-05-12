@@ -1,3 +1,4 @@
+[% Version = 'v 1.145 2020/05/12' %]
 [% Version = 'v 1.144 2020/05/10' %]
 [%# Version = 'v 1.143 2020/05/08' %]
 [%# Version = 'v 1.142 2020/05/05' %]
@@ -35,19 +36,7 @@
 
                 
                  
-               <a href="/cgi-bin/FAQ/faq.cgi?site=[%SiteName%]&amp;[% session_string %]&amp;sort_field1=category &amp;sort_field2=fname &amp;first_record_to_display=0&amp;records_per_page= &amp;record_id=2&amp;columns_to_view=category &amp;columns_to_view=question&amp;display_details_view.x=8 &amp;display_details_view.y=9&amp;display_details_view=on" onmousedown="click Here for info on what we collect">Why should I create an account</a>
-    
-
-
-			
-					
-					
-
-
-
-
-       
-           
+            
 <ul>          
 
 

@@ -10,7 +10,7 @@
 <!-- LogoHomeLink -->
 
 	<!-- HeaderHostingView -->
-			[% embed('HeaderHostingView') %] 
+			[%# embed('HeaderHostingView') %] 
 		<!-- HeaderHostingView -->
 	 		         
 		</td> 
