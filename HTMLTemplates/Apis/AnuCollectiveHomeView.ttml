@@ -1,5 +1,6 @@
-[% Version = 'v 1.145 2020/05/12' %]
-[% Version = 'v 1.144 2020/05/10' %]
+[% Version = 'v 1.146 2020/05/15' mnickers%]
+[%# Version = 'v 1.145 2020/05/12' %]
+[%# Version = 'v 1.144 2020/05/10' %]
 [%# Version = 'v 1.143 2020/05/08' %]
 [%# Version = 'v 1.142 2020/05/05' %]
 [%# Version = 'AnuCollectiveHomeView.ttml,v 1.141 2020/02/15' %]
@@ -39,21 +40,25 @@
             
 <ul>          
 
+<li><h2>First Graft</h2>
+<p>May 5 2020 Location Muddy Meadows Grindrod BC</p>
+<p>Notes for the Bee yard - We transfered 15 one day old larvae into 15 cups on a stick and stick of grafted cups onto an empty frame. The frame was then put in the top box above the queen excluder and clocke board so that the bees in this box thought they were queenless and therefore would draw queens from these larvae filled cups. </p></li>
 
 <li><h2>Second Graft</h2>
 <p>May 13 2020 Location Muddy Meadows Grindrod BC</p>
-<p>We will review the working of the starter/finisher Then after the queenless time of 3 4 hours we will graft into it.</p>
-<p>We will also prepare and repair Knuc boxes for the nuc making workshop.</p></li>
+<p>Notes for the Bee yard - We grafted a second set of 1 day old larvae into 15 cups and put the stick of grafted cups onto the frame containing our first stick of grafted cells, moving the first stick down to mid frame and the new stick at the top of the frame. Keeping the newest grafts at the top of the frame will keep it warmest as the heat rises to the top of the hive</p>
+<p>We will also repaired Knuc boxes and their lids, replacing the rotatating entrance closures with 3D printed entrance controller. Contact us if you would like the printable file.</p></li>
 
 <li>
 <h2>Create mating nucs  </h2>
 <p>Friday May 15 2020 Location Muddy Meadows Grindrod BC </p>
-[% embed('MatingNucCreation') %]
+<p>Notes for the Bee yard - 7 of the of the 15 cups that were grafted 10 days ago developped into queen baring cells. We created 3 mating nucs from the 10 day old cells and put an extra cell into one of the 3 frame full depth nuc that were made 5 days ago from the first round of grafts. We created a 2 framed full depth nuc which already had several cells on the frame. </p>
+[%# embed('MatingNucCreation') %]
 </li>
 
 
 <li><h2>Prepare Anu Yard for bees.</h2>
-<p>Saturday May 23 Location Anu Collective yard.</p></li>
+<p>Saturday May 25 Location Anu Collective yard.</p></li>
 <li>
 <h2>Create Expansion nucs  </h2>
 <p>May 30 2020 Location Muddy Meadows Grindrod BC </p>
