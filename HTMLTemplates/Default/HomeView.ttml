@@ -31,7 +31,7 @@
    [% procedure = data.procedure %]
 [% PROCESS DefaultDbi.ttml %]
 [% Page = data.page_name  %]
-
+[% HostName = data.domain_name %]
 
 
 [% IF group == "Mentoring"	%]
