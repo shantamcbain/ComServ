@@ -40,7 +40,7 @@
 
 <ul class="dropdown" id="dropdownCentred">
 		    <li>
-              <span><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=HomeView" name="Home page" onmouseover="Home" title="HOME">Main</a></span>
+              <span><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=HomeView" name="Home page" onmouseover="Home" title="HOME">Home</a></span>
 <ul>
 [% embed('TopListMainSQL') %]
 	  </ul>

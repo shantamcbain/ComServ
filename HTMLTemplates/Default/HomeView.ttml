@@ -57,7 +57,7 @@
 		[% SiteName = data.site_name%]
 [% IF procedure %]
 [%# Open prodeduresview %]	
-	[% embed('ProdeduresView') %]
+	[% embed('ProceduresView') %]
 [% ELSIF Page  %]
 [%# Open PageView in HomePage%]
 [% embed('PageView') %]

@@ -1,3 +1,9 @@
+[% Version = 'v 1.146 2020/05/15 mnickers' %]
+[%# Version = 'v 1.145 2020/05/12' %]
+[%# Version = 'v 1.144 2020/05/10' %]
+[%# Version = 'v 1.143 2020/05/08' %]
+[%# Version = 'v 1.142 2020/05/05' %]
+[%# Version = 'AnuCollectiveHomeView.ttml,v 1.141 2020/02/15' %]
 [%#	$Id: AnuCollectiveHomeView.ttml,v 1.14 2020/02/15 06:42:47 shanta Exp shanta %]
 [%#Id: AnuCollectiveHomeView.ttml,v 1.13 2020/02/12 06:42:47 shanta Exp shanta 
 #	$Id: AnuCollectiveHomeView.ttml,v 1.12 2020/01/26 06:42:47 shanta Exp shanta 
@@ -6,14 +12,14 @@
 #	$Id: AnuCollectiveHomeView.ttml,v 1.1 2019/05/23 06:42:47 shanta Exp shanta 
 #	$Id: ApisHomeView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
 
-[% Version = ' ApisHomeView  v 1.13 2020/02/12' %]
+[%# Version = ' ApisHomeView  v 1.13 2020/02/12' %]
 [% procedure = data.procedure %]
 
 <!-- [% Version %]-->
 <div id=body > 
 <A NAME="PageTop"></A>
 
-
+[%# Version %]
 [% IF procedure %]
 
 [% embed(data.procedure) %] 
@@ -26,58 +32,60 @@
 
 [% ELSE %]
 
-<h2>Explore the world of Bees and Keeping with us at the Anu Collective</h2>
+<h2>What's Happening now in the yard.</h2>
  	
-<p><font size="-2">To get the most from this application you will need to create an account.
-<A HREF = "[% data.script_name %]?session_id=[% session_id %]&amp;submit_logon=on&amp;site=[%SiteName%]"
-                 TARGET = "[% data.link_target %]">Logon</A> </font>
+
                 
                  
-               <a href="/cgi-bin/FAQ/faq.cgi?site=[%SiteName%]&amp;[% session_string %]&amp;sort_field1=category &amp;sort_field2=fname &amp;first_record_to_display=0&amp;records_per_page= &amp;record_id=2&amp;columns_to_view=category &amp;columns_to_view=question&amp;display_details_view.x=8 &amp;display_details_view.y=9&amp;display_details_view=on" onmousedown="click Here for info on what we collect">Why should I create an account</a>
-    
+            
+<ul>          
+
+<li><h2>First Graft</h2>
+<p>May 5 2020 Location Muddy Meadows Grindrod BC</p>
+<p>Notes for the Bee yard - We transfered 15 one day old larvae into 15 cups on a stick and stick of grafted cups onto an empty frame. The frame was then put in the top box above the queen excluder and clocke board so that the bees in this box thought they were queenless and therefore would draw queens from these larvae filled cups. </p></li>
+
+<li><h2>Second Graft</h2>
+<p>May 13 2020 Location Muddy Meadows Grindrod BC</p>
+<p>Notes for the Bee yard - We grafted a second set of 1 day old larvae into 15 cups and put the stick of grafted cups onto the frame containing our first stick of grafted cells, moving the first stick down to mid frame and the new stick at the top of the frame. Keeping the newest grafts at the top of the frame will keep it warmest as the heat rises to the top of the hive</p>
+<p>We will also repaired Knuc boxes and their lids, replacing the rotatating entrance closures with 3D printed entrance controller. Contact us if you would like the printable file.</p></li>
+
+<li>
+<h2>Create mating nucs  </h2>
+<p>Friday May 15 2020 Location Muddy Meadows Grindrod BC </p>
+<p>Notes for the Bee yard - 7 of the of the 15 cups that were grafted 10 days ago developped into queen baring cells. We created 3 mating nucs from the 10 day old cells and put an extra cell into one of the 3 frame full depth nuc that were made 5 days ago from the first round of grafts. We created a 2 framed full depth nuc which already had several cells on the frame. </p>
+[%# embed('MatingNucCreation') %]
+</li>
 
 
+<li><h2>Prepare Anu Yard for bees.</h2>
+<p>Saturday May 25 Location Anu Collective yard.</p></li>
+<li>
+<h2>Create Expansion nucs  </h2>
+<p>May 30 2020 Location Muddy Meadows Grindrod BC </p>
+<p>Our queens will be mated and have been laying. Our cells we grafted in the second graft will have a place to go. We will catch queens. Introduce cells and Create Sales expansion nucs to take the queens and cells if needed. </p>
+[% embed('NucCreation') %]
+<p>Deliver created nucs to Anu Yard.</p>
+</li>
+<li><h2>Third Graft</h2>
+<p>Wednesday June 3 2020 Location Muddy Meadows Grindrod BC</p>
+<p>These will be our second round of sale queens.</p>
+</li>
+<li><h2>June 6 2020Evaluate and feed Created nucs</h2>
+<p>Each week for the next few weeks we will evaluate and feed theses nucs.</p>
 
-
-		<p>We have forums, Links list, FAQ's, Procedures, Plant Databases, How to's contributed by user..
-		</p>
-					
-					
-					
-				
-
-
-
-            <h3>  This Web Application  is for Anu Collective Students and Members to learn beekeeping. </h3>
-
-           
-           <p>
-          
-            <p> The Anu Collective will be hosting Beekeeping WorkShops every 2 weeks. These workshops will be conducted by <a href="beemaster.ca" target="_blank" name="Join us at beemaster.ca">beemaster.ca</a> There will other hands on events with partnering beekeepers. We are currently working on an apprenticeship with a queen rearing company in the area. You can come catch queens, develop your brood eye and learn what it is like to work in an active bee breeding and honey operation. Seats here will be limited so join early
-
-            </p>
-     
-            <p>We are now about to start our active outdoor season. We will be starting with our first visit to the yard. Here we will see just how many our our girls got through the winter. These numbers will help us plan the season ahead. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=FirstEval" target="_blank">Details here.</a></p> 
-             <img src="http://anucollective.beemaster.ca/images/apis/shanta4nuc.JPG" width="50%" alt="Shanta hiving a nuc." lingth="50%">                                       
- 
-
-<h1>Our next event.</h1>
-
-
-<h2>Spring Yard Evaluation.</h2>
-<p>Coming mid to end of February 2020.</p>
-
-
-
-[% embed('FirstEval') %]
-
-
-             <p>We will be developing Tools you can use to help you manage your bee keeping and bee breeding operations. </p>
+</li>
+<li><h2>June 13 2020 Catch queens and cell up</h2>
+<p>These queens are for sale Please reserve yours now.</p>
+</li>
+<li><h2>June 26 4th Graft.</h2></li>
+<li><h2>July 06 2020 Catch queens and cell up.</h2></li>
+</ul>
+             <p> We will be developing Tools you can use to help you manage your bee keeping and bee breeding operations. </p>
            <ul>
             <li><a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&procedure=HiveManHomeView">Apiary Management System</a>. <br>Track what is happening in your yards</li>        
             <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
-            <li><a href="/cgi-bin/BBS/bbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
-            <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
+        <!--     <li><a href="/cgi-bin/BBS/bbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
+         -->    <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
            </ul>
 			<h3>News</h3>
 			<table align="center">
@@ -133,21 +141,21 @@
 
 <p>
 <!-- hhmts start -->
-<!-- hhmts end -->
+<!-- hhmts end 
 
 [% embed('CSCCopyRight') %]
- 
+ <!-- 
 <script type="text/javascript"	
 src="http://ss.webring.com/navbar?f=j;y=shanta;u=10140815"></script>
 <noscript><center><table bgcolor='gray' cellspacing=0 border=2 >
 <tr><td><table cellpadding=2 cellspacing=0 border=0><tr><td align=center>
 <font face=arial size=-1>This site is a member of WebRing. 
 To browse visit <a href="http://ss.webring.com/navbar?f=l;y=shanta;u=10132800">
-here</a>.</font></td></tr></table></td></tr></table></center></noscript>
+here</a>.</font></td></tr></table></td></tr></table></center></noscript>-->
 [% END %]
 [% END %]
 </div>
 
-
+-->
 
 

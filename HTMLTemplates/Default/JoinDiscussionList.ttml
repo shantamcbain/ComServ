@@ -1,6 +1,12 @@
-<H2><B>Join Our Anu Beekeeping Discussion list</b></H2>
+[% version = 'AnuCollectiveHomeView.ttml,v 1.141 2020/02/15' %]
+<H2><B>Join Our [% SiteName %] Beekeeping Discussion list</b></H2>
+[% IF SiteName == AnuCollective %]
+[% MailList = 'http://beemaster.ca/mailman/subscribe/anubeekeeping_anucollective.beemaster.ca' %]
+[% ELSE %]
+[% MailList = 'http://beemaster.ca/mailman/subscribe/apis.discussion.beemaster.beemaster.ca' %]
 
- <FORM Method=POST ACTION="http://beemaster.ca/mailman/subscribe/anubeekeeping_anucollective.beemaster.ca"><br>
+[% END %]
+ <FORM Method=POST ACTION="">[% MailList %]<br>
  Your E-mail address: <INPUT type="Text" name="email" size="30" value="[% email %]"><br>
  Your Name (optional): <INPUT type="Text" name="fullname" size="30" value="[% firstname %]&nbsp; [% lastname%]"><br><br>
  You may enter a privacy password below. This provides only mild security, but should<br>
@@ -15,3 +21,4 @@
  <input type=radio name="digest" value="0" CHECKED> No <input type=radio name="digest" value="1"> Yes<br><br>
  <INPUT type="Submit" name="email-button" value="Subscribe">
  </FORM>
+
