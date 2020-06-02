@@ -29,11 +29,8 @@
 
 		<tr>
 		<td >
-		<h3>Sites hosted with us  </h3>
-[%# USE DBI( data_source = 'dbi:mysql:shanta_forager:mysql.computersystemconsulting.ca',
-                username = 'shanta',
-                password =  'nvidia2' )
-    %]
+		<h3>Sites hosted with us  call data.domain_name </h3>
+
 <ul>	
 [% FOREACH link = DBI.query("SELECT * FROM url_tb
                                 WHERE  category = 'Hosted_link' AND (username_of_poster = '$username' OR share = 'public')
@@ -50,9 +47,9 @@
 </p>
 
 <ol>
-	<li>Sub domain. Your URL to the site will look like this <a href="http://ecf.beemaster.ca" target="_blank" name="subdomain link" title = "Click here to see what this site looks like.">Http://ecf.beemaster.ca</a> You get 5 email addresess, Web space, and more. Order your sub domain <a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=21&amp;aff=[% AffiliateID %]">here</a></li>
-	<li>Full domain Your URL to the site will look like this <a href="http://forager.com" target="_blank" name="full domain link" title = "Click here to see what this site looks like.">Http://forager.com</a> You get full Cpanel access to your site. Order your domain <a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=1&amp;aff=[% AffiliateID %]">here</a</li>
-	<li><a href="http://wwcomputersystemconsulting.ca/whmcs/cart.php?a=add&pid=3'&amp;aff=[% AffiliateID %]">Reseller accounts</a></li> Run your own hosting service for your customers.
+	<li>Sub domain. Your URL to the site will look like this <a href="http://ecf.[% data.domain_name %]" target="_blank" name="subdomain link" title = "Click here to see what this site looks like.">Http://ecf.[% data.domain_name %]</a> You get 5 email addresess, Web space, and more. Order your sub domain <a href="http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=21&amp;aff=[% AffiliateID %]">here</a></li>
+	<li>Full domain Your URL to the site will look like this <a href="http://[% HostName %]" target="_blank" name="full domain link" title = "Click here to see what this site looks like.">Http://forager.com</a> You get full Cpanel access to your site. Order your domain <a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=1&amp;aff=[% AffiliateID %]">here</a</li>
+	<li><a href="http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=3'&amp;aff=[% AffiliateID %]">Reseller accounts</a></li> Run your own hosting service for your customers.
 </ol>
 			<h3> Domains.</h3
 
