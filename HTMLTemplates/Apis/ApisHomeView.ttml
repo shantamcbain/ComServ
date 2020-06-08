@@ -1,3 +1,4 @@
+[% Version = 'v 1.13 2020/06/08 shanta' %]
 [%
 #	$Id: ApisHomeView.ttml,v 1.11 2020/03/10 06:42:47 shanta Exp shanta $	%]
 [%#	$Id: ApisHomeView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
@@ -26,9 +27,9 @@
 <tr>
 <td>
 <A NAME="PageTop"></A>
-   
+ [% Version %]  
  
-<h3> A Beekeepers for Beekeepers Site. </h3>
+<h2> A site for Beekeepers. </h2>
 [% IF procedure  %]
 [% embed ('BMasterProcedures') %]
 [% ELSE %]
@@ -39,6 +40,7 @@
 </p>
 <p>Members may contribute to the sites contend and Join commities monitor content of the diffrent dateabases hosted on the site. Create logs that certification organizations need to access to maintain certification. Available logs will vary according to the need of your certification organization. 
 	</p>	[% ELSE %]
+	<p>Thanks for logging in.</p>
 <p>Member home</p>
 			[% END %]
 
@@ -52,7 +54,6 @@
                  TARGET = "[% data.link_target %]">Logon</A> </font>
                  
                  
-               <a href="/cgi-bin/FAQ/faq.cgi?site=[%SiteName%]&amp;[% session_string %]&amp;sort_field1=category &amp;sort_field2=fname &amp;first_record_to_display=0&amp;records_per_page= &amp;record_id=2&amp;columns_to_view=category &amp;columns_to_view=question&amp;display_details_view.x=8 &amp;display_details_view.y=9&amp;display_details_view=on" onmousedown="click Here for info on what we collect">Why should I create an account</a>
     
 		</td >
 		</tr>
@@ -61,8 +62,7 @@
 
 
 
-		<p>We have forums, Calendars, Links list, FAQ's, Procedures, Plant Databases, How to's contribute by user..
-		</p>
+		
 					
 					
 					
