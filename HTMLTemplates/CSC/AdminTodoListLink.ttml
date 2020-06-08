@@ -1,6 +1,8 @@
 [%#	$Id: /HTMLTemplates/AdminTodoListLink.ttml,v 0.1 2019/06/08 17:43:15 shanta Exp shanta $	%]
 [% IF username == 'Shanta' OR
        group    == 'AltPower_admin' OR
+       group    == 'USBM_admin' OR
+  	    group    == 'Apis_Admin' OR
        group    == 'AnuCollective_admin' OR
        group    == 'BMaster_admin' OR
        group    == 'HE_admin' OR
