@@ -77,6 +77,7 @@ foreach ($CGI->param()) {
 ######################################################################
 my $SiteName =  $CGI->param('site') || "Brew";
 my $APP_NAME = "recipe";
+my $AppVersion = " v1.1 2020/06/28" ;
 my $SITE_DISPLAY_NAME = 'Site not added to session setup.';
 my $APP_NAME_TITLE = "Brew Recipes";
     my $homeviewname ;
@@ -167,7 +168,7 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
+my $CSS_VIEW_URL  ;
 
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
@@ -1281,7 +1282,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
     -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
     -KEY_FIELD                              => 'record_id',
-    -BREW_NAME                              => $CGI->param('recipecode'), 
+    -BREW_NAME                              => $CGI->param('recipecode')||'Chouse', 
     -RECIPE_CODE                            => $CGI->param('recipecode')|| 'TBB',
     -SITE_NAME                              => $SiteName,
     -PAGE_TOP_VIEW           =>  $CGI->param('page_top_view') ||  $page_top_view ,

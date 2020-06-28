@@ -28,7 +28,9 @@
  <td	class="InharatedVariablesCell"> [% data.virtual_server_name %]</td>
 </tr>
 
- <tr><td	class="InharatedVariablesCell">First name  TTML </td>       <td	class="InharatedVariablesCell"> [% firstname %]</td></tr>
+ <tr><td	class="InharatedVariablesCell">First name  TTML </td>       
+ <td	class="InharatedVariablesCell"> [% firstname %]</td></tr>
+
 <tr> <td	class="InharatedVariablesCell">Last name  TTML  </td>      <td	class="InharatedVariablesCell"> [% lastname %]</td></tr>
 <tr> <td	class="InharatedVariablesCell">UserName   TTML   </td>        <td	class="InharatedVariablesCell"> [% username %]</td></tr>
 <tr> <td	class="InharatedVariablesCell">UserName         </td>    <td	class="InharatedVariablesCell"> [% data.username %] .data</td></tr>
@@ -73,7 +75,8 @@
  <tr> <td	class="InharatedVariablesCell"> -CSS_VIEW_NAME </td>     <td	class="InharatedVariablesCell">          [% data.css_view_name %].data</td></tr>
  <tr> <td class="InharatedVariablesCell">-CSS_VIEW_URL   </td>     <td	class="InharatedVariablesCell">       [% data.css_view_url %].data</td></tr>
  <tr> <td></td></tr>
-<tr>  <td></td></tr>
+<tr> <td>image_root_url </td>
+<td>[% data.image_root_url %] </tr>
 </table>
 <!-- InharatedVariablesView.ttml -->
  
