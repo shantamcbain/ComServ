@@ -1,5 +1,5 @@
 [% version = " v1.1 2020/06/28" %]
-[%#	$Id: BrewRecipe[% version = " v1.1 2020/06/28" %]View.ttml,v 1.0 2009/9/16 06:42:47 shanta Exp shanta $	%]
+[%#	$Id: View.ttml,v 1.0 2009/9/16 06:42:47 BrewRecipe shanta Exp shanta $	%]
   [% PROCESS DefaultDbi.ttml %]      [% version = data.app_ver %]
 
 [% embed(data.page_top_view,['-PAGE_TITLE','Our Recipies']) %]

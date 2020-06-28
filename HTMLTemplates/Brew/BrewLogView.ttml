@@ -1,7 +1,7 @@
 [% version = " v1.21 2020/06/28" %]
-[% #version = " v1.2 2016/12/04" %]
+[%#version = " v1.2 2016/12/04" %]
 [%#	$Id: BrewLogView.ttml,v 1.1 2013/11/7 06:42:47 shanta Exp shanta $	%]
-<!-- BrewLogView  v 1.1 2014/03/18-->
+<!-- BrewLogView [% version %]-->
        [% AppVersion = data.app_ver %]
  
  [% PROCESS DefaultDbi.ttml %]
