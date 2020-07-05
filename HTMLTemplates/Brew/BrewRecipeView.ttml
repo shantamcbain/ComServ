@@ -1,4 +1,5 @@
-[%#	$Id: BrewRecipeView.ttml,v 1.0 2009/9/16 06:42:47 shanta Exp shanta $	%]
+[% version = " v1.1 2020/06/28" %]
+[%#	$Id: View.ttml,v 1.0 2009/9/16 06:42:47 BrewRecipe shanta Exp shanta $	%]
   [% PROCESS DefaultDbi.ttml %]      [% version = data.app_ver %]
 
 [% embed(data.page_top_view,['-PAGE_TITLE','Our Recipies']) %]
@@ -89,7 +90,7 @@ function QuickClick(list) {
                                      
                                    ORDER BY recipe_code
 	                            ")%]  
-<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;view=BrewRecipeView&amp;[% session_string %]&recipecode=[% item.recipe_code %]">[% item.recipe_name %] [% item.brew_name%][% item.date %]</option>
+<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;view=BrewRecipeView&amp;[% session_string %]&amp;recipecode=[% item.recipe_code %]">[% item.recipe_name %] [% item.brew_name%][% item.date %]</option>
 
 [% END %]
  <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
