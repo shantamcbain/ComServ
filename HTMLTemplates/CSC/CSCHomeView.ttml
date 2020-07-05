@@ -43,7 +43,7 @@ My persal stuff
 	       group    ==  'CSCDev_admin' OR
 	       group    ==  'News_admin' OR
 	       group    ==  'OKB_admin'OR
-	       group    ==  'Organic_admin' OR$Id: ECFHomeView.
+	       group    ==  'Organic_admin' OR
 	       group     == 'DarmaFarmsAdmin' OR
 	       group    ==  'Shanta_admin' OR
 	       group    ==  'Stawns_admin' OR
