@@ -59,7 +59,7 @@ sub execute {
 
     $cgi->param(
         -NAME  => 'raw_search',
-        -VALUE => "status == 'In-Use' AND
+        -VALUE => "status == '' AND
                    sitename == '$params->{-SITE_NAME}'
          "
     );  
