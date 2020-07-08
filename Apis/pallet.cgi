@@ -728,7 +728,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
         -NAME         => 'developer_name',
         -VALUE        => 'Shanta', 
         -SIZE         => 30,
-        -MAXLENGTH    => 80v 01 
+        -MAXLENGTH    => 
     ],
 
 #    client_name => [
