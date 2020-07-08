@@ -707,7 +707,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
                  -LABELS       => \%type_code,
                  -INPUT_CELL_COLSPAN => 3, 
     ],
-v 01 
+
 #    yard_code => [
 #        -DISPLAY_NAME => 'Yard Code',
 #        -TYPE         => 'popup_menu',
