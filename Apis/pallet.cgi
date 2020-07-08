@@ -686,7 +686,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 
     pallet_name => [
         -DISPLAY_NAME => 'Pallet Name',
-        -TYPE         => 'textfield',v 01 
+        -TYPE         => 'textfield',
         -NAME         => 'pallet_name',
         -SIZE         => 30,
         -MAXLENGTH    => 80
@@ -882,7 +882,7 @@ my	@PALLET_DATASOURCE_CONFIG_PARAMS = (
 	        -KEY_FIELDS   => ['username'],
 	        -FIELD_TYPES  => {
 	            record_id        => 'Autoincrement'
-	        },v 01 
+	        },
 	);
 my @QUEENS_DATASOURCE_FIELD_NAMES = qw(
         status
