@@ -50,7 +50,7 @@
 
 	[% ELSE %]
 
-				 		<h2>Explore the world of Bees and Keeping. </h2>
+				 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
  	
 <p>Thanks for digging deeper.<p>              
                  
@@ -70,7 +70,7 @@
 
 	[% END %]
 
-            <h3>  This Web Application  is for bee keepers to help each other bee better bee keepers. </h3>
+            
              
         
             
