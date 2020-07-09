@@ -77,7 +77,7 @@
             <h2>Tools you can use to help you manage your bee keeping and bee breeding operations. </h2>
 
             <ul>
-            <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardManagementSystem" target="Blank">Apiary Management System. </a><br>Track what is happening in your yards</li>
+            <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardManagementSystem" target="Blank">Apiary Management System. </a><br>Track what is happening in your yards</li> In active development. drop by and give us a hand.
             <li><a href="/cgi-bin/WebCal/webcal.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=MonthView&amp;submit_power_search=on&amp;amp;simple_search_string=" target="Blank">
             <font class="LeftSideBarNavStyle">Apis Calendar</font></a></li>
             <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
