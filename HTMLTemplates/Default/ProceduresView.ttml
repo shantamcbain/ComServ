@@ -36,8 +36,9 @@
 
 [% IF group == "Mentoring"	%]
 	[% embed(data.page_top_view,['-PAGE_TITLE',' Mentoring Procedures View']) %]
+	
 [% ELSE %]
-	[% embed(data.page_top_view,['-PAGE_TITLE','Procedures View']) %]
+	[%# embed(data.page_top_view,['-PAGE_TITLE','Procedures View']) %]
 [% END %]
 
 [% embed('ErrorDisplayView') %]
