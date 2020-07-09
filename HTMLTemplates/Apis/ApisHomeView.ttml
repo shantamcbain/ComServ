@@ -1,4 +1,7 @@
-[% Version = 'v 1.13 2020/06/08 shanta' %]
+[% Version = 'v 1.14 2020/07/08 shanta' %]
+
+
+[%# Version = 'v 1.13 2020/06/08 shanta' %]
 [%
 #	$Id: ApisHomeView.ttml,v 1.11 2020/03/10 06:42:47 shanta Exp shanta $	%]
 [%#	$Id: ApisHomeView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
@@ -49,10 +52,7 @@
 
 				 		<h2>Explore the world of Bees and Keeping. </h2>
  	
-<p><font size="-2">To get the most from this application you will need to create an account.
-<A HREF = "[% data.script_name %]?session_id=[% session_id %]&amp;submit_logon=on&amp;site=[%SiteName%]"
-                 TARGET = "[% data.link_target %]">Logon</A> </font>
-                 
+<p>Thanks for digging deeper.<p>              
                  
     
 		</td >
@@ -72,15 +72,7 @@
 
             <h3>  This Web Application  is for bee keepers to help each other bee better bee keepers. </h3>
              
-            <p> Bee keeping has many complex issues that we as bee keepers find our selves enmeshed in.
-            Disease and its control. equipment, law and politics, education, more disease control,
-            Pollination practices, Marketing. And it goes on.
-
-            </p>
-            <p>We are constantly barraged with </p>  
-            
-            <h2>Join us this season at the <a href="https://anucollective.beemaster.ca" target="_blank" name="Anucollective">Anu collective</a></h2>                                    
-            
+        
             
             <h2>Tools you can use to help you manage your bee keeping and bee breeding operations. </h2>
 
@@ -93,16 +85,7 @@
             <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
             <li>
             </ul>
-			<h3>News</h3>
-			<table align="center">
-			<tbody align="center">
-			<tr>
-			<td>
-			<script type = "text/javascript"
-							src="/cgi-bin/News/news.cgi?embed=1&amp;site=Apis&amp;records_per_page=1">
-						</script>
-	 
-			</td>
+		</td >	
 		</tr>
 	</tbody>
 	</table>
@@ -133,24 +116,8 @@
 			
 			</li>
              </ul>
-            <p>Access rights to resources will vary to your membership status.</p>
-
-            Currently we have 5 Memberships available.
-
-            <ul>
-            <li>Guest. Visitors have access access to all data considered public or essential. No login required</li>
-            <li>Beta tester. Get full access and are active in the development of the site and its usefulness to Bee Keepers. To Become a bata tester. Become a member. Earn one free month of membership for 3 contributions to the site per month. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisUser">Click here to join.</a></li>
-            <li>Member. These Vary much needed folks have full access to the site. They have contributed financially to help finance the site. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisUser">Click here to join.</a>
-             <li>Affiliate. Companies that support this site.
-            They have contributed financially to help finance the site. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisUser">Click here to join.</a>
-           <li>Hosted Site. There are two levels here. Your site will look the way you want.
-               <ul>
-                <li>Your domain on our server. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;L=eng&amp;P=DomainHosting">Click here to join.</a>
-                <li>A site on our domain. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisHosted">Click here to join.</a> 
-               </ul>
-          </ul>
-              <p>PS. You can be both a Beta Tester and a Contributing Member</p>
-
+            <p>
+            Join us
 
 
 <br>
