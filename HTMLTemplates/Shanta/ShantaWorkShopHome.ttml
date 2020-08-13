@@ -25,17 +25,33 @@
 	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
 	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
 	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+[% procedure = data.procedure %]
 
 
 [% IF username == 'Shanta' %]
 <h3>Things you need to do.</h3>
 [% embed(todolistview) %]
 [% END %]
+[% IF procedure %]
+
+[% embed(data.procedure) %] 
+[% ELSE %]
 
 
 
 <p>Here  we create things with wood and learn how to do it.
 
+<ul>
+<li><h3><a href="/cgi-bin/index.cgi?site=ShantaWorkShop&amp;procedure=YurtView">Yurt construction Parts, and Kits.</a></h3>
+<li><h3>Timber Frame Parts and Kits.</h3>
+<li><h3>Brewing gear</h3>
+<li><h3>Carving projects</h3>
+
+<li><h3>bee hive wood ware.</h3> Frames, boxes, top, etc.
+</ul>
+
+<p>See Products list for more Details.
+[% END %] 
 <a href="http://usbm.ca" target="_Blank" >USBM</a>. We are proud to sponsor The Universal School of Biological Life Site.
 <br>
 <br>                      <script type=" text/javascript" src="/cgi-bin/News/news.cgi?embed=1&amp;site=Shanta&amp;simple_search_string=Shanta&amp;records_per_page=20">
