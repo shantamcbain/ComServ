@@ -94,7 +94,7 @@
 <a href="/cgi-bin/Apis/apis.cgi?site=Apis&amp;view=AppToolsView&amp;[% session_string %]" name="AppToolsView" title="Click here for details of tool this application offerers">Details of the app.</a>				
 
 <H2><B>Join Our Apis discussion list</b></H2>
- <FORM Method=POST ACTION="http://beemaster.ca/mailman/subscribe/apis-discussion-beemaster.ca"><br>
+ <FORM Method=POST ACTION="http://beemaster.ca/mailman/subscribe/apis_discussion_beemaster_beemaster.ca"><br>
  Your E-mail address: <INPUT type="Text" name="email" size="30" value="[% email %]"><br>
  Your Name (optional): <INPUT type="Text" name="fullname" size="30" value="[% firstname %]&nbsp; [% lastname%]"><br><br>
  You may enter a privacy password below. This provides only mild security, but should<br>
