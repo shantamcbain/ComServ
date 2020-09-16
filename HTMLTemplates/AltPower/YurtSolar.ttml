@@ -1,0 +1,101 @@
+[% Version = 'v 0.01 2020/09/02 shanta' %]
+
+[%#	$Id: YurtPower.ttml, v0.01 2020/09/02
+#cloned to  v0.01 2018/12/12 shanta,
+# PiPower.ttml,v 0.02 2020/09/02 17:43:15 shanta Exp shanta $	
+
+# Ideally this template should be converted into a static CSS file and
+# be served as /foo/bar.css and not via CGI, since it slows things
+# down and dozen't allow browsers to cache the CSS content.
+
+# otherwise this template is stand-alone, i.e. it dozen't rely on any
+# variables from outside.
+
+%]
+[%# embed('InheretedVariablesView') %] 
+
+ [% PROCESS DefaultDbi.ttml %]
+ [% username = data.session_object.getAttribute('-KEY','auth_username') %]
+ [% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+ [% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+ [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+ [% site = SiteName %]
+ [% SiteDisplayName = data.site_display_name %]
+[% session_id = data.session_object.getId() %]
+ [% session_string = "session_id=$session_id" %]
+
+[% IF group == "Mentoring"	%]
+[% embed(data.page_top_view,['-PAGE_TITLE','Mentor home.']) %]
+[% ELSE %]
+
+[%# embed(data.page_top_view,['-PAGE_TITLE','Electrical Vehicle Home page.']) %]
+[% END %]E
+[% embed('ErrorDisplayView') %]
+
+[%# embed('InheretedVariablesView') %]
+
+
+<!-- Begin PiPower View   -->
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+ [% Version %]  
+ 
+[%# embed('InheretedVariablesView') %]
+
+
+[% SiteName = data.site_name%]
+[% IF data.debug == 1 %]
+Variable active in DevHomeView
+[% embed('InheretedVariablesView') %]
+[% END %]
+ 
+
+<A NAME="PageTop"></A>
+<br>
+<br>
+<p>Thanks for your interest in our Yurt Power system.</p>
+
+
+
+   [% IF username %]
+   
+ 	
+	 
+ 	[% ELSE %]
+  
+   <p>You will now need to create an account on the system.
+   click on one of the Logon links then click register.
+    </p>
+	[% END %]
+
+<p> This project is to develop a basic power supply for powering a Yurt rv or other larger portable system.It has both Hardware and software.
+</p>
+ <ol>
+<li><h2>Hardware </h2>
+<ul>
+ <li>Battery Battery Modules  12 or 24 volt.</li>
+<li>Size will give 3 days of 12 or 24 volt</li>
+<li>Solar Array. The conflagration will vary Depending on your charge controller. We will show two examples.  </<li>
+<li>Battery 
+  <li>PackBoth examples of charge controllers will automatically configured to battery pack you hook it up to. This is the reason you attach your battery pack to the controller first.</li>
+  <li><p>voltage reading </p></li>
+</li><p>amp reading</p></li>
+<p>relays to turn on and off each battery for both load and charge.</p>
+</ul></li>
+ <li><h2>Software </h2>
+
+  <li>record all values volt amps temp</li>
+  <li>record direction of current.</li>
+  <li>Show graph </li>
+  <li>Make decision's as to with the data.</li>
+ </li>
+</ol>
+
+
+
+
+
+
+
+
