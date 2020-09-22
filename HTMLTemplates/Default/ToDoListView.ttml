@@ -9,6 +9,6 @@
 [% IF SiteName == 'SLT' %]
  [% embed ('SQLSiteName' )   %]                            
  [% ELSE %]
-callAQLAll[% embed ('AQLAll' )   %]  
+callAQLAll[% embed ('SiteToDoSQL' )   %]  
  [% END %]
 </table>
