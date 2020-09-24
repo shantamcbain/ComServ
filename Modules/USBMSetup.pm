@@ -5,8 +5,10 @@ use strict;
 use CGI::Carp qw(fatalsToBrowser);
 #Create local Varible for use here only
 # $site = 'file';
+
 my $site = 'MySQL';
 my $datesourcetype = 'file';
+
 
 
 sub new {
