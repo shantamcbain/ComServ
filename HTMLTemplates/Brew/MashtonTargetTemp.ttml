@@ -17,7 +17,7 @@
  <p>This will be a graph mash temp log Data will eventually come from sensors</p>
 
 
-<a href="/cgi-bin/Brew/temp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;batchnumber=[% batchnumber %]&amp;Nav_link=1" target=_blank name="Add Ingredients"  title="Add New Temp" style="AddButtonStyle">Add new temp</a> This will open a new tab. Enter the data save and close the window refresh this page for data to show.
+<a href="/cgi-bin/Brew/temp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;batchnumber=[% batchnumber %]&amp;Nav_link=1" target=_blank name="Add temp"  title="Add New Temp" style="AddButtonStyle">Add new temp</a> This will open a new tab. Enter the data save and close the window refresh this page for data to show.
 [% time = 0 %]
 <table>
  <tr><td><table id="brewtime"  >
@@ -36,7 +36,7 @@
 [% time = time + 10 %]
 
 [% END %]
-<tr> <td colspan="5"><a href="/cgi-bin/Brew/temp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;batchnumber=[% batchnumber %]&amp;time=[% time %]&amp;Nav_link=1" target=_blank name="Add Ingredients"  title="Add New Temp" style="AddButtonStyle">Add new temp [% time %]</a></td></tr></table>
+<tr> <td colspan="5"><a href="/cgi-bin/Brew/temp.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;batchnumber=[% batchnumber %]&amp;time=[% time %]&amp;Nav_link=1" target=_blank name="Add temp"  title="Add New Temp" style="AddButtonStyle">Add new temp [% time %]</a></td></tr></table>
  </td>
  <td>
   <h3>Graph<h3>
