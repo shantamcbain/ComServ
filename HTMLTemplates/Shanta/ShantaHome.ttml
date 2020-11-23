@@ -43,7 +43,7 @@
 <ul>
    <li><h2>Calendar</h2>
 	<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FVancouver&amp;src=c2hhbnRhbWNiYWluQGdtYWlsLmNvbQ&amp;src=cjRwMmE2cDNrdDFsYXRhdjY2dTR2NG50bWdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dGFidnZpcTlsMW5jZmxiY2VkbDc4cWExMTRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=amNybGpxY2VvOThxa29xcjE2Nm5vY3ZoNzRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ODBybGZubWZvazN2am85YW4zNXJ2ZGswNThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=OGE0Njk5YzByaDVhdmE5M3JrbGFzMWVtYmtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZGIyZjhyc2ZuMGR1ZTgxbW4wbGE4cmUzb2dAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=aTdvMjdrZ3U5NDJ0aWRnbW5jN3RrZDllZzhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW4uY2FuYWRpYW4jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&amp;src=aHQzamxmYWFjNWxmZDYyNjN1bGZoNHRxbDhAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;color=%23039BE5&amp;color=%23E67C73&amp;color=%23B39DDB&amp;color=%23009688&amp;color=%23E67C73&amp;color=%237986CB&amp;color=%237986CB&amp;color=%23E4C441&amp;color=%234285F4&amp;color=%23009688&amp;color=%2333B679" style="border:solid 1px #777" width="800" height="600" frameborder="0" scrolling="no"></iframe>/li>
-   <li> edit <a href="calendar.google.com" target="_self">calendar</a>.</li>
+   <li> edit <a href="http://calendar.google.com" target="_self">calendar</a>.</li>
 </ul>
 
 [% ELSE %]
