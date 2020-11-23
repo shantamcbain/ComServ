@@ -168,7 +168,14 @@ recipe code [%  recipecode  %]
 <ul>
  <li><h3>Name of brew [%  recipe_name %]</h3> 
  <p>Recipe Code	[% recipe_code %] </p>
- <li>Grains[% embed('IngredianceList') %] from recipe file  <p>[%  ingredients %] .</p></li> 
+ <li>Grains
+ 
+ 
+ [% embed('IngredianceList') %] 
+ 
+ from recipe file  <p>[%  ingredients %] .</p>
+ 
+ </li> 
 
 <li>Fill Grain Bill  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
                                   WHERE  (batchnumber  = '$batchnumber' AND

@@ -1,0 +1,415 @@
+public uint LmR { get; set; } //Lvc_Max_Runtime
+        public double LmV { get; set; } //
+        public double LcV { get; set; }
+        public double LmD { get; set; }
+        public bool ChC { get; set; } //chipControlledCharging
+        public string IpAddress { get; set; } = "0.0.0.0";
+        public int CiD { get; set; } //Charger_ID
+        public double MaV { get; set; } //max_voltage
+        public double StV { get; set; } //store_voltage
+        public double MiV { get; set; } //min_voltage
+        public int DiR { get; set; } //discharge_rate
+        public int MaT { get; set; } //max_temp
+        public int DiC { get; set; } //discharge_cycles
+        
+        public int CcO { get; set; } = 1; // Charge Correction
+        public int DcO { get; set; } = 1; //Discharge Correction
+public double LmV { get; set; } //Lvc Min voltage
+        public double LcV { get; set; } //Lvc Charge target voltage
+        public double LmD { get; set; } //Lvc Max Volt Drop
+        
+        Martin MeuweseOct 3, 2020, 9:15 AM
+Hi Martin I just got my first mega charger 2 more on order. I run Linux so all the stock stuff is not to useful.  Installed both the apps and they cannot see the device and will not accept editing of the ip address. I program in Perl so your web interface is more were I want to go. anyway. How do I get involved in your project?
+What I would suggest is that you join our beta testers group. https://chat.whatsapp.com/HbsgRDJihMv52833OtkyfE
+You can now call each other and see information like Active Status and when you've read messages.
+The latest firmware has a web interface that is still very rudimentary.
+But someone else is writing already and api in java to talk to the mcc
+Also I can provide you with api details whereas it would be appreciated if someone would be able to create a nice web page for it. Then I publish that on the megacellmonitor website.
+I can't join whats up group there seems to be no way to join without downloading an app. Which I as a rule do not do. especial to ipad.
+I would like the api than I can write a Perl script to import into my rpi that I will have on line all the time. This app of course will be able to be used on any server that runs Perl.
+Will send you some details later when I’m behind my pc.
+Cool got several pi4’s for my powerwall monitoring running python
+Though I suck still in that area 😉 it works but not great. The mcc I Tried to ty it into grafana with graphite - but no luck yet.
+I am picking up Python slowly. Little easier to use than Perl. My web applications run Perl and are vary geeky built to be working but not to popular on the looks.
+Send me your Python code. a Git link if you use github That we can  share update.
+http://192.168.1.36/api/get_config_info
+To read current settings
+Response:
+{
+  "MaV": 4.2,
+  "StV": 3.7,
+  "MiV": 3,
+  "DiR": 1000,
+  "MaT": 40,
+  "DiC": 1,
+  "FwV": "Firmware V3.2.3",
+  "FirmwareVersion": "Firmware V3.2.3",
+  "ChC": false,
+  "LmV": 0.3,
+  "LcV": 3.6,
+  "LmD": 1.1,
+  "LmR": 90,
+  "CcO": -10,
+  "DcO": -10
+}
+public uint LmR { get; set; } //Lvc_Max_Runtime
+        public double LmV { get; set; } //
+        public double LcV { get; set; }
+        public double LmD { get; set; }
+        public bool ChC { get; set; } //chipControlledCharging
+        public string IpAddress { get; set; } = "0.0.0.0";
+        public int CiD { get; set; } //Charger_ID
+        public double MaV { get; set; } //max_voltage
+        public double StV { get; set; } //store_voltage
+        public double MiV { get; set; } //min_voltage
+        public int DiR { get; set; } //discharge_rate
+        public int MaT { get; set; } //max_temp
+        public int DiC { get; set; } //discharge_cycles
+fantastic I can get a responce!!!!
+public int CcO { get; set; } = 1; // Charge Correction
+        public int DcO { get; set; } = 1; //Discharge Correction
+public double LmV { get; set; } //Lvc Min voltage
+        public double LcV { get; set; } //Lvc Charge target voltage
+        public double LmD { get; set; } //Lvc Max Volt Drop
+http://192.168.1.36/api/get_cells_info
+with POST : {"settings": [{"charger_id": 1}]}
+Increment the charger ID when you have more then 1
+Response
+{
+  "cells": [
+    {
+      "CiD": 0,
+      "voltage": 3.52,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 14.19355,
+      "ChC": false
+    },
+    {
+      "CiD": 1,
+      "voltage": 3.5,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 15.48387,
+      "ChC": false
+    },
+    {
+      "CiD": 2,
+      "voltage": 1.476,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 15.48387,
+      "ChC": false
+    },
+    {
+      "CiD": 3,
+      "voltage": 4.004,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 15.48387,
+      "ChC": false
+    },
+    {
+      "CiD": 4,
+      "voltage": 3.58,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 15.16129,
+      "ChC": false
+    },
+    {
+      "CiD": 5,
+      "voltage": 3.62,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 16.12903,
+      "ChC": false
+    },
+    {
+      "CiD": 6,
+      "voltage": 3.588,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 16.12903,
+      "ChC": false
+    },
+    {
+      "CiD": 7,
+      "voltage": 3.616,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 16.12903,
+      "ChC": false
+    },
+    {
+      "CiD": 8,
+      "voltage": 3.62,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 16.77419,
+      "ChC": false
+    },
+    {
+      "CiD": 9,
+      "voltage": 3.576,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 16.45161,
+      "ChC": false
+    },
+    {
+      "CiD": 10,
+      "voltage": 3.608,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 16.12903,
+      "ChC": false
+    },
+    {
+      "CiD": 11,
+      "voltage": 3.604,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 17.74193,
+      "ChC": false
+    },
+    {
+      "CiD": 12,
+      "voltage": 3.584,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 15.80645,
+      "ChC": false
+    },
+    {
+      "CiD": 13,
+      "voltage": 3.628,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 15.16129,
+      "ChC": false
+    },
+    {
+      "CiD": 14,
+      "voltage": 3.6,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 16.12903,
+      "ChC": false
+    },
+    {
+      "CiD": 15,
+      "voltage": 3.624,
+      "amps": 0,
+      "capacity": 0,
+      "chargeCapacity": 0,
+      "status": "Idle",
+      "esr": 0,
+      "action_length": 0,
+      "DiC": 1,
+      "complete_cycles": 0,
+      "temperature": 15.80645,
+      "ChC": false
+    }
+  ]
+}
+This is for reading settings;
+lets get started with this first. When you are done, then i can send you the commands for settings and operations
+Please document this on a HTML page; That helps me also as i can then publish it on the website.
+=========
+ttp://192.168.1.36/api/set_cell
+POST: {"cells": [{"CiD": 0, "CmD": "alr"}, {"CiD": 1, "CmD": "alr"}, {"CiD": 2, "CmD": "alr"}, {"CiD": 3, "CmD": "alr"}, {"CiD": 4, "CmD": "alr"}, {"CiD": 5, "CmD": "alr"}, {"CiD": 6, "CmD": "alr"}, {"CiD": 7, "CmD": "alr"}, {"CiD": 8, "CmD": "alr"}, {"CiD": 9, "CmD": "alr"}, {"CiD": 10, "CmD": "alr"}, {"CiD": 11, "CmD": "alr"}, {"CiD": 12, "CmD": "alr"}, {"CiD": 13, "CmD": "alr"}, {"CiD": 14, "CmD": "alr"}, {"CiD": 15, "CmD": "alr"}]}
+switch (statusChange)
+            {
+                case EnqueueChargerCellOperation.eStatusChange.Not_set:
+                    {
+                        throw new ApplicationException("StatusChange not set for UpdateCellData");
+                    }
+                case EnqueueChargerCellOperation.eStatusChange.StopMCapTest:
+                    {
+                        return "omc";
+                    }
+                case EnqueueChargerCellOperation.eStatusChange.StopDischarging:
+                    {
+                        return "odc";
+                    }
+                case EnqueueChargerCellOperation.eStatusChange.StopCharging:
+                    {
+                        return "sc";
+                    }
+                case EnqueueChargerCellOperation.eStatusChange.StartCharging:
+                    {
+                        return "ach";
+                    }
+                case EnqueueChargerCellOperation.eStatusChange.StartDischarging:
+                    {
+                        return "adc";
+                    }
+                case EnqueueChargerCellOperation.eStatusChange.StartMCapTest:
+                    {
+                        return "act";
+                    }
+                case EnqueueChargerCellOperation.eStatusChange.Start_Lvc_Cell_Recovery:
+                    {
+                        return "alr";
+                    }
+                case EnqueueChargerCellOperation.eStatusChange.Stop_Lvc_Cell_Recovery:
+                    {
+                        return "olr";
+                    }
+                case EnqueueChargerCellOperation.eStatusChange.StartStoreCharge:
+                    {
+                        return "asc";
+                    }
+                case EnqueueChargerCellOperation.eStatusChange.StopStoreCharge:
+                    {
+                        return "osc";
+                    }
+                case EnqueueChargerCellOperation.eStatusChange.DisposeStart:
+                    {
+                        return "dsp";
+                    }
+                case EnqueueChargerCellOperation.eStatusChange.DisposeStop:
+                    {
+                        return "dps";
+                    }
+                default:
+                    {
+                        throw new ApplicationException("Incorrect command received for processing");
+                    }
+Thanks I have my day of programing set
+shant@usbm.ca
+shanta@usbm.ca
+CellDoctor.ino.bin
+Latest firmware which includes a basic web interface
+http://192.168.1.36/api/set_config_info
+POST: {"LmR": 90, "CcO": -10, "DcO": -10, "LmV": 0.3, "LcV": 3.6, "LmD": 1.1, "ChC": false, "MaV": 4.24, "StV": 3.6, "MiV": 3, "DiR": 1000, "MaT": 40, "DiC": 1}
+public uint LmR { get; set; } //Lvc_Max_Runtime
+        public double LmV { get; set; } //Lvc Min voltage
+        public double LcV { get; set; } //Lvc Charge target voltage
+        public double LmD { get; set; } //Lvc Max Volt Drop
+        public bool ChC { get; set; } //chipControlledCharging
+        public string IpAddress { get; set; } = "0.0.0.0";
+        public int CiD { get; set; } //Charger_ID
+        public double MaV { get; set; } //max_voltage
+        public double StV { get; set; } //store_voltage
+        public double MiV { get; set; } //min_voltage
+        public int DiR { get; set; } //discharge_rate
+        public int MaT { get; set; } //max_temp
+        public int DiC { get; set; } //discharge_cycles
+public int CcO { get; set; } = 1; // Charge Correction
+        public int DcO { get; set; } = 1; //Discharge Correction
+that should be it - to get you reading and writing to the charger
+Is the charger set by default to test cells?
+no; send mCap command
+then i runs the test automatically; it is coded in the firmware.
+EnqueueChargerCellOperation.eStatusChange.StartMCapTest:
+                    {
+                        return "act";
+                    }
+Cmd="act"
+Can you swap cells out as the reach end of test?
+yes;
+but they won't autostart; You need to code to read for "New cell inserted" and then send the Cmd="act"
+and when the charger reset / reboots / restarts = all statuses shall become 'idle'
+That is how you can see something happend unexpectedly
+Also telnet to port 8888
+that is debug output port
+OTA is "http://" + strIP + ":8080/firmware"
+Wed 11:17 PM
+How is it going?
+making good progress on the code?
+Fri 10:26 PM
+Had a major fire and lost my home fortunately I had the unit at another location and now in a position to start coding again.
+Omg that is horrible. I hope the endurance covers the rebuild.
+Insurance
