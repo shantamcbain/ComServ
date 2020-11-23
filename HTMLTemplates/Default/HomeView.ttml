@@ -143,7 +143,7 @@
 		         SiteName == "WBDev" %]
 			[% embed ('WBHomeView') %]
 		[% ELSIF SiteName == "USBM"%]
-			[% embed ('USBMHomeView') %]
+			[% embed ('USBMHome') %]
 		[% ELSE %]
 		<!-- Begin Demo Home View -->  
 			[% embed ('DemoHomeView') %]
