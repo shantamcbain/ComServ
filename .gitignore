@@ -39,4 +39,5 @@
 /.project
 /cgi-bin/.project
 /epic_links/.project
-/cgi-bin/Modules/SiteSetup
+/cgi-bin/Modules/SiteSetup.pm
+Modules/SiteSetup.pm
