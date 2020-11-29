@@ -1,0 +1,62 @@
+[% ViewVersion = '/cgi-bin/HTMLTemplates/Recycling.ttml,v0.1 2020/08/12 17:43:15 shanta Exp'%]
+[%# the ENCY template
+#	$Id: EVHome.ttml,v 1.1 2012/09/21 19:25:15 shanta Exp $	
+#file location/cgi-bin/HTMLTemplates/USBM
+%]
+[% PROCESS DefaultDbi.ttml %]
+
+[%# embed(data.page_top_view,['-PAGE_TITLE', EVHome page.']) %]
+
+[%# embed('ErrorDisplayView') %]
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+        [% session_string = "session_id=$session_id" %]
+
+[% END %] 
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+   [% LastUpdate = data.last_update %]
+   [% SiteLastUpdate = data.site_last_update %]
+
+
+
+</div>
+<div ALIGN="center">
+<A NAME="PageTop"></A>
+[%# ViewVersion %]</div>
+<h2>Recycling </h2>
+
+<p>Reclcling is an important part of our enviromental foot print. 
+</p>
+<p>In this department we will explore the many aspect of recycling.</p>
+
+<il>
+ <li>Plastics </li>
+ <li>Batteries and cells</li>
+ <li>Metals</p>
+ <li>Paper</li>
+</ul>
+ 
+ [%# FOREACH link = DBI.query("SELECT * FROM page_tb
+                                  WHERE  (status  = 2 AND
+                                         page_code = 'evhome' AND
+                                         sitename = 'SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+                [%# PROCESS pagefields.ttml %]
+       [% END %]                  
+
+
+  <p> Our <a href="/cgi-bin/ENCY/ency.cgi?site=USBM&[% session_string %]">En3cyclopidia of life </a></p>
+  
+<a href="http://helpdesk.computersystemconsulting.ca" target="_Blank" > HelpDesk</a>
+[% embed('LiveEditAdmin') %]	      
+ 
+[%# embed('CSCCopyRight') %]
+[%# embed(data.page_bottom_view) %]
+
