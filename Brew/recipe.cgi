@@ -624,7 +624,7 @@ my %type =
         'ale'    		=>    'Ale',            
         'other'    	=>    'Other',            
         'pilsener'   =>    'Pilsener',            
-        'meed'    	=>    'Meed',            
+        'mead'    	=>    'Mead',            
         'lager'    	=>    'Lager',            
         'wheat'    	=>    'Wheat',
         'ipa'        =>		'India Pale Ale',
@@ -850,9 +850,27 @@ maturation => [
     ],
 
 );
+
+
+if ($catagory eq "mead"){
+
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
       qw(sitename),
+      qw(category),
+      qw(recipe_code),
+      qw(recipe_name),
+      qw(recipe_size),
+      qw(ingredients),
+      qw(gravity),
+      qw(alcohol),
+      qw(maturation),
+      qw(instructions),
+      qw(comments),
+     );
+}
+else{
+     qw(sitename),
       qw(category),
       qw(recipe_code),
       qw(recipe_name),
@@ -872,6 +890,7 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
       qw(instructions),
       qw(comments),
      );
+}
 
 my @INPUT_WIDGET_DEFINITIONS = (
     -BASIC_INPUT_WIDGET_DEFINITIONS => \%BASIC_INPUT_WIDGET_DEFINITIONS,
@@ -917,7 +936,6 @@ else{
 	        },
 	);
 
-    }
 my @DROPLIST_DATASOURCE_FIELD_NAMES = qw(
         record_id
         status
@@ -1285,7 +1303,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -KEY_FIELD                              => 'record_id',
     -BREW_NAME                              => $CGI->param('brewname')||'Chouse', 
     -RECIPE_CODE                            => $CGI->param('recipecode'),
-    -CATAGORY                               => $CGI->param('cat'),
+    -CATEGORY                               => $CGI->param('cat'),
     -SITE_NAME                              => $SiteName,
     -PAGE_TOP_VIEW           =>  $CGI->param('page_top_view') ||  $page_top_view ,
     -PAGE_BOTTOM_VIEW        =>  $CGI->param('page_bottom_view') || $page_bottom_view,
