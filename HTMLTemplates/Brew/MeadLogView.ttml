@@ -1,0 +1,486 @@
+[% version = " v0.01 2020/12/07" %
+[%#	$Id: MeadLogView.ttml,v 0.01 2020/12/07 06:42:47 shanta Exp shanta $	%]
+<!-- BrewLogView [% version %]-->
+       [% AppVersion = data.app_ver %]
+ 
+ [% PROCESS DefaultDbi.ttml %]
+
+[%# embed(data.page_top_view,['-PAGE_TITLE','Our Mead Brewing Log ' data.app_ver $version ]data.app_ver) %]
+
+[% embed('ErrorDisplayView') %]
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+      [% BrewName = data.recipe_code %]
+
+   [% BrewName = data.session_object.getAttribute('-KEY','BrewName') %]
+	[% BatchNumber = data.session_object.getAttribute('-KEY','batchnumber') %]
+   [% username = data.session_object.getAttribute('-KEY','auth_username')%]
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+        [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+        [% email = data.session_object.getAttribute('-KEY','auth_email') %]
+       [% Batch = data.batchnumber %]
+      [% RecipeCode = data.recipecode %]
+      [% recordid = data.recordid %]
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+// document.frmLinkList.FileName.options[1].selected = true
+
+function CheckSelection() {
+    var selection = document.frmLinkList.FileName.options[document.frmLinkList.FileName.selectedIndex].value
+    if (selection != "None") {
+        location.href = selection;
+        return false;
+    }
+    else
+        return false;
+}
+
+function QuickClick(list) {
+    return false
+    //var selection = list.options[list.selectedIndex].value
+    //if (selection != "None") 
+    //    location.href = selection
+}
+
+//-->
+</SCRIPT>
+<table width="100%" border="0" cellspacing="0" cellpaddiBatch Numberng="0">
+<tr>
+<td>
+
+<A NAME="PageTop"></A>
+[% BrewItemListTb = 'brew_item_list_tb'%]
+<h2>Our brewing Log [% version %] </h2>
+<h5>Variables</h5>
+	<ol>
+		<li>SiteName  = [% data.sitename %].data</li>
+		<li>Batch  Number   = [% data.batchnumber %].data</li>
+		<li>Batch number = [% Batch %]</li>
+	    <li>BrewName  = [% BrewName %].session</li>
+		<li>App verson  = [% data.app_ver %].data</li>
+	    <li>Recipe Code = [%  data.recipecode %].data</li>
+		  <li>    [% RecipeCode %]</li>
+		  <li>BatchNumberS [% BatchNumber %]</li>
+</ol>
+<h5>Logs</h5>
+[%# Batch = BatchNumberS %]
+ 
+  <table>
+   <tr><td>Record id</td><td>Date</td><td> Batchnumber</td><td>recipe code</td><td>description </td><td>category</td><td>comments</td><td>details</td>
+ [%# FOREACH link = DBI.query(" SELECT * FROM  brew_batch_tb
+	 	                                  WHERE  sitename = 'Brew'
+		                                  
+		                                  ORDER BY start_date, recipecode
+		                                  ")%]    
+ 
+    <tr> 
+    <td>[%#  record_id    = link.record_id  %][%  record_id %]</td></td>
+   <td>  [%# date         = link.start_date  %][%  date %]</td></td>
+    <td> [%#  batchnumber  = link.batchnumber %][% batchnumber  %]</td>
+   <td>  [%#  recipecode = link.recipecode %][% recipecode  %]</td>
+    <td>[%#  brew_name  = link.brew_name %][%brew_name %]</td>
+    <td> [%#  description  = link.description %][%description %]</td>
+    <td> [%#  comments     = link.comments    %] [%  comments %]</td>
+    <td> <a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;[% session_string %]&batchnumber=[% batchnumber  %]&amp;recipecode=[% item.recipecode %]amp;display_details_view.x=15&display_details_view.y=12&amp;record_id=[% record_id %]"  target="blank" title="details "><font   class="LeftSideBarNavStyle">Details</font></a>
+	</tr>
+[%# END %]
+</table>
+
+<FORM METHOD=POST  ACTION="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BrewLogView&batchnumber=[% item.batchnumber %]&amp;recipecode=[% item.recipecode %]" NAME="frmLinkList" onSubmit="return CheckSelection()">
+
+<SELECT  NAME="FileName" WIDTH=20>
+<OPTION VALUE="None">Select a batch --->
+
+ [% FOREACH item = DBI.query("SELECT * FROM brew_batch_tb
+	                                WHERE  ( sitename   =  'Brew' 
+                                     )
+                                   ORDER BY start_date, batchnumber DESC
+	                            ")%]  
+<OPTION VALUE="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&[% session_string %]&view=BrewLogView&batchnumber=[% item.batchnumber %]&amp;recipecode=[% item.recipecode %]&record_id=[% item.record_id %]">[% item.batchnumber %] [% item.brewname%][% item.date%]</option>
+
+[% END %]
+            
+
+<INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
+<br>
+<a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&display_add_form=on&[% session_string %]" name="Add Batch"  title="Add New Batch" style="AddButtonStyle">Add</a>
+
+
+
+
+
+</FORM>
+[%# BrewName = RecipeCode %]
+[%BatchCode = data.batchnumber %]
+
+
+[% FOREACH link = DBI.query(" SELECT * FROM  brew_batch_tb
+	 	                                  WHERE  batchnumber = '$BatchCode'
+		                                  
+		                                  ORDER BY start_date, batchnumber
+		                                  ")%]    
+     [%  batchrecord_id    = link.record_id  %]
+     [%  batchnumber  = link.batchnumber %]
+     [%  recipecode  = link.recipecode %]
+     
+     	[% END %]
+     	
+<h2>[% BrewName  %]</h2>
+recipe code [%  recipecode  %] 
+[% FOREACH link = DBI.query(" SELECT * FROM  brew_recipe_tb
+	 	                                  WHERE  recipe_code = '$recipecode'
+		                                  
+		                                  ORDER BY recipe_code
+		                                  ")%]    
+     [%  record_id    = link.record_id  %]
+     [%  recipe_code  = link.recipe_code %]
+     [%  recipe_name  = link.recipe_name %]
+     [%  boiltime     = link.boiltime %]
+     [%  description  = link.description %]
+     [%  category     = link.category %]
+     [%  gravity      = link.gravity %]
+     [%  ingredients  = link.ingredients %]
+     [%  mashtontemp  = link.mashtontemp %]
+     [%  spargtemp    = link.spargtemp %]
+     [%  instructions = link.instructions %]
+     [%  alcohol      = link.alcohol %]
+     [%  colour       = link.colour %]
+     [%  ph           = link.ph  %]
+     [%  maturation   = link.maturation %]
+     [%  comments     = link.comments    %] 
+     	[% END %]
+
+<h3>Batch Number [% batchnumber %] <br> 
+<a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&view=BrewLogView&display_modification_form=on&record_id=[% recordid %]&[% session_string %]" name="Modify Batch"  title="Add New Batch" style="AddButtonStyle">Modify</a> </h3>
+[% PROCESS DefaultDbi.ttml %]
+
+<ul>
+ <li><h3>Name of brew [%  recipe_name %]</h3> 
+ <p>Recipe Code	[% recipe_code %] </p>
+ <li>Grains
+ 
+ 
+ [% embed('IngredianceList') %] 
+ 
+ from recipe file  <p>[%  ingredients %] .</p>
+ 
+ </li> 
+
+<li>Fill Grain Bill  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'FGB' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+         [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]        
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=FGB" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+ 
+ <li>Fill Mash ton and sparge Kettle  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'FM' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+         [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]        
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=FM" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+
+<li>Fire burner  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'FB' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+           [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=FB" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+</li>
+
+<li>Grind Grain  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'GG' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=GG" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+</li>
+<li>sparge kettle target temp  [%  spargtemp    %].
+ <li>MashtonTargetTemp.ttml [%  mashtontemp %]</li>
+ 
+
+
+ <li>Start Mash  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'SM' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+      <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=SM" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+
+ [% embed('MashtonTargetTemp') %]
+ 
+  
+<li>Heat to stop enzimes  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'MH' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=MH" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+
+<li>finish enzyme kill  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'EK' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=EK" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+<li> Boil Burn On  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'BBO' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=BBO" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+<li> Boil start  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'B' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=B" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+<li>Rolling Boil start  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'RB' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=RB" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+<li>First Hop [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'FH' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=FH" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+<li>Second Hop [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'SH' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=SH" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+<li> Third Hops  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'TH' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=TH" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+<li>Whirlflock  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'WF' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=WF" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+<li> Boil End  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'BE' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=BE" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+<li>rest time 15 min
+
+<li> pump chill start  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'CS' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=CS" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+<li> pump chill finish  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'CE' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_basestring %]&batchnumber=[% batchnumber %]&time_code=CE" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+<li>OTG [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'OTG' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=OTG" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+<li> Yeast  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'Y' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=Y" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+<li>Primary  [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'P' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=P" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>           
+</li>
+<li>1st rack [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'S' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=S" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>  
+   </li>             
+<li>2nd rack [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = '2' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    base left out of sparge kettle emtied and installed
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=2" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>  
+   </li>             
+<li>3nd rack [% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'T' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=T" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>  
+   </li>
+   <li>Bottled[% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'BOT' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=BOT" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>  
+   </li>  
+   <li>10 gallon keg[% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = '10' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %]&nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=10" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>  
+   </li>
+ 
+   <li>5 gallon keg[% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = '5' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]    
+             [% link.start_date %]/[% link.start_mon %]/[% link.start_day %]   &nbsp;   [% link.time %] &nbsp; [% link.comments %]
+       [% END %]                  
+       <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=5" target="_self" name="Add time" style="AddButtonStyle" title="Add time">Add</a>  
+   </li>
+   
+<li><h3>Notes</h3> 
+
+[% FOREACH link = DBI.query("SELECT * FROM brew_time_tb
+                                  WHERE  (batchnumber  = '$batchnumber' AND
+                                         time_code = 'notes' AND
+                                         sitename = '$SiteName' )
+                                  ORDER BY sitename
+                                  ")%]
+                                  
+              <p> [% link.comments %] </p>
+             
+       [% END %]                  
+               <a href="/cgi-bin/Brew/time_log.cgi?site=[% SiteName %]&view=BrewLogView&display_add_form=on&record_id=[% recordid %]&[% session_string %]&batchnumber=[% batchnumber %]&time_code=notes" target="_self" name="Add time" style="AddButtonStyle" title="Add Note">Add Note</a>                   
+      </li>                            
+                                      
+</ul>
+
+
+
+
+[% embed('CSCCopyRight') %]
+
+
+</td>
+</tr>
+</table>
+
+
+
+
