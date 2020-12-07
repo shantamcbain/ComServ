@@ -3,6 +3,7 @@
 /*v1.9
 *~
 *.orig
+.gitignor
 /HTMLTemplates/Default/ToDoList.ttml~HEAD
 /.metadata/.lock
 /.metadata/.log
@@ -40,6 +41,7 @@
 /cgi-bin/.project
 /epic_links/.project
 /cgi-bin/Modules/SiteSetup.pm
+Modules/BrewSetup.pm
 <<<<<<< HEAD
 /Modules/SiteSetup.pm
 =======
