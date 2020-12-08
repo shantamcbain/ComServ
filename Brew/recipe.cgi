@@ -851,10 +851,10 @@ maturation => [
 
 );
 
-
+my @BASIC_INPUT_WIDGET_DISPLAY_ORDER; 
 if ($catagory eq "mead"){
 
-my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
+@BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
     (
       qw(sitename),
       qw(category),
@@ -869,8 +869,10 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
       qw(comments),
      );
 }
+
 else{
-my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
+
+@BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
   (  
       qw(sitename),
       qw(category),
