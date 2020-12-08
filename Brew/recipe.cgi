@@ -870,7 +870,7 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
      );
 }
 else{
- my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
+my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
   (      qw(sitename),
       qw(category),
       qw(recipe_code),
@@ -936,7 +936,7 @@ else{
                                     ],
 	        },
 	);
-
+};
 my @DROPLIST_DATASOURCE_FIELD_NAMES = qw(
         record_id
         status
