@@ -891,7 +891,7 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
       qw(instructions),
       qw(comments),
      );
-}
+};
 
 my @INPUT_WIDGET_DEFINITIONS = (
     -BASIC_INPUT_WIDGET_DEFINITIONS => \%BASIC_INPUT_WIDGET_DEFINITIONS,
