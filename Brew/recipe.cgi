@@ -852,23 +852,7 @@ maturation => [
 );
 
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER; 
-if ($catagory eq "mead"){
 
-@BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
-    (
-      qw(sitename),
-      qw(category),
-      qw(recipe_code),
-      qw(recipe_name),
-      qw(recipe_size),
-      qw(ingredients),
-      qw(gravity),
-      qw(alcohol),
-      qw(maturation),
-      qw(instructions),
-      qw(comments),
-     );
-}else{
 
 @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
   (  
@@ -892,7 +876,7 @@ if ($catagory eq "mead"){
       qw(instructions),
       qw(comments),
      ); 
-     }
+     
 
 my @INPUT_WIDGET_DEFINITIONS = (
     -BASIC_INPUT_WIDGET_DEFINITIONS => \%BASIC_INPUT_WIDGET_DEFINITIONS,
