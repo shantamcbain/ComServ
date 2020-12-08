@@ -871,7 +871,8 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
 }
 else{
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
-  (      qw(sitename),
+  (  
+      qw(sitename),
       qw(category),
       qw(recipe_code),
       qw(recipe_name),
@@ -891,7 +892,7 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
       qw(instructions),
       qw(comments),
      );
-};
+}
 
 my @INPUT_WIDGET_DEFINITIONS = (
     -BASIC_INPUT_WIDGET_DEFINITIONS => \%BASIC_INPUT_WIDGET_DEFINITIONS,
