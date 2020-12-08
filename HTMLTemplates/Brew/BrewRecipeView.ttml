@@ -81,7 +81,7 @@ function QuickClick(list) {
 [% embed('MeadRecipe') %]
 [% ELSIF Category == 'wine' %]
 Wine
-[% ELSIF Category == beer' %]
+[% ELSIF Category == 'beer' %]
 Beer
 
 [% ELSE %]
