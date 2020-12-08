@@ -26,7 +26,7 @@
     [% email = data.session_object.getAttribute('-KEY','auth_email') %]
     [% BrewName = data.brew_name %]
     [% RecipeCode = data.session_object.getAttribute('-KEY','recipecode') %]
-    [% Category = data.session_object.getAttribute('-KEY','category') %]
+    [% Category = data.session_object.getAttribute('-KEY','cat') %]
     [% PAGE = data.VIEW_NAME  %]
 <SCRIPT LANGUAGE="JavaScript">
 <!--
