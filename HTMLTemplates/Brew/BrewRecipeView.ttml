@@ -26,7 +26,7 @@
     [% email = data.session_object.getAttribute('-KEY','auth_email') %]
     [% BrewName = data.brew_name %]
     [% RecipeCode = data.session_object.getAttribute('-KEY','recipecode') %]
-    [% Category = data.session_object.getAttribute('-KEY','cat') %]
+    [% Category = data.session_object.getAttribute('-KEY','category') %]
     [% PAGE = data.VIEW_NAME  %]
 <SCRIPT LANGUAGE="JavaScript">
 <!--
@@ -76,7 +76,12 @@ function QuickClick(list) {
 <h1>Brewing Page [% version %]</h1>
 
  <h2>Our brewing recipies</h2>     [%# PROCESS RecipeValues.ttml %]
-<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=beer">Beer</a>  <a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=griuts">Grouts</a>  <a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=mead">Mead</a> <a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=wine">Wine</a>  <a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=All">All</a> 
+<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=beer">Beer</a>  
+<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=griuts">Grouts</a>  
+<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=mead">Mead</a> 
+<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=wine">Wine</a>  
+<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=All">All</a> 
+
 [% IF Category == 'mead' %]
 [% embed('MeadRecipe') %]
 [% ELSIF Category == 'wine' %]
