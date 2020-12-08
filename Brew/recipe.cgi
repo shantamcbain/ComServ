@@ -850,11 +850,8 @@ maturation => [
     ],
 
 );
-
-my @BASIC_INPUT_WIDGET_DISPLAY_ORDER; 
-
-
-@BASIC_INPUT_WIDGET_DISPLAY_ORDER = (  
+my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
+    (
       qw(sitename),
       qw(category),
       qw(recipe_code),
@@ -873,9 +870,10 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER;
       qw(bitterness),
       qw(maturation),
       qw(instructions),
-      qw(comments)
-     ); 
-     
+      qw(comments),
+     );
+
+
 
 my @INPUT_WIDGET_DEFINITIONS = (
     -BASIC_INPUT_WIDGET_DEFINITIONS => \%BASIC_INPUT_WIDGET_DEFINITIONS,
