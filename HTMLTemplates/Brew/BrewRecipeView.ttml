@@ -1,5 +1,6 @@
-[% version = " v1.1 2020/06/28" %]
-[%#	$Id: View.ttml,v 1.0 2009/9/16 06:42:47 BrewRecipe shanta Exp shanta $	%]
+[% version = " v1.11 2020/12/07" %]
+[%# version = " v1.1 2020/06/28" %]
+[%#	$Id: RView.ttml,v 1.0 2009/9/16 06:42:47 BrewRecipe shanta Exp shanta $	%]
   [% PROCESS DefaultDbi.ttml %]      [% version = data.app_ver %]
 
 [% embed(data.page_top_view,['-PAGE_TITLE','Our Recipies']) %]
@@ -51,20 +52,13 @@ function QuickClick(list) {
 
 //-->
 </SCRIPT>
- 
-      [%# PROCESS RecipeValues.ttml %]
-
-[% IF Category == 'Mead' %]
-
-[% embed('MeadRecipe') %]
-[% ELSE %]
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td>
 
 <A NAME="PageTop"></A>
 [% BrewItemListTb = 'brew_item_list_tb'%]
-<h2>Our brewing recipies</h2>
+
 <h5>Variables</h5>
 	<ol>
 		<li>SiteName    = [% data.SiteName %].data</li>
@@ -79,7 +73,18 @@ function QuickClick(list) {
 	    <li>BMS           [% BrewNameS %]</li>
 	    <li>HomeVew TTML       [% HomeView %]</li>
     </ol>
-<h5>Brewing Page [% version %]</h5>
+<h1>Brewing Page [% version %]</h1>
+
+ <h2>Our brewing recipies</h2>     [%# PROCESS RecipeValues.ttml %]
+<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=beer">Beer</a>  <a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=griuts">Grouts</a>  <a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=mead">Mead</a> <a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=wine">Wine</a>  <a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=All">All</a> 
+[% IF Category == 'mead' %]
+[% embed('MeadRecipe') %]
+[% ELSIF Category == 'wine' %]
+Wine
+[% ELSIF Category == beer' %]
+Beer
+
+[% ELSE %]
 
  
 [% IF username  == 'Shanta' OR
