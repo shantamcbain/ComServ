@@ -303,7 +303,7 @@ my @AUTH_ENCRYPT_PARAMS = (
 my %USER_FIELDS_TO_DATASOURCE_MAPPING = (
     'auth_username'  => 'username',
     'auth_password'  => 'password',
-    'auth_firstname' => 'firstname',
+    'auth_firstname' => 'firstname',,
     'auth_lastname'  => 'lastname',
     'auth_groups'    => 'groups',
     'auth_email'     => 'email'
@@ -892,7 +892,7 @@ else{
       qw(bitterness),
       qw(maturation),
       qw(instructions),
-      qw(comments)
+      qw(comments),
      );
 }
 
