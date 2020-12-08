@@ -868,9 +868,7 @@ if ($catagory eq "mead"){
       qw(instructions),
       qw(comments),
      );
-}
-
-else{
+}else{
 
 @BASIC_INPUT_WIDGET_DISPLAY_ORDER = 
   (  
@@ -893,8 +891,8 @@ else{
       qw(maturation),
       qw(instructions),
       qw(comments),
-     );
-}
+     ); 
+     }
 
 my @INPUT_WIDGET_DEFINITIONS = (
     -BASIC_INPUT_WIDGET_DEFINITIONS => \%BASIC_INPUT_WIDGET_DEFINITIONS,
