@@ -1290,7 +1290,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -SITE_NAME                              => $SiteName,
     -PAGE_TOP_VIEW           =>  $CGI->param('page_top_view') ||  $page_top_view ,
     -PAGE_BOTTOM_VIEW        =>  $CGI->param('page_bottom_view') || $page_bottom_view,
-    -BASIC_INPUT_WIDGET_DISPLAY_COLSPAN     => 2
+    -BASIC_INPUT_WIDGET_DISPLAY_COLSPAN     => 2,
 );
 
 ######################################################################
