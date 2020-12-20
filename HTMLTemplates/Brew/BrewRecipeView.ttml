@@ -104,10 +104,29 @@ Beer
 	
 	   [% END %]
 
-<FORM METHOD=POST  ACTION="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;view=BatchLogView&amp;[% session_string %]&amp;batchnumber=" NAME="frmLinkList" onSubmit="return CheckSelection()">
+
+<FORM METHOD=POST  ACTION="http://brew.computersystemconsulting.ca/cgi-bin/Brew/log.cgi?site=[% SiteName %]&[% session_string %]&view=BrewLogView&batchnumber=" NAME="frmLinkList" onSubmit="return CheckSelection()">
 
 <SELECT  NAME="FileName" WIDTH=20>
-<OPTION VALUE="None">Select a recipe --->
+<OPTION VALUE="None">Select a batch --->
+
+ [% FOREACH item = DBI.query(" SELECT * FROM brew_recipe_tb
+	                                WHERE  sitename = 'Brew'
+                                     
+                                   ORDER BY recipe_code
+	                            ")%]  
+<OPTION VALUE="http://brew.computersystemconsulting.ca/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&[% session_string %]&view=BrewRecipeView&recipecode=[% item.recipe_code %]">[% item.recipe_name %] [% item.brew_name%][% item.date%]</option>
+
+[% END %]
+ <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
+</FORM>     
+
+<a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&display_add_form=on&[% session_string %]" name="Add Batch"  title="Add New Recipie" style="AddButtonStyle">Add</a>
+
+
+
+
+
 
  
 
