@@ -34,7 +34,23 @@
 
 
 
-<p>Whats Happening in Shanta's workshop.
+<p>Whats Happening at Shanta's workshop.
+[% IF procedure  == 'Yurt' %]
+ 
+
+[% embed ('Yurt') %]
+ [% ELSIF procedure  == ('YurtView') %]
+ 
+ [% embed ('YurtView') %]
+ [% ELSIF procedure  == ('AmuAdminList') %]
+[% ELSE %]	
+
+ [% embed ('ShantaWorkshopProcedureList') %]
+
+ 
+ 
+</li>
+[% END %]
 
 <p><a href="http://usbm.ca" target="_Blank" >USBM</a>. We are proud to sponsor The Universal School of Biological Life Site.
 <br>

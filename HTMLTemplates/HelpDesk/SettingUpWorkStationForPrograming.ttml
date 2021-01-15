@@ -1,0 +1,38 @@
+[% ViewVersion = '/cgi-bin/HTMLTemplates/HelpDesk/SettingUpWorkStationForPrograming.ttml,v .01 2020/07/11 17:43:15 shanta Exp '%]
+
+<h2>List of steps to contribute to site.</h2>
+<p>Create an account for each site you wish to contribute to. Notify us so we can give you the right access 
+</p>
+<h3>Software we use.</h3>
+<ol><li>Install git</li>
+	 <li>Install git cola</li>
+	 <li>Install bluefish</li>
+	 <li>FTP client</li>
+	 <li>Install real vnc</li>
+</ol>
+<h5>There are two types of pages on the server</h5>
+
+<p>First is the state page. Content of these Pages know how you are.</p>
+
+<p>You can search databases, do conditional statements, among many others. These pages are programs. You work on the on your computer. Your editing is up loaded to the development server http://dev.beemaster.ca The FTP client give access here.
+</p>
+<p>When it works you Use git cola to push it to git hub</p>
+
+<p>If you have access rights to server admin you pull the changes to the server. Cpanel.beemaster.ca
+File management can be done here instead of FTP</p>
+
+
+
+
+
+
+
+Second stateless Don’t know how you are. 
+
+These are content stored in a database field. You can only us html5 in this field.
+Content is edited in the web browser. 
+
+Good for content you wish to change on the fly. 
+If you are admin and the page has stateless content you will see an edit page link above the area you can edit.
+
+

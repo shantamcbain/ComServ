@@ -1,4 +1,5 @@
-[% ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.10 2020/04/22 17:43:15 shanta Exp'%]
+[% ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.11 2020/08/12 17:43:15 shanta Exp'%]
+[%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.10 2020/04/22 17:43:15 shanta Exp'%]
 [%# the ENCY template
 #	$Id: USBMHome.ttml,v 1.1 2012/09/21 19:25:15 shanta Exp $	
 #file location/cgi-bin/HTMLTemplates/USBM
@@ -34,7 +35,7 @@
 
   <li> <b>New</b> <a href="https://3d.usbm.ca">3D Printing. </a> We now have a 3d printing department Have a look. </li>
   <li>
-  <p> Our <a href="/cgi-bin/ENCY/ency.cgi?site=USBM&[% session_string %]">Encyclopidia of life </a></p>  </li>
+  <p> Our <a href="/cgi-bin/ENCY/ency.cgi?site=ENCY&[% session_string %]">Encyclopidia of Biological life </a></p>  </li>
   <li>  <p>   <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BotanicalNameView">Herbs by botanical name</a> </li>
   <li></p> 
 <a href="http://helpdesk.computersystemc"onsulting.ca" target="_Blank" > HelpDesk</a>

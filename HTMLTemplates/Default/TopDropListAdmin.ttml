@@ -1,9 +1,9 @@
 [% #/HTMLTemplates/Default/TopAdminLinksView.ttml %]
 	 [% IF group    ==  'Alegro_admin' OR
-	       group    ==  'Apis_admin' OR
+	       group    ==  'Apis_Admin' OR
 	       group    ==  'BCHPA_admin' OR
 	       group    ==  'AltPower_admin' OR
-	       group    == 'AnuCollective_admin' OR
+	       group    ==  'AnuCollective_admin' OR
 	       group    ==  'Brew_admin' OR
 	       group    ==  'CS_admin' OR
 	       group    ==  'CSC_admin' OR
@@ -19,10 +19,9 @@
 	       group    ==  'Organic_admin' OR
 	       group     == 'DarmaFarmsAdmin' OR
 	       group    ==  'Shanta_admin' OR
-	       group    ==  'Stawns_admin' OR
+          group    ==  'USBM_admin' OR
 	       group    ==  'VitalVic_admin' OR
-	       group    ==  'rv_admin' OR
-	       group    == 'MJB_Admin' OR
+	       group    ==  'MJB_Admin' OR
 	       group    ==  'WB_admin' OR
 	       group    ==  'WW_admin' OR
 	       username == 'Shanta' OR

@@ -3,6 +3,8 @@
 
 [% IF username == 'Shanta' OR
        group   == 'BMaster_admin' OR
+       group   == 'USBM_admin' OR
+  	    group   == 'Apis_Admin' OR
   	    group   == 'AnuCollective_admin' OR
        group   == 'ECF_admin' OR
        group   == 'LumbyThrift_admin' OR

@@ -3,13 +3,15 @@
 
  [% IF username == 'Shanta' OR
        group    == 'AltPower_admin' OR
+  	    group    == 'Apis_Admin' OR
        group    == 'BMaster_admin' OR
  	    group    == 'AnuCollective_admin' OR
        group    == 'HE_admin' OR
        group    == 'Brew_admin' OR
        group    == 'ECFadmin' OR 
        group    == 'LumbyThrift_admin' OR 
-       group    == 'WiseWoman_admin'   %] 
+       group    == 'USBM_admin' OR
+      group     == 'WiseWoman_admin'   %] 
 <table>
 <tr>
 <td colspan="1" class="HeaderTableCellStyle"><h2>Current admin todos</h2>      </td>

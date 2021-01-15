@@ -686,7 +686,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 
     pallet_name => [
         -DISPLAY_NAME => 'Pallet Name',
-        -TYPE         => 'textfield',v 01 
+        -TYPE         => 'textfield',
         -NAME         => 'pallet_name',
         -SIZE         => 30,
         -MAXLENGTH    => 80
@@ -707,7 +707,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
                  -LABELS       => \%type_code,
                  -INPUT_CELL_COLSPAN => 3, 
     ],
-v 01 
+
 #    yard_code => [
 #        -DISPLAY_NAME => 'Yard Code',
 #        -TYPE         => 'popup_menu',
@@ -728,7 +728,7 @@ v 01
         -NAME         => 'developer_name',
         -VALUE        => 'Shanta', 
         -SIZE         => 30,
-        -MAXLENGTH    => 80v 01 
+        -MAXLENGTH    => 
     ],
 
 #    client_name => [
@@ -882,7 +882,7 @@ my	@PALLET_DATASOURCE_CONFIG_PARAMS = (
 	        -KEY_FIELDS   => ['username'],
 	        -FIELD_TYPES  => {
 	            record_id        => 'Autoincrement'
-	        },v 01 
+	        },
 	);
 my @QUEENS_DATASOURCE_FIELD_NAMES = qw(
         status

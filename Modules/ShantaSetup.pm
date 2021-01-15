@@ -15,7 +15,7 @@ my $UseModPerl = shift || 0;
 
 # This is where you define your variable mapping.
 my $self = {
-       -Site_Last_Update  => 'October 3, 2011',
+       -Site_Last_Update  => 'November 22, 2020',
        -HOME_VIEW_NAME    => 'HomeView',
 	    -HOME_VIEW         => 'HomeView',
  	    -ADDITIONALAUTHUSERNAMECOMMENTS => 'Please do not use spaces.',
@@ -32,13 +32,13 @@ my $self = {
 	    -APP_DATAFILES_DIRECTORY => "../../Datafiles",
        -HTTP_HEADER_PARAMS => "[-EXPIRES => '-1d']",
 	    -IMAGE_ROOT_URL    => 'http://forager.com/images/extropia',
-	    -MAIL_FROM         => 'shanta@shanta.org',
-	    -MAIL_TO           => 'shanta@shanta.org',
+	    -MAIL_FROM         => 'shanta@weaverbeck.com',
+	    -MAIL_TO           => 'shanta@weaverbeck.com',
 	    -MAIL_TO_ADMIN      => 'sysadmin@computersystemconsulting.ca',
 	    -MAIL_TO_USER      => 'csc_user_list@computersystemconsulting.ca',
 	    -MAIL_TO_CLIENT    => 'csc_client@computersystemconsulting.ca',
 	    -MAIL_REPLYTO      => 'shanta@shanta.org',
-	    -PAGE_TOP_VIEW     => 'templatePageTopView',
+	    -PAGE_TOP_VIEW     => 'PageTopView',
 	    -PAGE_BOTTOM_VIEW  => 'PageBottomView',
 	    -PAGE_LEFT_VIEW    => 'LeftPageView',
 	    -LEFT_PAGE_VIEW    => 'LeftPageView',
@@ -48,6 +48,7 @@ my $self = {
        -AUTH_MSQL_USER_NAME => 'forager',
        -HTTP_HEADER_DESCRIPTION => "Shanta McBain's personal site. Gateway to many applications",
        -HTTP_HEADER_KEYWORDS    => "health, herbs, herbalogy, ENCY, apis theropys, homiopothy, alternate healing, integrated health management, nutrition, CSPS, Brewing, Beer , wine, mead, organic farming, ham radio, Shanta McBain, shanta, McBain, geniology    ",
+       -SITE_DISPLAY_NAME              => 'Shanta Loft',
 	    -VALID_FORUMS                   => (
             HelpDesk           =>  'System HelpDesk',
  	         ) ,

@@ -58,7 +58,7 @@ sub execute {
 
     $cgi->param(
         -NAME  => 'raw_search',
-        -VALUE => "status = 'In-Use' 
+        -VALUE => "status = '' 
          "
     );  
 

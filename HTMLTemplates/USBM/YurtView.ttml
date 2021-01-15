@@ -1,0 +1,31 @@
+[% ViewVersion = 'v 0.001 2020/08/12 '%]
+
+[%#	$Id: BatteryList.ttml,v 0.001 2020/08/12 11:42:47 shanta Exp shanta $	%]
+[% username = data.session_object.getAttribute('-KEY','auth_username') %]
+ [% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+ [% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+ [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+ [% site = SiteName %]
+ [% SiteDisplayName = data.site_display_name %]
+[% session_id = data.session_object.getId() %]
+ [% session_string = "session_id=$session_id" %]
+[%# embed('InheretedVariablesView') %]
+[% SiteName = data.site_name%]
+[% IF data.debug == 1 %]
+Variable active in DevHomeView
+[% embed('InheretedVariablesView') %]
+[% END %]
+ 
+
+<A NAME="PageTop"></A>
+<h2>Join us in making yurts.</h2>
+
+<p>Our yurts are based on the traditional Mongolian style yurt. We use modern materials blended with traditional materials based on availability and practicality.  </p>
+
+<ul>
+ <li>Lath for walls. We will rip these from ceder rough cut. These don't have to be liner in with or thickness. The thickness is the approximate width of the lath so we need 8' pieces for most yurt sizes. This will give you an approximate wall height of 7 feet. Lath dimension  will be 6mm x 37mm Neather of these dimensions are critical. The eye generally can't see both ends of a given lath so you cant tell if the sides are parallel. We can take advantage of this by buying miss cuts saving them from the burn pile. Stock can be 2x stock any width. </li> 
+ <li>Rafters are 1" rounds or 2x2 stock. Length will vary to the size of the yurt. Lower end fastens to the top of the lath. </li>
+</ul>
+
+
+

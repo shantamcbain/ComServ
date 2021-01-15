@@ -1,3 +1,4 @@
+[% Version = 'v 0.11 2020/05/15 Shanta' %]
 [%#	$Id: AltpowerNodeView.ttml,v 0.1 2018/07/05 06:42:47 shanta Exp shanta $	%]
 <!-- AltPowerNodeView  v 0.1 2018/07/05-->
        [% version =  "v 0.1 2018/07/05" %]
@@ -6,7 +7,7 @@
 [% embed(data.page_top_view,['-PAGE_TITLE','Our Power Log ',' $version ' ]) %]
 
 [% embed('ErrorDisplayView') %]
-
+[%# Version %]
 
 [% IF data.session_object %]
 
@@ -32,7 +33,7 @@
 <ul>
  <li><h3>A <a href='/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&page=BeeYardNode' >Bee yard Node</a>.</h3> Bee yards need an electric fencer. The simples would be a panel, a battery and a battery. With the addition of a inverter 110 power is now available. We of course use the power to run the fencer but we can also run any electrical need of the yard. The size of the system of source is set by the load. We can charge EV batteries Run sensors and recording devices, tools etc. Charge that electric bee truck.
  <li><h3><a href='/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&page=RVNode'>A RV Node</a></h3>
- <p>This is a great example because it has all the parts of any system of self sufficient power production. All system have the same basic components.
+ <p>This is a great example because it has all the parts of any system of self sufficient power production. All system have the same basic components. It is the 'permanent' part of a place to park your RV. 
  
  <ul>
 	<li>Power requirements </li>
@@ -41,6 +42,8 @@
 	<li>Monitoring and maintenance</li>
 	<li>Grid Tie Temporarily plug in</li>
 </ul>
+<li><h3><a href='/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&page=RV'>The RV itself.</a></h3>
+ <p>This is a great example because it has all the parts of any system of self sufficient power production. All system have the same basic components. But portabilaty in mind. This system can be expanded to actually power the RV With an electric motor.
  
  <li><h3><a href='/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&page=HouseNode'>House Node</a></h3>
  <p>The house node is likely the most common.

@@ -77,6 +77,7 @@ foreach ($CGI->param()) {
 ######################################################################
 my $SiteName =  $CGI->param('site') || "Brew";
 my $APP_NAME = "recipe";
+my $AppVersion = " v1.1 2020/06/28" ;
 my $SITE_DISPLAY_NAME = 'Site not added to session setup.';
 my $APP_NAME_TITLE = "Brew Recipes";
     my $homeviewname ;
@@ -120,10 +121,11 @@ my $APP_NAME_TITLE = "Brew Recipes";
 	my $TableName;
     my $records;
     my $frame;
-    my $last_update    = 'Novemver 16, 2016';
+    my $last_update    = 'December 07, 2020';
     my $site_update    = 'Novemver 16, 2016';
     my $DeBug = $CGI->param('debug')|| 0;
     my $RecipeCode = $CGI->param('recipecode')|| 'No pram';
+    my $catagory = $CGI->param('cat')|| 'All';
     my $Affiliate = 001;
     my $HasMembers = 0;
 my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles" ;
@@ -167,7 +169,7 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
+my $CSS_VIEW_URL  ;
 
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
@@ -301,7 +303,7 @@ my @AUTH_ENCRYPT_PARAMS = (
 my %USER_FIELDS_TO_DATASOURCE_MAPPING = (
     'auth_username'  => 'username',
     'auth_password'  => 'password',
-    'auth_firstname' => 'firstname',
+    'auth_firstname' => 'firstname',,
     'auth_lastname'  => 'lastname',
     'auth_groups'    => 'groups',
     'auth_email'     => 'email'
@@ -622,7 +624,7 @@ my %type =
         'ale'    		=>    'Ale',            
         'other'    	=>    'Other',            
         'pilsener'   =>    'Pilsener',            
-        'meed'    	=>    'Meed',            
+        'mead'    	=>    'Mead',            
         'lager'    	=>    'Lager',            
         'wheat'    	=>    'Wheat',
         'ipa'        =>		'India Pale Ale',
@@ -871,6 +873,8 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
       qw(comments),
      );
 
+
+
 my @INPUT_WIDGET_DEFINITIONS = (
     -BASIC_INPUT_WIDGET_DEFINITIONS => \%BASIC_INPUT_WIDGET_DEFINITIONS,
     -BASIC_INPUT_WIDGET_DISPLAY_ORDER => \@BASIC_INPUT_WIDGET_DISPLAY_ORDER
@@ -914,8 +918,7 @@ else{
                                     ],
 	        },
 	);
-
-    }
+};
 my @DROPLIST_DATASOURCE_FIELD_NAMES = qw(
         record_id
         status
@@ -1281,8 +1284,9 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
     -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
     -KEY_FIELD                              => 'record_id',
-    -BREW_NAME                              => $CGI->param('recipecode'), 
-    -RECIPE_CODE                            => $CGI->param('recipecode')|| 'TBB',
+    -BREW_NAME                              => $CGI->param('brewname')||'Chouse', 
+    -RECIPE_CODE                            => $CGI->param('recipecode')||'none',
+    -CATEGORY                               => $CGI->param('cat')||'All',
     -SITE_NAME                              => $SiteName,
     -PAGE_TOP_VIEW           =>  $CGI->param('page_top_view') ||  $page_top_view ,
     -PAGE_BOTTOM_VIEW        =>  $CGI->param('page_bottom_view') || $page_bottom_view,

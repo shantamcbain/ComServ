@@ -14,8 +14,8 @@ my $package    = shift;
 my $UseModPerl = shift || 0;
 
 # This is where you define your variable mapping.
-my $self = {-HOME_VIEW_NAME    => 'PageView',
-	    -HOME_VIEW         => 'PageView',
+my $self = {-HOME_VIEW_NAME    => 'HomrView',
+	    -HOME_VIEW         => 'HomeView',
 	    -MySQLPW           => '!herbsRox!',
 	    -BASIC_DATA_VIEW   => 'BasicDataView',
 	    -APP_LOGO          => '/images/apis/bee.gif',
