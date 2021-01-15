@@ -1,6 +1,6 @@
 [%#	$Id: BrewHomeView.ttml,v 1.1 2008/03/25 06:42:47 shanta Exp shanta $	%]
 
-[% embed(data.page_top_view,['-PAGE_TITLE','Brew']) %]
+[%# embed(data.page_top_view,['-PAGE_TITLE','Brew']) %]
 
 [% embed('ErrorDisplayView') %]
 
