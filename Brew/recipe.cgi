@@ -868,7 +868,7 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
       qw(colour),
       qw(ph),
       qw(bitterness),
-      qw(maturation),
+      qw(maturation), 
       qw(instructions),
       qw(comments),
      );

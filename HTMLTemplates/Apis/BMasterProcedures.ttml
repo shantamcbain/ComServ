@@ -77,6 +77,9 @@
  
 [%# PageName %]
 [% body %]
+[% ELSIF procedure  == ('SeasonView') %]
+ 
+ [% embed ('SeasonView') %]
 
 [% ELSIF procedure  == ('ClockeBoardView') %]
  
