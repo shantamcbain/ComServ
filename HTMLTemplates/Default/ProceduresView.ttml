@@ -63,8 +63,8 @@
                              
                      <a href="/cgi-bin/ToDo/procedures_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form" target = "_blank">Add</a>    
 		[% END %] 
-		[%# <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView" target = "_blank">List</a></p> %]
-</h4>	
+	<!-- 	 <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView" target = "_blank">List</a></p> 
+</h4>	 -->
 		[% SiteName = data.site_name%]
 		
    	[% IF SiteName == "OKB" %]
