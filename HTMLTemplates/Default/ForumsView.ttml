@@ -1,0 +1,23 @@
+[% ViewVersion = 'v0.01 2021/02/06 ForumsView '%]
+[%#	$Id: ForumsView.ttml,v 0.01 2021/02/06'  17:43:15 shanta Exp shanta %]
+
+
+<A NAME="PageTop"></A>
+ [% Version %]  
+ 
+<h2> Our Forums  </h2>
+
+
+[% IF SiteName == "BMaster" %]
+		[%# embed('OkBeekeepersHomeView') %]
+		<h2>We are improving our forum.</h2>
+		
+		<p><a href="/cgi-bin/BBS/bbs.cgi?site=BMaster">Our old system</a></p>
+		
+[% ELSIF SiteName == "AnuCollective" %]
+			[% embed ('AnuCollectiveHomeView') %]
+		[% ELSE %]
+		 
+		Add forums to Your site
+		[% END %]
+			
