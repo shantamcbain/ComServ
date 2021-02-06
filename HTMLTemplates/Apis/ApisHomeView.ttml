@@ -1,4 +1,5 @@
-[% Version = 'v 1.145 2021/02/03 shanta' %]
+[% Version = 'v 1.146 2021/02/06 shanta ApisHomeView.ttml' %]
+[%# Version = 'v 1.145 2021/02/03 shanta ApisHomeView.ttml' %]
 [%#Version = 'v 1.14 2020/07/08 shanta' %]
 
 
@@ -31,18 +32,18 @@
 <tr>
 <td>
 <A NAME="PageTop"></A>
- [% Version %]  
+ <!-- [% Version %]   -->
  
 <h2> A site for Beekeepers. </h2>
-[% IF procedure  %]
+[% IF procedure  %]Apis/api
 [% embed ('BMasterProcedures') %]
 [% ELSE %]
 	[% IF username %]
 			[% IF  group == 'normal'%]
 
-<p>As a guest you may view the FAQ, Plant and other database . Contribute to Forums, Calendar of annoucements, Buy and Sell, and Links.
+<p>As a guest you may view the FAQ, Plant and other database . Contribute to Forums, Calendar of announcements, Buy and Sell, and Links.
 </p>
-<p>Members may contribute to the sites contend and Join commities monitor content of the diffrent dateabases hosted on the site. Create logs that certification organizations need to access to maintain certification. Available logs will vary according to the need of your certification organization. 
+<p>Members may contribute to the sites contend and Join communities monitor content of the different date-abases hosted on the site. Create logs that certification organizations need to access to maintain certification. Available logs will vary according to the need of your certification organization. 
 	</p>	[% ELSE %]
 	<p>Thanks for logging in.</p>
 <p>Member home</p>
@@ -79,8 +80,7 @@
 
             <ul>
             <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardManagementSystem" target="Blank">Apiary Management System. </a><br>Track what is happening in your yards</li> In active development. drop by and give us a hand.
-            <li><a href="/cgi-bin/WebCal/webcal.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=MonthView&amp;submit_power_search=on&amp;amp;simple_search_string=" target="Blank">
-            <font class="LeftSideBarNavStyle">Apis Calendar</font></a></li>
+
             <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
             <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
             <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
@@ -112,13 +112,7 @@
  </FORM>
 
 <iframe src="https://calendar.google.com/calendar/embed?src=tabvviq9l1ncflbcedl78qa114%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>			
-<a href="/cgi-bin/index.cgi?site=Apis&amp;view=AppToolsView&amp;[% session_string %]" name="AppToolsView" title="Click here for details of tool this application offerers">Details of the app.</a>				
 
-			
-			</li>
-             </ul>
-            <p>
-            Join us
 
 
 <br>
