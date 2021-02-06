@@ -1,18 +1,11 @@
 [%# Version = 'SeasonView.ttml,v 0.01 2021/02/03%]
 [% procedure = data.procedure %]
 
-<!-- [% Version %]-->
+[% Version %]
 <div id=body > 
 
 
-[%# Version %]
 
-[% IF group == 'AnuCollective_admin' %]
-[% embed('AnuAdmin') %]   
- 
-
-
-[% ELSE %]
 
 <h2>What's Happening now in our yards and shop.</h2>
  	
@@ -103,10 +96,6 @@
  </li>
 </ul>
 
-<A NAME="maillist"></A>
-
-[% embed('JoinDiscussionList') %]
-
 
 
 			
@@ -139,19 +128,7 @@
 <br>
 
 <p>
-<!-- hhmts start -->
-<!-- hhmts end 
 
-[% embed('CSCCopyRight') %]
- <!-- 
-<script type="text/javascript"	
-src="http://ss.webring.com/navbar?f=j;y=shanta;u=10140815"></script>
-<noscript><center><table bgcolor='gray' cellspacing=0 border=2 >
-<tr><td><table cellpadding=2 cellspacing=0 border=0><tr><td align=center>
-<font face=arial size=-1>This site is a member of WebRing. 
-To browse visit <a href="http://ss.webring.com/navbar?f=l;y=shanta;u=10132800">
-here</a>.</font></td></tr></table></td></tr></table></center></noscript>-->
-[% END %]
 
 </div>
 
