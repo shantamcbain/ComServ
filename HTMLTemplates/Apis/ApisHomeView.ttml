@@ -82,7 +82,7 @@
             <li><a href="/cgi-bin/WebCal/webcal.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=MonthView&amp;submit_power_search=on&amp;amp;simple_search_string=" target="Blank">
             <font class="LeftSideBarNavStyle">Apis Calendar</font></a></li>
             <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
-            <li><a href="/cgi-bin/Apis/apis.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
+            <li><a href="/cgi-bin/Apis/apis.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
             <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
             <li>
             </ul>
