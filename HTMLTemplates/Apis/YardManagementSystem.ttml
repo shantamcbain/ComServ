@@ -1,3 +1,4 @@
+[% ViewVersion = 'v 1.12 2020/05/03 ProceduresView.ttml'%]
 [%
 #	$Id: YardManagementSystem.ttml,v 1.1 2014/11/29 06:42:47 shanta Exp shanta $	%]
 [% PROCESS DefaultDbi.ttml %]
@@ -18,11 +19,12 @@
 	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
 [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
 [% email = data.session_object.getAttribute('-KEY','auth_email') %]
-
+[% ViewVersion  %]
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td >
-<h3>Our Yard Management System../h3>
+<h3>Our Yard Management System.<
+/h3>
 <p>We developing a system to Plan your season in the bee yard</p> 
 <p>Here is a list of our current system modules </p> 
 
@@ -31,7 +33,7 @@
 	<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisQueensView">	Queens</a></li>
 <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisQueensNucView">	ApisQueensNucView</a></li>
 <li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisActiveQueensView">	Active Queens</a></li>
-a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardsView">	YardsView</a></li>
+<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardsView">	YardsView</a></li>
 
 </ul>
 </td>
