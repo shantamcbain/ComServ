@@ -32,7 +32,7 @@
 <div align="center">
 </div>
 
- 
+ [% ViewVersion  %]
 	   
 
  [% IF procedure  == 'HiveManHomeView' %]
