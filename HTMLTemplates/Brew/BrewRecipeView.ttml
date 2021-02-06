@@ -1,5 +1,6 @@
-[% version = " v1.1 2020/06/28" %]
-[%#	$Id: View.ttml,v 1.0 2009/9/16 06:42:47 BrewRecipe shanta Exp shanta $	%]
+[% version = " v1.11 2020/12/07" %]
+[%# version = " v1.1 2020/06/28" %]
+[%#	$Id: RView.ttml,v 1.0 2009/9/16 06:42:47 BrewRecipe shanta Exp shanta $	%]
   [% PROCESS DefaultDbi.ttml %]      [% version = data.app_ver %]
 
 [% embed(data.page_top_view,['-PAGE_TITLE','Our Recipies']) %]
@@ -23,8 +24,9 @@
     [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
     [% HomeView =data.session_object.getAttribute('-KEY','HOME_VIEW')%]
     [% email = data.session_object.getAttribute('-KEY','auth_email') %]
-    [% BrewName = data.recipe_code %]
+    [% BrewName = data.brew_name %]
     [% RecipeCode = data.session_object.getAttribute('-KEY','recipecode') %]
+    [% Category = data.session_object.getAttribute('-KEY','category') %]
     [% PAGE = data.VIEW_NAME  %]
 <SCRIPT LANGUAGE="JavaScript">
 <!--
@@ -50,18 +52,13 @@ function QuickClick(list) {
 
 //-->
 </SCRIPT>
- 
-      [%# PROCESS RecipeValues.ttml %]
-
-
-
-<table width="100%" border="0" cellspacing="0" cellpadding="0">
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td>
 
 <A NAME="PageTop"></A>
 [% BrewItemListTb = 'brew_item_list_tb'%]
-<h2>Our brewing recipies</h2>
+
 <h5>Variables</h5>
 	<ol>
 		<li>SiteName    = [% data.SiteName %].data</li>
@@ -72,32 +69,30 @@ function QuickClick(list) {
 	    <li>BrewName    = [% data.brewname %].data</li>
 	    <li>Recipe Code = [%  data.recipe_code %].data</li>
 	    <li>Recipe Code session   =    [% RecipeCode %]</li>
+    <li>Category = [% data.category %]</li>
 	    <li>BMS           [% BrewNameS %]</li>
 	    <li>HomeVew TTML       [% HomeView %]</li>
     </ol>
-<h5>Brewing Page [% version %]</h5>
+<h1>Brewing Page [% version %]</h1>
+
+ <h2>Our brewing recipies</h2>     [%# PROCESS RecipeValues.ttml %]
+<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=beer">Beer</a>  
+<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=griuts">Grouts</a>  
+<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=mead">Mead</a> 
+<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=wine">Wine</a>  
+<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=All">All</a> 
+
+[% IF Category == 'mead' %]
+[% embed('MeadRecipe') %]
+[% ELSIF Category == 'wine' %]
+Wine
+[% ELSIF Category == 'beer' %]
+Beer
+
+[% ELSE %]
 
  
-
-
-<FORM METHOD=POST  ACTION="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;view=BatchLogView&amp;[% session_string %]&amp;batchnumber=" NAME="frmLinkList" onSubmit="return CheckSelection()">
-
-<SELECT  NAME="FileName" WIDTH=20>
-<OPTION VALUE="None">Select a recipe --->
-
- [% FOREACH item = DBI.query(" SELECT * FROM brew_recipe_tb
-	                                WHERE  sitename = 'Brew'
-                                     
-                                   ORDER BY recipe_code
-	                            ")%]  
-<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;view=BrewRecipeView&amp;[% session_string %]&amp;recipecode=[% item.recipe_code %]">[% item.recipe_name %] [% item.brew_name%][% item.date %]</option>
-
-[% END %]
- <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
-           
-
 [% IF username  == 'Shanta' OR
-	        group     == 'Brew_Admin' OR
             group     == 'CSC_Admin' OR
 	        group     == 'ENCY_Admin' OR
 	        group     == 'USBM_Admin' OR
@@ -105,9 +100,36 @@ function QuickClick(list) {
 	        group     == 'Demo_admin' 
 	               %]
 
-	   &nbsp;<a href="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New Recipe" style="AddButtonStyle">Add a new recipe</a>
+	   &nbsp;<a href="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;catedd a new recipe</a>
 	
 	   [% END %]
+
+
+<FORM METHOD=POST  ACTION="http://brew.computersystemconsulting.ca/cgi-bin/Brew/log.cgi?site=[% SiteName %]&[% session_string %]&view=BrewLogView&batchnumber=" NAME="frmLinkList" onSubmit="return CheckSelection()">
+
+<SELECT  NAME="FileName" WIDTH=20>
+<OPTION VALUE="None">Select a batch --->
+
+ [% FOREACH item = DBI.query(" SELECT * FROM brew_recipe_tb
+	                                WHERE  sitename = 'Brew'
+                                     
+                                   ORDER BY recipe_code
+	                            ")%]  
+<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&[% session_string %]&view=BrewRecipeView&recipecode=[% item.recipe_code %]">[% item.recipe_name %] [% item.brew_name%][% item.date%]</option>
+
+[% END %]
+ <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
+</FORM>     
+
+<a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&display_add_form=on&[% session_string %]" name="Add Batch"  title="Add New Recipie" style="AddButtonStyle">Add</a>
+
+
+
+
+
+
+ 
+
  [% BrewName %]
 Add variables.
 	[% FOREACH link = DBI.query(" SELECT * FROM  brew_recipe_tb
@@ -191,7 +213,7 @@ Add variables.
 <p> <a href="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_modification_form=on&amp;record_id=[% record_id %]"  target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">[%  recipe_name %] Modify [% record_id %]</font></a>
 <p> <a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;recipecode=[% recipe_code %]&amp;subject=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New batch" style="AddButtonStyle">Add a new batch</a>
 
-	
+[% END %]	
 
  
  

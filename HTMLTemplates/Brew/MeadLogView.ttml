@@ -1,12 +1,11 @@
-[% version = " v1.21 2020/06/28" %]
-[%#version = " v1.2 2016/12/04" %]
-[%#	$Id: BrewLogView.ttml,v 1.1 2013/11/7 06:42:47 shanta Exp shanta $	%]
+[% version = " v0.01 2020/12/07" %
+[%#	$Id: MeadLogView.ttml,v 0.01 2020/12/07 06:42:47 shanta Exp shanta $	%]
 <!-- BrewLogView [% version %]-->
        [% AppVersion = data.app_ver %]
  
  [% PROCESS DefaultDbi.ttml %]
 
-[% embed(data.page_top_view,['-PAGE_TITLE','Our Brewing Log ' data.app_ver $version ]data.app_ver) %]
+[%# embed(data.page_top_view,['-PAGE_TITLE','Our Mead Brewing Log ' data.app_ver $version ]data.app_ver) %]
 
 [% embed('ErrorDisplayView') %]
 

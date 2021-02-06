@@ -160,7 +160,7 @@ break;
 			[% ELSIF data.view == 'DailyWorkSheetView'  %]
 			   [% embed('DWSLeftPageView') %]
 			[% ELSE %]<!-- page_left_view.ttml -->
-	 		[% embed('LeftPageView') %]
+	 		[% embed(data.page_left_view) %]
 	        [% END %]
 </td>
   	<!-- Close Left Page Cell PageTopView-->

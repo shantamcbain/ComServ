@@ -18,57 +18,31 @@
 <table>
 <tr>
 	<td>
+<p>Here at computersystemconsulting.ca we develop, host and support Web based applications for your distributed organization.
+
+<p>We are in the need of Perl programmers and graphic designers. Be sure to check the jobs link in the top links.
+<p> Services provided: Click The product link in the main links group.
+<ul>
+<li><a href='http://www.computersystemconsulting.ca/whmcs/cart.php'>Website hosting</a> </li>
+<li> <a href='http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&domain=register' target=''_blank''>Register your domain with us.</a></li>
+<li> Check out our <a href='http://demo.computersystemconsulting.ca' target='_blank'>Demo</a> </li>
+<li>
+<h1>Join our VOIP services</h1>
+<p> <a href='https://voip.computersystemconsulting.ca/' name='Contact' target='_blank' title=' '>Learn more</a>
+<li>We now offer over 1000 new communities to our phone options. Get one from your target community.</li>
+</li>
+</ul>
+<h2>Crypto currency</h2>
+<p>BitCoin and other coins are in the news a lot lately. The air is filled with. Wallets. Exchanges. <a href='https://computersystemconsulting.ca/cgi-bin/index.cgi?site=CSC&page=MigratingToCrypto' target='_blank'>Join us in that adventure.</a> of fingerling it out.</p>
+<strong>
+New</strong>Pay for your services with us. Two BitCoin exchanges
+</p>
+<h2> <a href='/cgi-bin/index.cgi?site=CSC&page=vpn' target='_blank' name='Our VPN Services'>vpn </a></h2>
+<p>We now offer several choices of Virtual Private Network option. Click the VPN link on the left for more information.</p>
 
 
-[% IF username == "peter" or group == "Alegro_admin"%]
-[%# embed('AlegroAdminView') %]
-Hi T 
-[% ELSIF group == "CSC_Admin" %]
-My persal stuff
-[% ELSE %]
-[%# embed('AdminGroup') %]
- <p>
-	 [% IF group    ==  'Alegro_admin' OR
-	       group    ==  'Apis_admin' OR
-	       group    ==  'BCHPA_admin' OR
-	       group    ==  'Brew_admin' OR
-	       group    ==  'CS_admin' OR
-	       group    ==  'CSC_admin' OR
-	       group    ==  'CSPS_admin' OR
-	       group    ==  'ENCY_admin' OR
-	       group    ==  'Forager_admin' OR
-	       group    ==  'eXtropia_admin' OR
-	       group    ==  'GPMarket_admin' OR
-	       group    ==  'HE_admin' OR
-	       group    ==  'CSCDev_admin' OR
-	       group    ==  'News_admin' OR
-	       group    ==  'OKB_admin'OR
-	       group    ==  'Organic_admin' OR
-	       group     == 'DarmaFarmsAdmin' OR
-	       group    ==  'Shanta_admin' OR
-	       group    ==  'Stawns_admin' OR
-	       group    ==  'VitalVic_admin' OR
-	       group    ==  'rv_admin' OR
-	       group    == 'MJB_Admin' OR
-	       group    ==  'WB_admin' OR
-	       username == 'Shanta' OR
-	      group    == 'Demo_admin' 
 
-	 %]
 
- <a href="http://dev.computersystemconsulting.ca/cgi-bin/page.cgi?site=[% SiteName %]&[% session_string %]&display_modification_form=on&record_id=3" target="_blank">edit page</a>
-You can modify anything from here to the last update. You may use Html code in this area.
- 	   [% END %]
-
- [% FOREACH link = DBI.query("SELECT * FROM page_tb
-                                  WHERE  (status  = '1' AND
-                                         sitename='CSC' AND
-                                         page_code = 'HomeView' )
-                                  
-                                  ")%]    
-      [% link.body %]
-  [% END %]
- [% END %]
 
 </td></tr>
 </table>
