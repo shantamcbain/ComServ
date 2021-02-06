@@ -1,4 +1,4 @@
-[% ViewVersion = 'v 1.965 2020/05/03 '%]
+[% ViewVersion = 'v 1.965 2020/05/03 ProceduresView.ttml'%]
 [%#	$Id: ProceduresView.ttml,v 0.01 2020/04/20 17:43:15 shanta Exp shanta %]
 [%#	$Id: ProceduresView.ttml,v 0.01 2019/5/08 17:43:15 shanta Exp shanta
     $Id: ProjectsView.ttml,v 1.9 2013/1/14 17:43:15 shanta Exp shanta $	
@@ -46,12 +46,7 @@
  [% sessionstring %]
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
-	<td>[% IF username %]
-			<h2> Hello  [% firstname%]  [% lastname%]! Welcome to [% data.site_display_name %] Procedures! [% title %] [% procedure %]</h2>
-		[% ELSE %]
-			<h2>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %] Procedures! [% title %] </h2> 
-		[% END %]
-
+	<td>
 [% ViewVersion  %]
 <p>
                 [% IF group == 'Apis_admin' OR
@@ -67,7 +62,8 @@
                  %] 
                              
                      <a href="/cgi-bin/ToDo/procedures_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form" target = "_blank">Add</a>    
-		[% END %] <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView" target = "_blank">List</a></p>
+		[% END %] 
+		[%# <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView" target = "_blank">List</a></p> %]
 </h4>	
 		[% SiteName = data.site_name%]
 		

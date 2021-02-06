@@ -46,7 +46,7 @@
 	<tr>
 	<td>
 	
-[% ViewVersion %]	
+[%# ViewVersion %]	
 	
 	[% IF username %]
 			<h3 > Hello  [% firstname%] &nbsp; [% lastname%]! Welcome to [% data.site_display_name %]</h3>

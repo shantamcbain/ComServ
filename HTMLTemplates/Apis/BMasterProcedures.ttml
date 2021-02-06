@@ -32,7 +32,7 @@
 <div align="center">
 </div>
 
- page = [% Page %]
+ 
 	   
 
  [% IF procedure  == 'HiveManHomeView' %]

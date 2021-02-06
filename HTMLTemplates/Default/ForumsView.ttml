@@ -12,8 +12,8 @@
 		[%# embed('OkBeekeepersHomeView') %]
 		<h2>We are improving our forum.</h2>
 		
-		<p><a href="/cgi-bin/BBS/bbs.cgi?site=BMaster">Our old system</a></p>
-		
+	<!-- 	<p><a href="/cgi-bin/BBS/bbs.cgi?site=BMaster">Our old system</a></p>
+	 -->	
 [% ELSIF SiteName == "AnuCollective" %]
 			[% embed ('AnuCollectiveHomeView') %]
 		[% ELSE %]
