@@ -3,7 +3,7 @@
 [%#Version = 'v 1.14 2020/07/08 shanta' %]
 
 
-[%# Version = 'v 1.13 2020/06/08 shanta' %]
+[%# Version = 'v 1.13 2020/06/08 ApisHomeView.ttml shanta' %]
 [%
 #	$Id: ApisHomeView.ttml,v 1.11 2020/03/10 06:42:47 shanta Exp shanta $	%]
 [%#	$Id: ApisHomeView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
@@ -56,7 +56,7 @@
  	
 <p>Thanks for digging deeper.<p>              
                  
-    
+   <a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&amp;[% session_string %]&amp;pocedure=SeasonView" name="Anucollective" >This seasons active beekeeping</a> 
 		</td >
 		</tr>
 		<tr>
