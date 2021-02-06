@@ -1,4 +1,5 @@
-[% ViewVersion = 'v 1.965 2020/05/03 ProceduresView.ttml'%]
+[% ViewVersion = 'v 1.966 2021/02/06 ProceduresView.ttml'%]
+[%# ViewVersion = 'v 1.965 2020/05/03 ProceduresView.ttml'%]
 [%#	$Id: ProceduresView.ttml,v 0.01 2020/04/20 17:43:15 shanta Exp shanta %]
 [%#	$Id: ProceduresView.ttml,v 0.01 2019/5/08 17:43:15 shanta Exp shanta
     $Id: ProjectsView.ttml,v 1.9 2013/1/14 17:43:15 shanta Exp shanta $	
@@ -11,7 +12,7 @@
 # variables from outside.
 
 %]
- [% PROCESS DefaultDbi.ttml %]
+ [%# PROCESS DefaultDbi.ttml %]
 	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
 	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
    [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
@@ -47,7 +48,7 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td>
-[% ViewVersion  %]
+[%# ViewVersion  %]
 <p>
                 [% IF group == 'Apis_admin' OR
                     group == 'BMaster_admin' OR 
