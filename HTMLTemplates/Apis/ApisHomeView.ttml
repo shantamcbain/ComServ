@@ -92,7 +92,7 @@
 	</table>
 
 			
-<a href="/cgi-bin/Apis/apis.cgi?site=Apis&amp;view=AppToolsView&amp;[% session_string %]" name="AppToolsView" title="Click here for details of tool this application offerers">Details of the app.</a>				
+<a href="/cgi-bin/index.cgi?site=Apis&amp;view=AppToolsView&amp;[% session_string %]" name="AppToolsView" title="Click here for details of tool this application offerers">Details of the app.</a>				
 
 <H2><B>Join Our Apis discussion list</b></H2>
  <FORM Method=POST ACTION="http://beemaster.ca/mailman/subscribe/apis_discussion_beemaster_beemaster.ca"><br>

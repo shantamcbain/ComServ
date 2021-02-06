@@ -1,3 +1,4 @@
+[% ViewVersion = 'v 1.13 2020/03/10B MasterProcedures '%]
 [% 
 # BMasterProcedures, v 1.13 2020/03/10
 # BMasterProcedures, v 1.12 2019/05/09
@@ -37,9 +38,12 @@
  [% IF procedure  == 'HiveManHomeView' %]
 
 [% embed ('HiveManHomeView') %]
+[% ELSIF procedure  == ('ForumsView') %]
+ 
+ [% embed ('ForumsView') %]
  [% ELSIF procedure  == ('ApisQueensView') %]
  
- [% embed ('ApisQueensView') %]
+[% embed ('ApisQueensView') %]
 [% ELSIF procedure  == ('ApisQueensNucView') %]
  
  [% embed ('ApisQueensNucView') %] 

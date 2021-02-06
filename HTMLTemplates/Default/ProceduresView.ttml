@@ -52,11 +52,11 @@
 			<h2>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %] Procedures! [% title %] </h2> 
 		[% END %]
 
-
+[% ViewVersion  %]
 <p>
                 [% IF group == 'Apis_admin' OR
                     group == 'BMaster_admin' OR 
-                    group    == 'AnuCollective_admin' OR
+                    group == 'AnuCollective_admin' OR
                     group == 'CSC_admin' OR
                     group == 'CSCDev_admin' OR
                     group == 'ECF_admin' OR
