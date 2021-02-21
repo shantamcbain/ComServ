@@ -35,7 +35,8 @@
  <!-- [% Version %]   -->
  
 <h2> A site for Beekeepers. </h2>
-[% IF procedure  %]Apis/api
+[% IF procedure  %]
+
 [% embed ('BMasterProcedures') %]
 [% ELSE %]
 	[% IF username %]
@@ -51,7 +52,12 @@
 
 
 	[% ELSE %]
+[% IF SiteName == "SMO" %]
 
+[% embed ('SaddleMountinOrganicHomeView') %]
+
+
+	[% ELSE %]
 				 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
  	
 <p>Thanks for digging deeper.<p>              
@@ -125,7 +131,7 @@
 
 [% embed('CSCCopyRight') %]
 	[% END %] 
-
+[% END %]
 
 
 </td>

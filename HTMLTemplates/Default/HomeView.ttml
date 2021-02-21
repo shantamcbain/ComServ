@@ -72,7 +72,8 @@
 			[% embed ('AltPowerHomeView') %]
 		[% ELSIF SiteName == "AnuCollective" %]
 			[% embed ('AnuCollectiveHomeView') %]
-		[% ELSIF SiteName == "BMaster"%]
+		[% ELSIF SiteName == "BMaster" OR
+		         SiteName == "SMO"%]
 			[% embed ('ApisHomeView') %]
 		[% ELSIF SiteName == "BMastBreeder"%]
 			[% embed ('BMasterBreederHomeView') %]

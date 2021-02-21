@@ -9,18 +9,7 @@
 <div id=body > 
 <A NAME="PageTop"></A>
 
-[%# Version %]
-[% IF procedure %]
 
-[% embed(data.procedure) %] 
-[% ELSE %]
-
-[% IF group == 'SMO_admin' %]
-[% embed('SMOAdmin') %]   
- 
-[% END %]
-
-[% ELSE %]
 
 <h1>Welcome to our Beekeeping Operations.</h1>
  	
@@ -60,6 +49,7 @@
 	<li>Education: In yard Streaming</li>	
  </ul>
 </li>
+<li><h3></h3></li>
 </ul>
 
  
