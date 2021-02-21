@@ -1,0 +1,104 @@
+[% Version = 'v 0.01 2021/02/21 SaddleMountinOrganicsHomeView.ttml shanta' %]
+
+[%#	$Id: SaddleMountinOrganicsHomeView.ttml,v 0.01 2021/02/21 06:42:47 shanta Exp shanta %]
+
+
+[% procedure = data.procedure %]
+
+<!-- [% Version %]-->
+<div id=body > 
+<A NAME="PageTop"></A>
+
+[%# Version %]
+[% IF procedure %]
+
+[% embed(data.procedure) %] 
+[% ELSE %]
+
+[% IF group == 'SMO_admin' %]
+[% embed('SMOAdmin') %]   
+ 
+[% END %]
+
+[% ELSE %]
+
+<h1>Welcome to our Beekeeping Operations.</h1>
+ 	
+<h2>We setting up operations. Here at Saddle Mountain Organics.</h2>
+
+<p>Our adventure will be in the fallowing areas<p>
+
+
+
+<ul>
+ <li><h3>Set up Honey house and Shop.</h3>
+   </li>
+ <li><h3>Setup bee yards </h3>
+  <ul>
+    <li>Breeder/Teaching Yard</li>
+    <li>Mating Yard</li>
+    <li>Honey Yard</li>
+  </ul>
+<li><h3>Plan field crops for bees.</h3>
+ 
+  <ul>
+   <li>Mustard culinary varieties</li>
+   <li>Alfalfa</li>
+   <li>Borage</li>
+   <li>Calendula</li>
+   <li>Clovers Mostly white, waste lands yard cover in-betweens garlic, etc</li>
+   <li>Filberts</li>
+   <li>Watch for more.</li>
+  </ul>
+</li>
+<li><h3>Products planned</h3>
+  <ul>
+	<li>Honey</li>
+	<li>Livestock</li>
+	<li>Pollen</li>
+	<li>propulous</li>
+	<li>Education: In yard Streaming</li>	
+ </ul>
+</li>
+</ul>
+
+ 
+<iframe src="https://calendar.google.com/calendar/embed?src=tabvviq9l1ncflbcedl78qa114%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>			
+
+[% embed('JoinDiscussionList') %]
+
+
+
+			
+			</li>
+             </ul>
+            <p>Access rights to resources will vary to your membership status.</p>
+
+            Currently we have 5 Memberships available.
+
+            <ul>
+            <li>Guest. Visitors have access access to all data considered public or essential. No login required</li>
+            <li>Beta tester. Get full access and are active in the development of the site and its usefulness to Bee Keepers. To Become a bata tester. Become a member. Earn one free month of membership for 3 contributions to the site per month. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisUser">Click here to join.</a></li>
+            <li>Member. These Vary much needed folks have full access to the site. They have contributed financially to help finance the site. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisUser">Click here to join.</a>
+             <li>Affiliate. Companies that support this site.
+            They have contributed financially to help finance the site. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisUser">Click here to join.</a>
+           <li>Hosted Site. There are two levels here. Your site will look the way you want.
+               <ul>
+                <li>Your domain on our server. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;L=eng&amp;P=DomainHosting">Click here to join.</a>
+                <li>A site on our domain. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisHosted">Click here to join.</a> 
+               </ul>
+          </ul>
+              <p>PS. You can be both a Beta Tester and a Contributing Member</p>
+
+
+<br>
+<br>
+<br>
+
+<p>
+<!-- hhmts start -->
+<!-- hhmts end 
+
+
+ 
+
