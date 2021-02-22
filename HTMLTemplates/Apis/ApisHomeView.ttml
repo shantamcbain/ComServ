@@ -55,7 +55,7 @@
 	
 [% IF SiteName == "SMO" %]
 emmbed Sadle mou
-[% embed ('SaddleMountinOrganicsHomeView') %]
+[% embed ('SaddleMountainOrganicsHomeView') %]
 
 
 	[% ELSE %]
