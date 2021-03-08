@@ -1,4 +1,4 @@
-[% Version = 'SeasonView.ttml,v 0.02 2021/03/07" %]
+[% Version = 'SeasonView.ttml,v 0.02 2021/03/07' %]
 [%# Version = 'SeasonView.ttml,v 0.01 2021/02/03%]
 [% procedure = data.procedure %]
 
