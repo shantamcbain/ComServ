@@ -1,4 +1,5 @@
-[% ViewVersion = 'v 1.13 2020/03/10 BMasterProcedures.ttml '%]
+[% ViewVersion = 'v 1.14 2021/03/08 BMasterProcedures.ttml '%]
+[%# ViewVersion = 'v 1.13 2020/03/10 BMasterProcedures.ttml '%]
 [% 
 # BMasterProcedures, v 1.13 2020/03/10
 # BMasterProcedures, v 1.12 2019/05/09
@@ -86,10 +87,13 @@
  [% embed ('SeasonView') %]
 
 [% ELSIF procedure  == ('ClockeBoardView') %]
+ [% embed ('ClockeBoardView') %]
 [% ELSIF procedure  == ('FirstEval') %]
    [% embed ('FirstEval') %]
  
- [% embed ('ClockeBoardView') %]
+[% ELSIF procedure  == ('PollenPatties') %]
+   [% embed ('PollenPatties') %]
+
    [% ELSIF Page  == ('Disease') %]
    [% FOREACH link = DBI.query("SELECT * FROM page_tb
                                   WHERE  (
