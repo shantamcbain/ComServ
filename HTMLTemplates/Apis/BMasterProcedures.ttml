@@ -86,6 +86,8 @@
  [% embed ('SeasonView') %]
 
 [% ELSIF procedure  == ('ClockeBoardView') %]
+[% ELSIF procedure  == ('FirstEval') %]
+   [% embed ('FirstEval') %]
  
  [% embed ('ClockeBoardView') %]
    [% ELSIF Page  == ('Disease') %]
