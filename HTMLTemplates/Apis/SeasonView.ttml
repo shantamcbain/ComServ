@@ -1,7 +1,8 @@
+[% Version = 'SeasonView.ttml,v 0.02 2021/03/07%]
 [%# Version = 'SeasonView.ttml,v 0.01 2021/02/03%]
 [% procedure = data.procedure %]
 
-[% Version %]
+[%# Version %]
 <div id=body > 
 
 
@@ -33,13 +34,25 @@
   </li>
   
   <li><h3>February check wintering bees</h3>
-   <p>This operation will happen in the Cherryville yard. We will pop the lid and have a quick look. We will get a count on the surviving hives. Evaluate their strength. Check for feed. This data will set the timing on the next visit were we will begin working the hives in March.</p>  
+   <p>This operation happened in the Cherryville yard. We popped the lids and had quick look. Both hives survived! One was a medium the other a small. The lid had come off the hive and the bees were down in the frames. It maybe larger than observed. I was the smaller of the two in fall so evaluation maybe correct. Checked for feed using the tip method. Both hive had lots of feed. We feed one pollen patties, one each, to stimulate brood production. We need all the bees we can get in time for raising queens.<a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&procedure=FirstEval">First Evaluation details</a></p>  
   </li>
-  <li>Second trip to visit bees. We will be feeding heavy as we need a grafting hive quickly.</li>
-  <li><h3>Build Saddle mountain Yard</h3> We are working with Saddle Mountain Organics for the exact location of the yard and Honey House location.</li>
+  <li>
+   <h3> Locate and begin setting up yard</h3>
+   <p>We will finalize the location of the teaching/breeder yard. Find and stage equipment.</p>
+  </li>
+   
+  <li><h3>March 10. Build Saddle mountain Yard</h3> We are working with Saddle Mountain Organics for the exact location of the yard and Honey House location.</li>
+  
+  <li><h3>March 13 Sunday visit bees.</h3> 
+  
+  <p>We will be feeding heavy as we need a grafting hive quickly.</p></li>
+ 
+  <li><h3>Feed the Bees Workshop</h3>
+  <p>Bee pasture is vary important to the health of your bees. You will need 3 acres of pasture per hive with flower all season. <a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&view=BeePastureView">Pasture details.</a></p>  
+  </li>
   <li>Set up grafting hive. </li>
-  <li>Start grafting cycle of last year for an idea of timing</li>
-  <li>Make splits. We will be showing our senior students how to expand their operations for the bees they have</li>
+  <li>Start grafting cycle See last year for an idea of timing</li>
+  <li>Make splits. We will be showing our senior students how to expand their operations for the bees they have.</li>
   <li></li>
 </ul>
 
