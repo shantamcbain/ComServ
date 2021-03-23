@@ -1,4 +1,4 @@
-[%# Version = 'v 1.965 2021/03/22 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
+[% Version = 'v 1.965 2021/03/22 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
 [%# Version = '/cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.965 2020/04/22 17:43:15 shanta Exp '%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.965 2020/04/22 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.95 2020/03/29 17:43:15 shanta Exp shanta $	%]
@@ -74,7 +74,7 @@
 		[% ELSIF SiteName == "AnuCollective" %]
 			[% embed ('AnuCollectiveHomeView') %]
 		[% ELSIF SiteName == "BMaster" OR
-		         SiteName == "SMO"%]
+		         SiteName == "SMO"%]Open apis
 			[% embed ('ApisHomeView') %]
 		[% ELSIF SiteName == "BMastBreeder"%]
 			[% embed ('BMasterBreederHomeView') %]
