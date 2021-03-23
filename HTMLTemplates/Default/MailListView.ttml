@@ -3,9 +3,7 @@
 
 
 %]
- [% PROCESS DefaultDbi.ttml %]
 
-[% embed(data.page_top_view,['-PAGE_TITLE','Mail Lists']) %]
 
 [% embed('ErrorDisplayView') %] 
 
