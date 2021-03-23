@@ -98,7 +98,7 @@
  		<div align="center">
 		 [% embed('VeiwInBrowser')	%] 
 	[% IF group == 'CSC_admin' OR
-      group == 'BMast_admin'OR		%] 	
+      group == 'BMast_admin' 		%] 	
     
 		<h3> Hello  [% firstname%]&nbsp;  [% lastname%]! Welcome to [% MailServer %]'s Mail List's page!</h3>
 <p></p>
