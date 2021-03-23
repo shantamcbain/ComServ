@@ -82,7 +82,7 @@ Default opening					 		<h2>This Web Application  is for bee keepers to help each
 
 
 
-	[% END %] 
+
 [% END %]
 
   [% Version %] 
