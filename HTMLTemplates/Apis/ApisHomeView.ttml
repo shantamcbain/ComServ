@@ -36,10 +36,10 @@
 </p>	
 [%#  SiteName%]
 
-test for prodedure [% IF procedure  %]
+[% IF procedure  %]
   [% embed ('BMasterProcedures') %]
 [% ELSE %]
-	test for user[% IF username %]
+	[% IF username %]
 			[% IF  group == 'normal'%]
 
 		<p>As a guest you may view the FAQ, Plant and other database . Contribute to Forums, Calendar of announcements, Buy and Sell, and Links.
@@ -47,8 +47,8 @@ test for prodedure [% IF procedure  %]
 		<p>Members may contribute to the sites contend and Join communities monitor content of the different date-abases hosted on the site. Create logs that certification organizations need to access to maintain certification. Available logs will vary according to the need of your certification organization. 
 		</p>	
 	[% ELSE %]
-	<p>Thanks for logging in.</p>
-<p>Member home</p>
+		<p>Thanks for logging in.</p>
+	<p>Member home</p>
 	[% END %]
 
 Default opening					 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
