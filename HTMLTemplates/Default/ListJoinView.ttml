@@ -57,7 +57,7 @@
 
 
 
-[% IF SiteName == 'Apis' OR
+  [% IF SiteName == 'Apis' OR
          SiteName == 'BMaster' %]
          
      [% IF username == 'Shanta' OR
@@ -68,18 +68,11 @@
  
  
 	     [% ELSE %]   
-	Bee keeping is a complex art/industry. Bee keepers need all the help they can get to do the best for their charges within the confines of the law in any given area and or philosophy of management. We encouraged Organic Certification were possible. This is not easy due to the 5K rule from a know polluter or GMO crop.
 	
-	This site need your help to serve beekeepers better. There for we have on ofter annual memberships. Your membership helps to offset the cost of operation which includes Server costs, programing, Site development and data entry. 
-	
-	For your membership we offer the fallowing benefits.
-	
-		
-
-[% END %]
+  [% END %]
 <H2><B>Join Our Beemaster Announcement list</b></H2>
  
- 
+ last end
 [% END %]
 
 
