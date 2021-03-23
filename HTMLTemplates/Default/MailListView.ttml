@@ -80,14 +80,6 @@
    [% MailServer = 'mail.beemaster.ca' %]
    [% END %]
   [%   ListAdmin = '0'  %]
-[% IF group == 'CSC_admin' OR
-      group == 'BMast_admin'OR
-      group == 'ECF_admin'OR
-      group == 'HE_admin'OR
-      group == 'IM_admin'  %]
-    [%   ListAdmin = '1'  %]
-    [% END %]
-     
  		<A NAME="PageTop"></A>
      
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -96,10 +88,18 @@
 	<td >
 		<div align="center">
 		 [% embed('VeiwInBrowser')	%] 
-			[% IF username %]
+	[% IF group == 'CSC_admin' OR
+      group == 'BMast_admin'OR
+      group == 'ECF_admin'OR
+      group == 'HE_admin'OR
+      group == 'IM_admin'  %]
+    [%   ListAdmin = '1'  %]
+    [% END %]
+     
+		[% IF username %]
 		<h3> Hello  [% firstname%]&nbsp;  [% lastname%]! Welcome to [% MailServer %]'s Mail List's page!</h3>
 <p></p>
-
+[% END %]
 anu_user_list@anucollective.beemaster.ca
 anuadmin@anucollective.beemaster.ca
 beemaster_admin@beemaster.ca
