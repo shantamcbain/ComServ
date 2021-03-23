@@ -1,0 +1,182 @@
+[% Version = 'SeasonView.ttml,v 0.02 2021/03/07' %]
+[%# Version = 'SeasonView.ttml,v 0.01 2021/02/03'%]
+[% procedure = data.procedure %]
+
+[%# Version %]
+<div id=body > 
+
+
+
+
+<h2>What's Happening now in our yards and shop.</h2>
+<p>As you may know we lost our Shop, Honey house etc to fire. We lost all the bees in the home yard to theft as well. We have now required a new home teaching yard in Lumby, BC We look forward to developing a presence here.</p>
+ 	
+<h2>Key coming  events.</h2>
+
+
+<ul>
+ <li><h3>Clean Repair build new needed equipment</h3> 
+  We are going to need enough equipment to accommodate 10 nucs ordered as replacements for stolen bees. We will need equipment for Normal expansion.
+ <ul>
+	<li>Brood boxes. 20 for nucs 4 </li>
+	<li>Bottom Boards 10 for nucs </li>
+	<li>Inner covers</li>
+	<li>Lids</li>
+	<li>Frames</li>
+	<li>Dadant honey boxes </li>
+	<li>Dadant frames</li>
+	<li>Entrance reducers</li>
+	<li>mating nucs 10</li>
+	<li>xways boxs 3</li>
+	<li>xways frames</li>
+ </ul>
+  
+  </li>
+  
+  <li><h3>February check wintering bees</h3>
+   <p>This operation happened in the Cherryville yard. We popped the lids and had quick look. Both hives survived! One was a medium the other a small. The lid had come off the hive and the bees were down in the frames. It maybe larger than observed. I was the smaller of the two in fall so evaluation maybe correct. Checked for feed using the tip method. Both hive had lots of feed. We feed one pollen patties, one each, to stimulate brood production. We need all the bees we can get in time for raising queens.<a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&procedure=FirstEval">First Evaluation details</a></p>  
+  </li>
+  <li>
+   <h3> Locate and begin setting up yard</h3>
+   <p>We will finalize the location of the teaching/breeder yard. Find and stage equipment.</p>
+  </li>
+   
+  <li><h3>March 10. Build Saddle mountain Yard</h3> We are working with Saddle Mountain Organics for the exact location of the yard and Honey House location.</li>
+  
+  <li><h3>March 13 Sunday visit bees.</h3> 
+  
+  <p>We will be feeding heavy as we need a grafting hive quickly.</p></li>
+ 
+  <li><h3>Feed the Bees Workshop</h3>
+  <p>Bee pasture is vary important to the health of your bees. You will need 3 acres of pasture per hive with flower all season. <a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&view=BeePastureView">Pasture details.</a></p>  
+  </li>
+  <li>Set up grafting hive. </li>
+  <li>Start grafting cycle See last year for an idea of timing</li>
+  <li>Make splits. We will be showing our senior students how to expand their operations for the bees they have.</li>
+  <li></li>
+</ul>
+
+<p>Be sure to scroll down and Join the <a href="maillist">mailing list.</a>  While your there check out the calender.</p>
+
+
+     <h5>Please contact us to ensure your space. <a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=29" target="_blank">Register Here</a></h5>           
+  <h2>What was done Last season.</h2>               
+            
+<ul>          
+
+<li><h2>First Graft</h2>
+<p>May 5 2020 Location Muddy Meadows Grindrod BC</p>
+<p>Notes for the Bee yard - We transferred 15 one day old larvae into 15 cups on a stick and stick of grafted cups onto an empty frame. The frame was then put in the top box above the queen excluder and clocke board so that the bees in this box thought they were queenless and therefore would draw queens from these larvae filled cups. </p></li>
+
+<li><h2>Second Graft</h2>
+<p>May 13 2020 Location Muddy Meadows Grindrod BC</p>
+<p>Notes for the Bee yard - We grafted a second set of 1 day old larvae into 15 cups and put the stick of grafted cups onto the frame containing our first stick of grafted cells, moving the first stick down to mid frame and the new stick at the top of the frame. Keeping the newest grafts at the top of the frame will keep it warmest as the heat rises to the top of the hive</p>
+<p>We will also repaired Knuc boxes and their lids, replacing the rotatating entrance closures with 3D printed entrance controller. Contact us if you would like the printable file.</p></li>
+
+<li>
+<h2>Create mating nucs  </h2>
+<p>Friday May 15 2020 Location Muddy Meadows Grindrod BC </p>
+<p>Notes for the Bee yard - 7 of the of the 15 cups that were grafted 10 days ago developped into queen baring cells. We created 3 mating nucs from the 10 day old cells and put an extra cell into one of the 3 frame full depth nuc that were made 5 days ago from the first round of grafts. We created a 2 framed full depth nuc which already had several cells on the frame. </p>
+[%# embed('MatingNucCreation') %]
+</li>
+
+
+<li><h2>Prepare Anu Yard for bees.</h2>
+<p>Saturday May 25 Location Anu Collective yard.</p></li>
+<li>
+<h2>Create Expansion nucs  </h2>
+<p>May 30 2020 Location Muddy Meadows Grindrod BC </p>
+<p>Our queens will be mated and have been laying. Our cells we grafted in the second graft will have a place to go. We will catch queens. Introduce cells and Create Sales expansion nucs to take the queens and cells if needed. </p>
+[% embed('NucCreation') %]
+<p>Deliver created nucs to Anu Yard.</p>
+</li>
+<li><h2>Third Graft</h2>
+<p>Wednesday June 3 2020 Location Muddy Meadows Grindrod BC</p>
+<p>These will be our second round of sale queens.</p>
+</li>
+<li><h2>June 6 2020Evaluate and feed Created nucs</h2>
+<p>Each week for the next few weeks we will evaluate and feed theses nucs.</p>
+
+</li>
+<li><h2>June 13 2020 Catch queens and cell up</h2>
+<p>These queens are for sale Please reserve yours now.</p>
+</li>
+<li><h2>June 26 4th Graft.</h2></li>
+<li><h2>July 06 2020 Catch queens and cell up.</h2></li>
+</ul>
+             <p> We will be developing Tools you can use to help you manage your bee keeping and bee breeding operations. </p>
+           <ul>
+            <li><a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&procedure=HiveManHomeView">Apiary Management System</a>. <br>Track what is happening in your yards</li>        
+            <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
+        <!--     <li><a href="/cgi-bin/BBS/bbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
+         -->    <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
+           </ul>
+			<h3>News</h3>
+			<table align="center">
+			<tbody align="center">
+			<tr>
+			<td>
+			<script type = "text/javascript"
+							src="/cgi-bin/News/news.cgi?embed=1&amp;site=Apis&amp;records_per_page=1">
+						</script>
+	 
+			</td>
+		</tr>
+	</tbody>
+	</table>
+
+<iframe src="https://calendar.google.com/calendar/embed?src=tabvviq9l1ncflbcedl78qa114%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>			
+<a href="/cgi-bin/Apis/apis.cgi?site=Apis&amp;view=AppToolsView&amp;[% session_string %]" name="AppToolsView" title="Click here for details of tool this application offerers">Details of the app.</a>				
+<h3>Thursday September 17 </h3>
+
+<p>This event has two main parts.</p>
+
+<ul>
+ <li><h3>Honey Harvest and extraction.</h3>
+  <p>In this part of the workshop we will Pull all the available honey clear the bees and set aside for the extraction process. We will evaluate the hive and rearrange brood, add honey to the brood chamber if needed.</p>
+  <p>We will setup an area to extract the honey. This will be a bee prof space. For small amount of extraction the kitchen works well. As your operation grows though and you move beyond a 4 hives you will want a dedicated space for the task. Honey gets everywhere. No mater how hard you try. You will need to have clean jars or pails to store your honey. We recommend the l L Canning jar as it contains exactly 3 lb of honey. It is also highly reusable. </p>
+ </li>
+ <li><h3>MiteGone treatment for Varoa mites.</h3>
+  <p>We are a bit late here for the workshop as this should be done in late August. That timing is to ensure that all your winter bees are formed with minimal damage from Varoa. The honey should also come off then as well There are 2 main reasons for this. One is to give your bees ample time to rearrange the nest for winter. The other is so you can feed syrup to ensure the winter bees have minimal agricultural chemicals. Chemicals are the primary cause of Colony co-laps. Varoa is not but is an easy diversion. </p> 
+ </li>
+</ul>
+
+
+
+			
+			</li>
+             </ul>
+            <p>Access rights to resources will vary to your membership status.</p>
+
+            Currently we have 5 Memberships available.
+
+            <ul>
+            <li>Guest. Visitors have access access to all data considered public or essential. No login required</li>
+            <li>Beta tester. Get full access and are active in the development of the site and its usefulness to Bee Keepers. To Become a bata tester. Become a member. Earn one free month of membership for 3 contributions to the site per month. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisUser">Click here to join.</a></li>
+            <li>Member. These Vary much needed folks have full access to the site. They have contributed financially to help finance the site. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisUser">Click here to join.</a>
+             <li>Affiliate. Companies that support this site.
+            They have contributed financially to help finance the site. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisUser">Click here to join.</a>
+           <li>Hosted Site. There are two levels here. Your site will look the way you want.
+               <ul>
+                <li>Your domain on our server. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;L=eng&amp;P=DomainHosting">Click here to join.</a>
+                <li>A site on our domain. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisHosted">Click here to join.</a> 
+               </ul>
+          </ul>
+              <p>PS. You can be both a Beta Tester and a Contributing Member</p>
+
+  [%# embed('ApisWaxView') %]    
+   [%# embed('WinterizingYard') %]
+ 
+
+<br>
+<br>
+<br>
+
+<p>
+
+
+</div>
+
+-->
+
+

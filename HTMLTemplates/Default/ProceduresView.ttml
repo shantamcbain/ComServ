@@ -1,4 +1,5 @@
-[% ViewVersion = 'v 1.965 2020/05/03 '%]
+[% ViewVersion = 'v 1.966 2021/02/06 ProceduresView.ttml'%]
+[%# ViewVersion = 'v 1.965 2020/05/03 ProceduresView.ttml'%]
 [%#	$Id: ProceduresView.ttml,v 0.01 2020/04/20 17:43:15 shanta Exp shanta %]
 [%#	$Id: ProceduresView.ttml,v 0.01 2019/5/08 17:43:15 shanta Exp shanta
     $Id: ProjectsView.ttml,v 1.9 2013/1/14 17:43:15 shanta Exp shanta $	
@@ -11,7 +12,7 @@
 # variables from outside.
 
 %]
- [% PROCESS DefaultDbi.ttml %]
+ [%# PROCESS DefaultDbi.ttml %]
 	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
 	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
    [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
@@ -25,7 +26,7 @@
 	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
 [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
 	[% session_id = data.session_object.getId() %]
-	[% session_string = "session_id=$session_id" %]
+	[% session_string = "session_id=$session_iApis/apid" %]
    [% project = data.project  %]
    [% procedure = data.procedure %]
    [% title = data.title %]
@@ -46,17 +47,12 @@
  [% sessionstring %]
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
-	<td>[% IF username %]
-			<h2> Hello  [% firstname%]  [% lastname%]! Welcome to [% data.site_display_name %] Procedures! [% title %] [% procedure %]</h2>
-		[% ELSE %]
-			<h2>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %] Procedures! [% title %] </h2> 
-		[% END %]
-
-
+	<td>
+[%# ViewVersion  %]
 <p>
                 [% IF group == 'Apis_admin' OR
                     group == 'BMaster_admin' OR 
-                    group    == 'AnuCollective_admin' OR
+                    group == 'AnuCollective_admin' OR
                     group == 'CSC_admin' OR
                     group == 'CSCDev_admin' OR
                     group == 'ECF_admin' OR
@@ -67,9 +63,10 @@
                  %] 
                              
                      <a href="/cgi-bin/ToDo/procedures_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form" target = "_blank">Add</a>    
-		[% END %] <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView" target = "_blank">List</a></p>
-</h4>	
-		[% SiteName = data.site_name%]
+		[% END %] 
+	<!-- 	 <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=ProceduresView" target = "_blank">List</a></p> 
+</h4>	 -->
+		[% SiteName = data.site_name %]
 		
    	[% IF SiteName == "OKB" %]
 		[%# embed('OkBeekeepersHomeView') %]
@@ -159,7 +156,7 @@
 		[% ELSE %]
 		
 		<p>This site has no workshop at this time. </p>
-		<!-- Begin Demo Home View -->  
+		<!-- Begin Demo Home View --> 
 		<p>Here are some of the provided by <a href="http://CountryStores.ca/cgi-bin/index.cgi?site=CS&amp;[% session_string %]&amp;view=WorkShopsView" target=_"_blank">Country Stores.ca </a>
 
 	[% embed ('CSWorkShops') %]
