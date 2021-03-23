@@ -157,7 +157,8 @@ beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
 </ol>
 
 [% END %]
-		</td >
+
+[% END %]		</td >
 
 
 
