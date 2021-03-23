@@ -32,8 +32,9 @@
 <td>
 
   [% Version %]   
- 
-
+ [% procedure  %]
+	
+[%  SiteName
 [% IF procedure  %]
 
 [% embed ('BMasterProcedures') %]
