@@ -55,8 +55,9 @@
 	[% END %]
 
 	[% END %] 
-
-Default opening					 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
+<h3><a href="https://beemaster.ca/mailman/listinfo/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Join Our Apis lists</b></a>
+</h3>
+ 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
 	 	
 		<p>Thanks for digging deeper.<p>              
 	                 
