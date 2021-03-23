@@ -22,7 +22,7 @@
 [% email = data.session_object.getAttribute('-KEY','auth_email') %]
 [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
  	[% session_string = "session_id=$session_id" %]
-  [% Version %] 
+ 
  
  [% IF SiteName == 'ENCY' OR
         SiteName == 'EV' OR
@@ -94,7 +94,8 @@
 
 		<tr>
 	<td >
-		<div align="center">
+ [% Version %] 
+ 		<div align="center">
 		 [% embed('VeiwInBrowser')	%] 
 	[% IF group == 'CSC_admin' OR
       group == 'BMast_admin'OR		%] 	
@@ -115,7 +116,7 @@ beemaster@beemaster.ca
 
 			<h3>  Hello!  Welcome to [% MailServer %]'s Mail Lists Page!</h3
 			Please to [% embed('JoinUsLink')	%]  Joining our site helps support our efforts to save the bees.
-			[% END %]
+
 		</div>
 		<h2> Here you will find the list our site offers. <h2>
 
