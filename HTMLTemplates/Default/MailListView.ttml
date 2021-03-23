@@ -113,12 +113,12 @@ beemaster@beemaster.ca
 
 
 			[% ELSE %]
+	<h2> Here you will find the list our site offers. <h2>
 
-			<h3>  Hello!  Welcome to [% MailServer %]'s Mail Lists Page!</h3
 			Please to [% embed('JoinUsLink')	%]  Joining our site helps support our efforts to save the bees.
 
 		</div>
-		<h2> Here you will find the list our site offers. <h2>
+	
 
 
 <ul>
