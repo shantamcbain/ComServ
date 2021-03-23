@@ -35,12 +35,6 @@
 
 
 
-[% IF group == "Mentoring"	%]
-	[% embed(data.page_top_view,['-PAGE_TITLE',' Mentoring Procedures View']) %]
-	
-[% ELSE %]
-	[%# embed(data.page_top_view,['-PAGE_TITLE','Procedures View']) %]
-[% END %]
 
 [% embed('ErrorDisplayView') %]
 
@@ -48,7 +42,7 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td>
-[%# ViewVersion  %]
+[% ViewVersion  %]
 <p>
                 [% IF group == 'Apis_admin' OR
                     group == 'BMaster_admin' OR 
