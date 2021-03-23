@@ -135,7 +135,7 @@
 	[% END %] 
 [% END %]
 
-
+  [% Version %] 
 </td>
 </tr>
 </table>

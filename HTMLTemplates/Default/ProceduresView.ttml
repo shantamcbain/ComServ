@@ -158,7 +158,7 @@
 			<!-- End Demo home view -->
 		[% END %]
 		
-
+[% ViewVersion %]	
 
 
 

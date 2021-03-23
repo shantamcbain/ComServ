@@ -28,7 +28,7 @@
 		<td >
 		<div align="center"
 				<A NAME="PageTop"></A>
-	 [% Version %]   
+	 [%# Version %]   
 		</div>	
 			[% IF username %]
 
@@ -43,15 +43,14 @@
 		<tr>
 		<td >
 		</div>
-not login Maillist view
+
     [% embed ('MailListView' )   %]		
 
-not login Maillist view
 
   
 [% END %]
 
-
+  [% Version %] 
 		</td>
 			</tr>
 		</table>
