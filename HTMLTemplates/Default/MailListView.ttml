@@ -95,7 +95,7 @@
 		<tr>
 	<td >
  [% Version %] 
- 		<div align="center">
+
 		 [%# embed('VeiwInBrowser')	%] 
 	[% IF group == 'CSC_admin' OR
       group == 'BMast_admin' 		%] 	
@@ -109,7 +109,8 @@ beemaster_admin@beemaster.ca
 beemaster_user_list@beemaster.ca
 landtrust_user_list@beemaster.ca
 beemaster@beemaster.ca
-
+		</div>
+	
 
 
 			[% ELSE %]
