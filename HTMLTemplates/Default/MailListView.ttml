@@ -99,6 +99,12 @@
 		<h3> Hello  [% firstname%]&nbsp;  [% lastname%]! Welcome to [% MailServer %]'s Mail List's page!</h3>
 <p></p>
 
+anu_user_list@anucollective.beemaster.ca
+anuadmin@anucollective.beemaster.ca
+beemaster_admin@beemaster.ca
+beemaster_user_list@beemaster.ca
+landtrust_user_list@beemaster.ca
+beemaster@beemaster.ca
 
 
 
@@ -113,6 +119,11 @@
 
 Add loop here to get list of list.
 
+anubeekeeping@anucollective.beemaster.ca
+apis_discussion_beemaster@beemaster.ca
+beekeeping@beemaster.ca
+breeder@beemaster.ca
+landtrust@beemaster.ca
 
 [%# embed ('ListJoinView') %]
 <h2>Member Only Lists</h2>
