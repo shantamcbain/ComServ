@@ -48,19 +48,7 @@ not login Maillist view
 
 not login Maillist view
 
-  [% IF SiteName == 'Apis' OR
-         SiteName == 'BMaster' %]
-         
-     [% IF username == 'Shanta' OR
-           group == 'BMaster_member' OR
-           group == 'Apis_Admin'  OR
-           group == 'BMaster_Admin'   
-     %] 
- 
- 
-	     [% ELSE %]   
-	
-  [% END %]
+  
 [% END %]
 
 
