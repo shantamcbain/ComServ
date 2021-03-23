@@ -96,7 +96,7 @@
 	<td >
  [% Version %] 
  		<div align="center">
-		 [% embed('VeiwInBrowser')	%] 
+		 [%# embed('VeiwInBrowser')	%] 
 	[% IF group == 'CSC_admin' OR
       group == 'BMast_admin' 		%] 	
     
@@ -121,16 +121,18 @@ beemaster@beemaster.ca
 		<h2> Here you will find the list our site offers. <h2>
 
 
-<ul><li>
+<ul>
+ <li>
 <h2><a href="https://beemaster.ca/mailman/listinfo/Apis_discussion_beemaster_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b> Apis Discussions list</b></a></h2>
 </li>
-<li>
+ <li>
 <a href="https://beemaster.ca/mailman/listinfo/anubeekeeping_anucollective.beemaster.ca onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>anubeekeeping  at anucollective.beemaster.ca</b></a></h2>
 </li>
 <li><a href="https://beemaster.ca/mailman/listinfo/<a href="https://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>
 beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
 </li>
 <li><a href="https://beemaster.ca/mailman/listinfo/breeder_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>breeder_beemaster.ca</b></a></h2>
+</li>
 <li>
 <a href="https://beemaster.ca/mailman/listinfo/landtrust_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>landtrust_beemaster.ca</b></a></h2>
 </li>
@@ -166,7 +168,7 @@ beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
 		<tr>
 		<td >
 
-	
+	 [% Version %] 
 </td >
 		</tr>
 </table>		
