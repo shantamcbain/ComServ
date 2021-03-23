@@ -52,10 +52,10 @@
 		<tr>
 		<td >
 
-
+not login Maillist view
     [% embed ('MailListView' )   %]		
 
-
+not login Maillist view
 
   [% IF SiteName == 'Apis' OR
          SiteName == 'BMaster' %]
