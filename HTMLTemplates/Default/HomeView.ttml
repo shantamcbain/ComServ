@@ -210,4 +210,5 @@
 
 
 [% embed(data.page_bottom_view) %]
+
 [% Version %]	
