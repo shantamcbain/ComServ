@@ -118,14 +118,15 @@ beemaster@beemaster.ca
 
 
 <ul><li>
-<h2><a href="https://beemaster.ca/mailman/listinfo/Apis_discussion_beemaster_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Join Our Apis list</b></a></h2>
+<h2><a href="https://beemaster.ca/mailman/listinfo/Apis_discussion_beemaster_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b> Apis Discussions list</b></a></h2>
 </li>
 <li>
-<a href="https://beemaster.ca/mailman/listinfo/anubeekeeping_anucollective.beemaster.ca onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>anubeekeeping_anucollective.beemaster.ca</b></a></h2>
+<a href="https://beemaster.ca/mailman/listinfo/anubeekeeping_anucollective.beemaster.ca onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>anubeekeeping  at anucollective.beemaster.ca</b></a></h2>
 </li>
 <li><a href="https://beemaster.ca/mailman/listinfo/<a href="https://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>
-beekeeping_beemaster.ca</b></a></h2>
-</li><a href="https://beemaster.ca/mailman/listinfo/breeder_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>breeder_beemaster.ca</b></a></h2>
+beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
+</li>
+<li><a href="https://beemaster.ca/mailman/listinfo/breeder_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>breeder_beemaster.ca</b></a></h2>
 <li>
 <a href="https://beemaster.ca/mailman/listinfo/landtrust_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>landtrust_beemaster.ca</b></a></h2>
 </li>
@@ -165,6 +166,4 @@ beekeeping_beemaster.ca</b></a></h2>
 		</tr>
 </table>		
 
-
-[% embed(data.page_bottom_view) %]
 
