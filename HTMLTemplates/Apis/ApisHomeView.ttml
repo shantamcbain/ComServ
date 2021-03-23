@@ -36,10 +36,10 @@
 </p>	
 [%#  SiteName%]
 
-[% IF procedure  %]
+test for prodedure [% IF procedure  %]
   [% embed ('BMasterProcedures') %]
 [% ELSE %]
-	[% IF username %]
+	test for user[% IF username %]
 			[% IF  group == 'normal'%]
 
 		<p>As a guest you may view the FAQ, Plant and other database . Contribute to Forums, Calendar of announcements, Buy and Sell, and Links.
@@ -50,10 +50,10 @@
 	<p>Thanks for logging in.</p>
 <p>Member home</p>
 	[% END %]
-	[% IF SiteName == "SMO" %]
+Test for SMO	[% IF SiteName == "SMO" %]
 	   [% embed ('SaddleMountainOrganicsHomeView') %]
 	[% ELSE %]
-					 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
+Default opening					 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
 	 	
 		<p>Thanks for digging deeper.<p>              
 	                 
