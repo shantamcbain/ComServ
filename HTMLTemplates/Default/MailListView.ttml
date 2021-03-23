@@ -111,8 +111,10 @@
 		<h2> Here you will find the list our site offers. <h2>
 <p>Our public list are as Fallows.</p>
 
+Add loop here to get list of list.
 
-[% embed ('ListJoinView') %]
+
+[%# embed ('ListJoinView') %]
 <h2>Member Only Lists</h2>
 [% IF group == 'Normal' %]
 
