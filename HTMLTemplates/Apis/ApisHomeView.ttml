@@ -34,7 +34,7 @@
 <A NAME="PageTop"></A>
  <!-- [% Version %]   -->
  
-<h2> A site for Beekeepers. </h2>
+
 [% IF procedure  %]
 
 [% embed ('BMasterProcedures') %]
