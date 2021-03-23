@@ -88,7 +88,6 @@
     [%   ListAdmin = '1'  %]
  [% END %]
      
- 		<A NAME="PageTop"></A>
      
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
@@ -96,8 +95,7 @@
 	<td >
  [% Version %] 
 
-		 [%# embed('VeiwInBrowser')	%] 
-	[% IF group == 'CSC_admin' OR
+		[% IF group == 'CSC_admin' OR
       group == 'BMast_admin' 		%] 	
     
 		<h3> Hello  [% firstname%]&nbsp;  [% lastname%]! Welcome to [% MailServer %]'s Mail List's page!</h3>
