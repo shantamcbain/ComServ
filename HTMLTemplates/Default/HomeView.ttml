@@ -187,7 +187,8 @@
 
 
 
-                 
+    [% embed ('ListJoinView' )   %]		
+              
  
  
 
