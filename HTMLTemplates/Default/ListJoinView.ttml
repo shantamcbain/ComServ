@@ -28,7 +28,7 @@
 		<td >
 		<div align="center"
 				<A NAME="PageTop"></A>
-	 [%# Version %]   
+	 [% Version %]   
 		</div>	
 			[% IF username %]
 

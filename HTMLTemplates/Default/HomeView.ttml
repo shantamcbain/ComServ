@@ -1,4 +1,4 @@
-[% ViewVersion = '/cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.965 2020/04/22 17:43:15 shanta Exp '%]
+[% Version = '/cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.965 2020/04/22 17:43:15 shanta Exp '%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.965 2020/04/22 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.95 2020/03/29 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.94 2019/10/15 17:43:15 shanta Exp shanta $	%]
@@ -46,7 +46,7 @@
 	<tr>
 	<td>
 	
-[% ViewVersion %]	
+[% Version %]	
 	
 	[% IF username %]
 			<h3 > Hello  [% firstname%] &nbsp; [% lastname%]! Welcome to [% data.site_display_name %]</h3>
@@ -208,4 +208,4 @@
 
 
 [% embed(data.page_bottom_view) %]
-[% ViewVersion %]	
+[% Version %]	
