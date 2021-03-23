@@ -31,9 +31,9 @@
 <tr>
 <td>
 
-  [% Version %]   
- <p>Procedure [% procedure  %]
-</p>	
+<p>  [% Version %]   </p>
+[% procedure  %]
+
 [%#  SiteName%]
 
 [% IF procedure  %]
@@ -50,6 +50,8 @@
 		<p>Thanks for logging in.</p>
 	<p>Member home</p>
 	[% END %]
+
+	[% END %] 
 
 Default opening					 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
 	 	
@@ -81,8 +83,6 @@ Default opening					 		<h2>This Web Application  is for bee keepers to help each
 	<iframe src="https://calendar.google.com/calendar/embed?src=tabvviq9l1ncflbcedl78qa114%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>			
 
 
-
-	[% END %] 
 [% END %]
 
   [% Version %] 
