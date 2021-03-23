@@ -86,7 +86,7 @@
       group == 'HE_admin'OR
       group == 'IM_admin'  %]
     [%   ListAdmin = '1'  %]
-    [% END %]
+ [% END %]
      
  		<A NAME="PageTop"></A>
      
@@ -97,7 +97,8 @@
 		<div align="center">
 		 [% embed('VeiwInBrowser')	%] 
 	[% IF group == 'CSC_admin' OR
-      group == 'BMast_admin'OR		[% IF username %]
+      group == 'BMast_admin'OR		%] 	
+    
 		<h3> Hello  [% firstname%]&nbsp;  [% lastname%]! Welcome to [% MailServer %]'s Mail List's page!</h3>
 <p></p>
 
