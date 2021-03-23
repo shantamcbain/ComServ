@@ -50,9 +50,7 @@ test for prodedure [% IF procedure  %]
 	<p>Thanks for logging in.</p>
 <p>Member home</p>
 	[% END %]
-Test for SMO	[% IF SiteName == "SMO" %]
-	   [% embed ('SaddleMountainOrganicsHomeView') %]
-	[% ELSE %]
+
 Default opening					 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
 	 	
 		<p>Thanks for digging deeper.<p>              
@@ -62,7 +60,7 @@ Default opening					 		<h2>This Web Application  is for bee keepers to help each
 			</tr>
 			<tr>
 			<td >				
-	 [% END %]          
+          
             <h2>Tools you can use to help you manage your bee keeping and bee breeding operations. </h2>
 
             <ul>

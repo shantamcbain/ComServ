@@ -73,9 +73,10 @@
 			[% embed ('AltPowerHomeView') %]
 		[% ELSIF SiteName == "AnuCollective" %]
 			[% embed ('AnuCollectiveHomeView') %]
-		[% ELSIF SiteName == "BMaster" OR
-		         SiteName == "SMO"%]Open apis
-			[% embed ('ApisHomeView') %]
+		[% ELSIF SiteName == "BMaster" %]		[
+		  % embed ('ApisHomeView') %]
+		[% ELSIF SiteName == "SMO"%]
+		     [% embed ('SaddleMountainOrganicsHomeView') %]
 		[% ELSIF SiteName == "BMastBreeder"%]
 			[% embed ('BMasterBreederHomeView') %]
 		[% ELSIF SiteName == "Forager" %]
