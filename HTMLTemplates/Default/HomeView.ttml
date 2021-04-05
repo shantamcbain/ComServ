@@ -1,4 +1,6 @@
-[% ViewVersion = '/cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.965 2020/04/22 17:43:15 shanta Exp '%]
+[%# Version = 'v 1.96 2021/03/23 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
+[%# Version = 'v 1.965 2021/03/22 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
+[%# Version = '/cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.965 2020/04/22 17:43:15 shanta Exp '%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.965 2020/04/22 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.95 2020/03/29 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/HomeView.ttml,v 1.94 2019/10/15 17:43:15 shanta Exp shanta $	%]
@@ -46,7 +48,7 @@
 	<tr>
 	<td>
 	
-[%# ViewVersion %]	
+[% Version %]	
 	
 	[% IF username %]
 			<h3 > Hello  [% firstname%] &nbsp; [% lastname%]! Welcome to [% data.site_display_name %]</h3>
@@ -72,8 +74,10 @@
 			[% embed ('AltPowerHomeView') %]
 		[% ELSIF SiteName == "AnuCollective" %]
 			[% embed ('AnuCollectiveHomeView') %]
-		[% ELSIF SiteName == "BMaster"%]
-			[% embed ('ApisHomeView') %]
+		[% ELSIF SiteName == "BMaster" %]		
+		  [% embed ('ApisHomeView') %]
+		[% ELSIF SiteName == "SMO"%]
+		     [% embed ('SaddleMountainOrganicsHomeView') %]
 		[% ELSIF SiteName == "BMastBreeder"%]
 			[% embed ('BMasterBreederHomeView') %]
 		[% ELSIF SiteName == "Forager" %]
@@ -187,7 +191,8 @@
 
 
 
-                 
+  [% embed ('ListJoinView' )   %]		
+              
  
  
 
@@ -195,10 +200,11 @@
 
 [% IF data.site_last_update %]
 
-<p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %] &nbsp; This value is stored in your setup file. [% END %]
-		<br>
-		
+	<p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %] &nbsp; This value is stored in your setup file. 
 [% END %]
+
+[% END %]
+
 [% embed('CSCCopyRight') %]
 
 	
@@ -206,3 +212,5 @@
 
 
 [% embed(data.page_bottom_view) %]
+
+[% Version %]	

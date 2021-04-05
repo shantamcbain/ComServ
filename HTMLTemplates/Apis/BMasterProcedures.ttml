@@ -1,3 +1,5 @@
+[% ViewVersion = 'v 1.14 2021/03/08 BMasterProcedures.ttml '%]
+[%# ViewVersion = 'v 1.13 2020/03/10 BMasterProcedures.ttml '%]
 [% 
 # BMasterProcedures, v 1.13 2020/03/10
 # BMasterProcedures, v 1.12 2019/05/09
@@ -31,15 +33,18 @@
 <div align="center">
 </div>
 
- page = [% Page %]
+ [%# ViewVersion  %]
 	   
 
  [% IF procedure  == 'HiveManHomeView' %]
 
 [% embed ('HiveManHomeView') %]
+[% ELSIF procedure  == ('ForumsView') %]
+ 
+ [% embed ('ForumsView') %]
  [% ELSIF procedure  == ('ApisQueensView') %]
  
- [% embed ('ApisQueensView') %]
+[% embed ('ApisQueensView') %]
 [% ELSIF procedure  == ('ApisQueensNucView') %]
  
  [% embed ('ApisQueensNucView') %] 
@@ -82,8 +87,14 @@
  [% embed ('SeasonView') %]
 
 [% ELSIF procedure  == ('ClockeBoardView') %]
- 
  [% embed ('ClockeBoardView') %]
+[% ELSIF procedure  == ('FirstEval') %]
+   [% embed ('FirstEval') %]
+[% ELSIF procedure  == ('PollenHarvest') %]
+   [% embed ('PollenHarvest') %] 
+[% ELSIF procedure  == ('PollenPatties') %]
+   [% embed ('PollenPatties') %]
+
    [% ELSIF Page  == ('Disease') %]
    [% FOREACH link = DBI.query("SELECT * FROM page_tb
                                   WHERE  (
@@ -94,24 +105,7 @@
                 [% PROCESS pagefields.ttml %]
        [% END %]                  
 
- 
-[%# PageName %]
-[% body %]
 
-[% ELSIF Page  == ('FirstVisit') %]
-[% Page %]
-   [% FOREACH link = DBI.query("SELECT * FROM page_tb
-                                  WHERE  (
-                                         page_code = $Page AND
-                                         sitename = '$SiteName' )
-                                  ORDER BY sitename
-                                  ")%]    
-                [% PROCESS pagefields.ttml %]
-       [% END %]                  
-
- 
-[%# PageName %]
-[% body %]
 
 
    [% ELSIF Page  == ('NucMakingWorkshop') %]
