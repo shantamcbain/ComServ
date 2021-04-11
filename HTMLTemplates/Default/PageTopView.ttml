@@ -16,8 +16,8 @@
 
 
 [% IF data.session_object.getAttribute('-KEY','SiteName') %]
-
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+<h2>
+[% SiteNam</h2>e = data.session_object.getAttribute('-KEY','SiteName') %]
 
 [% ELSE %]
 

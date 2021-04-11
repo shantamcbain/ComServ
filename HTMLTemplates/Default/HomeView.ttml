@@ -195,7 +195,10 @@
               
  
  
-
+[% IF facebook %]<div class="fb-like" data-href="http://[% facebook %]"  data-send="true" data-width="450" data-show-faces="false"></div>
+<p> 
+		<br>
+[% END %]
   [%# embed ('SiteTodoSQL' )   %]		
 
 [% IF data.site_last_update %]
