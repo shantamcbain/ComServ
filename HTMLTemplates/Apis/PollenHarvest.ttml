@@ -13,7 +13,7 @@
 [% embed(data.page_top_view,['-PAGE_TITLE','Pollen Harvest']) %]
 [% END %]
 
-
+[% procedure = data.procedure %]
 <h2>Pollen Collection</h2>
 
 <p>Pollen is a valuable resource for your beekeeping business. The health value to humans is vast. If you only had one food pollen would be it. Your bees required it to live. You will need it to feed pollen to the bees in the spring. See  <a href="/cgi-bin/index.cgi?site=[% SiteName %]&procedure=PollenPatties" target="_blank">for details.</a> </p>
