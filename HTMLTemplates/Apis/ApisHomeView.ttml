@@ -1,8 +1,8 @@
-[% Version = 'v 1.146 2021/02/06 shanta ApisHomeView.ttml' %]
+[%# Version = 'v 1.148 2021/03/23 shanta ApisHomeView.ttml' %]
+[%# Version = 'v 1.147 2021/03/22 shanta ApisHomeView.ttml' %]
+[%# Version = 'v 1.146 2021/02/06 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.145 2021/02/03 shanta ApisHomeView.ttml' %]
 [%#Version = 'v 1.14 2020/07/08 shanta' %]
-
-
 [%# Version = 'v 1.13 2020/06/08 ApisHomeView.ttml shanta' %]
 [%
 #	$Id: ApisHomeView.ttml,v 1.11 2020/03/10 06:42:47 shanta Exp shanta $	%]
@@ -28,62 +28,45 @@
 [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
 [% email = data.session_object.getAttribute('-KEY','auth_email') %]
 <!-- ApisHomeView  v 1.1 2003/11/29-->
+
+
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td>
-<A NAME="PageTop"></A>
- <!-- [% Version %]   -->
- 
-<h2> A site for Beekeepers. </h2>
-[% IF procedure  %]
 
-[% embed ('BMasterProcedures') %]
+<p>  [% Version %]   </p>
+[% procedure  %]
+
+[%#  SiteName%]
+
+[% IF procedure  %]
+  [% embed ('BMasterProcedures') %]
 [% ELSE %]
 	[% IF username %]
 			[% IF  group == 'normal'%]
 
-<p>As a guest you may view the FAQ, Plant and other database . Contribute to Forums, Calendar of announcements, Buy and Sell, and Links.
-</p>
-<p>Members may contribute to the sites contend and Join communities monitor content of the different date-abases hosted on the site. Create logs that certification organizations need to access to maintain certification. Available logs will vary according to the need of your certification organization. 
-	</p>	[% ELSE %]
-	<p>Thanks for logging in.</p>
-<p>Member home</p>
-			[% END %]
-
-
-	
-	
-[% IF SiteName == "SMO" %]
-
-
-[% embed ('SaddleMountainOrganicsHomeView') %]
-
-
+		<p>As a guest you may view the FAQ, Plant and other database . Contribute to Forums, Calendar of announcements, Buy and Sell, and Links.
+		</p>
+		<p>Members may contribute to the sites contend and Join communities monitor content of the different date-abases hosted on the site. Create logs that certification organizations need to access to maintain certification. Available logs will vary according to the need of your certification organization. 
+		</p>	
 	[% ELSE %]
-				 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
- 	
-<p>Thanks for digging deeper.<p>              
-                 
-   <a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&amp;[% session_string %]&amp;pocedure=SeasonView" name="Anucollective" >This seasons active beekeeping</a> 
-		</td >
-		</tr>
-		<tr>
-		<td >
-
-
-
-		
-					
-					
-					
-				
-
+		<p>Thanks for logging in.</p>
+	<p>Member home</p>
 	[% END %]
 
-            
-             
-        
-            
+	[% END %] 
+<h3><a href="https://beemaster.ca/mailman/listinfo/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Join Our Apis lists</b></a>
+</h3>
+ 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
+	 	
+		<p>Thanks for digging deeper.<p>              
+	                 
+	   <a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&amp;[% session_string %]&amp;pocedure=SeasonView" name="Anucollective" >This seasons active beekeeping</a> 
+			</td >
+			</tr>
+			<tr>
+			<td >				
+          
             <h2>Tools you can use to help you manage your bee keeping and bee breeding operations. </h2>
 
             <ul>
@@ -99,46 +82,14 @@
 	</tbody>
 	</table>
 
-			
-<a href="/cgi-bin/index.cgi?site=Apis&amp;view=AppToolsView&amp;[% session_string %]" name="AppToolsView" title="Click here for details of tool this application offerers">Details of the app.</a>				
+	
 
-<H2><B>Join Our Apis discussion list</b></H2>
- <FORM Method=POST ACTION="http://beemaster.ca/mailman/subscribe/apis_discussion_beemaster_beemaster.ca"><br>
- Your E-mail address: <INPUT type="Text" name="email" size="30" value="[% email %]"><br>
- Your Name (optional): <INPUT type="Text" name="fullname" size="30" value="[% firstname %]&nbsp; [% lastname%]"><br><br>
- You may enter a privacy password below. This provides only mild security, but should<br>
- prevent others from messing with your subscription. <b>Do not use a valuable password</b> as it<br>
- will occasionally be emailed back to you in cleartext.<br><br>
- If you choose not to enter a password, one will be automatically generated for you, and it will<br>
- be sent to you once you've confirmed your subscription. You can always request a mail-back<br>
- of your password when you edit your personal options.<br><br>
- Password choice: <INPUT type="Password" name="pw" size="15"><BR>
- Confirm Password: <INPUT type="Password" name="pw-conf" size="15"><BR><BR>
- Would you like to receive list mail batched in a daily digest? (You may choose NoMail after you join.)<BR><br>
- <input type=radio name="digest" value="0" CHECKED> No <input type=radio name="digest" value="1"> Yes<br><br>
- <INPUT type="Submit" name="email-button" value="Subscribe">
- </FORM>
-
-<iframe src="https://calendar.google.com/calendar/embed?src=tabvviq9l1ncflbcedl78qa114%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>			
+	<iframe src="https://calendar.google.com/calendar/embed?src=tabvviq9l1ncflbcedl78qa114%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>			
 
 
-
-<br>
-<br>
-<br>
-
-<p>
-<!-- hhmts start -->
-<!-- hhmts end -->
-
-[% embed('CSCCopyRight') %]
-	[% END %] 
 [% END %]
 
-
-</td>
-</tr>
-</table>
+  [% Version %] 
 
 
 
