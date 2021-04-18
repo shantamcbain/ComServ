@@ -78,8 +78,8 @@ foreach ( $CGI->param() )
 my $debug = 0;
 
 my $APP_NAME       = "log";
-my $last_update    = 'April 18, 2021';
-my $site_update    = 'April 18, 2021';
+my $last_update    = 'Novemver 16, 2016';
+my $site_update    = 'Novemver 16, 2016';
 my $APP_NAME_TITLE = "Brew Log";
 my $FAVICON;
 my $ANI_FAVICON;
@@ -691,7 +691,7 @@ my @months = qw(January February March April May June July August
 my %months;
 @months{ 1 .. @months } = @months;
 my %years = ();
-$years{$_} = $_ for ( 2019 .. 2025 );
+$years{$_} = $_ for ( 2014 .. 2020 );
 my %days = ();
 $days{$_} = $_ for ( 1 .. 31 );
 
