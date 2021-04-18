@@ -47,3 +47,6 @@ Modules/BrewSetup.pm
 =======
 Modules/SiteSetup.pm
 >>>>>>> 7889dd98a962da5532a8c06d59d088e46e69c836
+/awstats.pl
+/lang
+/plugins
