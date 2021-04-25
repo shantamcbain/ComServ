@@ -61,7 +61,7 @@ show procedure apis[% procedure  %]
 	 	
 		<p>Thanks for digging deeper.<p>              
 	                 
-	   <a href="/cgi-bin/index.cgi?site=BMaster&amp;[% session_string %]&amp;pocedure=SeasonView" name="Anucollective" >This seasons active beekeeping</a> 
+	   <a href="/cgi-bin/index.cgi?site=BMaster&amp;[% session_string %]&amp;procedure=SeasonView" name="Anucollective" >This seasons active beekeeping</a> 
 			</td >
 			</tr>
 			<tr>
