@@ -1,4 +1,5 @@
-[% ViewVersion = 'v 1.966 2021/02/06 ProceduresView.ttml'%]
+[%# Version = 'v 1.967 2021/03.22 ProceduresView.ttml'%]
+[%# Version = 'v 1.966 2021/02/06 ProceduresView.ttml'%]
 [%# ViewVersion = 'v 1.965 2020/05/03 ProceduresView.ttml'%]
 [%#	$Id: ProceduresView.ttml,v 0.01 2020/04/20 17:43:15 shanta Exp shanta %]
 [%#	$Id: ProceduresView.ttml,v 0.01 2019/5/08 17:43:15 shanta Exp shanta
@@ -35,12 +36,6 @@
 
 
 
-[% IF group == "Mentoring"	%]
-	[% embed(data.page_top_view,['-PAGE_TITLE',' Mentoring Procedures View']) %]
-	
-[% ELSE %]
-	[%# embed(data.page_top_view,['-PAGE_TITLE','Procedures View']) %]
-[% END %]
 
 [% embed('ErrorDisplayView') %]
 
@@ -48,7 +43,7 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td>
-[%# ViewVersion  %]
+[% Version  %]
 <p>
                 [% IF group == 'Apis_admin' OR
                     group == 'BMaster_admin' OR 
@@ -164,7 +159,7 @@
 			<!-- End Demo home view -->
 		[% END %]
 		
-
+[% Version %]	
 
 
 

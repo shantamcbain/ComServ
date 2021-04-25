@@ -1,11 +1,11 @@
+[%# Version = 'v 0.002 2021/03/23 shanta MailListView.ttml' %]
+[%# Version = 'v 0.001 2021/03/22 shanta MailListView.ttml' %]
 [%
 #	$Id: MailListView.ttml,v 1.0 2011/08/22 13:40:30 shanta Exp $
 
 
 %]
- [% PROCESS DefaultDbi.ttml %]
 
-[% embed(data.page_top_view,['-PAGE_TITLE','Mail Lists']) %]
 
 [% embed('ErrorDisplayView') %] 
 
@@ -23,6 +23,8 @@
 [% email = data.session_object.getAttribute('-KEY','auth_email') %]
 [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
  	[% session_string = "session_id=$session_id" %]
+ 
+ 
  [% IF SiteName == 'ENCY' OR
         SiteName == 'EV' OR
         SiteName == 'Forager' %]
@@ -85,34 +87,56 @@
       group == 'HE_admin'OR
       group == 'IM_admin'  %]
     [%   ListAdmin = '1'  %]
-    [% END %]
+ [% END %]
      
- 		<A NAME="PageTop"></A>
      
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 
 		<tr>
 	<td >
-		<div align="center">
-		 [% embed('VeiwInBrowser')	%] 
-			[% IF username %]
+ [% Version %] 
+
+		[% IF group == 'CSC_admin' OR
+      group == 'BMast_admin' 		%] 	
+    
 		<h3> Hello  [% firstname%]&nbsp;  [% lastname%]! Welcome to [% MailServer %]'s Mail List's page!</h3>
 <p></p>
 
-
+anu_user_list@anucollective.beemaster.ca
+anuadmin@anucollective.beemaster.ca
+beemaster_admin@beemaster.ca
+beemaster_user_list@beemaster.ca
+landtrust_user_list@beemaster.ca
+beemaster@beemaster.ca
+		</div>
+	
 
 
 			[% ELSE %]
+	<h2> Here you will find the list our site offers. <h2>
 
-			<h3>  Hello!  Welcome to [% MailServer %]'s Mail Lists Page!</h3
 			Please to [% embed('JoinUsLink')	%]  Joining our site helps support our efforts to save the bees.
-			[% END %]
+
 		</div>
-		<h2> Here you will find the list our site offers. <h2>
-<p>Our public list are as Fallows.</p>
+	
 
 
-[% embed ('ListJoinView') %]
+<ul>
+ <li>
+<h2><a href="https://beemaster.ca/mailman/listinfo/Apis_discussion_beemaster_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b> Apis Discussions list</b></a></h2>
+</li>
+ <li>
+<a href="https://beemaster.ca/mailman/listinfo/anubeekeeping_anucollective.beemaster.ca onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>anubeekeeping  at anucollective.beemaster.ca</b></a></h2>
+</li>
+<li><a href="https://beemaster.ca/mailman/listinfo/<a href="https://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>
+beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
+</li>
+<li><a href="https://beemaster.ca/mailman/listinfo/breeder_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>breeder_beemaster.ca</b></a></h2>
+</li>
+<li>
+<a href="https://beemaster.ca/mailman/listinfo/landtrust_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>landtrust_beemaster.ca</b></a></h2>
+</li>
+</ul>
 <h2>Member Only Lists</h2>
 [% IF group == 'Normal' %]
 
@@ -135,7 +159,8 @@
 </ol>
 
 [% END %]
-		</td >
+
+[% END %]		</td >
 
 
 
@@ -143,11 +168,9 @@
 		<tr>
 		<td >
 
-	
+	 [% Version %] 
 </td >
 		</tr>
 </table>		
 
-
-[% embed(data.page_bottom_view) %]
 
