@@ -50,7 +50,7 @@
 	<td>
 	
 [% Version %]	
-show procedure	[% procedure  %]
+[%# procedure  %]
 	[% IF username %]
 			<h3 > Hello  [% firstname%] &nbsp; [% lastname%]! Welcome to [% data.site_display_name %]</h3>
 		[% ELSE %]
