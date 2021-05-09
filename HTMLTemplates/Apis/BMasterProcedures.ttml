@@ -1,4 +1,4 @@
-[% ViewVersion = 'v 1.14 2021/03/08 BMasterProcedures.ttml '%]
+[%# ViewVersion = 'v 1.14 2021/03/08 BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.13 2020/03/10 BMasterProcedures.ttml '%]
 [% 
 # BMasterProcedures, v 1.13 2020/03/10
@@ -33,16 +33,19 @@
 <div align="center">
 </div>
 
- [%# ViewVersion  %]
+ [% ViewVersion  %]
 	   
 
  [% IF procedure  == 'HiveManHomeView' %]
 
 [% embed ('HiveManHomeView') %]
-[% ELSIF procedure  == ('ForumsView') %]
+[% ELSIF procedure  == ('ClokeBoardView') %]
+ 
+ [% embed ('ClokeBoardView') %]
+ [% ELSIF procedure  == ('ForumsView') %]
  
  [% embed ('ForumsView') %]
- [% ELSIF procedure  == ('ApisQueensView') %]
+[% ELSIF procedure  == ('ApisQueensView') %]
  
 [% embed ('ApisQueensView') %]
 [% ELSIF procedure  == ('ApisQueensNucView') %]

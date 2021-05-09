@@ -1,3 +1,4 @@
+[%# Version = 'v 1.149 2021/04/25 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.148 2021/03/23 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.147 2021/03/22 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.146 2021/02/06 shanta ApisHomeView.ttml' %]
@@ -35,7 +36,7 @@
 <td>
 
 <p>  [% Version %]   </p>
-[% procedure  %]
+
 
 [%#  SiteName%]
 
@@ -61,7 +62,7 @@
 	 	
 		<p>Thanks for digging deeper.<p>              
 	                 
-	   <a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster&amp;[% session_string %]&amp;pocedure=SeasonView" name="Anucollective" >This seasons active beekeeping</a> 
+	   <a href="/cgi-bin/index.cgi?site=BMaster&amp;[% session_string %]&amp;procedure=SeasonView" name="Anucollective" >This seasons active beekeeping</a> 
 			</td >
 			</tr>
 			<tr>
