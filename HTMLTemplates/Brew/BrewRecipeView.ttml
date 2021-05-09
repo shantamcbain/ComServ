@@ -76,10 +76,10 @@ function QuickClick(list) {
     </ol>
 <h1>Brewing Page [% version %]</h1>
 
- <h2>Our brewing recipies</h2>     [%# PROCESS RecipeValues.ttml %]
+ <h2>Our brewing recipes</h2>     [%# PROCESS RecipeValues.ttml %]
 <p>
 
-[% IF username  == 'Shanta' 6bbb7341982dfd5bae915d7df51a57715eda8ff1OR
+[% IF username  == 'Shanta' OR
             group     == 'CSC_Admin' OR
 	        group     == 'ENCY_Admin' OR
 	        group     == 'USBM_Admin' OR
