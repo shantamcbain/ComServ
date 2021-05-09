@@ -1,4 +1,5 @@
-[% version = " v1.11 2020/12/07" %]
+[% version = " v1.12 2021/05/09" %]
+[%# version = " v1.11 2020/12/07" %]
 [%# version = " v1.1 2020/06/28" %]
 [%#	$Id: RView.ttml,v 1.0 2009/9/16 06:42:47 BrewRecipe shanta Exp shanta $	%]
   [% PROCESS DefaultDbi.ttml %]      [% version = data.app_ver %]
@@ -16,7 +17,7 @@
 [% END %]
 [% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
 
-    [% BrewNameS = data.session_object.getAttribute('-KEY','brewname') %]
+    [% BrewName = data.session_object.getAttribute('-KEY','brewname') %]
 	 [% username = data.session_object.getAttribute('-KEY','auth_username')%]
 	 [% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
   	 [% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
@@ -62,7 +63,7 @@ function QuickClick(list) {
 
 <h5>Variables</h5>
 	<ol>
-		<li>SiteName    = [% data.SiteName %].data</li>14444e92de8322a7c64a608b6fce8fc402a66c51
+		<li>SiteName    = [% data.SiteName %].data</li>
 		<li>Admin group = [% group  %]</li>
 		<li>homeview    = [% data.home_view %].data</li>
 		<li>Recipe C</li>
@@ -94,8 +95,9 @@ function QuickClick(list) {
 
 		
 
- <h3>[% BrewName %]</h3>
+ <h3>[% BrewName %][% data.brewname %]</h3>
 <p>Add variables.</p>
+
 	[% FOREACH link = DBI.query(" SELECT * FROM  brew_recipe_tb
 	 	                                  WHERE  recipe_code = '$BrewName'
 		                                  
@@ -122,7 +124,7 @@ function QuickClick(list) {
 
 <h3>Our Recipe for 	&nbsp;      [% recipe_name %]
 </h3>
-<p>Form after other</p>
+<p>Form after other  still not right</p>
 <FORM METHOD=POST  ACTION="http://brew.computersystemconsulting.ca/cgi-bin/Brew/log.cgi?site=[% SiteName %]&[% session_string %]&view=BrewLogView&batchnumber=" NAME="frmLinkList" onSubmit="return CheckSelection()">
 
 <SELECT  NAME="FileName" WIDTH=20>
@@ -133,7 +135,7 @@ function QuickClick(list) {
                                      
                                    ORDER BY recipe_code
 	                            ")%]  
-<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&[% session_string %]&view=BrewRecipeView&recipecode=[% item.recipe_code %]">[% item.recipe_code %] [% item.recipe_name %] [% item.brew_name%][% item.date%]</option>
+<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&[% session_string %]&view=BrewRecipeView&recipecode=[% item.recipe_code %]">[% item.recipe_code %] [% item.recipe_name %] [% item.brew_name%][% item.date%]</option> 
 
 [% END %]
  <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
@@ -201,7 +203,48 @@ function QuickClick(list) {
 
 </td>
 </tr>
-</table>
+</table>	
+Recipe Name	
+Size In Litres 	
+Boil Time 	
+Discription 	
+category	
+gravity 	
+username_of_poster 	
+Ingrediance List 	 Add new item	
+Grain Bill
+	
+Ingrediant	Amount lb	
+ Add New Grain
+Hops Bill
+	
+Ingrediant	Amount g	
+ Add New Hop
+Adjuncts
+		
+Ingrediant	Amount lb	
+Roasted Pumkin 	0.22 	Modify
+ Add New Adjuncts
+instruction 	
+Mashton Temp 	
+Sparge temp	
+alcohol 	
+colour 	
+ph 	
+bitterness 	
+maturation 	
+comments 	
+AssB
+
+Details
+
+Modify
+
+Add a new batch
+
+Designed and maintained By Computer System Consulting.ca.
+
+Application is under GNU General Public License & Copy; 1996 
 
 
 
