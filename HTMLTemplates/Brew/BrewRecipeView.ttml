@@ -67,7 +67,7 @@ function QuickClick(list) {
 		<li>Admin group = [% group  %]</li>
 		<li>homeview    = [% data.home_view %].data</li>
 		<li>Recipe Code = [% BrewName %]</li>
-	    <li>BrewName    = [% data.brewname %].data</li>
+	    <li>BrewName    = [% data.brew_name %].data</li>
 	    <li>Recipe Code = [%  data.recipe_code %].data</li>
 	    <li>Recipe Code session   =    [% RecipeCode %]</li>
     <li>Category = [% data.category %]</li>
@@ -79,7 +79,7 @@ function QuickClick(list) {
  <h2>Our brewing recipies</h2>     [%# PROCESS RecipeValues.ttml %]
 <p>
 
-[% IF username  == 'Shanta' OR
+[% IF username  == 'Shanta' 6bbb7341982dfd5bae915d7df51a57715eda8ff1OR
             group     == 'CSC_Admin' OR
 	        group     == 'ENCY_Admin' OR
 	        group     == 'USBM_Admin' OR
@@ -94,8 +94,13 @@ function QuickClick(list) {
 
 		
 
+<<<<<<< HEAD
  <h3>[% BrewName %][% data.brewname %]</h3>
 <p>Add variables.</p>
+=======
+ <h3>Brew name[% BrewName %][% data.brewname %]</h3>
+<p>Add variables.</p>
+>>>>>>> 759c2479b3a045b9117b28e4cd6ac35b2199b778
 
 	[% FOREACH link = DBI.query(" SELECT * FROM  brew_recipe_tb
 	 	                                  WHERE  recipe_code = '$RecipeCode'
@@ -109,7 +114,7 @@ function QuickClick(list) {
      [%  description  = link.description %]
      [%  category     = link.category %]
      [%  gravity      = link.gravity %]
-     [%  recipe_size  = link.recipe_size%]
+     [%  recipe_size  = link6bbb7341982dfd5bae915d7df51a57715eda8ff1.recipe_size%]
      [%  ingredients  = link.ingredients %]
      [%  mashtontemp  = link.mashtontemp %]
      [%  spargtemp    = link.spargtemp %]

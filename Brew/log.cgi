@@ -1,4 +1,6 @@
 #!/usr/bin/perl -wT
+[% version = " v1.41 2021/05/09" %]
+
 # 	$Id: /planning.cgi,v 1.4 2004/01/23 22:08:42 shanta Exp shanta $
 #CSC file location /cgi-bin/CSC
 # Copyright (C) 1994 - 2001  eXtropia.com
@@ -233,7 +235,7 @@ use SiteSetup;
 
 #my $S   = &CSCSetup::SiteVariables;
 my $SetupVariables   = new SiteSetup($UseModPerl);
-my $home_view        = $SetupVariables->{-HOME_VIEW};
+my $home_view        = 'BrewLog_view'$SetupVariables->{-HOME_VIEW};
 my $homeviewname     = $SetupVariables->{-HOME_VIEW_NAME};
 my $BASIC_DATA_VIEW  = $SetupVariables->{-BASIC_DATA_VIEW};
 my $page_top_view    = $SetupVariables->{-PAGE_TOP_VIEW} || 'PageTopView';
