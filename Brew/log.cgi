@@ -1,5 +1,4 @@
 #!/usr/bin/perl -wT
-[% version = " v1.41 2021/05/09" %]
 
 # 	$Id: /planning.cgi,v 1.4 2004/01/23 22:08:42 shanta Exp shanta $
 #CSC file location /cgi-bin/CSC
@@ -78,7 +77,7 @@ foreach ( $CGI->param() )
 #                          SITE SETUP                             #
 ######################################################################
 my $debug = 0;
-
+my $version = " v1.41 2021/05/09";
 my $APP_NAME       = "log";
 my $last_update    = 'April 18, 2021';
 my $site_update    = 'Novemver 16, 2016';
