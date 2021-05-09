@@ -42,6 +42,7 @@
 /epic_links/.project
 /cgi-bin/Modules/SiteSetup.pm
 Modules/BrewSetup.pm
+.htaccess
 <<<<<<< HEAD
 /Modules/SiteSetup.pm
 =======

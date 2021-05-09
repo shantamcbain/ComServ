@@ -39,10 +39,13 @@
  [% IF procedure  == 'HiveManHomeView' %]
 
 [% embed ('HiveManHomeView') %]
-[% ELSIF procedure  == ('ForumsView') %]
+[% ELSIF procedure  == ('ClokeBoardView') %]
+ 
+ [% embed ('ClokeBoardView') %]
+ [% ELSIF procedure  == ('ForumsView') %]
  
  [% embed ('ForumsView') %]
- [% ELSIF procedure  == ('ApisQueensView') %]
+[% ELSIF procedure  == ('ApisQueensView') %]
  
 [% embed ('ApisQueensView') %]
 [% ELSIF procedure  == ('ApisQueensNucView') %]
