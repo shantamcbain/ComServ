@@ -124,7 +124,7 @@ function QuickClick(list) {
 
 <h3>Our Recipe for 	&nbsp;      [% recipe_name %]
 </h3>
-<p>Form after other  still not right</p>
+
 <FORM METHOD=POST  ACTION="http://brew.computersystemconsulting.ca/cgi-bin/Brew/log.cgi?site=[% SiteName %]&[% session_string %]&view=BrewLogView&batchnumber=" NAME="frmLinkList" onSubmit="return CheckSelection()">
 
 <SELECT  NAME="FileName" WIDTH=20>
