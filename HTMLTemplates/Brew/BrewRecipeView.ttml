@@ -120,13 +120,7 @@ Beer
 [% END %]
  <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
 </FORM>     
-
-
-
-
-
-
- 
+		
 
  [% BrewName %]
 Add variables.
@@ -156,7 +150,7 @@ Add variables.
 
 
 
-</FORM>
+
 <h3>Our Recipe for 	&nbsp;      [% recipe_name %]
 </h3> 
 <p><a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;recipecode=[% recipe_code %]&amp;batchnumber=[% recipe_code %]&amp;site=[% SiteName %]&amp;recipename=[% recipe_name %]&amp;subject[%  recipe_code   %]=Item_link&amp;Nav_link=1" name="Add Ingredients"  title="Add New batch" style="AddButtonStyle">Add a new batch</a></p>
