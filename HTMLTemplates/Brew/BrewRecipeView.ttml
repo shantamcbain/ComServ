@@ -26,7 +26,7 @@
     [% HomeView =data.session_object.getAttribute('-KEY','HOME_VIEW')%]
     [% email = data.session_object.getAttribute('-KEY','auth_email') %]
     [% BrewName = data.brew_name %]
-    [% RecipeCode = data.recipe_code')|| data. %]
+    [% RecipeCode = data.recipe_code %]
     [% Category = data.session_object.getAttribute('-KEY','category') %]
     [% PAGE = data.VIEW_NAME  %]
     
