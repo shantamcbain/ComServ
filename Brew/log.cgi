@@ -235,7 +235,7 @@ use SiteSetup;
 
 #my $S   = &CSCSetup::SiteVariables;
 my $SetupVariables   = new SiteSetup($UseModPerl);
-my $home_view        = 'BrewLogView'||$SetupVariables->{-HOME_VIEW};
+my $home_view        = 'BrewLogView'|| $SetupVariables->{-HOME_VIEW};
 my $homeviewname     = $SetupVariables->{-HOME_VIEW_NAME};
 my $BASIC_DATA_VIEW  = $SetupVariables->{-BASIC_DATA_VIEW};
 my $page_top_view    = $SetupVariables->{-PAGE_TOP_VIEW} || 'PageTopView';
