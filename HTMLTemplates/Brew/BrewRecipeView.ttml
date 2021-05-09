@@ -79,7 +79,7 @@ function QuickClick(list) {
  <h2>Our brewing recipies</h2>     [%# PROCESS RecipeValues.ttml %]
 <p>
 
-[% IF username  == 'Shanta' OR
+[% IF username  == 'Shanta' 6bbb7341982dfd5bae915d7df51a57715eda8ff1OR
             group     == 'CSC_Admin' OR
 	        group     == 'ENCY_Admin' OR
 	        group     == 'USBM_Admin' OR
@@ -109,7 +109,7 @@ function QuickClick(list) {
      [%  description  = link.description %]
      [%  category     = link.category %]
      [%  gravity      = link.gravity %]
-     [%  recipe_size  = link.recipe_size%]
+     [%  recipe_size  = link6bbb7341982dfd5bae915d7df51a57715eda8ff1.recipe_size%]
      [%  ingredients  = link.ingredients %]
      [%  mashtontemp  = link.mashtontemp %]
      [%  spargtemp    = link.spargtemp %]
