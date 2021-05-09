@@ -121,8 +121,6 @@ Beer
  <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
 </FORM>     
 
-<a href="/cgi-bin/Brew/log.cgi?site=[% SiteName %]&display_add_form=on&[% session_string %]" name="Add Batch"  title="Add New Recipie" style="AddButtonStyle">Add</a>
-
 
 
 
