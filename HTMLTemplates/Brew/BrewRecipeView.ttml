@@ -66,8 +66,7 @@ function QuickClick(list) {
 		<li>SiteName    = [% data.SiteName %].data</li>
 		<li>Admin group = [% group  %]</li>
 		<li>homeview    = [% data.home_view %].data</li>
-		<li>Recipe C</li>
-		<li>page        = [%  PAGE %]</li>
+		<li>Recipe Code = [% BrewName %]</li>
 	    <li>BrewName    = [% data.brewname %].data</li>
 	    <li>Recipe Code = [%  data.recipe_code %].data</li>
 	    <li>Recipe Code session   =    [% RecipeCode %]</li>
