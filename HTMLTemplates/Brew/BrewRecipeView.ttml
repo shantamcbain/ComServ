@@ -62,7 +62,7 @@ function QuickClick(list) {
 
 <h5>Variables</h5>
 	<ol>
-		<li>SiteName    = [% data.SiteName %].data</li>
+		<li>SiteName    = [% data.SiteName %].data</li>14444e92de8322a7c64a608b6fce8fc402a66c51
 		<li>Admin group = [% group  %]</li>
 		<li>homeview    = [% data.home_view %].data</li>
 		<li>Recipe C</li>
@@ -133,7 +133,7 @@ function QuickClick(list) {
                                      
                                    ORDER BY recipe_code
 	                            ")%]  
-<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&[% session_string %]&view=BrewRecipeView&recipecode=[% item.recipe_code %]">[% item.recipe_name %] [% item.brew_name%][% item.date%]</option>
+<OPTION VALUE="/cgi-bin/Brew/recipe.cgi?site=[% SiteName %]&[% session_string %]&view=BrewRecipeView&recipecode=[% item.recipe_code %]">[% item.recipe_code %] [% item.recipe_name %] [% item.brew_name%][% item.date%]</option>
 
 [% END %]
  <INPUT TYPE=SUBMIT VALUE="Go!"onChange="QuickClick(this)" >	 
