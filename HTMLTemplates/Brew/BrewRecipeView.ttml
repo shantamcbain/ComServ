@@ -94,8 +94,13 @@ function QuickClick(list) {
 
 		
 
+<<<<<<< HEAD
+ <h3>[% BrewName %][% data.brewname %]</h3>
+<p>Add variables.</p>
+=======
  <h3>Brew name[% BrewName %][% data.brewname %]</h3>
 <p>Add variables.</p>
+>>>>>>> 759c2479b3a045b9117b28e4cd6ac35b2199b778
 
 	[% FOREACH link = DBI.query(" SELECT * FROM  brew_recipe_tb
 	 	                                  WHERE  recipe_code = '$RecipeCode'
