@@ -26,7 +26,7 @@
     [% HomeView =data.session_object.getAttribute('-KEY','HOME_VIEW')%]
     [% email = data.session_object.getAttribute('-KEY','auth_email') %]
     [% BrewName = data.brew_name %]
-    [% RecipeCode = data.session_object.getAttribute('-KEY','recipecode') %]
+    [% RecipeCode = data.recipe_code %]
     [% Category = data.session_object.getAttribute('-KEY','category') %]
     [% PAGE = data.VIEW_NAME  %]
     
@@ -98,7 +98,7 @@ function QuickClick(list) {
 <p>Add variables.</p>
 
 	[% FOREACH link = DBI.query(" SELECT * FROM  brew_recipe_tb
-	 	                                  WHERE  recipe_code = '$BrewName'
+	 	                                  WHERE  recipe_code = '$RecipeCode'
 		                                  
 		                                  ORDER BY recipe_code
 		                                  ")%]    
