@@ -98,7 +98,7 @@ function QuickClick(list) {
 <p>Add variables.</p>
 
 	[% FOREACH link = DBI.query(" SELECT * FROM  brew_recipe_tb
-	 	                                  WHERE  recipe_code = '$BrewName'
+	 	                                  WHERE  recipe_code = '$RecipeCode'
 		                                  
 		                                  ORDER BY recipe_code
 		                                  ")%]    
