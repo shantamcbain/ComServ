@@ -28,6 +28,7 @@
     [% RecipeCode = data.session_object.getAttribute('-KEY','recipecode') %]
     [% Category = data.session_object.getAttribute('-KEY','category') %]
     [% PAGE = data.VIEW_NAME  %]
+    
 <SCRIPT LANGUAGE="JavaScript">
 <!--
 
@@ -76,22 +77,8 @@ function QuickClick(list) {
 <h1>Brewing Page [% version %]</h1>
 
  <h2>Our brewing recipies</h2>     [%# PROCESS RecipeValues.ttml %]
-<p><a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=beer">Beer</a>  
-<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=griuts">Grouts</a>  
-<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=mead">Mead</a> 
-<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=wine">Wine</a>  
-<a href="/cgi-bin/Brew/recipe.cgi?site=Brew &amp;view=BrewRecipeView&amp;cat=All">All</a> 
+<p>
 
-[% IF Category == 'mead' %]
-[% embed('MeadRecipe') %]
-[% ELSIF Category == 'wine' %]
-Wine
-[% ELSIF Category == 'beer' %]
-Beer
-
-[% ELSE %]
-
- 
 [% IF username  == 'Shanta' OR
             group     == 'CSC_Admin' OR
 	        group     == 'ENCY_Admin' OR
