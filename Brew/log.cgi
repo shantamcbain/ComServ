@@ -1,4 +1,5 @@
 #!/usr/bin/perl -wT
+
 # 	$Id: /planning.cgi,v 1.4 2004/01/23 22:08:42 shanta Exp shanta $
 #CSC file location /cgi-bin/CSC
 # Copyright (C) 1994 - 2001  eXtropia.com
@@ -76,7 +77,7 @@ foreach ( $CGI->param() )
 #                          SITE SETUP                             #
 ######################################################################
 my $debug = 0;
-
+my $version = " v1.41 2021/05/09";
 my $APP_NAME       = "log";
 my $last_update    = 'April 18, 2021';
 my $site_update    = 'Novemver 16, 2016';
@@ -233,7 +234,7 @@ use SiteSetup;
 
 #my $S   = &CSCSetup::SiteVariables;
 my $SetupVariables   = new SiteSetup($UseModPerl);
-my $home_view        = $SetupVariables->{-HOME_VIEW};
+my $home_view        = 'BrewLogView'|| $SetupVariables->{-HOME_VIEW};
 my $homeviewname     = $SetupVariables->{-HOME_VIEW_NAME};
 my $BASIC_DATA_VIEW  = $SetupVariables->{-BASIC_DATA_VIEW};
 my $page_top_view    = $SetupVariables->{-PAGE_TOP_VIEW} || 'PageTopView';
