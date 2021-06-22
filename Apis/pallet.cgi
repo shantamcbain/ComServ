@@ -845,6 +845,7 @@ my	@CLIENT_DATASOURCE_CONFIG_PARAMS = (
 	);
 my @YARD_DATASOURCE_FIELD_NAMES = qw(
        yard_code
+       yard_name
        sitename
        status
        username_of_poster
