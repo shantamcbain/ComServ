@@ -53,19 +53,23 @@
 		<p>Members may contribute to the sites contend and Join communities monitor content of the different date-abases hosted on the site. Create logs that certification organizations need to access to maintain certification. Available logs will vary according to the need of your certification organization. 
 		</p>	
 	[% ELSE %]
-		<p>Thanks for logging in.</p>
-	<p>Member home</p>
+
+	<h1>Member home</h1>
 	[% END %]
 
 	[% END %] 
 	<h2>Your support helps us support you.</h2>
-	<p>Your support goes to pay hosting fees, buy equipment for teaching(Video and audio), Develop site software, Our beekeeping game for kids.</p>
+
 	<ul>
      <li><a href="https://www.patreon.com/beemaster" target="_blank" name="patreon" onmouseover="Support us">Patrion </a>
-     <p>We have many leaves of support that you can afford.</p>
+     <p>We have many levels of support that you can afford.</p>
      </li>	
-     <li><h3><a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=8" target="_blank" name="Join our site">Membership on site</a></h3></li>
-	</ul>
+     <li><h3><a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=8" target="_blank" name="Join our site">Membership on site.</a></h3></li>
+	</ul>	
+	
+	<p>Your support goes to pay hosting fees, buy equipment for teaching (Video and audio), Develop site software, Our beekeeping game for kids.</p>
+	
+	
 <h3><a href="https://beemaster.ca/mailman/listinfo/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Join Our Apis lists</b></a>
 </h3>
  		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
