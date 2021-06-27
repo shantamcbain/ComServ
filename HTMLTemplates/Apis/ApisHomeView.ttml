@@ -54,7 +54,7 @@
 		</p>	
 	[% ELSE %]
 
-	<h1>Member home</h1>
+	<h2>Member home</h2>
 	[% END %]
 
 	[% END %] 
