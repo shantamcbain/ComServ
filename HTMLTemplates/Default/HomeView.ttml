@@ -62,7 +62,7 @@
 [%# Open prodeduresview %]	
 	[% embed('ProceduresView') %]
 [% ELSIF Page  %]
-[% Open PageView in HomePage %]
+[%# Open PageView in HomePage %]
 [% embed('PageView') %]
 
 [% ELSE %]
