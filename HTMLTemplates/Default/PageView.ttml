@@ -32,10 +32,12 @@
 
 
  [%# embed('SiteMysql') %]   
-
+ [% IF data.debug == 1 %]
+<td>
 [% process = 'None defined' %]
- [%# IN PAGEVIEW Call page%]    [%# Page %]
 
+ [% IN PAGEVIEW Call page%]    [% Page %]
+[% END %]
   [% FOREACH link = DBI.query("SELECT * FROM page_tb
                                   WHERE  (
                                          page_code = '$Page' AND
