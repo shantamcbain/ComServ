@@ -69,6 +69,8 @@
 [%# Call HomeView%] [%#  SiteName %]
    	[% IF SiteName == "OKB" %]
 		[% embed('OkBeekeepersHomeView') %]
+		[% ELSIF SiteName == "Aikikai" %]
+			[% embed ('AikikaiHomeView') %]
 		[% ELSIF SiteName == "Aktiv" %]
 			[% embed ('AktivHomeView') %]
 		[% ELSIF SiteName == "AltPower" %]
