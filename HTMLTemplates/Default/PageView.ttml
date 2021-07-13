@@ -36,7 +36,7 @@
 <p>PageView</p>
 
 
- [% IN PAGEVIEW Call page%]    [% Page %]
+ [%# IN PAGEVIEW Call page%]    [% Page %]
 [% END %]
   [% FOREACH link = DBI.query("SELECT * FROM page_tb
                                   WHERE  (
