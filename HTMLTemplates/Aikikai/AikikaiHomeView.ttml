@@ -4,7 +4,7 @@
 #	$Id: ApisHomeView.ttml,v 1.11 2020/03/10 06:42:47 shanta Exp shanta $	%]
 [%#	$Id: ApisHomeView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
 
-[% #embed(data.page_top_view,['-PAGE_TITLE','Apis @ shanta.org']) %]
+[% #embed(data.page_top_view,['-PAGE_TITLE','Apis @ Aikikai']) %]
 
 [% embed('ErrorDisplayView') %]
 
