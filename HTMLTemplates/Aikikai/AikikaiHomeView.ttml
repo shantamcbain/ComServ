@@ -1,0 +1,107 @@
+
+[%# Version = 'v 0.13 2021/07/13 AikikaiHomeView.ttml shanta' %]
+[%
+#	$Id: ApisHomeView.ttml,v 1.11 2020/03/10 06:42:47 shanta Exp shanta $	%]
+[%#	$Id: ApisHomeView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
+
+[% #embed(data.page_top_view,['-PAGE_TITLE','Apis @ shanta.org']) %]
+
+[% embed('ErrorDisplayView') %]
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+	[% procedure = data.procedure %]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% email = data.session_object.getAttribute('-KEY','auth_email') %]
+<!-- ApisHomeView  v 1.1 2003/11/29-->
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+
+<p>  [% Version %]   </p>
+
+
+[%#  SiteName%]
+
+[% IF procedure  %]
+  [% embed ('BMasterProcedures') %]
+[% ELSE %]
+	[% IF username %]
+			[% IF  group == 'normal'%]
+
+		<p>As a guest you may view the FAQ, Plant and other database . Contribute to Forums, Calendar of announcements, Buy and Sell, and Links.
+		</p>
+		<p>Members may contribute to the sites contend and Join communities monitor content of the different date-abases hosted on the site. Create logs that certification organizations need to access to maintain certification. Available logs will vary according to the need of your certification organization. 
+		</p>	
+	[% ELSE %]
+
+	<h2>Member home</h2>
+	[% END %]
+
+	[% END %] 
+	<h2>Your support helps us support you.</h2>
+
+	<ul>
+     <li><a href="https://www.patreon.com/beemaster" target="_blank" name="patreon" onmouseover="Support us">Patrion </a>
+     <p>We have many levels of support that you can afford.</p>
+     </li>	
+     <li><h3><a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=8" target="_blank" name="Join our site">Membership on site.</a></h3></li>
+	</ul>	
+	
+	<p>Your support goes to pay hosting fees, buy equipment for teaching (Video and audio), Develop site software, Our beekeeping game for kids.</p>
+	
+	
+<h3><a href="https://beemaster.ca/mailman/listinfo/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Join Our Apis lists</b></a>
+</h3>
+ 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
+	 	
+		<p>Thanks for digging deeper.<p>              
+<h3><a href="https://email.labxmediagroup.com/e2t/tc/VXb1rk7ClB8ZW8k12lC2dKz-zW5wYw0_4sf4lbN5g75h75nxG7V3Zsc37CgHwZW6P_lD962cLvlV5N3vP5XMvwJW794Pny6BhhtwN6hysy7S5qYDW51Bvkr8qqHmXW2vZfv28JwqHzW6rFdVd4tQDMWW6J6Spf58-XqQW6WztgK1y55KjW5YmDf02hZS02W6N_D2D29f2jhW8430L78MFkYBW6JxZls6K0t29W5Fz-qL5cQHkQW81W9Dg6G647LW53Cqp-5qY5dtW1Gnw5v5vmqLbW2Z5VvB7_Jv6bW2-DnqH9f-SsQW92pQ6V7t14y9VqXP5Z5YgpWcW43x6Sy2gGkX3W4DbmsJ5m6WXyN6GQ9sqFWb1YW86YJ4d1KRy9ZW31l_b078HT2TW56g0tW5zPWs0W4tSdDm4qb1WhW3J38Zm2nLlHPW806-jX3P0l4PW2FD0dz9m46GlW3pk1LD4M_sSF364y1">Honeybee Microbes Shape the Colonies Social Behavior </a></h3>
+
+
+<p>For many years now we have promoted the idea that the gut microbiomes are key to the health of the honey bee. This article from " The scientist.com" is an interesting insight on the effect on social behaviour. </p>                
+	   <a href="/cgi-bin/index.cgi?site=BMaster&amp;[% session_string %]&amp;procedure=SeasonView" name="Anucollective" >This seasons active beekeeping</a> 
+			</td >
+			</tr>
+			<tr>
+			<td >				
+          
+            <h2>Tools you can use to help you manage your bee keeping and bee breeding operations. </h2>
+
+            <ul>
+            <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardManagementSystem" target="Blank">Apiary Management System. </a><br>Track what is happening in your yards</li> In active development. drop by and give us a hand.
+
+            <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
+            <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
+            <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
+            <li>
+            </ul>
+		</td >	
+		</tr>
+	</tbody>
+	</table>
+
+	
+
+	<iframe src="https://calendar.google.com/calendar/embed?src=tabvviq9l1ncflbcedl78qa114%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>			
+
+
+[% END %]
+
+  [% Version %] 
+
+
+
+
