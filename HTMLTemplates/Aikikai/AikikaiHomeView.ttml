@@ -51,52 +51,21 @@
 	[% END %]
 
 	[% END %] 
-	<h2>Your support helps us support you.</h2>
-
-	<ul>
-     <li><a href="https://www.patreon.com/beemaster" target="_blank" name="patreon" onmouseover="Support us">Patrion </a>
-     <p>We have many levels of support that you can afford.</p>
-     </li>	
-     <li><h3><a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=8" target="_blank" name="Join our site">Membership on site.</a></h3></li>
-	</ul>	
-	
-	<p>Your support goes to pay hosting fees, buy equipment for teaching (Video and audio), Develop site software, Our beekeeping game for kids.</p>
-	
-	
-<h3><a href="https://beemaster.ca/mailman/listinfo/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Join Our Apis lists</b></a>
-</h3>
- 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
-	 	
-		<p>Thanks for digging deeper.<p>              
-<h3><a href="https://email.labxmediagroup.com/e2t/tc/VXb1rk7ClB8ZW8k12lC2dKz-zW5wYw0_4sf4lbN5g75h75nxG7V3Zsc37CgHwZW6P_lD962cLvlV5N3vP5XMvwJW794Pny6BhhtwN6hysy7S5qYDW51Bvkr8qqHmXW2vZfv28JwqHzW6rFdVd4tQDMWW6J6Spf58-XqQW6WztgK1y55KjW5YmDf02hZS02W6N_D2D29f2jhW8430L78MFkYBW6JxZls6K0t29W5Fz-qL5cQHkQW81W9Dg6G647LW53Cqp-5qY5dtW1Gnw5v5vmqLbW2Z5VvB7_Jv6bW2-DnqH9f-SsQW92pQ6V7t14y9VqXP5Z5YgpWcW43x6Sy2gGkX3W4DbmsJ5m6WXyN6GQ9sqFWb1YW86YJ4d1KRy9ZW31l_b078HT2TW56g0tW5zPWs0W4tSdDm4qb1WhW3J38Zm2nLlHPW806-jX3P0l4PW2FD0dz9m46GlW3pk1LD4M_sSF364y1">Honeybee Microbes Shape the Colonies Social Behavior </a></h3>
+<h2>grandviewbench aikikai</h2>
 
 
-<p>For many years now we have promoted the idea that the gut microbiomes are key to the health of the honey bee. This article from " The scientist.com" is an interesting insight on the effect on social behaviour. </p>                
-	   <a href="/cgi-bin/index.cgi?site=BMaster&amp;[% session_string %]&amp;procedure=SeasonView" name="Anucollective" >This seasons active beekeeping</a> 
-			</td >
-			</tr>
-			<tr>
-			<td >				
-          
-            <h2>Tools you can use to help you manage your bee keeping and bee breeding operations. </h2>
+<iframe width='425' height='350' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' src='https://maps.google.com/maps?t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=embed&amp;q=2804+48+Ave+Vernon,+BC+V1T+3R4+Canada&amp;ie=UTF8&amp;hq=&amp;hnear=2804+48+Ave,+Vernon,+British+Columbia+V1T+3R4,+Canada&amp;ll=50.259087,-119.305356&amp;spn=0.291937,0.724411&amp;z=11&amp;output=embed'></iframe><br /><small><a href='https://maps.google.com/maps?t=m&amp;hl=en-US&amp;gl=US&amp;mapclient=embed&amp;q=2804+48+Ave+Vernon,+BC+V1T+3R4+Canada&amp;ie=UTF8&amp;hq=&amp;hnear=2804+48+Ave,+Vernon,+British+Columbia+V1T+3R4,+Canada&amp;ll=50.259087,-119.305356&amp;spn=0.291937,0.724411&amp;z=11&amp;source=embed' style='color:#0000FF;text-align:left'>View Larger Map</a></small>
 
-            <ul>
-            <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardManagementSystem" target="Blank">Apiary Management System. </a><br>Track what is happening in your yards</li> In active development. drop by and give us a hand.
-
-            <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
-            <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
-            <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
-            <li>
-            </ul>
-		</td >	
-		</tr>
+<br>
+<img src='https://sites.google.com/a/skyefarm.com/grandviewbenchaikikai-com/_/rsrc/1393199039951/home/suwariwaza%20kokyuho.jpg?height=185&width=200'>
+<br>
+<img src='http://grandviewbenchaikikai.com/home/IMAG010.JPG'> 	<h2>Y
 	</tbody>
 	</table>
 
 	
 
-	<iframe src="https://calendar.google.com/calendar/embed?src=tabvviq9l1ncflbcedl78qa114%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>			
-
+	
 
 [% END %]
 
