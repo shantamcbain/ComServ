@@ -57,7 +57,6 @@
 <tr>  <td	class="InharatedVariablesCell">Logo  .data   </td>     <td	class="InharatedVariablesCell">         [% data.application_logo %] .data</td></tr>
 
  <td	class="InharatedVariablesCell">image url  .data</td>     <td	class="InharatedVariablesCell">            [% data.image_root_url %] .data</td></tr>
-<tr>  <td	class="InharatedVariablesCell">debug   .data</td>     <td	class="InharatedVariablesCell">          [% data.debug  %] .data</td></tr>
 	
  <tr> <td	class="InharatedVariablesCell">PageTopView  .data  </td>     <td	class="InharatedVariablesCell">   [% data.page_top_view %] </td></tr>
  <tr> <td  class="InharatedVariablesCell">Page name .data   </td>     <td	class="InharatedVariablesCell">          [%  data.page_name %]</td></tr>
