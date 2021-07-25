@@ -33,7 +33,7 @@
 	[% session_string = "session_id=$session_id" %]
    [% procedure = data.procedure %]
 [% PROCESS DefaultDbi.ttml %]
-[% Page = data.page_name  %]
+
 [% HostName = data.domain_name %]
 
 
@@ -48,7 +48,7 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td>
-	
+[% $Page %]	
 [% Version %]	
 [%# procedure  %]
 	[% IF username %]
@@ -62,13 +62,15 @@
 [%# Open prodeduresview %]	
 	[% embed('ProceduresView') %]
 [% ELSIF Page  %]
-[%# Open PageView in HomePage%]
+
 [% embed('PageView') %]
 
 [% ELSE %]
 [%# Call HomeView%] [%#  SiteName %]
    	[% IF SiteName == "OKB" %]
 		[% embed('OkBeekeepersHomeView') %]
+		[% ELSIF SiteName == "Aikikai" %]
+			[% embed ('AikikaiHomeView') %]
 		[% ELSIF SiteName == "Aktiv" %]
 			[% embed ('AktivHomeView') %]
 		[% ELSIF SiteName == "AltPower" %]

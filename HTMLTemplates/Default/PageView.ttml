@@ -29,13 +29,15 @@
  [% HomeLink = data.home_link || '' %]
  [%# page = 'GarlicCulture' %]
  [%#  $ENV{'SERVER_NAME'} %]
-
+[% process = 'None defined' %]
 
  [%# embed('SiteMysql') %]   
+ [% IF data.debug == 1 %]
+<p>PageView</p>
 
-[% process = 'None defined' %]
- [%# IN PAGEVIEW Call page%]    [%# Page %]
 
+ [%# IN PAGEVIEW Call page%]    [% Page %]
+[% END %]
   [% FOREACH link = DBI.query("SELECT * FROM page_tb
                                   WHERE  (
                                          page_code = '$Page' AND

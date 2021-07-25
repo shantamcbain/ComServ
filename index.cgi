@@ -38,6 +38,7 @@ my @VIEWS_SEARCH_PATH = qw(Modules/Extropia/View/Todo
 
 my @TEMPLATES_SEARCH_PATH = qw(HTMLTemplates/AltPower
   HTMLTemplates/Apis
+  HTMLTemplates/Aikikai
   HTMLTemplates/Brew
   HTMLTemplates/BuyAndSell
   HTMLTemplates/CS
