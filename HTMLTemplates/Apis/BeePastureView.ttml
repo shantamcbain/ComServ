@@ -1,3 +1,4 @@
+[% Version = 'v 0.01 2021/07/31 BeePastureView.ttml shanta' %]
 [%
 
 # the ENCY template
@@ -24,7 +25,7 @@
    [% SiteLastUpdate = data.site_last_update %]
   [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
 [% PROCESS DefaultDbi.ttml %]
-
+[% Version %]
 	[% IF username %]
 
 <h3 > Hello  [% firstname%]  [% lastname%]! Welcome to     [% data.site_display_name %]
@@ -44,34 +45,23 @@
 </div>
 
 
-
+    
      
-        <h2>Bee forage plants by Botanical name.</h2>
-      
-      <form action="/cgi-bin/ENCY/herbs.cgi?" METHOD =" POST"> 
-<font FACE =" " SIZE =" 2"> 
-Search our herbal Database 
-<input TYPE="HIDDEN" NAME="site=[% SiteName %]"
-               VALUE =" on"> 
-<input TYPE="HIDDEN" NAME="[% session_string %]"
-               VALUE =" on"> 
-        <input TYPE="TEXT"   NAME="simple_search_string"
-               VALUE=""> 
-<input TYPE="HIDDEN" NAME="display_simple_search_results"
-               VALUE =" on"> 
-<input TYPE="SUBMIT" NAME="display_simple_search_results"
-               VALUE ="       Go        "> 
-</font> 
-
+        <h2>Bee Pasture</h2>
+     <h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]8&view=BeePastureView">See our Database of Bee Forage.</a></h2>
+ <p>Your bees will need food to eat. With in an 3k radius of your hive is their pasture. The more abundant diverse the environment the healthier your bees will be. </p>
  
-</form> 
-
- <p>Diverse Bee pasture is the key to healthy bees
- [%  embed('PlantListSQL') %]
+ <p>This season we doing the fallowing.</p>
+ <ul>
+  <li>Encourage bee friendly harvest as spraying practices </li> 
+  
+  <li>Establish seed production of desired species. Every yard will have a different list.</li> 
+  <li>Planing next seasons planting.</li>
+ </ul>
   
   
       
- <a href="http://helpdesk.computersystemconsulting.ca" target="_Blank" > HelpDesk</a>
+ <a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/BuyAndSell/buy.cgi?site=[% SiteName %]&amp;[% session_string %]" target="_Blank" > HelpDesk</a>
 
 [%# embed('CSCCopyRight') %]
 [% embed(data.page_bottom_view) %]
