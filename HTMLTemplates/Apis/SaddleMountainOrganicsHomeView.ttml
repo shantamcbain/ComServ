@@ -72,7 +72,9 @@
 <li><h3></h3></li>
 </ul>
 
- https://calendar.google.com/calendar/u/0?cid=dmoxbDM3ZTN1ajl1Y282Njdxdm9qNzNpc3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ
+<iframe src="https://calendar.google.com/calendar/embed?src=vj1l37e3uj9uco667qvoj73iss%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+
 [% embed('JoinDiscussionList') %]
 
 
