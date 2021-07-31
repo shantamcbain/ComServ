@@ -21,15 +21,29 @@
 
 <ul>
  <li><h3>Set up Honey house and Shop.</h3>
-   </li>
- <li><h3>Setup bee yards </h3>
+   </li><li><h3>Setup bee yards </h3>
   <ul>
-    <li>Breeder/Teaching Yard</li>
-    <li>Mating Yard</li>
+    <li>Teaching Yard</li>
+     <ul>
+      <li><h2>Temporary teaching yard</h2> 
+         <p>We are setup primarily set up for video recordings. We are creating a season long view of the management of a yard.</p>
+      </li>
+     </ul>
+    <li>Mating Yard. Finished.</li>
     <li>Honey Yard</li>
+    <li>Wintering Yard.</li>
+    <li>Mating Yard. Finished.</li>
+  </ul>
+
+ <li><h3>Setup Website </h3>
+  <ul>
+    <li><h4>View</h4> <p>How the site looks. If you have skills <a href="http://saddlemontainorganica.beemaster.ca/cgi-bin/index.cgi?session_id=SUOHD06VYTYV5JPQ&site=SMO&view=JobView">Join</a> our team.</p></li>
+    <li><h4>Programming</h4></li>
+    <li><h4>Mailing List</h4></li>
   </ul>
 <li><h3>Plan field crops for bees.</h3>
  
+ <p>Exploring the process of creating an environment that bee</p>
   <ul>
    <li>Mustard culinary varieties</li>
    <li>Alfalfa</li>
@@ -53,7 +67,7 @@
 </ul>
 
  
-<iframe src="https://calendar.google.com/calendar/embed?src=tabvviq9l1ncflbcedl78qa114%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>			
+<iframe src="https://calendar.google.com/calendar/u/0?cid=dmoxbDM3ZTN1ajl1Y282Njdxdm9qNzNpc3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>			
 
 [% embed('JoinDiscussionList') %]
 
