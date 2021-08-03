@@ -56,7 +56,7 @@
  
  [% embed ('ProgramingView') %]
 [% ELSIF procedure  == ('ProgramingView') %]
-  [% embed ('ApisActiveQueensView') %]
+  [% embed ('ProgramingView') %]
 [% ELSIF procedure  == ('ApisQueensView') %]
  
 [% embed ('ApisQueensView') %]
