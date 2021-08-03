@@ -1,3 +1,4 @@
+[%# Version = 'v 1.968 2022/08/03 ProceduresView.ttml'%]
 [%# Version = 'v 1.967 2021/03.22 ProceduresView.ttml'%]
 [%# Version = 'v 1.966 2021/02/06 ProceduresView.ttml'%]
 [%# ViewVersion = 'v 1.965 2020/05/03 ProceduresView.ttml'%]
@@ -52,6 +53,7 @@
                     group == 'CSCDev_admin' OR
                     group == 'ECF_admin' OR
                     group == 'MW_admin' OR
+                    group == 'SMO_admin' OR
                     group == 'WiseWoman_admin' OR
                     group == 'AltPower_admin' OR
                     username == 'Shanta'
@@ -92,6 +94,8 @@
 			[% embed ('ECFProcedures') %]
 			<p>Leave [% ViewName  %] ECFProcedures</p>
 			[%# embed ('SBHomeView') %]
+		[% ELSIF SiteName == "SMO" %]
+			[% embed ('BMasterProcedures') %]
 		[% ELSIF SiteName == "HE" OR
 		         SiteName == "HEDev"  %]
 			[% embed ('HEWorkShops') %]

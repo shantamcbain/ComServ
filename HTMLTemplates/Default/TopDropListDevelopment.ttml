@@ -13,6 +13,7 @@
 	       group    ==  'NOWD_admin' OR
 	       group    ==  'News_admin' OR
 	       group    ==  'Organic_admin' OR
+          group    ==  'SMO' OR
 	       group    ==  'Shanta_admin' OR
 	       group    ==  'VitalVic_admin' OR
           group    ==  'USBM_admin' OR

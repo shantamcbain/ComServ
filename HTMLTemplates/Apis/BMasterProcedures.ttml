@@ -1,3 +1,4 @@
+[%# ViewVersion = 'v 1.15 2021/08/03 BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.14 2021/03/08 BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.13 2020/03/10 BMasterProcedures.ttml '%]
 [% 
@@ -53,9 +54,12 @@
  [% embed ('ApisQueensNucView') %] 
 [% ELSIF procedure  == ('ApisActiveQueensView') %]
  
- [% embed ('ApisQueensView') %]
-[% ELSIF procedure  == ('ApisActiveQueensView') %]
+ [% embed ('ProgramingView') %]
+[% ELSIF procedure  == ('ProgramingView') %]
   [% embed ('ApisActiveQueensView') %]
+[% ELSIF procedure  == ('ApisQueensView') %]
+ 
+[% embed ('ApisQueensView') %]
    [% ELSIF Page  == ('BeeProducts') %]
    [% FOREACH link = DBI.query("SELECT * FROM page_tb
                                   WHERE  (
