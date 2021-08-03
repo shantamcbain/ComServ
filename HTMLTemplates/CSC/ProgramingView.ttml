@@ -25,11 +25,11 @@
    </ul>  
 
    	[% END %]</li>
- -->     </ul>
-<li><h3>Web Applications and HelpDesk Systems</h3>
+    </ul>
+<!-- <li><h3>Web Applications and HelpDesk Systems</h3>
 		<ol>
-			<li><a href="http://cgi.computersystemconsulting.ca/cgi-bin/store/store.cgi?&shop=csc&L=eng&P=CSCInstalation"  target="_blank">Install</a> Our application on your server. What needs to be done.</li>
-			<li><a href="http://cgi.computersystemconsulting.ca/cgi-bin/store/store.cgi?&shop=csc&L=eng&P=CSCSetup"  target="_blank">Setup </a>our application on your server. This is were we change the base application to look and do what you want. The further you go from the base application the more time it will take to do.</li>
-			<li><a href="http://cgi.computersystemconsulting.ca/cgi-bin/store/store.cgi?&shop=csc&L=eng&P=CSCSetup"  target="_blank">Setup </a>our application on our server. Same as setting up on your server you just don't have to pay for installation. This applies to our hosting the application on one of our existing domains.</li>
-		</ol>
+			<li><a href="/cgi-bin/index.cgi?&shop=csc&L=eng&P=CSCInstalation"  target="_blank">Install</a> Our application on your server. What needs to be done.</li>
+			<li><a href="/cgi-bin/store/store.cgi?&shop=csc&L=eng&P=CSCSetup"  target="_blank">Setup </a>our application on your server. This is were we change the base application to look and do what you want. The further you go from the base application the more time it will take to do.</li>
+			<li><a href="/cgi-bin/store/store.cgi?&shop=csc&L=eng&P=CSCSetup"  target="_blank">Setup </a>our application on our server. Same as setting up on your server you just don't have to pay for installation. This applies to our hosting the application on one of our existing domains.</li>
+		</ol> -->
 </ul>
