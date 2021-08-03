@@ -38,7 +38,7 @@
  <li><h3>Setup Website </h3>
   <ul>
     <li><h4>View</h4> <p>How the site looks. If you have skills <a href="/cgi-bin/index.cgi?session_id=SUOHD06VYTYV5JPQ&site=SMO&view=JobView">Join</a> our team.</p></li>
-    <li><h4><a href="/cgi-bin/index.cgi?session_id=SUOHD06VYTYV5JPQ&site=SMO&view=programing" target="_blank" name="Programing" onmouseover="See what we are working on.">Programming</a></h4><p>We will be tuning the software to reflect our usage. Learning/teaching. Yard Management. Shop management. Honey House management.</p></li>
+    <li><h4><a href="/cgi-bin/index.cgi?session_id=SUOHD06VYTYV5JPQ&site=SMO&procedure=programing" target="_blank" name="ProgramingView" onmouseover="See what we are working on.">Programming</a></h4><p>We will be tuning the software to reflect our usage. Learning/teaching. Yard Management. Shop management. Honey House management.</p></li>
     <li><h4>Mailing List</h4> <p>Keeping members informed. Join list below.</p></li>
     <li><h4>Calendar integration</h4>. Link Our Calendar to yours.</li>
   </ul>
