@@ -1131,7 +1131,6 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -DISPLAY_CONFIRMATION_ON_DELETE_FLAG    => 1,
     -DISPLAY_CONFIRMATION_ON_MODIFY_FLAG    => 1,
     -ENABLE_SORTING_FLAG                    => 1,
-    -HAS_MEMBERS                            => $HasMembers,
     -HIDDEN_ADMIN_FIELDS_VIEW_NAME          => 'HiddenAdminFieldsView',
     -INPUT_WIDGET_DEFINITIONS               => \@INPUT_WIDGET_DEFINITIONS,
     -LAST_UPDATE                            => $last_update,
