@@ -142,51 +142,7 @@ my $UseModPerl = 1;
 my $HasMembers = 0;
 my $CustCode = $CGI->param('custcode') || "BMaster";
     
-######################################################################
-#                          SESSION SETUP                             #
-######################################################################
 
-my @SESSION_CONFIG_PARAMS = (
-    -TYPE            => 'File',
-    -MAX_MODIFY_TIME => 60 * 60 * 2,
-    -SESSION_DIR     => "$GLOBAL_DATAFILES_DIRECTORY/Sessions",
-    -FATAL_TIMEOUT   => 0,
-    -FATAL_SESSION_NOT_FOUND => 1
-);
-
-######################################################################
-#                     SESSION MANAGER SETUP                          #
-######################################################################
-
-my @SESSION_MANAGER_CONFIG_PARAMS = (
-    -TYPE           => 'FormVar',
-    -CGI_OBJECT     => $CGI,
-    -SESSION_PARAMS => \@SESSION_CONFIG_PARAMS
-);
-
-my $SESSION_MGR = Extropia::Core::SessionManager->create(
-    @SESSION_MANAGER_CONFIG_PARAMS
-);
-
-my $SESSION    = $SESSION_MGR->createSession();
-my $SESSION_ID = $SESSION->getId();
-
-#Deal with site setup in session files. This code need taint checking.
-if ($CGI->param('site')){
-    if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
-      $SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $CGI->param('site')) ;
-       $SiteName = $CGI->param('site');
-    }else {
-	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
-    }
-	 
-}else {
-  if ( $SESSION ->getAttribute(-KEY => 'SiteName')) {
-    $SiteName = $SESSION ->getAttribute(-KEY => 'SiteName');
-  }else {
-	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
-      }
-}
 
 use SiteSetup;
    $SetupVariables  = new SiteSetup($UseModPerl);
@@ -229,9 +185,6 @@ use SiteSetup;
     $ProjectTableName      = 'csc_project_tb';
     my $CSS_VIEW_URL       = $SetupVariables->{-CSS_VIEW_NAME};
     my $SESSION_DIR = "$GLOBAL_DATAFILES_DIRECTORY/Sessions";
-
-
- 
 #Add sub aplication spacific overrides.
 # $GLOBAL_DATAFILES_DIRECTORY = "Datafiles";
 # $TEMPLATES_CACHE_DIRECTORY  = "$GLOBAL_DATAFILES_DIRECTORY/TemplatesCache";
@@ -239,6 +192,53 @@ use SiteSetup;
 $page_top_view    = $CGI->param('page_top_view')||$page_top_view;
 $page_bottom_view = $CGI->param('page_bottom_view')||$page_bottom_view;
 $page_left_view   = $SetupVariables->{-page_left_view};
+
+######################################################################
+#                          SESSION SETUP                             #
+######################################################################
+
+my @SESSION_CONFIG_PARAMS = (
+    -TYPE            => 'File',
+    -MAX_MODIFY_TIME => 60 * 60 * 2,
+    -SESSION_DIR     => $SESSION_DIR,
+    -FATAL_TIMEOUT   => 0,
+    -FATAL_SESSION_NOT_FOUND => 1
+);
+
+######################################################################
+#                     SESSION MANAGER SETUP                          #
+######################################################################
+
+my @SESSION_MANAGER_CONFIG_PARAMS = (
+    -TYPE           => 'FormVar',
+    -CGI_OBJECT     => $CGI,
+    -SESSION_PARAMS => \@SESSION_CONFIG_PARAMS
+);
+
+my $SESSION_MGR = Extropia::Core::SessionManager->create(
+    @SESSION_MANAGER_CONFIG_PARAMS
+);
+
+my $SESSION    = $SESSION_MGR->createSession();
+my $SESSION_ID = $SESSION->getId();
+
+#Deal with site setup in session files. This code need taint checking.
+if ($CGI->param('site')){
+    if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
+      $SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $CGI->param('site')) ;
+       $SiteName = $CGI->param('site');
+    }else {
+	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
+    }
+	 
+}else {
+  if ( $SESSION ->getAttribute(-KEY => 'SiteName')) {
+    $SiteName = $SESSION ->getAttribute(-KEY => 'SiteName');
+  }else {
+	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
+      }
+}
+ 
 my $target;
 my $columnstoview;
 my $SortFields;
