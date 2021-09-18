@@ -157,7 +157,7 @@ use SiteSetup;
     $site_session                 = $DATAFILES_DIRECTORY.'/Sessions';
     $auth                         = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
      $CSS_VIEW_NAME            = $SetupVariables->{-CSS_VIEW_NAME};
-    $CSS_VIEW_URL             = $SetupVariables->{-CSS_VIEW_NAME};
+   my $CSS_VIEW_URL             = $SetupVariables->{-CSS_VIEW_NAME};
   my $LocalIp            = $SetupVariables->{-LOCAL_IP};
 my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
