@@ -149,7 +149,7 @@ my $CustCode = $CGI->param('custcode') || "BMaster";
 my @SESSION_CONFIG_PARAMS = (
     -TYPE            => 'File',
     -MAX_MODIFY_TIME => 60 * 60 * 2,
-    -SESSION_DIR     => $SESSION_DIR,
+    -SESSION_DIR     => "$GLOBAL_DATAFILES_DIRECTORY/Sessions",
     -FATAL_TIMEOUT   => 0,
     -FATAL_SESSION_NOT_FOUND => 1
 );
