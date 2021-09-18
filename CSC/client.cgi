@@ -112,6 +112,10 @@ my $site_update;
 my $Affiliate = 001;
 my $client_tb = 'csc_client_tb';
 my $HasMembers = 0;
+my $SESSION_MGR = Extropia::Core::SessionManager->create(
+    @SESSION_MANAGER_CONFIG_PARAMS
+);
+my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
 my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
@@ -192,11 +196,7 @@ my @SESSION_MANAGER_CONFIG_PARAMS = (
     -SESSION_PARAMS => \@SESSION_CONFIG_PARAMS
 );
 
-my $SESSION_MGR = Extropia::Core::SessionManager->create(
-    @SESSION_MANAGER_CONFIG_PARAMS
-);
 
-my $SESSION    = $SESSION_MGR->createSession();
 #Deal with site setup in session files. This code need taint checking.
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
