@@ -118,6 +118,7 @@ my @SESSION_MANAGER_CONFIG_PARAMS;
 my $SESSION_MGR;
 my $SESSION_ID;
 my $CSS_VIEW_URL = $CSS_VIEW_NAME;
+my $HostName   = $ENV{'SERVER_NAME'};
 
 use SiteSetup;
   my $UseModPerl = 0;
