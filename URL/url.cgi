@@ -60,7 +60,7 @@ my @TEMPLATES_SEARCH_PATH =
        ../HTMLTemplates/HoneyDo
        ../HTMLTemplates/Shanta
        ../HTMLTemplates/SkyeFarm 
-        ../HTMLTemplates/TelMark
+       ../HTMLTemplates/TelMark
        ../HTMLTemplates/Todo
        ../HTMLTemplates/VitalVic
        ../HTMLTemplates/WW
@@ -103,6 +103,7 @@ my $APP_NAME_TITLE = "Links Database";
     my $mail_to;
     my $mail_replyto;
     my $CSS_VIEW_NAME;
+    my $CSS_VIEW_URL = $CSS_VIEW_NAME;
     my $mail_cc;
     my $app_logo;
     my $app_logo_height;
@@ -166,6 +167,8 @@ use SiteSetup;
     $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
     $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
     $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
+    $CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
+    $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
     $site = $SetupVariables->{-DATASOURCE_TYPE};
     $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
     $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
