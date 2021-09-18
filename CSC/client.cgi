@@ -114,11 +114,7 @@ my $client_tb = 'csc_client_tb';
 my $HasMembers = 0;
 my @SESSION_CONFIG_PARAMS;
 my @SESSION_MANAGER_CONFIG_PARAMS;
-my $SESSION_MGR = Extropia::Core::SessionManager->create(
-    @SESSION_MANAGER_CONFIG_PARAMS
-);
-my $SESSION    = $SESSION_MGR->createSession();
-my $SESSION_ID = $SESSION->getId();
+my $SESSION_MGR;
 my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
 use SiteSetup;
@@ -180,7 +176,7 @@ my $VIEW_LOADER = new Extropia::Core::View
 #                          SESSION SETUP                             #
 ######################################################################
 
- @SESSION_CONFIG_PARAMS = (
+my @SESSION_CONFIG_PARAMS = (
     -TYPE            => 'File',
     -MAX_MODIFY_TIME => 60 * 60,
     -SESSION_DIR     => "$GLOBAL_DATAFILES_DIRECTORY/Sessions",
@@ -192,13 +188,17 @@ my $VIEW_LOADER = new Extropia::Core::View
 #                     SESSION MANAGER SETUP                          #
 ######################################################################
 
- @SESSION_MANAGER_CONFIG_PARAMS = (
+my @SESSION_MANAGER_CONFIG_PARAMS = (
     -TYPE           => 'FormVar',
     -CGI_OBJECT     => $CGI,
     -SESSION_PARAMS => \@SESSION_CONFIG_PARAMS
 );
 
+my $SESSION_MGR = Extropia::Core::SessionManager->create(
+    @SESSION_MANAGER_CONFIG_PARAMS
+);
 
+my $SESSION    = $SESSION_MGR->createSession();
 #Deal with site setup in session files. This code need taint checking.
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
