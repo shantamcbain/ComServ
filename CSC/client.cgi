@@ -116,6 +116,7 @@ my @SESSION_CONFIG_PARAMS;
 my @SESSION_MANAGER_CONFIG_PARAMS;
 my $SESSION_MGR;
 my $SESSION_ID;
+my $CSS_VIEW_URL = $CSS_VIEW_NAME;
 
 use SiteSetup;
   my $UseModPerl = 0;
@@ -157,7 +158,7 @@ use SiteSetup;
     $site_session                 = $DATAFILES_DIRECTORY.'/Sessions';
     $auth                         = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
      $CSS_VIEW_NAME            = $SetupVariables->{-CSS_VIEW_NAME};
-   my $CSS_VIEW_URL             = $SetupVariables->{-CSS_VIEW_NAME};
+    $CSS_VIEW_URL             = $SetupVariables->{-CSS_VIEW_NAME};
   my $LocalIp            = $SetupVariables->{-LOCAL_IP};
 my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
