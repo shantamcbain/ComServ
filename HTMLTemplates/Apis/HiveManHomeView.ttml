@@ -1,3 +1,4 @@
+[% Version = 'v 0.03 2020/05/03 HiveManHomeView.ttml'%]
 [%#	$Id: HiveManHomeView.ttml,v 0.02 2020/03/10 15:47:05 shanta Exp $
 %]
 [%#	$Id: HiveManHomeView.ttml,v 0.01 2014/03/21 15:47:05 shanta Exp $%]
@@ -31,7 +32,7 @@
 <tr>
 <td >
 	[%# SiteName  %]
-
+[% Version  %]
 
 	<h2>Manage your hives with our Management System.</h2>
   
