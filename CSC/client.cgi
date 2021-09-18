@@ -115,6 +115,7 @@ my $HasMembers = 0;
 my @SESSION_CONFIG_PARAMS;
 my @SESSION_MANAGER_CONFIG_PARAMS;
 my $SESSION_MGR;
+my $SESSION_ID;
 my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
 use SiteSetup;
