@@ -158,7 +158,6 @@ use SiteSetup;
     $mail_from             = $SetupVariables->{-MAIL_FROM}; 
     $mail_to               = $SetupVariables->{-MAIL_TO};
     $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
-    $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
     $app_logo              = $SetupVariables->{-APP_LOGO};
     $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
     $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
@@ -167,8 +166,8 @@ use SiteSetup;
     $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
     $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
     $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
-    $CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
-    $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
+    $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
+    $CSS_VIEW_URL          = $SetupVariables->{-CSS_VIEW_NAME};
     $site = $SetupVariables->{-DATASOURCE_TYPE};
     $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
     $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
@@ -969,7 +968,8 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER;
 
 
-if ($group eq "CSC_admin" || 
+if ($group eq "BMaster_admin" ||
+    $group eq "CSC_admin" || 
     $group eq "ECF_admin" || 
     $group eq "HoneyDo_admin" || 
 	 $username eq "Shanta"
@@ -1497,7 +1497,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -BASIC_DATA_VIEW_NAME                   => 'BasicDataView',
     -DEFAULT_ACTION_NAME                    => 'DisplayDayViewAction',
     -CGI_OBJECT                             => $CGI,
-    -CSS_VIEW_URL                           => $CSS_VIEW_URL,
+    -CSS_VIEW_URL                           => $CSS_VIEW_URL||'empty',
     -CSS_VIEW_NAME                          => $CSS_VIEW_NAME,
     -DATASOURCE_CONFIG_PARAMS               => \@DATASOURCE_CONFIG_PARAMS,
     -DELETE_ACKNOWLEDGEMENT_VIEW_NAME       => 'DeleteAcknowledgementView',
@@ -1508,6 +1508,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -SORT_FIELD2                            => $CGI->param('sort_field2') || 'subject',
 #    -SORT_DIRECTION                         => $CGI->param('sort_direction') || 'ASEN',
     -SORT_DIRECTION                         => 'ASC',
+    -Debug                               => $CGI->param('debug') || 0,
     -DELETE_FORM_VIEW_NAME                  => 'DetailsRecordView',
     -DELETE_EMAIL_BODY_VIEW                 => 'DeleteEventEmailView',
     -DETAILS_VIEW_NAME                      => 'DetailsRecordView',

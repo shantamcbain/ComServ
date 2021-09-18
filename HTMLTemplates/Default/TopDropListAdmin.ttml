@@ -1,6 +1,7 @@
 [% #/HTMLTemplates/Default/TopAdminLinksView.ttml %]
 	 [% IF group    ==  'Alegro_admin' OR
 	       group    ==  'Apis_Admin' OR
+	       group    ==  'BMaster_Admin' OR
 	       group    ==  'BCHPA_admin' OR
 	       group    ==  'AltPower_admin' OR
 	       group    ==  'AnuCollective_admin' OR
