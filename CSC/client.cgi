@@ -112,6 +112,7 @@ my $site_update;
 my $Affiliate = 001;
 my $client_tb = 'csc_client_tb';
 my $HasMembers = 0;
+my @SESSION_CONFIG_PARAMS;
 my $SESSION_MGR = Extropia::Core::SessionManager->create(
     @SESSION_MANAGER_CONFIG_PARAMS
 );
@@ -178,7 +179,7 @@ my $VIEW_LOADER = new Extropia::Core::View
 #                          SESSION SETUP                             #
 ######################################################################
 
-my @SESSION_CONFIG_PARAMS = (
+ @SESSION_CONFIG_PARAMS = (
     -TYPE            => 'File',
     -MAX_MODIFY_TIME => 60 * 60,
     -SESSION_DIR     => "$GLOBAL_DATAFILES_DIRECTORY/Sessions",
