@@ -167,54 +167,6 @@ my $VIEW_LOADER = new Extropia::Core::View
     die("Unable to construct the VIEW LOADER object in " . $CGI->script_name() .
         " Please contact the webmaster.");
 
-######################################################################
-#                          SESSION SETUP                             #
-######################################################################
-
-my @SESSION_CONFIG_PARAMS = (
-    -TYPE            => 'File',
-    -MAX_MODIFY_TIME => 60 * 60,
-    -SESSION_DIR     => "$GLOBAL_DATAFILES_DIRECTORY/Sessions",
-    -FATAL_TIMEOUT   => 0,
-    -FATAL_SESSION_NOT_FOUND => 0
-);
-
-######################################################################
-#                     SESSION MANAGER SETUP                          #
-######################################################################
-
-my @SESSION_MANAGER_CONFIG_PARAMS = (
-    -TYPE           => 'FormVar',
-    -CGI_OBJECT     => $CGI,
-    -SESSION_PARAMS => \@SESSION_CONFIG_PARAMS
-);
-
-my $SESSION_MGR = Extropia::Core::SessionManager->create(
-    @SESSION_MANAGER_CONFIG_PARAMS
-);
-
-my $SESSION    = $SESSION_MGR->createSession();
-my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
-#Deal with site setup in session files. This code need taint checking.
-if ($CGI->param('site')){
-    if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
-      $SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $CGI->param('site')) ;
-       $SiteName = $CGI->param('site');
-    }else {
-	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
-    }
-	 
-}else {
-  if ( $SESSION ->getAttribute(-KEY => 'SiteName')) {
-    $SiteName = $SESSION ->getAttribute(-KEY => 'SiteName');
-  }else {
-	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
-      }
-}
-my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
-my $username    =  $SESSION ->getAttribute(-KEY => 'auth_username');
-
  if ($SiteName eq "ECF") {
 use ECFSetup;
   my $SetupVariablesECF    = new  ECFSetup($UseModPerl);
@@ -541,6 +493,54 @@ use OrganicSetup;
      $home_view               = $SetupVariablesOrganic->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
  }
+######################################################################
+#                          SESSION SETUP                             #
+######################################################################
+
+my @SESSION_CONFIG_PARAMS = (
+    -TYPE            => 'File',
+    -MAX_MODIFY_TIME => 60 * 60,
+    -SESSION_DIR     => "$GLOBAL_DATAFILES_DIRECTORY/Sessions",
+    -FATAL_TIMEOUT   => 0,
+    -FATAL_SESSION_NOT_FOUND => 0
+);
+
+######################################################################
+#                     SESSION MANAGER SETUP                          #
+######################################################################
+
+my @SESSION_MANAGER_CONFIG_PARAMS = (
+    -TYPE           => 'FormVar',
+    -CGI_OBJECT     => $CGI,
+    -SESSION_PARAMS => \@SESSION_CONFIG_PARAMS
+);
+
+my $SESSION_MGR = Extropia::Core::SessionManager->create(
+    @SESSION_MANAGER_CONFIG_PARAMS
+);
+
+my $SESSION    = $SESSION_MGR->createSession();
+my $SESSION_ID = $SESSION->getId();
+my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
+#Deal with site setup in session files. This code need taint checking.
+if ($CGI->param('site')){
+    if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
+      $SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $CGI->param('site')) ;
+       $SiteName = $CGI->param('site');
+    }else {
+	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
+    }
+	 
+}else {
+  if ( $SESSION ->getAttribute(-KEY => 'SiteName')) {
+    $SiteName = $SESSION ->getAttribute(-KEY => 'SiteName');
+  }else {
+	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
+      }
+}
+my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
+my $username    =  $SESSION ->getAttribute(-KEY => 'auth_username');
+
 
 my $modify = '1';
 my $delete = '1';
