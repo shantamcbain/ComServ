@@ -34,6 +34,7 @@ my @VIEWS_SEARCH_PATH =
 my @TEMPLATES_SEARCH_PATH = 
     qw(../HTMLTemplates/Apis
        ../HTMLTemplates/AltPower
+       ../HTMLTemplates/BMaster
        ../HTMLTemplates/CSPS
        ../HTMLTemplates/CSC
        ../HTMLTemplates/ECF
@@ -157,10 +158,9 @@ use SiteSetup;
     $DATAFILES_DIRECTORY          = $APP_DATAFILES_DIRECTORY;
     $site_session                 = $DATAFILES_DIRECTORY.'/Sessions';
     $auth                         = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-     $CSS_VIEW_NAME            = $SetupVariables->{-CSS_VIEW_NAME};
-    $CSS_VIEW_URL             = $SetupVariables->{-CSS_VIEW_NAME};
-  my $LocalIp            = $SetupVariables->{-LOCAL_IP};
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
+    $CSS_VIEW_NAME                = $SetupVariables->{-CSS_VIEW_NAME};
+    $CSS_VIEW_URL                 = $SetupVariables->{-CSS_VIEW_NAME}|$CSS_VIEW_NAME;
+    my $LocalIp                   = $SetupVariables->{-LOCAL_IP};
 
 #Add
 # $GLOBAL_DATAFILES_DIRECTORY = "Datafiles";
@@ -1108,6 +1108,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -CSS_VIEW_URL                           => $CSS_VIEW_URL,
     -CSS_VIEW_NAME                          => $CSS_VIEW_NAME,
     -DATASOURCE_CONFIG_PARAMS               => \@DATASOURCE_CONFIG_PARAMS,
+    -Debug                               => $CGI->param('debug') || 0,
     -DELETE_ACKNOWLEDGEMENT_VIEW_NAME       => 'DeleteAcknowledgementView',
     -DELETE_RECORD_CONFIRMATION_VIEW_NAME   => 'DeleteRecordConfirmationView',
     -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
