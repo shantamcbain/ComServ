@@ -113,6 +113,7 @@ my $Affiliate = 001;
 my $client_tb = 'csc_client_tb';
 my $HasMembers = 0;
 my @SESSION_CONFIG_PARAMS;
+my @SESSION_MANAGER_CONFIG_PARAMS;
 my $SESSION_MGR = Extropia::Core::SessionManager->create(
     @SESSION_MANAGER_CONFIG_PARAMS
 );
@@ -191,7 +192,7 @@ my $VIEW_LOADER = new Extropia::Core::View
 #                     SESSION MANAGER SETUP                          #
 ######################################################################
 
-my @SESSION_MANAGER_CONFIG_PARAMS = (
+ @SESSION_MANAGER_CONFIG_PARAMS = (
     -TYPE           => 'FormVar',
     -CGI_OBJECT     => $CGI,
     -SESSION_PARAMS => \@SESSION_CONFIG_PARAMS
