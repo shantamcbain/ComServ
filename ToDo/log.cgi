@@ -1,5 +1,5 @@
 #!/usr/bin/perl -wT
-
+# 	$Id: log.cgi,v 1.42 2021/09/18 22:08:42 shanta Exp shanta $
 # 	$Id: log.cgi,v 1.41 2020/01/13 22:08:42 shanta Exp shanta $
 # 	$Id: log.cgi,v 1.4 2016/01/23 22:08:42 shanta Exp shanta $
 # fix directory problem	
@@ -21,7 +21,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, 
 # Boston, MA  02111-1307, USA.
-my $AppVer = "ver 1.41, Jan 13, 2020";
+my $AppVer = "ver 1.42, Sep 18, 2021";
 
 use strict;
 
@@ -81,7 +81,7 @@ foreach ($CGI->param()) {
     my $debug = 0;
 
     my $APP_NAME = "log"; 
-    my $last_update  = 'Feb 13, 2020';
+    my $last_update  = 'Sep 18, 2021';
     my $site_update;
     my $APP_NAME_TITLE = "Log Manager";
     my $FAVICON;
@@ -604,7 +604,7 @@ my @months = qw(January February March April May June July August
 my %months;
 @months{1..@months} = @months;
 my %years = ();
-$years{$_} = $_ for (2014..2020);
+$years{$_} = $_ for (2020..2025);
 my %days  = ();
 $days{$_} = $_ for (1..31);
 

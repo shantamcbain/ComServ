@@ -1,0 +1,37 @@
+[% ViewVersion = '/cgi-bin/HTMLTemplates/USBM/ULCHomeView.ttml,v 0.01 2021/10/03 17:43:15 shanta Exp'%][%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.10 2020/04/22 17:43:15 shanta Exp'%]
+[%# the ENCY template
+#	$Id: ULCHome.ttml,v 1.1 2012/09/21 19:25:15 shanta Exp $	
+#file location/cgi-bin/HTMLTemplates/ULC
+%]
+
+[%# embed(data.page_top_view,['-PAGE_TITLE', Home page.']) %]
+
+[%# embed('ErrorDisplayView') %]
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+        [% session_string = "session_id=$session_id" %]
+
+[% END %] 
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+   [% LastUpdate = data.last_update %]
+   [% SiteLastUpdate = data.site_last_update %]
+
+
+
+</div>
+<div ALIGN="center">[%# ViewVersion %]
+<A NAME="PageTop"></A>
+</div>
+<h2>Our Virtual Church</h2>
+
+<a href="http://helpdesk.computersystemconsulting.ca" target="_Blank" > HelpDesk</a>
+
+[%# embed('CSCCopyRight') %]
+[%# embed(data.page_bottom_view) %]
+
