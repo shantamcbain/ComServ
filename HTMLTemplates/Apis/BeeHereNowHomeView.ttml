@@ -1,0 +1,112 @@
+[% Version = 'v 0.01 2021/10/06 BeeHereNowHomeView.ttml shanta' %]
+
+[%#	$Id: SaddleMountinOrganicsHomeView.ttml,v 0.01 2021/02/21 06:42:47 shanta Exp shanta %]
+
+
+[% procedure = data.procedure %]
+
+<!-- [% Version %]-->
+<div id=body > 
+<A NAME="PageTop"></A>
+
+
+
+<h1>Welcome to our Beekeeping Operations.</h1>
+ 	
+<h2>We setting up operations. Here at Bee Here Now Apiary.</h2>
+
+<p>Our adventure will be in the fallowing areas<p>
+
+
+
+<ul>
+ <li><h3>Set up Honey house and Shop.</h3>
+   </li><li><h3>Setup bee yards </h3>
+  <ul>
+    <li>Teaching Yard</li>
+     <ul>
+      <li><h2>Temporary teaching yard</h2> 
+         <p>We are setup primarily set up for video recordings. We are creating a season long view of the management of a yard.</p>
+         <li><h2>Next event.</h2><p>Wednesday August 4 Evaluation and Video taping.</p></li>
+      </li>
+     </ul>
+     <li>Honey Yards</li>
+    <li>Wintering Yard.</li>
+   </ul>
+
+ <li><h3>Setup Website </h3>
+  <ul>
+    <li><h4>View</h4> <p>How the site looks. If you have skills <a href="/cgi-bin/index.cgi?session_id=SUOHD06VYTYV5JPQ&site=SMO&view=JobView">Join</a> our team.</p></li>
+    <li><h4><a href="/cgi-bin/index.cgi?session_id=SUOHD06VYTYV5JPQ&site=SMO&procedure=ProgramingView" target="_blank" name="ProgramingView" onmouseover="See what we are working on.">Programming</a></h4><p>We will be tuning the software to reflect our usage. Learning/teaching. Yard Management. Shop management. Honey House management.</p></li>
+    <li><h4>Mailing List</h4> <p>Keeping members informed. Join list below.</p></li>
+    <li><h4>Calendar integration</h4>. Link Our Calendar to yours.</li>
+  </ul>
+<li><h3>Plan field crops for bees.</h3>
+ 
+ <p>Exploring the process of creating an environment that bee will thrive in. We are planing  cover crops with bee pasture in mind. Cover crops, pasture land, Hay fields.</p> <a href="/cgi-bin/index.cgi?site=BMaster&session_id=59ASS93JH04KSCE8&view=BeePastureView" target="_blank">Details.</a>
+  <ul>
+   <li>Mustard culinary varieties</li>
+   <li><a href="/cgi-bin/ENCY/herbs.cgi?site=BMaster&session_id=SXN9RD5SUNXWHH9R&view=HerbDetailView&record_id=9">Alfalfa.</a> Lots planted just have to tune harvest times. </li>
+   <li><a href="/cgi-bin/ENCY/herbs.cgi?site=BMaster&session_id=SXN9RD5SUNXWHH9R&view=HerbDetailView&record_id=28" target="_blank">Borage</a> </li>
+   <li>Buckwheat </li>
+   <li>Calendula. </li>
+   <li><a href="cgi-bin/ENCY/herbs.cgi?site=BMaster&session_id=SXN9RD5SUNXWHH9R&view=HerbDetailView&record_id=32" target="_blank">Chicory</a></li>
+   <li><a href="/cgi-bin/ENCY/herbs.cgi?site=BMaster&session_id=SXN9RD5SUNXWHH9R&view=HerbDetailView&record_id=22" target="_blank">Clovers</a> Mostly white, waste lands yard cover in-betweens garlic, etc.</li>
+  <li><a href="/cgi-bin/ENCY/herbs.cgi?site=BMaster&session_id=SXN9RD5SUNXWHH9R&view=HerbDetailView&record_id=20" target="_blank">Dandilion</a> Mostly white, waste lands yard cover in-betweens garlic, etc.</li>
+ <li>Filberts</li>
+   <li>Lavender</li>
+   <li><a href="cgi-bin/ENCY/herbs.cgi?site=BMaster&session_id=SXN9RD5SUNXWHH9R&view=HerbDetailView&record_id=21" target="_blank">Roses</a></li>
+   <li>Watch for more.</li>
+  </ul>
+</li>
+<li><h3>Products planned</h3>
+  <ul>
+	<li>Honey</li>
+	<li>Livestock</li>
+	<li>Pollen</li>
+	<li>propulous</li>
+	<li>Education: In yard Streaming</li>	
+ </ul>
+</li>
+<li><h3></h3></li>
+</ul>
+<h3>This calendar can be shared. Add it to your and superscribe. </h3><p>Hit the + in the bottom right corner.</p>
+<iframe src="https://calendar.google.com/calendar/embed?src=1519thd4n3pksvs4431e50ovdc%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+[% embed('JoinDiscussionList') %]
+
+
+
+			
+			</li>
+             </ul>
+            <p>Access rights to resources will vary to your membership status.</p>
+
+            Currently we have 5 Memberships available.
+
+            <ul>
+            <li>Guest. Visitors have access access to all data considered public or essential. No login required</li>
+            <li>Beta tester. Get full access and are active in the development of the site and its usefulness to Bee Keepers. To Become a bata tester. Become a member. Earn one free month of membership for 3 contributions to the site per month. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisUser">Click here to join.</a></li>
+            <li>Member. These Vary much needed folks have full access to the site. They have contributed financially to help finance the site. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisUser">Click here to join.</a>
+             <li>Affiliate. Companies that support this site.
+            They have contributed financially to help finance the site. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisUser">Click here to join.</a>
+           <li>Hosted Site. There are two levels here. Your site will look the way you want.
+               <ul>
+                <li>Your domain on our server. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;L=eng&amp;P=DomainHosting">Click here to join.</a>
+                <li>A site on our domain. <a href="http://www.forager.com/cgi-bin/store/store.cgi?&amp;shop=csc&amp;L=eng&amp;P=ApisHosted">Click here to join.</a> 
+               </ul>
+          </ul>
+              <p>PS. You can be both a Beta Tester and a Contributing Member</p>
+
+
+<br>
+<br>
+<br>
+
+<p>
+<!-- hhmts start -->
+<!-- hhmts end 
+
+
+ 
+
