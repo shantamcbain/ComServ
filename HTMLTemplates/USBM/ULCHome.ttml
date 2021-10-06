@@ -30,6 +30,9 @@
 </div>
 <h2>Our Virtual Church</h2>
 
+<h3>Our Calendar.</h3>
+<iframe src="https://calendar.google.com/calendar/embed?src=2m9o1n2h9e16k50mhflgkkini4%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
 <a href="http://helpdesk.computersystemconsulting.ca" target="_Blank" > HelpDesk</a>
 
 [%# embed('CSCCopyRight') %]
