@@ -19,7 +19,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 1.6, Feb 13, 2020";
+my $AppVer = "ver 1.6, Feb 13, 2021";
 
 BEGIN
 {
@@ -131,7 +131,8 @@ my $DEFAULT_CHARSET;
 my $additonalautusernamecomments;
 my $SetupVariables;
 my $TableName;
-my $site;
+my $site = $CGI->param('site');
+my $SiteName       = $CGI->param('site');
 my $ProjectTableName;
 my $records;
 my $frame;

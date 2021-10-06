@@ -2,7 +2,8 @@
 %]
 
 [% IF username == 'Shanta' OR
-       group   == 'BMaster_admin' OR
+       group   == 'BHN_admin' OR
+       group   == 'BMaster_Admin' OR
        group   == 'USBM_admin' OR
   	    group   == 'Apis_Admin' OR
   	    group   == 'AnuCollective_admin' OR
