@@ -25,7 +25,7 @@
 
 
 </div>
-<div ALIGN="center">[%# ViewVersion %]
+<div ALIGN="center">[% ViewVersion %]
 <A NAME="PageTop"></A>
 </div>
 <h2>Our Virtual Church</h2>
