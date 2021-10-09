@@ -1,4 +1,6 @@
-[% Version = '/cgi-bin/HTMLTemplates/USBM/ULCHomeView.ttml,v 0.01 2021/10/03 17:43:15 shanta Exp'%][%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.10 2020/04/22 17:43:15 shanta Exp'%]
+[% Version = '/cgi-bin/HTMLTemplates/USBM/ULCHomeView.ttml,v 0.02 2021/10/03 17:43:15 shanta Exp'%]
+[%# Version = '/cgi-bin/HTMLTemplates/USBM/ULCHomeView.ttml,v 0.01 2021/10/03 17:43:15 shanta Exp'%]
+[%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.10 2020/04/22 17:43:15 shanta Exp'%]
 [%# the ENCY template
 #	$Id: ULCHome.ttml,v 1.1 2012/09/21 19:25:15 shanta Exp $	
 #file location/cgi-bin/HTMLTemplates/ULC
