@@ -44,6 +44,3 @@
 
 <a href="http://helpdesk.computersystemconsulting.ca" target="_Blank" > HelpDesk</a>
 
-[%# embed('CSCCopyRight') %]
-[%# embed(data.page_bottom_view) %]
-

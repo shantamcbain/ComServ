@@ -1,3 +1,4 @@
+[%# Version = 'v 1.98 2021/10/08 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
 [%# Version = 'v 1.97 2021/04/25 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
 [%# Version = 'v 1.96 2021/03/23 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
 [%# Version = 'v 1.965 2021/03/22 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
@@ -66,7 +67,7 @@
 [% embed('PageView') %]
 
 [% ELSE %]
-[%# Call HomeView%] [%#  SiteName %]
+[%# Call HomeView %] [%#  SiteName %]
    	[% IF SiteName == "OKB" %]
 		[% embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "Aikikai" %]
@@ -177,9 +178,7 @@
 	       group    ==  'News_admin' OR
 	       group    ==  'OKB_admin'OR
 	       group    ==  'Organic_admin' OR
-	       group     == 'DarmaFarmsAdmin' OR
 	       group    ==  'Shanta_admin' OR
-	       group    ==  'Stawns_admin' OR
 	       group    ==  'VitalVic_admin' OR
 	       group    ==  'rv_admin' OR
 	       group    == 'MJB_Admin' OR
@@ -201,8 +200,7 @@
               
  
  
-[% IF facebook %]<div class="fb-like" data-href="http://[% facebook %]"  data-send="true" data-width="450" data-show-faces="false"></div>
-<p> 
+ 
 		<br>
 [% END %]
   [%# embed ('SiteTodoSQL' )   %]		
