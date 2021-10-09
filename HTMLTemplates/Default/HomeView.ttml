@@ -210,10 +210,11 @@
 
 [% IF data.site_last_update %]
 
-	<p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %] &nbsp; This value is stored in your setup file. 
+	<p>Last Update [% data.site_last_update %]
+	[% IF SiteName == 'Demo' %] &nbsp; This value is stored in your setup file. 
+   [% END %]
+
 [% END %]
-
-
 
 [% embed('CSCCopyRight') %]
 
