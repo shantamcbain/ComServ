@@ -54,9 +54,9 @@
 [%# procedure  %]
 	[% IF username %]
 			<h3 > Hello  [% firstname%] &nbsp; [% lastname%]! Welcome to [% data.site_display_name %]</h3>
-		[% ELSE %]
-			<h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %]! </h3> 
-		[% END %]
+	[% ELSE %]
+	  <h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %]! </h3> 
+	[% END %]
 [% embed ("AdminTodoListLink")%]	
 		[% SiteName = data.site_name%]
 [% IF procedure %]
@@ -159,7 +159,7 @@
 			[% embed ('DemoHomeView') %]
 			<!-- End Demo home view -->
 		[% END %]
-	 [% IF group    ==  'Alegro_admin' OR
+[% IF group    ==  'Alegro_admin' OR
 	       group    ==  'Apis_Admin' OR
           group    == 'BHN_Admin' OR
 	       group    ==  'AltPower_admin' OR
@@ -202,7 +202,7 @@
  
  
 		<br>
-[% END %]
+
   [%# embed ('SiteTodoSQL' )   %]		
 
 [% IF data.site_last_update %]
@@ -210,7 +210,7 @@
 	<p>Last Update [% data.site_last_update %][% IF SiteName == 'Demo' %] &nbsp; This value is stored in your setup file. 
 [% END %]
 
-[% END %]
+
 
 [% embed('CSCCopyRight') %]
 
