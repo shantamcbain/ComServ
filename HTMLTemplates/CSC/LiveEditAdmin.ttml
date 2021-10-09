@@ -1,4 +1,10 @@
-	 [% IF group    ==  'Alegro_admin' OR
+ [%	Version = '/cgi-bin/HTMLTemplates/CSC/LiveEditAdmin.ttml,v 0.1 2021/10/09 ' 
+ %]
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+ <!-- call  LiveEditAdmin--> 
+  	 [% IF group    ==  'Alegro_admin' OR
 	       group    ==  'AltPower_admin' OR
 	       group    ==  'Apis_admin' OR
 	       group    ==  'Brew_admin' OR
@@ -28,4 +34,4 @@
 You can modify anything from here to the last update. You may use Html code in this area.
 	   [% END %]
 
-	
+	  <!-- end LiveEditAdmin--> 

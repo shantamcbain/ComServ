@@ -1,5 +1,8 @@
 [%#	$Id: /cgi-bin/HTMLTemplates/CSC/SiteAdminNotes.ttml,v 0.1 2015/02/05 17:43:15  
-%]
+%][% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+
 
 [% IF username == 'Shanta' OR
        group   == 'BHN_admin' OR
@@ -12,7 +15,7 @@
        group   == 'HE_admin' OR
        group   == 'WiseWoman_admin'                     
 %]
-<table>
+
 
   [% FOREACH link = DBI.query("SELECT * FROM page_tb
                                   WHERE  (status  = 2 AND

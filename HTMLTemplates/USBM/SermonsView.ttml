@@ -1,4 +1,4 @@
-[%# ViewVersion = 'v 0.001 2021/10/08 /cgi-bin/HTMLTemplates/USBM/SermonView%]
+[% Version = 'v 0.001 2021/10/08 /cgi-bin/HTMLTemplates/USBM/SermonView%]
 
 [%#	$Id: BatteryList.ttml,v 0.001 2020/08/12 11:42:47 shanta Exp shanta $	%]
 [% username = data.session_object.getAttribute('-KEY','auth_username') %]
@@ -15,7 +15,9 @@
 Variable active in DevHomeView
 [% embed('InheretedVariablesView') %]
 [% END %]
- [% ViewVersion %]
+ [% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
 
 <A NAME="PageTop"></A>
 <h2>Sermons to inspire you.</h2>

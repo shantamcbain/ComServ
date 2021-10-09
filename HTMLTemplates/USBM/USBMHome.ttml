@@ -1,4 +1,4 @@
-[% ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.12 2021/10/09 17:43:15 shanta Exp'%]
+[% Version = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.12 2021/10/09 17:43:15 shanta Exp'%]
 [%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.11 2020/08/12 17:43:15 shanta Exp'%]
 [%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.10 2020/04/22 17:43:15 shanta Exp'%]
 [%# the ENCY template
@@ -29,6 +29,10 @@
 <div ALIGN="center">[%# ViewVersion %]
 <A NAME="PageTop"></A>
 </div>
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+
 <h2>Our Virtual School House</h2>
 <ul>  
 <li> <b></b> <a href="https://altpower.usbm.ca/cgi-bin/index.cgi?site=AltPower">Alt Power </a> Join us in our adventure into Alternate power creation and use. </li>

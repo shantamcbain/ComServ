@@ -1,4 +1,4 @@
-[%# Version = 'v 0.003 2021/10/03 shanta MailListView.ttml' %]
+[% Version = 'v 0.003 2021/10/03 shanta MailListView.ttml' %]
 [%# Version = 'v 0.002 2021/03/23 shanta MailListView.ttml' %]
 [%# Version = 'v 0.001 2021/03/22 shanta MailListView.ttml' %]
 [%
@@ -89,7 +89,9 @@
 
 		<tr>
 	<td >
- [% Version %] 
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
 
 		[% IF group == 'CSC_admin' OR
       group == 'BMast_admin' 		%] 	
