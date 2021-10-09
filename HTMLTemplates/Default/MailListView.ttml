@@ -57,13 +57,7 @@
    [% MailServer = 'mail.beemaster.ca' %]
    [% END %]
 
-[% IF SiteName == 'IM' OR
-      SiteName == 'HE' %]
-   [% shop = 'apis' %] 
-   [% cat = 'Memberships' %]
-    [% MailServerName = 'webmail.helpfullearth.com' %]
-   [% ServerName = 'helpfullearth.com' %]
-[% END %]
+
 
  [% IF SiteName == 'Apis' OR
        SiteName == 'BMaster' OR
@@ -114,18 +108,18 @@ beemaster@beemaster.ca
 
 <ul>
  <li>
-<h2><a href="https://beemaster.ca/mailman/listinfo/Apis_discussion_beemaster_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b> Apis Discussions list</b></a></h2>
+<h2><a href="https://beemaster.ca/mailman/listinfo/Apis_discussion_beemaster_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b> Apis Discussions list</b></a></h2>
 </li>
  <li>
-<a href="https://beemaster.ca/mailman/listinfo/anubeekeeping_anucollective.beemaster.ca onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>anubeekeeping  at anucollective.beemaster.ca</b></a></h2>
+<a href="https://beemaster.ca/mailman/listinfo/anubeekeeping_anucollective.beemaster.ca onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>anubeekeeping  at anucollective.beemaster.ca</b></a></h2>
 </li>
-<li><a href="https://beemaster.ca/mailman/listinfo/<a href="https://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>
+<li><a href="https://beemaster.ca/mailman/listinfo/<a href="https://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>
 beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
 </li>
-<li><a href="https://beemaster.ca/mailman/listinfo/breeder_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>breeder_beemaster.ca</b></a></h2>
+<li><a href="https://beemaster.ca/mailman/listinfo/breeder_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>breeder_beemaster.ca</b></a></h2>
 </li>
 <li>
-<a href="https://beemaster.ca/mailman/listinfo/landtrust_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>landtrust_beemaster.ca</b></a></h2>
+<a href="https://beemaster.ca/mailman/listinfo/landtrust_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>landtrust_beemaster.ca</b></a></h2>
 </li>
 </ul>
 
