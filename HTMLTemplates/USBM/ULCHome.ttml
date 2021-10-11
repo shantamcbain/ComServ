@@ -42,8 +42,11 @@
 	<li><a href="http://ulcseminary.org" target="_blank">Universal Life Church Seminary</a> The Teaching site.</li>
 	<li><a href="https://ulc.net/" target="_blank">Universal Life Church</a> The main ministers site.</li>
 </ul>
-
+	[% IF username %]
 <a href="/forum" target="_blank">Join in our discussions.</a>
+	[% ELSE %]
+	  <h3>  Create an account and log in to see or forums.</h3> 
+	[% END %]
 
 <h3>Our Calendar.</h3>
 <iframe src="https://calendar.google.com/calendar/embed?src=2m9o1n2h9e16k50mhflgkkini4%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
