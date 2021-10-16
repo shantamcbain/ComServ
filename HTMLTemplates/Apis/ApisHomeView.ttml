@@ -1,4 +1,5 @@
 [%# Version = 'v 1.151 2021/06/02 shanta ApisHomeView.ttml' %]
+[%# Version = 'v 1.151 2021/06/02 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.150 2021/05/17 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.149 2021/04/25 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.148 2021/03/23 shanta ApisHomeView.ttml' %]
@@ -11,7 +12,6 @@
 #	$Id: ApisHomeView.ttml,v 1.11 2020/03/10 06:42:47 shanta Exp shanta $	%]
 [%#	$Id: ApisHomeView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
 
-[% #embed(data.page_top_view,['-PAGE_TITLE','Apis @ shanta.org']) %]
 
 [% embed('ErrorDisplayView') %]
 
@@ -37,7 +37,10 @@
 <tr>
 <td>
 
-<p>  [% Version %]   </p>
+<p> [% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+</p>
 
 
 [%#  SiteName%]
@@ -67,9 +70,9 @@
      <li><h3><a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=8" target="_blank" name="Join our site">Membership on site.</a></h3></li>
 	</ul>	
 	
-	<p>Your support goes to pay hosting fees, buy equipment for teaching (Video and audio), Develop site software, Our beekeeping game for kids.</p>
 	
-	
+<h2>Next event.</h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=WinterizingYard">
+        Winterizing your yard.</a>		
 <h3><a href="https://beemaster.ca/mailman/listinfo/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Join Our Apis lists</b></a>
 </h3>
  		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>

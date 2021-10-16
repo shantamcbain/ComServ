@@ -18,6 +18,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, 
 # Boston, MA  02111-1307, USA.
 
+my $AppVer = "ver 0.01, October 12, 2021";
 use strict;
 BEGIN{
     use vars qw(@dirs);
@@ -1220,7 +1221,7 @@ if  ( $SiteName eq "ECF"  ||
      $years_as  = 'Active years as a Programer';
 
 }else{
-      $years_as = 'Active years as a bee keeper';
+      $years_as = 'Active years as a Member';
 }
 
 my %category;
@@ -1244,27 +1245,7 @@ if  ( $group eq "ECF_admin" ||
        Supplier                    => 'Suppler',
        Publisher                   => 'Publisher',       
   );
-}elsif( $group eq "BCHPA_admin"){
-%category =
-   (
-       Guest                       => 'Guest',
-       Member                      => 'Member',
-       President                   => 'President',
-       First_vice                  => 'First Vice',
-       Second_Vice                 => 'Second Vice',
-       Secretary                   => 'Secretary',
-       Treasurer                   => 'Treasurer',
-       CHC_Representative          => 'CHC Representative',
-       Peace_River_Rep             => 'Peace River Rep',
-       Prince_George_Rep           => 'Prince George Rep',
-       Cariboo_Rep                 => 'Cariboo Rep',
-       OkanaganThompson_Rep        => 'Okanagan-Thompson Rep',
-       Kootenays_Rep               => 'Kootenays Rep',
-       Lower_Fraser_Valley_Rep     => 'Lower Fraser Valley Rep',
-       North_Vancouver_Island_Rep  => 'North Vancouver Island Rep',
-       South_Vancouver_Island_Rep  => 'South Vancouver Island Rep',
-       Canadian_Honey_Council_Rep  => 'Canadian Honey Council Rep',
-       );
+
 }elsif( $group eq "CSC_admin" ||
         $SiteName eq "CSC" ){
         %category =
@@ -1281,6 +1262,7 @@ if  ( $group eq "ECF_admin" ||
        Supplier                    => 'Suppler',
        Publisher                   => 'Publisher',       
        Customer                    => 'Customer',
+       Site_Contact                    => 'Contact',
        Doc                         => 'Physician',
       );
 }
@@ -1289,7 +1271,7 @@ my @months = qw(January February March April May June July August
 my %months;
 @months{1..@months} = @months;
 my %years = ();
-$years{$_} = $_ for (1900..2011);
+$years{$_} = $_ for (1900..2025);
 my %days  = ();
 $days{$_} = $_ for (1..31);
 
@@ -2004,6 +1986,8 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -DATASOURCE_CONFIG_PARAMS               => \@DATASOURCE_CONFIG_PARAMS,
     -DELETE_ACKNOWLEDGEMENT_VIEW_NAME       => 'DeleteAcknowledgementView',
     -DELETE_RECORD_CONFIRMATION_VIEW_NAME   => 'DeleteRecordConfirmationView',
+    -DOMAIN_NAME                            => $HostName,
+    -GROUP                                  => $group,
     -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
     -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || 5,
     -SORT_FIELD1                            => $CGI->param('sort_field1') || 'category',

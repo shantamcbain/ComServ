@@ -92,7 +92,7 @@
 	<!--end Call to shantaPrivetBottom links -->
 [% END %]
 
-&nbsp;		[% embed('HelpDeskLinkView') %]&nbsp;
+&nbsp;		[%# embed('HelpDeskLinkView') %]&nbsp;
 	
 
 <br> [% data.APP_VER %] 

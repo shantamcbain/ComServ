@@ -35,6 +35,7 @@
 <tr> <td	class="InharatedVariablesCell">UserName   TTML   </td>        <td	class="InharatedVariablesCell"> [% username %]</td></tr>
 <tr> <td	class="InharatedVariablesCell">UserName    .data     </td>    <td	class="InharatedVariablesCell"> [% data.username %] .data</td></tr>
 <tr> <td	class="InharatedVariablesCell">Group  TTML  </td>         <td	class="InharatedVariablesCell">   [% group %]</td></tr>
+<tr> <td	class="InharatedVariablesCell">Group  .data  </td>         <td	class="InharatedVariablesCell">   [% data.group %]</td></tr>
 <tr> <td	class="InharatedVariablesCell">Mobile  .data     </td>    <td	class="InharatedVariablesCell">  [% data.mobile %]</td></tr>
 
 <tr> <td	class="InharatedVariablesCell">View   TTML   </td>     <td	class="InharatedVariablesCell">     [% View %]</td></tr>

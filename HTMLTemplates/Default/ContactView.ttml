@@ -1,3 +1,4 @@
+[% Version = 'v 1.21 2021/10/12 17:43:15 /cgi-bin/HTMLTemplates/Default/ContactView.ttml, '%]
 [%
 
 # the home  Page template
@@ -21,23 +22,19 @@
 	[% Username = data.session_object.getAttribute('-KEY','auth_username')%]
 	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
 	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')||data.group  %]
 [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
  [% script_name = data.app_name %]
-[% IF  SiteName == "GPMarket" OR
-          SiteName == "Grindrod" %]
- 
-[% USE DBI( data_source = 'dbi:mysql:grindrod_site',
-                username = 'grindrod_grind',
-                password =  'herbs2' )
-    %]
-[% ELSE %]
-
-
-[% END %] 
+ [% PROCESS DefaultDbi.ttml %]
+ [%# SiteName %]
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td>
+
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+
 <div align="center"><h2>Site Contacts</h2>
 </div><br>
 <br>
@@ -110,12 +107,6 @@
     <tr bgcolor="#FFECA8"><td>Email</td><td>[% link.email %]</td></tr>
     [% END %]
 </table>
-[% ELSIF  SiteName == "GPMarket"
- %] 
-<p>The list of our contacts for the Grindrod Park Market.</p>
-  <script type = "text/javascript"
- src="/cgi-bin/AddressBook/address_book.cgi?embed=1&amp;site=[% SiteName %]&amp;records_per_page=1&amp;submit_power_search=on&amp;simple_search_string=[% SiteName %]_contact&amp;[% session_string %]&amp;columns_to_view=fname&amp;columns_to_view=lname&amp;columns_to_view=URL&amp;columns_to_view=email">
-
 [% ELSIF SiteName == "Skye"
      %]
         <table border="0" width="100%" height="350" >
@@ -289,21 +280,57 @@ embed ecfcontactview
 
 [% embed(AltPowerContactView) %]
 [% ELSE %]
-
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: auto;">     
+[% FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  comments LIKE "Contact" AND
+       sitename = "$SiteName"') %]
+   <tr><td class="tableRowHeaderStyle">Name</td><td class="tableCellStyle">[% user.fname %]&nbsp; [% user.lname %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle" style="table-layout: auto; ">address</td><td class="tableCellStyle">[% user.address1 %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle"></td><td class="tableCellStyle">[% user.address2 %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">City</td><td class="tableCellStyle">[% user.city %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Prov</td><td class="tableCellStyle">[% user.prov %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Postal Code</td><td class="tableCellStyle">[% user.zip %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Country</td><td class="tableCellStyle">[% user.country %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Email</td><td class="tableCellStyle">[% user.email %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Website</td> <td class="tableCellStyle">&nbsp;<a href="[% user.url %]" name="Contact" target="_blank" title="Site Contact">
+        [% user.url %]</a> </td></tr>
+    [% END %]
+</table>
 <p>
              <script type = "text/javascript"
  src="/cgi-bin/AddressBook/address_book.cgi?embed=1&amp;site=[% SiteName %]&amp;records_per_page=1&amp;display_details_view=on&amp;submit_power_search=on&amp;simple_search_string=[% SiteName %]_contact&amp;columns_to_view=category&amp;columns_to_view=fname&amp;columns_to_view=lname&amp;columns_to_view=email&amp;columns_to_view=phone&amp;[% session_string %]">
 </script>
 
- 
+      [% FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  category  = "Site_Contact"') %]
+        [% user.fname %]&nbsp; [% user.lname %]&nbsp; Website &nbsp;<a href="http://[% user.url %]" name="Contact" target="_blank" title="Site Contact">[% user.url %]</a> <br>
+    [% END %]
+ table of info
+ <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: auto;">     
+[% FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  category  = "Site_Contact" AND
+       sitename = "$SiteName"') %]
+   <tr><td class="tableRowHeaderStyle">Name</td><td class="tableCellStyle">[% user.fname %]&nbsp; [% user.lname %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle" style="table-layout: auto; ">address</td><td class="tableCellStyle">[% user.address1 %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle"></td><td class="tableCellStyle">[% user.address2 %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">City</td><td class="tableCellStyle">[% user.city %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Prov</td><td class="tableCellStyle">[% user.prov %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Postal Code</td><td class="tableCellStyle">[% user.zip %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Country</td><td class="tableCellStyle">[% user.country %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Email</td><td class="tableCellStyle">[% user.email %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Website</td> <td class="tableCellStyle">&nbsp;<a href="[% user.url %]" name="Contact" target="_blank" title="Site Contact">
+        [% user.url %]</a> </td></tr>
+    [% END %]
+</table>
 </p>
 <p>If you are the contact person for the site you will have to enter your information in the Members Database or Address book. Link below. Be sure to up a unique keyword in the comments area. Something like SiteName_Contact, Apis_president, or Brew_secretary
-</p><p><i>Be sure to include the keyword in your CSR.</i> Please  <a href="/cgi-bin/AddressBook/address_book.cgi?&amp;site=[% SiteName %]&amp;display_add_form=on&amp;[% session_string %]">ADD</a> your contact information..</p>
+</p><p><i>Be sure to include the keyword in your CSR.</i> Please  
+[% IF group == "$SiteName_Admin" OR
+      group == "$SiteName_admin" %]
+<a href="/cgi-bin/AddressBook/address_book.cgi?&amp;site=[% SiteName %]&amp;display_add_form=on&amp;[% session_string %]">ADD</a>
+    [% END %]your contact information. Or Contact site admin to add your information.</p>
 
 
 
 [% END %]
-    [% FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  comments = "Site_Contact"') %]
+    [% FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  category = "Site_Contact"') %]
         [% user.fname %]&nbsp; [% user.lname %]&nbsp; Website &nbsp;<a href="http://[% user.url %]" name="Contact" target="_blank" title="Site Contact">[% user.url %]</a> <br>
     [% END %]
 

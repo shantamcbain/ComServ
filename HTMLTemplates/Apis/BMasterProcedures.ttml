@@ -1,3 +1,4 @@
+[% Version = 'v 1.16 2021/10/16 /cgi-bin/HTMLTemplates/Apis/BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.15 2021/08/03 BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.14 2021/03/08 BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.13 2020/03/10 BMasterProcedures.ttml '%]
@@ -33,9 +34,11 @@
 [% SiteFullName = 'Beemaster.ca'%]
 <div align="center">
 </div>
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
 
- [% ViewVersion  %]
-	   
+
 
  [% IF procedure  == 'HiveManHomeView' %]
 
@@ -164,7 +167,10 @@
  
  [% embed ('YardsView') %]
 
- [% ELSE %]	
+
+[% ELSIF procedure  == ('WinterizingYards') %]
+ [% embed ('WinterizingYards') %]
+[% ELSE %]	
 <h2>Beemaster Active procedures list</h2>
  [%# embed ('BMasterProcedureList') %]
 

@@ -1,3 +1,4 @@
+[% Version = 'v 1.148 2021/10/16 /cgi-bin/HTMLTemplates/Apis/AnuCollectiveHomeView.ttml shanta' %]
 [% Version = 'v 1.147 2020/09/16 shanta' %]
 [%# Version = 'v 1.146 2020/05/15 mnickers' %]
 [%# Version = 'v 1.145 2020/05/12' %]
@@ -15,8 +16,10 @@
 
 [%# Version = ' ApisHomeView  v 1.13 2020/02/12' %]
 [% procedure = data.procedure %]
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
 
-<!-- [% Version %]-->
 <div id=body > 
 <A NAME="PageTop"></A>
 
@@ -37,21 +40,17 @@
  	
 <h2>Our Next event</h2>
 
-<p>Be sure to scroll down and Join the mailing list. While your there check out the calender.</p>
+<p>We are hoping to open again in the spring of 2022 for classes again.
 
-<h3>Thursday September 17 </h3>
+<p>Be sure to scroll down and Join the mailing list. While your there check out the calendar.</p>
 
-<p>This event has two main parts.</p>
+<h3>Winterizing your bees </h3>
 
-<ul>
- <li><h3>Honey Harvest and extraction.</h3>
-  <p>In this part of the workshop we will Pull all the available honey clear the bees and set aside for the extraction process. We will evaluate the hive and rearrange brood, add honey to the brood chamber if needed.</p>
-  <p>We will setup an area to extract the honey. This will be a bee prof space. For small amount of extraction the kitchen works well. As your operation grows though and you move beyond a 4 hives you will want a dedicated space for the task. Honey gets everywhere. No mater how hard you try. You will need to have clean jars or pails to store your honey. We recommend the l L Canning jar as it contains exactly 3 lb of honey. It is also highly reusable. </p>
- </li>
- <li><h3>MiteGone treatment for Varoa mites.</h3>
-  <p>We are a bit late here for the workshop as this should be done in late August. That timing is to ensure that all your winter bees are formed with minimal damage from Varoa. The honey should also come off then as well There are 2 main reasons for this. One is to give your bees ample time to rearrange the nest for winter. The other is so you can feed syrup to ensure the winter bees have minimal agricultural chemicals. Chemicals are the primary cause of Colony co-laps. Varoa is not but is an easy diversion. </p> 
- </li>
-</ul>
+<p>With winter approaching it is time to </h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=WinterizingYard">
+        Winterizing your yard.</a></p>
+
+
+
 
      <h5>Please contact us to ensure your space. <a href="https://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=29" target="_blank">Register Here</a></h5>           
   <h2>What was done this season.</h2>               

@@ -1,7 +1,6 @@
-[%
-#	$Id: WinterizingYard.ttml,v 0.1 2019/10/09 06:42:47 shanta Exp shanta $	%]
+[% Version = 'v 0.11 2021/10/16 /cgi-bin/HTMLTemplates/Apis/WinterizingYard.ttml, '%]
+[%#	$Id: WinterizingYard.ttml,v 0.1 2019/10/09 06:42:47 shanta Exp shanta $	%]
 
-[%# embed(data.page_top_view,['-PAGE_TITLE','Bees Wax']) %]
 
 [% embed('ErrorDisplayView') %]
 
@@ -26,6 +25,9 @@
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td >
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
 <h3>Winterizing your yard.</h3>
 <p>Our tutorial on winterizing your yard.</p>
 <p>When your bees have clustered it is time to wrap them if you chose to do that. There are advantages and disadvantages of doing so depending on your area. </p>
@@ -39,6 +41,9 @@
 </ul>
 
 <h2>Upcoming workshop in November we will cover this.</h2>
+<p>See our recommended yard layout for placement of your pallets.</p>
+
+
 
 
 

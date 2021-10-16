@@ -31,7 +31,8 @@
       </li>
      </ul>
      <li>Honey Yards</li>
-    <li>Wintering Yard.</li>
+    <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=WinterizingYard">
+        Winterizing your yard.</a></li>
    </ul>
 
  <li><h3>Setup Website </h3>
