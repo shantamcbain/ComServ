@@ -159,6 +159,8 @@
  
 [%# PageName %]
 [% body %]
+[% ELSIF procedure  == ('YardLayout') %]
+ [% embed ('YardLayout') %]
 
 [% ELSIF procedure  == ('YardManagementSystem') %]
  
@@ -168,8 +170,8 @@
  [% embed ('YardsView') %]
 
 
-[% ELSIF procedure  == ('WinterizingYards') %]
- [% embed ('WinterizingYards') %]
+[% ELSIF procedure  == ('WinterizingYard') %]
+ [% embed ('WinterizingYard') %]
 [% ELSE %]	
 <h2>Beemaster Active procedures list</h2>
  [%# embed ('BMasterProcedureList') %]

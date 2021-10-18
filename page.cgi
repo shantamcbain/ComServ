@@ -163,10 +163,10 @@ use SiteSetup;
     $page_left_view        = $SetupVariables->{-page_left_view};
     $MySQLPW               = $SetupVariables->{-MySQLPW};
 #Mail settings
-    $mail_from              = $SetupVariables->{-MAIL_FROM};
-    $mail_to                = $SetupVariables->{-MAIL_TO};
-    $auth_mail_to           = $SetupVariables->{-MAIL_TO_AUTH};
-    $mail_replyto           = $SetupVariables->{-MAIL_REPLYTO};
+    $mail_from              = $SetupVariables->{-MAIL_FROM}||'csc@computersystemconsulting.ca';
+    $mail_to                = $SetupVariables->{-MAIL_TO}||'csc@computersystemconsulting.ca';
+    $auth_mail_to           = $SetupVariables->{-MAIL_TO_AUTH}||'csc@computersystemconsulting.ca';
+    $mail_replyto           = $SetupVariables->{-MAIL_REPLYTO}||'csc@computersystemconsulting.ca';
     $CSS_VIEW_NAME          = $SetupVariables->{-CSS_VIEW_NAME};
     $app_logo               = $SetupVariables->{-APP_LOGO};
     $app_logo_height        = $SetupVariables->{-APP_LOGO_HEIGHT};
@@ -1051,21 +1051,21 @@ my @EMAIL_DISPLAY_FIELDS =
       );
 
 my @DELETE_EVENT_MAIL_SEND_PARAMS = (
-    -FROM     => $SESSION ->getAttribute(-KEY => 'auth_email')||$mail_from,
+    -FROM     => $SESSION ->getAttribute(-KEY => 'auth_email')||$mail_from||'csc@computersystemconsulting.ca',
     -TO       => $mail_to,
     -REPLY_TO => $mail_replyto,
     -SUBJECT  => $APP_NAME_TITLE. ' Delete'
 );
 
 my @ADD_EVENT_MAIL_SEND_PARAMS = (
-    -FROM     => $SESSION ->getAttribute(-KEY => 'auth_email')|| $mail_from,
+    -FROM     => $SESSION ->getAttribute(-KEY => 'auth_email')|| $mail_from||'csc@computersystemconsulting.ca',
     -TO       => $mail_to,
     -REPLY_TO => $mail_replyto,
     -SUBJECT  => $APP_NAME_TITLE. ' Addition'
 );
 
 my @MODIFY_EVENT_MAIL_SEND_PARAMS = (
-    -FROM     => $SESSION ->getAttribute(-KEY => 'auth_email')||$mail_from,
+    -FROM     => $SESSION ->getAttribute(-KEY => 'auth_email')||$mail_from||'csc@computersystemconsulting.ca',
     -TO       => $mail_to,
     -REPLY_TO => $mail_replyto,
     -SUBJECT  => $APP_NAME_TITLE. ' Modification'

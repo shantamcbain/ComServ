@@ -13,7 +13,7 @@ my $UseModPerl = shift || 0;
 
 
 my $self = {
-       -SITE_LAST_UPDATE       => 'October 04, 2021',
+       -SITE_LAST_UPDATE       => 'October 17, 2021',
  	   -APP_NAME_TITLE         => 'A Beekeeping Application',
        -SITE_DISPLAY_NAME      => 'beeherenow.Beemaster.ca',
 	   -HOME_VIEW              => 'HomeView',
@@ -31,15 +31,15 @@ my $self = {
 	   -PAGE_TOP_VIEW          => 'PageTopView',
 	   -PAGE_BOTTOM_VIEW       => 'PageBottomView',
 	   -PAGE_LEFT_VIEW         => 'LeftPageView',
-	   -MAIL_FROM              => 'beemaster@beemaster.ca',
-	   -MAIL_TO                => 'shanta@beemaster.ca',
+	   -MAIL_FROM              => 'danieldayneswood@beeherenow.beemaster.ca',
+	   -MAIL_TO                => 'shanta@beemaster.ca, danieldayneswood@gmail.com',
 	   -MAIL_TO_ADMIN          => 'support@beemaster.ca',
-      -MAIL_REPLYTO           => 'beemasters@beemaster.ca',
+       -MAIL_REPLYTO           => 'beemasters@beemaster.ca',
 	   -MAIL_TO_USER           => 'beemaster_user_list@list.beemaster.ca',
 	   -MAIL_TO_DISCUSSION     => 'beemaster@list.beemaster.ca',
 	   -MAIL_LIST_BCC          => '',
 	   -DOCUMENT_ROOT_URL      => '/',
-	   -IMAGE_ROOT_URL         => 'http://shanta.org/images/extropia',
+	   -IMAGE_ROOT_URL         => '/images/extropia',
 
 	    -MAIL_TO_USER           => 'beemaster_user_list@list.beemaster.ca',
 	    -MAIL_TO_DISCUSSION     => 'beemaster@list.beemaster.ca',
