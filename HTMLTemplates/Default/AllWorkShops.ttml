@@ -28,10 +28,8 @@
 
 
 		<ul>
-		  <li> [% embed ('ECFWorkShops') %]
 		  <li> [% embed ('BMWorkshops') %]
 		  
 		</ul>
 
-<h3>Earth Heart Colective Workshops</h3>
-			[% embed ('EHCWorkShops') %]
+
