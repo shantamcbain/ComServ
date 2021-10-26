@@ -62,12 +62,9 @@
  [%	Version %] 	   
 
  [%# IN PAGEVIEW Call page%]    [% Page %]
-[% END %]
- [%# IN PAGEVIEW Call page%]    [% Page %]
-[% END %][%	Version %] 	   
+[% END %]  
 
- [%# IN PAGEVIEW Call page%]    [% Page %]
-[% END %]    [% IF SiteName == 'CSC' %]
+  [% IF SiteName == 'CSC' %]
                              
        [% IF data.session_object.getAttribute('-KEY','Developer') == 1 %]
 	      <p><a href="?site=[% SiteName %]&amp;view=DeveloperView &amp;[% session_string %]" target="_blank" title="CSC Developer page">[% FirstName %]'s Developer Home</a>
