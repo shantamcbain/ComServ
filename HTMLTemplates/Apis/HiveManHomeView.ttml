@@ -32,7 +32,9 @@
 <tr>
 <td >
 	[%# SiteName  %]
-[% Version  %]
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
 
 	<h2>Manage your hives with our Management System.</h2>
   
