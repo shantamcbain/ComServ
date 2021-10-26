@@ -106,20 +106,10 @@ sitename' %]
 	<tr>
 	<td>                    
  
-[% version  %]              
-[% IF data.debug == 1   
+            
+[% IF data.debug == 1 	 %]
+[% version  %]  
 
-	 %]
-<ul>
-<li>Record id [% Record_id   %]
-<li>SiteName [% SiteName %]
-<li>Page View name[% PageName %] 
-<li>PageViewName pasted to script [% page %]
-<li>Status [% status  %]
-<li>[%  page_code %]
-<li>Sitename form page [% site  %]
-<li>Lastupdate  [% lastupdate  %]
-<ul>
 [% END %]		<h3>[% data.site_display_name %]</h3>
 			[% IF username %]
 
