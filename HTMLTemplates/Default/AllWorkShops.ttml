@@ -29,7 +29,7 @@
 
 		<ul>
 		  <li> [% embed ('ECFWorkShops') %]
-		  <li> [% embed ('BMWorkShops') %]
+		  <li> [% embed ('BMWorkshops') %]
 		  
 		</ul>
 
