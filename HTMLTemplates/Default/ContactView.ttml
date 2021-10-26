@@ -303,7 +303,7 @@ embed ecfcontactview
       [%# FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  category  = "Site_Contact"') %]
         [% user.fname %]&nbsp; [% user.lname %]&nbsp; Website &nbsp;<a href="http://[% user.url %]" name="Contact" target="_blank" title="Site Contact">[% user.url %]</a> <br>
     [%# END %]
- table of info
+
  <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: auto;">     
 [% FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  category  = "Site_Contact" AND
        sitename = "$SiteName"') %]
@@ -325,7 +325,7 @@ embed ecfcontactview
 [% IF group == "$SiteName_Admin" OR
       group == "$SiteName_admin" %]
 <a href="/cgi-bin/AddressBook/address_book.cgi?&amp;site=[% SiteName %]&amp;display_add_form=on&amp;[% session_string %]">ADD</a>
-    [% END %]your contact information. Or Contact site admin to add your information.</p>
+    [% END %]  your contact information. Or Contact site admin to add your information.</p>
 
 
 
