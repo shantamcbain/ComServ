@@ -158,8 +158,8 @@ use SiteSetup;
     $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
     $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
      my $LocalIp            = $SetupVariables->{-LOCAL_IP};
-    $CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
-    $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
+    my $CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
+    my $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
 
 #Add sub aplication spacific overrides.
 $page_top_view    = $CGI->param('page_top_view')||$page_top_view;
