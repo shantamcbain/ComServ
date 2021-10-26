@@ -330,14 +330,12 @@ embed ecfcontactview
 
 
 [% END %]
-    [% FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  category = "Site_Contact"') %]
+    [% FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  category = "Site_Contact"AND
+       sitename = "$SiteName"') %]
         [% user.fname %]&nbsp; [% user.lname %]&nbsp; Website &nbsp;<a href="http://[% user.url %]" name="Contact" target="_blank" title="Site Contact">[% user.url %]</a> <br>
     [% END %]
 
-    [%# FOREACH record_id = DBI.query('SELECT * FROM address_book_tb WHERE username = "Shanta"') %]
-      [% address_book_tb.fname %]  [% address_book_tb.lname %]
-    [%# END %]
- [% DBI.disconnect %]
+  [% DBI.disconnect %]
  <br>
 <br>
 [% embed(data.page_bottom_view) %]
