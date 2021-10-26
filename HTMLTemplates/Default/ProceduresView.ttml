@@ -72,6 +72,8 @@
 			[% embed ('AltPowerProcedures') %]
 		[% ELSIF SiteName == "AnuCollective" %]
 			[% embed ('AnuProcedures') %]
+		[% ELSIF SiteName == "BHN"%]
+			[% embed ('BMasterProcedures') %]
 		[% ELSIF SiteName == "BMaster"%]
 			[% embed ('BMasterProcedures') %]
 		[% ELSIF SiteName == "CS" %]
