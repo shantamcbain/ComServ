@@ -1,4 +1,4 @@
-
+[% Version = 'v 0.062021/10/26 17:43:15 /cgi-bin/HTMLTemplates/Apis/BMWorkshops.ttml, '%]
 [%
 #	$Id: BMWorkshops.ttml,v 0.05 2019/03/02 13:40:30 shanta Exp $
 #	$Id: BMWorkshops.ttml,v 0.04 2002/05/31 13:40:30 shanta Exp $
@@ -21,6 +21,9 @@
 <tbody>
 <tr>
 <td>
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
 <p> Our workshops are geared to helping you look after your bees and the environment in which they live with sustainability in mind. </p>
 <p>Up coming workshops.</p> For more info <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ContactView" name="Contact" target="_self" title=" WorkShops ">Contact us</a>
 <table >
