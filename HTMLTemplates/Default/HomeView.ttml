@@ -74,7 +74,7 @@
    	[% IF SiteName == "OKB" %]
 		[% embed('OkBeekeepersHomeView') %]
 		[% ELSIF SiteName == "BHN"%]
-			[% embed ('BHNHomeView') %]
+			[% embed ('BeeHereNowHomeView') %]
 		[% ELSIF SiteName == "Aikikai" %]
 			[% embed ('AikikaiHomeView') %]
 		[% ELSIF SiteName == "Aktiv" %]
