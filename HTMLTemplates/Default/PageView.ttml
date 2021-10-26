@@ -1,3 +1,4 @@
+[% Version = 'v 0.13 2021/10/26 shanta /cgi-bin/HTMLTemplates/Default/PageViewA.ttml' %]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/PageView.ttml,v 0.12 2020/04/20 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/PageView.ttml,v 0.1 2013/12/20 17:43:15 shanta Exp shanta $	
 
@@ -32,12 +33,7 @@
 [% process = 'None defined' %]
 
  [%# embed('SiteMysql') %]   
- [% IF data.debug == 1 %]
-<p>PageView</p>
-
-
- [%# IN PAGEVIEW Call page%]    [% Page %]
-[% END %]
+ 
   [% FOREACH link = DBI.query("SELECT * FROM page_tb
                                   WHERE  (
                                          page_code = '$Page' AND
@@ -58,7 +54,20 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td colspan="5">      
-     [% IF SiteName == 'CSC' %]
+  
+[% IF data.debug == 1 %]
+<p>PageView</p>
+
+
+ [%	Version %] 	   
+
+ [%# IN PAGEVIEW Call page%]    [% Page %]
+[% END %]
+ [%# IN PAGEVIEW Call page%]    [% Page %]
+[% END %][%	Version %] 	   
+
+ [%# IN PAGEVIEW Call page%]    [% Page %]
+[% END %]    [% IF SiteName == 'CSC' %]
                              
        [% IF data.session_object.getAttribute('-KEY','Developer') == 1 %]
 	      <p><a href="?site=[% SiteName %]&amp;view=DeveloperView &amp;[% session_string %]" target="_blank" title="CSC Developer page">[% FirstName %]'s Developer Home</a>
