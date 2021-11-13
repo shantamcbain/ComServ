@@ -1,3 +1,4 @@
+[% Version = 'v 1.152 2021/12/02 shanta ApisHomeView.ttml' %]
 [% Version = 'v 1.151 2021/06/02 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.151 2021/06/02 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.150 2021/05/17 shanta ApisHomeView.ttml' %]
@@ -61,14 +62,7 @@
 	[% END %]
 
 	[% END %] 
-	<h2>Your support helps us support you.</h2>
-
-	<ul>
-     <li><a href="https://www.patreon.com/beemaster" target="_blank" name="patreon" onmouseover="Support us">Patrion </a>
-     <p>We have many levels of support that you can afford.</p>
-     </li>	
-     <li><h3><a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=8" target="_blank" name="Join our site">Membership on site.</a></h3></li>
-	</ul>	
+	
 	
 	
 <h2>Next event.</h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=WinterizingYard">
@@ -98,19 +92,24 @@
             <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
             <li>
             </ul>
-		</td >	
+	<h2>Your support helps us support you.</h2>
+
+	<ul>
+     <li><a href="https://www.patreon.com/beemaster" target="_blank" name="patreon" onmouseover="Support us">Patrion </a>
+     <p>We have many levels of support that you can afford.</p>
+     </li>	
+     <li><h3><a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=8" target="_blank" name="Join our site">Membership on site.</a></h3></li>
+	</ul>		
+
+<iframe src="https://calendar.google.com/calendar/embed?src=8a4699c0rh5ava93rklas1embk%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+</td >	
 		</tr>
 	</tbody>
 	</table>
 
-	<iframe src="https://calendar.google.com/calendar/embed?src=vj1l37e3uj9uco667qvoj73iss%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-
-
-
-
 [% END %]
 
-  [% Version %] 
+ 
 
 
 

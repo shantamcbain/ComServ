@@ -231,13 +231,7 @@ my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
 my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
-if ($SiteName eq "DarmaFarms") {
-   $group    = 'ECF_Client';
-   $SiteName = 'ECF';
-	if ( $username eq 'gardenboy') {
-	 $group    = 'DarmaFarms_Admin';
-	};
-};
+
 
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName')){
