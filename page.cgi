@@ -168,7 +168,7 @@ use SiteSetup;
     $auth_mail_to           = $SetupVariables->{-MAIL_TO_AUTH}||'csc@computersystemconsulting.ca';
     $mail_replyto           = $SetupVariables->{-MAIL_REPLYTO}||'csc@computersystemconsulting.ca';
     $CSS_VIEW_NAME          = $SetupVariables->{-CSS_VIEW_NAME};
-    my $CSS_VIEW_URL$           = $SetupVariables->{-CSS_VIEW_NAME};
+    my $CSS_VIEW_URL        = $SetupVariables->{-CSS_VIEW_NAME};
     $app_logo               = $SetupVariables->{-APP_LOGO};
     $app_logo_height        = $SetupVariables->{-APP_LOGO_HEIGHT};
     $app_logo_width         = $SetupVariables->{-APP_LOGO_WIDTH};
