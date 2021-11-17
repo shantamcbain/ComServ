@@ -21,7 +21,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-
+my $AppVer = "ver 1.03, Nov 17, 2021";
 BEGIN{
     use vars qw(@dirs);
     @dirs = qw(Modules/
@@ -99,7 +99,7 @@ my $mail_from;
 my $mail_to;
 my $auth_mail_to;
 my $mail_replyto;
-my $CSS_VIEW_NAME;
+my $CSS_VIEW_NAME= '/styles/CSCCSSView';
 my $app_logo;
 my $app_logo_height;
 my $app_logo_width;
@@ -109,7 +109,7 @@ my $apsubmenu ='' ;
 
 my $DOCUMENT_ROOT_URL;
 my $site;
-my $GLOBAL_DATAFILES_DIRECTORY;
+my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
 my $TEMPLATES_CACHE_DIRECTORY;
 my $APP_DATAFILES_DIRECTORY;
 my $DATAFILES_DIRECTORY;
@@ -133,7 +133,7 @@ my $mail_to_user;
 my $mail_to_member;
 my $mail_to_discussion;
 my $LineStatus = "yes";
-my $last_update = 'Febuary 5, 2015';
+my $last_update = 'Nov 17, 2021';
 my $SITE_DISPLAY_NAME = 'None Defined for this site.';
 my $FAVICON;
 my $ANI_FAVICON;
@@ -168,6 +168,7 @@ use SiteSetup;
     $auth_mail_to           = $SetupVariables->{-MAIL_TO_AUTH}||'csc@computersystemconsulting.ca';
     $mail_replyto           = $SetupVariables->{-MAIL_REPLYTO}||'csc@computersystemconsulting.ca';
     $CSS_VIEW_NAME          = $SetupVariables->{-CSS_VIEW_NAME};
+    $CSS_VIEW_URL           = $SetupVariables->{-CSS_VIEW_NAME};
     $app_logo               = $SetupVariables->{-APP_LOGO};
     $app_logo_height        = $SetupVariables->{-APP_LOGO_HEIGHT};
     $app_logo_width         = $SetupVariables->{-APP_LOGO_WIDTH};
@@ -229,7 +230,7 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
+#my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
 
 
