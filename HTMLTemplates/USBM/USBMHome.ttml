@@ -1,4 +1,5 @@
-[% Version = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.12 2021/10/09 17:43:15 shanta Exp'%]
+[% Version = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.13 2021/11/17 17:43:15 shanta Exp'%]
+[%# Version = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.12 2021/10/09 17:43:15 shanta Exp'%]
 [%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.11 2020/08/12 17:43:15 shanta Exp'%]
 [%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.10 2020/04/22 17:43:15 shanta Exp'%]
 [%# the ENCY template
@@ -34,8 +35,9 @@
 [% END %] 
 
 <h2>Our Virtual School House</h2>
-<ul>  
-<li> <b></b> <a href="https://altpower.usbm.ca/cgi-bin/index.cgi?site=AltPower">Alt Power </a> Join us in our adventure into Alternate power creation and use. </li>
+<ul>
+  <li> <h2>Choosing your practitioner team.</h2> How to chose your team of advisers?</li> 
+  <li> <b></b> <a href="https://altpower.usbm.ca/cgi-bin/index.cgi?site=AltPower">Alt Power </a> Join us in our adventure into Alternate power creation and use. </li>
 
   <li> <b>New</b> <a href="https://usbm.ca/cgi-bin/index.cgi?site=3d">3D Printing. </a> We now have a 3d printing department Have a look. </li>
   <li>
