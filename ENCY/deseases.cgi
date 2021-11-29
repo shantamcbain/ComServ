@@ -1,4 +1,7 @@
-94 - 2001  eXtropia.com
+#!/usr/bin/perl -wT
+# 	$Id: /cgi-bin/ENCY/diseases.cgi,v 0.01/2014/03/20 14:27:36 shanta Exp $
+
+# Copyright (C) 1994 - 2001  94 - 2001  eXtropia.com
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,6 +19,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
+my $AppVer = "ver 0.02, Jan 13, 2020";
 BEGIN{
     use vars qw(@dirs);
     @dirs = qw(../Modules
@@ -29,12 +33,15 @@ my @VIEWS_SEARCH_PATH =
        Modules/Extropia/View/Default);
 
 my @TEMPLATES_SEARCH_PATH = 
-    qw(../HTMLTemplates/ENCY
+    qw(
+       ../HTMLTemplates/Apis
+       ../HTMLTemplates/ENCY
        ../HTMLTemplates/CSC
        ../HTMLTemplates/CSPS
        ../HTMLTemplates/HelpDesk
        ../HTMLTemplates/Shanta
        ../HTMLTemplates/AddressBook
+       ../HTMLTemplates/USBM
        ../HTMLTemplates/Default);
 
 use CGI qw(-debug);
@@ -65,6 +72,9 @@ my $SITE_DISPLAY_NAME = 'None Defined for this site.';
     my $page_bottom_view     ;
     my $left_page_view       ;
     my $MySQLPW;
+    my $DBI_DSN;
+    my $AUTH_TABLE;
+    my $AUTH_MSQL_USER_NAME;
 #Mail settings
     my $mail_from            ;
     my $mail_to              ;
@@ -78,7 +88,7 @@ my $SITE_DISPLAY_NAME = 'None Defined for this site.';
     my $DOCUMENT_ROOT_URL    ;
     my $LINK_TARGET;
     my $HTTP_HEADER_PARAMS;
-    my $GLOBAL_DATAFILES_DIRECTORY ;
+    my $GLOBAL_DATAFILES_DIRECTORY ="/home/shanta/Datafiles";
     my $TEMPLATES_CACHE_DIRECTORY;
     my $APP_DATAFILES_DIRECTORY;
     my $site;
@@ -100,9 +110,11 @@ my $SITE_DISPLAY_NAME = 'None Defined for this site.';
   $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
   $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
   $left_page_view        = $SetupVariables->{-LEFT_PAGE_VIEW};
-    $MySQLPW               = $SetupVariables->{-MySQLPW};
-  #Mail settings
- $mail_from             = $SetupVariables->{-MAIL_FROM}; 
+  $MySQLPW               = $SetupVariables->{-MySQLPW};
+  $AUTH_TABLE          = $SetupVariables->{-AUTH_TABLE};
+  $AUTH_MSQL_USER_NAME = $SetupVariables->{-AUTH_MSQL_USER_NAME};
+#Mail settings
+  $mail_from             = $SetupVariables->{-MAIL_FROM}; 
   $mail_to               = $SetupVariables->{-MAIL_TO};
   $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
   $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
@@ -112,11 +124,11 @@ my $SITE_DISPLAY_NAME = 'None Defined for this site.';
   $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
   $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
   $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
-    $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
-    $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
+  $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
+  $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
 
   $site = $SetupVariables->{-DATASOURCE_TYPE};
-  $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
+  $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY};
   $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
   $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
 
@@ -127,7 +139,8 @@ my $VIEW_LOADER = new Extropia::Core::View
     (\@VIEWS_SEARCH_PATH,\@TEMPLATES_SEARCH_PATH) or
     die("Unable to construct the VIEW LOADER object in " . $CGI->script_name() .
         " Please contact the webmaster.");
-
+ 
+ 
 ######################################################################
 #                          SESSION SETUP                             #
 ######################################################################
@@ -156,8 +169,7 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
-  $CSS_VIEW_URL          = $SetupVariables->{-CSS_VIEW_NAME};
+my $CSS_VIEW_URL          = $SetupVariables->{-CSS_VIEW_NAME};
  
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
@@ -176,95 +188,7 @@ if ($CGI->param('site')){
 }
 
 
-if ($SiteName eq "Organic") {
-use OrganicSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesOrganic   = new OrganicSetup($UseModPerl);
-    $page_top_view         = $SetupVariablesOrganic->{-PAGE_TOP_VIEW};
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesOrganic->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesOrganic->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesOrganic->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesOrganic->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesOrganic->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesOrganic->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesOrganic->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesOrganic->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesOrganic->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesOrganic->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
-     $SITE_DISPLAY_NAME       = $SetupVariablesOrganic->{-SITE_DISPLAY_NAME};
- }
- elsif ($SiteName eq "ECF") {
-use ECFSetup;
-  my $SetupVariablesECF    = new  ECFSetup($UseModPerl);
-    $CSS_VIEW_NAME           = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesECF->{-AUTH_TABLE};
-    $app_logo                = $SetupVariablesECF->{-APP_LOGO};
-    $app_logo_height         = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
-    $app_logo_width          = $SetupVariablesECF->{-APP_LOGO_WIDTH};
-    $app_logo_alt            = $SetupVariablesECF->{-APP_LOGO_ALT};
-    $homeviewname            = $SetupVariablesECF->{-HOME_VIEW_NAME};
-    $home_view               = $SetupVariablesECF->{-HOME_VIEW};
-#Mail settings
-    $mail_from               = $SetupVariablesECF->{-MAIL_FROM};
-    $mail_to                 = $SetupVariablesECF->{-MAIL_TO};
-    $mail_replyto            = $SetupVariablesECF->{-MAIL_REPLYTO};
-    $HTTP_HEADER_PARAMS      = $SetupVariablesECF->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesECF->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesECF->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_URL            = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $SITE_DISPLAY_NAME       = $SetupVariablesECF->{-SITE_DISPLAY_NAME};
- }
- elsif ($SiteName eq "ENCY") {
-use ENCYSetup;
-  my $SetupVariablesENCY    = new  ENCYSetup($UseModPerl);
-    $CSS_VIEW_URL            = $SetupVariablesENCY->{-CSS_VIEW_NAME};
-    $SITE_DISPLAY_NAME       = $SetupVariablesENCY->{-SITE_DISPLAY_NAME};
- }
 
- elsif ($SiteName eq "SB") {
-use SBSetup;
-  my $SetupVariablesSB    = new  SBSetup($UseModPerl);
-    $CSS_VIEW_URL            = $SetupVariablesSB->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesSB->{-AUTH_TABLE};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesSB->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesSB->{-HTTP_HEADER_DESCRIPTION};
-    $APP_NAME                = "vitavic";
-    $mail_to                 = $SetupVariablesSB->{-MAIL_TO};
-    $mail_replyto            = $SetupVariablesSB->{-MAIL_REPLYTO};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/VitalVic'; 
-    $SITE_DISPLAY_NAME       = $SetupVariablesSB->{-SITE_DISPLAY_NAME};
- }
-elsif ($SiteName eq "VitalVic") {
-use VitalVicSetup;
-  my $SetupVariablesVitalVic     = new  VitalVicSetup($UseModPerl);
-    $CSS_VIEW_URL            = $SetupVariablesVitalVic->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesVitalVic->{-AUTH_TABLE};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesVitalVic->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesVitalVic->{-HTTP_HEADER_DESCRIPTION};
-    $mail_to                 = $SetupVariablesVitalVic->{-MAIL_TO};
-    $mail_replyto            = $SetupVariablesVitalVic->{-MAIL_REPLYTO};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/VitalVic'; 
-    $SITE_DISPLAY_NAME       = $SetupVariablesVitalVic->{-SITE_DISPLAY_NAME};
-}
-elsif ($SiteName eq "Apis") {
-use ApisSetup;
-  my $SetupVariablesApis  = new  ApisSetup($UseModPerl);
-    $CSS_VIEW_NAME           = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesApis->{-AUTH_TABLE};
-    $page_top_view           = $SetupVariablesApis->{-PAGE_TOP_VIEW};
-    $page_bottom_view        = $SetupVariablesApis->{-PAGE_BOTTOM_VIEW};
-    $page_left_view          = $SetupVariablesApis->{-PAGE_LEFT_VIEW};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesApis->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesApis->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_URL            = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $homeviewname            = 'ApisHomeView';
-    $home_view               = $SetupVariablesApis ->{-HOME_VIEW}; 
-    $matchuser               = '1';
-    $matchgroup              =1;
-    $SITE_DISPLAY_NAME       = $SetupVariablesApis->{-SITE_DISPLAY_NAME};
-}  
 
 ######################################################################
 #                       AUTHENTICATION SETUP                         #
@@ -293,9 +217,9 @@ else {
 
    @AUTH_USER_DATASOURCE_PARAMS = (
         -TYPE         => 'DBI',
-        -DBI_DSN      => 'mysql:host=localhost;database=forager',
-        -TABLE        => 'ency_user_auth_tb',
-        -USERNAME     => 'forager',
+        -DBI_DSN      => $DBI_DSN,
+        -TABLE        => $AUTH_TABLE,
+        -USERNAME     => $AUTH_MSQL_USER_NAME,
         -PASSWORD     => $MySQLPW,
         -FIELD_NAMES  => \@AUTH_USER_DATASOURCE_FIELD_NAMES
     );
@@ -1043,7 +967,7 @@ my @MAIL_SEND_PARAMS = (
 
 my @LOG_CONFIG_PARAMS = (
     -TYPE             => 'File',
-    -LOG_FILE         => "../DataFiles/ENCY/$APP_NAME.log",
+    -LOG_FILE         => "$GLOBAL_DATAFILES_DIRECTORY/ENCY/$APP_NAME.log",
     -LOG_ENTRY_SUFFIX => '|' . _generateEnvVarsString() . '|',
     -LOG_ENTRY_PREFIX =>  '$APP_NAME_TITLE |'
 );
@@ -1405,9 +1329,7 @@ my $APP = new Extropia::Core::App::DBApp(
     ) or die("Unable to construct the application object in " . 
              $CGI->script_name() .  ". Please contact the webmaster.");
 
-#print "Content-type: text/html\n\n";
-print $APP->execute();
-  ". Please contact the webmaster.");
+
 
 #print "Content-type: text/html\n\n";
 print $APP->execute();
