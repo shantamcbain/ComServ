@@ -3,6 +3,7 @@
 	       group    ==  'Apis_Admin' OR
 	       group    ==  'AltPower_admin' OR
 	       group    ==  'AnuCollective_admin' OR
+	       group    ==  'BMaster_Admin' OR
 	       group    ==  'Brew_admin' OR
 	       group    ==  'CS_admin' OR
 	       group    ==  'CSC_admin' OR
@@ -13,13 +14,14 @@
 	       group    ==  'NOWD_admin' OR
 	       group    ==  'News_admin' OR
 	       group    ==  'Organic_admin' OR
+          group    ==  'SMO' OR
 	       group    ==  'Shanta_admin' OR
 	       group    ==  'VitalVic_admin' OR
           group    ==  'USBM_admin' OR
 	       group    ==  'WB_admin' OR
 	       group    ==  'WW_admin' OR
 	       username == 'Shanta' OR
-	      group    == 'Demo_admin'
+	       group    == 'Demo_admin'
 	 %]
  
  

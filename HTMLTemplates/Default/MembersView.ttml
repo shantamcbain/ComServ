@@ -1,3 +1,4 @@
+[% Version = 'v 0.003 2021/10/26 shanta /HTTPTemplates/Defalut/MembersView.ttml' %]
 [%#	$Id: MembersView.ttml,v 0.02 2014/03/21 17:43:15 shanta Exp shanta $	
 
 # Ideally this template should be converted into a static CSS file and
@@ -8,7 +9,7 @@
 # variables from outside.
 
 %]
-[% version = "v0.02" %]
+
 	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
 	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
    [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
@@ -106,20 +107,10 @@ sitename' %]
 	<tr>
 	<td>                    
  
-[% version  %]              
-[% IF data.debug == 1   
+            
+[% IF data.debug == 1 	 %]
+[% version  %]  
 
-	 %]
-<ul>
-<li>Record id [% Record_id   %]
-<li>SiteName [% SiteName %]
-<li>Page View name[% PageName %] 
-<li>PageViewName pasted to script [% page %]
-<li>Status [% status  %]
-<li>[%  page_code %]
-<li>Sitename form page [% site  %]
-<li>Lastupdate  [% lastupdate  %]
-<ul>
 [% END %]		<h3>[% data.site_display_name %]</h3>
 			[% IF username %]
 

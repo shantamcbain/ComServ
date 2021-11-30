@@ -1,3 +1,4 @@
+[% Version = 'v 0.09 2021/10/03 shanta MailListView.ttml' %]
 [%
 #	$Id: /cgi-bin/HTMLTemplates/Forager/ForagerHomeView.ttml,v 0.9 2020/01/28 17:43:15 shanta Exp shanta $	
 
@@ -17,8 +18,10 @@
 <table>
 <tr>
 	<td>
-
-
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+	<h2> <A HREF ="http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=15&carttpl=cart">Join our team</a>! <h2>
 [% IF username == "peter" or group == "Alegro_admin"%]
 [%# embed('AlegroAdminView') %]
 Hi T 
@@ -55,7 +58,7 @@ My persal stuff
 
 	 %]
 
- <a href="http://dev.computersystemconsulting.ca/cgi-bin/page.cgi?site=[% SiteName %]&[% session_string %]&display_modification_form=on&record_id=3" target="_blank">edit page</a>
+ <a href="/cgi-bin/page.cgi?site=[% SiteName %]&[% session_string %]&display_modification_form=on&record_id=3" target="_blank">edit page</a>
 You can modify anything from here to the last update. You may use Html code in this area.
  	   [% END %]
 
@@ -63,6 +66,9 @@ You can modify anything from here to the last update. You may use Html code in t
                                   WHERE  (status  = '2' AND
                                          sitename='Forager' AND
                                          page_code = 'HomeView' )
+                                         
+
+
                                   
                                   ")%]    
       [% link.body %]

@@ -1,0 +1,102 @@
+[% Version = 'v 0.01 2021/10/18 /cgi-bin/HTMLTemplates/Apis/YardLayout.ttml, '%]
+[%#	$Id: WinterizingYard.ttml,v 0.1 2019/10/09 06:42:47 shanta Exp shanta $	%]
+
+
+[% embed('ErrorDisplayView') %]
+
+ [% PROCESS DefaultDbi.ttml %]
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% email = data.session_object.getAttribute('-KEY','auth_email') %]
+  
+
+ 
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td >
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+<h3>How to Lay out your yard.</h3>
+<p>There are as many ways of laying out a yard as there are beekeepers. There are however many things to consider. A shot list of them are.</p>
+
+
+<ul>
+  <li>The area you have for your yard.</li>
+  <li>Accessibility.</li>
+  <li>Landlord restrictions.</li>
+  <li>Number of hives</li>
+  <li>Yard use.</li>
+</ul>
+<h3>The basic layouts.</h3>
+<ul>
+ <li><h4>Linear. </h4><p>This is the traditional way of laying out a yard. Hives are in a long row.</p> 
+ <h3>Advantages. </h3>
+ 
+ <ul>
+  <li>Easy to setup</li>
+  <li>Uses waste space on the edge of a field.</li>
+ </ul>
+  <h3>disadvantages. </h3>
+ <ul>
+	 <li>Vary hard to work for large numbers</li>
+	 <li>Bee drift a lot due to lack of orientation.</li> 
+	 <li>Vary hard to fence.</li>
+ </ul>
+ </li>
+ <li><h4>Circle.</h4> <p>This is the method we teach and recommend.</p>
+ 
+ <ul>
+	  <li>Easy to setup</li>
+	  <li>Equipment is in the middle of the yard. Easy access to all hives.</li>
+	  <li>Hives can be placed on pallets with equipment.</li>
+	  <li>Drift is reduces because each hive as a different orientation.</li>
+	  <li>Easy to work hives because there is a logical order to the placement of the hives. There is room to work the hives as well. </li>
+  <li>Vary easy to fence for bear protection.</li>
+ </ul>
+  <h3>disadvantages. </h3>
+ <ul>
+	 <li>Creates a large foot print that is harder to place  in a feild</li>
+	 <li>Slightly larger amount of equipment as you need pallets to place the hives on.</li> 
+ </ul>
+ 
+ </li>
+</ul>
+
+<h2>Laying out the yard.</h2>
+<ul>
+   <li>Level a circle in the ground the diameter of your fence. This gives you a flat area to work. You will appreciate this fact as you work your yards.</li>
+	<li>Place pallets in a circle of six. The sixth pallet is only used in the early spring for queen and bee production. The sixth pallet is set to the gate. Once you have placed your pallet you can remove this pallet. This way you can open the gate and back into the centre of the circle to work the yard. You will need two pallets for the main 5 spots. We like plastic pallets over wood because the don't rot. The top pallet should have a solid surface so it is easier to place hives. Orient the pallet so the long side points to the centre of the circle.</li>
+	<li>We use 2 pallets high to get the hive up to a convenient working height. </li>
+	<li>Your bear fence will be in a circle around the yard. </li>
+	<li>We Plant wind breaks of bee plants around the fence to provide food and protection.</li>
+	<li>Plant white clover on the surface of your yard. This provides an easy to walk on surface that can feed the bees as well as weed control. It is short so mowing is more for refreshing the flowers than access. </li>
+</ul>
+
+
+
+
+
+
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+[%# embed(data.page_bottom_view) %]
+

@@ -79,7 +79,7 @@ foreach ( $CGI->param() )
 #                          PORTING SETUP                             #
 ######################################################################
 my $SiteName          = $CGI->param('site') || "CSC";
-my $APP_NAME          = "procdure_tracker";
+my $APP_NAME          = "procedures_tracker";
 my $SITE_DISPLAY_NAME = 'Site not added to session setup.';
 my $APP_NAME_TITLE    = "Procedure Manager";
 my $homeviewname;

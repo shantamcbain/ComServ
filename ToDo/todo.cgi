@@ -19,7 +19,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 1.6, Feb 13, 2020";
+my $AppVer = "ver 1.6, Feb 13, 2021";
 
 BEGIN
 {
@@ -85,63 +85,115 @@ my $HostName   = $ENV{'SERVER_NAME'};
 my $SiteName       = $CGI->param('site');
 my $APP_NAME = "todo";
 my $Affiliate = 001;
-
+my $username;
+my $group;
 my $APP_NAME_TITLE = "Todo Manager";
 my $site_update;
-    my $SITE_DISPLAY_NAME = 'None Defined for this site.';
-    my $last_update  = 'Febuary 13, 2020';
-    my $homeviewname ;
-    my $home_view = 'ToDoHomeView'; 
-    my $procedure      = $CGI->param('procedure')||"ToDoHomeView";
-    my $BASIC_DATA_VIEW; 
-    my $page_top_view;
-    my $page_bottom_view;
-    my $page_left_view;
+my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+my $last_update  = 'Febuary 13, 2020';
+my $homeviewname ;
+my $home_view = 'ToDoHomeView'; 
+my $procedure      = $CGI->param('procedure')||"ToDoHomeView";
+my $BASIC_DATA_VIEW; 
+my $page_top_view;
+my $page_bottom_view;
+my $page_left_view;
 #Mail settings
-    my $mail_from; 
-    my $mail_to;
-    my $mail_replyto;
-    my $CSS_VIEW_NAME = 'ApisCSSView';
-    my $app_logo;
-    my $app_logo_height;
-    my $app_logo_width;
-    my $app_logo_alt;
-    my $FAVICON;
-    my $ANI_FAVICON;
-    my $style = $CGI->param('pagestyle');
-    my $FAVICON_TYPE;
-    my $IMAGE_ROOT_URL; 
-    my $DOCUMENT_ROOT_URL;
-    my $GLOBAL_DATAFILES_DIRECTORY;
-    my $TEMPLATES_CACHE_DIRECTORY;
-    my $APP_DATAFILES_DIRECTORY;
-    my $DATAFILES_DIRECTORY;
-    my $site_session;
-    my $auth;
-    my $MySQLPW;
-    my $LINK_TARGET;
-    my $HTTP_HEADER_PARAMS;
-    my $HTTP_HEADER_KEYWORDS;
-    my $HTTP_HEADER_DESCRIPTION;
-    my  $DBI_DSN;
-    my $AUTH_TABLE;
-    my  $AUTH_MSQL_USER_NAME;
-    my $DEFAULT_CHARSET; 
-    my $additonalautusernamecomments;
-    my $SetupVariables;
-	my $TableName;
-    my $site;
-    my $ProjectTableName;
-    my $records;
-    my $frame;
-    my $droplist_tb = 'csc_droplist_tb';
-    my $log_tb      = 'csc_log-tb';
-    my $client_tb   = 'csc_client_tb';
-    my $UseModPerl = 1;
-    my $HasMembers = 0;
-    my $SESSION_DIR;
-    my $CustCode = $CGI->param('custcode') || "BMaster";
+my $mail_from; 
+my $mail_to;
+my $mail_replyto;
+my $CSS_VIEW_NAME = 'ApisCSSView';
+my $app_logo;
+my $app_logo_height;
+my $app_logo_width;
+my $app_logo_alt;
+my $FAVICON;
+my $ANI_FAVICON;
+my $style = $CGI->param('pagestyle');
+my $FAVICON_TYPE;
+my $IMAGE_ROOT_URL; 
+my $DOCUMENT_ROOT_URL;
+my $GLOBAL_DATAFILES_DIRECTORY;
+my $TEMPLATES_CACHE_DIRECTORY;
+my $APP_DATAFILES_DIRECTORY;
+my $DATAFILES_DIRECTORY;
+my $site_session;
+my $auth;
+my $MySQLPW;
+my $LINK_TARGET;
+my $HTTP_HEADER_PARAMS;
+my $HTTP_HEADER_KEYWORDS;
+my $HTTP_HEADER_DESCRIPTION;
+my  $DBI_DSN;
+my $AUTH_TABLE;
+my  $AUTH_MSQL_USER_NAME;
+my $DEFAULT_CHARSET; 
+my $additonalautusernamecomments;
+my $SetupVariables;
+my $TableName;
+my $site = $CGI->param('site');
+my $SiteName       = $CGI->param('site');
+my $ProjectTableName;
+my $records;
+my $frame;
+my $droplist_tb = 'csc_droplist_tb';
+my $log_tb      = 'csc_log-tb';
+my $client_tb   = 'csc_client_tb';
+my $UseModPerl = 1;
+my $HasMembers = 0;
+my $CustCode = $CGI->param('custcode') || "BMaster";
     
+
+
+use SiteSetup;
+   $SetupVariables  = new SiteSetup($UseModPerl);
+    $home_view             = $SetupVariables->{-HOME_VIEW}; 
+    $homeviewname          = $SetupVariables->{-HOME_VIEW_NAME};
+    $SITE_DISPLAY_NAME     = $SetupVariables->{-SITE_DISPLAY_NAME};
+    $Affiliate             = $SetupVariables->{-AFFILIATE};
+    $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
+    $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW};
+    $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
+    $page_left_view        = $SetupVariables->{-page_left_view};
+    $MySQLPW               = $SetupVariables->{-MySQLPW};
+    $DBI_DSN               = $SetupVariables->{-DBI_DSN};
+    $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
+    $HTTP_HEADER_KEYWORDS  = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
+    $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+    $AUTH_TABLE             = $SetupVariables->{-AUTH_TABLE};
+    $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
+    $additonalautusernamecomments  = $SetupVariables->{-ADDITIONALAUTHUSERNAMECOMMENTS};
+#Mail settings
+    $mail_from             = $SetupVariables->{-MAIL_FROM}; 
+    $mail_to               = $SetupVariables->{-MAIL_TO};
+    $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
+    $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
+    $app_logo              = $SetupVariables->{-APP_LOGO};
+    $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
+    $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
+    $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
+    $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
+    $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
+    $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
+    my $LocalIp            = $SetupVariables->{-LOCAL_IP};
+    $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
+    $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
+    $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
+    $DATAFILES_DIRECTORY   = $APP_DATAFILES_DIRECTORY;
+    $site_session          = $GLOBAL_DATAFILES_DIRECTORY.'/Sessions';
+    $auth                  = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+    $TableName             = 'csc_todo_tb';
+    $ProjectTableName      = 'csc_project_tb';
+    my $CSS_VIEW_URL       = $SetupVariables->{-CSS_VIEW_NAME};
+    my $SESSION_DIR = "$GLOBAL_DATAFILES_DIRECTORY/Sessions";
+#Add sub aplication spacific overrides.
+# $GLOBAL_DATAFILES_DIRECTORY = "Datafiles";
+# $TEMPLATES_CACHE_DIRECTORY  = "$GLOBAL_DATAFILES_DIRECTORY/TemplatesCache";
+# $APP_DATAFILES_DIRECTORY    = "Datafiles/Todo";
+$page_top_view    = $CGI->param('page_top_view')||$page_top_view;
+$page_bottom_view = $CGI->param('page_bottom_view')||$page_bottom_view;
+$page_left_view   = $SetupVariables->{-page_left_view};
+
 ######################################################################
 #                          SESSION SETUP                             #
 ######################################################################
@@ -187,57 +239,7 @@ if ($CGI->param('site')){
 	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
       }
 }
-
-use SiteSetup;
-   $SetupVariables  = new SiteSetup($UseModPerl);
-    $home_view             = $SetupVariables->{-HOME_VIEW}; 
-    $homeviewname          = $SetupVariables->{-HOME_VIEW_NAME};
-    $SITE_DISPLAY_NAME     = $SetupVariables->{-SITE_DISPLAY_NAME};
-    $Affiliate             = $SetupVariables->{-AFFILIATE};
-    $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
-    $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW};
-    $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
-    $page_left_view        = $SetupVariables->{-page_left_view};
-    $MySQLPW               = $SetupVariables->{-MySQLPW};
-    $DBI_DSN               = $SetupVariables->{-DBI_DSN};
-    $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_KEYWORDS  = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
-    $AUTH_TABLE             = $SetupVariables->{-AUTH_TABLE};
-    $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
-    $additonalautusernamecomments  = $SetupVariables->{-ADDITIONALAUTHUSERNAMECOMMENTS};
-#Mail settings
-    $mail_from             = $SetupVariables->{-MAIL_FROM}; 
-    $mail_to               = $SetupVariables->{-MAIL_TO};
-    $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
-    $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
-    $app_logo              = $SetupVariables->{-APP_LOGO};
-    $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
-    $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
-    $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
-    $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
-    my $LocalIp            = $SetupVariables->{-LOCAL_IP};
-    $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
-    $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
-    $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
-    $DATAFILES_DIRECTORY   = $APP_DATAFILES_DIRECTORY;
-    $site_session          = $GLOBAL_DATAFILES_DIRECTORY.'/Sessions';
-    $auth                  = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-    $TableName             = 'csc_todo_tb';
-    $ProjectTableName      = 'csc_project_tb';
-    my $CSS_VIEW_URL       = $SetupVariables->{-CSS_VIEW_NAME};
-    
-
  
-#Add sub aplication spacific overrides.
-# $GLOBAL_DATAFILES_DIRECTORY = "Datafiles";
-# $TEMPLATES_CACHE_DIRECTORY  = "$GLOBAL_DATAFILES_DIRECTORY/TemplatesCache";
-# $APP_DATAFILES_DIRECTORY    = "Datafiles/Todo";
-$page_top_view    = $CGI->param('page_top_view')||$page_top_view;
-$page_bottom_view = $CGI->param('page_bottom_view')||$page_bottom_view;
-$page_left_view   = $SetupVariables->{-page_left_view};
 my $target;
 my $columnstoview;
 my $SortFields;

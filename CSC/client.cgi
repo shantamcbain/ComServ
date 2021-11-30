@@ -34,6 +34,7 @@ my @VIEWS_SEARCH_PATH =
 my @TEMPLATES_SEARCH_PATH = 
     qw(../HTMLTemplates/Apis
        ../HTMLTemplates/AltPower
+       ../HTMLTemplates/BMaster
        ../HTMLTemplates/CSPS
        ../HTMLTemplates/CSC
        ../HTMLTemplates/ECF
@@ -111,7 +112,13 @@ my $FAVICON_TYPE;
 my $site_update;
 my $Affiliate = 001;
 my $client_tb = 'csc_client_tb';
-    my $HasMembers = 0;
+my $HasMembers = 0;
+my @SESSION_CONFIG_PARAMS;
+my @SESSION_MANAGER_CONFIG_PARAMS;
+my $SESSION_MGR;
+my $SESSION_ID;
+my $CSS_VIEW_URL = $CSS_VIEW_NAME;
+my $HostName   = $ENV{'SERVER_NAME'};
 
 use SiteSetup;
   my $UseModPerl = 0;
@@ -152,7 +159,9 @@ use SiteSetup;
     $DATAFILES_DIRECTORY          = $APP_DATAFILES_DIRECTORY;
     $site_session                 = $DATAFILES_DIRECTORY.'/Sessions';
     $auth                         = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-   my $LocalIp            = $SetupVariables->{-LOCAL_IP};
+    $CSS_VIEW_NAME                = $SetupVariables->{-CSS_VIEW_NAME};
+    $CSS_VIEW_URL                 = $SetupVariables->{-CSS_VIEW_NAME}|$CSS_VIEW_NAME;
+    my $LocalIp                   = $SetupVariables->{-LOCAL_IP};
 
 #Add
 # $GLOBAL_DATAFILES_DIRECTORY = "Datafiles";
@@ -166,6 +175,7 @@ my $VIEW_LOADER = new Extropia::Core::View
     (\@VIEWS_SEARCH_PATH,\@TEMPLATES_SEARCH_PATH) or
     die("Unable to construct the VIEW LOADER object in " . $CGI->script_name() .
         " Please contact the webmaster.");
+
 
 ######################################################################
 #                          SESSION SETUP                             #
@@ -194,8 +204,6 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 );
 
 my $SESSION    = $SESSION_MGR->createSession();
-my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 #Deal with site setup in session files. This code need taint checking.
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
@@ -215,332 +223,6 @@ if ($CGI->param('site')){
 my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
 my $username    =  $SESSION ->getAttribute(-KEY => 'auth_username');
 
- if ($SiteName eq "ECF") {
-use ECFSetup;
-  my $SetupVariablesECF    = new  ECFSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesECF->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesECF->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesECF->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesECF->{-APP_LOGO_ALT};
-    $APP_NAME_TITLE        = "Eagle Creek Farms: Apis";
-    $homeviewname          = $SetupVariablesECF->{-HOME_VIEW_NAME};
-    $home_view             = $SetupVariablesECF->{-HOME_VIEW};
-#Mail settings
-    $mail_from             = $SetupVariablesECF->{-MAIL_FROM};
-    $mail_to               = $SetupVariablesECF->{-MAIL_TO};
-    $mail_replyto          = $SetupVariablesECF->{-MAIL_REPLYTO};
-    $HTTP_HEADER_PARAMS    = $SetupVariablesECF->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_KEYWORDS  = $SetupVariablesECF->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesECF->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_URL            = $SetupVariablesECF->{-CSS_VIEW_NAME};
-     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/ECF'; 
-}
-elsif ($SiteName eq "AltPower") {
-use AltPowerSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesAltPower   = new AltPowerSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesAltPower->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesAltPower->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesAltPower->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesAltPower=>{-CSS_VIEW_NAME};
-     $CSS_VIEW_URL            = $SetupVariablesAltPower->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesAltPower->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesAltPower->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesAltPower->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesAltPower->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesAltPower->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesAltPower->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesAltPower->{-HOME_VIEW};
-     $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/AltPower'; 
- }
-
-elsif ($SiteName eq "BMaster") {
-use BMasterSetup;
-  my $SetupVariablesBMaster   = new BMasterSetup($UseModPerl);
-     $HasMembers               = $SetupVariablesBMaster->{-HAS_MEMBERS};
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesBMaster->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesBMaster->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesBMaster->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesBMaster->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesBMaster->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesBMaster->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesBMaster->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesBMaster->{-APP_LOGO_ALT};
-     $homeviewname            = 'HomeView'||$SetupVariablesBMaster->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesBMaster->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesBMaster->{-LAST_UPDATE}; 
-      $site_update              = $SetupVariablesBMaster->{-SITE_LAST_UPDATE};
-#Mail settings
-     $mail_from               = $SetupVariablesBMaster->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesBMaster->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesBMaster->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = $SetupVariablesBMaster->{-SITE_DISPLAY_NAME};
-     $FAVICON                 = $SetupVariablesBMaster->{-FAVICON};
-     $ANI_FAVICON             = $SetupVariablesBMaster->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesBMaster->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE            = $SetupVariablesBMaster->{-FAVICON_TYPE};
-}
-
-elsif ($SiteName eq "BeeTalk") {
-use BeeTalkSetup;
-  my $SetupVariablesBeeTalk   = new BeeTalkSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesBeeTalk->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesBeeTalk->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesBeeTalk->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesBeeTalk->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesBeeTalk->{-AUTH_TABLE};
-     $Affiliate               = $SetupVariablesBeeTalk->{-AFFILIATE};
-     $app_logo                = $SetupVariablesBeeTalk->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesBeeTalk->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesBeeTalk->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesBeeTalk->{-APP_LOGO_ALT};
-     $home_view               = $SetupVariablesBeeTalk->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesBeeTalk->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesBeeTalk->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesBeeTalk->{-LAST_UPDATE}; 
-#Mail settings
-     $mail_from               = $SetupVariablesBeeTalk->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesBeeTalk->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesBeeTalk->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = $SetupVariablesBeeTalk->{-SITE_DISPLAY_NAME};
-     $FAVICON                 = $SetupVariablesBeeTalk->{-FAVICON};
-     $ANI_FAVICON             = $SetupVariablesBeeTalk->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesBeeTalk->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE            = $SetupVariablesBeeTalk->{-FAVICON_TYPE};
-}
-
-
-elsif ($SiteName eq "SQL_Ledger") {
-use SQLSetup;
-  my $SetupVariablesSQL       = new  SQLSetup($UseModPerl);
-    $AUTH_TABLE              = $SetupVariablesSQL ->{-AUTH_TABLE};
-    $APP_NAME_TITLE          = "Computer System Consulting.ca";
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesSQL->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_PARAMS      = $SetupVariablesSQL->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesSQL->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_NAME           = $SetupVariablesSQL->{-CSS_VIEW_NAME};
-    $page_top_view           = $SetupVariablesSQL->{-PAGE_TOP_VIEW};
-    $page_bottom_view        = $SetupVariablesSQL->{-PAGE_BOTTOM_VIEW};
-    $page_left_view          = $SetupVariablesSQL->{-LEFT_PAGE_VIEW};
-    $CSS_VIEW_URL            = $SetupVariablesSQL->{-CSS_VIEW_NAME};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/CSC'; 
-}
-
-elsif ($SiteName eq "CSC"){
-use CSCSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesCSC  = new CSCSetup($UseModPerl);
-    $APP_NAME_TITLE        = "CSC Clients";
-    $homeviewname          = 'HelpDeskHomeView';
-    $HasMembers               = $SetupVariablesCSC->{-HAS_MEMBERS};
-    $home_view             = $SetupVariablesCSC->{-HOME_VIEW};
-    $BASIC_DATA_VIEW       = $SetupVariablesCSC->{-BASIC_DATA_VIEW};
-    $page_top_view         = $SetupVariablesCSC->{-PAGE_TOP_VIEW};
-    $page_bottom_view      = $SetupVariablesCSC->{-PAGE_BOTTOM_VIEW};
-    $page_left_view        = $SetupVariablesCSC->{-LEFT_PAGE_VIEW};
-#Mail settings
-    $mail_from             = $SetupVariablesCSC->{-MAIL_FROM};
-    $mail_to               = $SetupVariablesCSC->{-MAIL_TO};
-    $mail_replyto          = $SetupVariablesCSC->{-MAIL_REPLYTO};
-    $CSS_VIEW_NAME         = $SetupVariablesCSC->{-CSS_VIEW_NAME}||'blank';
-    $app_logo              = $SetupVariablesCSC->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesCSC->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesCSC->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesCSC->{-APP_LOGO_ALT};
-    $IMAGE_ROOT_URL        = $SetupVariablesCSC->{-IMAGE_ROOT_URL};
-    $DOCUMENT_ROOT_URL     = $SetupVariablesCSC->{-DOCUMENT_ROOT_URL};
-    $LINK_TARGET           = $SetupVariablesCSC->{-LINK_TARGET};
-    $HTTP_HEADER_PARAMS    = $SetupVariablesCSC->{-HTTP_HEADER_PARAMS};
-    $DEFAULT_CHARSET       = $SetupVariablesCSC->{-DEFAULT_CHARSET};
-#    $DBI_DSN               = $SetupVariablesCSC->{-DBI_DSN};
-#    $AUTH_TABLE            = $SetupVariablesCSC->{-AUTH_TABLE};
-    $DEFAULT_CHARSET       = $SetupVariablesCSC->{-DEFAULT_CHARSET};
-    $site = $SetupVariablesCSC->{-DATASOURCE_TYPE};
-    $GLOBAL_DATAFILES_DIRECTORY = $SetupVariablesCSC->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
-    $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariablesCSC->{-TEMPLATES_CACHE_DIRECTORY,};
-    $APP_DATAFILES_DIRECTORY    = $SetupVariablesCSC->{-APP_DATAFILES_DIRECTORY};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesCSC->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_PARAMS      = $SetupVariablesCSC->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesCSC->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_URL            = $SetupVariablesCSC->{-CSS_VIEW_NAME};
-     
-}
-elsif ($SiteName eq "Demo" or
-      $SiteName eq "DemoHelpDesk") {
-use DEMOSetup;
-  my $UseModPerl = 1;
-  my $SetupVariablesDemo   = new  DEMOSetup($UseModPerl);
-    $AUTH_TABLE               = $SetupVariablesDemo ->{-AUTH_TABLE};
-    $APP_NAME_TITLE           = "Computer System Consulting.ca Demo Application";
-    $HasMembers               = $SetupVariablesDemo->{-HAS_MEMBERS};
-    $HTTP_HEADER_KEYWORDS     = $SetupVariablesDemo->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_PARAMS       = $SetupVariablesDemo->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_DESCRIPTION  = $SetupVariablesDemo->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_NAME            = $SetupVariablesDemo->{-CSS_VIEW_NAME};
-    $page_top_view            = $SetupVariablesDemo->{-PAGE_TOP_VIEW};
-    $page_bottom_view         = $SetupVariablesDemo->{-PAGE_BOTTOM_VIEW};
-    $page_left_view           = $SetupVariablesDemo->{-LEFT_PAGE_VIEW};
-    $app_logo                 = $SetupVariablesDemo->{-APP_LOGO};
-    $app_logo_height          = $SetupVariablesDemo->{-APP_LOGO_HEIGHT};
-    $app_logo_width           = $SetupVariablesDemo->{-APP_LOGO_WIDTH};
-    $app_logo_alt             = $SetupVariablesDemo->{-APP_LOGO_ALT};
-    $CSS_VIEW_URL             = $SetupVariablesDemo->{-CSS_VIEW_NAME};
-    $SITE_DISPLAY_NAME        = $SetupVariablesDemo->{-SITE_DISPLAY_NAME};
-    $homeviewname             = $SetupVariablesDemo->{-HOME_VIEW_NAME};
-    $last_update              = $SetupVariablesDemo->{-SITE_LAST_UPDATE};
-    $FAVICON                  = $SetupVariablesDemo->{-FAVICON};
-    $ANI_FAVICON              = $SetupVariablesDemo->{-ANI_FAVICON};
-    $FAVICON_TYPE             = $SetupVariablesDemo->{-FAVICON_TYPE};
-
-}
-
-elsif ($SiteName eq "Forager") {
-use ForagerSetup;
-  my $UseModPerl = 1;
-  my $SetupVariablesForager  = new ForagerSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesForager->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesForager->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesForager->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesForager->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesForager->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesForager->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesForager->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesForager->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesForager->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesForager->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesForager->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesForager->{-CSS_VIEW_NAME};
-     $APP_NAME_TITLE          = "Forager Clients";
-     $mail_to                 = $SetupVariablesForager->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesForager->{-MAIL_REPLYTO};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/Forager'; 
- }
-elsif ($SiteName eq "Genealogy"){
-use GenSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesGen   = new GenSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesGen->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesGen->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesGen->{-APP_LOGO};
-    $app_logo_alt          = $SetupVariablesGen->{-APP_LOGO_ALT};
-    $app_logo_height       = $SetupVariablesGen->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesGen->{-APP_LOGO_WIDTH};
-    $homeviewname          = $SetupVariablesGen->{-HOME_VIEW_NAME};
-    $home_view             = $SetupVariablesGen->{-HOME_VIEW}; 
-    $CSS_VIEW_URL          = $SetupVariablesGen->{-CSS_VIEW_NAME};
-    $APP_DATAFILES_DIRECTORY= $GLOBAL_DATAFILES_DIRECTORY.'/Shanta';
-  }
-
-elsif ($SiteName eq "GrindrodBC") {
-use GrindrodSetup;
-  my $SetupVariablesGrindrod   = new GrindrodSetup($UseModPerl);
-     $APP_NAME_TITLE          = "Grindrod";
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesGrindrod->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesGrindrod->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesGrindrod->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesGrindrod->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesGrindrod->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesGrindrod->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesGrindrod->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesGrindrod->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesGrindrod->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesGrindrod->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesGrindrod->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesGrindrod->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesGrindrod->{-LAST_UPDATE}; 
-      $site_update            = $SetupVariablesGrindrod->{-SITE_LAST_UPDATE};
-#Mail settings
-     $mail_from               = $SetupVariablesGrindrod->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesGrindrod->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesGrindrod->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = $SetupVariablesGrindrod->{-SITE_DISPLAY_NAME};
-     $FAVICON                 = $SetupVariablesGrindrod->{-FAVICON};
-     $ANI_FAVICON             = $SetupVariablesGrindrod->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesGrindrod->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE            = $SetupVariablesGrindrod->{-FAVICON_TYPE};
-} 
-
- 
-
-elsif ($SiteName eq "GrindrodProject") {
-use GRProjectSetup;
-  my $SetupVariablesGRProject   = new GRProjectSetup($UseModPerl);
-     $APP_NAME_TITLE          = "Sustainable";
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesGRProject->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesGRProject->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesGRProject->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesGRProject->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesGRProject->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesGRProject->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesGRProject->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesGRProject->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesGRProject->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesGRProject->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesGRProject->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesGRProject->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesGRProject->{-LAST_UPDATE}; 
-      $site_update            = $SetupVariablesGRProject->{-SITE_LAST_UPDATE};
-#Mail settings
-     $mail_from               = $SetupVariablesGRProject->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesGRProject->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesGRProject->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = $SetupVariablesGRProject->{-SITE_DISPLAY_NAME};
-     $FAVICON                 = $SetupVariablesGRProject->{-FAVICON};
-     $ANI_FAVICON             = $SetupVariablesGRProject->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesGRProject->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE            = $SetupVariablesGRProject->{-FAVICON_TYPE};
-} elsif ($SiteName eq "MW") {
-use MWSetup;
-  my $SetupVariablesMW   = new MWSetup($UseModPerl);
-     $APP_NAME_TITLE          = "MacDonald water products.";
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesMW->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesMW->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesMW->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesMW->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesMW->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesMW->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesMW->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesMW->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesMW->{-APP_LOGO_ALT};
-     $home_view            = $SetupVariablesMW->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesMW->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesMW->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesMW->{-LAST_UPDATE}; 
-      $site_update            = $SetupVariablesMW->{-SITE_LAST_UPDATE};
-#Mail settings
-     $mail_from               = $SetupVariablesMW->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesMW->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesMW->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = $SetupVariablesMW->{-SITE_DISPLAY_NAME};
-     $FAVICON                 = $SetupVariablesMW->{-FAVICON};
-     $ANI_FAVICON             = $SetupVariablesMW->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesMW->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE            = $SetupVariablesMW->{-FAVICON_TYPE};
- #    $TableName               = $SetupVariablesMW->{-PROJECT_TB};
-     $client_tb               = $SetupVariablesMW->{-CLIENT_TB};
-}
-
-elsif ($SiteName eq "Organic") {
-use OrganicSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesOrganic   = new OrganicSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesOrganic->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesOrganic->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesOrganic->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesOrganic->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesOrganic->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesOrganic->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesOrganic->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesOrganic->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesOrganic->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesOrganic->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesOrganic->{-CSS_VIEW_NAME};
- }
 
 my $modify = '1';
 my $delete = '1';
@@ -1427,7 +1109,11 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -CSS_VIEW_URL                           => $CSS_VIEW_URL,
     -CSS_VIEW_NAME                          => $CSS_VIEW_NAME,
     -DATASOURCE_CONFIG_PARAMS               => \@DATASOURCE_CONFIG_PARAMS,
+    -Debug                               => $CGI->param('debug') || 0,
     -DELETE_ACKNOWLEDGEMENT_VIEW_NAME       => 'DeleteAcknowledgementView',
+    -DOMAIN_NAME                            => $HostName,
+    -GROUP                                  => $group,
+    -HAS_MEMBERS                            => $HasMembers,
     -DELETE_RECORD_CONFIRMATION_VIEW_NAME   => 'DeleteRecordConfirmationView',
     -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
     -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || 5,
@@ -1445,7 +1131,6 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -DISPLAY_CONFIRMATION_ON_DELETE_FLAG    => 1,
     -DISPLAY_CONFIRMATION_ON_MODIFY_FLAG    => 1,
     -ENABLE_SORTING_FLAG                    => 1,
-    -HAS_MEMBERS                            => $HasMembers,
     -HIDDEN_ADMIN_FIELDS_VIEW_NAME          => 'HiddenAdminFieldsView',
     -INPUT_WIDGET_DEFINITIONS               => \@INPUT_WIDGET_DEFINITIONS,
     -LAST_UPDATE                            => $last_update,

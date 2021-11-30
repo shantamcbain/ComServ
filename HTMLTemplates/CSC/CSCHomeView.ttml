@@ -1,4 +1,4 @@
-[% ViewVersion = '/cgi-bin/HTMLTemplates/CSC/CSCHomeView.ttml,v 1.91 2020/04/22 17:43:15 shanta Exp shanta '%]
+[% Version = '/cgi-bin/HTMLTemplates/CSC/CSCHomeView.ttml,v 1.91 2020/04/22 17:43:15 shanta Exp shanta '%]
 [%
 #	$Id: CSCHomeView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
 
@@ -18,6 +18,9 @@
 <table>
 <tr>
 	<td>
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
 <p>Here at computersystemconsulting.ca we develop, host and support Web based applications for your distributed organization.
 
 <p>We are in the need of Perl programmers and graphic designers. Be sure to check the jobs link in the top links.

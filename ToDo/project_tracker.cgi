@@ -1,6 +1,7 @@
 #!/usr/bin/perl -wT
-# 	$Id: project_tracker.cgi,v 1.7 2004/02/02 21:22:07 shanta Exp $
+# 	$Id: project_tracker.cgi,v 1.8 2021/09/18 21:22:07 shanta Exp $
 
+# 	$Id: project_tracker.cgi,v 1.7 2004/02/02 21:22:07 shanta Exp $
 # Copyright (C) 1994 - 2001  eXtropia.com
 #
 
@@ -12,7 +13,7 @@
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See theuse CGI ':standard';use CGI ':standard';
-use strict; use warnings;
+
 
 use strict; use warnings;
 
@@ -94,6 +95,7 @@ my $mail_to;
 my $mail_replyto;
 my $mail_bcc;
 my $CSS_VIEW_NAME;
+my $CSS_VIEW_URL;
 my $app_logo;
 my $app_logo_height;
 my $app_logo_width;
@@ -135,6 +137,7 @@ my $HasMembers  = 0;
 my $HostName    = $ENV{'SERVER_NAME'};
 my $OffLine     = 'yes';
 my $shop        = 'cs';
+my $SESSION;
 
 if ($HostName eq 'computersystemconsulting.ca'||
     $HostName eq 'brew.computersystemconsulting.ca'||
@@ -174,6 +177,56 @@ my $VIEW_LOADER =
           . $CGI->script_name()
           . " Please contact the webmaster." );
 
+
+use SiteSetup;
+my $UseModPerl = 1;
+my $SetupVariables = new SiteSetup( $UseModPerl, $SiteName );
+$Affiliate                  = $SetupVariables->{-AFFILIATE};
+$home_view                  = 'ProjectHomeView';
+$APP_NAME_TITLE             = $SetupVariables->{-APP_NAME_TITLE};
+$homeviewname               = 'ProjectHomeView';
+$BASIC_DATA_VIEW            = $SetupVariables->{-BASIC_DATA_VIEW};
+$page_top_view              = $SetupVariables->{-PAGE_TOP_VIEW} || 'PageTopView';
+$page_bottom_view           = $SetupVariables->{-PAGE_BOTTOM_VIEW};
+$page_left_view             = $SetupVariables->{-page_left_view};
+$AUTH_MSQL_USER_NAME        = $SetupVariables->{-AUTH_MSQL_USER_NAME};
+$MySQLPW                    = $SetupVariables->{-MySQLPW};
+
+#Mail settings
+$mail_from                  = $SetupVariables->{-MAIL_FROM};
+$mail_to                    = $SetupVariables->{-MAIL_TO};
+$mail_replyto               = $SetupVariables->{-MAIL_REPLYTO};
+$CSS_VIEW_NAME              = $SetupVariables->{-CSS_VIEW_NAME};
+$CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
+$app_logo                   = $SetupVariables->{-APP_LOGO};
+$app_logo_height            = $SetupVariables->{-APP_LOGO_HEIGHT};
+$app_logo_width             = $SetupVariables->{-APP_LOGO_WIDTH};
+$app_logo_alt               = $SetupVariables->{-APP_LOGO_ALT};
+$IMAGE_ROOT_URL             = $SetupVariables->{-IMAGE_ROOT_URL};
+$DOCUMENT_ROOT_URL          = $SetupVariables->{-DOCUMENT_ROOT_URL};
+$LINK_TARGET                = $SetupVariables->{-LINK_TARGET};
+$HTTP_HEADER_PARAMS         = $SetupVariables->{-HTTP_HEADER_PARAMS};
+my $HTTP_HEADER_KEYWORDS    = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
+my $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+my $LocalIp                 = $SetupVariables->{-LOCAL_IP};
+$site                       = $SetupVariables->{-DATASOURCE_TYPE};
+$SITE_DISPLAY_NAME          = $SetupVariables->{-SITE_DISPLAY_NAME};
+$GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY} || 'BLANK';
+$TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY . $SetupVariables->{ -TEMPLATES_CACHE_DIRECTORY, };
+$APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
+$DATAFILES_DIRECTORY        = $APP_DATAFILES_DIRECTORY;
+$site_session               = $DATAFILES_DIRECTORY . '/Sessions';
+$auth                       = $DATAFILES_DIRECTORY . '/csc.admin.users.dat';
+$TableName                  = 'csc_project_tb';
+$DBI_DSN                    = $SetupVariables->{-DBI_DSN};
+my $LocalIp                 = $SetupVariables->{-LOCAL_IP};
+$shop                       = $SetupVariables->{-SHOP};
+$StoreUrl                   = $SetupVariables->{-STORE_URL};
+$site_update                = $SetupVariables->{-SITE_LAST_UPDATE};
+$last_update                = $SetupVariables->{-LAST_UPDATE};
+$HasMembers                 = $SetupVariables->{-HAS_MEMBERS};
+$CSS_VIEW_NAME              = $SetupVariables->{-CSS_VIEW_NAME};
+my $CSS_VIEW_URL            = $SetupVariables->{-CSS_VIEW_NAME};
 ######################################################################
 #                          SESSION SETUP                             #
 ######################################################################
@@ -227,57 +280,8 @@ else
   $SESSION->setAttribute( -KEY => 'SiteName', -VALUE => $SiteName );
  }
 }
-
 my $username = $SESSION->getAttribute( -KEY => 'auth_username' );
 my $group    = $SESSION->getAttribute( -KEY => 'auth_group' );
-use SiteSetup;
-my $UseModPerl = 1;
-my $SetupVariables = new SiteSetup( $UseModPerl, $SiteName );
-$Affiliate                  = $SetupVariables->{-AFFILIATE};
-$home_view                  = 'ProjectHomeView';
-$APP_NAME_TITLE             = $SetupVariables->{-APP_NAME_TITLE};
-$homeviewname               = 'ProjectHomeView';
-$BASIC_DATA_VIEW            = $SetupVariables->{-BASIC_DATA_VIEW};
-$page_top_view              = $SetupVariables->{-PAGE_TOP_VIEW} || 'PageTopView';
-$page_bottom_view           = $SetupVariables->{-PAGE_BOTTOM_VIEW};
-$page_left_view             = $SetupVariables->{-page_left_view};
-$AUTH_MSQL_USER_NAME        = $SetupVariables->{-AUTH_MSQL_USER_NAME};
-$MySQLPW                    = $SetupVariables->{-MySQLPW};
-
-#Mail settings
-$mail_from                  = $SetupVariables->{-MAIL_FROM};
-$mail_to                    = $SetupVariables->{-MAIL_TO};
-$mail_replyto               = $SetupVariables->{-MAIL_REPLYTO};
-$CSS_VIEW_NAME              = $SetupVariables->{-CSS_VIEW_NAME};
-$app_logo                   = $SetupVariables->{-APP_LOGO};
-$app_logo_height            = $SetupVariables->{-APP_LOGO_HEIGHT};
-$app_logo_width             = $SetupVariables->{-APP_LOGO_WIDTH};
-$app_logo_alt               = $SetupVariables->{-APP_LOGO_ALT};
-$IMAGE_ROOT_URL             = $SetupVariables->{-IMAGE_ROOT_URL};
-$DOCUMENT_ROOT_URL          = $SetupVariables->{-DOCUMENT_ROOT_URL};
-$LINK_TARGET                = $SetupVariables->{-LINK_TARGET};
-$HTTP_HEADER_PARAMS         = $SetupVariables->{-HTTP_HEADER_PARAMS};
-my $HTTP_HEADER_KEYWORDS    = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
-my $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
-my $LocalIp                 = $SetupVariables->{-LOCAL_IP};
-$site                       = $SetupVariables->{-DATASOURCE_TYPE};
-$SITE_DISPLAY_NAME          = $SetupVariables->{-SITE_DISPLAY_NAME};
-$GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY} || 'BLANK';
-$TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY . $SetupVariables->{ -TEMPLATES_CACHE_DIRECTORY, };
-$APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
-$DATAFILES_DIRECTORY        = $APP_DATAFILES_DIRECTORY;
-$site_session               = $DATAFILES_DIRECTORY . '/Sessions';
-$auth                       = $DATAFILES_DIRECTORY . '/csc.admin.users.dat';
-$TableName                  = 'csc_project_tb';
-$DBI_DSN                    = $SetupVariables->{-DBI_DSN};
-my $LocalIp                 = $SetupVariables->{-LOCAL_IP};
-$shop                       = $SetupVariables->{-SHOP};
-$StoreUrl                   = $SetupVariables->{-STORE_URL};
-$site_update                = $SetupVariables->{-SITE_LAST_UPDATE};
-$last_update                = $SetupVariables->{-LAST_UPDATE};
-$HasMembers                 = $SetupVariables->{-HAS_MEMBERS};
-$CSS_VIEW_NAME              = $SetupVariables->{-CSS_VIEW_NAME};
-my $CSS_VIEW_URL            = $SetupVariables->{-CSS_VIEW_NAME};
 
 my $modify       = '1';
 my $delete       = '1';

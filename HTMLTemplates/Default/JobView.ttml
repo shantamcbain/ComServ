@@ -1,3 +1,5 @@
+[% Version = 'v 0.02 2021/10/9 /HTMLTemplates/Default/JobView.ttml shanta' %]
+[%# Version = 'v 0.01 2021/07/31 JobView.ttml shanta' %]
 [%#	$Id: JobView.ttml,v 1.4 2002/05/31 13:40:30 shanta Exp $
 
 
@@ -36,7 +38,7 @@
 
 		<tr>
 	<td >
-		
+	<!-- [% Version %]-->	
            [% IF username %]
 
 		<h3> Hello  [% firstname%]&nbsp;  [% lastname%]! Welcome to [% SiteDisplayName  %]'s Jobs page!</h3>
@@ -163,9 +165,7 @@
 
 </table>
 
- </li>
-</ul>
-To Join our team <A HREF ="http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=15&carttpl=cart">Join our team</a>
+
 <p>
 
    
@@ -176,4 +176,6 @@ To Join our team <A HREF ="http://www.computersystemconsulting.ca/whmcs/cart.php
 
 
 [% embed(data.page_bottom_view) %]
+
+
 

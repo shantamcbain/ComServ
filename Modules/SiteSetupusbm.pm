@@ -456,92 +456,7 @@ use GRProjectSetup;
      $page_top_view           = $SetupVariablesGRProject->{-PAGE_TOP_VIEW};
      $FAVICON_TYPE            = $SetupVariablesGRProject->{-FAVICON_TYPE};
 } 
-if ($SiteName eq "HE" or
-       $SiteName eq "HEDev") {
-use HESetup;
-  my $SetupVariablesHE   = new HESetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS     = $SetupVariablesHE->{-HTTP_HEADER_KEYWORDS};
-     $StoreUrl                = $SetupVariablesHE->{-STORE_URL};
-     $HTTP_HEADER_PARAMS       = $SetupVariablesHE->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION  = $SetupVariablesHE->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME            = $SetupVariablesHE->{-CSS_VIEW_NAME};
-     $AUTH_TABLE               = $SetupVariablesHE->{-AUTH_TABLE};
-     $app_logo                 = $SetupVariablesHE->{-APP_LOGO};
-     $app_logo_height          = $SetupVariablesHE->{-APP_LOGO_HEIGHT};
-     $app_logo_width           = $SetupVariablesHE->{-APP_LOGO_WIDTH};
-     $app_logo_alt             = $SetupVariablesHE->{-APP_LOGO_ALT};
- #    $home_view             = $SetupVariablesHE->{-HOME_VIEW_NAME};
- #    $home_view                = $SetupVariablesHE->{-HOME_VIEW};
-     $CSS_VIEW_URL             = $SetupVariablesHE->{-CSS_VIEW_NAME};
-     $last_update              = $SetupVariablesHE->{-LAST_UPDATE}; 
-     $site_update              = $SetupVariablesHE->{-SITE_LAST_UPDATE};
- #Mail settings
-     $mail_from                = $SetupVariablesHE->{-MAIL_FROM};
-     $mail_to                  = $SetupVariablesHE->{-MAIL_TO};
-     $mail_replyto             =home_view $SetupVariablesHE->{-MAIL_REPLYTO};
-     $shop                     = $SetupVariablesHE->{-SHOP};
-     $SITE_DISPLAY_NAME        = $SetupVariablesHE->{-SITE_DISPLAY_NAME};
-}
-
-if ($SiteName eq "HoneyDo" or
-       $SiteName eq "HoneyDoDev") {
-use HoneyDoSetup;
-  my $UseModPerl = 1;
-  my $SetupVariablesHoneyDo   = new HoneyDoSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesHoneyDo->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesHoneyDo->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesHoneyDo->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesHoneyDo->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesHoneyDo->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesHoneyDo->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesHoneyDo->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesHoneyDo->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesHoneyDo->{-APP_LOGO_ALT};
- #    $home_view            = $SetupVariablesHoneyDo->{-HOME_VIEW_NAME};
- #    $home_view               = $SetupVariablesHoneyDo->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesHoneyDo->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesHoneyDo->{-LAST_UPDATE}; 
-     $site_update             = home_view$SetupVariablesHoneyDo->{-SITE_LAST_UPDATE};
- #Mail settings
-     $mail_from               = $SetupVariablesHoneyDo->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesHoneyDo->{-MAIL_TO};
-     $SITE_DISPLAY_NAME       = $SetupVariablesHoneyDo->{-SITE_DISPLAY_NAME};
-     $mail_replyto            = $SetupVariablesHoneyDo->{-MAIL_REPLYTO};
- }
-
-if (
-      $SiteName eq "JennaBee") {
-use JennaBeeSetup;
-  my $SetupVariablesJennaBee    = new  JennaBeeSetup($UseModPerl);
-     $shop                    = $SetupVariablesJennaBee->{-SHOP};
-     $StoreUrl                = $SetupVariablesJennaBee->{-STORE_URL};
-     $Affiliate               = $SetupVariablesJennaBee->{-AFFILIATE};
-#     $HeaderImage             = $SetupVariablesJennaBee->{-HEADER_IMAGE};
-#     $Header_height           = $SetupVariablesJennaBee->{-HEADER_HEIGHT};
-#     $Header_width            = $SetupVariablesJennaBee->{-HEADER_WIDTH};
-#     $Header_alt              = $SetupVariablesJennaBee->{-HEADER_ALT};
-     $site_update             = $SetupVariablesJennaBee->{-SITE_LAST_UPDATE};
-     $CSS_VIEW_NAME           = $SetupVariablesJennaBee->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesJennaBee->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesJennaBee->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesJennaBee->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesJennaBee->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesJennaBee->{-APP_LOGO_ALT};
-     $FAVICON                 = $SetupVariablesJennaBee->{-FAVICON};
-     $ANI_FAVICON             = $SetupVariablesJennaBee->{-ANI_FAVICON};
-     $FAVICON_TYPE            = $SetupVariablesJennaBee->{-FAVICON_TYPE};
-     $home_view               = $SetupVariablesJennaBee->{-HOME_VIEW};
-#Mail settings 
-     $mail_from               = $SetupVariablesJennaBee->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesJennaBee->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesJennaBee->{-MAIL_REPLYTO};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesJennaBee->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesJennaBee->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesJennaBee->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_URL            = $SetupVariablesJennaBee->{-CSS_VIEW_NAME};
-     $SITE_DISPLAY_NAME       = $SetupVariablesJennaBee->{-SITE_DISPLAY_NAME};
-     $last_update             = $SetupVariablesJennaBee->{-LAST_UPDATE}; 
- }if ($SiteName eq "LandTrust"){
+if ($SiteName eq "LandTrust"){
 use LTrustSetup;
   my $UseModPerl = 1;
   my $SetupVariablesLandTrust   = new LTrustSetup($UseModPerl);
@@ -559,64 +474,7 @@ use LTrustSetup;
     $SITE_DISPLAY_NAME       = $SetupVariablesLandTrust->{-SITE_DISPLAY_NAME};
     $NEWS_TB                 = $SetupVariablesLandTrust->{-NEWS_TB};
   }
-if ($SiteName eq "LumbyThrift") {
-use LumbyThriftSetup;
-  my $SetupVariablesLumbyThrift   = new LumbyThriftSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesLumbyThrift->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesLumbyThrift->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesLumbyThrift->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesLumbyThrift->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesLumbyThrift->{-AUTH_TABLE};
-     $Affiliate               = $SetupVariablesLumbyThrift->{-AFFILIATE};
-     $app_logo                = $SetupVariablesLumbyThrift->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesLumbyThrift->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesLumbyThrift->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesLumbyThrift->{-APP_LOGO_ALT};
-     $home_view               = $SetupVariablesLumbyThrift->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesLumbyThrift->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesLumbyThrift->{-LAST_UPDATE}; 
-     $site_update             = $SetupVariablesLumbyThrift->{-SITE_LAST_UPDATE};
-#Mail settings
-     $mail_from               = $SetupVariablesLumbyThrift->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesLumbyThrift->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesLumbyThrift->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = $SetupVariablesLumbyThrift->{-SITE_DISPLAY_NAME};
-     $FAVICON                 = $SetupVariablesLumbyThrift->{-FAVICON};
-     $ANI_FAVICON             = $SetupVariablesLumbyThrift->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesLumbyThrift->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE            = $SetupVariablesLumbyThrift->{-FAVICON_TYPE};
-}
-if ($SiteName eq "MW" or
-       $SiteName eq "MWDev" ) {
-use MWSetup;
-  my $SetupVariablesMW   = new MWSetup($UseModPerl);
-     $StoreUrl                = $SetupVariablesMW->{-STORE_URL};
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesMW->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesMW->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesMW->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesMW->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesMW->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesMW->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesMW->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesMW->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesMW->{-APP_LOGO_ALT};
-     if ($group eq "Mentoring"){
-     $home_view               = 'MentoringHomeView';
-       }else{
-     $home_view               = $SetupVariablesMW->{-HOME_VIEW};
-     }
-     $CSS_VIEW_URL            = $SetupVariablesMW->{-CSS_VIEW_NAME};
-     $last_update             = $SetupVariablesMW->{-LAST_UPDATE}; 
-     $site_update             = $SetupVariablesMW->{-SITE_LAST_UPDATE};
- #Mail settings
-     $mail_from               = $SetupVariablesMW->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesMW->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesMW->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = $SetupVariablesMW->{-SITE_DISPLAY_NAME};
-     $FAVICON                 = $SetupVariablesMW->{-FAVICON}||'/images/apis/favicon.ico';
-     $ANI_FAVICON             = $SetupVariablesMW->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesMW->{-PAGE_TOP_VIEW};
-}
+
 if ($SiteName eq "Organic") {
 use OrganicSetup;
   my $SetupVariablesOrganic   = new OrganicSetup($UseModPerl);
@@ -773,6 +631,25 @@ use SustainableSetup;
     $mail_to_user             = $SetupVariablesSustainable->{-MAIL_TO_USER};
     $mail_to_member           = $SetupVariablesSustainable->{-MAIL_TO_Member};
     $mail_to_discussion       = $SetupVariablesSustainable->{-MAIL_TO_DISCUSSION};
+ }
+ if ($SiteName eq "ULC") {
+use ULCSetup;
+  my $SetupVariablesULC   = new ULCSetup($UseModPerl);
+     $HTTP_HEADER_KEYWORDS    = $SetupVariablesULC->{-HTTP_HEADER_KEYWORDS};
+     $HTTP_HEADER_PARAMS      = $SetupVariablesULC->{-HTTP_HEADER_PARAMS};
+     $HTTP_HEADER_DESCRIPTION = $SetupVariablesULC->{-HTTP_HEADER_DESCRIPTION};
+     $CSS_VIEW_NAME           = $SetupVariablesULC->{-CSS_VIEW_NAME};
+     $AUTH_TABLE              = $SetupVariablesULC->{-AUTH_TABLE};
+     $app_logo                = $SetupVariablesUSBM->{-APP_LOGO};
+     $app_logo_height         = $SetupVariablesUSBM->{-APP_LOGO_HEIGHT};
+     $app_logo_width          = $SetupVariablesUSBM->{-APP_LOGO_WIDTH};
+     $app_logo_alt            = $SetupVariablesUSBM->{-APP_LOGO_ALT};
+ #    $home_view            = $SetupVariablesUSBM->{-HOME_VIEW_NAME};
+ #    $home_view               = $SetupVariablesUSBM->{-HOME_VIEW};
+     $CSS_VIEW_URL            = $SetupVariablesUSBM->{-CSS_VIEW_NAME};
+     $SITE_DISPLAY_NAME       = $SetupVariablesUSBM->{-SITE_DISPLAY_NAME};
+     $last_update             = $SetupVariablesUSBM->{-LAST_UPDATE};
+     $site_update             = $SetupVariablesUSBM->{-SITE_LAST_UPDATE};
  }
  if ($SiteName eq "USBM") {
 use USBMSetup;

@@ -14,6 +14,7 @@
 	        group     == 'ENCY_Admin' OR
 	        group     == 'USBM_Admin' OR
 	        group     == 'Shanta_Admin' OR	        
+	        group     == 'SMO_Admin' OR
 	        group     == 'Alegro_admin' OR
            group     == 'Orgainc_Admin' OR
 	        group     == 'Brew_Admin' OR

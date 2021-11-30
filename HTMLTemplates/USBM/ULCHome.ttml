@@ -1,0 +1,55 @@
+[% Version = '/cgi-bin/HTMLTemplates/USBM/ULCHomeView.ttml,v 0.02 2021/10/03 17:43:15 shanta Exp'%]
+[%# Version = '/cgi-bin/HTMLTemplates/USBM/ULCHomeView.ttml,v 0.01 2021/10/03 17:43:15 shanta Exp'%]
+[%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.10 2020/04/22 17:43:15 shanta Exp'%]
+[%# the ENCY template
+#	$Id: ULCHome.ttml,v 1.1 2012/09/21 19:25:15 shanta Exp $	
+#file location/cgi-bin/HTMLTemplates/ULC
+%]
+
+[%# embed(data.page_top_view,['-PAGE_TITLE', Home page.']) %]
+
+[%# embed('ErrorDisplayView') %]
+
+
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+        [% session_string = "session_id=$session_id" %]
+
+[% END %] 
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+   [% LastUpdate = data.last_update %]
+   [% SiteLastUpdate = data.site_last_update %]
+
+
+
+</div>
+<div ALIGN="center">[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+
+<A NAME="PageTop"></A>
+</div>
+<h2>Our Virtual Church</h2>
+
+<h3>Become a minister.</h3>
+ <p>There are currently 3 official sites for the Universal Life Church. Each of these sites offer courses and ordainment. Please go to one of these to become ordained. We are working on being able to do that.</p>
+ <ul>
+	<li><a href="http://ulchq.com" target="_blank">Universal Life Church Headquarters.</a> The official headquarter and founder of the church</li>
+	<li><a href="http://ulcseminary.org" target="_blank">Universal Life Church Seminary</a> The Teaching site.</li>
+	<li><a href="https://ulc.net/" target="_blank">Universal Life Church</a> The main ministers site.</li>
+</ul>
+	[% IF username %]
+<a href="/forum" target="_blank">Join in our discussions.</a>
+	[% ELSE %]
+	  <h3>  Create an account and log in to see or forums.</h3> 
+	[% END %]
+
+<h3>Our Calendar.</h3>
+<iframe src="https://calendar.google.com/calendar/embed?src=2m9o1n2h9e16k50mhflgkkini4%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+
+<a href="http://helpdesk.computersystemconsulting.ca" target="_Blank" > HelpDesk</a>
+

@@ -1,3 +1,5 @@
+[% Version = 'v 1.152 2021/12/02 shanta ApisHomeView.ttml' %]
+[% Version = 'v 1.151 2021/06/02 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.151 2021/06/02 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.150 2021/05/17 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.149 2021/04/25 shanta ApisHomeView.ttml' %]
@@ -11,7 +13,6 @@
 #	$Id: ApisHomeView.ttml,v 1.11 2020/03/10 06:42:47 shanta Exp shanta $	%]
 [%#	$Id: ApisHomeView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
 
-[% #embed(data.page_top_view,['-PAGE_TITLE','Apis @ shanta.org']) %]
 
 [% embed('ErrorDisplayView') %]
 
@@ -37,7 +38,10 @@
 <tr>
 <td>
 
-<p>  [% Version %]   </p>
+<p> [% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+</p>
 
 
 [%#  SiteName%]
@@ -58,18 +62,11 @@
 	[% END %]
 
 	[% END %] 
-	<h2>Your support helps us support you.</h2>
-
-	<ul>
-     <li><a href="https://www.patreon.com/beemaster" target="_blank" name="patreon" onmouseover="Support us">Patrion </a>
-     <p>We have many levels of support that you can afford.</p>
-     </li>	
-     <li><h3><a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=8" target="_blank" name="Join our site">Membership on site.</a></h3></li>
-	</ul>	
-	
-	<p>Your support goes to pay hosting fees, buy equipment for teaching (Video and audio), Develop site software, Our beekeeping game for kids.</p>
 	
 	
+	
+<h2>Next event.</h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=WinterizingYard">
+        Winterizing your yard.</a>		
 <h3><a href="https://beemaster.ca/mailman/listinfo/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Join Our Apis lists</b></a>
 </h3>
  		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
@@ -95,19 +92,24 @@
             <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
             <li>
             </ul>
-		</td >	
+	<h2>Your support helps us support you.</h2>
+
+	<ul>
+     <li><a href="https://www.patreon.com/beemaster" target="_blank" name="patreon" onmouseover="Support us">Patrion </a>
+     <p>We have many levels of support that you can afford.</p>
+     </li>	
+     <li><h3><a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=8" target="_blank" name="Join our site">Membership on site.</a></h3></li>
+	</ul>		
+
+<iframe src="https://calendar.google.com/calendar/embed?src=8a4699c0rh5ava93rklas1embk%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+</td >	
 		</tr>
 	</tbody>
 	</table>
 
-	
-
-	<iframe src="https://calendar.google.com/calendar/embed?src=tabvviq9l1ncflbcedl78qa114%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>			
-
-
 [% END %]
 
-  [% Version %] 
+ 
 
 
 

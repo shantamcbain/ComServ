@@ -1,3 +1,4 @@
+[% Version = 'v 0.003 2021/10/03 shanta MailListView.ttml' %]
 [%# Version = 'v 0.002 2021/03/23 shanta MailListView.ttml' %]
 [%# Version = 'v 0.001 2021/03/22 shanta MailListView.ttml' %]
 [%
@@ -56,13 +57,7 @@
    [% MailServer = 'mail.beemaster.ca' %]
    [% END %]
 
-[% IF SiteName == 'IM' OR
-      SiteName == 'HE' %]
-   [% shop = 'apis' %] 
-   [% cat = 'Memberships' %]
-    [% MailServerName = 'webmail.helpfullearth.com' %]
-   [% ServerName = 'helpfullearth.com' %]
-[% END %]
+
 
  [% IF SiteName == 'Apis' OR
        SiteName == 'BMaster' OR
@@ -94,7 +89,9 @@
 
 		<tr>
 	<td >
- [% Version %] 
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
 
 		[% IF group == 'CSC_admin' OR
       group == 'BMast_admin' 		%] 	
@@ -108,35 +105,33 @@ beemaster_admin@beemaster.ca
 beemaster_user_list@beemaster.ca
 landtrust_user_list@beemaster.ca
 beemaster@beemaster.ca
-		</div>
 	
-
-
-			[% ELSE %]
-	<h2> Here you will find the list our site offers. <h2>
-
-			Please to [% embed('JoinUsLink')	%]  Joining our site helps support our efforts to save the bees.
-
-		</div>
-	
-
+[% ELSIF SiteName == "BMaster" %]		
 
 <ul>
  <li>
-<h2><a href="https://beemaster.ca/mailman/listinfo/Apis_discussion_beemaster_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b> Apis Discussions list</b></a></h2>
+<h2><a href="https://beemaster.ca/mailman/listinfo/Apis_discussion_beemaster_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b> Apis Discussions list</b></a></h2>
 </li>
  <li>
-<a href="https://beemaster.ca/mailman/listinfo/anubeekeeping_anucollective.beemaster.ca onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>anubeekeeping  at anucollective.beemaster.ca</b></a></h2>
+<a href="https://beemaster.ca/mailman/listinfo/anubeekeeping_anucollective.beemaster.ca onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>anubeekeeping  at anucollective.beemaster.ca</b></a></h2>
 </li>
-<li><a href="https://beemaster.ca/mailman/listinfo/<a href="https://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>
+<li><a href="https://beemaster.ca/mailman/listinfo/<a href="https://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>
 beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
 </li>
-<li><a href="https://beemaster.ca/mailman/listinfo/breeder_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>breeder_beemaster.ca</b></a></h2>
+<li><a href="https://beemaster.ca/mailman/listinfo/breeder_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>breeder_beemaster.ca</b></a></h2>
 </li>
 <li>
-<a href="https://beemaster.ca/mailman/listinfo/landtrust_beemaster.ca" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>landtrust_beemaster.ca</b></a></h2>
+<a href="https://beemaster.ca/mailman/listinfo/landtrust_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>landtrust_beemaster.ca</b></a></h2>
 </li>
 </ul>
+
+[% ELSE %]
+	<h2> Here you will find the lists our site offers. <h2>
+
+	
+<p>Sorry we currently don't have any list for you to join.</p>
+	
+
 <h2>Member Only Lists</h2>
 [% IF group == 'Normal' %]
 
@@ -160,17 +155,10 @@ beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
 
 [% END %]
 
-[% END %]		</td >
+[% END %]		
 
-
-
-		</tr>
-		<tr>
-		<td >
-
-	 [% Version %] 
 </td >
-		</tr>
+</tr>
 </table>		
 
 
