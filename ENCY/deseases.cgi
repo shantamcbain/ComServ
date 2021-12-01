@@ -147,10 +147,10 @@ my $VIEW_LOADER = new Extropia::Core::View
 
 my @SESSION_CONFIG_PARAMS = (
     -TYPE            => 'File',
-    -MAX_MODIFY_TIME => 60 * 60 * 8,
+    -MAX_MODIFY_TIME => 60 * 60 * 60,
     -SESSION_DIR     => "$GLOBAL_DATAFILES_DIRECTORY/Sessions",
     -FATAL_TIMEOUT   => 0,
-    -FATAL_SESSION_NOT_FOUND => 0
+    -FATAL_SESSION_NOT_FOUND => 1
 );
 
 ######################################################################

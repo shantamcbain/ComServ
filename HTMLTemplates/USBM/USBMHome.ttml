@@ -31,12 +31,13 @@
 <A NAME="PageTop"></A>
 </div>
 [% IF data.debug == 1 %]
- [%	Version %] 	   
+ [%	Version %] 	 
+   
 [% END %] 
 
 <h2>Our Virtual School House</h2>
 <ul>
-  <li> <h2>Choosing your <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&page=PractitionerTeam">practitioner team</a>.</h2> How to chose your team of advisers?</li> 
+  <li> <h2>Choosing your <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&page=PractitionerTeam" target="_blank">practitioner team</a>.</h2> How to chose your team of advisers?</li> 
   <li> <b></b> <a href="https://altpower.usbm.ca/cgi-bin/index.cgi?site=AltPower">Alt Power </a> Join us in our adventure into Alternate power creation and use. </li>
 
   <li> <b>New</b> <a href="https://usbm.ca/cgi-bin/index.cgi?site=3d">3D Printing. </a> We now have a 3d printing department Have a look. </li>

@@ -7,7 +7,5 @@
                  [% keywords    = link.keywords %]
                  [% description = link.description %]
                  [% lastupdate  = link.lastupdate %]
-                 [% facebook    = link.facebook  %]  
-                 [% linkedin    = link.linkedin %]  
                  [% news        = link.news %]
  

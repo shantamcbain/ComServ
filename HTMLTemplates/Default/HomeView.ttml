@@ -1,3 +1,5 @@
+[% ViewVersion = 'v 1.99 '%]
+[% Version = 'v 1.99 2021/11/29 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
 [%# Version = 'v 1.98 2021/10/08 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
 [%# Version = 'v 1.97 2021/04/25 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
 [%# Version = 'v 1.96 2021/03/23 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
@@ -29,7 +31,7 @@
    [% Page = data.page_name  %]
    [% username = data.session_object.getAttribute('-KEY','auth_username') %]
    [% PrintMode    = data.session_object.getAttribute('-KEY','PrintMode') %]
-[% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
+   [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
 	[% session_id = data.session_object.getId() %]
 	[% session_string = "session_id=$session_id" %]
    [% procedure = data.procedure %]
@@ -51,7 +53,8 @@
 	<td>
 
 [% IF data.debug == 1 %]
- [%	Version %] 	   
+ [%	Version %] 	
+  [% embed  ('InheretedVariablesView') %]
 [% END %] 
 [% $Page %]	
 [%# procedure  %]

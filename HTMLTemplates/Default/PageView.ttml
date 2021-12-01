@@ -1,4 +1,4 @@
-[% Version = 'v 0.13 2021/10/26 shanta /cgi-bin/HTMLTemplates/Default/PageViewA.ttml' %]
+[% Version = 'v 0.13 2021/10/26 shanta /cgi-bin/HTMLTemplates/Default/PageView.ttml' %]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/PageView.ttml,v 0.12 2020/04/20 17:43:15 shanta Exp shanta $	%]
 [%#	$Id: /cgi-bin/HTMLTemplates/Default/PageView.ttml,v 0.1 2013/12/20 17:43:15 shanta Exp shanta $	
 
@@ -11,20 +11,20 @@
 
 %] 
  [%# HostName = data.domain_name %]
- [% PROCESS DefaultDbi.ttml %]
- [% username = data.session_object.getAttribute('-KEY','auth_username') %]
- [% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
- [% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
- [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
- [% LastUpdate = data.last_update %]
- [% SiteUpdate = data.site_last_update %]
- [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+ [%# PROCESS DefaultDbi.ttml %]
+ [%# username = data.session_object.getAttribute('-KEY','auth_username') %]
+ [%# firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+ [%# lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+ [%# group = data.session_object.getAttribute('-KEY','auth_groups') %]
+ [%# LastUpdate = data.last_update %]
+ [%# SiteUpdate = data.site_last_update %]
+ [%# SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
  [% SiteDisplayName = data.site_display_name %]
  [% site = SiteName %]
- [% PrintMode    = data.session_object.getAttribute('-KEY','PrintMode') %]
+ [%# PrintMode    = data.session_object.getAttribute('-KEY','PrintMode') %]
  [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
- [% session_id = data.session_object.getId() %]
- [% session_string = "session_id=$session_id" %]
+ [%# session_id = data.session_object.getId() %]
+ [%# session_string = "session_id=$session_id" %]
  [% Page = data.page_name  %]
  [% View = data.view %]
  [% HomeLink = data.home_link || '' %]
@@ -49,7 +49,7 @@
 
 
 
-   	[%# embed(data.page_top_view,["-PAGE_TITLE","$PAGE",]) %]
+
 [% embed('ErrorDisplayView') %]
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
