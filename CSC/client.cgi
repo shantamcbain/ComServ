@@ -600,10 +600,48 @@ my @DATASOURCE_FIELD_NAMES = qw(
         group_of_poster
         date_time_posted
 );
-
-
+ my %sitenames;
+if ($group eq 'CSC_admin') {
+ %sitenames =
+    ( All  => 'All Sites',
+      AltPower => 'AltPower',
+      d3d => '3d',
+      Apis => 'Apis',
+      CSC  => 'Computer System Consulting.ca',
+      CS   => 'Country Stores',
+      Demo => 'Demo site',
+      ECF  => 'Eagle Creek Farms',
+      Forager => 'Forager.com',
+      Fly  => 'Fly Fishing',
+      Marts => 'Marts',
+      Organic => 'Organicfarming.ca',
+      Shanta  => 'Shanta.org',
+      Sky   => 'Skye Farm',
+      SQL_Leger => 'SQL_Ledger Support',
+      Stawns    => "Stawn's Honey farm",
+      TelMark   => 'Telmark Skiing application',
+      USBM      => 'Universal School of Biological Life',
+      VitaVic   => 'Vital Victoria',
+  
+    );
+    }
+else{
+      %sitenames =
+    (
+     All       => 'All Sites',
+     $SiteName => $SiteName
+    );
+    }
 my %BASIC_INPUT_WIDGET_DEFINITIONS = (
-    category => [
+    sitename => [
+        -DISPLAY_NAME => 'Site',
+        -TYPE         => 'textfield',
+        -NAME         => 'sitename',
+        -VALUE        => $SiteName,
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
+category => [
         -DISPLAY_NAME => 'Category',
         -TYPE         => 'popup_menu',
         -NAME         => 'category',
@@ -757,6 +795,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 );
 
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = qw(
+        sitename
         category
         fname   
         lname   
