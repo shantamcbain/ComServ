@@ -1,4 +1,5 @@
 #!/usr/bin/perl -wT
+# 	$Id: droplist.cgi,v 1.4 2021/12/02 03:48:50 shanta Exp $	
 # 	$Id: droplist.cgi,v 1.3 2004/01/25 03:48:50 shanta Exp $	
 
 #location /cgi-bin/CSC
@@ -23,6 +24,8 @@
 # Boston, MA  02111-1307, USA.
  
 use strict;
+my $AppVer = "ver 1.4, Dec 02, 2021";
+
 BEGIN{
     use vars qw(@dirs);
     @dirs = qw(../Modules
@@ -81,48 +84,47 @@ my $MOD_NAME = "droplist";
 my $SiteName =  $CGI->param('site') || "CSC";
 my $APP_NAME_TITLE = $SiteName." droplist manager";
 my $AppVer = "ver 1.01, Dec 13, 2006";
-
-    my $homeviewname ;
-    my $home_view; 
-    my $BASIC_DATA_VIEW; 
-    my $page_top_view;
-    my $page_bottom_view;
-    my $page_left_view;
+my $homeviewname ;
+my $home_view; 
+my $BASIC_DATA_VIEW; 
+my $page_top_view;
+my $page_bottom_view;
+my $page_left_view;
 #Mail settings
-    my $mail_from; 
-    my $mail_to;
-    my $mail_replyto;
-    my $CSS_VIEW_NAME = 'CSCCSSView';
-    my $app_logo;
-    my $app_logo_height;
-    my $app_logo_width;
-    my $app_logo_alt;
-    my $IMAGE_ROOT_URL; 
-    my $DOCUMENT_ROOT_URL;
-    my $site;
-    my $GLOBAL_DATAFILES_DIRECTORY;
-    my $TEMPLATES_CACHE_DIRECTORY;
-    my $APP_DATAFILES_DIRECTORY;
-    my $DATAFILES_DIRECTORY;
-    my $site_session;
-    my $auth;
-    my $MySQLPW;
-    my $HTTP_HEADER_KEYWORDS;
-    my $HTTP_HEADER_DESCRIPTION;
-    my $LINK_TARGET;
-    my $HTTP_HEADER_PARAMS;
-    my $DBI_DSN;
-    my $AUTH_TABLE;
-    my $AUTH_MSQL_USER_NAME;
-    my $DEFAULT_CHARSET;
-    my $last_update = 'September 16, 2010';
-    my $SITE_DISPLAY_NAME = 'None Defined for this site.';
-    my $mail_cc;
-    my $TableName;
+my $mail_from; 
+my $mail_to;
+my $mail_replyto;
+my $CSS_VIEW_NAME = 'CSCCSSView';
+my $app_logo;
+my $app_logo_height;
+my $app_logo_width;
+my $app_logo_alt;
+my $IMAGE_ROOT_URL; 
+my $DOCUMENT_ROOT_URL;
+my $site;
+my $GLOBAL_DATAFILES_DIRECTORY;
+my $TEMPLATES_CACHE_DIRECTORY;
+my $APP_DATAFILES_DIRECTORY;
+my $DATAFILES_DIRECTORY;
+my $site_session;
+my $auth;
+my $MySQLPW;
+my $HTTP_HEADER_KEYWORDS;
+my $HTTP_HEADER_DESCRIPTION;
+my $LINK_TARGET;
+my $HTTP_HEADER_PARAMS;
+my $DBI_DSN;
+my $AUTH_TABLE;
+my $AUTH_MSQL_USER_NAME;
+my $DEFAULT_CHARSET;
+my $last_update = 'December 02, 2021';
+my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+my $mail_cc;
+my $TableName;
 my $FAVICON;
 my $ANI_FAVICON;
 my $FAVICON_TYPE;
-    my $HasMembers = 0;
+my $HasMembers = 0;
 
 use SiteSetup;
   my $UseModPerl = 0;
@@ -157,7 +159,7 @@ use SiteSetup;
     $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
     $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
     $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
-     my $LocalIp            = $SetupVariables->{-LOCAL_IP};
+    my $LocalIp            = $SetupVariables->{-LOCAL_IP};
     my $CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
     my $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
 
@@ -570,6 +572,7 @@ if ($group eq 'CSC_admin') {
  %sitenames =
     ( All  => 'All Sites',
       AltPower => 'AltPower',
+      d3d => 'three d printing',
       Apis => 'Apis',
       CSC  => 'Computer System Consulting.ca',
       CS   => 'Country Stores',
