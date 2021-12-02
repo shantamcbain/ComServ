@@ -1,4 +1,5 @@
 #!/usr/bin/perl -wT
+# 	$Id: log.cgi,v 1.43 2021/12/02 22:08:42 shanta Exp shanta $
 # 	$Id: log.cgi,v 1.42 2021/09/18 22:08:42 shanta Exp shanta $
 # 	$Id: log.cgi,v 1.41 2020/01/13 22:08:42 shanta Exp shanta $
 # 	$Id: log.cgi,v 1.4 2016/01/23 22:08:42 shanta Exp shanta $
@@ -55,6 +56,7 @@ my @TEMPLATES_SEARCH_PATH =
        ../HTMLTemplates/Skye
        ../HTMLTemplates/Todo
        ../HTMLTemplates/VitalVic
+       ../HTMLTemplates/USBM
        ../HTMLTemplates/WW
        ../HTMLTemplates/Default);
 
@@ -78,26 +80,26 @@ foreach ($CGI->param()) {
 ######################################################################
 #                          SITE SETUP                             #
 ######################################################################
-    my $debug = 0;
+my $debug = 0;
 
-    my $APP_NAME = "log"; 
-    my $last_update  = 'Sep 18, 2021';
-    my $site_update;
-    my $APP_NAME_TITLE = "Log Manager";
-    my $FAVICON;
-    my $ANI_FAVICON;
-    my $FAVICON_TYPE;
-    my $CSS_VIEW_NAME = '/styles/CSCCSSView';
-    my $CSS_VIEW_URL = $CSS_VIEW_NAME;
-    my $SITE_DISPLAY_NAME = 'None Defined for this site.';
-    my $style = $CGI->param('pagestyle');
-    my $MySQLPW;
-    my $DBI_DSN;
-    my $SiteName = $CGI->param('site') ;
-    my $UseModPerl = 1;
-    my $AUTH_TABLE;
-    my $home_view = 'LogHomeView';
-    my $GLOBAL_DATAFILES_DIRECTORY;
+my $APP_NAME = "log"; 
+my $last_update  = 'Dec 02, 2021';
+my $site_update;
+my $APP_NAME_TITLE = "Log Manager";
+my $FAVICON;
+my $ANI_FAVICON;
+my $FAVICON_TYPE;
+my $CSS_VIEW_NAME = '/styles/CSCCSSView';
+my $CSS_VIEW_URL = $CSS_VIEW_NAME;
+my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+my $style = $CGI->param('pagestyle');
+my $MySQLPW;
+my $DBI_DSN;
+my $SiteName = $CGI->param('site') ;
+my $UseModPerl = 1;
+my $AUTH_TABLE;
+my $home_view = 'LogHomeView';
+my $GLOBAL_DATAFILES_DIRECTORY;
 my $TableName;
 my $ProjectTableName;
 my $AUTH_MSQL_USER_NAME;
