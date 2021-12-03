@@ -1,11 +1,18 @@
-[% #	$Id: HeaderNavBarView.ttml v 0.1 2018/18/19 v 0.02 2020/01/25 22:59:04 shanta Exp $	%]
+[%	Version = '/cgi-bin/HTMLTemplates/Default/HeaderNavBarView.ttml,v 0.11 2022/12/02 ' 
+%] [% #	$Id: HeaderNavBarView.ttml v 0.1 2018/18/19 v 0.02 2020/01/25 22:59:04 shanta Exp $	%]
+ 
 
-
-	<li>             <span>HelpDesk</span>
+	<li>             <span>HelpDesk</span>[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %]
   <ul>
    <li>
-        <a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]" target=.blank' ><font   class="LeftSideBarNavStyle">Main page</font></font></a>
- 
+        <a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/CSC/helpdesk.cgi?site=[% SiteName %]&amp;[% session_string %]" target=.blank' ><font   class="LeftSideBarNavStyle">Main page</font></font></a>  </li>
+     <li>
+        <a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]" target="_blank" ><font   class="LeftSideBarNavStyle">Our FAQ</font></a>
+        
+    </li>
+
     <li>
         <a href="https://www.computersystemconsulting.ca/whmcs/index.php?rp=/knowledgebase" target="_blank" ><font   class="LeftSideBarNavStyle">Knowlage base</font></a>
         
