@@ -19,6 +19,10 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
+
+my $AppVer = "ver 1.15, Dec 04, 2022";
+
+
 BEGIN{
     use vars qw(@dirs);
     @dirs = qw(../Modules
@@ -1126,6 +1130,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -SEND_EMAIL_ON_ADD_FLAG                 => 0,
     -SESSION_OBJECT                         => $SESSION,
     -SESSION_TIMEOUT_VIEW_NAME              => 'SessionTimeoutErrorView',
+    -SITE_NAME                              => $SiteName,
     -TEMPLATES_CACHE_DIRECTORY              => $TEMPLATES_CACHE_DIRECTORY,
     -VALID_VIEWS                            => \@VALID_VIEWS,
     -VIEW_DISPLAY_PARAMS                    => \@VIEW_DISPLAY_PARAMS,

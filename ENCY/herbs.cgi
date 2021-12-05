@@ -19,6 +19,8 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
+my $AppVer = "ver 1.5, Dec 02, 2022";
+
 BEGIN{
     use vars qw(@dirs);
     @dirs = qw(../Modules
@@ -809,6 +811,7 @@ my @DATASOURCE_FIELD_NAMES = qw(
         parts_used
         comments
         medical_uses
+        homiopathic
         ident_character
         image
         stem
@@ -825,6 +828,7 @@ my @DATASOURCE_FIELD_NAMES = qw(
         constituents
         solvents
         chinese
+        culinary
         contra_indications
         dosage
         administration
@@ -870,8 +874,15 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
         -SIZE         => 30,
         -MAXLENGTH    => 500
     ],
-
-    solvents => [
+culinary => [
+        -DISPLAY_NAME => 'Culinary ',
+        -TYPE         => 'textfield',
+        -NAME         => 'culinary',
+        -SIZE         => 60,
+        -MAXLENGTH    => 500
+    ],
+    
+solvents => [
         -DISPLAY_NAME => 'Solvents',
         -TYPE         => 'textfield',
         -NAME         => 'solvents',
@@ -1037,6 +1048,15 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
         -NAME         => 'medical_uses',
         -ROWS         => 6,
         -COLS         => 30,
+        -WRAP         => 'VIRTUAL'
+    ],
+    
+  homiopathic => [
+        -DISPLAY_NAME => 'Homiopatic',
+        -TYPE         => 'textarea',
+        -NAME         => 'homiopathic',
+        -ROWS         => 6,
+        -COLS         => 60,
         -WRAP         => 'VIRTUAL'
     ],
 
@@ -1212,6 +1232,7 @@ elsif ($SiteName eq "Apis" || $SiteName eq "BMaster" || $SiteName eq "ECF"|| $Si
         solvents
         therapeutic_action
         medical_uses
+        homiopathic
         chinese
         contra_indications
         preparation
@@ -1220,6 +1241,7 @@ elsif ($SiteName eq "Apis" || $SiteName eq "BMaster" || $SiteName eq "ECF"|| $Si
         formulas
         vetrinary
         non_med
+        culinary
         cultivation
         sister_plants
         history

@@ -59,8 +59,8 @@ my $CGI = new CGI() or
     my $SiteName =  $CGI->param('site') || "ENCY";
 my $APP_NAME = "ENCY herb abmin";
 my $APP_NAME_TITLE = 'ENCY Formulas';
-     my $SITE_DISPLAY_NAME = 'None Defined for this site.';
-   my $MySQLPW;
+my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+my $MySQLPW;
 my $HTTP_HEADER_PARAMS;
 my $HTTP_HEADER_KEYWORDS;
 my $HTTP_HEADER_DESCRIPTION;
@@ -89,6 +89,7 @@ use SiteSetup;
   my $mail_to               = $SetupVariables->{-MAIL_TO};
   my $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
   my $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
+  my $CSS_VIEW_NAME           = $SetupVariables->{-CSS_VIEW_NAME};
   my $app_logo              = $SetupVariables->{-APP_LOGO};
   my $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
   my $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
@@ -134,7 +135,6 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
 
 if ($CGI->param('site')){
@@ -154,92 +154,7 @@ if ($CGI->param('site')){
 }
 my $username =  $SESSION ->getAttribute(-KEY => 'auth_username');
 my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
-if ($SiteName eq "VitalVic") { 
-  use VitalVicSetup;
-  my $UseModPerl = 0;
 
-  my $SetupVariablesVitalVic  = new  VitalVicSetup($UseModPerl);
-    $APP_NAME_TITLE        = $SiteName.": ".$APP_NAME_TITLE;
-
-
-    $home_view             = $SetupVariablesVitalVic->{-HOME_VIEW}; 
-    $BASIC_DATA_VIEW       = $SetupVariablesVitalVic->{-BASIC_DATA_VIEW};
-    $page_top_view         = $SetupVariablesVitalVic->{-PAGE_TOP_VIEW}||'PageTopView';
-    $page_bottom_view      = $SetupVariablesVitalVic->{-PAGE_BOTTOM_VIEW};
-    $$page_left_view       = $SetupVariablesVitalVic->{-LEFT_PAGE_VIEW};
-  #Mail settings
-    $mail_from             = $SetupVariablesVitalVic->{-MAIL_FROM}; 
-    $mail_to               = $SetupVariablesVitalVic->{-MAIL_TO};
-    $mail_replyto          = $SetupVariablesVitalVic->{-MAIL_REPLYTO};
-    $CSS_VIEW_URL          = $SetupVariablesVitalVic->{-CSS_VIEW_NAME};
-    $app_logo              = $SetupVariablesVitalVic->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesVitalVic->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesVitalVic->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesVitalVic->{-APP_LOGO_ALT};
-    $IMAGE_ROOT_URL        = $SetupVariablesVitalVic->{-IMAGE_ROOT_URL}; 
-    $DOCUMENT_ROOT_URL     = $SetupVariablesVitalVic->{-DOCUMENT_ROOT_URL};
-    $LINK_TARGET           = $SetupVariablesVitalVic->{-LINK_TARGET};
-    $HTTP_HEADER_PARAMS    = $SetupVariablesVitalVic->{-HTTP_HEADER_PARAMS};
-
-  $site = $SetupVariablesVitalVic->{-DATASOURCE_TYPE};
-  $GLOBAL_DATAFILES_DIRECTORY = $SetupVariablesVitalVic->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
-  $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariablesVitalVic->{-TEMPLATES_CACHE_DIRECTORY,};
-  $APP_DATAFILES_DIRECTORY    = $SetupVariablesVitalVic->{-APP_DATAFILES_DIRECTORY};
-
-}
-
-elsif ($SiteName eq "Apis") {
-use ApisSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesApis   = new ApisSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesApis->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesApis->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesApis->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesApis->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesApis->{-APP_LOGO_ALT};
-    $APP_NAME_TITLE        = "Apis log";
-    $homeviewname          = 'HelpDeskHomeView';
-    $CSS_VIEW_URL         = $SetupVariablesApis->{-CSS_VIEW_NAME};
- }
-
- elsif ($SiteName eq "ENCY") {
-use ENCYSetup;
-  my $SetupVariablesENCY    = new  ENCYSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesENCY->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesENCY->{-HTTP_HEADER_PARAMS};
-     $page_top_view           = $SetupVariablesENCY->{-PAGE_TOP_VIEW};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesENCY->{-HTTP_HEADER_DESCRIPTION};
-     $mail_from               = $SetupVariablesENCY->{-MAIL_FROM}; 
-     $mail_to                 = $SetupVariablesENCY->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesENCY->{-MAIL_REPLYTO};
-     $CSS_VIEW_URL            = $SetupVariablesENCY->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesENCY->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesENCY->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesENCY->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesENCY->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesENCY->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesENCY->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesENCY->{-HOME_VIEW};
- }
-
- elsif ($SiteName eq "USBM") {
-use USBMSetup;
-  my $SetupVariablesUSBM   = new USBMSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesUSBM->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesUSBM->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesUSBM->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesUSBM->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesUSBM->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesUSBM->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesUSBM->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesUSBM->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesUSBM->{-APP_LOGO_ALT};
- #    $home_view            = $SetupVariablesUSBM->{-HOME_VIEW_NAME};
- #    $home_view               = $SetupVariablesUSBM->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesUSBM->{-CSS_VIEW_NAME};
-     $SITE_DISPLAY_NAME       = $SetupVariablesUSBM->{-SITE_DISPLAY_NAME};
- }
 
 if ($username eq "Shanta"){
  $allowadd = 1;
@@ -1292,7 +1207,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -BASIC_DATA_VIEW_NAME                   => 'BasicDataView',
     -CGI_OBJECT                             => $CGI,
     -CSS_VIEW_URL                           => $CSS_VIEW_URL,
-    -CSS_VIEW_NAME                          =>  $CSS_VIEW_NAME,
+    -CSS_VIEW_NAME                          => $CSS_VIEW_NAME,
     -DATASOURCE_CONFIG_PARAMS               => \@DATASOURCE_CONFIG_PARAMS,
     -DELETE_ACKNOWLEDGEMENT_VIEW_NAME       => 'DeleteAcknowledgementView',
     -DELETE_RECORD_CONFIRMATION_VIEW_NAME   => 'DeleteRecordConfirmationView',

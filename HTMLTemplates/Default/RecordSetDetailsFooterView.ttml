@@ -27,7 +27,8 @@ my @required = (
         -FIRST_RECORD_ON_PAGE,
         -SCRIPT_NAME,
         -DISPLAY_FIELDS,
-        -SELECTED_DISPLAY_FIELDS
+        -SELECTED_DISPLAY_FIELDS,
+        -SITE_NAME
             );
 
 my $view_obj = $stash->get('view_obj');
@@ -50,6 +51,7 @@ exists $rh_data->{$_} or die "$_ is not set" for @required;
     my $hidden_admin_fields_view_name = $rh_data->{-HIDDEN_ADMIN_FIELDS_VIEW_NAME};
     my $url_encoded_admin_fields_view_name = $rh_data->{-URL_ENCODED_ADMIN_FIELDS_VIEW_NAME};
     my $link_target                        = $rh_data->{-LINK_TARGET} || '';
+    my $sitename                            = $rh_data->{-SITE_NAME};
 
     my $raw_search = $cgi->param('raw_search');
 
@@ -77,6 +79,7 @@ exists $rh_data->{$_} or die "$_ is not set" for @required;
     }
 
     my $previous_page_link = generatePreviousPageLink(
+        -SITE                     => $sitename,
         -SORT_FIELD1              => $sort_field1,
         -SORT_FIELD2              => $sort_field2,
         -SIMPLE_SEARCH_STRING     => $simple_search_string,
@@ -87,10 +90,11 @@ exists $rh_data->{$_} or die "$_ is not set" for @required;
         -SESSION_ID               => $session_id,
         -SCRIPT_NAME              => $script_name,
         -CGI_OBJECT               => $cgi,
-        -LINK_TARGET              => $link_target
+        -LINK_TARGET              => $link_target,
     );
 
     my $next_page_link =  generateNextPageLink(
+        -SITE                     => $sitename,
         -SORT_FIELD1              => $sort_field1,
         -SORT_FIELD2              => $sort_field2,
         -SIMPLE_SEARCH_STRING     => $simple_search_string,
@@ -103,6 +107,7 @@ exists $rh_data->{$_} or die "$_ is not set" for @required;
         -CGI_OBJECT               => $cgi,
         -TOTAL_RECORDS            => $total_records,
         -LINK_TARGET              => $link_target
+
     );
 
     $output .= qq[ 
@@ -147,6 +152,7 @@ exists $rh_data->{$_} or die "$_ is not set" for @required;
 
 sub generatePreviousPageLink {
     @_ = _rearrange([
+        -SITE,
         -SORT_FIELD1,
         -SORT_FIELD2,
         -SIMPLE_SEARCH_STRING,
@@ -164,7 +170,7 @@ sub generatePreviousPageLink {
             ],
         @_
     ); 
-
+    my $sitename                = shift;
     my $sort_field1             = shift;
     my $sort_field2             = shift;
     my $simple_search_string    = shift;
@@ -212,6 +218,7 @@ sub generatePreviousPageLink {
 
 sub generateNextPageLink {
     @_ = _rearrange([
+        -Site,
         -SORT_FIELD1,
         -SORT_FIELD2,
         -SIMPLE_SEARCH_STRING,
@@ -230,6 +237,7 @@ sub generateNextPageLink {
         @_
     ); 
 
+    my $sitename                = shift;
     my $sort_field1             = shift;
     my $sort_field2             = shift;
     my $simple_search_string    = shift;
@@ -280,13 +288,13 @@ sub generateNextPageLink {
     }
     elsif ($remaining_records < $max_records_to_retrieve) {
         return  qq[
-            <A HREF ="$script_name?records_per_page=$max_records_to_retrieve&columns_to_view=$columns_to_view_string&simple_search_string=$simple_search_string&sort_field1=$sort_field1&sort_field2=$sort_field2&first_record_to_display=$first_record_on_next_page&session_id=$session_id&$power_search_string"
+            <A HREF ="$script_name?site=$sitename&records_per_page=$max_records_to_retrieve&columns_to_view=$columns_to_view_string&simple_search_string=$simple_search_string&sort_field1=$sort_field1&sort_field2=$sort_field2&first_record_to_display=$first_record_on_next_page&session_id=$session_id&$power_search_string"
                TARGET = "$link_target">Next $remaining_records</A>
         ];
     }
     else {
         return  qq[
-            <A HREF ="$script_name?records_per_page=$max_records_to_retrieve&columns_to_view=$columns_to_view_string&simple_search_string=$simple_search_string&sort_field1=$sort_field1&sort_field2=$sort_field2&first_record_to_display=$first_record_on_next_page&session_id=$session_id&$power_search_string"
+            <A HREF ="$script_name?site=$sitename&records_per_page=$max_records_to_retrieve&columns_to_view=$columns_to_view_string&simple_search_string=$simple_search_string&sort_field1=$sort_field1&sort_field2=$sort_field2&first_record_to_display=$first_record_on_next_page&session_id=$session_id&$power_search_string"
                TARGET = "$link_target">Next $max_records_to_retrieve</A>
         ];
     }

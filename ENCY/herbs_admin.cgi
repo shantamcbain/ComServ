@@ -19,11 +19,15 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
+my $AppVer = "ver 1.5, Dec 02, 2022";
+
+
 BEGIN{
     use vars qw(@dirs);
     @dirs = qw(../Modules
                ../Modules/CPAN .);
 }
+
 use lib @dirs;
 unshift @INC, @dirs unless $INC[0] eq $dirs[0];
 
@@ -52,11 +56,17 @@ use Extropia::Core::SessionManager;
 my $CGI = new CGI() or
     die("Unable to construct the CGI object" .
         ". Please contact the webmaster.");
+        
+ foreach ( $CGI->param() )
+{
+ $CGI->param( $1, $CGI->param($_) ) if (/(.*)\.x$/);
+}
+       
 
 ######################################################################
 #                          SITE SETUP                             #
 ######################################################################
-my $SiteName =  $CGI->param('site') || "ENCY";
+my $SiteName =  $CGI->param('site');
 
 my $APP_NAME = "herb_abmin";
 my $APP_NAME_TITLE = 'ENCY Herbs Admin';
@@ -121,6 +131,8 @@ use SiteSetup;
     $mail_to               = $SetupVariables->{-MAIL_TO};
     $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
     $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
+    my $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
+    $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
     $app_logo              = $SetupVariables->{-APP_LOGO};
     $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
     $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
@@ -178,7 +190,7 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL;# = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
+$CSS_VIEW_URL;# = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
@@ -216,57 +228,7 @@ if ($CGI->param('local')){
 my $username =  $SESSION ->getAttribute(-KEY => 'auth_username');
 my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
 
-if ($SiteName eq "Apis") {
-use ApisSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesApis   = new ApisSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesApis->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesApis->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesApis->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesApis->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesApis->{-APP_LOGO_ALT};
-    $APP_NAME              = "apis";
-    $APP_NAME_TITLE        = "Apis Forage Indicator System";
-    $homeviewname          = 'HelpDeskHomeView';
-    $CSS_VIEW_URL          = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/Apis'; 
-#    $matchuser             = '1';
-#    $matchgroup            = '1';
-}
-elsif ($SiteName eq "BMaster") {
-use BMasterSetup;
-  my $SetupVariablesBMaster   = new BMasterSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesBMaster->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesBMaster->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesBMaster->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $Affiliate               = $SetupVariablesBMaster->{-AFFILIATE};
-     $AUTH_TABLE              = $SetupVariablesBMaster->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesBMaster->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesBMaster->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesBMaster->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesBMaster->{-APP_LOGO_ALT};
-     $home_view            = 'HomeView'||$SetupVariablesBMaster->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesBMaster->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
- #Mail settings
-     $mail_from               = $SetupVariablesBMaster->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesBMaster->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesBMaster->{-MAIL_REPLYTO};
-     $SITE_DISPLAY_NAME       = $SetupVariablesBMaster->{-SITE_DISPLAY_NAME};
-     $FAVICON                 = $SetupVariablesBMaster->{-FAVICON};
-     $ANI_FAVICON             = $SetupVariablesBMaster->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesBMaster->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE            = $SetupVariablesBMaster->{-FAVICON_TYPE};
-}
 
-
- elsif ($SiteName eq "ENCY") {
-use ENCYSetup;
-  my $SetupVariablesENCY    = new  ENCYSetup($UseModPerl);
-    $CSS_VIEW_URL            = $SetupVariablesENCY->{-CSS_VIEW_NAME};
- }
 
 ######################################################################
 #                       AUTHENTICATION SETUP                         #
@@ -336,7 +298,7 @@ my @AUTH_CONFIG_PARAMS = (
 
 
 my @AUTH_VIEW_DISPLAY_PARAMS = (
-    -SITE_NAME            => $SiteName,
+    -SITE_NAME               => $SiteName,
     -CSS_VIEW_URL            => $CSS_VIEW_URL,
     -APPLICATION_LOGO        => $app_logo,
     -APPLICATION_LOGO_HEIGHT => $app_logo_height,
@@ -645,6 +607,7 @@ my @DATASOURCE_FIELD_NAMES = qw(
         harvest
         non_med
         history
+        culinary
         reference
         username_of_poster
         group_of_poster
@@ -708,7 +671,14 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
         -MAXLENGTH    => 500
     ],
 
-    solvents => [
+ culinary => [
+        -DISPLAY_NAME => 'Culinary ',
+        -TYPE         => 'textfield',
+        -NAME         => 'culinary',
+        -SIZE         => 60,
+        -MAXLENGTH    => 500
+    ],
+   solvents => [
         -DISPLAY_NAME => 'Solvents',
         -TYPE         => 'textfield',
         -NAME         => 'solvents',
@@ -1072,6 +1042,7 @@ if ($SiteName	 eq "Organic"){
         solvents
         therapeutic_action
         medical_uses
+        homiopathic
         chinese
         contra_indications
         preparation
@@ -1080,6 +1051,7 @@ if ($SiteName	 eq "Organic"){
         formulas
         vetrinary
         non_med
+        culinary
         cultivation
         sister_plants
         history
@@ -1451,6 +1423,7 @@ my @VIEW_DISPLAY_PARAMS = (
     -IMAGE_ROOT_URL          => $IMAGE_ROOT_URL,
     -LINK_TARGET             => '_self',
     -ROW_COLOR_RULES         => \@ROW_COLOR_RULES,
+    -SITE_DISPLAY_NAME       => $SITE_DISPLAY_NAME,
     -SCRIPT_DISPLAY_NAME     =>  $APP_NAME_TITLE,
     -SCRIPT_NAME             => $CGI->script_name(),
     -SELECTED_DISPLAY_FIELDS => [qw(
@@ -1635,10 +1608,10 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -VIEW_DISPLAY_PARAMS                    => \@VIEW_DISPLAY_PARAMS,
     -VIEW_FILTERS_CONFIG_PARAMS             => \@VIEW_FILTERS_CONFIG_PARAMS,
     -VIEW_LOADER                            => $VIEW_LOADER,
-    -SIMPLE_SEARCH_STRING => $CGI->param('simple_search_string') || "",
-    -FIRST_RECORD_ON_PAGE => $CGI->param('first_record_to_display') || 0,
-    -LAST_RECORD_ON_PAGE  => $CGI->param('first_record_to_display') || "0",
-    -SITE_NAME            => $SiteName,
+    -SIMPLE_SEARCH_STRING                   => $CGI->param('simple_search_string') || "",
+    -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
+    -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
+    -SITE_NAME                              => $SiteName,
     -PAGE_TOP_VIEW                          => $page_top_view,
     -LEFT_PAGE_VIEW                         => $left_page_view,
     -PAGE_BOTTOM_VIEW                       => $page_bottom_view,

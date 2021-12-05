@@ -64,6 +64,7 @@
 <tr><td class="NavTableCellStyle">Chinese</td> <td class="NavTableCellStyle">[% link.chinese %]  </td></tr>
 <tr><td class="NavTableCellStyle">Vetrinary</td> <td class="NavTableCellStyle">[% link.vetrinary %]  </td></tr>
 <tr><td class="NavTableCellStyle">Sister Plants</td> <td class="NavTableCellStyle">[% link.sister_plants %]  </td></tr>
+<tr><td class="NavTableCellStyle">Culinary</td> <td class="NavTableCellStyle">[% link.culinary %]  </td></tr>
 <tr><td class="NavTableCellStyle">Cultivation</td> <td class="NavTableCellStyle">[% link.cultivation %]  </td></tr>
 <tr><td class="NavTableCellStyle">Harvest</td> <td class="NavTableCellStyle">[% link.harvest %]  </td></tr>
 <tr><td class="NavTableCellStyle">Non Med</td> <td class="NavTableCellStyle">[% link.non_med %]  </td></tr>

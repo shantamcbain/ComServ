@@ -19,7 +19,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 0.02, Jan 13, 2020";
+my $AppVer = "ver 0.03, December, 2021";
 BEGIN{
     use vars qw(@dirs);
     @dirs = qw(../Modules
@@ -100,8 +100,8 @@ my $SITE_DISPLAY_NAME = 'None Defined for this site.';
 
   my $UseModPerl = 0;
   my $SiteNameSetup = $SiteName."Setup";
-  use ENCYSetup;
-  my $SetupVariables  = new ENCYSetup($UseModPerl);
+  use SiteSetup;
+  my $SetupVariables  = new SiteSetup($UseModPerl);
   $APP_NAME_TITLE        = $SiteName.": ". $APP_NAME_TITLE;
 
 
@@ -111,7 +111,10 @@ my $SITE_DISPLAY_NAME = 'None Defined for this site.';
   $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
   $left_page_view        = $SetupVariables->{-LEFT_PAGE_VIEW};
   $MySQLPW               = $SetupVariables->{-MySQLPW};
-  $AUTH_TABLE          = $SetupVariables->{-AUTH_TABLE};
+  my $DBI_DSN               = $SetupVariables->{-DBI_DSN};
+  my $AUTH_TABLE            = $SetupVariables->{-AUTH_TABLE};
+  my $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
+$AUTH_TABLE          = $SetupVariables->{-AUTH_TABLE};
   $AUTH_MSQL_USER_NAME = $SetupVariables->{-AUTH_MSQL_USER_NAME};
 #Mail settings
   $mail_from             = $SetupVariables->{-MAIL_FROM}; 
@@ -883,9 +886,9 @@ if ($site eq "file"){
 else{
 	@BASIC_DATASOURCE_CONFIG_PARAMS = (
 	        -TYPE         => 'DBI',
-	        -DBI_DSN      => 'mysql:host=localhost;database=forager',
+	        -DBI_DSN      => $DBI_DSN,
 	        -TABLE        => 'ency_deseases_tb',
-	        -USERNAME     => 'forager',
+	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@DATASOURCE_FIELD_NAMES,
 	        -KEY_FIELDS   => ['username'],
