@@ -1,0 +1,27 @@
+[% Version = 'v 0.01 2021/12/04 /HTMLTemplates/ENCY/GlossarySQL.ttml' %]   
+[% group = data.session_object.getAttribute('-KEY','auth_groups') %]
+ [% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+<table>  
+
+
+<tr><td>Title</td><td>Category</td><td>Definition</td><td>link</td></tr>
+ [% FOREACH link = DBI.query("SELECT * FROM ency_glossary_tb
+                                  WHERE ( 	sitename = '$sitename' 
+                                             )
+                                  ORDER BY title                                ")%]    
+                                  
+
+<tr>
+<td class="NavTableCellStyle"><i> [% link.title %] </i> </td>
+<td class="NavTableCellStyle"> [% link.list_category %]  </td>
+<td class="NavTableCellStyle">  [% link.definition %]  </td>
+<td class="NavTableCellStyle">        
+  <a href="/cgi-bin/ENCY/glossary.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&display_details_view.x&record_id=[% link.record_id %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Details</font></a>
+     </td>
+   </tr> 
+
+   [% END %]
+
+</table>
