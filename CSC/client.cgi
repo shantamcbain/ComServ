@@ -25,7 +25,7 @@ BEGIN{
 }
 use lib @dirs;
 unshift @INC, @dirs unless $INC[0] eq $dirs[0];
-
+my $AppVer = "ver 1.3, Dec 09, 2022";
 
 my @VIEWS_SEARCH_PATH = 
     qw(../Modules/Extropia/View/AddressBook
@@ -645,7 +645,7 @@ category => [
         -DISPLAY_NAME => 'Category',
         -TYPE         => 'popup_menu',
         -NAME         => 'category',
-        -VALUES       => [qw(Alliance Business-General Client Misc Personal Staff)]
+        -VALUES       => [qw(Alliance Business-General Client Misc Personal Site_Contact Staff)]
     ],
 
     fname => [
@@ -972,6 +972,7 @@ my @VIEW_DISPLAY_PARAMS = (
     -APPLICATION_LOGO_HEIGHT        => $app_logo_height,
     -APPLICATION_LOGO_WIDTH         => $app_logo_width,
     -APPLICATION_LOGO_ALT           => $app_logo_alt,
+    -APP_VER                              => $AppVer,
 	 -FAVICON                        => $FAVICON || '/images/apis/favicon.ico',
 	 -ANI_FAVICON                    => $ANI_FAVICON,
 	 -FAVICON_TYPE                   => $FAVICON_TYPE,
