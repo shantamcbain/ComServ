@@ -1,0 +1,34 @@
+[% Version = '/cgi-bin/HTMLTemplates/USBM/TelMarkView.ttml v 0.02 2021/11/12 shanta' %]
+[% Version = '/cgi-bin/HTMLTemplates/USBM/TelMarkView.ttml,v 0.01 2021/12/09 17:43:15 shanta Exp shanta '%]
+[%
+#	$Id: CSCHomeView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
+
+# Ideally this template should be converted into a static CSS file and
+# be served as /foo/bar.css and not via CGI, since it slows things
+# down and dozen't allow browsers to cache the CSS content.
+
+# otherwise this template is stand-alone, i.e. it dozen't rely on any
+# variables from outside.
+
+%]
+
+
+[% embed('ErrorDisplayView') %]
+<A NAME="PageTop"></A>
+
+<table>
+<tr>
+	<td>
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+<p>Join Us in our skiing adventures.
+Watch for our new ski Log.
+
+
+
+
+
+
+</td></tr>
+</table>
