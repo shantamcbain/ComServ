@@ -155,7 +155,9 @@
 			[% embed ('ShantaWorkShopHome') %]
 		[% ELSIF SiteName == "SLT"%]
 			[% embed ('SLTHomeView') %]
-		[% ELSIF SiteName == "WB" OR
+		[% ELSIF SiteName == "TelMark"%]
+			[% embed ('TelMarkHome') %]
+			[% ELSIF SiteName == "WB" OR
 		         SiteName == "WBDev" %]
 			[% embed ('WBHomeView') %]
 		[% ELSIF SiteName == "ULC"%]
