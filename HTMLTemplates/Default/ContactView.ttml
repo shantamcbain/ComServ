@@ -67,9 +67,7 @@
       %]<img src="/images/IM/card.png" border="0" alt="">
 
 [% ELSIF SiteName == "Apis" OR
-         SiteName == "Noop" OR
-         SiteName == "Brew" OR
-         SiteName == "TelMark"
+         SiteName == "Noop" 
       %]
           <table border="0" width="95%" height="350">
           <tr bgcolor="#FFECA8">
@@ -279,9 +277,12 @@ embed ecfcontactview
 </table>
 
 [% embed(AltPowerContactView) %]
+
 [% ELSE %]
+
 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: auto;">     
-[% FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  comments LIKE "Contact" AND
+
+[% FOREACH user = DBI.query('SELECT * FROM csc_client_tb WHERE  category  = "Site_Contact" AND
        sitename = "$SiteName"') %]
    <tr><td class="tableRowHeaderStyle">Name</td><td class="tableCellStyle">[% user.fname %]&nbsp; [% user.lname %]&nbsp; </td></tr>
    <tr><td class="tableRowHeaderStyle" style="table-layout: auto; ">address</td><td class="tableCellStyle">[% user.address1 %]&nbsp; </td></tr>
@@ -305,7 +306,7 @@ embed ecfcontactview
     [%# END %]
 
  <table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: auto;">     
-[% FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  category  = "Site_Contact" AND
+[% FOREACH user = DBI.query('SELECT * FROM csc_client_tb WHERE  category  = "Site_Contact" AND
        sitename = "$SiteName"') %]
    <tr><td class="tableRowHeaderStyle">Name</td><td class="tableCellStyle">[% user.fname %]&nbsp; [% user.lname %]&nbsp; </td></tr>
    <tr><td class="tableRowHeaderStyle" style="table-layout: auto; ">address</td><td class="tableCellStyle">[% user.address1 %]&nbsp; </td></tr>
@@ -330,9 +331,9 @@ embed ecfcontactview
 
 
 [% END %]
-    [% FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  category = "Site_Contact"AND
+    [% FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  category = "Site_Contact" AND
        sitename = "$SiteName"') %]
-        [% user.fname %]&nbsp; [% user.lname %]&nbsp; Website &nbsp;<a href="http://[% user.url %]" name="Contact" target="_blank" title="Site Contact">[% user.url %]</a> <br>
+        [% user.fname %]&nbsp; [% user.lname %]&nbsp; Website &nbsp;<a href="http://[% user.url %]" name="Contact" target="_blank" title="Site Contact">[% user.url %]</a> <a href="mailto:[% user.email %]?subject=Enquiry%20from%20%5B%25%20SiteName%20%25%5D"></a><br>
     [% END %]
 
   [% DBI.disconnect %]
