@@ -1,3 +1,4 @@
+[% Version = 'v 1.968 2022/08/03 /HTMLTemplates/Apis/AnuProcedures.ttml'%]
 [% # 2019/10/09 AnuProcedures.ttml %]
 
 [% embed('ErrorDisplayView') %] 
@@ -20,7 +21,9 @@
 [% SiteFullName = 'Anu Collective'%]
 <div align="center"><h1>[% SiteFullName %] Procedures page.</h1></div>
 </div>
-
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
  
 	   
 <ul>

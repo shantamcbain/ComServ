@@ -1,4 +1,4 @@
-[%# Version = 'v 1.968 2022/08/03 ProceduresView.ttml'%]
+[% Version = 'v 1.968 2022/08/03 ProceduresView.ttml'%]
 [%# Version = 'v 1.967 2021/03.22 ProceduresView.ttml'%]
 [%# Version = 'v 1.966 2021/02/06 ProceduresView.ttml'%]
 [%# ViewVersion = 'v 1.965 2020/05/03 ProceduresView.ttml'%]
@@ -40,11 +40,13 @@
 
 [% embed('ErrorDisplayView') %]
 
- [% sessionstring %]
+
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td>
-[% Version  %]
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
 <p>
                 [% IF group == 'Apis_admin' OR
                     group == 'BMaster_admin' OR 
@@ -154,18 +156,20 @@
 		[% ELSIF SiteName == "WB" OR
 		         SiteName == "WBDev" %]
 			[%# embed ('WBHomeView') %]
-		[% ELSE %]
+		[% ELSIF SiteName == "ULC"%]
+			[% embed ('ULCProcedures') %]
+			[% ELSE %]
 		
 		<p>This site has no workshop at this time. </p>
 		<!-- Begin Demo Home View --> 
 		<p>Here are some of the provided by <a href="http://CountryStores.ca/cgi-bin/index.cgi?site=CS&amp;[% session_string %]&amp;view=WorkShopsView" target=_"_blank">Country Stores.ca </a>
 
-	[% embed ('CSWorkShops') %]
+	[%# embed ('CSWorkShops') %]
 			[%#embed ('DemoHomeView') %]
 			<!-- End Demo home view -->
 		[% END %]
 		
-[% Version %]	
+
 
 
 
