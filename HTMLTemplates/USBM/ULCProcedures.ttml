@@ -1,0 +1,73 @@
+[% Version = 'v 1.968 2022/08/03 /HTMLTemplates/USBM/ULCProcedures.ttml'%]
+[% # 2019/10/09 AnuProcedures.ttml %]
+
+[% embed('ErrorDisplayView') %] 
+
+[% IF data.session_object %]
+
+   [% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+
+[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+[% username = data.session_object.getAttribute('-KEY','auth_username') %]
+[% group = data.session_object.getAttribute('-KEY','auth_groups') %]
+[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+[% procedure = data.procedure %]
+ [% script_name = data.app_name %]
+[% localip = data.local_ip %]
+
+[% SiteFullName = 'Universal life church'%]
+<div align="center"><h1>[% SiteFullName %]</h1></div>
+</div>
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+ 
+	   
+<ul>
+ <li> 
+
+ [% IF procedure  == 'ShamanismView' %]
+ 
+
+[% embed ('ShamanismView') %]
+ [% ELSIF procedure  == ('GraftingWorkShop') %]
+ 
+ [% embed ('GraftingWorkShop') %]
+ [% ELSIF procedure  == ('AmuAdminList') %]
+ 
+ [% embed ('AmuAdminList') %]
+[% ELSIF procedure  == ('HiveManHomeView') %]
+ 
+  [% embed ('HiveManHomeView') %]
+ [% ELSIF procedure  == ('FirstEval') %]
+   [% embed ('FirstEval') %]
+
+ [% ELSIF procedure  == ('LandingPage') %]
+[% embed ('LandingPage') %]
+
+ [% ELSIF procedure  == ('JoinDiscoussionList') %]
+ 
+ [% embed ('JoinDiscoussionList') %]
+ [% ELSIF procedure  == ('YardManagementSystem') %]
+ 
+ [% embed ('YardManagementSystem') %]
+ 
+ [% ELSE %]	
+
+ [% embed ('AnuProcedureList') %]
+
+ 
+ 
+</li>
+[% END %]
+
+
+</ul>
+   
+ 	 
+
+  
+ 	   
