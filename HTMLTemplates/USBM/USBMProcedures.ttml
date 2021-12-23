@@ -1,0 +1,68 @@
+[% Version = 'v 0.02 2021/12/23 /HTMLTemplates/USBM/USBMProcedures.ttml'%]
+[%# Version = 'v 0.01 2021/12/22 /HTMLTemplates/USBM/USBMProcedures.ttml'%]
+[% # 2019/10/09 AnuProcedures.ttml %]
+
+[% embed('ErrorDisplayView') %] 
+
+[% IF data.session_object %]
+
+   [% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
+
+[% END %]
+
+
+
+[% SiteFullName = 'Universal School of Biological Life'%]
+<div align="center"><h1>[% SiteFullName %]</h1></div>
+</div>
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+ 
+	   
+<ul>
+ <li> 
+
+ [% IF procedure  == 'ShamanismView' %]
+ 
+
+[% embed ('ShamanismView') %]
+ [% ELSIF procedure  == ('StreamingView') %]
+ 
+ [% embed ('StreamingView') %]
+ [% ELSIF procedure  == ('AmuAdminList') %]
+ 
+ [% embed ('AmuAdminList') %]
+[% ELSIF procedure  == ('HiveManHomeView') %]
+ 
+  [% embed ('HiveManHomeView') %]
+ [% ELSIF procedure  == ('FirstEval') %]
+   [% embed ('FirstEval') %]
+
+ [% ELSIF procedure  == ('LandingPage') %]
+[% embed ('LandingPage') %]
+
+ [% ELSIF procedure  == ('JoinDiscoussionList') %]
+ 
+ [% embed ('JoinDiscoussionList') %]
+ [% ELSIF procedure  == ('YardManagementSystem') %]
+ 
+ [% embed ('YardManagementSystem') %]
+ 
+ [% ELSE %]	
+
+ [% embed ('AnuProcedureList') %]
+
+ 
+ 
+</li>
+[% END %]
+
+
+</ul>
+   
+ 	 
+
+  
+ 	   

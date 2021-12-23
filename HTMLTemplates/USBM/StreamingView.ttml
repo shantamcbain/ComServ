@@ -1,0 +1,38 @@
+[% Version = 'v 0.001 2021/12/20 /cgi-bin/HTMLTemplates/USBM/SteamingView'%]
+
+[%#	$Id: BatteryList.ttml,v 0.001 2020/08/12 11:42:47 shanta Exp shanta $	%]
+[% username = data.session_object.getAttribute('-KEY','auth_username') %]
+ [% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+ [% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+ [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+ [% site = SiteName %]
+ [% SiteDisplayName = data.site_display_name %]
+[% session_id = data.session_object.getId() %]
+ [% session_string = "session_id=$session_id" %]
+[%# embed('InheretedVariablesView') %]
+[% SiteName = data.site_name%]
+[% IF data.debug == 1 %]
+ [%	Version %] 
+[% END %]
+ 
+
+<A NAME="PageTop"></A>
+[% IF group =='ULC_admin' OR
+      group == 'USBM_admin'
+      %]
+<h2>Streaming service's.</h2>
+
+
+
+<ul>
+ <li>YouTube</li> 
+ <li><a href="https://www.youtube.com/channel/UCR0AvDd4Gab6t5Bgk9yuA0Q">BeeMasterChannel</a></li>
+ <li><a href="https://streamyard.com/teams/z50LVmA7tjN4dVxuy75nPW3S/destinations/connect/rtmp">Stream yard</a></li> 
+ <li><a href="page.cgi?site=ULC&[% session_string %]&display_details_view.x&record_id=273&Shaman course lesson 6">Lesson 4</li> 
+ <li> <a href="page.cgi?site=ULC&[% session_string %]&display_details_view.x&record_id=274&Shaman course lesson 6">Lesson 5</li> 
+ <li><a href="page.cgi?site=ULC&[% session_string %]&isplay_details_view.x&record_id=276&Shaman course lesson 6">Lesson 6 </a> </li> 
+ <li>Lesson 7 </li> 
+</ul>
+[% END %]
+
+

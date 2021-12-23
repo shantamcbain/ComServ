@@ -1,0 +1,55 @@
+[% ViewVersion = 'v 1.99 '%]
+[% Version = 'v 0.01 2021/12/17 17:43:15 /cgi-bin/HTMLTemplates/USBM/SkiLogView.ttml, '%]
+
+
+[% PROCESS DefaultDbi.ttml %]
+
+
+
+
+	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+   [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
+   [% LastUpdate = data.last_update %]
+   [% SiteUpdate = data.site_last_update %]
+	[% session_id = data.session_object.getId() %]
+	[% session_string = "session_id=$session_id" %]
+   [% HostName = data.domain_name %]
+
+
+	[% embed(data.page_top_view,['$SiteName $ViewVersion ','Home page. ']) %]
+[% embed('ErrorDisplayView') %]
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	<td>
+[% IF data.debug == 1 %]
+ [%	Version %] 	
+  [% embed  ('InheretedVariablesView') %]
+[% END %] 
+
+	[% IF username %]
+			<h3 > Hello  [% firstname%] &nbsp; [% lastname%]! Welcome to [% data.site_display_name %]</h3>
+	[% ELSE %]
+	  <h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %]! </h3> 
+	[% END %]
+[% embed ("AdminTodoListLink")%]	
+		[% SiteName = data.site_name%]
+
+
+
+[% IF data.site_last_update %]
+
+	<p>Last Update of application [% data.site_last_update %]
+	[% IF SiteName == 'Demo' %] &nbsp; This value is stored in your setup file. 
+   [% END %]
+
+[% END %]
+
+[% embed('CSCCopyRight') %]
+
+	
+
+
+
+[% embed(data.page_bottom_view) %]
