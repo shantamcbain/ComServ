@@ -25,7 +25,7 @@
 <h2>Join Us in our skiing adventures.</h2>
 comming soon
 <ul>
-	<li>The Adventure Log.</li>
+	<li><a href="/cgi-bin/TelMark/telmark.cgi?site=TelMark&[% session_string %]&">The Adventure Log.</a></li>
 	<li>How to's
     <ul>
 	<li>Track creation and maintenance</li>

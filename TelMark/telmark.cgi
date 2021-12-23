@@ -19,7 +19,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-
+my $AppVer = "ver 0.015, Dec 18, 2022";
 BEGIN{
     use vars qw(@dirs);
     @dirs = qw(../Modules/
@@ -35,13 +35,12 @@ my @VIEWS_SEARCH_PATH =
 
 my @TEMPLATES_SEARCH_PATH = 
     qw(../HTMLTemplates/Apis
-       ../HTMLTemplates/CSPS
        ../HTMLTemplates/CSC
        ../HTMLTemplates/ENCY
        ../HTMLTemplates/ECF
        ../HTMLTemplates/Organic
        ../HTMLTemplates/Shanta
-       ../HTMLTemplates/TelMark
+       ../HTMLTemplates/USBM
        ../HTMLTemplates/Todo
        ../HTMLTemplates/Default);
 
@@ -112,8 +111,8 @@ use SiteSetup;
   my $UseModPerl = 0;
   my $SetupVariables  = new SiteSetup($UseModPerl);
     $APP_NAME_TITLE        = "TelMark: A Free Healers Resource";
-    $homeviewname          =  $SetupVariables->{-HOME_VIEW_NAME};
-    $home_view             = $SetupVariables->{-HOME_VIEW};
+    $homeviewname          = "SkiLogView"|| $SetupVariables->{-HOME_VIEW_NAME};
+    $home_view             = "SkiLogView"|| $SetupVariables->{-HOME_VIEW};
     $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
     $DBI_DSN               = $SetupVariables->{-DBI_DSN};
     $AUTH_TABLE            = $SetupVariables->{-AUTH_TABLE};
@@ -138,10 +137,13 @@ use SiteSetup;
     $HTTP_HEADER_KEYWORDS       = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
     $HTTP_HEADER_DESCRIPTION    = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
     $site                       = $SetupVariables->{-DATASOURCE_TYPE};
+    $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
     $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
     $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
     $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
     my $LocalIp                 = $SetupVariables->{-LOCAL_IP};
+    my $CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
+    my $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
 
 
 
@@ -181,7 +183,7 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
+
 
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName')){
@@ -203,129 +205,7 @@ my $username =  $SESSION ->getAttribute(-KEY => 'auth_username');
 my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
 
 
- if ($SiteName eq "ECF") {
-use ECFSetup;
-  my $SetupVariablesECF    = new  ECFSetup($UseModPerl);
-    $CSS_VIEW_NAME           = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $AUTH_TABLE              = $SetupVariablesECF->{-AUTH_TABLE};
-    $app_logo                = $SetupVariablesECF->{-APP_LOGO};
-    $app_logo_height         = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
-    $app_logo_width          = $SetupVariablesECF->{-APP_LOGO_WIDTH};
-    $app_logo_alt            = $SetupVariablesECF->{-APP_LOGO_ALT};
-    $APP_NAME_TITLE          = "Eagle Creek Farms: Client Profile";
-    $homeviewname            = $SetupVariablesECF->{-HOME_VIEW_NAME};
-    $home_view               = $SetupVariablesECF->{-HOME_VIEW};
-#Mail settings
-    $mail_from               = $SetupVariablesECF->{-MAIL_FROM};
-    $mail_to                 = $SetupVariablesECF->{-MAIL_TO};
-    $mail_to_admin           = $SetupVariablesECF->{-MAIL_TO_ADMIN};
-    $mail_replyto            = $SetupVariablesECF->{-MAIL_REPLYTO};
-    $HTTP_HEADER_PARAMS      = $SetupVariablesECF->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_KEYWORDS    = $SetupVariablesECF->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesECF->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_URL            = $SetupVariablesECF->{-CSS_VIEW_NAME};
- }
-elsif ($SiteName eq "BCHPA") {
-use BCHPASetup;
-  my $SetupVariablesBCHPA  = new  BCHPASetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesBCHPA->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesBCHPA->{-AUTH_TABLE};
-    $page_top_view         = $SetupVariablesBCHPA->{-PAGE_TOP_VIEW};
-    $page_bottom_view      = $SetupVariablesBCHPA->{-PAGE_BOTTOM_VIEW};
-    $page_left_view        = $SetupVariablesBCHPA->{-page_left_view};
-    $APP_NAME_TITLE        = "British Columbia Honey Producers Association";
-#Mail settings
-    $mail_from             = $SetupVariablesBCHPA->{-MAIL_FROM};
-    $mail_to               = $SetupVariablesBCHPA->{-MAIL_TO};
-    $mail_replyto          = $SetupVariablesBCHPA->{-MAIL_REPLYTO};
-    $home_view             = $SetupVariablesBCHPA->{-HOME_VIEW};
-    $homeviewname          = $SetupVariablesBCHPA->{-HOME_VIEW_NAME};
-    $HTTP_HEADER_PARAMS    = $SetupVariablesBCHPA ->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_KEYWORDS  = $SetupVariablesBCHPA->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesBCHPA->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_URL            = $SetupVariablesBCHPA->{-CSS_VIEW_NAME};
-
- if ($group eq "BCHPA_admin") {
-    $home_view             = 'BCHPAAdminHomeView';
-    $homeviewname          = 'BCHPAAdminHomeView';
-  };
-}
-elsif ($SiteName eq "TelMark" or
-       $SiteName eq "TelMarkDev") {
-use TelMarkSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesTelMark   = new TelMarkSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS       = $SetupVariablesTelMark->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS         = $SetupVariablesTelMark->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION    = $SetupVariablesTelMark->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME              = $SetupVariablesTelMark->{-CSS_VIEW_NAME};
-     $AUTH_TABLE                 = $SetupVariablesTelMark->{-AUTH_TABLE};
-     $mail_from                  = $SetupVariablesTelMark->{-MAIL_FROM};
-     $mail_to                    = $SetupVariablesTelMark->{-MAIL_TO};
-     $mail_to_admin              = $SetupVariablesTelMark->{-MAIL_TO_AMIN};
-     $mail_replyto               = $SetupVariablesTelMark->{-MAIL_REPLYTO};
-     $app_logo                   = $SetupVariablesTelMark->{-APP_LOGO};
-     $app_logo_height            = $SetupVariablesTelMark->{-APP_LOGO_HEIGHT};
-     $app_logo_width             = $SetupVariablesTelMark->{-APP_LOGO_WIDTH};
-     $app_logo_alt               = $SetupVariablesTelMark->{-APP_LOGO_ALT};
-     $homeviewname               = $SetupVariablesTelMark->{-HOME_VIEW_NAME};
-     $home_view                  = $SetupVariablesTelMark->{-HOME_VIEW};
-     $CSS_VIEW_URL               = $SetupVariablesTelMark->{-CSS_VIEW_NAME};
-     $APP_DATAFILES_DIRECTORY    = $SetupVariablesTelMark->{-APP_DATAFILES_DIRECTORY};
-     $SITE_DISPLAY_NAME          = $SetupVariablesTelMark->{-SITE_DISPLAY_NAME};
-     $last_update                = $SetupVariablesTelMark->{-SITE_LAST_UPDATE}; 
-     $last_update                = $SetupVariablesTelMark->{-LAST_UPDATE}; 
-}
-
-elsif ($SiteName eq "Aktiv" or
-       $SiteName eq "AktivDev") {
-use AktivSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesAktiv   = new AktivSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS      = $SetupVariablesAktiv->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS        = $SetupVariablesAktiv->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION   = $SetupVariablesAktiv->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME             = $SetupVariablesAktiv->{-CSS_VIEW_NAME};
-     $AUTH_TABLE                = $SetupVariablesAktiv->{-AUTH_TABLE};
-     $mail_from                 = $SetupVariablesAktiv->{-MAIL_FROM};
-     $mail_to                   = $SetupVariablesAktiv->{-MAIL_TO};
-     $mail_to_admin             = $SetupVariablesAktiv->{-MAIL_TO_AMIN};
-     $mail_replyto              = $SetupVariablesAktiv->{-MAIL_REPLYTO};
-     $app_logo                  = $SetupVariablesAktiv->{-APP_LOGO};
-     $app_logo_height           = $SetupVariablesAktiv->{-APP_LOGO_HEIGHT};
-     $app_logo_width            = $SetupVariablesAktiv->{-APP_LOGO_WIDTH};
-     $app_logo_alt              = $SetupVariablesAktiv->{-APP_LOGO_ALT};
-     $homeviewname              = $SetupVariablesAktiv->{-HOME_VIEW_NAME};
-     $home_view                 = $SetupVariablesAktiv->{-HOME_VIEW};
-     $CSS_VIEW_URL              = $SetupVariablesAktiv->{-CSS_VIEW_NAME};
-     $APP_DATAFILES_DIRECTORY   = $SetupVariablesAktiv->{-APP_DATAFILES_DIRECTORY};
-     $SITE_DISPLAY_NAME         = $SetupVariablesAktiv->{-SITE_DISPLAY_NAME};
-     $last_update               = $SetupVariablesAktiv->{-LAST_UPDATE}; 
-     $last_update               = $SetupVariablesAktiv->{-SITE_LAST_UPDATE}; 
-     $APP_NAME_TITLE            ='Adventures';
-     $APP_NAME                  = $SiteName;
- }
-
-elsif ($SiteName eq "d2earth") {
-use d2earthSetup;
-  my $UseModPerl = 0;
-
-
- my $SetupVariablesd2earth   = new d2earthSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesd2earth->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesd2earth->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesd2earth->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesd2earth->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesd2earth->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesd2earth->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesd2earth->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesd2earth->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesd2earth->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesd2earth->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesd2earth->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesd2earth->{-CSS_VIEW_NAME};
-}
-
+ 
 #$page_top_view    = $CGI->param('page_top_view')||$page_top_view;
 #$page_bottom_view = $CGI->param('page_bottom_view')||$page_bottom_view;
 #$page_left_view   = $CGI->param('page_left_view')||$page_left_view;
@@ -1157,7 +1037,7 @@ my @VALID_VIEWS =
        BCHPABoardView
        BCHPAMemberView
        BCHPAPolinatorsView
-
+       SkiLogView
        ECFHomeView
        ECFSideBarHomeView
        PrintView
