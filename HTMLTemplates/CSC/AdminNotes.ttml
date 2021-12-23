@@ -1,3 +1,4 @@
+[% Version = 'v 0.02 2021/12/22  /cgi-bin/HTMLTemplates/CSC/AdminNotes.ttml'%]
  [%#	Version = '/cgi-bin/HTMLTemplates/CSC/AdminNotes.ttml,v 0.1 2021/10/09 ' 
 %]                [%# site       = link.sitename        %]          
                  [%# PageName   = link.view_name %] 
@@ -13,6 +14,7 @@
  
  
  <h1>Admin notes</h1>
+ 
 [% IF data.debug == 1 %]
  [%	Version %] 	   
 [% END %] 

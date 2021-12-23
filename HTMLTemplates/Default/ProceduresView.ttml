@@ -1,4 +1,5 @@
-[% Version = 'v 1.968 2022/08/03 ProceduresView.ttml'%]
+[% Version = 'v 1.969 2021/12/22 /HTTMLTemplates/DefaultProceduresView.ttml'%]
+[%# Version = 'v 1.968 2021/08/03 ProceduresView.ttml'%]
 [%# Version = 'v 1.967 2021/03.22 ProceduresView.ttml'%]
 [%# Version = 'v 1.966 2021/02/06 ProceduresView.ttml'%]
 [%# ViewVersion = 'v 1.965 2020/05/03 ProceduresView.ttml'%]
@@ -15,23 +16,7 @@
 
 %]
  [%# PROCESS DefaultDbi.ttml %]
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-   [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
-   [% LastUpdate = data.last_update %]
-   [% SiteUpdate = data.site_last_update %]
-   [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-   [% SiteDisplayName = data.site_display_name %]
-   [% site = SiteName %]
-   [% PrintMode    = data.session_object.getAttribute('-KEY','PrintMode') %]
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
 [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
-	[% session_id = data.session_object.getId() %]
-	[% session_string = "session_id=$session_iApis/apid" %]
-   [% project = data.project  %]
-   [% procedure = data.procedure %]
-   [% title = data.title %]
 [% ViewName  = '/Default/ProceduresView.ttml' %] 
 
 
@@ -106,7 +91,7 @@
 			[%# embed ('SBHomeView') %]
 		[% ELSIF SiteName == "USBM" OR
 		         SiteName == "USBMDev"  %]
-			[% embed ('ECFWorkShops') %]
+			[% embed ('USBMProcedures') %]
 
 
 
@@ -158,9 +143,11 @@
 			[%# embed ('WBHomeView') %]
 		[% ELSIF SiteName == "ULC"%]
 			[% embed ('ULCProcedures') %]
+		[% ELSIF SiteName == "USBM"%]
+			[% embed ('USBMProcedures') %]
 			[% ELSE %]
 		
-		<p>This site has no workshop at this time. </p>
+		<p>This site has no Procedures at this time. </p>
 		<!-- Begin Demo Home View --> 
 		<p>Here are some of the provided by <a href="http://CountryStores.ca/cgi-bin/index.cgi?site=CS&amp;[% session_string %]&amp;view=WorkShopsView" target=_"_blank">Country Stores.ca </a>
 

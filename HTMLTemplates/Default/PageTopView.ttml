@@ -1,18 +1,11 @@
-[% PageVersion	= 'PageTopView.ttml,v 1.02 2003/11/29 06:31:35 shanta Exp shanta '	%]
-[% PageVersion = 0.02 %]
+[% PageVersion	= 'PageTopView.ttml,v 0.03 2021/12/22 shanta Exp shanta '	%]
+[%# PageVersion	= 'PageTopView.ttml,v 1.02 2003/11/29 06:31:35 shanta Exp shanta '	%]
+[%#PageVersion = 0.02 %]
 [% #setup session ifo %]
 
 [%# PROCESS HostName.ttml %]
-[% HostName = data.domain_name %]
 
-[% IF data.session_object %]
 
-	[% session_id = data.session_object.getId() %]
-        [% session_string = "session_id=$session_id" %]
-
-[% END %] 
-
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
 
 
 [% IF data.session_object.getAttribute('-KEY','SiteName') %]
@@ -32,26 +25,18 @@
 <html >
 <head> 
 <meta charset="utf-8">
-[% IF PageSiteName %]       
- [% PageSiteName = data.site_display_name %]
-[% ELSE %]
+
 
 [% PageSiteName = data.site_display_name %]
-	[% END %]
 
- [% IF ScriptDisplayName %]       
-[% ScriptDisplayName = data.script_display_name %]
- [% ELSE %]
 
+      
 [% ScriptDisplayName = data.script_display_name %]
-	[% END %]
+
 	
 <title> [% PageSiteName %]: [% ScriptDisplayName %]: [% data.page_title %] </title>
 
-<!--page top view version [% PageVersion %]
-Group = [% group  %]<br>
-username = [% username %]
--->
+
 
 	<LINK REL ="stylesheet" TYPE ="text/css" HREF ="[% data.css_view_url %]">
 
@@ -90,11 +75,7 @@ break;
  
 <script>type="text/javascript" src="/javascript/menu.js"></script>
 
-<script>type="text/javascript" src="/javascript/ebay.js"></script>
 
-
- <!--   <script class="include" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  -->
 
 [%# embed ('MailChip') %]
 
@@ -106,31 +87,20 @@ break;
 </HEAD>
 <BODY> 		
 [% embed ('PageHeaderView') %]
- <!-- PageTopView.ttml [% PageVersion %] -->
- <!-- Here we start the Header page The location is$.jqplot('chartdiv',  [[[1, 2],[3,5.12],[5,13.1],[7,33.6],[9,85.9],[11,219.9]]]);
-   PageTopView [% PageVersion %]-->
+
 	
  <!-- The main table of the PageTopView -->
 	
  <table class="MainPageTable">
+
+ <TR >
+ <td colspan="5" width ="100%">	 
  [% IF data.debug == 1 %]
  [% PageVersion %]
-<td>
-<table >
-  
- <tr colspan="5" width ="100%">
-  <td>
-   [% embed('InheretedVariablesView') %]
-  </td> 
- </tr>
-</table>
-</td>
+
 
 
  [% END %]
- <TR >
- <td colspan="5" width ="100%">	 
-
  <!-- Page head row Begin PageHeaderView -->
 
  <!--End page header row PageHeaderView-->

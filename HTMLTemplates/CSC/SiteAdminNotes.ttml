@@ -1,3 +1,4 @@
+[% Version = 'v 0.02 2021/12/22  /cgi-bin/HTMLTemplates/CSC/SiteAdminNotes.ttml'%]
 [%#	$Id: /cgi-bin/HTMLTemplates/CSC/SiteAdminNotes.ttml,v 0.1 2015/02/05 17:43:15  
 %][% IF data.debug == 1 %]
  [%	Version %] 	   

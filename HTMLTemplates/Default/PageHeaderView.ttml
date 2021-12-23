@@ -1,3 +1,4 @@
+[% PageVersion	= 'v 0.02 2021/12/22 /cgi-bin/HTMLTemplates/Default/PageHeaderView.ttml,'	%]
 [% #/HTMLTemplates/Default/PageHeaderView.ttml %]
 [%# 	$Id: PageHeaderView.ttml,v 0.01 2003/11/29 06:33:25 shanta Exp shanta $	%]
 
@@ -17,6 +18,12 @@
 		<td align="center" valign="middle" >
 
 			   
+ [% IF data.debug == 1 %]
+ [% PageVersion %]
+
+
+
+ [% END %]
 
 
 		   
