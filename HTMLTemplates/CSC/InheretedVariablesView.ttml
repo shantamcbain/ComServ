@@ -1,6 +1,12 @@
+[% Version = 'v 0.01 /cgi-bin/HTMLTemplates/CSC/InharatedVariablesView.ttml,'%]
 [%# InharatedVariablesView.ttml v.0 active Inharated variables Variables %]
 <!-- InharatedVariablesView.ttml -->
 <table cellspacing="2" align="center" rules="cols">
+[% IF data.debug == 1 %]<tr><td>
+ [%	Version %] 	
+
+[% END %] 
+</td><td></td></tr>
 <tr> 
  <td	class="InharatedVariablesCell">SiteName  TTML =  </td>        
  <td	class="InharatedVariablesCell">[% SiteName %]</td>
@@ -31,20 +37,33 @@
  <tr><td	class="InharatedVariablesCell">First name  TTML </td>       
  <td	class="InharatedVariablesCell"> [% firstname %]</td></tr>
 
-<tr> <td	class="InharatedVariablesCell">Last name  TTML  </td>      <td	class="InharatedVariablesCell"> [% lastname %]</td></tr>
-<tr> <td	class="InharatedVariablesCell">UserName   TTML   </td>        <td	class="InharatedVariablesCell"> [% username %]</td></tr>
-<tr> <td	class="InharatedVariablesCell">UserName    .data     </td>    <td	class="InharatedVariablesCell"> [% data.username %] .data</td></tr>
-<tr> <td	class="InharatedVariablesCell">Group  TTML  </td>         <td	class="InharatedVariablesCell">   [% group %]</td></tr>
-<tr> <td	class="InharatedVariablesCell">Group  .data  </td>         <td	class="InharatedVariablesCell">   [% data.group %]</td></tr>
+<tr> <td	class="InharatedVariablesCell">Last name  TTML  </td>      
+<td	class="InharatedVariablesCell"> [% lastname %]</td></tr>
+
+<tr> <td	class="InharatedVariablesCell">UserName   TTML   </td>        
+
+<td	class="InharatedVariablesCell"> [% username %]</td></tr>
+<tr> <td	class="InharatedVariablesCell">UserName    .data     </td>    
+<td	class="InharatedVariablesCell"> [% data.username %] .data</td></tr>
+
+<tr> <td	class="InharatedVariablesCell">Group  TTML  </td>         
+<td	class="InharatedVariablesCell">   [% group %]</td></tr>
+<tr> <td	class="InharatedVariablesCell">Group  .data  </td>         
+
+<td	class="InharatedVariablesCell">   [% data.group %]</td></tr>
 <tr> <td	class="InharatedVariablesCell">Mobile  .data     </td>    <td	class="InharatedVariablesCell">  [% data.mobile %]</td></tr>
 
 <tr> <td	class="InharatedVariablesCell">View   TTML   </td>     <td	class="InharatedVariablesCell">     [% View %]</td></tr>
- <td	class="InharatedVariablesCell">debug   .data     </td>     <td	class="InharatedVariablesCell"> [% data.debug %]</td></tr>
- <td	class="InharatedVariablesCell">View .data  </td>     <td	class="InharatedVariablesCell">         [% data.view   %]</td></tr>
- <td	class="InharatedVariablesCell">Favicon .data</td>     <td	class="InharatedVariablesCell">          [% data.favicon %].data</td></tr>
+
+<td	class="InharatedVariablesCell">debug   .data     </td>     <td	class="InharatedVariablesCell"> [% data.debug %]</td></tr>
+
+<td	class="InharatedVariablesCell">View .data  </td>     <td	class="InharatedVariablesCell">         [% data.view   %]</td></tr>
+
+<td	class="InharatedVariablesCell">Favicon .data</td>     <td	class="InharatedVariablesCell">          [% data.favicon %].data</td></tr>
 
 <tr> <td	class="InharatedVariablesCell">Record id  </td>     <td	class="InharatedVariablesCell">         [% Record_id   %]  [% data.record_id %]</td></tr>
- <tr> <td	class="InharatedVariablesCell"> ScriptDisplayName .data</td>     <td	class="InharatedVariablesCell">  [%   data.script_display_name %]</td></tr>
+
+<tr> <td	class="InharatedVariablesCell"> ScriptDisplayName .data</td>     <td	class="InharatedVariablesCell">  [%   data.script_display_name %]</td></tr>
  <tr> <td	class="InharatedVariablesCell">Session   TTML  </td>     <td	class="InharatedVariablesCell">         [% session_string %]</td>
 <tr>  <td	class="InharatedVariablesCell">session_id   TTML   </td>     <td	class="InharatedVariablesCell">     [% session_id %]</td>
 </tr>
@@ -52,7 +71,8 @@
 <tr>  <td	class="InharatedVariablesCell">HomeView .data  </td>     <td	class="InharatedVariablesCell">= [% data.home_view %]</td></tr>
 <tr>  <td	class="InharatedVariablesCell">Developer status TTML  </td>     <td	class="InharatedVariablesCell">  [% developer_status %]</td>Host
 <tr>  <td	class="InharatedVariablesCell">Site update  TTML   </td>     <td	class="InharatedVariablesCell">     [% SiteUpdate %]</td></tr>
- <tr>  <td	class="InharatedVariablesCell">Last update   TTML  </td>     <td	class="InharatedVariablesCell">     [% LastUpdate %]</td>
+ <tr>  <td	class="InharatedVariablesCell">Last update   TTML  </td>     
+ <td	class="InharatedVariablesCell">     [% LastUpdate %]</td>
 </tr>	
 
 <tr>  <td	class="InharatedVariablesCell">Logo  .data   </td>     <td	class="InharatedVariablesCell">         [% data.application_logo %] .data</td></tr>
@@ -62,8 +82,13 @@
  <tr> <td	class="InharatedVariablesCell">PageTopView  .data  </td>     <td	class="InharatedVariablesCell">   [% data.page_top_view %] </td></tr>
  <tr> <td  class="InharatedVariablesCell">Page name .data   </td>     <td	class="InharatedVariablesCell">          [%  data.page_name %]</td></tr>
  <tr> <td	class="InharatedVariablesCell">Page name  TTML  </td>     <td	class="InharatedVariablesCell">          [% Page %]</td></tr>
- <tr> <td	class="InharatedVariablesCell">Page Name .data   </td>     <td	class="InharatedVariablesCell">         [% data.page_name %] Version [% ViewVersion %]</td></tr>		
- <tr> <td	class="InharatedVariablesCell">SiteName  .data</td>     <td	class="InharatedVariablesCell"> [% data.site_name %].data</td></tr>
+ <tr> <td	class="InharatedVariablesCell"> PageSiteName  .data </td>     <td	class="InharatedVariablesCell">          >[%  data.site_display_name %]</td></tr
+<tr> <td	class="InharatedVariablesCell" >Procedure Name .data   </td>     <td	class="InharatedVariablesCell">         [% data.procedure %] </td></tr>		
+
+<tr> <td	class="InharatedVariablesCell" Procedure Name .session   </td>     
+<td	class="InharatedVariablesCell">    [%   data.session_object.getAttribute('-KEY','procedure') %] </td></tr>		
+ 
+<tr> <td	class="InharatedVariablesCell">SiteName  .data</td>     <td	class="InharatedVariablesCell"> [% data.site_name %]</td></tr>
  <tr> <td	class="InharatedVariablesCell">brewname  </td>     <td	class="InharatedVariablesCell">[% databrewname %].data</td></tr>
  <tr> <td	class="InharatedVariablesCell">Allow addition  .data </td>     <td	class="InharatedVariablesCell">      [% data.allow_additions_flag %].data</td></tr>
 <tr>  <td	class="InharatedVariablesCell">Allow Modification .data</td>     <td	class="InharatedVariablesCell">   [% data.allow_modifications_flag %].data</td></tr>

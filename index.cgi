@@ -22,7 +22,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 1.15, Dec 02, 2022";
+my $AppVer = "ver 1.15, Dec 02, 2021";
 
 BEGIN
 {
