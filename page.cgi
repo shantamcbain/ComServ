@@ -21,7 +21,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 1.03, Nov 17, 2021";
+my $AppVer = "ver 1.04, Dec 24, 2021";
 BEGIN{
     use vars qw(@dirs);
     @dirs = qw(Modules/
@@ -82,7 +82,7 @@ foreach ($CGI->param()) {
 
 my $APP_NAME = "page"; 
 my $APP_NAME_TITLE ;
-my $SiteName =  $CGI->param('site')||'CSC';
+my $SiteName =  $CGI->param('site');
 my $site_update;
 my $username;
 my $group;
@@ -133,7 +133,7 @@ my $mail_to_user;
 my $mail_to_member;
 my $mail_to_discussion;
 my $LineStatus = "yes";
-my $last_update = 'Nov 17, 2021';
+my $last_update = 'Dec 24, 2021';
 my $SITE_DISPLAY_NAME = 'None Defined for this site.';
 my $FAVICON;
 my $ANI_FAVICON;
@@ -271,7 +271,8 @@ if ($username eq "Shanta") {$search = 1;
      $group eq "CSCDev_Admin" or
      $group eq "Brew_Admin" or
      $group eq "ECF_Admin" or
-     $group eq "Aikikai_Admin" ) {$search = 1;
+     $group eq "UULC" or
+     $group eq "USBM") {$search = 1;
   $allow_add = 1;
   $allow_mod = 1;
   $allow_del = 1;  
@@ -1422,11 +1423,11 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -PAGE_NAME                              => $Page,
     -NEWS_TB                                => $NEWS_TB,
     -REQUIRE_AUTH_FOR_SEARCHING_FLAG        => $search,
-    -REQUIRE_AUTH_FOR_ADDING_FLAG           => 1,
-    -REQUIRE_AUTH_FOR_MODIFYING_FLAG        => 1,
-    -REQUIRE_AUTH_FOR_DELETING_FLAG         => 1,
+    -REQUIRE_AUTH_FOR_ADDING_FLAG           => $allow_add ,
+    -REQUIRE_AUTH_FOR_MODIFYING_FLAG        => $allow_mod ,
+    -REQUIRE_AUTH_FOR_DELETING_FLAG         => $allow_del ,
     -REQUIRE_AUTH_FOR_VIEWING_DETAILS_FLAG  => 0,
-    -REQUIRE_MATCHING_USERNAME_FOR_MODIFICATIONS_FLAG => 0,
+    -REQUIRE_MATCHING_USERNAME_FOR_MODIFICATIONS_FLAG => $allow_mod ,
     -REQUIRE_MATCHING_GROUP_FOR_MODIFICATIONS_FLAG    => 0,
     -REQUIRE_MATCHING_USERNAME_FOR_DELETIONS_FLAG     => 0,
     -REQUIRE_MATCHING_GROUP_FOR_DELETIONS_FLAG        => 0,
