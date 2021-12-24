@@ -184,6 +184,7 @@ use SiteSetup;
     $FAVICON_TYPE            = $SetupVariables->{-FAVICON_TYPE};
     $SiteName                =  $CGI->param('site')|| $SetupVariables->{-FAVICON_TYPE};
     $site                    = $SetupVariables->{-DATASOURCE_TYPE};
+    $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
     $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'/home/grindrod/Datafiles/';
     $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
     $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
