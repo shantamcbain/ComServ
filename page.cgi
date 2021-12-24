@@ -259,7 +259,8 @@ if ($CGI->param('site')){
 
 
 
-if ($username eq "Shanta") {$search = 1;
+if ($username eq "Shanta") {
+  $search = 1;
   $allow_add = 1;
   $allow_mod = 1;
   $allow_del = 1;  
@@ -271,8 +272,9 @@ if ($username eq "Shanta") {$search = 1;
      $group eq "CSCDev_Admin" or
      $group eq "Brew_Admin" or
      $group eq "ECF_Admin" or
-     $group eq "UULC" or
-     $group eq "USBM") {$search = 1;
+     $group eq "ULC" or
+     $group eq "USBM") {
+  $search = 1;
   $allow_add = 1;
   $allow_mod = 1;
   $allow_del = 1;  
@@ -282,10 +284,6 @@ $apsubmenu = 'ApplicationSubMenuView';
 
 
 
-#$page_top_view    = $CGI->param('page_top_view')||$page_top_view;
-#$page_bottom_view = $CGI->param('page_bottom_view')||$page_bottom_view;
-#$page_left_view   = $CGI->param('page_left_view')||$page_left_view;
-#$page_left_view = "LeftPageView";
 
 
 ######################################################################
