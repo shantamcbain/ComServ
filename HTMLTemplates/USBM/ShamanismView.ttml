@@ -23,14 +23,16 @@
 
 
 <ul>
- <li>Lesson One </li> 
+ <li><a href="page.cgi?site=ULC&[% session_string %]&display_details_view.x&record_id=271&Shaman course lesson 6">Lesson One </a> did not actuality get this lesson</li>
  <li><a href="page.cgi?site=ULC&[% session_string %]&display_details_view.x&record_id=271&Shaman course lesson 6">Lesson 2 </a></li>
  <li><a href="page.cgi?site=ULC&[% session_string %]&display_details_view.x&record_id=272&Shaman course lesson 6">Lesson 3 </a></li> 
  <li><a href="page.cgi?site=ULC&[% session_string %]&display_details_view.x&record_id=273&Shaman course lesson 6">Lesson 4</li> 
  <li> <a href="page.cgi?site=ULC&[% session_string %]&display_details_view.x&record_id=274&Shaman course lesson 6">Lesson 5</li> 
  <li><a href="page.cgi?site=ULC&[% session_string %]&isplay_details_view.x&record_id=276&Shaman course lesson 6">Lesson 6 </a> </li> 
  <li><a href="page.cgi?site=ULC&[% session_string %]&isplay_details_view.x&record_id=277&Shaman course lesson 6">Lesson 7 </a> </li> 
- <li><a href="page.cgi?site=ULC&[% session_string %]&isplay_details_view.x&record_id=278&Shaman course lesson 6">Lesson 8 </a>  </li> </ul>
-<li><a href="page.cgi?site=ULC&[% session_string %]&isplay_details_view.x&record_id=279&Shaman course lesson 9">Lesson 9</a> </li> [% END %]
+ <li><a href="page.cgi?site=ULC&[% session_string %]&isplay_details_view.x&record_id=278&Shaman course lesson 6">Lesson 8 </a>  </li> 
+<li><a href="page.cgi?site=ULC&[% session_string %]&isplay_details_view.x&record_id=279&Shaman course lesson 9">Lesson 9</a> </li> 
+</ul>
+[% END %]
 
 
