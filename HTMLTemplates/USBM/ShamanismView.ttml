@@ -31,8 +31,8 @@
  <li><a href="page.cgi?site=ULC&[% session_string %]&isplay_details_view.x&record_id=276&Shaman course lesson 6">Lesson 6 </a> </li> 
  <li><a href="page.cgi?site=ULC&[% session_string %]&isplay_details_view.x&record_id=277&Shaman course lesson 6">Lesson 7 </a> </li> 
  <li><a href="page.cgi?site=ULC&[% session_string %]&isplay_details_view.x&record_id=278&Shaman course lesson 6">Lesson 8 </a>  </li> 
-<li><a href="page.cgi?site=ULC&[% session_string %]&isplay_details_view.x&record_id=279&Shaman course lesson 9">Lesson 9</a> </li> 
-</ul>
+<li><a href="page.cgi?site=ULC&[% session_string %]&isplay_details_view.x&record_id=280&Shaman course lesson 9">Lesson 9</a> </li> 
+<li><a href="page.cgi?site=ULC&[% session_string %]&isplay_details_view.x&record_id=279&Shaman course lesson10">Lesson 10</a> </li></ul>
 [% END %]
 
 
