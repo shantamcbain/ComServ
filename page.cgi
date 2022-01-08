@@ -668,6 +668,7 @@ my @DATASOURCE_FIELD_NAMES =
        news
        status
        share
+       username_of_poster
        mailchimp
        lastupdate
        last_mod_by
