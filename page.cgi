@@ -1243,7 +1243,10 @@ my @VIEW_DISPLAY_PARAMS = (
     -FIELDS_TO_BE_DISPLAYED_AS_MULTI_LINE_TEXT => [qw(
         body
     )],
-    -FIELD_NAME_MAPPINGS     => {
+     -FIELDS_TO_BE_DISPLAYED_AS_HTML_TAG => [qw(
+        body        
+       )],
+-FIELD_NAME_MAPPINGS     => {
         'sitename'     => 'Site Code',
         'body'         => 'Page content',
         'pageheader'   => 'Area above toplinks',
