@@ -1,3 +1,4 @@
+[% ViewVersion = 'v 1.11 /cgi-bin/HTMLTemplates/Default/Hostingiew.ttml,'%]
 [%
 #	$Id: HostingView.ttml,v 1.1 2005/12/13 20:25:14 shanta Exp shanta $
 
@@ -17,6 +18,25 @@
 
 [% END %] 
 [% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
+	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
+   [% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
+   [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
+   [% LastUpdate = data.last_update %]
+   [% SiteUpdate = data.site_last_update %]
+   [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
+   [% SiteDisplayName = data.site_display_name %]
+   [% site = SiteName %]
+   [% Page = data.page_name  %]
+   [% PageSiteName = data.site_display_name %]
+   [% username = data.session_object.getAttribute('-KEY','auth_username') %]
+   [% PrintMode    = data.session_object.getAttribute('-KEY','PrintMode') %]
+   [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
+	[% IF data.session_object %]
+   [% PID  = data.pid %]
+   [% AffiliateID = data.affiliate_number %] 
+   [% session_id = data.session_object.getId() %]
+   [% session_string = "session_id=$session_id" %]
 	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
 	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
 	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
@@ -29,7 +49,13 @@
 
 		<tr>
 		<td >
-		<h3>Sites hosted with us  call data.domain_name </h3>
+		
+		[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+  [% embed  ('InheretedVariablesView') %]
+[% END %] 
+
+		<h3>Sites hosted with us.</h3>
 
 <ul>	
 [% FOREACH link = DBI.query("SELECT * FROM url_tb

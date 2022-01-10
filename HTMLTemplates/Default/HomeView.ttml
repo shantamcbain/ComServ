@@ -9,6 +9,12 @@
 # variables from outside.
 
 %]
+[% IF data.session_object %]
+
+	[% session_id = data.session_object.getId() %]
+       [% session_string = "session_id=$session_id" %]
+
+[% END %] 
 	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
 	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
    [% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
@@ -29,7 +35,7 @@
    [% session_id = data.session_object.getId() %]
    [% session_string = "session_id=$session_id" %]
 
-[% END %]
+
    [% procedure = data.procedure %]
    [% project = data.project  %]
    [% title = data.title %]
