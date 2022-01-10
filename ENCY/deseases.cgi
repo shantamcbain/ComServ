@@ -63,7 +63,7 @@ my $CGI = new CGI() or
 my $SiteName =  $CGI->param('site') || "ENCY";
 my $APP_NAME = "diseases_admin";
 my $APP_NAME_TITLE = 'ENCY Diseases';
-my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+my = 'None Defined for this site.';
 
     my $homeviewname         ;
     my $home_view            ;
@@ -130,6 +130,7 @@ $AUTH_TABLE          = $SetupVariables->{-AUTH_TABLE};
   $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
   $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
   $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
+  my $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
 
   $site = $SetupVariables->{-DATASOURCE_TYPE};
   $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY};

@@ -132,7 +132,8 @@ use SiteSetup;
     $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
     $site_session = $DATAFILES_DIRECTORY.'/Sessions';
     $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-    $page_left_view   = $CGI->param('page_left_view')||$page_left_view;
+    $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
+     page_left_view   = $CGI->param('page_left_view')||$page_left_view;
 
 
 my $VIEW_LOADER = new Extropia::Core::View

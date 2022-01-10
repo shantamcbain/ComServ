@@ -106,7 +106,7 @@ my $allow_additions = 0;
 my $allow_modifications = 0;
 my $username;
 my $last_update = 'September 11, 2015';
-my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+my  = 'None Defined for this site.';
 my $FAVICON;
 my $ANI_FAVICON;
 my $FAVICON_TYPE;
@@ -149,7 +149,8 @@ use SiteSetup;
      $DATAFILES_DIRECTORY    = $APP_DATAFILES_DIRECTORY;
      $site_session           = $DATAFILES_DIRECTORY.'/Sessions';
      $auth                   = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-  
+     my $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
+
      $mail_from              = $CGI->param('email')||$mail_from; 
      $page_top_view          = $CGI->param('page_top_view')||$page_top_view;
      $page_bottom_view       = $CGI->param('page_bottom_view')||$page_bottom_view;

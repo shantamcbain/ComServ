@@ -90,7 +90,7 @@ foreach ($CGI->param()) {
 
 my $APP_NAME = "url"; 
 my $SiteName =  $CGI->param('site');
-my $AppVer = "ver ".$ver." 1.71,January 24, 2020";
+my $AppVer = "ver ".$ver." 1.72,January 10, 2021";
 my $APP_NAME_TITLE = "Links Database";
     my $homeviewname ;
     my $home_view; 
