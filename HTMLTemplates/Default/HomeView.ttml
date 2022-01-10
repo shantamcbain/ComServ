@@ -58,7 +58,7 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td>
-
+[% END %] 
 [% IF data.debug == 1 %]
  [%	ViewVersion %] 	
   [% embed  ('InheretedVariablesView') %]
@@ -148,8 +148,6 @@
 		[% ELSIF SiteName == "IM" OR
 		         SiteName == "IMDev"  %]
 			[% embed ('IMHomeView') %]
-		[% ELSIF SiteName == "Kamasket" %]
-			[% embed ('KamasketHomeView') %]
 		[% ELSIF SiteName == "LandTrust" OR
 		         SiteName == "LandTrustDev"  %]
 			[% embed ('LtrustHomeView') %]
