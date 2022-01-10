@@ -63,7 +63,7 @@ my $CGI = new CGI() or
 my $SiteName =  $CGI->param('site') || "ENCY";
 my $APP_NAME = "diseases_admin";
 my $APP_NAME_TITLE = 'ENCY Diseases';
-my = 'None Defined for this site.';
+my $SITE_DISPLAY_NAME= 'None Defined for this site.';
 
     my $homeviewname         ;
     my $home_view            ;
@@ -679,28 +679,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
         -MAXLENGTH    => 80
     ],
 
-    reference => [
-        -DISPLAY_NAME => 'reference',
-        -TYPE         => 'scrolling_list',
-        -NAME         => 'reference',
-        -VALUES       => [
-            '6.  Back to Eden, Jethro Kloss.',
-            '10. Dominion Herbal Collage.',
-            '1.  The Encyclopedia of Herbs and Herbalism. Stuart.',
-            '2.  The Herb Book. John Lust.',
-            '24. The Herbalist. Joseph E Meyer.',
-            '3.  Indian Herbology of North America. Alma Hutchens.',
-            '27. Kings Dispensary',
-            '22. Natural Healing With Herbs. Humbart Santillo.',
-            '4.  Modern Encyclopedia of herbs. Joseph Kadans.',
-            '11. Normay Myers Course',
-            '21. Peoples Desk Reference. E. Joseph Montagna.',
-            '22. School of Natural Healng. Dr. John Christopher',
-            '25. Shanta McBain Personal use and experiance', #/12-Count',
-         ], 
-        -SIZE         => 5,
-        -MULTIPLE     => 1
-    ],
+    
 
     flowers => [
         -DISPLAY_NAME => 'Flowers',
@@ -915,10 +894,41 @@ else{
 #        record_id        => 'Autoincrement'
 #    },
 #);
+my @REFRENCE_DATASOURCE_FIELD_NAMES = qw(
+         record_id
+        reference_code
+        title
+        share
+        pages
+        date_of_publication
+        location
+        isbn
+	url
+        comments
+        username_of_poster
+        group_of_poster
+        date_time_posted
+        
+        
+);
+
+my @REF_DATASOURCE_CONFIG_PARAMS = (
+	        -TYPE         => 'DBI',
+	        -DBI_DSN      => $DBI_DSN,
+	        -TABLE        => 'ency_reference_tb',
+	        -USERNAME     => $AUTH_MSQL_USER_NAME,
+	        -PASSWORD     => $MySQLPW,
+	        -FIELD_NAMES  => \@REFRENCE_DATASOURCE_FIELD_NAMES,
+	        -KEY_FIELDS   => ['username'],
+	        -FIELD_TYPES  => {
+	            record_id        => 'Autoincrement'
+	        },
+	);
 
 my @DATASOURCE_CONFIG_PARAMS = (
     -BASIC_DATASOURCE_CONFIG_PARAMS     => \@BASIC_DATASOURCE_CONFIG_PARAMS,
-    -AUTH_USER_DATASOURCE_CONFIG_PARAMS => \@AUTH_USER_DATASOURCE_PARAMS
+    -AUTH_USER_DATASOURCE_CONFIG_PARAMS => \@AUTH_USER_DATASOURCE_PARAMS,
+    -REF_DATASOURCE_CONFIG_PARAMS       => \@REF_DATASOURCE_CONFIG_PARAMS,
 );
 
 ######################################################################
@@ -1211,6 +1221,7 @@ my @VIEW_FILTERS_CONFIG_PARAMS = (
 
 my @ACTION_HANDLER_LIST = 
     qw(
+       ENCY::PopulateInputWidgetDefinitionListWithReferenceWidgetAction
        Default::SetSessionData
        Default::DisplayCSSViewAction
        Default::ProcessConfigurationAction
