@@ -19,7 +19,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 0.03, December, 2021";
+my $AppVer = "ver 0.04, January 10, 2022";
 BEGIN{
     use vars qw(@dirs);
     @dirs = qw(../Modules
@@ -97,14 +97,15 @@ my $SITE_DISPLAY_NAME = 'None Defined for this site.';
     my $auth;
     my $datafile;
     my $HasMembers = 0;
-
+    my $Affiliate = 001;
+    my $pid        = '15';
   my $UseModPerl = 0;
   my $SiteNameSetup = $SiteName."Setup";
   use SiteSetup;
   my $SetupVariables  = new SiteSetup($UseModPerl);
   $APP_NAME_TITLE        = $SiteName.": ". $APP_NAME_TITLE;
-
-
+  $Affiliate             = $SetupVariables->{-AFFILIATE};
+  $pid                   = $SetupVariables->{-PID};
   $home_view             = $SetupVariables->{-HOME_VIEW}; 
   $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
   $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
@@ -1243,6 +1244,8 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -ADD_ACKNOWLEDGEMENT_VIEW_NAME          => 'AddAcknowledgementView',
     -ADD_EMAIL_BODY_VIEW                    => 'AddEventEmailView',
     -ADD_FORM_VIEW_NAME                     => 'AddRecordView',
+    -AFFILIATE_NUMBER                     => $Affiliate,
+    -PID                                  => $pid,
     -ALLOW_ADDITIONS_FLAG                   => 1,
     -ALLOW_DELETIONS_FLAG                   => 0,
     -ALLOW_DUPLICATE_ENTRIES                => 0,

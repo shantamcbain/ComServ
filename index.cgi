@@ -162,12 +162,6 @@ my $HostName   = $ENV{'SERVER_NAME'};
 my $pid        = '15';
 my $site_for_search = 0;
 
-#if ($HostName = 'localhost'){
-#    $MySQLPW       = 'herbs2',
-#    $DBI_DSN                    = 'mysql:database=work';
-#    $AUTH_MSQL_USER_NAME        = 'work';
-
-#}
 
 my $VIEW_LOADER =
   new Extropia::Core::View( \@VIEWS_SEARCH_PATH, \@TEMPLATES_SEARCH_PATH )

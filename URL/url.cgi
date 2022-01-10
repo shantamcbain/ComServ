@@ -137,6 +137,7 @@ my $APP_NAME_TITLE = "Links Database";
     my $shop ;
     my $url_tb;
     my $Affiliate = 001;
+    my $pid        = '15';
     my $HasMembers = 0;
     
 use SiteSetup;
@@ -179,6 +180,8 @@ use SiteSetup;
     my  $FAVICON                = $SetupVariables->{-FAVICON};
     my $ANI_FAVICON            = $SetupVariables->{-ANI_FAVICON};
     my $FAVICON_TYPE          = $SetupVariables->{-FAVICON_TYPE};
+    $Affiliate           = $SetupVariables->{-AFFILIATE};
+    $pid                     = $SetupVariables->{-PID};
 
 my $VIEW_LOADER = new Extropia::Core::View
     (\@VIEWS_SEARCH_PATH,\@TEMPLATES_SEARCH_PATH) or
@@ -1485,6 +1488,7 @@ my @ACTION_HANDLER_LIST =
 my @ACTION_HANDLER_ACTION_PARAMS = (
     -ACTION_HANDLER_LIST                    => \@ACTION_HANDLER_LIST,
     -AFFILIATE_NUMBER                       => $Affiliate,
+    -PID                                    => $pid,
     -ADD_ACKNOWLEDGEMENT_VIEW_NAME          => 'AddAcknowledgementView',
     -ADD_EMAIL_BODY_VIEW                    => 'AddEventEmailView',
     -ADD_FORM_VIEW_NAME                     => 'AddRecordView',
