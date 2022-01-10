@@ -860,6 +860,7 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = qw(
         medical_uses
         chinese
         history
+        contra_indications
         url
         comments
         reference
@@ -1304,7 +1305,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -REQUIRE_MATCHING_GROUP_FOR_DELETIONS_FLAG        => 0,
     -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG     => 0,
     -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG        => 0,
-    -SEND_EMAIL_ON_DELETE_FLAG              => 0,
+    -SEND_EMAIL_ON_DELETE_FLAG              => 1,
     -SEND_EMAIL_ON_MODIFY_FLAG              => 1,
     -SEND_EMAIL_ON_ADD_FLAG                 => 1,
     -SESSION_OBJECT                         => $SESSION,
