@@ -608,19 +608,19 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
         -WRAP         => 'VIRTUAL'
     ],
 
-    cultivation => [
-        -DISPLAY_NAME => 'Cultivation',
+    herbs => [
+        -DISPLAY_NAME => 'Herbs Used',
         -TYPE         => 'textarea',
-        -NAME         => 'cultivation',
+        -NAME         => 'herbs',
         -ROWS         => 6,
         -COLS         => 50,
         -WRAP         => 'VIRTUAL'
     ],
 
-    dosage => [
-        -DISPLAY_NAME => 'Dosage',
+    diet => [
+        -DISPLAY_NAME => 'Diet',
         -TYPE         => 'textarea',
-        -NAME         => 'dosage',
+        -NAME         => 'diet',
         -ROWS         => 6,
         -COLS         => 50,
         -WRAP         => 'VIRTUAL'
@@ -858,6 +858,8 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = qw(
         visibility
         description   
         medical_uses
+        diet
+        herbs
         chinese
         history
         contra_indications
@@ -1024,12 +1026,12 @@ my @VIEW_DISPLAY_PARAMS = (
         therapeutic_action
         desease_code
         name
-        display_name
+        diet
         description
         comments
         medical_uses
         active
-        visibility
+        herbs
         leaves
         fruit
         taste
@@ -1068,8 +1070,8 @@ my @VIEW_DISPLAY_PARAMS = (
         therapeutic_action	=> 'Therapeutic Action',
         non_med                	=> 'Non Medical Uses',
         history	                => 'History',
-        cultivation          	=> 'Cultivation',
-        harvest          	=> 'Harvest',
+        diet          	=> 'Diet',
+        herbs          	=> 'Herbs',
         sister_plants          	=> 'Sister Plants',
         preparation	        => 'Preparation',
         vetrinary	        => 'Vetrinary',
@@ -1103,7 +1105,9 @@ my @VIEW_DISPLAY_PARAMS = (
         display_name
         therapeutic_action
         description
-        comments
+         diet          	
+        herbs         
+       comments
         medical_uses
         active
         visibility
