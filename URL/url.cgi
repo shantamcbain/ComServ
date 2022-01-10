@@ -985,6 +985,7 @@ if ($group eq "BMaster_admin" ||
       qw(url),
       qw(view_name),
       qw(link_order),
+      qw(share),
       qw(target),
     );
   }else{
@@ -1377,6 +1378,7 @@ my @VIEW_DISPLAY_PARAMS = (
         'subject'            => 'Subject category ',
         'name'               => 'Name of resource',
         'description'        => 'Description of resource',
+        'share'              => 'Share',
         'url'                => 'URL',
         'comments'           => 'Comments'
         },
@@ -1392,6 +1394,7 @@ my @VIEW_DISPLAY_PARAMS = (
         name 
         sitename
         description
+        share
         url
         )],
     -SORT_FIELDS             => [qw(
