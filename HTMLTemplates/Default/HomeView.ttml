@@ -24,7 +24,8 @@
    [% PrintMode    = data.session_object.getAttribute('-KEY','PrintMode') %]
    [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
 	[% IF data.session_object %]
-
+   [% PID  = data.pid %]
+   [% AffiliateID = data.affiliate_number %] 
    [% session_id = data.session_object.getId() %]
    [% session_string = "session_id=$session_id" %]
 
