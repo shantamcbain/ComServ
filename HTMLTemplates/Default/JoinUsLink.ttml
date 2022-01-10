@@ -25,6 +25,7 @@
  [% END %]     
 
 
+<a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=114&carttpl=legacy_boxes">Join our Site</a>
 
- <a href="http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=[% PID %]&amp;aff=[% AffiliateID %]&carttpl=legacy_boxes" target="_blank">Join our Site</a>! </h2>
+ <a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=[% PID %]&amp;aff=[% AffiliateID %]&carttpl=legacy_boxes" target="_blank">Join our Site</a>! </h2>
 
