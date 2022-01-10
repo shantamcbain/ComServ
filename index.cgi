@@ -159,7 +159,7 @@ my $Page_tb;
 my $HasMembers = 0;
 my $OffLine    = 'yes';
 my $HostName   = $ENV{'SERVER_NAME'};
-
+my $pid        = '15';
 my $site_for_search = 0;
 
 #if ($HostName = 'localhost'){
@@ -217,6 +217,7 @@ $ANI_FAVICON             = $SetupVariables->{-ANI_FAVICON};
 $FAVICON_TYPE            = $SetupVariables->{-FAVICON_TYPE};
 $site                    = $SetupVariables->{-DATASOURCE_TYPE};
 $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
+$pid                     = $SetupVariables->{-PID};
 $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY};
 $TEMPLATES_CACHE_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY . $SetupVariables->{ -TEMPLATES_CACHE_DIRECTORY, };
 $APP_DATAFILES_DIRECTORY = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
@@ -1327,6 +1328,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
  -ACTION_HANDLER_LIST                  => \@ACTION_HANDLER_LIST,
  -APP_VER                              => $AppVer,
  -AFFILIATE_NUMBER                     => $Affiliate,
+ -PID                                  => $pid,
  -ADD_ACKNOWLEDGEMENT_VIEW_NAME        => 'AddAcknowledgementView',
  -ADD_EMAIL_BODY_VIEW                  => 'AddEventEmailView',
  -ADD_FORM_VIEW_NAME                   => 'AddRecordView',
@@ -1451,3 +1453,4 @@ my $APP =
 
 #print "Content-type: text/html\n\n";
 print $APP->execute();
+$SITE_DISPLAY_NAME
