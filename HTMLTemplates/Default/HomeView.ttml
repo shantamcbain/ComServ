@@ -63,6 +63,7 @@
 	[% ELSE %]
 	  <h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %]! </h3> 
 	[% END %]
+[% embed ("JoinUsLink")%]	
 [% embed ("AdminTodoListLink")%]	
 		[% SiteName = data.site_name%]
 [% IF procedure %]
