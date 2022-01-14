@@ -16,6 +16,7 @@
 
 
 use strict; use warnings;
+my $AppVer = "ver 1.80, Dec 14, 2022";
 
 # GNU General Public License for more details.
 #
@@ -197,7 +198,7 @@ $mail_from                  = $SetupVariables->{-MAIL_FROM};
 $mail_to                    = $SetupVariables->{-MAIL_TO};
 $mail_replyto               = $SetupVariables->{-MAIL_REPLYTO};
 $CSS_VIEW_NAME              = $SetupVariables->{-CSS_VIEW_NAME};
-$CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
+$CSS_VIEW_URL               = $SetupVariables->{-CSS_VIEW_NAME};
 $app_logo                   = $SetupVariables->{-APP_LOGO};
 $app_logo_height            = $SetupVariables->{-APP_LOGO_HEIGHT};
 $app_logo_width             = $SetupVariables->{-APP_LOGO_WIDTH};
@@ -253,8 +254,6 @@ my $SESSION_MGR =
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL =
-  $CGI->script_name() . "?display_css_view=on&session_id=$SESSION_ID";
 
 if ( $CGI->param('site') )
 {
@@ -1150,6 +1149,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -ACTION_HANDLER_LIST                  => \@ACTION_HANDLER_LIST,
     -ADD_ACKNOWLEDGEMENT_VIEW_NAME        => 'AddAcknowledgementView',
     -AFFILIATE_NUMBER                     => $Affiliate,
+    -APP_VER                              => $AppVer,
     -DELETE_ACKNOWLEDGEMENT_VIEW_NAME     => 'DeleteAcknowledgementView',
     -MODIFY_ACKNOWLEDGEMENT_VIEW_NAME     => 'ModifyAcknowledgementView',
     -POWER_SEARCH_VIEW_NAME               => 'PowerSearchFormView',

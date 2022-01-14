@@ -141,7 +141,7 @@ my $mail_to_user;
 my $mail_to_member;
 my $mail_to_discussion;
 my $LineStatus        = "yes";
-my $last_update       = 'January 13, 2020';
+my $last_update       =  $AppVer|| 'January 13, 2020';
 my $SITE_DISPLAY_NAME = 'None Defined for this site.';
 my $FAVICON;
 my $ANI_FAVICON;

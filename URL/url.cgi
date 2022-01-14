@@ -24,6 +24,7 @@
 my $ver="1.71";
 
 use strict;
+my $AppVer = "ver 1.16, January 14, 2022";
 
 BEGIN{
     use vars qw(@dirs);
@@ -90,7 +91,7 @@ foreach ($CGI->param()) {
 
 my $APP_NAME = "url"; 
 my $SiteName =  $CGI->param('site');
-my $AppVer = "ver ".$ver." 1.72,January 10, 2021";
+my $AppVer = $AppVer || " 1.72,January 10, 2021";
 my $APP_NAME_TITLE = "Links Database";
     my $homeviewname ;
     my $home_view; 
@@ -161,27 +162,28 @@ use SiteSetup;
     $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
     $app_logo              = $SetupVariables->{-APP_LOGO};
     $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
-    $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
-    $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
-    $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
-    $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
-    $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
-    $CSS_VIEW_URL          = $SetupVariables->{-CSS_VIEW_NAME};
-    $site = $SetupVariables->{-DATASOURCE_TYPE};
+    $app_logo_width             = $SetupVariables->{-APP_LOGO_WIDTH};
+    $app_logo_alt               = $SetupVariables->{-APP_LOGO_ALT};
+    $IMAGE_ROOT_URL             = $SetupVariables->{-IMAGE_ROOT_URL}; 
+    $DOCUMENT_ROOT_URL          = $SetupVariables->{-DOCUMENT_ROOT_URL};
+    $LINK_TARGET                = $SetupVariables->{-LINK_TARGET};
+    $HTTP_HEADER_PARAMS         = $SetupVariables->{-HTTP_HEADER_PARAMS};
+    $CSS_VIEW_NAME              = $SetupVariables->{-CSS_VIEW_NAME};
+    $CSS_VIEW_URL               = $SetupVariables->{-CSS_VIEW_NAME};
+    $site                       = $SetupVariables->{-DATASOURCE_TYPE};
+    $SITE_DISPLAY_NAME          = $SetupVariables->{-SITE_DISPLAY_NAME};
     $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
     $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
     $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
-    $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
-    $site_session = $DATAFILES_DIRECTORY.'/Sessions';
-    $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-    my $LocalIp            = $SetupVariables->{-LOCAL_IP};
+    $DATAFILES_DIRECTORY        = $APP_DATAFILES_DIRECTORY;
+    $site_session               = $DATAFILES_DIRECTORY.'/Sessions';
+    $auth                       = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+    my $LocalIp                 = $SetupVariables->{-LOCAL_IP};
     my  $FAVICON                = $SetupVariables->{-FAVICON};
-    my $ANI_FAVICON            = $SetupVariables->{-ANI_FAVICON};
-    my $FAVICON_TYPE          = $SetupVariables->{-FAVICON_TYPE};
-    $Affiliate           = $SetupVariables->{-AFFILIATE};
-    $pid                     = $SetupVariables->{-PID};
+    my $ANI_FAVICON             = $SetupVariables->{-ANI_FAVICON};
+    my $FAVICON_TYPE            = $SetupVariables->{-FAVICON_TYPE};
+    $Affiliate                  = $SetupVariables->{-AFFILIATE};
+    $pid                        = $SetupVariables->{-PID};
 
 my $VIEW_LOADER = new Extropia::Core::View
     (\@VIEWS_SEARCH_PATH,\@TEMPLATES_SEARCH_PATH) or
@@ -1389,7 +1391,7 @@ my @VIEW_DISPLAY_PARAMS = (
     -LINK_TARGET             =>  $LINK_TARGET,
     -ROW_COLOR_RULES         => \@ROW_COLOR_RULES,
     -SCRIPT_DISPLAY_NAME     => $APP_NAME_TITLE,
-    -SITE_DISPLAY_NAME       =>  $SITE_DISPLAY_NAME,
+    -SITE_DISPLAY_NAME       => $SITE_DISPLAY_NAME,
     -SCRIPT_NAME             => $CGI->script_name(),
     -HTTP_HEADER_PARAMS      => $HTTP_HEADER_PARAMS,
     -HOME_VIEW               => 'BasicDataView',
@@ -1488,6 +1490,7 @@ my @ACTION_HANDLER_LIST =
 my @ACTION_HANDLER_ACTION_PARAMS = (
     -ACTION_HANDLER_LIST                    => \@ACTION_HANDLER_LIST,
     -AFFILIATE_NUMBER                       => $Affiliate,
+    -APP_VER                                => $AppVer,
     -PID                                    => $pid,
     -ADD_ACKNOWLEDGEMENT_VIEW_NAME          => 'AddAcknowledgementView',
     -ADD_EMAIL_BODY_VIEW                    => 'AddEventEmailView',
@@ -1510,12 +1513,12 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -DELETE_ACKNOWLEDGEMENT_VIEW_NAME       => 'DeleteAcknowledgementView',
     -DELETE_RECORD_CONFIRMATION_VIEW_NAME   => 'DeleteRecordConfirmationView',
     -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
-    -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || 50,
+    -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || 100,
     -SORT_FIELD1                            => $CGI->param('sort_field1') || 'category',
     -SORT_FIELD2                            => $CGI->param('sort_field2') || 'subject',
 #    -SORT_DIRECTION                         => $CGI->param('sort_direction') || 'ASEN',
     -SORT_DIRECTION                         => 'ASC',
-    -Debug                               => $CGI->param('debug') || 0,
+    -Debug                                  => $CGI->param('debug') || 0,
     -DELETE_FORM_VIEW_NAME                  => 'DetailsRecordView',
     -DELETE_EMAIL_BODY_VIEW                 => 'DeleteEventEmailView',
     -DETAILS_VIEW_NAME                      => 'DetailsRecordView',
@@ -1538,7 +1541,6 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -URL_ENCODED_ADMIN_FIELDS_VIEW_NAME     => 'URLEncodedAdminFieldsView',
     -LAST_UPDATE                            => $last_update,
     -SITE_LAST_UPDATE                       => $site_update,
-  	 -APP_VER                                => $AppVer,
   	 -LOCAL_IP                               => $LocalIp,
     -LOG_CONFIG_PARAMS                      => \@LOG_CONFIG_PARAMS,
     -MODIFY_ACKNOWLEDGEMENT_VIEW_NAME       => 'ModifyAcknowledgementView',
