@@ -78,6 +78,7 @@ my $APP_NAME_TITLE = $SiteName."Inventory  Manager";
     my $mail_to;
     my $mail_replyto;
     my $CSS_VIEW_NAME;
+    my $CSS_VIEW_URL = $CSS_VIEW_NAME;
     my $app_logo;
     my $app_logo_height;
     my $app_logo_width;
@@ -103,7 +104,7 @@ my $APP_NAME_TITLE = $SiteName."Inventory  Manager";
     my $additonalautusernamecomments;
     my $SetupVariables  ;
     my $CAL_TABLE;
-    my $TableName;
+    my $TableName = 'apis_inventory_tb' ;
 	my $sitename;
         my $ProjectTableName;
     my $FAVICON;
@@ -146,6 +147,7 @@ use SiteSetup;
     $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
     $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
     $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
+    $CSS_VIEW_URL            = $SetupVariables->{-CSS_VIEW_NAME};
     $site_session = $DATAFILES_DIRECTORY.'/Sessions';
     $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
     $page_left_view   = $CGI->param('page_left_view')||$page_left_view;
@@ -187,7 +189,6 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
@@ -206,141 +207,6 @@ if ($CGI->param('site')){
 }
 $group = $SESSION ->getAttribute(-KEY => 'group')||'none';
 
-if ($SiteName eq "Apis") {
-use ApisSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesApis   = new ApisSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesApis->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesApis->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesApis->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesApis->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesApis->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesApis->{-APP_LOGO_ALT};
-    $APP_DATAFILES_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.'/Apis';
-     $TableName              = 'apis_inventory_tb';
- }
-#else {
-#    $APP_NAME_TITLE        = "Computer System Consulting.ca";
-#    $homeviewname          = 'HelpDeskHomeView';
-
-#}
-#   $homeviewname            = 'BasicDataView';
- elsif ($SiteName eq "ECF") {
-use ECFSetup;
-  my $SetupVariablesECF    = new  ECFSetup($UseModPerl);
-    $CSS_VIEW_NAME         = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $AUTH_TABLE            = $SetupVariablesECF->{-AUTH_TABLE};
-    $app_logo              = $SetupVariablesECF->{-APP_LOGO};
-    $app_logo_height       = $SetupVariablesECF->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariablesECF->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariablesECF->{-APP_LOGO_ALT};
-    $APP_NAME_TITLE        = "Eagle Creek Farms: Apis";
-    $homeviewname          = $SetupVariablesECF->{-HOME_VIEW_NAME};
-    $home_view             = $SetupVariablesECF->{-HOME_VIEW};
-#Mail settings
-    $mail_from             = $SetupVariablesECF->{-MAIL_FROM};
-    $mail_to               = $SetupVariablesECF->{-MAIL_TO};
-    $mail_replyto          = $SetupVariablesECF->{-MAIL_REPLYTO};
-    $HTTP_HEADER_PARAMS    = $SetupVariablesECF->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_KEYWORDS  = $SetupVariablesECF->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariablesECF->{-HTTP_HEADER_DESCRIPTION};
-    $CSS_VIEW_URL            = $SetupVariablesECF->{-CSS_VIEW_NAME};
-    $APP_DATAFILES_DIRECTORY = $GLOBAL_DATAFILES_DIRECTORY.'/ECF'; 
-     $TableName              = 'apis_inventory_tb';
-}
- 
-elsif ($SiteName eq "BeeCoop") {
-use BMasterSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesBMaster   = new BMasterSetup($UseModPerl);
-     $HasMembers               = $SetupVariablesBMaster->{-HAS_MEMBERS};
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesBMaster->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesBMaster->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesBMaster->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesBMaster->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesBMaster->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesBMaster->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesBMaster->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesBMaster->{-APP_LOGO_ALT};
-     $homeviewname            = 'HomeView'||$SetupVariablesBMaster->{-HOME_VIEW_NAME};
-     $home_view               = 'CoopHomeView'||$SetupVariablesBMaster->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-#     $last_update             = $SetupVariablesBMaster->{-SITE_LAST_UPDATE}; 
- #Mail settings
-     $mail_from               = $SetupVariablesBMaster->{-MAIL_FROM};
-     $mail_to                 = $SetupVariablesBMaster->{-MAIL_TO};
-     $mail_replyto            = $SetupVariablesBMaster->{-MAIL_REPLYTO};
- #    $SITE_DISPLAY_NAME       = 'BeeMaster.ca Co-Op';
-     $FAVICON                = $SetupVariablesBMaster->{-FAVICON};
-     $ANI_FAVICON            = $SetupVariablesBMaster->{-ANI_FAVICON};
-     $page_top_view           = $SetupVariablesBMaster->{-PAGE_TOP_VIEW};
-     $FAVICON_TYPE          = $SetupVariablesBMaster->{-FAVICON_TYPE};
-}
- 
-elsif ($SiteName eq "BMaster" or
-       $SiteName eq "BMasterDev" ) {
-use BMasterSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesBMaster   = new BMasterSetup($UseModPerl);
-     $APP_NAME_TITLE          = "Beemaster.ca ";
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesBMaster->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesBMaster->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesBMaster->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesBMaster->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesBMaster->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesBMaster->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesBMaster->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesBMaster->{-APP_LOGO_ALT};
-     
-    if ($group eq "Mentoring"){
-     $home_view               = 'MentoringHomeView';
-     $homeviewname            = $home_view;
-    }else{
-     $homeviewname            = $SetupVariablesBMaster->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesBMaster->{-HOME_VIEW};
-     }
-     $CSS_VIEW_URL            = $SetupVariablesBMaster->{-CSS_VIEW_NAME};
-#     $last_update             = $SetupVariablesBMaster->{-LAST_UPDATE}; 
- #Mail settings
-    $mail_from                = $SetupVariablesBMaster->{-MAIL_FROM};
-    $mail_to                  = $SetupVariablesBMaster->{-MAIL_TO};
-    $mail_replyto             = $SetupVariablesBMaster->{-MAIL_REPLYTO};
- #   $SITE_DISPLAY_NAME        = $SetupVariablesBMaster->{-SITE_DISPLAY_NAME};
-    $FAVICON                  = '/images/apis/favicon.ico'||$SetupVariablesBMaster->{-FAVICON}||'/images/apis/favicon.ico';
-    $ANI_FAVICON              = $SetupVariablesBMaster->{-ANI_FAVICON};
-    $page_top_view            = $SetupVariablesBMaster->{-PAGE_TOP_VIEW};
-}
-
-
-elsif ($SiteName eq "OKB" or
-       $SiteName eq "OKBDev" 
-       ) {
-use OKbeekeeperSetup;
-  my $UseModPerl = 0;
-  my $SetupVariablesOKB   = new OKbeekeeperSetup($UseModPerl);
-     $HTTP_HEADER_KEYWORDS    = $SetupVariablesOKB->{-HTTP_HEADER_KEYWORDS};
-     $HTTP_HEADER_PARAMS      = $SetupVariablesOKB->{-HTTP_HEADER_PARAMS};
-     $HTTP_HEADER_DESCRIPTION = $SetupVariablesOKB->{-HTTP_HEADER_DESCRIPTION};
-     $CSS_VIEW_NAME           = $SetupVariablesOKB->{-CSS_VIEW_NAME};
-     $AUTH_TABLE              = $SetupVariablesOKB->{-AUTH_TABLE};
-     $app_logo                = $SetupVariablesOKB->{-APP_LOGO};
-     $app_logo_height         = $SetupVariablesOKB->{-APP_LOGO_HEIGHT};
-     $app_logo_width          = $SetupVariablesOKB->{-APP_LOGO_WIDTH};
-     $app_logo_alt            = $SetupVariablesOKB->{-APP_LOGO_ALT};
-     $homeviewname            = $SetupVariablesOKB->{-HOME_VIEW_NAME};
-     $home_view               = $SetupVariablesOKB->{-HOME_VIEW};
-     $CSS_VIEW_URL            = $SetupVariablesOKB->{-CSS_VIEW_NAME};
-#     $last_update             = $SetupVariablesOKB->{-LAST_UPDATE};   
-#Mail settings
-    $mail_from                = $SetupVariablesOKB->{-MAIL_FROM};
-    $mail_to                  = $SetupVariablesOKB->{-MAIL_TO};
-    $mail_replyto             = $SetupVariablesOKB->{-MAIL_REPLYTO};
-#	 $mail_to_user             = $SetupVariablesOKB->{-MAIL_TO_USER};
-#	 $mail_to_member           = $SetupVariablesOKB->{-MAIL_TO_Member};
-#	 $mail_to_discussion       = $SetupVariablesOKB->{-MAIL_TO_DISCUSSION};
- }
  $left_page_view = $page_left_view;
  ######################################################################
 #                       AUTHENTICATION SETUP                         #
@@ -591,9 +457,9 @@ my @ADD_FORM_DHM_CONFIG_PARAMS = (
             -FIELDS => [qw(
                 status
                 item_name
+                item_code
                 project_code
                 start_day
-                location
                 client_name
             )]
         ]
@@ -701,12 +567,20 @@ my @months = qw(January February March April May June July August
 my %months;
 @months{1..@months} = @months;
 my %years = ();
-$years{$_} = $_ for (2014..2020);
+$years{$_} = $_ for (2021..2035);
 my %days  = ();
 $days{$_} = $_ for (1..31);
 
 my %BASIC_INPUT_WIDGET_DEFINITIONS = (
-    status => [
+    sitename => [
+        -DISPLAY_NAME => 'Site name code',
+        -TYPE         => 'textfield',
+        -NAME         => 'sitename',
+        -VALUE        => $SiteName,
+        -SIZE         => 30,
+        -MAXLENGTH    => 80
+    ],
+  status => [
         -DISPLAY_NAME => 'Status',
         -TYPE         => 'popup_menu',
         -NAME         => 'status',
@@ -831,8 +705,9 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 );
   
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = (
-        qw(status),
-        qw(item_code),
+       qw(sitename),
+       qw(status),
+       qw(item_code),
        qw(item_name),
        qw(discription),
        qw(number),
@@ -1340,13 +1215,13 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -REQUIRE_AUTH_FOR_VIEWING_DETAILS_FLAG  => 0,
     -REQUIRE_MATCHING_USERNAME_FOR_MODIFICATIONS_FLAG => 0,
     -REQUIRE_MATCHING_USERNAME_FOR_DELETIONS_FLAG     => 0,
-    -REQUIRE_MATCHING_GROUP_FOR_MODIFICATIONS_FLAG    => 1,
+    -REQUIRE_MATCHING_GROUP_FOR_MODIFICATIONS_FLAG    => 0,
     -REQUIRE_MATCHING_GROUP_FOR_DELETIONS_FLAG        => 0,
     -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG     => 0,
-    -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG        => 1,
-    -SEND_EMAIL_ON_DELETE_FLAG              => 0,
-    -SEND_EMAIL_ON_MODIFY_FLAG              => 0,
-    -SEND_EMAIL_ON_ADD_FLAG                 => 0,
+    -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG        =>0,
+    -SEND_EMAIL_ON_DELETE_FLAG              => 1,
+    -SEND_EMAIL_ON_MODIFY_FLAG              => 1,
+    -SEND_EMAIL_ON_ADD_FLAG                 => 1,
     -SESSION_OBJECT                         => $SESSION,
     -SESSION_TIMEOUT_VIEW_NAME              => 'SessionTimeoutErrorView',
     -SIMPLE_SEARCH_BOX_VIEW_NAME            => 'SimpleSearchBoxView',

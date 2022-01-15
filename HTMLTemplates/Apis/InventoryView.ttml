@@ -1,4 +1,4 @@
-[%#	$Id: InventoryView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
+[% ViewVersion = 'v 0.14 /cgi-bin/HTMLTemplates/Apis/InventoryView.ttml,'%][%#	$Id: /HTMLTemplates/Apis/InventoryView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
 
 # Ideally this template should be converted into a static CSS file and
 # be served as /foo/bar.css and not via CGI, since it slows things
@@ -13,31 +13,17 @@
 
 [% embed('ErrorDisplayView') %]
 
- [% IF data.session_object %]
-
-	[% session_id = data.session_object.getId() %]
-        [% session_string = "session_id=$session_id" %]
-
+ 
 [% END %] 
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-        [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
-	[%# LastUpdate = data.last_update %]
-	[% LastUpdate = 'Nov 18, 2004'%]
- [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
- [% script_name = data.app_name %]
-[% localip = data.local_ip %]
 [% TotalComb        = 0 %] 
 [% total_boxInuse = 0 %]
-
-	    [% total_comb = stored_comb  %]
-
+[% total_comb = stored_comb  %]
 
 
 
 
+[% PROCESS DefautVariables.ttml %]
+  
 [% PROCESS DefaultDbi.ttml %]
 [% PROCESS ActiveQueensSQL.ttml %]
 [% PROCESS ApisInventorySQL.ttml %]
@@ -245,11 +231,12 @@
 <br>
 <br>
 <h4>Current bee inventory</h4>
-<p>Current active bees. [% ActiveQueens %]
+<p>Current active bees. [% ActiveQueens %]	 This is a query to ActiveQueensSQl
 <table cellpadding="1" cellspacing="0" border="0" width="100%">
 <th>Hive type</th><th>location</th><th>number</th>
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  ( item_code  LIKE  '%winteringunit%'
+	                                WHERE  ( item_code  LIKE  '%winteringunit%' AND
+	                                         sitename   =  '$SiteName' 
 	                                        )
  	                            ")%]  
  <tr><td>[% item.item_name %]</td><td>[%# item.location %]</td><td>[%# item.er %]</td>
@@ -257,6 +244,7 @@
 	    [% total_item_cost = total_item_cost + item.number %]
 	    [% total_item_cost = total_item_cost + 3 %]
 [% END %]
+
 [%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
 	                                WHERE  ( item_code  LIKE  '%2box%'
 	                                        )

@@ -20,14 +20,14 @@
 
 
 <ul>
- <li><h3>Set up Honey house and Shop.</h3>
+ <li><h3>Set up Honey house and <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisShopHome">Shop</a>.</h3>
    </li><li><h3>Setup bee yards </h3>
   <ul>
     <li>Teaching Yard</li>
      <ul>
       <li><h2>Temporary teaching yard</h2> 
          <p>We are setup primarily set up for video recordings. We are creating a season long view of the management of a yard.</p>
-         <li><h2>Next event.</h2><p>Wednesday August 4 Evaluation and Video taping.</p></li>
+         <li><h2>Next event.</h2><p>Saturday Jan 15 Check hive entrance's.</p></li>
       </li>
      </ul>
      <li>Honey Yards</li>
@@ -38,25 +38,25 @@
  <li><h3>Setup Website </h3>
   <ul>
     <li><h4>View</h4> <p>How the site looks. If you have skills <a href="/cgi-bin/index.cgi?session_id=SUOHD06VYTYV5JPQ&site=SMO&view=JobView">Join</a> our team.</p></li>
-    <li><h4><a href="/cgi-bin/index.cgi?session_id=SUOHD06VYTYV5JPQ&site=SMO&procedure=ProgramingView" target="_blank" name="ProgramingView" onmouseover="See what we are working on.">Programming</a></h4><p>We will be tuning the software to reflect our usage. Learning/teaching. Yard Management. Shop management. Honey House management.</p></li>
+    <li><h4><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&procedure=ProgramingView" target="_blank" name="ProgramingView" onmouseover="See what we are working on.">Programming</a></h4><p>We will be tuning the software to reflect our usage. Learning/teaching. Yard Management. Shop management. Honey House management.</p></li>
     <li><h4>Mailing List</h4> <p>Keeping members informed. Join list below.</p></li>
     <li><h4>Calendar integration</h4>. Link Our Calendar to yours.</li>
   </ul>
 <li><h3>Plan field crops for bees.</h3>
  
- <p>Exploring the process of creating an environment that bee will thrive in. We are planing  cover crops with bee pasture in mind. Cover crops, pasture land, Hay fields.</p> <a href="/cgi-bin/index.cgi?site=BMaster&session_id=59ASS93JH04KSCE8&view=BeePastureView" target="_blank">Details.</a>
+ <p>Exploring the process of creating an environment that bee will thrive in. We are planing  cover crops with bee pasture in mind. Cover crops, pasture land, Hay fields.</p> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&view=BeePastureView" target="_blank">Details.</a>
   <ul>
    <li>Mustard culinary varieties</li>
-   <li><a href="/cgi-bin/ENCY/herbs.cgi?site=BMaster&session_id=SXN9RD5SUNXWHH9R&view=HerbDetailView&record_id=9">Alfalfa.</a> Lots planted just have to tune harvest times. </li>
-   <li><a href="/cgi-bin/ENCY/herbs.cgi?site=BMaster&session_id=SXN9RD5SUNXWHH9R&view=HerbDetailView&record_id=28" target="_blank">Borage</a> </li>
+   <li><a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&view=HerbDetailView&record_id=9">Alfalfa.</a> Lots planted just have to tune harvest times. </li>
+   <li><a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&view=HerbDetailView&record_id=28" target="_blank">Borage</a> </li>
    <li>Buckwheat </li>
    <li>Calendula. </li>
-   <li><a href="cgi-bin/ENCY/herbs.cgi?site=BMaster&session_id=SXN9RD5SUNXWHH9R&view=HerbDetailView&record_id=32" target="_blank">Chicory</a></li>
-   <li><a href="/cgi-bin/ENCY/herbs.cgi?site=BMaster&session_id=SXN9RD5SUNXWHH9R&view=HerbDetailView&record_id=22" target="_blank">Clovers</a> Mostly white, waste lands yard cover in-betweens garlic, etc.</li>
-  <li><a href="/cgi-bin/ENCY/herbs.cgi?site=BMaster&session_id=SXN9RD5SUNXWHH9R&view=HerbDetailView&record_id=20" target="_blank">Dandilion</a> Mostly white, waste lands yard cover in-betweens garlic, etc.</li>
+   <li><a href="cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&view=HerbDetailView&record_id=32" target="_blank">Chicory</a></li>
+   <li><a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=HerbDetailView&record_id=22" target="_blank">Clovers</a> Mostly white, waste lands yard cover in-betweens garlic, etc.</li>
+  <li><a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&view=HerbDetailView&record_id=20" target="_blank">Dandilion</a> Mostly white, waste lands yard cover in-betweens garlic, etc.</li>
  <li>Filberts</li>
    <li>Lavender</li>
-   <li><a href="cgi-bin/ENCY/herbs.cgi?site=BMaster&session_id=SXN9RD5SUNXWHH9R&view=HerbDetailView&record_id=21" target="_blank">Roses</a></li>
+   <li><a href="cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&view=HerbDetailView&record_id=21" target="_blank">Roses</a></li>
    <li>Watch for more.</li>
   </ul>
 </li>

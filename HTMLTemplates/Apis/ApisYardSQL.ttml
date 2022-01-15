@@ -1,6 +1,12 @@
-[% TotalYardSize  = 0 %]
+[% ViewVersion = 'v 0.01 /cgi-bin/HTMLTemplates/Apis/ApisYardSQL.ttml,'%]
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+
+[% END %] [% TotalYardSize  = 0 %]
   [% FOREACH item = DBI.query("SELECT * FROM apis_yards_tb
-	                                WHERE  ( status  !=  'defunct'
+	                                WHERE  ( status  !=  'defunct' AND
+	                                         sitename   =  '$SiteName'
                                      )
                                    ORDER BY yard_code
 	                            ")%]  
@@ -9,7 +15,8 @@
 [% END %]
 
  [% FOREACH item = DBI.query("SELECT * FROM apis_pallet_tb
-	                                WHERE  ( status  =  'In-Use'
+	                                WHERE  ( status  =  'In-Use' AND
+	                                         sitename   =  '$SiteName'
                                      )
                                    ORDER BY pallet_code
 	                            ")%]  
@@ -22,6 +29,7 @@
 [% FOREACH item = DBI.query("SELECT * FROM apis_pallet_tb
 	                                WHERE  ((hivetype = 'Main' OR
 	                                	hivetype  =  'Pmain') AND
+	                                	sitename   =  '$SiteName' AND
 	                                	status    =  'In-Use'
 	                            	                                        )
  	                            ")%]  
@@ -30,6 +38,7 @@
 [% FOREACH item = DBI.query("SELECT * FROM apis_pallet_tb
 	                                WHERE  (hivetype = 'Main' OR
 	                                        hivetype  =  'PSingle' AND
+	                                	sitename   =  '$SiteName' AND
 	                                	status    =  'In-Use'
 	                            	                                        )
  	                            ")%]  
@@ -38,6 +47,7 @@
 [% FOREACH item = DBI.query("SELECT * FROM apis_pallet_tb
 	                                WHERE  (
 	                                	hivetype  =  'TBox' AND
+	                                	sitename   =  '$SiteName' AND
 	                                	status = 'In-Use'
 	                            	                                        )
  	                            ")%]  
@@ -45,6 +55,7 @@
 [% END %]
 [% FOREACH item = DBI.query("SELECT * FROM apis_pallet_tb
 	                                WHERE  (hivetype = 'Single' AND
+	                                	sitename   =  '$SiteName' AND
 	                                	status = 'In-Use'
 	                            	                                        )
  	                            ")%]  
@@ -52,6 +63,7 @@
 [% END %]
 [% FOREACH item = DBI.query("SELECT * FROM apis_pallet_tb
 	                                WHERE  (hivetype  =  'PSingle'  AND
+	                                	sitename   =  '$SiteName' AND
 	                                	status = 'In-Use'
 	                            	                                        )
  	                            ")%]  
@@ -61,6 +73,7 @@
 [%   eightframer  = 0 %]
 [% FOREACH item = DBI.query("SELECT * FROM apis_pallet_tb
 	                                WHERE  (hivetype = 'EightF' AND
+	                                	sitename   =  '$SiteName' AND
 	                                	status = 'In-Use'
 	                            	                                        )
  	                            ")%]  
@@ -68,17 +81,20 @@
 [% END %]
 [% FOREACH item = DBI.query("SELECT * FROM apis_pallet_tb
 	                                WHERE  (hivetype = 'TNuc' AND
+	                                	sitename   =  '$SiteName' AND
 	                                	status = 'In-Use'
 	                            	                                        )
  	                            ")%]  
 	    [%   TNuc  =  TNuc + 1 %]
 [% END %]
 [% FOREACH item = DBI.query("SELECT * FROM apis_pallet_tb
-	                                WHERE  (hivetype = 'B4Top' AND
+	                                WHERE  (hivetype = 'Knuc' AND
+	                                	sitename   =  '$SiteName' AND
+	                                 sitename = 
 	                                	status = 'In-Use'
 	                            	                                        )
  	                            ")%]  
-	    [%   B4Top  =  B4Top + 1 %]
+	    [%   Knuc  =  Knuc + 1 %]
 [% END %]
 
 [%   topbox  =  eightframer + TBox +  TNuc +B4Top %]

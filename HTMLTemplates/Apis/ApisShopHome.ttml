@@ -1,4 +1,4 @@
-[% ViewVersion = 'v 0.01 /cgi-bin/HTMLTemplates/Apis/InventoryProjectionView.ttml,'%]
+[% ViewVersion = 'v 0.01 /cgi-bin/HTMLTemplates/Default/ShopView.ttml,'%]
 [%
 #	$Id:InvneoryProjectionView.ttml,v 1.9 2010/09/28 17:43:15 shanta Exp shanta $	
 
@@ -34,36 +34,6 @@
 	    [% WinterUnits = WinterUnits + item.number %]
 	    [% RecordID = item.record_id %]
 [% END %]
-
- <table width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-<td>
-<div align="center">
-</div></div>
-<A NAME="PageTop"></A>
-<h4>Inventory Projection for 2022</h4>
-<h5>Current Yards and there size And list of queens</h5>
-  [%#   Get number of active hives, queens and their status, and get number of boxes they are in. %]
-	    
-Total Partions [% TotalActivePositions  %]. <BR> 
-
-[% TotalCombBrood %]
-
-[%# NucBottomsonhand = 6 %]
-	    [% nb_price = item.price %] 
-
-	    [%   total_wintering_units_onhand  =  hives_mains / 4 %]
-
-<table cellpadding="1" cellspacing="0" border="0" width="100%">
-<th>Item</th><th>Max</th><th></t h><th></th><th></th>
-<tr><td>[% TotalActivePositions %]
- </td><td>[% TotalYardSize %]</td><td>
-</td><td>
- 
-</td>
-</tr>
-</table>
-
 <h3>Number of wintering units</h3>
  [%  WinterUnits %]  
  [% IF WinterUnits %]
@@ -73,6 +43,31 @@ Total Partions [% TotalActivePositions  %]. <BR>
  	[% END %]	
  	
  	
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+
+
+<A NAME="PageTop"></A>
+<div style="text-align: center;"><h2>Our workshop.</h2></div>
+<h5>What we are working on.</h5>
+	<p><a href="/cgi-bin/Apis/inventory.cgi?site=[% SiteName %]&[amp;% session_string %]&amp;display_add_form=on" target="_blank">Add Inventory Item</a>   
+</p>
+<ul>
+ <li>New Equipment Needed. 
+ 
+ 
+ 
+ </li>
+ <li>Mantinace </li>
+</ul>
+  [%#   Get number of active hives, queens and their status, and get number of boxes they are in. %]
+ 
+ <BR> 
+
+
+
+
 <table cellpadding="1" cellspacing="0" border="0" width="100%">
 <th>Item</th><th>Projected</th><th>In use/On hand</th><th>Short</th><th>Cost</th>
 

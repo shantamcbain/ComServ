@@ -1,9 +1,16 @@
+[% ViewVersion = 'v 0.01 /cgi-bin/HTMLTemplates/Apis/ApisInventorySQL.ttml,'%]
 
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+
+[% END %] 
 
 [% total_frames = 0 %]
 [% total_wired_frames = 0 %]
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  ( item_code  LIKE  '%broodbox%' 
+	                                WHERE  ( item_code  LIKE  '%broodbox%' AND
+	                                	sitename   =  '$SiteName' OR
+	                                	
 	                                        )
  	                            ") %]  
 	    [% total_boxes_onhand = total_boxes_onhand + item.number %]
@@ -14,7 +21,8 @@
  [% SingleTopsonhand = 0 %]
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
 	                                WHERE  (
-	                                	item_code  LIKE  '%singletop%'
+	                                	item_code  LIKE  '%singletop%'AND
+	                                	sitename   =  '$SiteName' 
 	                            	                                        )
  	                            ")%]  
 	    [% SingleTopsonhand = SingleTopsonhand + item.number %]
@@ -22,7 +30,8 @@
        [% SingleTopName    = item.item_name %]
 [% END %]
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  ( item_code  =  'comb'
+	                                WHERE  ( item_code  =  'comb' AND
+	                                	sitename   =  '$SiteName' 
 	                                        )
  	                            ")%]  
 	    [% total_Comb_onhand =   total_Comb_on + item.number   %]
@@ -32,7 +41,8 @@
 
 
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  ( item_code  LIKE  '%BillStyleFeeder%' 
+	                                WHERE  ( item_code  LIKE  '%BillStyleFeeder%' AND
+	                                	sitename   =  '$SiteName' 
 	                                        )
  	                            ")%]  
 	    [% total_feeders_onhand =  item.number %]
@@ -40,7 +50,8 @@
 [% END %]
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
 	                                WHERE  (
-	                                	item_code  =  'frames' 
+	                                	item_code  =  'frames' AND
+	                                	sitename   =  '$SiteName' 
 	                                        )
  	                            ")%]  
 	    [% total_frames = total_frames + item.number %]
@@ -49,14 +60,16 @@
 	                                WHERE  (
 	                                	item_code  = 'broodcomb' OR
 	                                	item_code  = 'broodhoneycomb'OR
-	                                	item_code  = 'honeycomb'
+	                                	item_code  = 'honeycomb'AND
+	                                	sitename   =  '$SiteName' 
 	                                        )
  	                            ")%]  
 	    [% stored_comb = stored_comb + item.number %]
 [% END %]
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
 	                                WHERE  (
-	                                	item_code  =  'active_comb' 
+	                                	item_code  =  'active_comb' AND
+	                                	sitename   =  '$SiteName' 
 	                                        )
  	                            ")%]  
 	    [% active_comb = active_comb + item.number %]
@@ -65,7 +78,8 @@
 	                                WHERE  (
 	                                	item_code  LIKE  '%foundation%' OR
 	                                	item_code LIKE '%permadent%' OR
-	                                	item_code LIKE '%perco%'
+	                                	item_code LIKE '%perco%' AND
+	                                	sitename   =  '$SiteName' 
 	                            	                                        )
  	                            ")%]  
 	    [% total_foundation_onhand = total_foundation_onhand + item.number %]
@@ -75,7 +89,8 @@
 
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
 	                                WHERE  (
-	                                	item_code  =  'frames'
+	                                	item_code  =  'frames' AND
+	                                	sitename   =  '$SiteName'
 	                            	                                        )
  	                            ")%]  
 	    [% frames_onhand = frames_onhand + item.number %]
@@ -85,7 +100,8 @@
 	    [% frame_price = item.price %] 
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
 	                                WHERE  (
-	                                	item_code  =  'BroodHoneyframes'
+	                                	item_code  =  'BroodHoneyframes' AND
+	                                	sitename   =  '$SiteName'
 	                            	                                        )
  	                            ")%]  
 	    [% BroodHoneyframes_onhand = BroodHoneyframes_onhand + item.number %]
@@ -96,7 +112,8 @@
 
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
 	                                WHERE  (
-	                                	item_code  =  'frameswired'
+	                                	item_code  =  'frameswired' AND
+	                                	sitename   =  '$SiteName'
 	                            	                                        )
  	                            ")%]  
 	    [% frameswired_onhand = item.number %]
@@ -107,7 +124,8 @@
 
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
 	                                WHERE  (
-	                                	item_code  LIKE  '%nb%'
+	                                	item_code  LIKE  '%nb%' AND
+	                                	sitename   =  '$SiteName'
 	                            	                                        )
  	                            ")%]  
 	    [% NucBottomsonhand = NucBottomsonhand + item.number %]
@@ -115,7 +133,8 @@
 
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
 	                                WHERE  (
-	                                	item_code  LIKE  '%4pack%'
+	                                	item_code  LIKE  '%4pack%' AND
+	                                	sitename   =  '$SiteName'
 	                            	                                        )
  	                            ")%]  
 	    [% fouronhand = item.number %]
@@ -123,7 +142,8 @@
 	    [% fourpack_price = item.price %] 
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
 	                                WHERE  (
-	                                	item_code  =  'BroodComb'
+	                                	item_code  =  'BroodComb' AND
+	                                	sitename   =  '$SiteName'
 	                            	                                        )
  	                            ")%]  
 	    [%   BroodOnHand  =  BroodOnHand + item.number %]

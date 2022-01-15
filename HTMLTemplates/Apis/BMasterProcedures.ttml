@@ -1,4 +1,4 @@
-[% Version = 'v 1.16 2021/10/16 /cgi-bin/HTMLTemplates/Apis/BMasterProcedures.ttml '%]
+[% Version = 'v 1.17 2022/01/15 /cgi-bin/HTMLTemplates/Apis/BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.15 2021/08/03 BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.14 2021/03/08 BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.13 2020/03/10 BMasterProcedures.ttml '%]
@@ -14,7 +14,6 @@
 %]
 
 [% embed('ErrorDisplayView') %] 
-[% PROCESS DefaultDbi.ttml %]
 [% IF data.session_object %]
 
    [% session_id = data.session_object.getId() %]
@@ -95,6 +94,9 @@
 [% ELSIF procedure  == ('SeasonView') %]
  
  [% embed ('SeasonView') %]
+ [% ELSIF procedure  == ('ApisShopHome') %]
+ 
+ [% embed ('ApisShopHome') %]
 
 [% ELSIF procedure  == ('ClockeBoardView') %]
  [% embed ('ClockeBoardView') %]

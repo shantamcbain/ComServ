@@ -16,12 +16,7 @@
                                    status     != 'Dead')
                                    ORDER BY queen_code 
                                   ")%]    
-   [%# FOREACH link = DBI.query("SELECT * FROM apis_yards_tb
-                                  WHERE  (developer_name = 'Shanta'
-                                  OR developer_name = 'Shauna') 
-                                  AND status = 'In-Use' 
-                                  ORDER BY yard_code
-                                  ")%]                                
+                
                                    [% ActiveQueens = ActiveQueens + 1 %]
 
 
@@ -35,7 +30,8 @@
 [% END %]
 
 [% FOREACH item = DBI.query("SELECT * FROM apis_queens_tb
-	                                WHERE    sitename =  '$SiteName' AND( status != 'Dead' OR
+	                                WHERE    sitename =  '$SiteName' AND
+	                                         ( status != 'Dead' OR
 	                                         status != 'Sold' OR
 	                                         status != 'Ql'
 	                                        )
@@ -45,7 +41,8 @@
 	    [% total_boxes_inuse = total_boxes_inuse + item.box_number %]
 [% END %]
 [% FOREACH item = DBI.query("SELECT * FROM apis_queens_tb
-	                                WHERE    sitename =  '$SiteName' AND( box_number =  '1' AND
+	                                WHERE    sitename =  '$SiteName' AND
+	                                         ( box_number =  '1' AND
 	                                         status != 'Dead' AND
 	                                         status != 'Sold' AND
 	                                         status != 'Ql'
@@ -55,7 +52,8 @@
  	    [% total_combinuse = total_combinuse + 8 %]
 [% END %]
 [% FOREACH item = DBI.query("SELECT * FROM apis_queens_tb
-	                                WHERE    sitename =  '$SiteName' AND( box_number >  '0' AND 
+	                                WHERE    sitename =  '$SiteName' AND
+	                                         ( box_number >  '0' AND 
 	                                         box_number <=  '1' AND 
 	                                         status != 'Dead' AND
 	                                         status != 'Sold' AND
@@ -69,7 +67,8 @@
 
 
 [% FOREACH item = DBI.query("SELECT * FROM apis_queens_tb
-	                                WHERE   sitename =  '$SiteName' AND ( box_number <  '1' AND 
+	                                WHERE   sitename =  '$SiteName' AND 
+	                                        ( box_number <  '1' AND 
 	                                         status != 'Dead' AND
 	                                         status != 'Sold' AND
 	                                         status != 'Ql'
@@ -79,7 +78,8 @@
 [% END %]
 
 [% FOREACH item = DBI.query("SELECT * FROM apis_queens_tb
-	                                WHERE    sitename =  '$SiteName' AND((status = 'Active' OR
+	                                WHERE    sitename =  '$SiteName' AND
+	                                ((status = 'Active' OR
 	                                status = 	'Mated' OR
 	                                status = 	'Breeder' OR
 	                                status = 	'Breeder_candidate') AND
