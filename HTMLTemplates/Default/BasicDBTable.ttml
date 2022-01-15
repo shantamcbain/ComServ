@@ -1,3 +1,9 @@
+[% ViewVersion = 'v .010 /cgi-bin/HTMLTemplates/Default/BasicDataView.ttml,'%]
+	
+	[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+
+[% END %] 
  [% PROCESS DefaultDbi.ttml %]
 [% RAWPERL %]
 # 	$Id: BasicDBTable.ttml,v 1.2 2003/12/04 02:15:40 shanta Exp shanta $	
@@ -200,7 +206,8 @@ for my $rh_record (@records) {
 	|| $script_name eq  '/cgi-bin/ToDo/project_tracker.cgi'
 	){
     $output .= qq[
-<a href="/cgi-bin/ToDo/log.cgi?site=$sitename&amp;session_id=$session_id&amp;display_add_form=on&amp;todo_record_id=$record_id&amp;abstract=$subject&amp;project_code=$project_code&amp;details=$details&amp;priority=$priority" "target="_Blank">Log</a>
+<a href="/cgi-bin/ToDo/log.cgi?site=$sitename&amp;session_id=$session_id&amp;display_add_form=on&amp;todo_record_id=$record_id
+&amp;abstract=$subject&amp;project_code=$project_code&amp;details=$details&amp;priority=$priority" "target="_Blank">Log</a>
                  ];
 
 	}

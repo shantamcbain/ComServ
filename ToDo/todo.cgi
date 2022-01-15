@@ -19,7 +19,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 1.6, Feb 13, 2021";
+my $AppVer = "ver 1.7, Jan 14, 2022";
 
 BEGIN
 {
@@ -82,7 +82,6 @@ foreach ($CGI->param()) {
 
     my $debug = 0;
 my $HostName   = $ENV{'SERVER_NAME'};
-my $SiteName       = $CGI->param('site');
 my $APP_NAME = "todo";
 my $Affiliate = 001;
 my $username;

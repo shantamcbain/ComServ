@@ -1,4 +1,6 @@
-[% ViewVersion = 'v 1.99 /cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
+[% ViewVersion = 'v 2.00 /cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
+
+[%# ViewVersion = 'v 1.99 /cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
 [% Version = 'v 1.99 2021/11/29 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
 
 [% # Ideally this template should be converted into a static CSS file and
@@ -9,42 +11,12 @@
 # variables from outside.
 
 %]
-[% IF data.session_object %]
+[% PROCESS DefautVariables.ttml %]
 
-	[% session_id = data.session_object.getId() %]
-       [% session_string = "session_id=$session_id" %]
-
-[% END %] 
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-   [% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-   [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
-   [% LastUpdate = data.last_update %]
-   [% SiteUpdate = data.site_last_update %]
-   [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-   [% SiteDisplayName = data.site_display_name %]
-   [% site = SiteName %]
-   [% Page = data.page_name  %]
-   [% PageSiteName = data.site_display_name %]
-   [% username = data.session_object.getAttribute('-KEY','auth_username') %]
-   [% PrintMode    = data.session_object.getAttribute('-KEY','PrintMode') %]
-   [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
-	[% IF data.session_object %]
-   [% PID  = data.pid %]
-   [% AffiliateID = data.affiliate_number %] 
-   [% session_id = data.session_object.getId() %]
-   [% session_string = "session_id=$session_id" %]
-
-
-   [% procedure = data.procedure %]
-   [% project = data.project  %]
-   [% title = data.title %]
-   [% script_name = data.app_name %]
-   [% localip = data.local_ip %]
-
+ 
 [% PROCESS DefaultDbi.ttml %]
 
-[% HostName = data.domain_name %]
+
 
 
 [% IF group == "Mentoring"	%]
@@ -58,7 +30,7 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 	<td>
-[% END %] 
+
 [% IF data.debug == 1 %]
  [%	ViewVersion %] 	
   [% embed  ('InheretedVariablesView') %]

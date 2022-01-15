@@ -22,11 +22,10 @@
    [% SiteDisplayName = data.site_display_name %]
    [% site        = SiteName %]
    [% title       = data.title %]
-  	[% Version = data.version %]
-   [% username    = data.session_object.getAttribute('-KEY','auth_username') %]
-   [% IF data.session_object %]
-
-	[% session_id = data.session_object.getId() %]
+  	[% Version     = data.version %]
+   [% username       = data.session_object.getAttribute('-KEY','auth_username') %]
+[% IF data.session_object %]
+	[% session_id     = data.session_object.getId() %]
    [% session_string = "session_id=$session_id" %]
 
 [% END %] 
