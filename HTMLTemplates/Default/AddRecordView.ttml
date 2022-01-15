@@ -1,4 +1,5 @@
- [% PROCESS DefaultDbi.ttml %]
+ [% PROCESS DefautVariables.ttml %]
+[% PROCESS DefaultDbi.ttml %]
 [% set_headers(data.http_header_params) %]
   [% form_name = 'Add Form' %]
   [% form_table_header = 'Add Record' %]

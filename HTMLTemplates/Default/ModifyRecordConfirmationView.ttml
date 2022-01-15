@@ -5,6 +5,8 @@
 %]
  [% PROCESS DefaultDbi.ttml %]
 
+[% PROCESS DefautVariables.ttml %]
+
 [% set_headers(data.http_header_params) %]
 
 [% embed(data.page_top_view,{'-PAGE_TITLE' => 'Modify Record Confirmation'}) %]

@@ -9,6 +9,8 @@
 [% set_headers(data.http_header_params) %]
  [% PROCESS DefaultDbi.ttml %]
 
+[% PROCESS DefautVariables.ttml %]
+
 [% embed(data.page_top_view,{'-PAGE_TITLE' => 'Delete Form'}) %]
 
 [% embed('ErrorDisplayView') %]

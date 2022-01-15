@@ -29,6 +29,8 @@
 [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
 [% fname = data.session_object.getAttribute('-KEY','auth_firstname') %]
 
+[% PROCESS DefautVariables.ttml %]
+[% PROCESS DefaultDbi.ttml %]
 
 
 

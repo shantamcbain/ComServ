@@ -5,7 +5,9 @@
 # modified by user
 
 %]
- [% PROCESS DefaultDbi.ttml %]
+ 
+[% PROCESS DefautVariables.ttml %]
+[% PROCESS DefaultDbi.ttml %]
 
 [% set_headers(data.http_header_params) %]
 

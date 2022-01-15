@@ -16,6 +16,8 @@
   botanical_name  = record.item_name|| record.subject || record.fname ||'Record Details';
 -%]
  [% PROCESS DefaultDbi.ttml %]
+
+[% PROCESS DefautVariables.ttml %]
 [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
 
 [% set_headers(data.http_header_params) %]
