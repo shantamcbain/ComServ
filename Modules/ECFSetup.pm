@@ -13,7 +13,9 @@ my $UseModPerl = shift || 0;
 
 
 my $self = {            
-       -SHOP              => 'apis',
+ 	    -AFFILIATE           => '1',
+	    -PID                 => '26',
+      -SHOP              => 'apis',
        -APP_NAME_TITLE    => "Sustainable Farming Application",
        -SITE_LAST_UPDATE  => 'March 2, 2012',
        -SITE_DISPLAY_NAME => 'Eagle Creek Farms',

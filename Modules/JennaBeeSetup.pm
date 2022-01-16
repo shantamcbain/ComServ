@@ -14,7 +14,9 @@ my $UseModPerl = shift || 0;
 
 my $self = {            
        -SHOP              => 'apis',
-       -APP_NAME_TITLE    => "Jenna Bee Application",
+ 	    -AFFILIATE           => '1',
+	    -PID                 => '44',
+      -APP_NAME_TITLE    => "Jenna Bee Application",
        -SITE_LAST_UPDATE  => 'June 30, 2015',
        -SITE_DISPLAY_NAME => 'Jenna Bee',
        -HOME_VIEW_NAME    => 'ECFHomeView',

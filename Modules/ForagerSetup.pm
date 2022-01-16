@@ -115,6 +115,8 @@ my $UseModPerl = shift || 0;
 
 # This is where you define your variable mapping.
 my $self = {-HOME_VIEW_NAME                     => 'HomeView',
+	    -AFFILIATE           => '4',
+	    -PID                 => '86',
             -SITE_LAST_UPDATE                   => 'July 22,  2018',
 	        -HOME_VIEW                          => 'HomeView',
             -SITE_DISPLAY_NAME                  => 'Forager',

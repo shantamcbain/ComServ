@@ -24,6 +24,8 @@ my %VALID_FORUMS = (
                                 );
 
 my $self = {-HOME_VIEW_NAME                 => 'OrganicHome',
+	    -AFFILIATE           => '13',
+	    -PID                 => '126',
 	    -HOME_VIEW                      => 'OrganicHomeView',
 	    -BASIC_DATA_VIEW                => 'BasicDataView',
        -SITE_LAST_UPDATE           => 'December 16, 2006',

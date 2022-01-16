@@ -24,6 +24,8 @@ my %VALID_FORUMS = (
                                 );
 
 my $self = {-HOME_VIEW_NAME            => 'PageView',
+	    -AFFILIATE           => '13',
+	    -PID                 => '127',
 	    -HOME_VIEW                      => 'PageView',
 	    -BASIC_DATA_VIEW                => 'BasicDataView',
 	    -APP_LOGO                       => '/images/apis/bee.gif',

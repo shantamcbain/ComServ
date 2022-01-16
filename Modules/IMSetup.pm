@@ -13,6 +13,8 @@ my $UseModPerl = shift || 0;
 
 
 my $self = {-HOME_VIEW_NAME    => 'CSCHome',
+	    -AFFILIATE           => '1',
+	    -PID                 => '44',
        -SHOP              => 'IM',
        -SITE_LAST_UPDATE       => 'March 31, 2012',
 	    -HOME_VIEW              => 'PageView',

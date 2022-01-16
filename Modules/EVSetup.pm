@@ -24,6 +24,8 @@ my %VALID_FORUMS = (
                                 );
 
 my $self = {-HOME_VIEW_NAME                 => 'EVHome',
+	    -AFFILIATE           => '13',
+	    -PID                 => '131',
 	    -HOME_VIEW                      => 'EVHomeView',
 	    -BASIC_DATA_VIEW                => 'BasicDataView',
 	    -APP_LOGO                       => 'http://shanta.org/images/apis/bee.gif',

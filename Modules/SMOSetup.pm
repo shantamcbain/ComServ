@@ -10,6 +10,8 @@ my $UseModPerl = shift || 0;
 
 
 my $self = {-HOME_VIEW_NAME    => 'HomeView',
+	    -AFFILIATE           => '1',
+	    -PID                 => '121',
 	    -HOME_VIEW         => 'HomeView',
             -SITE_LAST_UPDATE  => ' 02, 21 2021',
             -AUTH_TABLE        => 'smo_user_auth_tb',

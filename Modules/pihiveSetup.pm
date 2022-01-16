@@ -14,6 +14,8 @@ my $UseModPerl = shift || 0;
 
 my $self = {
        -SITE_LAST_UPDATE       => 'Febuarey 26, 2015',
+	    -AFFILIATE           => '1',
+	    -PID                 => '125',
  	    -APP_NAME_TITLE         => 'Beekeeping Application',
        -SITE_DISPLAY_NAME      => 'Beemaster.ca',
 	    -HOME_VIEW              => 'PageView',

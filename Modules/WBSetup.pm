@@ -15,6 +15,8 @@ my $UseModPerl = shift || 0;
 my $self = {-HOME_VIEW_NAME    => 'Pageiew',
 	    -HOME_VIEW         => 'PageView',
 	    -BASIC_DATA_VIEW   => 'BasicDataView',
+	    -AFFILIATE           => '2',
+	    -PID                 => '119',
 	    -APP_LOGO          => '/images/apis/bee.gif',
 	    -APP_LOGO_ALT      => 'apis Logo',
 	    -APP_LOGO_WIDTH    => '80',

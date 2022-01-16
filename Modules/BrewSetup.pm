@@ -15,6 +15,8 @@ my $UseModPerl = shift || 0;
 
 # This is where you define your variable mapping.
 my $self = {-HOME_VIEW_NAME    => 'HomeView',
+	    -AFFILIATE           => '2',
+	    -PID                 => '45',
 	    -HOME_VIEW         => 'HomeView',
 	    -MySQLPW           => '!herbsRox!',
 	    -BASIC_DATA_VIEW   => 'BasicDataView',

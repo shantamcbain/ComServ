@@ -13,6 +13,8 @@ my $UseModPerl = shift || 0;
 
 
 my $self = {-HOME_VIEW_NAME             => 'GrindrodHome',
+	    -AFFILIATE           => '6',
+	    -PID                 => '9',
             -SITE_LAST_UPDATE           => 'August 30, 2015',
  	          -PAGE_DBI                   => 'mysql:database=shanta_forager',
  	          -PAGE_MySQLPW               => 'UA=nPF8*m+T#',

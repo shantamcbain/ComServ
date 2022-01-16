@@ -15,6 +15,8 @@ my $UseModPerl = shift || 0;
 
 # This is where you define your variable mapping.
 my $self = {-HOME_VIEW_NAME => 'ENCYHomeView',
+	    -AFFILIATE           => '13',
+	    -PID                 => '132',
        -AUTH_TABLE          => 'ency_user_auth_tb',
        -LAST_UPDATE         => 'March 25, 2006',
        -SITE_LAST_UPDATE    => 'March 25, 2006',

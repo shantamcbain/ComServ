@@ -11,7 +11,9 @@ my $UseModPerl = shift || 0;
 
 my $self = {-HOME_VIEW_NAME    => 'HomeView',
 	    -HOME_VIEW         => 'HomeView',
-            -SITE_LAST_UPDATE  => 'May, 23 2019',
+ 	    -AFFILIATE           => '1',
+	    -PID                 => '137',
+           -SITE_LAST_UPDATE  => 'May, 23 2019',
             -AUTH_TABLE        => 'apis_user_auth_tb',
 	    -BASIC_DATA_VIEW   => 'BasicDataView',
 	    -APP_LOGO          => 'https://static.wixstatic.com/media/4c22e4_1bc14a11a92b4d1e8e1e002389840924~mv2.png/v1/fill/w_96,h_96,al_c,q_80,usm_0.66_1.00_0.01/Anu-Collective-Logo-Final_2x.webp',
