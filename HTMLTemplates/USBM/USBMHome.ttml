@@ -1,4 +1,4 @@
-[% Version = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.13 2021/11/17 17:43:15 shanta Exp'%]
+[% Version =  'v 1.13 /cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,2021/11/17 17:43:15 shanta Exp'%]
 [%# Version = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.12 2021/10/09 17:43:15 shanta Exp'%]
 [%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.11 2020/08/12 17:43:15 shanta Exp'%]
 [%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.10 2020/04/22 17:43:15 shanta Exp'%]
@@ -11,18 +11,6 @@
 [%# embed('ErrorDisplayView') %]
 
 
-[% IF data.session_object %]
-
-	[% session_id = data.session_object.getId() %]
-        [% session_string = "session_id=$session_id" %]
-
-[% END %] 
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-   [% LastUpdate = data.last_update %]
-   [% SiteLastUpdate = data.site_last_update %]
 
 
 
@@ -34,15 +22,15 @@
  [%	Version %] 	 
    
 [% END %] 
-
+</div>
 <h2>Our Virtual School House</h2>
 <ul>
   <li> <h2>Choosing your <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&page=PractitionerTeam" target="_blank">practitioner team</a>.</h2> How to chose your team of advisers?</li> 
   <li> <b></b> <a href="https://altpower.usbm.ca/cgi-bin/index.cgi?site=AltPower">Alt Power </a> Join us in our adventure into Alternate power creation and use. </li>
 
-  <li> <b>New</b> <a href="https://usbm.ca/cgi-bin/index.cgi?site=3d">3D Printing. </a> We now have a 3d printing department Have a look. </li>
+  <li> <b>New</b> <a href="/cgi-bin/index.cgi?site=3d">3D Printing. </a> We now have a 3d printing department Have a look. </li>
   <li>
-  <p> Our <a href="/cgi-bin/ENCY/ency.cgi?site=ENCY&[% session_string %]">Encyclopidia of Biological life </a></p>  </li>
+  <p> Our <a href="/cgi-bin/index.cgi?site=ENCY&[% session_string %]&view=BotanicalNameView">Encyclopidia of Biological life </a></p>  </li>
   <li>  <p>   <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BotanicalNameView">Herbs by botanical name</a> </li>
   <li></p> 
 <a href="http://helpdesk.computersystemconsulting.ca" target="_Blank" > HelpDesk</a>

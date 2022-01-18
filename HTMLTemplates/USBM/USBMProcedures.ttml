@@ -1,4 +1,4 @@
-[% Version = 'v 0.02 2021/12/23 /HTMLTemplates/USBM/USBMProcedures.ttml'%]
+[% Version = 'v 0.03 2022/01/18 /HTMLTemplates/USBM/USBMProcedures.ttml'%]
 [%# Version = 'v 0.01 2021/12/22 /HTMLTemplates/USBM/USBMProcedures.ttml'%]
 [% # 2019/10/09 AnuProcedures.ttml %]
 
@@ -28,7 +28,10 @@
  
 
 [% embed ('ShamanismView') %]
- [% ELSIF procedure  == ('StreamingView') %]
+ [% ELSIF procedure  == ('BotanicalNameView') %]
+ 
+  [% embed ('BotanicalNameView') %]
+[% ELSIF procedure  == ('StreamingView') %]
  
  [% embed ('StreamingView') %]
  [% ELSIF procedure  == ('AmuAdminList') %]

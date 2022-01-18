@@ -14,14 +14,14 @@ my $package    = shift;
 my $UseModPerl = shift || 0;
 
 # This is where you define your variable mapping.
-my $self = {-HOME_VIEW_NAME => 'ENCYHomeView',
+my $self = {-HOME_VIEW_NAME => 'HomeView',
 	    -AFFILIATE           => '13',
 	    -PID                 => '132',
        -AUTH_TABLE          => 'ency_user_auth_tb',
        -LAST_UPDATE         => 'March 25, 2006',
        -SITE_LAST_UPDATE    => 'March 25, 2006',
  	    -ADDITIONALAUTHUSERNAMECOMMENTS => 'Please do not use spaces.',
-	    -HOME_VIEW           => 'ENCYHomeView',
+	    -HOME_VIEW           => 'HomeView',
 	    -BASIC_DATA_VIEW     => 'BasicDataView',
 	    -APP_LOGO            => '/images/ency/encyicon.gif',
 	    -APP_LOGO_ALT        => 'ENCY Logo',

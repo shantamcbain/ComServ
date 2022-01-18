@@ -4,6 +4,7 @@
 #	$Id: BotanicalNameView.ttml,v 1.2 2011/09/21 19:25:15 shanta Exp $	
 #file location/cgi-bin/HTMLTemplates/ENCY
 %]
+[% PROCESS DefautVariables.ttml %]
 [% PROCESS DefaultDbi.ttml %]
 
 [% embed(data.page_top_view,['-PAGE_TITLE','Herbs by botanical name.']) %]
@@ -11,30 +12,7 @@
 [% embed('ErrorDisplayView') %]
 
 
-[% IF data.session_object %]
 
-	[% session_id = data.session_object.getId() %]
-        [% session_string = "session_id=$session_id" %]
-
-[% END %] 
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-   [% LastUpdate = data.last_update %]
-   [% SiteLastUpdate = data.site_last_update %]
-   [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups') %]
-   [% LastUpdate = data.last_update %]
-   [% SiteUpdate = data.site_last_update %]
-   [% SiteDisplayName = data.site_display_name %]
-   [% Page = data.page_name  %]
-   [% PrintMode    = data.session_object.getAttribute('-KEY','PrintMode') %]
-   [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
-	[% session_id = data.session_object.getId() %]
-	[% session_string = "session_id=$session_id" %]
-   [% procedure = data.procedure %]
-[%# PROCESS DefaultDbi.ttml %]
 
 	[% IF username %]
 
