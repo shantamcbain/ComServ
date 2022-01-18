@@ -150,6 +150,7 @@ use SiteSetup;
      $site_session           = $DATAFILES_DIRECTORY.'/Sessions';
      $auth                   = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
      my $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
+     my $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
 
      $mail_from              = $CGI->param('email')||$mail_from; 
      $page_top_view          = $CGI->param('page_top_view')||$page_top_view;
@@ -190,7 +191,6 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
 
 if ($CGI->param('site')){
@@ -567,6 +567,7 @@ my @DATASOURCE_FIELD_NAMES = qw(
         image
         stem
         nectar
+        pollinator
         pollen
         leaves
         flowers
@@ -595,6 +596,17 @@ my @DATASOURCE_FIELD_NAMES = qw(
         group_of_poster
         date_time_posted
 );
+my %pollinator;
+
+  %pollinator =
+    (
+      HoneyBee   => 'Honey Bee',
+      bee  => 'Bees',
+      ButterFlies => 'Butterflies',
+      wasps   => 'wasps',
+      flies   => 'flies',
+      beetles  => 'beetles',
+    );
 
 
 my %BASIC_INPUT_WIDGET_DEFINITIONS = (
@@ -605,6 +617,13 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
   #      -VALUES       => [qw(alterative Antipyretic Antiseptic Antispasmodic Aromatic Astringent Carminative Cholagogue Cordial Demulcent Diaphoretic Diuretic Emmenagogue Expectorant Hemostatic  Hypotensive Mucilaginous Nervine Pungent Styptic Stimulant Stomatic Sudforific Tonic Urinary Vulinary)]
    # ],
 
+  pollinator => [
+        -DISPLAY_NAME => 'pollinator',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'pollinator',
+        -VALUES       => [sort {$a <=> $b} keys %pollinator ],
+        -LABELS       => \%pollinator,
+    ],
     preparation => [
         -DISPLAY_NAME => 'Preparation',
         -TYPE         => 'checkbox_group',
