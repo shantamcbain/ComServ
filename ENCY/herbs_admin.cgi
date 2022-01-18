@@ -19,7 +19,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 1.5, Dec 02, 2022";
+my $AppVer = "ver 1.51, Jan 18, 2022";
 
 
 BEGIN{
@@ -573,6 +573,7 @@ my @DATASOURCE_FIELD_NAMES = qw(
         record_id
         botanical_name
         common_names
+        pollinator
         key_name
         parts_used
         body_parts
@@ -614,19 +615,17 @@ my @DATASOURCE_FIELD_NAMES = qw(
         date_time_posted
 );
 
-# my %reference;
-#if ( $local eq "ECF") {
-# %reference =
-#    (
-#      Comp   => 'Complimentary',
-#      cash   => 'Cash',
-#      Moon => 'The Moonies',
-#      NF   => 'Natures Fair Vernon',
-#      MM   => 'Meditrain Market',
-#      IR   => 'Illichmann',
-#      sky  => 'Sky',
-#      other   => 'Other Details in comments',
-#    );
+ my %pollinator;
+
+  %pollinator =
+    (
+      HoneyBee   => 'Honey Bee',
+      bee  => 'Bees',
+      ButterFlies => 'Butterflies',
+      wasps   => 'wasps',
+      flies   => 'flies',
+      beetles  => 'beetles',
+    );
 #elsif ( $local eq "Apis") {
 #}else{
 
@@ -656,6 +655,14 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 #        -VALUES       => [qw(alterative Antipyretic Antiseptic Antispasmodic Aromatic Astringent Carminative Cholagogue Cordial Demulcent Diaphoretic Diuretic Emmenagogue Expectorant Hemostatic  Hypotensive Mucilaginous Nervine Pungent Stimulant Stomatic Sudorific Tonic Urinary Vulinary)]
 #    ],
 
+
+    pollinator => [
+        -DISPLAY_NAME => 'pollinator',
+        -TYPE         => 'checkbox_group',
+        -NAME         => 'pollinator',
+        -VALUES       => [sort {$a <=> $b} keys %pollinator ],
+        -LABELS       => \%pollinator,
+    ],
     preparation => [
         -DISPLAY_NAME => 'Preparation',
         -TYPE         => 'checkbox_group',
@@ -1024,6 +1031,7 @@ if ($SiteName	 eq "Organic"){
         botanical_name
         common_names
         key_name
+        pollinator
         apis
         nectar
         pollen

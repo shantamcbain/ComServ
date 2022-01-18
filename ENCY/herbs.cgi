@@ -106,7 +106,7 @@ my $allow_additions = 0;
 my $allow_modifications = 0;
 my $username;
 my $last_update = 'September 11, 2015';
-my  = 'None Defined for this site.';
+my  $SITE_DISPLAY_NAME = 'None Defined for this site.';
 my $FAVICON;
 my $ANI_FAVICON;
 my $FAVICON_TYPE;
