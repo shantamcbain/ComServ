@@ -32,10 +32,12 @@
  [% ELSIF procedure  == ('FirstEval') %]
    [% embed ('FirstEval') %]
 
+ [% ELSIF procedure  == ('StreamView') %]
+[% embed ('StreamView') %]
+
  [% ELSIF procedure  == ('LandingPage') %]
 [% embed ('LandingPage') %]
-
- [% ELSIF procedure  == ('JoinDiscoussionList') %]
+[% ELSIF procedure  == ('JoinDiscoussionList') %]
  
  [% embed ('JoinDiscoussionList') %]
  [% ELSIF procedure  == ('SundayLive') %]

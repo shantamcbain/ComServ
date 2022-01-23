@@ -3,26 +3,39 @@
 <p>Come join us as we talk about the things we are concerned with in our lives. This, the first in the series, will be vary open ended. Working out technical issues with the software, inviting guest, learning the software, hardware problems.   </p>
 
 <ul>
- <li>Agenda
-  <ul></ul>
-  <li>Overview 
+ <li><h3>Agenda</h3>
+  <ul>
+  <li><h4>Overview</h4> 
   
   </li>
- </li>
- <li>Software</li>
- <li>Hardware</li>
- <li>Streaming services
+  <li>Technical Start time 4pm PST</li>
+  <li>Event Star time 7pm PST</li>
+
+ </ul>
+ <li><h3>Software</h3> Steam</li>
+ <li><h3>Hardware</h3></li>
+ <li<h3>>Streaming services</h3>
   <ul>
- <li><a href="/cgi-bin/index.cgi?site=ULC&session_id=UPQRQ4OV7DGCK9SA&procedure=StreamingView">Details</a></li>  
+ <li><a href="/cgi-bin/index.cgi?site=ULC&[% session_string %]&procedure=StreamingView">Details</a></li>  
   </ul>
  </li>
  </ul>
-<li>Topic of live stream</li>
+<li><h3>Topic of live stream</h3> Talk about the things we would like to focus on in future episodes.</li>
 </ul>
-[%#https://ulc.usbm.ca/cgi-bin/page.cgi?site=ULC&session_id=UPQRQ4OV7DGCK9SA&&display_details_view.x&record_id=281&Sunday%20Live%20Stream %]
 
-<a href="/cgi-bin/index.cgi?site=ULC&session_id=UPQRQ4OV7DGCK9SA&page=SundayLive">edit page view</a>
+To send register<a href="mailto:shanta@usbm.ca?subject=Register%20for%20SundayLive&amp;body=Add%20me%20to%20your%20SundayLive%20mailing%20list.%20Tell%20us%20if%20you%20like%20to%20be%20Guest"> Email</a> <p>Use the email address you want to receive announcements about new SundayLive events. We have up to 5 guest seats. Please add if you would like to be a quest or just view through the streaming service. <a href="http://ulc.usbm.ca/mailman/listinfo/sundaylive_ulc.usbm.ca" target="_blank">Join the list</a>
+</p>
 
-<a href="/cgi-bin/index.cgi?site=ULC&session_id=UPQRQ4OV7DGCK9SA&procedure=SundayLive">SundayLive</a>
 
-<a href="https://ulc.usbm.ca/cgi-bin/index.cgi?site=ULC&procedure=SundayLive>SundayLive public</a>
+
+[%#https://ulc.usbm.ca/cgi-bin/page.cgi?site=ULC&[% session_string %]
+<p><a href="
+https://ulc.usbm.ca/cgi-bin/page.cgi?site=ULC&[% session_string %] &page=SundayLive&display_details_view.x&record_id=281&Sunday%20Live%20Stream">edit page view</a>
+ 
+</a></p>
+<p><a href="/cgi-bin/index.cgi?site=ULC&[% session_string %]&page=SundayLive">edit page view</a>
+
+<a href="/cgi-bin/index.cgi?site=ULC&[% session_string %]session_id=UPQRQ4OV7DGCK9SA&procedure=SundayLive">SundayLive</a>
+</p>
+<p><a href="https://ulc.usbm.ca/cgi-bin/index.cgi?site=ULC&procedure=SundayLive>SundayLive public no session</a>
+</p>
