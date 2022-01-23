@@ -1,4 +1,4 @@
-[% Version = 'v 1.968 2022/08/03 /HTMLTemplates/USBM/ULCProcedures.ttml'%]
+[% Version = 'v 1.969 2022/01/23 /HTMLTemplates/USBM/ULCProcedures.ttml'%]
 [% # 2019/10/09 AnuProcedures.ttml %]
 
 [% embed('ErrorDisplayView') %] 
@@ -38,7 +38,9 @@
  [% ELSIF procedure  == ('JoinDiscoussionList') %]
  
  [% embed ('JoinDiscoussionList') %]
- [% ELSIF procedure  == ('YardManagementSystem') %]
+ [% ELSIF procedure  == ('SundayLive') %]
+[% embed ('SundayLive') %]
+[% ELSIF procedure  == ('YardManagementSystem') %]
  
  [% embed ('YardManagementSystem') %]
  
