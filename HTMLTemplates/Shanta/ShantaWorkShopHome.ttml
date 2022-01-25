@@ -1,3 +1,4 @@
+[% ViewVersion = 'v 0.14 202201/15 /cgi-bin/HTMLTemplates/Apis/InventoryView.ttml,'%]
 [%
 #	$Id: ShantaHome.ttml,v 1.1 2001/12/16 03:45:30 shanta Exp shanta $	
 
@@ -10,22 +11,11 @@
 
 %]
 
-[%# embed(data.page_top_view,['-PAGE_TITLE',' Home page.']) %]
 
 [% embed('ErrorDisplayView') %]
 
 
-[% IF data.session_object %]
 
-	[% session_id = data.session_object.getId() %]
-        [% session_string = "session_id=$session_id" %]
-
-[% END %] 
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-[% procedure = data.procedure %]
 
 
 [% IF username == 'Shanta' %]
@@ -47,7 +37,7 @@
 <li><h3>Brewing gear</h3>
 <li><h3>Carving projects</h3>
 
-<li><h3>bee hive wood ware.</h3> Frames, boxes, top, etc.
+<li><h3><a href="/cgi-bin/index.cgi?site=ShantaWorkShop&amp;procedure=BeeHiveWoodWare">Bee hive wood ware.</a></h3> Frames, boxes, top, etc.
 </ul>
 
 <p>See Products list for more Details.
