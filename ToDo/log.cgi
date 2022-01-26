@@ -22,7 +22,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, 
 # Boston, MA  02111-1307, USA.
-my $AppVer = "ver 1.42, Sep 18, 2021";
+my $AppVer = "ver 1.43, Jan 26, 2022";
 
 use strict;
 
@@ -1044,24 +1044,21 @@ my @EMAIL_DISPLAY_FIELDS =
       );
 
 my @DELETE_EVENT_MAIL_SEND_PARAMS = (
-    -FROM     => "$SESSION->getAttribute(-KEY =>
-'auth_email')"||$mail_from,
+    -FROM     => $mail_from,
     -TO       => $mail_to,
     -REPLY_TO => $mail_replyto,
     -SUBJECT  => "$APP_NAME_TITLE Delete"
 );
 
 my @ADD_EVENT_MAIL_SEND_PARAMS = (
-    -FROM     => "$SESSION->getAttribute(-KEY =>
-'auth_email')"||$mail_from,
+    -FROM     => $mail_from,
     -TO       => $mail_to,
     -REPLY_TO => $mail_replyto,
     -SUBJECT  => "$APP_NAME_TITLE Addition"
 );
 
 my @MODIFY_EVENT_MAIL_SEND_PARAMS = (
-    -FROM     => "$SESSION->getAttribute(-KEY =>
-'auth_email')"||$mail_from,
+    -FROM     => $mail_from,
     -TO       => $mail_to,
     -REPLY_TO => $mail_replyto,
     -SUBJECT  => "$APP_NAME_TITLE Modification"
