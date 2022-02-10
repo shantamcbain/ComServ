@@ -42,7 +42,13 @@
 	[% ELSE %]
 	  <h3>  [% embed ("LogOnLeftView") %] Welcome to [% data.site_display_name %]! </h3> 
 	[% END %]
-[% embed ("JoinUsLink")%]	
+[% IF username AND
+      group != 'normal'
+       %] 
+ [% ELSE %]
+[% embed('JoinUsLink')	%]  
+ [% END %]
+
 [% embed ("AdminTodoListLink")%]	
 		[% SiteName = data.site_name%]
 [% IF procedure %]
@@ -56,6 +62,8 @@
 [%# Call HomeView%] [%#  SiteName %]
    	[% IF SiteName == "OKB" %]
 		[% embed('OkBeekeepersHomeView') %]
+		[% ELSIF SiteName == "AnuCollective" %]
+			[% embed ('AnuCollectiveHomeView') %]
 		[% ELSIF SiteName == "BHN"%]
 			[% embed ('BeeHereNowHomeView') %]
 		[% ELSIF SiteName == "Aikikai" %]
@@ -64,8 +72,8 @@
 			[% embed ('AktivHomeView') %]
 		[% ELSIF SiteName == "AltPower" %]
 			[% embed ('AltPowerHomeView') %]
-		[% ELSIF SiteName == "AnuCollective" %]
-			[% embed ('AnuCollectiveHomeView') %]
+		[% ELSIF SiteName == "BeeTalk" %]
+			[% embed ('BeeTalk') %]
 		[% ELSIF SiteName == "BMaster" %]		
 		  [% embed ('ApisHomeView') %]
 		[% ELSIF SiteName == "SMO"%]
