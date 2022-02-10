@@ -13,7 +13,7 @@ my $UseModPerl = shift || 0;
 
 
 my $self = {
-            -SITE_LAST_UPDATE       => 'April 14, 2012',
+            -SITE_LAST_UPDATE       => 'Feb 10, 2022',
  	    -SHOP	                    => "cs",
        -SITE_DISPLAY_NAME          => 'Bee Talk',
 	    -HOME_VIEW              => 'BeeTalk',
@@ -30,7 +30,7 @@ my $self = {
        -DEFAULT_CHARSET        => 'ISO-8859-1', 
 	    -PAGE_TOP_VIEW          => 'PageTopView',
 	    -PAGE_BOTTOM_VIEW       => 'PageBottomView',
-	    -PAGE_LEFT_VIEW         => 'LeftPageView',
+	    -PAGE_LEFT_VIEW         => '',
 	    -MAIL_FROM              => 'beemaster@beemaster.ca',
 	    -MAIL_TO                => 'shanta@beemaster.ca',
 		 -MAIL_TO_ADMIN          => 'support@beemaster.ca',
@@ -46,7 +46,7 @@ my $self = {
        -HTTP_HEADER_KEYWORDS    => "Bees, bees, bee breeding,  bee breeding, bee keeping, beekeeping, honey, honey production, queens, apis, apis therapies, pollen, pollination, pollinators, propolus, bee pollen, pollination services, Bee mentor, ",
 	    -DATASOURCE_TYPE        => $datesourcetype,
  	    -ADDITIONALAUTHUSERNAMECOMMENTS => 'Please do not use spaces.',
-       -SITE_DISPLAY_NAME     => 'BeeMaster BeeKeeping application',
+       -SITE_DISPLAY_NAME     => 'BeeTalk',
 	    -GLOBAL_DATAFILES_DIRECTORY => "../../Datafiles",
 	    -TEMPLATES_CACHE_DIRECTORY  => '/TemplatesCache',
 	    -APP_DATAFILES_DIRECTORY => "../../Datafiles/Apis",
