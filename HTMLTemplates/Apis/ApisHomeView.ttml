@@ -1,4 +1,5 @@
-[% Version = 'v 1.153 2022/02/08 shanta ApisHomeView.ttml' %]
+[% Version = 'v 1.154 2022/02/10 shanta ApisHomeView.ttml' %]
+[%# Version = 'v 1.153 2022/02/08 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.152 2021/12/02 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.151 2021/06/02 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.151 2021/06/02 shanta ApisHomeView.ttml' %]
@@ -18,21 +19,6 @@
 [% embed('ErrorDisplayView') %]
 
 
-[% IF data.session_object %]
-
-	[% session_id = data.session_object.getId() %]
-   [% session_string = "session_id=$session_id" %]
-
-[% END %]
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-	[% procedure = data.procedure %]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-[% email = data.session_object.getAttribute('-KEY','auth_email') %]
-<!-- ApisHomeView  v 1.1 2003/11/29-->
 
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -43,13 +29,6 @@
  [%	Version %] 	   
 [% END %] 
 </p>
-
-
-[%#  SiteName%]
-
-
-
-
 			[% IF  group == 'normal'%]
 
 		<p>As a guest you may view the FAQ, Plant and other database . Contribute to Forums, Calendar of announcements, Buy and Sell, and Links.
@@ -59,6 +38,9 @@
 	[% ELSE %]
 
 	<h2>Member home</h2>
+	<p>Click join above then register to get more.
+		</p>	
+   
 	[% END %]
 
 

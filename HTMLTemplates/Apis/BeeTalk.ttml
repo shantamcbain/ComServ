@@ -21,25 +21,20 @@
  
 
 
-[% IF data.session_object %]
+[% ViewVersion = 'v 2.00 /cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
 
-	[% session_id = data.session_object.getId() %]
-
-[% END %]
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-[% email = data.session_object.getAttribute('-KEY','auth_email') %]<!--ECFProductView-->
-
-[% embed(data.page_top_view,["-PAGE_TITLE","$PageName",]) %]
 [% embed('ErrorDisplayView') %]
 
  <table border="0" cellpadding="0" cellspacing="0" width="100%">
 <tbody>
 <tr>
-<td><h2>Bee Talk appears on many web sites and news papers</h2>
+<td>
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+  [% embed  ('InheretedVariablesView') %]
+[% END %] 
+<h2>Bee Talk appears on many web sites and news papers</h2>
 
 
  [% PROCESS BeeTalkHOMEPagesql.ttml %]
@@ -52,12 +47,10 @@
 [% embed('JoinUsLink')	%]  
  [% END %]
 
-<p> 
-[% embed('LiveEditAdmin') %]
-	      
+
                      
                                     
-      [% body %][%# process  %]
+
  [%  embed('BeeTalkArticalsql') %]
  <p>  
       [% IF news %]			
