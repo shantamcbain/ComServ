@@ -1,4 +1,4 @@
-[% Version = 'v 0.001 2023/02/09 /cgi-bin/HTMLTemplates/USBM/SteamingServices'%]
+[% Version = 'v 0.001 2023/02/09 /cgi-bin/HTMLTemplates/Default/SteamingServices'%]
 [% IF data.debug == 1 %]
  [%	Version %] 
 [% END %]<h2>Streaming service's.</h2>
