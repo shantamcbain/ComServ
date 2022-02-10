@@ -45,7 +45,7 @@
   [% embed ('ProgramingView') %]
 [% ELSIF procedure  == ('ApisQueensView') %]
 [% ELSIF procedure  == ('LiveStream') %]
-Call streamingView
+
 [% embed ('StreamingView') %]
 [% ELSIF procedure  == ('WinterVisits') %]
  
