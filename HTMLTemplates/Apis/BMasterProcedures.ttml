@@ -1,4 +1,4 @@
-[% Version = 'v 1.17 2022/01/15 /cgi-bin/HTMLTemplates/Apis/BMasterProcedures.ttml '%]
+[% Version = 'v 1.19 2022/02/06 /cgi-bin/HTMLTemplates/Apis/BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.15 2021/08/03 BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.14 2021/03/08 BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.13 2020/03/10 BMasterProcedures.ttml '%]
@@ -14,23 +14,7 @@
 %]
 
 [% embed('ErrorDisplayView') %] 
-[% IF data.session_object %]
 
-   [% session_id = data.session_object.getId() %]
-   [% session_string = "session_id=$session_id" %]
-
-[% END %]
-
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-[% username = data.session_object.getAttribute('-KEY','auth_username') %]
-[% group = data.session_object.getAttribute('-KEY','auth_groups') %]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-[% procedure = data.procedure %]
-[%# procedure = Page %]
-[% script_name = data.app_name %]
-[% localip = data.local_ip %]
-
-[% SiteFullName = 'Beemaster.ca'%]
 <div align="center">
 </div>
 [% IF data.debug == 1 %]
@@ -60,7 +44,12 @@
 [% ELSIF procedure  == ('ProgramingView') %]
   [% embed ('ProgramingView') %]
 [% ELSIF procedure  == ('ApisQueensView') %]
+[% ELSIF procedure  == ('LiveStream') %]
+Call streamingView
+[% embed ('StreamingView') %]
+[% ELSIF procedure  == ('WinterVisits') %]
  
+ [% embed ('WinterVisits') %]
 [% embed ('ApisQueensView') %]
    [% ELSIF Page  == ('BeeProducts') %]
    [% FOREACH link = DBI.query("SELECT * FROM page_tb
@@ -91,6 +80,9 @@
  
 [%# PageName %]
 [% body %]
+[% ELSIF procedure  == ('ShopHome') %]
+ 
+ [% embed ('ShopHome') %]
 [% ELSIF procedure  == ('SeasonView') %]
  
  [% embed ('SeasonView') %]
@@ -102,6 +94,8 @@
  [% embed ('ClockeBoardView') %]
 [% ELSIF procedure  == ('FirstEval') %]
    [% embed ('FirstEval') %]
+[% ELSIF procedure  == ('InventoryView') %]
+   [% embed ('InventoryView') %]
 [% ELSIF procedure  == ('PollenHarvest') %]
    [% embed ('PollenHarvest') %] 
 [% ELSIF procedure  == ('PollenPatties') %]

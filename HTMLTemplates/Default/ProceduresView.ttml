@@ -1,4 +1,5 @@
-[% ViewVersion = 'v 1.98 /cgi-bin/HTMLTemplates/Default/ProceduresView.ttml, 2022/01/18'%]
+[% ViewVersion = 'v 2.011 /cgi-bin/HTMLTemplates/Default/ProceduresView.ttml, 2022/02/06'%]
+[%# ViewVersion = 'v 2.01 /cgi-bin/HTMLTemplates/Default/ProceduresView.ttml, 2022/02/06'%]
 [% Version = 'v 1.97 2021/12/22 /HTTMLTemplates/Default/ProceduresView.ttml'%]
 [%# Version = 'v 1.968 2021/08/03 ProceduresView.ttml'%]
 [%# Version = 'v 1.967 2021/03.22 ProceduresView.ttml'%]
@@ -31,7 +32,7 @@
 	<tr>
 	<td>
 [% IF data.debug == 1 %]
- [%	VersionVersion %] 	   
+ [%	ViewVersion %] 	   
 [% END %] 
 <p>
                 [% IF group == 'Apis_admin' OR
@@ -43,6 +44,7 @@
                     group == 'MW_admin' OR
                     group == 'SMO_admin' OR
                     group == 'WiseWoman_admin' OR
+                    group == 'ShantaWorkShop_admin' OR
                     group == 'AltPower_admin' OR
                     username == 'Shanta'
                  %] 
