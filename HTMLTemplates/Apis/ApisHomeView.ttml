@@ -1,5 +1,6 @@
-[% Version = 'v 1.152 2021/12/02 shanta ApisHomeView.ttml' %]
-[% Version = 'v 1.151 2021/06/02 shanta ApisHomeView.ttml' %]
+[% Version = 'v 1.153 2022/02/08 shanta ApisHomeView.ttml' %]
+[%# Version = 'v 1.152 2021/12/02 shanta ApisHomeView.ttml' %]
+[%# Version = 'v 1.151 2021/06/02 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.151 2021/06/02 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.150 2021/05/17 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.149 2021/04/25 shanta ApisHomeView.ttml' %]
@@ -46,9 +47,8 @@
 
 [%#  SiteName%]
 
-[% IF procedure  %]
-  [% embed ('BMasterProcedures') %]
-[% ELSE %]
+
+
 	[% IF username %]
 			[% IF  group == 'normal'%]
 
@@ -61,12 +61,14 @@
 	<h2>Member home</h2>
 	[% END %]
 
-	[% END %] 
 	
 	
 	
-<h2>Next event.</h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=WinterizingYard">
-        Winterizing your yard.</a>		
+	
+<h2>Next event.</h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=WinterVisits">
+        Winter Visits.</a>	Live stream on Sunday February 13, 7 pm. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream" onmouseover="Join us live.">BeeTalk</a></h2>
+        
+<h2>New <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream" onmouseover="Join us live.">LiveStreams</a></h2>	
 <h3><a href="https://beemaster.ca/mailman/listinfo/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Join Our Apis lists</b></a>
 </h3>
  		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
