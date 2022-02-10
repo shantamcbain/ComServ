@@ -1,0 +1,18 @@
+[% Version = 'v 0.001 2023/02/09 /cgi-bin/HTMLTemplates/USBM/USBMSteaming'%]
+
+[%#	$Id: BatteryList.ttml,v 0.001 2020/08/12 11:42:47 shanta Exp shanta $	%]
+
+
+[% IF data.debug == 1 %]
+ [%	Version %] 
+[% END %]
+ 
+
+<A NAME="PageTop"></A>
+
+
+<h2>Welcome to [% SiteDisplayName %]'s Streaming services</h2>
+
+
+<p>Learn to use streaming services to enhance your online inexperience.   </p>
+

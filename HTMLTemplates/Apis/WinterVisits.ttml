@@ -1,0 +1,22 @@
+[% ViewVersion = 'v 0.001 2022/02/08 /cgi-bin/HTMLTemplates/Apis/WinterVisits.ttml,'%]
+[%#	$Id: /HTMLTemplates/Apis/InventoryView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
+
+# Ideally this template should be converted into a static CSS file and
+# be served as /foo/bar.css and not via CGI, since it slows things
+# down and doesn't allow browsers to cache the CSS content.
+
+# otherwise this template is stand-alone, i.e. it doesn't rely on any
+# variables from outside.
+
+%]
+
+
+[% embed('ErrorDisplayView') %]
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+ 
+[% END %] 
+
+
+<h2>Winter visits! </h2>

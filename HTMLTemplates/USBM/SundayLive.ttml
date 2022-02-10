@@ -1,4 +1,8 @@
-<h2>The Sunday night live stream! </h2>
+[% ViewVersion = 'v 0.001 2022/02/08 /cgi-bin/HTMLTemplates/USBM/SundayLive.ttml,'%]
+% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+ 
+[% END %] <h2>The Sunday night live stream! </h2>
 
 <p>Come join us as we talk about the things we are concerned with in our lives. This, the first in the series, will be vary open ended. Working out technical issues with the software, inviting guest, learning the software, hardware problems.   </p>
 
@@ -25,7 +29,7 @@
 </li>
 </ul>
 
-To send register <a href="mailto:shanta@usbm.ca?subject=Register%20for%20SundayLive&amp;body=Add%20me%20to%20your%20SundayLive%20mailing%20list.%20Tell%20us%20if%20you%20like%20to%20be%20Guest"> Email</a> 
+To register <a href="mailto:shanta@usbm.ca?subject=Register%20for%20SundayLive&amp;body=Add%20me%20to%20your%20SundayLive%20mailing%20list.%20Tell%20us%20if%20you%20like%20to%20be%20Guest"> Email</a> 
 <p>
 <a href="http://ulc.usbm.ca/mailman/listinfo/sundaylive_ulc.usbm.ca" target="_blank">Join the list</a>
 </p>

@@ -1,0 +1,22 @@
+[% ViewVersion = 'v 0.002 2022/02/09 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
+[%# ViewVersion = 'v 0.001 2022/02/08 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
+
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+ 
+[% END %] 
+
+<h2>Welcome to BeeTalk Live! </h2>
+
+<p>Come join us as we talk about the things we are concerned with in Beekeeping. Here we will talk about bees.   </p>
+
+<p>
+To register <a href="mailto:shanta@beemaster.ca.ca?subject=Register%20for%20BeeTalk&amp;body=Add%20me%20to%20your%20BeeTalk%20mailing%20list.%20Tell%20us%20if%20you%20like%20to%20be%20Guest"> Email</a>  </p>
+<p>
+To Receive info on events future events <a href="http://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" target="_blank">Join the list</a>
+</p>
+<p><a href="https://youtu.be/L3cmfpPUkxw" target="_blank">Join our BeeTalk on Winter Yard Visit's.</a> Sunday Febuary at 7 pm</p>
+
+<p><a href="https://youtu.be/LKO97yLnCas" target="_blank">Our first live session</a></p>
+https://youtu.be/L3cmfpPUkxw

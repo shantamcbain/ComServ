@@ -1,0 +1,66 @@
+[% Version = 'v 0.002 2023/02/08 /cgi-bin/HTMLTemplates/USBM/SteamingView'%]
+
+[%# Version = 'v 0.001 2021/12/20 /cgi-bin/HTMLTemplates/USBM/SteamingView'%]
+[%#	$Id: BatteryList.ttml,v 0.001 2020/08/12 11:42:47 shanta Exp shanta $	%]
+
+
+[% IF data.debug == 1 %]
+ [%	Version %] 
+[% END %]
+ 
+
+<A NAME="PageTop"></A>
+
+
+<h2>Welcome to [% SiteDisplayName %]'s Streaming services</h2>
+
+
+<p>Come join us as we talk about the things we are concerned about. This, the first in the series, will be vary open ended. Working out technical issues with the software, inviting guest, learning the software, hardware problems.   </p>
+
+<ul>
+ <li><h3>Agenda</h3>
+  <ul>
+  <li><h4>Overview</h4> 
+  
+  </li>
+  <li>Technical Start time 1hour before start.</li>
+  <li>Event Star time 7pm PST</li>
+
+ </ul>
+ <li><h3>Software</h3> Steam</li>
+ <li><h3>Hardware</h3></li>
+ <li><h3>Streaming services</h3>
+  <ul>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&procedure=StreamingServices">Details</a></li>  
+  </ul>
+ </li>
+ </ul>
+ <li><h3>Topic of live stream</h3> Talk about the things we would like to focus on in future episodes.<p>
+</p>
+</li>
+</ul>
+[% IF SiteName == "USBM" %]
+		[% embed('USBMStreaming') %]
+
+[% ELSIF SiteName == "BMaster" OR
+         SiteName == "BHN"	OR	
+         SiteName == "AnuCollective" OR
+         SiteName == "SMO"	%]
+		  [% embed ('BMasterStream') %]
+[% ELSIF SiteName == "ULC" %]
+        [% embed ('SundayLive') %]
+[% END %]       
+
+[% IF group == 'Apis_admin' OR
+      group == 'Anu_admin' OR
+      group == 'BMaster_admin' OR
+      group == 'BHN_admin' OR
+      group == 'SMO_admin'%]OR
+      group == 'ULC_admin' OR
+      group == 'USBM_admin'  %]
+<h2>Streaming service's.</h2>
+
+[%# embed ('SundayLive') %]
+[% embed ('StreamingServices') %]
+
+[% END %]
