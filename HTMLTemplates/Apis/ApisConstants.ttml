@@ -35,7 +35,9 @@
 [% TotalActivePositions = 0 %]
 [% ProjectedNucPerHive = 2 %]
 <!-- costs -->
-
+[% TotalComb        = 0 %] 
+[% total_boxInuse = 0 %]
+[% total_comb = stored_comb  %]
 [% TotalLabourCosts = 20 %]
 [% TotalCostRepairs = 3 %]
 [% TotalMedCost     = 0 %]
