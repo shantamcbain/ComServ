@@ -1,0 +1,40 @@
+
+[%# ViewVersion = 'v 0.001 2022/02/08 /cgi-bin/HTMLTemplates/Apis/BeeTalkStream.ttml,' %]
+
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+ 
+[% END %] 
+
+<h2>BeeTalkLive! </h2>
+
+<p>Here we will be presenting LiveStreams from the Beekeeping community.   </p>
+
+<p>
+To register <a href="mailto:shanta@beemaster.ca.ca?subject=Register%20for%20BeeTalk&amp;body=Add%20me%20to%20your%20BeeTalkLive%20mailing%20list.%20Tell%20us%20if%20you%20like%20to%20be%20Guest"> Email</a>  
+To Receive info on events future events <a href="http://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" target="_blank">Join the list</a>
+</p>
+<p><a href="https://youtu.be/L3cmfpPUkxw" target="_blank">Join our BeeTalkLive on Winter Yard Visit's.</a> Sunday Feb 13 at 7 pm</p>
+<ul>
+ <li><h3>Agenda</h3>
+  <ul>
+  <li><h4>Overview</h4> We will be talking about winter visits to the yards.  Winter activities. Ordering Bees and equipment. Procreation for bee pasture planting. Have room for 5 talking guest. Of course there is no limit to YouTube guests but you will be limited to text chat.<p></p>
+  
+  </li>
+  <li>Technical Start time 1 hour before start. If you are a guest log in early We will send you a invitation when we go online at Streemyard. Please log in early to work out the bugs in your connection.</li>
+  <li>Event Start time 7pm PST</li>
+
+ </ul>
+  <li><h3>Streaming services</h3>
+  <ul>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&procedure=StreamingServices">Details</a></li>  
+  </ul>
+ </li>
+ </ul>
+ <li><h3>Topic of live stream</h3> Talk about the things we would like to focus on in future episodes.<p>
+</p>
+</li>
+</ul>
+
+<p><a href="https://youtu.be/LKO97yLnCas" target="_blank">Our first live session</a></p>

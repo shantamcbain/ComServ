@@ -1,0 +1,96 @@
+[% VersionVersion = 'v 0.001 2022/02/12 shanta /HTTPTemplates/Defalut/Support.ttml' %]
+[%#	$Id: MembersView.ttml,v 0.02 2014/03/21 17:43:15 shanta Exp shanta $	
+
+# Ideally this template should be converted into a static CSS file and
+# be served as /foo/bar.css and not via CGI, since it slows things
+# down and dozen't allow browsers to cache the CSS content.
+
+# otherwise this template is stand-alone, i.e. it dozen't rely on any
+# variables from outside.
+
+%]
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+ 
+[% END %] 
+
+
+[% IF SiteName == 'CSC' %]
+ [% PROCESS CSCMembersql.ttml %]
+[% ELSIF SiteName == "AltPower"  %]
+   [% PROCESS AltPowerMembersPagesql.ttml %]
+[% ELSIF SiteName == "BMaster" OR
+         SiteName == "BeeTalk" 
+   %]
+   <ul>
+	<li><a href="https://www.patreon.com/beemaster" target="_blank" name="Join us on Patrion">Patron </a></li>
+	<li>Join our site with an annual <a href="http://computersystemconsulting.ca/whmcs/store/club-and-site-memberships/beemaster-general-membership">membership</a></li>
+	<li></li>
+</ul>
+  [% PROCESS BMasterMembersql.ttml %]
+[% ELSIF SiteName == "BeeSafe" %]
+  [% PROCESS BeeSafeMembersql.ttml %]
+[% ELSIF SiteName == "CSCDev"  %]
+ [% PROCESS CSCDevMembersql.ttml %]
+[% ELSIF SiteName == "ECF"  %]
+ [% IF PAGE == 'GarlicCulture' %]
+  [% PROCESS Garlicculturesql.ttml %]
+ [% ELSIF PAGE == 'Sustainable' %]
+  [% PROCESS Sustainablesql.ttml %]
+ [% ELSE %]
+ [% PROCESS ECFMembersql.ttml %]
+ [% END %]
+[%  ELSIF SiteName ==  'Forager' %]
+ [% IF PAGE == 'GarlicCulture' %]
+  [% PROCESS Garlicculturesql.ttml %]
+ [% ELSE %]
+  [% PROCESS ForagerMembersql.ttml %]
+ [% END %]
+[% ELSIF SiteName == "GrindrodBC"  %]
+ [% PROCESS GrindrodBCMembersql.ttml %]
+[% ELSIF SiteName == "GrindrodProject"  %]
+ [% PROCESS GrindrodMembersql.ttml %]
+[% ELSIF SiteName == "HE" %]
+  [% PROCESS HEMembersql.ttml %]
+[% ELSIF SiteName == "LandTrust" %]
+  [% PROCESS LandTrustMembersql.ttml %]
+[% ELSIF SiteName == "ShantaWorkShop"  %]
+ [% PROCESS ShantaWorkShopMembersql.ttml %]
+[%  ELSIF SiteName ==  'Skye' %]
+ [% IF PAGE == 'SkyeGarlicCulture' %]
+  [% PROCESS Garlicculturesql.ttml %]
+[%  ELSIF PAGE == 'GarlicOverView' %]
+  [% PROCESS SkyeGarlicOverViewsql.ttml %]
+[%  ELSIF PAGE == 'LinksView' %]
+  [% PROCESS SkyeLinksViewsql.ttml %]
+[%  ELSIF PAGE == 'SkyeGarlicOverView' %]
+  [% PROCESS GarlicOverViewsql.ttml %]
+[%  ELSIF PAGE == 'MarketView' %]
+  [% PROCESS SkyeMarketPagesql.ttml %]
+ [%  ELSIF PAGE == 'PhotoView' %]
+  [% PROCESS SkyePhotoPagesql.ttml %]
+[%  ELSIF PAGE == 'ReferenceView' %]
+  [% PROCESS SkyeReferenceViewsql.ttml %]
+ [%  ELSIF PAGE == 'VideosView' %]
+  [% PROCESS SkyeVideoPagesql.ttml %]
+[% ELSE %]
+  [% PROCESS SkyeMembersql.ttml %]
+ [% END %]
+[% ELSE %]
+ [% PROCESS DemoMembersql.ttml %]
+[% END %]
+
+		
+</td>
+</tr>
+
+<tr>
+<td>
+
+</td>
+</tr>
+</table>
+
+	
+
