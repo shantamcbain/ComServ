@@ -15,7 +15,7 @@
 <h2>Welcome to [% SiteDisplayName %]'s Streaming services</h2>
 
 
-<p>Come join us as we talk about the things we are concerned about. This, the first in the series, will be vary open ended. Working out technical issues with the software, inviting guest, learning the software, hardware problems.   </p>
+   
 
 
 [% IF SiteName == "USBM" %]
@@ -35,6 +35,7 @@
       group == 'Anu_admin' OR
       group == 'BMaster_admin' OR
       group == 'BHN_admin' OR
+      group == 'BeeTalk' OR
       group == 'SMO_admin'%]OR
       group == 'ULC_admin' OR
       group == 'USBM_admin'  %]

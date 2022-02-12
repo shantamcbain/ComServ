@@ -47,6 +47,13 @@
 [% ELSIF procedure  == ('LiveStream') %]
 
 [% embed ('StreamingView') %]
+
+[% ELSIF procedure  == ('StreamingServices') %]
+[% embed ('StreamingServices') %]
+
+[% ELSIF procedure  == ('Support') %]
+[% embed ('Spport') %]
+
 [% ELSIF procedure  == ('WinterVisits') %]
  
  [% embed ('WinterVisits') %]

@@ -1,4 +1,5 @@
-[% Version = 'v 0.003 2021/10/26 shanta /HTTPTemplates/Defalut/MembersView.ttml' %]
+[% VersionVersion = 'v 0.004 2022/02/12 shanta /HTTPTemplates/Defalut/MembersView.ttml' %]
+[%# VersionVersion = 'v 0.003 2021/10/26 shanta /HTTPTemplates/Defalut/MembersView.ttml' %]
 [%#	$Id: MembersView.ttml,v 0.02 2014/03/21 17:43:15 shanta Exp shanta $	
 
 # Ideally this template should be converted into a static CSS file and
@@ -10,30 +11,19 @@
 
 %]
 
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-   [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
-   [% LastUpdate = data.last_update %]
-   [% SiteUpdate = data.site_last_update %]
-   [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-   [% SiteDisplayName = data.site_display_name %]
-   [% site = SiteName %]
-   [% username = data.session_object.getAttribute('-KEY','auth_username') %]
-   [% PrintMode    = data.session_object.getAttribute('-KEY','PrintMode') %]
-[% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
-	[% session_id = data.session_object.getId() %]
-	[% session_string = "session_id=$session_id" %]
-   [% PAGE = data.page_name || 'MembersView' %]
-[%# page = 'GarlicCulture' %]
-
- [% PROCESS DefaultDbi.ttml %]
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+ 
+[% END %] 
 
 
 [% IF SiteName == 'CSC' %]
  [% PROCESS CSCMembersql.ttml %]
 [% ELSIF SiteName == "AltPower"  %]
    [% PROCESS AltPowerMembersPagesql.ttml %]
-[% ELSIF SiteName == "BMaster" %]
+[% ELSIF SiteName == "BMaster" OR
+   ELSIF SiteName == "BeeTalk" OR
+   %]
   [% PROCESS BMasterMembersql.ttml %]
 [% ELSIF SiteName == "BeeSafe" %]
   [% PROCESS BeeSafeMembersql.ttml %]
