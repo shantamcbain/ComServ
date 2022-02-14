@@ -1,4 +1,4 @@
-[% ViewVersion = 'v 0.004 2022/02/12 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
+[% ViewVersion = 'v 0.00 2022/02/13 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
 [%# ViewVersion = 'v 0.003 2022/02/10 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
 [%# ViewVersion = 'v 0.002 2022/02/09 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
 [%# ViewVersion = 'v 0.001 2022/02/08 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
@@ -14,19 +14,22 @@
 <p>Come join us as we talk about the things we are concerned with in Beekeeping. Here we will talk about bees.   </p>
 
 <p>
-To register <a href="mailto:shanta@beemaster.ca.ca?subject=Register%20for%20BeeTalk&amp;body=Add%20me%20to%20your%20BeeTalk%20mailing%20list.%20Tell%20us%20if%20you%20like%20to%20be%20Guest"> Email</a>  
+Please register <a href="mailto:shanta@beemaster.ca.ca?subject=Register%20for%20BeeTalk&amp;body=Add%20me%20to%20your%20BeeTalk%20mailing%20list.%20Tell%20us%20if%20you%20like%20to%20be%20Guest"> Email</a>  
 To Receive info on events future events <a href="http://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" target="_blank">Join the list</a>
 </p>
-<p><a href="https://youtu.be/L3cmfpPUkxw" target="_blank">Join our BeeTalkLive on Winter Yard Visit's here.</a> Sunday Feb 13 at 7 pm</p>
+<p><h1><a href="https://youtu.be/L3cmfpPUkxw" target="_blank">Join our BeeTalkLive on Winter Yard Visit's here.</a> </h1>Sunday Feb 13 at 7 pm</p>
 <ul>
- <li><h3>Agenda</h3>
+ <li><h2>Agenda</h2>
   <ul>
-  <li><h4>Overview</h4> We will be talking about winter visits to the yards.  Winter activities. Ordering Bees and equipment. Procreation for bee pasture planting. Have room for 5 talking guest. Of course there is no limit to YouTube guests but you will be limited to text chat.<p></p>
-  <li><h4>Winter yard.</h4></li>
-  <li><h4>Need for a streamyard producer</h4><p>A producer looks after things like creating banners, posting questions from chat to the stream, among many other tasks that free the presenters from the distraction.</p></li>
+  <li><h3>Overview</h3> We will be talking about winter visits to the yards.  Winter activities. Ordering Bees and equipment. Procreation for bee pasture planting. Have room for 5 talking guest. Of course there is no limit to YouTube guests but you will be limited to text chat.<p></p>
+
   
-  <li><h4>Funding</h4><p>Ways to support beekeeping. Patron, Hosting, Site Membership</p>
-  [% embed  ('Support') %]</li>
+  <li><h3>Need for a streamyard producer</h3><p>A producer looks after things like creating banners, posting questions from chat to the stream, among many other tasks that free the presenters from the distraction. This happens Before and More importantly during.</p></li>
+  
+  <li><h3>Funding</h3><p>Ways to support beekeeping. Patron, Hosting, Site Membership</p>
+    <li><h3>Winter yard.</h3>[% embed  ('Support') %]</li>
+  <li><h3>Support.</h3><p>We provid students with on going support and education the the site, Online, mentoring, The online hive management system</p></li>
+  <li></li>
   
   </li>
   <li><h3>Technical Start </h3>time 1 hour before start. If you are a guest log in early We will send you a invitation when we go online at Streemyard. Please log in early to work out the bugs in your connection.</li>

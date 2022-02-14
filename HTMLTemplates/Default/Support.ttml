@@ -1,4 +1,4 @@
-[% VersionVersion = 'v 0.001 2022/02/12 shanta /HTTPTemplates/Defalut/Support.ttml' %]
+[% VersionVersion = 'v 0.002 2022/02/13 shanta /HTTPTemplates/Defalut/Support.ttml' %]
 [%#	$Id: MembersView.ttml,v 0.02 2014/03/21 17:43:15 shanta Exp shanta $	
 
 # Ideally this template should be converted into a static CSS file and
@@ -24,9 +24,10 @@
          SiteName == "BeeTalk" 
    %]
    <ul>
-	<li><a href="https://www.patreon.com/beemaster" target="_blank" name="Join us on Patrion">Patron </a></li>
-	<li>Join our site with an annual <a href="http://computersystemconsulting.ca/whmcs/store/club-and-site-memberships/beemaster-general-membership">membership</a></li>
-	<li></li>
+	<li><a href="https://www.patreon.com/beemaster" target="_blank" name="Join us on Patrion">Patron </a> has perks and feature on it's.</li>
+	<li>Annual <a href="http://computersystemconsulting.ca/whmcs/store/club-and-site-memberships/beemaster-general-membership">membership</a> </li>
+	
+	<li>Hosting your site with us. We offer subdomain, beetalk.beemaster.ca and domain hosting. This side get a commission for reffering this service click the host with us link in the top menu</li>
 </ul>
   [% PROCESS BMasterMembersql.ttml %]
 [% ELSIF SiteName == "BeeSafe" %]
