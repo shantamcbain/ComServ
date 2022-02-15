@@ -6,6 +6,8 @@
 <p>This list is static at the moment but will be put into a database so each hosted site will be able to use their own services. These are available to all users that doesn't have a YouTube channel for example. Or Streamyard where we can share the cost of paid services
 </p>
 <ul>
+
+
  
  <li><a href="https://www.youtube.com/channel/UCR0AvDd4Gab6t5Bgk9yuA0Q">BeeMasterChannel</a> Replace this with your channel.</li>
  <li><a href="https://streamyard.com/teams/z50LVmA7tjN4dVxuy75nPW3S/destinations/connect/rtmp">Stream yard</a> This is the streaming system we currently use to create streams. We currently only have the free version. We would like to upgrade to the next level. This would give us the abiltiy to connect <a href="https://d.tube" target="d.tube">d.tube</a> and other streaming services at the same time. Total of 3 destination and record live stream on streamyard </li> 
