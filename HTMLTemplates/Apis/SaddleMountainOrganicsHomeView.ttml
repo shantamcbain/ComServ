@@ -1,44 +1,55 @@
-[% Version = 'v 0.01 2021/02/21 SaddleMountinOrganicsHomeView.ttml shanta' %]
-
+[% Version = 'v 0.001 2022/02/14 /cgi-bin/HTMLTemplates/Apis/SaddleMountinOrganicsHomeView'%]
 [%#	$Id: SaddleMountinOrganicsHomeView.ttml,v 0.01 2021/02/21 06:42:47 shanta Exp shanta %]
+[% #Version = 'v 0.01 2021/02/21 SaddleMountinOrganicsHomeView.ttml shanta' %]
+
+[% IF data.debug == 1 %]
+ [%	Version %] 
+[% END %]
 
 
-[% procedure = data.procedure %]
 
-<!-- [% Version %]-->
+
+
 <div id=body > 
 <A NAME="PageTop"></A>
 
 
 
-<h1>Welcome to our Beekeeping Operations.</h1>
+<h1>Our Beekeeping Operations.</h1>
  	
-<h2>We setting up operations. Here at Saddle Mountain Organics.</h2>
+<h2>Next season projections.</h2>
 
-<p>Our adventure will be in the fallowing areas<p>
+
 
 
 
 <ul>
- <li><h3>Set up Honey house and <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisShopHome">Shop</a>.</h3>
-   </li><li><h3>Setup bee yards </h3>
+ <li><h3>Setup Website </h3>
+ 
+ <p>We are setting up for video recordings. We are creating a season long view of the management of a yard. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream">BeeTalkLive</a> expanding dialog on bees.</p>
+ </li>
+ 
+ <li>
+ <h3>Honey house and <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisShopHome">Shop</a>.</h3>
+   </li>
+<li>Plan Shop setup and Hive manufacture.</li>
+ <li>Setup BeeManagement system</li>
+
+<li><h3>Setup bee yards </h3>
   <ul>
-    <li>Teaching Yard</li>
-     <ul>
-      <li><h2>Temporary teaching yard</h2> 
-         <p>We are setup primarily set up for video recordings. We are creating a season long view of the management of a yard.</p>
-         <li><h2>Next event.</h2><p>Saturday Jan 15 Check hive entrance's.</p></li>
+      <li><h4>Teaching yard</h4> 
       </li>
-     </ul>
-     <li>Honey Yards</li>
-    <li>Wintering Yard.</li>
-    <li>Mating Yard. Finished.</li>
+      <li>Honey Yards</li>
+      <li>Wintering Yard.</li>
+      <li>Mating Yard. </li>
   </ul>
 
- <li><h3>Setup Website </h3>
-  <ul>
-    <li><h4>View</h4> <p>How the site looks. If you have skills <a href="/cgi-bin/index.cgi?session_id=SUOHD06VYTYV5JPQ&site=SMO&view=JobView">Join</a> our team.</p></li>
-    <li><h4><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&procedure=ProgramingView" target="_blank" name="ProgramingView" onmouseover="See what we are working on.">Programming</a></h4><p>We will be tuning the software to reflect our usage. Learning/teaching. Yard Management. Shop management. Honey House management.</p></li>
+ 
+
+   <li><h4>Next event.</h4><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream">BeeTalkLive</a> Live #3 Saturday Feb 19</p></li>
+   <li><h2>Up Coming events.</h4>
+   <li><h4>View</h4> <p>How the site looks. If you have skills <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=JobView">Join</a> our team.</p></li>
+   <li><h4><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&procedure=ProgramingView" target="_blank" name="ProgramingView" onmouseover="See what we are working on.">Programming</a></h4><p>We will be tuning the software to reflect our usage. Learning/teaching. Yard Management. Shop management. Honey House management.</p></li>
     <li><h4>Mailing List</h4> <p>Keeping members informed. Join list below.</p></li>
     <li><h4>Calendar integration</h4>. Link Our Calendar to yours.</li>
   </ul>

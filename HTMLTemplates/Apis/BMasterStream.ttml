@@ -1,4 +1,4 @@
-[% ViewVersion = 'v 0.00 2022/02/13 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
+[% ViewVersion = 'v 0.004 2022/02/15 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
 [%# ViewVersion = 'v 0.003 2022/02/10 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
 [%# ViewVersion = 'v 0.002 2022/02/09 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
 [%# ViewVersion = 'v 0.001 2022/02/08 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
@@ -14,26 +14,27 @@
 <p>Come join us as we talk about the things we are concerned with in Beekeeping. Here we will talk about bees.   </p>
 
 <p>
-Please register <a href="mailto:shanta@beemaster.ca.ca?subject=Register%20for%20BeeTalk&amp;body=Add%20me%20to%20your%20BeeTalk%20mailing%20list.%20Tell%20us%20if%20you%20like%20to%20be%20Guest"> Email</a>  
-To Receive info on events future events <a href="http://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" target="_blank">Join the list</a>
+Please register <a href="mailto:shanta@beemaster.ca.ca?subject=Register%20for%20BeeTalk&amp;body=Add%20me%20to%20your%20BeeTalk%20mailing%20list.%20Tell%20us%20if%20you%20like%20to%20be%20Guest"> Email</a>  Please register early especially if you would like to be a guest.</p>
+To Receive info on events future events <a href="http://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" target="_blank">Join </a>
+
 </p>
-<p><h1><a href="https://youtu.be/L3cmfpPUkxw" target="_blank">Join our BeeTalkLive on Winter Yard Visit's here.</a> </h1>Sunday Feb 13 at 7 pm</p>
+<p><h1><a href="https://youtu.be/6CGM6aSPjgs" target="_blank">BeeTalkLive #3 First beework visit of the season.</a> </h1>on YouTube. Saturday Feb 19 at 7 pm</p>
 <ul>
  <li><h2>Agenda</h2>
   <ul>
-  <li><h3>Overview</h3> We will be talking about winter visits to the yards.  Winter activities. Ordering Bees and equipment. Procreation for bee pasture planting. Have room for 5 talking guest. Of course there is no limit to YouTube guests but you will be limited to text chat.<p></p>
+  <li><h3>Overview</h3> <p>We will be talking about First winter beekeeping visits to the yards.  Here we see how many hives survived the winter. Our next visit we will see how many survived Agra Biz and CCD. Ordering Bees and equipment. Procreation for bee pasture planting. Have room for 5 talking guest. Of course there is no limit to YouTube guests but you will be limited to text chat.</p>
 
   
-  <li><h3>Need for a streamyard producer</h3><p>A producer looks after things like creating banners, posting questions from chat to the stream, among many other tasks that free the presenters from the distraction. This happens Before and More importantly during.</p></li>
+  <li><h3>Need for a Streamyard producer</h3><p>A producer looks after things like creating banners, posting questions from chat to the stream, among many other tasks that free the presenters from the distraction. This happens Before and More importantly during.</p></li>
   
-  <li><h3>Funding</h3><p>Ways to support beekeeping. Patron, Hosting, Site Membership</p>
-    <li><h3>Winter yard.</h3>[% embed  ('Support') %]</li>
-  <li><h3>Support.</h3><p>We provid students with on going support and education the the site, Online, mentoring, The online hive management system</p></li>
+  <li><h3>Funding</h3><p>Ways to support beekeeping. [% embed  ('Support') %] Patron, Hosting, Site Membership, YouTube subscribe and like. </p>
+    <li><h3></h3></li>
+  <li><h3>Support.</h3><p>We provide students with on going support and education the the site, Online, mentoring, The online hive management system	</p></li>
   <li></li>
   
   </li>
-  <li><h3>Technical Start </h3>time 1 hour before start. If you are a guest log in early We will send you a invitation when we go online at Streemyard. Please log in early to work out the bugs in your connection.</li>
-  <li>Event Start time 7pm PST</li>
+  <li><h3>Technical Start </h3>Time: 1 hour before start. If you are a guest log we will send you a invitation when we go online at Streemyard. Please log in early to work out the bugs in your connection. You will need to register be a guest.</li>
+  <li>Event Start time 7 pm PST</li>
 
  </ul>
   <li><h3>Streaming services</h3>
@@ -42,10 +43,18 @@ To Receive info on events future events <a href="http://beemaster.ca/mailman/lis
   </ul>
  </li>
  </ul>
- <li><h3>Topic of live stream</h3> Talk about the things we would like to focus on in future episodes.<p>
+ <li><h3>The Future.</h3> Our Next Visit. Bee pasture. Talk about the things we would like to focus on in future episodes.<p>
 </p>
 </li>
+<li><h3>Q and A</h3> Have any beekeeping questions ask it now. If you missed the stream ask in the comments and we will add the question to the next live stream.</li>
+<li><h3>Past BeeTalkLive</h3> 
+ <ul>
+  <li><h3><a href="https://youtu.be/L3cmfpPUkxw" target="_blank"> BeeTalkLive #2 Winter Yard Visit's.</a> </h3></p></li>
+  <li><a href="https://youtu.be/LKO97yLnCas" target="_blank">BeeTalkLive #1</a></li>
+ </ul>
+</li>
+
 </ul>
 <p><!-- <embed src="href="https://youtu.be/LKO97yLnCas" width="200" height="200"></embed> -->
-<a href="https://youtu.be/LKO97yLnCas" target="_blank">Our first live session</a></p>
+
 <p>
