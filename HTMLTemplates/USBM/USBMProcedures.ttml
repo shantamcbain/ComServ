@@ -31,6 +31,9 @@
  [% ELSIF procedure  == ('BotanicalNameView') %]
  
   [% embed ('BotanicalNameView') %]
+[% ELSIF procedure  == ('ButterflyHome') %]
+ 
+ [% embed ('ButterflyHome') %]
 [% ELSIF procedure  == ('StreamingView') %]
  
  [% embed ('StreamingView') %]

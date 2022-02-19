@@ -20,7 +20,10 @@
  
 
 [% embed ('ShamanismView') %]
- [% ELSIF procedure  == ('GraftingWorkShop') %]
+ [% ELSIF procedure  == ('ButterflyHome') %]
+ 
+ [% embed ('ButterflyHome') %]
+[% ELSIF procedure  == ('GraftingWorkShop') %]
  
  [% embed ('GraftingWorkShop') %]
  [% ELSIF procedure  == ('AmuAdminList') %]
