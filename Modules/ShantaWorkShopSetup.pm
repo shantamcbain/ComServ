@@ -15,11 +15,11 @@ my $UseModPerl = shift || 0;
 
 # This is where you define your variable mapping.
 my $self = {
-       -Site_Last_Update  => 'January 17, 2012',
+       -Site_Last_Update  => 'February, 2022',
   	    -AFFILIATE           => '2',
 	    -PID                 => '122',
        -HOME_VIEW_NAME    => 'HomeView',
-	    -HOME_VIEW         => 'PageView',
+	    -HOME_VIEW         => 'HomeView',
  	    -ADDITIONALAUTHUSERNAMECOMMENTS => 'Please do not use spaces.',
 	    -BASIC_DATA_VIEW   => 'BasicDataView',
 	    -APP_LOGO          => '/images/shanta/shantasmall.gif',
@@ -42,8 +42,8 @@ my $self = {
 	    -MAIL_REPLYTO      => 'shanta@shantasworkshop.grindrodbc.com',
 	    -PAGE_TOP_VIEW     => 'PageTopView',
 	    -PAGE_BOTTOM_VIEW  => 'PageBottomView',
-	    -PAGE_LEFT_VIEW    => 'LeftPageView',
-	    -LEFT_PAGE_VIEW    => 'LeftPageView',
+	    -PAGE_LEFT_VIEW    => '',
+	    -LEFT_PAGE_VIEW    => '',
        -LINK_TARGET       => '_self',
 	    -DATASOURCE_TYPE   => $site,
        -AUTH_TABLE        => 'shanta_user_auth_tb',
