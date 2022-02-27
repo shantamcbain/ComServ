@@ -29,15 +29,18 @@
  [%	Version %] 	   
 [% END %] 
 </p>
+<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
 			[% IF  group == 'normal'%]
 
 		<p>As a guest you may view the FAQ, Plant and other database . Contribute to Forums, Calendar of announcements, Buy and Sell, and Links.
 		</p>
 		<p>Members may contribute to the sites contend and Join communities monitor content of the different date-abases hosted on the site. Create logs that certification organizations need to access to maintain certification. Available logs will vary according to the need of your certification organization. 
 		</p>	
+	[% ELSIF group ==  	'Apis_admin' %]
+	
 	[% ELSE %]
 
-	<h2>Member home</h2>
+	
 	<p>Click join above then register to get more.
 		</p>	
    
@@ -47,13 +50,13 @@
 	
 	
 	
-<h2>Next event.</h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=WinterVisits">
-        Winter Visits.</a>	Live stream on Sunday February 13, 7 pm. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream" onmouseover="Join us live.">BeeTalk</a></h2>
+<h2>Next event.</h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=FirstEval">
+        First Evaluation and feed.</a>	Live stream on Saturday March 12, 7 pm. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream" onmouseover="Join us live.">BeeTalkLive</a></h2>
         
-<h2>New <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream" onmouseover="Join us live.">LiveStreams</a></h2>	
+	
 <h3><a href="https://beemaster.ca/mailman/listinfo/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Join Our Apis lists</b></a>
 </h3>
- 		<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
+ 		
 	 	
 		<p>Thanks for digging deeper.<p>              
 <h3><a href="https://email.labxmediagroup.com/e2t/tc/VXb1rk7ClB8ZW8k12lC2dKz-zW5wYw0_4sf4lbN5g75h75nxG7V3Zsc37CgHwZW6P_lD962cLvlV5N3vP5XMvwJW794Pny6BhhtwN6hysy7S5qYDW51Bvkr8qqHmXW2vZfv28JwqHzW6rFdVd4tQDMWW6J6Spf58-XqQW6WztgK1y55KjW5YmDf02hZS02W6N_D2D29f2jhW8430L78MFkYBW6JxZls6K0t29W5Fz-qL5cQHkQW81W9Dg6G647LW53Cqp-5qY5dtW1Gnw5v5vmqLbW2Z5VvB7_Jv6bW2-DnqH9f-SsQW92pQ6V7t14y9VqXP5Z5YgpWcW43x6Sy2gGkX3W4DbmsJ5m6WXyN6GQ9sqFWb1YW86YJ4d1KRy9ZW31l_b078HT2TW56g0tW5zPWs0W4tSdDm4qb1WhW3J38Zm2nLlHPW806-jX3P0l4PW2FD0dz9m46GlW3pk1LD4M_sSF364y1">Honeybee Microbes Shape the Colonies Social Behavior </a></h3>

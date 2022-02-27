@@ -67,7 +67,7 @@ Total Partions [% TotalActivePositions  %]. <BR>
 <h3>Number of wintering units</h3>
  [%  WinterUnits %]  
  [% IF WinterUnits %]
- <a href="/cgi-bin/Apis/inventory.cgi?site=[% SiteName %] &amp;sort_field1=project_code&[% session_string %]&amp;display_modification_form=on&first_record_to_display=0&amp;record_id=[% RecordID %] target="_NEW">change</a>
+ <a href="/cgi-bin/Apis/inventory.cgi?site=[% SiteName %] &amp;sort_field1=project_code&[% session_string %]&amp;display_modification_form=on&amp;record_id=[% RecordID %] target="_NEW">change</a>
  	[% ELSE %]
  	<a href="/cgi-bin/Apis/inventory.cgi?site=[% SiteName %] &[% session_string %]&amp;display_add_form=on&item_code=winteringunits" >add</a>
  	[% END %]	

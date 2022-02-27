@@ -1,11 +1,43 @@
+
 [% ViewVersion = 'v 0.01 /cgi-bin/HTMLTemplates/Apis/ApisConstants.ttml,'%]
 
 [% IF data.debug == 1 %]
  [%	ViewVersion %] 	
 
-[% END %] 
-
+[% END %]
+[% one64 = 0.396875 %]
+[% one32 = 0.79373 %]
+[% one16 = 1.5875 %]
+[% one8  = 3.175 %]
+[% one4  = 6.35 %]
+[% one2  = 12.75 %]
+[% oneinch = 2 * one2 %]
 [% boxes_price = 23 %]
+[% Ply38price  = 15 / (12 * 4 * 8 * 240	) %]
+[% Ply58Price = 20 / (12 * 4 * 8 * 240)	%]
+[% InchBFCost = 300 / (500 * 240) %]
+
+[% LidLength = (oneinch * 21 + one4 * 3)%]
+[% LidWidth = (oneinch * 18 + one8) %]
+[% LidDepth = 2 + one4 %]
+[% LidPlyArea =  LidLength * LidWidth %]
+[% TinLidCost = 6.95  %]
+[% LidBF = (LidLength * 2  + LidDepth * 2) * LidDepth  / 12 %]
+[% LidLumberCost = (LidBF * InchBFCost) %]
+[% LidplyCost = Ply58Price *   LidPlyArea  %]
+
+[% LidCost = LidLumberCost  + LidplyCost + TinLidCost %]
+ 
+ 
+[%# length (ft) * width (in) * thickness (in) / 12 %]
+[% BoxInsideLenght =  (9* oneinch + 3 * one4 ) * 0.03937008 %]
+[% BoxInsideWidth  =  375 * 0.03937008 %]
+[% BroodDepth = 243 * 0.03937008 %]
+[% BoxThickness = 13 * 0.03937008 %]
+[% total_frames = 0 %]
+[% total_wired_frames = 0 %]
+
+[% Brood_box_BF  = (BoxInsideLenght + (2 * BoxThickness)) * (BoxInsideWidth + (2 * BoxThickness)) * 2 / 12 %]
 [% frame_price = 1.17 %]
 [% foundation_price = 1.65 %] 
 [% ExcluderCost = 9.95 %]
@@ -36,6 +68,7 @@
 [% ProjectedNucPerHive = 2 %]
 <!-- costs -->
 [% TotalComb        = 0 %] 
+[% total_boxes_onhand = 0 %]
 [% total_boxInuse = 0 %]
 [% total_comb = stored_comb  %]
 [% TotalLabourCosts = 20 %]

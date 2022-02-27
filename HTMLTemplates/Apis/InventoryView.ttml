@@ -1,4 +1,6 @@
-[% ViewVersion = 'v 0.14 /cgi-bin/HTMLTemplates/Apis/InventoryView.ttml,'%][%#	$Id: /HTMLTemplates/Apis/InventoryView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
+[% ViewVersion = 'v 0.15 2022/00/18 /cgi-bin/HTMLTemplates/Apis/InventoryView.ttml,'%]
+
+[%#	$Id: /HTMLTemplates/Apis/InventoryView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
 
 # Ideally this template should be converted into a static CSS file and
 # be served as /foo/bar.css and not via CGI, since it slows things
@@ -9,206 +11,25 @@
 
 %]
 
+[% PROCESS DefautVariables.ttml %]
+ 
+[% PROCESS DefaultDbi.ttml %]
+
 [% embed(data.page_top_view,['-PAGE_TITLE','Inventory module homeView.']) %]
 
 [% embed('ErrorDisplayView') %]
 
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
  
 [% END %] 
-[% TotalComb        = 0 %] 
-[% total_boxInuse = 0 %]
-[% total_comb = stored_comb  %]
 
-
-
-
-[% PROCESS DefautVariables.ttml %]
-  
-[% PROCESS DefaultDbi.ttml %]
+[% PROCESS ApisConstants.ttml %]
 [% PROCESS ActiveQueensSQL.ttml %]
 [% PROCESS ApisInventorySQL.ttml %]
 [% PROCESS ApisYardSQL.ttml %]
 
-[%# FOREACH# item = DBI.query("SELECT * FROM csc_project_tb
-	                                WHERE  ( project_code  LIKE  '%winteringunits%'
-	                                        )
- 	                            ")%]  
-	    [%# WinterUnits = WinterUnits + item.estimated_man_hours %]
-[%# END %]
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  ( item_code  LIKE  '%winteringunit%'
-	                                        )
- 	                            ")%]  
-	    [%# total_wintering_units_onhand = total_wintering_units_onhand + item.number %]
-[%# END %]
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  ( item_code  LIKE  '%2box%'
-	                                        )
- 	                            ")%]  
- 	    [%# total_2box = total_2box + item.number %]
-[%# END %]
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  (
-	                                	item_code  LIKE  '%8frame%' OR
-	                                	item_code  LIKE  '%8frameNuc%'
-	                                        )
- 	                            ")%]  
-	    [%# total_nucs_onhand = total_nucs_onhand+ item.number %]
-[%# END %]
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  ( item_code  LIKE  '%winteringunit%'
-	                                        )
- 	                            ")%]  
-	    [%# total_boxes_onhand = total_boxes_onhand + item.number %]
-[%# END %]
-	    [%# total_boxes_onhand = total_wintering_units_onhand * 12 %]
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  ( item_code  LIKE  '%2box%'
-	                                        )
- 	                            ")%]  
-	    [%# total_boxes_onhand = total_boxes_onhand + item.number %]
-	    [%# total_boxes_onhand = total_boxes_onhand + 1 %]
-[%# END %]
-
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  ( item_code  LIKE  '%broodbox%' OR
-	                                	item_code  LIKE  '%single10%' OR
-	                                	item_code  LIKE  '%8frame%' OR
-	                                	item_code  LIKE  '%8frameNuc%' OR
-	                                	item_code  LIKE  '%1andhalf%'
-	                                        )
- 	                            ")%]  
-	    [%# total_boxes_onhand = total_boxes_onhand + item.number %]
-[%# END %]
-[% boxes_price = 1%]
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  ( item_code  LIKE  '%broodbox%')
- 	                            ")%]  
-[%# boxes_price = item.price %]
-[%# END %]
-
-[% total_frames = 0 %]
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  (
-	                                	item_code  LIKE  '%2box%' 
-	                                        )
- 	                            ")%]  
-	    [%# total_frames = total_frames + item.number %]
-[%# END %]
-	    [% total_frames = total_frames * 20 %]
-	    [% total_comb = total_frames %]
-
-[% total_frames = 0 %]
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  (
-	                                	item_code  LIKE  '%winter%' 
-	                                        )
- 	                            ")%]  
-	    [%# total_frames = total_frames + item.number %]
-[%# END %]
-	    [% total_frames = total_frames * 28 * 4%]
-	    [% total_comb = total_comb + total_frames %]
-
-[% total_frames = 0 %]
-
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  (
-	                                	item_code  LIKE  '%single10%' OR
-	                                	item_code  LIKE  '%1andhalf%'
-	                                        )
- 	                            ")%]  
-	    [%# total_frames = total_frames + item.number %]
-[%# END %]
-	    [% total_frames = total_frames * 10 %]
-
-	    [% total_comb =  total_comb + total_frames %]
-[% total_nucs = 0 %]
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  (
-	                                	item_code  LIKE  '%8frame%' OR
-	                                	item_code  LIKE  '%8frameNuc%'
-	                                        )
- 	                            ")%]  
-	    [%# total_nucs = total_nucs + item.number %]
-[%# END %]
-	    [% total_nucs = total_nucs * 8 %]
-	    [% total_comb =  total_comb + total_nucs %]
-[% total_frames = 0 %]
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  (
-	                                	item_code  LIKE  '%comb%'
-	                            	                                        )
- 	                            ")%]  
-	    [%# total_frames = total_frames + item.number %]
-[%# END %]
-	    [%# total_comb =  total_comb + total_frames %]
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  (
-	                                	item_code  LIKE  '%single%'
-	                            	                                        )
- 	                            ")%]  
-	    [%# SingleTopsonhand = SingleTopsonhand + item.number %]
-[%# END %]
- [%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  (
-	                                	item_code  LIKE  '%singletop%'
-	                            	                                        )
- 	                            ")%]  
-[%# SingleTopPrice = item.price %]
-[%# END %]
-
-
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  (
-	                                	item_code  LIKE  '%foundation%' OR
-	                                	item_code LIKE '%permadent%' OR
-	                                	item_code LIKE '%perco%'
-	                            	                                        )
- 	                            ")%]  
-	    [%# total_foundation_onhand = total_foundation_onhand + item.number %]
-[%# END %]
-	    [%# foundation_price = item.price %] 
-
-
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  (
-	                                	item_code  LIKE  '%frames%'
-	                            	                                        )
- 	                            ")%]  
-	    [%# frames_onhand = frames_onhand + item.number %]
-[%# END %]
-	    [%# frame_price = item.price %] 
-
-
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  (
-	                                	item_code  LIKE  '%nb%'
-	                            	                                        )
- 	                            ")%]  
-	    [%# NucBottomsonhand = NucBottomsonhand + item. %]
-[%# END %]
-[%## NucBottomsonhand = 6%]
-	    [%# nb_price = item.price %] 
-
-[%# FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
-	                                WHERE  (
-	                                	item_code  LIKE  '%4pack%'
-	                            	                                        )
- 	                            ")%]  
-	    [%# fouronhand = fouronhand + item.number %]
-[%# END %]
-	    [%# fourpack_price = item.price %] 
-
-[%# Mylarsonhand = 0 %]
-[%# MylarPrice = 221 / 125 %]
-
-[%# HoneyRetailPrice    = 3.40 / 2.2 %]
-[%# HoneyWholeSalePrice = 2.40 / 2.2 %]
-[%# WaxRetailPrice      = 4.40 / 2.2 %]
-[%# WaxWholeSalePrice   = 3.40 / 2.2 %]
-[%# NucSalePrice = 90 %]
-[%# SwarmSalePrice = 90 %]
-[%# embed('InventroySQLView') %]
+[
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
@@ -234,6 +55,7 @@
 <p>Current active bees. [% ActiveQueens %]	 This is a query to ActiveQueensSQl
 <table cellpadding="1" cellspacing="0" border="0" width="100%">
 <th>Hive type</th><th>location</th><th>number</th>
+
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
 	                                WHERE  ( item_code  LIKE  '%winteringunit%' AND
 	                                         sitename   =  '$SiteName' 

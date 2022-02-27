@@ -1,9 +1,10 @@
-[%# Version = 'SeasonView.ttml,v 0.03 2021/04/25' %]
+[% ViewVersion = 'SeasonView.ttml,v 0.03 2021/04/25' %]
 [%# Version = 'SeasonView.ttml,v 0.02 2021/03/07' %]
 [%# Version = 'SeasonView.ttml,v 0.01 2021/02/03'%]
 [% procedure = data.procedure %]
-
-[% Version %]
+[% IF data.debug == 1 %]
+[% ViewVersion %]
+[% END %] 
 <div id=body > 
 
 
