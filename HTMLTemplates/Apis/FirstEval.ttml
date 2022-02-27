@@ -1,78 +1,80 @@
-[%
-#	$Id: FirstEval.ttml,v 0.01 2020/02/12 15:47:05 shanta Exp $
+[% ViewVersion = '
+v 0.02 2022/02/27   /cgi-bin/HTMLTemplates/Apis/FirstEval.ttml'
 %]
-[% PROCESS DefaultDbi.ttml %]
-
-[% embed('ErrorDisplayView') %] 
-
-
-[% IF data.session_object %]
-
-	[% session_id = data.session_object.getId() %]
-        [% session_string = "session_id=$session_id" %]
-[% END %] 
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-[% procedure = data.procedure %]
-[%#  procedure %]
-
-	[%# embed(data.page_top_view,['-PAGE_TITLE','First Evaluation Of the season.']) %]
 
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
 [% embed('ErrorDisplayView') %]
 
 <tr>
 <td >
-	[%# SiteName  %]
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+
+[% END %]
 
 
-	<h1>Our First Look at the bees of the season.</h1>
+	<h1>Our First Evaluation of the season.</h1>
   
 
-	<p>As beekeepers in an industrial age of farming this is likely the most dreaded visit to your bees. Here we see how many bees will made it though the winter. The riggers of the weather nothing compared to the damage done by Agra bis. Over the next two visits or so we will see the effects of <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=CCD" target="_blank" name="CCD">CCD (colony collapse disorder)</a>.</p>
+	<p>As beekeepers in an industrial age of farming this is likely the most dreaded evaluation to your bees. Last visit we seen how many bees will made it though the winter. The riggers of the weather nothing compared to the damage done by Agra bis. Over the next two visits or so we will see the effects of <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=CCD" target="_blank" name="CCD">CCD (colony collapse disorder)</a>.</p>
 	
-<p>On this visit we  will not actually not do much more than look at the cluster size and the weight of the hive. </p>
-<p>Our primary interest are.</p>
+<p>On this visit we  will evaluate our bees. We will see the actual size of the bees. Do we have a laying queen and how well she is doing.</p>
+<p>Our primary interests are.</p>
 
 <ul>
- <li>Determine the number of live hives. This will give an estimate of the numbers of bees we have for our next season of beekeeping.</li>
+ <li><h3>Cluster size</h3><p>Comparing to the size recorded in the last visit. We will see just how many winter bees really made it.</p></li>
  
- <li>Estimate the size of the cluster. This helps us to know fast the colony will expand.</li>
+ <li><h3>Are there eggs</h3><p>This will tell us if there is a queen in the hive. If not we can add the bees to our weaker hives.</p></li>
  
- <li>Estimate available food. This gives us a picture of how much feed we need on our next visit.</li>
+ <li><h3>Available food.</h3> <p>This gives us a picture of how much feed we need to feed. Unless there is lots of feed and we want to expand brood production we will feed. Give them a thin feed to simulate nectar flow.</p></li>
  
- <li>Feed pollen patties.If your are a breeder or expanding your operation you will feed all your hives. If your are not then only feed the medium and small clusters and the low in feed. You don't what to over stimulate your hives unless you need more bees. Not feeding your strong ones now will help you later with swarm control. </li>
- 
- <li>Check entrances for access. Your bees need to fly to cleanse and harvest early pollen. Don't remove your entrance blocks your bees need the heat. </li>
+ <li><h3>Feed pollen patties.</h3><p>If your are a breeder or expanding your operation you will feed all your hives. If your are not then only feed the medium and small clusters and the low in feed. You don't what to over stimulate your hives unless you need more bees. Not feeding your strong ones now will help you later with swarm control.</p> </li>
+ <p>
+ <li><h3>Check entrances for access.</h3> Your bees need to fly to cleanse and harvest early pollen. Don't remove your entrance blocks your bees need the heat.</p> </li>
 
  <li>Fix Fences for  bear protection. Over the winter your fences will have been covered with snow. As the weather warms hungry bears will be coming out looking for food. Your bees larva will an appreciated snack if you don't keep them out. The first contact with your fence is vary important for the season to fallow. Bears don't like the shock and will remember it. Now is the time to train them to respect your fence. </li>
 
- <li>Evaluate dead outs for accessing resources such as honey. We want to know why they died. This allows us the choice of whether to use the feed or not.</li>
+ <li><h3>Evaluate dead outs</h3> <p>We are looking for  cause of death. When accessing resources such as honey. We want to know why they died. This allows us the choice of whether to use the feed or not.</p></li>
  
- <li>Evaluate Dead out equipment for condition. If damaged they will be returned to the shop for repair.</li>
+ <li><h3>Evaluate equipment for condition.</h3> <p>If damaged they will be returned to the shop for repair. Replace boxes and other equipment with good equipment from your previously repaired equipment.</p></li>
 </ul>
+
+
 
 <h2>Equipment and supplies.</h2>
 <ul>
- <li>You will need pollen patties one for each hive. 2 for each large one if you are not going to back for more than 2 weeks. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&procedure=PollenPatties" target="_blank">How to Make</a> </li>
+<li><h3>Wood ware. </h3>Enough brood boxes to replace all the over wintered boxes. You may then take them to the shop for cleaning.</li>
+ <li><h3>Pollen patties.</h3><p>You will need pollen patties one for each hive. 2 for each large one if you are not going to back for more than 2 weeks. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&procedure=PollenPatties" target="_blank">How to Make</a></p> </li>
  
  <li>
-  Fence fixing equipment. Shovel, Electric fencer, Battery and charging. 
+ <h3> Fence fixing equipment.</h3> <p>Shovel, Electric fencer, Battery and charging.</p> 
  </li>
  
- <li>
-  If warm enough you will be able to feed syrup. You should take enough for at least a feeder full. Remember that only your large hives will be able to generate enough heat to take the feed. If it is cold. You will need to move the feeders near the brood to keep it close. This action will allow the accumulated heat to escape from the hive. So it is far better to use the pollen patties.
+ <li><h3>Sugar suryp</h3>
+<p>You should take enough for at least a feeder full in each hive that had bees on your first visit.  You will need to move the feeders near the brood to keep it close. </p>
  </li>
- 
+ <li><h3>Inner covers </h3> <p>You will need at least 4 one for the bottom of each brood box and one for the top to cover.</p></li>
 </ul>
 
+<h2>Procedure.</h2>
+<ul>
+<li><h3>Remove winter wrap and store.</h3></li>
+<li><h3>Place suport boxes for all the boxes in the stack </h3>
+<p>On this visit you will be replacing All the boxes in the mains. The top nuc can be replaced as well. Place divider boards or inner covers on the support boxes. Place your boxes on the support boxes. Cover with inner cover to hold heat in the box.</p>
 
+</li>
 
+<li><h3>Lift and clean crap from bottom board.</h3> <p>Scrap the dead bees into a container for addition to your compost.</p></li>
+<li><h3>Return bottom board to the pallet</h3> <p>Give space for the lids to be replaced.</p></li>
+<li><h3>Place a clean box on the bottom board.</h3></li>
+<li><h3>Evaluate hive.</h3><p>Starting with the bottom box evaluate and record data. You want to do this quickly especially when your enter the frames that have brood on the. You don't want to chill the brood. Unless you are sure you see AFB don't spend a lot of time looking at the brood today. The next visit it will be warmer to take more time. Record your finding in the log.</p></li>
+<li><h3>Put a new clean box on.</h3><p>You may clean the box you just emptied if you don't have previously cleaned boxes. Work the top box in to the clean box. You will most likely find brood in this box so be careful to not chill the brood. You can place a honey frame next to the brood to help hold heat as you evaluate the frame. Record the data as you make your decision.</p></li>
+<li><h3>Order your frames.</h3><p>From the centre of the brood you want it to be brood laying space with resources around it, Pollen, light honey empty comb for the bees to work into, heavy honey on the outside. Feeder then comb behind the feeder. On future visits you can migrate the empty comb to the middle of the nest. Resist the temptation to put empty comb in the middle especially medium and small hives. If you have a hive with bees but no queen you can shake them in front of the hive entrance get most of them on the entrance. If it a large amount of bees you can paper them under a top box.</p></li>
+<li><h3>The top box.</h3><p>If you have a enough divider boards and clean boxes you can put one on the top of the main. work your top box into it. Recording your counts. </p></li>
 
+<li><h3>Data recording.</h3><p>We recommend recording them in a paper log but you can record the data directly into our web application then printing the page. The page will include grafts of the growth of the hive over the course of the season.</p></li>
 
+</ul>
 
 
