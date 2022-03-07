@@ -1,4 +1,4 @@
-[% Version = 'v 0.003 2021/10/03 shanta MailListView.ttml' %]
+[% Version = 'v 0.004 2022/03/06 shanta MailListView.ttml' %]
 [%# Version = 'v 0.002 2021/03/23 shanta MailListView.ttml' %]
 [%# Version = 'v 0.001 2021/03/22 shanta MailListView.ttml' %]
 [%
@@ -114,7 +114,7 @@ beemaster@beemaster.ca
 <h2><a href="https://beemaster.ca/mailman/listinfo/Apis_discussion_beemaster_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b> Apis Discussions list</b></a></h2>
 </li>
 <li>
-<a href="https://beemaster.ca/mailman/listinfo/beetalklive.beemaster.ca onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>BeeTalkLive Hear about our next live stream.</b></a></h2>
+<a href="https://beemaster.ca/mailman/listinfo/beetalklive_beemaster.ca onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>BeeTalkLive Hear about our next live stream.</b></a></h2>
 </li>
  <li>
 <a href="https://beemaster.ca/mailman/listinfo/anubeekeeping_anucollective.beemaster.ca onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>anubeekeeping  at anucollective.beemaster.ca</b></a></h2>
@@ -129,7 +129,7 @@ beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
 </li>
 </ul>
 
-% ELSIF SiteName == "ULC" %]		
+[% ELSIF SiteName == "ULC" %]		
 
 <ul> 
  <li>

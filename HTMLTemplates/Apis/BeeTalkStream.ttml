@@ -1,5 +1,5 @@
 
-[%# ViewVersion = 'v 0.001 2022/02/08 /cgi-bin/HTMLTemplates/Apis/BeeTalkStream.ttml,' %]
+[%# ViewVersion = 'v 0.002 2022/02/08 /cgi-bin/HTMLTemplates/Apis/BeeTalkStream.ttml,' %]
 
 
 [% IF data.debug == 1 %]
@@ -13,7 +13,7 @@
 
 <p>
 To register <a href="mailto:shanta@beemaster.ca.ca?subject=Register%20for%20BeeTalk&amp;body=Add%20me%20to%20your%20BeeTalkLive%20mailing%20list.%20Tell%20us%20if%20you%20like%20to%20be%20Guest"> Email</a>  
-To Receive info on events future events <a href="http://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" target="_blank">Join the list</a>
+To Receive info on events future events <a href="http://beemaster.ca/mailman/listinfo/beetalklive_beemaster.ca" target="_blank">Join the BeeTalkLive list</a>
 </p>
 <p><a href="https://youtu.be/gDiCMDW1ors" target="_blank">Join our BeeTalkLive on Winter Yard Visit's.</a> Sunday March 13 at 7 pm</p>
 <ul>

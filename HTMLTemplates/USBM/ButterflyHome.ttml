@@ -14,16 +14,20 @@
 
 
 </div>
-<div ALIGN="center">[% IF data.debug == 1 %]
+<div ALIGN="center">
+[% IF data.debug == 1 %]
  [%	Version %] 	   
 [% END %] 
 
 <A NAME="PageTop"></A>
 </div>
-<h2>Our Butterly Ranger Project</h2>
+<h2>Our Butterfly Ranger Project</h2>
 
 <h3>Help Feed and protect your pollinators.</h3>
- 
- 
+
+<h3>See our list of plants for pollinators.</h3>
+<a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BotanicalNameView">Herbs by botanical name</a></p>
+  <a href="/cgi-bin/BuyAndSell/buy.cgi?site=[% SiteName %]&amp;[% session_string %]" target="_Blank" > Buy And Sell.</a>
+
 <a href="http://helpdesk.computersystemconsulting.ca" target="_Blank" > HelpDesk</a>
 
