@@ -48,7 +48,7 @@
  [% ELSE %]
 [% embed('JoinUsLink')	%]  
  [% END %]
-
+<h2><a href="/cgi-bin/BuyAndSell/buy.cgi?site=[% SiteName %]&[% session_string %]" target="_blank" name="BuyAndSell">Our Buy and Sell</a></h2>
 [% embed ("AdminTodoListLink")%]	
 		[% SiteName = data.site_name%]
 [% IF procedure %]
