@@ -57,7 +57,10 @@
 		
    	[% IF SiteName == "OKB" %]
 		[%# embed('OkBeekeepersHomeView') %]
-		[% ELSIF SiteName == "AltPower" %]
+      [% ELSIF procedure == "DistributedEditing" %]
+
+			[% embed ('DistributedEditing') %]
+	   [% ELSIF SiteName == "AltPower" %]
 
 			[% embed ('AltPowerProcedures') %]
 		[% ELSIF SiteName == "AnuCollective" %]

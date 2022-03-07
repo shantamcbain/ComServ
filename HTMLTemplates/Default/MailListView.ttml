@@ -64,8 +64,9 @@
        SiteName == 'Shanta' OR
        SiteName == 'Brew' OR
        SiteName == 'CSPS' OR
-       SiteName == 'TelMark'%]
-   [% shop = 'cs' %] 
+       SiteName == 'TelMark'OR
+       SiteName == 'ULC'%]
+  [% shop = 'cs' %] 
    [% cat = '60001' %]
     [% ServerName = 'beemaster.ca/cgi-bin/index.cgi' %]
    [% MailServer = 'mail.beemaster.ca' %]
@@ -112,6 +113,9 @@ beemaster@beemaster.ca
  <li>
 <h2><a href="https://beemaster.ca/mailman/listinfo/Apis_discussion_beemaster_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b> Apis Discussions list</b></a></h2>
 </li>
+<li>
+<a href="https://beemaster.ca/mailman/listinfo/beetalklive.beemaster.ca onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>BeeTalkLive Hear about our next live stream.</b></a></h2>
+</li>
  <li>
 <a href="https://beemaster.ca/mailman/listinfo/anubeekeeping_anucollective.beemaster.ca onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>anubeekeeping  at anucollective.beemaster.ca</b></a></h2>
 </li>
@@ -125,6 +129,24 @@ beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
 </li>
 </ul>
 
+% ELSIF SiteName == "ULC" %]		
+
+<ul> 
+ <li>
+<h2><a href="https://usbm.ca/mailman/listinfo/SundayliveApis_ulc.usbm.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b> Apis Discussions list</b></a></h2>
+</li>
+ <li>
+<a href="https://beemaster.ca/mailman/listinfo/anubeekeeping_anucollective.beemaster.ca onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>anubeekeeping  at anucollective.beemaster.ca</b></a></h2>
+</li>
+<li><a href="https://beemaster.ca/mailman/listinfo/<a href="https://beemaster.ca/mailman/listinfo/beekeeping_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>
+beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
+</li>
+<li><a href="https://beemaster.ca/mailman/listinfo/breeder_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>breeder_beemaster.ca</b></a></h2>
+</li>
+<li>
+<a href="https://beemaster.ca/mailman/listinfo/landtrust_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>landtrust_beemaster.ca</b></a></h2>
+</li>
+</ul>
 [% ELSE %]
 	<h2> Here you will find the lists our site offers. <h2>
 

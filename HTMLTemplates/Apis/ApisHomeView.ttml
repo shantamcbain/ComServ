@@ -29,7 +29,7 @@
  [%	Version %] 	   
 [% END %] 
 </p>
-<h2>This Web Application  is for bee keepers to help each other bee better bee keepers. </h2>
+	
 			[% IF  group == 'normal'%]
 
 		<p>As a guest you may view the FAQ, Plant and other database . Contribute to Forums, Calendar of announcements, Buy and Sell, and Links.

@@ -1,20 +1,11 @@
-[% ViewVersion = 'v 0.001 2020/08/12 '%]
+[% ViewVersion = 'v 0.001 2020/08/12 '/cgi-bin/HTMLTemplates/USBM/YurtView.ttml%]
 
 [%#	$Id: BatteryList.ttml,v 0.001 2020/08/12 11:42:47 shanta Exp shanta $	%]
-[% username = data.session_object.getAttribute('-KEY','auth_username') %]
- [% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
- [% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
- [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
- [% site = SiteName %]
- [% SiteDisplayName = data.site_display_name %]
-[% session_id = data.session_object.getId() %]
- [% session_string = "session_id=$session_id" %]
-[%# embed('InheretedVariablesView') %]
-[% SiteName = data.site_name%]
+
 [% IF data.debug == 1 %]
-Variable active in DevHomeView
-[% embed('InheretedVariablesView') %]
-[% END %]
+ [%	ViewVersion %] 	   
+[% END %] 
+
  
 
 <A NAME="PageTop"></A>

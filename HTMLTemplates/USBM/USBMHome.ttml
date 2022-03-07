@@ -23,7 +23,9 @@
    
 [% END %] 
 </div>
-<h2>Our Virtual School House</h2>
+<h1>Our Virtual School House</h1>
+<h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Departments">Departments</a></h2>
+<p></p>
 <ul>
   <li> <h2>Choosing your <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&page=PractitionerTeam" target="_blank">practitioner team</a>.</h2> How to chose your team of advisers?</li> 
   <li> <b></b> <a href="https://altpower.usbm.ca/cgi-bin/index.cgi?site=AltPower">Alt Power </a> Join us in our adventure into Alternate power creation and use. </li>

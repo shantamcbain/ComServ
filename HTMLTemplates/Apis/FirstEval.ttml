@@ -1,5 +1,5 @@
 [% ViewVersion = '
-v 0.02 2022/02/27   /cgi-bin/HTMLTemplates/Apis/FirstEval.ttml'
+v 0.03 2022/02/27   /cgi-bin/HTMLTemplates/Apis/FirstEval.ttml'
 %]
 
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -19,8 +19,12 @@ v 0.02 2022/02/27   /cgi-bin/HTMLTemplates/Apis/FirstEval.ttml'
 
 	<p>As beekeepers in an industrial age of farming this is likely the most dreaded evaluation to your bees. Last visit we seen how many bees will made it though the winter. The riggers of the weather nothing compared to the damage done by Agra bis. Over the next two visits or so we will see the effects of <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=CCD" target="_blank" name="CCD">CCD (colony collapse disorder)</a>.</p>
 	
-<p>On this visit we  will evaluate our bees. We will see the actual size of the bees. Do we have a laying queen and how well she is doing.</p>
+<p>On this visit we  will <a href="/cgi-bin//index.cgi?site=[% SiteName %]&[% session_string %]&page=HiveEvaluation">evaluate</a> our bees. We will see the actual size of the bees. Do we have a laying queen and how well she is doing.</p>
 <p>Our primary interests are.</p>
+<video src="/video/bee/hiveevalanu.mp4" width="320" height="240"  controls="" >
+</video> 
+<video src="/video/bee/firsteval.mp4" controls width="320" height="240"  controls="" >
+</video> 
 
 <ul>
  <li><h3>Cluster size</h3><p>Comparing to the size recorded in the last visit. We will see just how many winter bees really made it.</p></li>
@@ -35,7 +39,7 @@ v 0.02 2022/02/27   /cgi-bin/HTMLTemplates/Apis/FirstEval.ttml'
 
  <li>Fix Fences for  bear protection. Over the winter your fences will have been covered with snow. As the weather warms hungry bears will be coming out looking for food. Your bees larva will an appreciated snack if you don't keep them out. The first contact with your fence is vary important for the season to fallow. Bears don't like the shock and will remember it. Now is the time to train them to respect your fence. </li>
 
- <li><h3>Evaluate dead outs</h3> <p>We are looking for  cause of death. When accessing resources such as honey. We want to know why they died. This allows us the choice of whether to use the feed or not.</p></li>
+ <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&page=HiveEvaluationLost">Evaluate dead outs</a></h3> <p>We are looking for  cause of death. When accessing resources such as honey. We want to know why they died. This allows us the choice of whether to use the feed or not.</p></li>
  
  <li><h3>Evaluate equipment for condition.</h3> <p>If damaged they will be returned to the shop for repair. Replace boxes and other equipment with good equipment from your previously repaired equipment.</p></li>
 </ul>

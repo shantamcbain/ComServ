@@ -60,8 +60,9 @@
  </ul>
   
   
-      
- <a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/BuyAndSell/buy.cgi?site=[% SiteName %]&amp;[% session_string %]" target="_Blank" > HelpDesk</a>
+ <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BotanicalNameView">Herbs by botanical name</a></p>
+     
+ <a href="/cgi-bin/BuyAndSell/buy.cgi?site=[% SiteName %]&amp;[% session_string %]" target="_Blank" > Buy And Sell.</a>
 
 [%# embed('CSCCopyRight') %]
 [% embed(data.page_bottom_view) %]

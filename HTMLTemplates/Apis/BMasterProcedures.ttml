@@ -1,4 +1,4 @@
-[% Version = 'v 1.19 2022/02/06 /cgi-bin/HTMLTemplates/Apis/BMasterProcedures.ttml '%]
+[% Version = 'v 1.20 2022/02/06 /cgi-bin/HTMLTemplates/Apis/BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.15 2021/08/03 BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.14 2021/03/08 BMasterProcedures.ttml '%]
 [%# ViewVersion = 'v 1.13 2020/03/10 BMasterProcedures.ttml '%]
@@ -26,24 +26,25 @@
  [% IF procedure  == 'HiveManHomeView' %]
 
 [% embed ('HiveManHomeView') %]
-[% ELSIF procedure  == ('ClokeBoardView') %]
- 
- [% embed ('ClokeBoardView') %]
- [% ELSIF procedure  == ('ForumsView') %]
- 
- [% embed ('ForumsView') %]
 [% ELSIF procedure  == ('ApisQueensView') %]
  
 [% embed ('ApisQueensView') %]
 [% ELSIF procedure  == ('ApisQueensNucView') %]
  
  [% embed ('ApisQueensNucView') %] 
-[% ELSIF procedure  == ('ApisActiveQueensView') %]
+ [% ELSIF procedure  == ('ClokeBoardView') %]
  
+ [% embed ('ClokeBoardView') %]
+
+[% ELSIF procedure  == ('DistributedEditing') %]
+ [% embed ('DistributedEditing') %] 
+ [% ELSIF procedure  == ('ForumsView') %]
+ 
+ [% embed ('ForumsView') %]
+
  [% embed ('ProgramingView') %]
 [% ELSIF procedure  == ('ProgramingView') %]
   [% embed ('ProgramingView') %]
-[% ELSIF procedure  == ('ApisQueensView') %]
 [% ELSIF procedure  == ('LiveStream') %]
 
 [% embed ('StreamingView') %]

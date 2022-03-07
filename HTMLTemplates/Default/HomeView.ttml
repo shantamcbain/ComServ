@@ -62,6 +62,8 @@
 [%# Call HomeView%] [%#  SiteName %]
    	[% IF SiteName == "OKB" %]
 		[% embed('OkBeekeepersHomeView') %]
+		[% ELSIF SiteName == "3d" %]
+			[% embed ('3dHomeView') %]
 		[% ELSIF SiteName == "AnuCollective" %]
 			[% embed ('AnuCollectiveHomeView') %]
 		[% ELSIF SiteName == "BHN"%]

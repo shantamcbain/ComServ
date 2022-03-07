@@ -1,7 +1,9 @@
 [% Version = 'v 0.001 2023/02/09 /cgi-bin/HTMLTemplates/Default/StreamingServices'%]
 [% IF data.debug == 1 %]
  [%	Version %] 
-[% END %]<h2>Streaming service's.</h2>
+[% END %]
+
+<h2>Streaming service's.</h2>
 
 <p>This list is static at the moment but will be put into a database so each hosted site will be able to use their own services. These are available to all users that doesn't have a YouTube channel for example. Or Streamyard where we can share the cost of paid services
 </p>
@@ -12,6 +14,7 @@
  <li><a href="https://www.youtube.com/channel/UCR0AvDd4Gab6t5Bgk9yuA0Q">BeeMasterChannel</a> Replace this with your channel.</li>
  <li><a href="https://streamyard.com/teams/z50LVmA7tjN4dVxuy75nPW3S/destinations/connect/rtmp">Stream yard</a> This is the streaming system we currently use to create streams. We currently only have the free version. We would like to upgrade to the next level. This would give us the abiltiy to connect <a href="https://d.tube" target="d.tube">d.tube</a> and other streaming services at the same time. Total of 3 destination and record live stream on streamyard </li> 
  <li><a href="https://locals.com/feed">Locals</a></li> 
- <li><a href="https://steemit.com/@shantamcbain">Steemit personal</a>d.tube streams automatically show up here. Steemit is a cripto site were you get paid for posting and other pay you if they like your vidio.</li>
+ <li><a href="https://steemit.com/@shantamcbain">Steemit personal</a>d.tube streams automatically show up here. Steemit is a cripto site were you get paid for posting and other pay you if they like your video.</li>
  	<li><a href="https://steemit.com/@beemasterca">Steemit Bees</a> Where we currently host our content on this platform.</li>
+ 	<li><a href="https://d.tube/@beemasterca">Steemit Bees</a> Where we currently host our content on this platform.</li>
 </ul>
