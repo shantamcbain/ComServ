@@ -1,5 +1,5 @@
 
-[%# ViewVersion = 'v 0.002 2022/02/08 /cgi-bin/HTMLTemplates/Apis/BeeTalkStream.ttml,' %]
+[%# ViewVersion = 'v 0.003 2022/03/07 /cgi-bin/HTMLTemplates/Apis/BeeTalkStream.ttml,' %]
 
 
 [% IF data.debug == 1 %]
