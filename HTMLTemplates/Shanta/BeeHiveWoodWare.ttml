@@ -1,0 +1,59 @@
+[% ViewVersion = 'v 0.001 2020/08/12 /cgi-bin/HTMLTemplates/Shanta/BeeHiveWoodWare.ttml' %]
+
+[%#	$Id: BatteryList.ttml,v 0.001 2020/08/12 11:42:47 shanta Exp shanta $	%]
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	   
+[% END %] 
+
+ 
+[% PROCESS ApisConstants.ttml %]
+[%# PROCESS ApisInventorySQL.ttml %]
+
+<A NAME="PageTop"></A>
+<h2>Our Bee Yard Wood Ware.</h2>
+<p>Our equipment is based on  Lanstroth hives. We strongly hold the point of view that hive parts should be completely interchangeable and compatible with as much equipment as possible. This makes your equipment more stable than no standard equipment.  </p><p>
+3/8 Ply price per sq inch [% Ply38price %]</p>
+<p>5/8 ply [% Ply58Price %]</p>
+<p>oneby bf price  [% InchBFCost %] </p>
+<p>Lid length [% LidLength %]</p>
+<p>Lid Width  [% LidWidth %]</p>
+<p>Lid Depth  [% LidDepth %] </p>
+<p>Lid Ply area [% LidPlyArea %]     </p>
+<p> Lid bf [% LidBF %]</p>
+<p>lid lumber [% LidLumberCost %]</p>
+<p>lid ply cost[% LidplyCost %]</p>
+
+<ul>
+ <li><h3>Hive Tops</h3> These telescopic lids are sized to fit most equipment, Give space for the top entrance provided by our inner covers. In stock [% total_boxes_onhand %]. Lid price $[%  LidCost %]</li> 
+ <li><h3>Inner Covers.</h3> Our inner covers are designed to give one bee space on the top in the summer and two in the winter with a top entrance.</li>
+ <li><h3>Brood Boxes</h3> We use two bee spaces. On on the top and one on the bottom. Although not recommended you can use them with both top space and bottom space equipment. In stock [% total_boxes_onhand %].  box length MM [% BoxInsideLenght %]   cost [% inch_lumber_cost %] board foot [% Brood_box_BF  %]   price  $[% inch_lumber_cost * Brood_box_BF %] bm $[% boxes_price %]</li>
+ <li><h3>Honey Boxes</h3> These are Dadant sized These are compatible with our xways Danants used for our queen breading equipment. </li>
+ <li><h3>Bottom Boards</h3> Our bottom boards are designed to provide a entrance block that extends to the edge of the bottom board giving a better seal and fit. They also have two by two legs This makes it easy to put a strap under the hive We use common ratchet straps for this. The spacing is such that it is easy to get a dolly under the hive for movement.</li>
+ <li><h3>Divider Boards</h3> When using the winter pack system they separate the main hive on the bottom from the Single on top. They are screwed to the bottom of the single. They also make nucs easy to create. They come in rights and lefts</li>
+ <li><h3>Entrance Blocks</h3> Our two position block provide a dam for formic acid treatment in the flat position. In the vertical position They provide a standard entrance</li>
+ <li><h3>Wintering Unit</h3> 
+  <ul>
+    <li><h3>Tops</h3> 4</li>
+    <li><h3>inner covers</h3> 4</li>
+    <li><h3>Brood boxes</h3> </li>
+   
+
+
+  </ul>
+ </li>
+
+</ul>
+<h2>Queen Breeding Equipment</h2>
+<p>Our breeding provides a small box containing two sides of 4 frames that are dadant depth but the width of the box. The small size reduce the amount of bees you need to raise a queen to a minimum that when combined in the xways dadat will still give you some honey when the breeding season is over. Two combined they make a hive large enough to survive as well as any single over winter. A divider board can be added on one and used as a top box in the wintering unit increasing the number of queen you can get through winter.</p>
+
+<ul>
+ <li><h3>xways Matting Nuc</h3> These nuca have two sides of 4 frams.</li>
+ <li><h3>Xways Dadants</h3> </li>
+
+
+</ul>
+<h2><a href="https://beemaster.ca" target="_blank">beemaster.ca</a> provides instruction how to use the equipment.</h2>
+
+
+

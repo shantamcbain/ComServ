@@ -1,0 +1,49 @@
+[% ViewVersion =  ' v0.11 2022/04/03  /cgi-bin/HTMLTemplates/USBM/Departments.ttml, '%]
+
+
+
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 
+[% END %]
+
+
+<div ALIGN="center">
+<A NAME="PageTop"></A>
+</div>
+<h1>Our Departments of Study.</h1>
+
+<ul>
+ <li><h2>Science and technology</h2>
+  <ul>
+   <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Electonics">Electronics</a></h3></li>  
+   <li><h3>Material</h3></li>  
+   <li><h3>Mechanical</h3></li>  
+   <li><h3>Agriculture</h3></li>  
+  </ul> 
+ </li>
+ <li><h2>Biological Sciences</h2>
+  <ul>
+   <li><h3>Biology</h3></li>  
+   <li><h3>Health</h3></li>  
+   <li><h3>Forestry</h3></li>  
+   <li><h3>Agriculture</h3></li>  
+  </ul> 
+ </li>
+ <li><h2>Social</h2>
+  <ul>
+   <li><h3>Spiritual</h3></li>  
+   <li><h3>Health</h3></li>  
+   <li><h3>Emotional</h3></li>  
+  </ul> 
+ </li>
+</ul>
+
+  <p> Our <a href="/cgi-bin/ENCY/ency.cgi?site=USBM&[% session_string %]">Encyclopidia of life </a></p>
+  <p>   <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BotanicalNameView">Herbs by botanical name</a></p>
+<a href="http://helpdesk.computersystemc"onsulting.ca" target="_Blank" > HelpDesk</a>
+[% embed('LiveEditAdmin') %]	      
+ 
+[%# embed('CSCCopyRight') %]
+[%# embed(data.page_bottom_view) %]
+

@@ -1,0 +1,82 @@
+[% Version = 'v 00.01 2022/03/01 /cgi-bin/HTMLTemplates/Default/DistributedEditing.ttml '%]
+
+
+
+
+[% embed('ErrorDisplayView') %] 
+
+<div align="center">
+</div>
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+
+
+
+ <h1>Distributed Editing.</h1>
+ 
+ <p>Working in a collaborative online environment has it's complications for working with groups of developers around the world. This is how you can get started in developing your site quickly.</p>
+ 
+ <p>Pages on this system are displayed in two basic methods. Each with advantages and disadvantages.</p>
+  
+<ul>
+ <li><h3>Pages.</h3><p>Pages are the simplest method of adding a page. Simply click the add a page link to add a page. Fill in the fields with the appropriate data and your page will be added to the database of pages on the server. You add the page in the menu y list that you want your users to find the page.
+  <ul>
+   <li>Advantages. 
+    <ul>
+     <li>Easy for users without programming knowledge to use.</li>
+     <li>All data is on the site. Any user with access can up date site.</li>
+     <li>Minimal HTML knowledge is required.</li>
+    </ul>
+   </li>
+   <li>Disadvantages
+   <ul>
+     <li>Dose not maintain state. As we use server side cookies instead of your browser Your login is forgotten when a internal link is clicked in the document.</li>
+     <li>You cannot show any data from the site that requires a database search etc.</li>
+     
+    </ul>
+   </li>
+   </li>
+  </ul> 
+ </p>
+</li>
+
+<li>
+ <h3>TTML File</h3>
+ <p>This is a page that is in a directory on the server that contains the content on the server.
+ <ul>
+   <li>Advantages. 
+    <ul>
+     <li>Gives full control and security to the programmer.</li>
+     <li>Maintains state. Is able to remember who a user is and their right on the sever. To the life of the session file.</li>
+     <li>Extended tool for programming allowed. Database search. User access selection. Display content based on user rights.</li>
+     <li></li>
+    </ul>
+   </li>
+   <li>Disadvantages
+   <ul>
+     <li>Requires knowledge of Perl, HTML, SQL and TTML </li>
+     <li>All  data from the site that requires a database search etc can be accessed and displayed.</li>
+     <li></li>
+     
+    </ul>
+ 
+ </p>
+</li>
+</ul>
+
+<p>Fortunately we have ways to distribute the skills required to maintain the content of your site. As your knowledge grows you can takeover more of your sites development and maintenance. We provide support though the entire process.</p>
+
+<h3>Process.</h3>
+
+<ul>
+ <li><h3><a href="http://dev.computersystemconsulting.ca/cgi-bin/page.cgi?site=[% SiteName %]&[% session_string %]&display_add_form=on">Add Your desired page</a></h3> to the page database. Click the Add page that appears on all site admin view of any page. Fill in the data required. Required fields are the PageCode (No spaces allowed), Page name, Body The content of your Page. You are allowed any HTML5 coding in the page. </li>
+ 
+<li><h3>Pass the page to your content editor </h3><p> This is the example link to the page. http://beemaster.ca/cgi-bin/index.cgi?site=BMaster&Page=HiveEvaluationLost</p> Change the site to your site code and the Page= to your PageCode. Your content editor will now have access to the page. Your content editor will have to have admin status to your site to be able to edit the page.</li>
+
+<li><h3>The content editor</h3><p>will be able to edit the page as needed. They can add HTML to the page. They can change all the fields in the table record.</p></li>
+<li><h3>Publish the Page.</h3><p>When you have the page ready for the public you can add the link to the menu desired. In the view field add Page=PageName Remember all links in the body have no state. User login will be lost.</p></li>
+<li><h3>User state required.</h3><p>If user state is required you can change the content to a procedure. Create a PageCode.ttml file that can be uploaded to the server. This must be done by an experienced programmer. We can do this for you or we can train yous staff to do this.</p> Change all links to the page from Page=  to process=. The content of the ttml file will replace the page content. This gives your editorial staff access to the file to change content. Links to internal resoruces will be now code. For example the stateless link http://beemaster.ca/cgi-bin/index.cgi?site=BMaster&Page=HiveEvaluationLost to a program link http://beemaster.ca/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&Page=HiveEvaluationLost. The [% SiteName %]&[% session_string %] are programing variables that are filled in on execution of the program. Essentially  anything enclosed in [% %] is  programming and should be left alone by content editors.</li>
+</ul>
+
+

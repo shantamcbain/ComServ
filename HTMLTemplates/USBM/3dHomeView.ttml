@@ -1,0 +1,26 @@
+[% Version = '/cgi-bin/HTMLTemplates/USBM/3dHomeView.ttml,v 0.01 2022/03/06 17:43:15 shanta Exp'%]
+
+
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+
+
+<div ALIGN="center">
+<A NAME="PageTop"></A>
+</div>
+<h2>3D Printing.</h2>
+
+<p>Creating items for local use can satisfy some of the needs we need in the supply chain. The ability to produce items for use in the community. 3d printing can fill in a lot of the problems with the existing chain in plastics. It replaces local items that would be replace with unknown plastics. 3d filaments are of a known content. Plastics that are long lasting giving more usable overall life. The plastics that have been printed and be converted to filament and reprinted. 
+</p>
+<ul>
+ <li><h3>Current Projects</h3> 
+  <ul>
+   <li><h3>LED Skull computer controlled LED lights.</h3> We will be </li>
+  
+  </ul></li>
+</ul>
+  <p>   </p>
+<a href="http://helpdesk.computersystemsulting.ca" target="_Blank" > HelpDesk</a>
+  
+
