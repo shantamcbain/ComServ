@@ -1,6 +1,8 @@
+[% ViewVersion = 'v 1.11 22/03/08 /cgi-bin/HTMLTemplates/BuyAndSell/BuySellHomeView.ttml,'%]
 [%# the home  Page template#	$Id: BuySellHomeView.ttml,v 1.1 2002/01/09 22:01:26 shanta Exp $
 
 %]
+[% PROCESS DefautVariables.ttml %]
 
 [% PROCESS DefaultDbi.ttml %]
 
@@ -9,23 +11,15 @@
 [% embed('ErrorDisplayView') %]
 
 
-[% IF data.session_object %]
 
-	[% session_id = data.session_object.getId() %]
-        [% session_string = "session_id=$session_id" %]
-
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+  [% embed  ('InheretedVariablesView') %]
 [% END %] 
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% Username = data.session_object.getAttribute('-KEY','auth_username')%]
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
- [% script_name = data.app_name %]
 
     <div align="center"><h2>[% SiteName %] Our Buy and Sell</h2>
 </div><br>
-
+<a href="/cgi-bin/index.cgi?site=USBM&amp;procedure=Currency" ><font   class="LeftSideBarNavStyle">Green dollar trading systems.</font></a> 
 <p>  <a href="/cgi-bin/BuyAndSell/buy.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" title='ADD a new item'><font   class="LeftSideBarNavStyle">Add an item.</font></a>
 [% IF SiteName == "CSC" OR
       SiteName == "CSCDev" %]

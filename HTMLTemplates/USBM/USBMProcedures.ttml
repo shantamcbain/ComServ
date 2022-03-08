@@ -34,6 +34,9 @@
 [% ELSIF procedure  == ('ButterflyHome') %]
  
  [% embed ('ButterflyHome') %]
+[% ELSIF procedure  == ('Currency') %]
+ 
+ [% embed ('Currency') %]
 [% ELSIF procedure  == ('StreamingView') %]
  
  [% embed ('StreamingView') %]

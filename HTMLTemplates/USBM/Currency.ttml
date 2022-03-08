@@ -1,0 +1,51 @@
+[% ViewVersion =  ' v0.01 2022/03/08  /cgi-bin/HTMLTemplates/USBM/Currency.ttml, '%]
+
+
+
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 
+[% END %]
+
+
+<div ALIGN="center">
+<A NAME="PageTop"></A>
+</div>
+<h1>Currency</h1>
+<p>Currency is many things to many people. Primarily it is convenient means of exchange. Most currencies are based on the debt system. A currency is given value by the trust of those that use it. </p>
+<p>Of course we are as a society evolving to a truly cashless society. This is a system that all get what they need without any need for accounting. We are however a long way from that. </p>
+<p>In the transition we need to, as a society, need to evolve our thinking. When using a green dollar trading system we can use basic accounting practices with a simple debit credit used by banks. They create the 'money' as you ask for it. You pay it back with compound interest. </p>
+<p>To make a system sustainable it needs to be cheep to operate. Allow other currency's to mix in. Dose not allow speculation. Have a fixed value based on real things. </p>
+
+<ul>
+ <li><h2>The Dept system</h2>
+  <ul>
+   <li><h3>Controlled by bankers via the IMF</h3></li>  
+   <li><h3>Usually issued by the bank for a given nation</h3></li>  
+   <li><h3>Totally prone to inflation</h3>Due to its dept base Ie you borrow from the back. The currency is completely created by the bank with no physical backing. You pay compound interest. There is no money in circulation to pay that back.</li>  
+   <li><h3>Speculation is allowed destabilizing the value</h3></li> 
+   <li><h3>online and physical objects of exchange</h3></li> 
+  </ul> 
+ </li>
+ <li><h2>Cripto Currency</h2>
+  <ul>
+   <li><h3>Issued by people</h3></li>  
+   <li><h3>Data stored on multiple servers.</h3></li>  
+   <li><h3>Speculation allowed</h3> Destabilizing its real value. Bitcoin is a classic example of this.</li>  
+   <li><h3>online only</h3></li>  
+  </ul> 
+ </li>
+ <li><h2>Social trading systems</h2>
+  <ul>
+   <li><h3>Green dollar systems.</h3><p>These system are created by communities to fill the gap in the current economic system. These usually get shut down quickly by the banks who have a monopoly on being a bank.</p><p>These system step in and fill the gap between the currency you have and what is needed to complete the transaction.</p></li>  
+   <li><h3>Has both a online and physical medium</h3> Usually in the form of checks.</li>  
+   <li><h3>Social credit</h3>Usually administered by governments or other such corporations to impose corporate conditions  on the users. ie Vaccination passports. Chinese facial recognition systems. </li>  
+  </ul> 
+ </li>
+</ul>
+
+[% embed('LiveEditAdmin') %]	      
+ 
+[%# embed('CSCCopyRight') %]
+[%# embed(data.page_bottom_view) %]
+

@@ -1,4 +1,4 @@
-[% Version = 'v 1.969 2022/01/23 /HTMLTemplates/USBM/ULCProcedures.ttml'%]
+[% Version = 'v 1.970 2022/03/08 /HTMLTemplates/USBM/ULCProcedures.ttml'%]
 [% # 2019/10/09 AnuProcedures.ttml %]
 
 [% embed('ErrorDisplayView') %] 
@@ -23,10 +23,14 @@
  [% ELSIF procedure  == ('ButterflyHome') %]
  
  [% embed ('ButterflyHome') %]
-[% ELSIF procedure  == ('GraftingWorkShop') %]
+
+[% ELSIF procedure  == ('Currency') %]
  
- [% embed ('GraftingWorkShop') %]
- [% ELSIF procedure  == ('AmuAdminList') %]
+ [% embed ('Currency') %]
+
+[% ELSIF procedure  == ('GraftingWorkShop') %]
+  [% embed ('GraftingWorkShop') %]
+[% ELSIF procedure  == ('AmuAdminList') %]
  
  [% embed ('AmuAdminList') %]
 [% ELSIF procedure  == ('HiveManHomeView') %]
