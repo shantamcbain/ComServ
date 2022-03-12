@@ -26,6 +26,7 @@
 
 
 <A NAME="JoinUs"></A> 
-
+<div id="JoinUs">
  <a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=[% PID %]&amp;aff=[% AffiliateID %]&carttpl=legacy_boxes" target="_blank">Join our Site</a>! </h2>
 
+</div>
