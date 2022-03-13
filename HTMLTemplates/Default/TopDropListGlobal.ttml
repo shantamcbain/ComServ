@@ -13,7 +13,7 @@
  [% IF firstname %]	
      <A HREF ="http://webmail.[% HostName %]"target="_Blank"><font   class="LeftSideBarNavStyle">Mail</font></a>	
  [% ELSE %]
-	   <A  HREF ="?site=[% SiteName %]&amp;[% session_string %]&amp;view=MailView" ><font   class="LeftSideBarNavStyle">Mail</font></a>		   
+	   <A  HREF ="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=MailView" ><font   class="LeftSideBarNavStyle">Mail</font></a>		   
  [% END %]
  
    </li>
