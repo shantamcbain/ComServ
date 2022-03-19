@@ -1,3 +1,4 @@
+[%  ViewVersion = 'v 0.02 2022/03/19 /cgi-bin/HTMLTemplates/Apis/BeePatureView.ttml '%]
 [% Version = 'v 0.01 2021/07/31 BeePastureView.ttml shanta' %]
 [%
 
@@ -5,6 +6,10 @@
 #	$Id: BotanicalNameView.ttml,v 1.2 2011/09/21 19:25:15 shanta Exp $	
 #file location/cgi-bin/HTMLTemplates/ENCY
 %]
+[% PROCESS DefautVariables.ttml %]
+
+ 
+[% PROCESS DefaultDbi.ttml %]
 
 [% embed(data.page_top_view,['-PAGE_TITLE','Bee Pasture by botanical name.']) %]
 
@@ -24,8 +29,10 @@
    [% LastUpdate = data.last_update %]
    [% SiteLastUpdate = data.site_last_update %]
   [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-[% PROCESS DefaultDbi.ttml %]
-[% Version %]
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	   
+[% END %] 
+
 	[% IF username %]
 
 <h3 > Hello  [% firstname%]  [% lastname%]! Welcome to     [% data.site_display_name %]
@@ -48,15 +55,16 @@
     
      
         <h2>Bee Pasture</h2>
-     <h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]8&view=BeePastureView">See our Database of Bee Forage.</a></h2>
+     <h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BeePastureView">See our Database of Bee Forage.</a></h2>
  <p>Your bees will need food to eat. With in an 3k radius of your hive is their pasture. The more abundant diverse the environment the healthier your bees will be. </p>
  
  <p>This season we doing the fallowing.</p>
  <ul>
-  <li>Encourage bee friendly harvest as spraying practices </li> 
+  <li>Encourage bee friendly harvest in spraying practices </li> 
   
   <li>Establish seed production of desired species. Every yard will have a different list.</li> 
   <li>Planing next seasons planting.</li>
+  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&procedure=Reforestation"><h3>Reforestation </h3></a></li>
  </ul>
   
   

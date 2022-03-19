@@ -1,0 +1,45 @@
+[% Version = '/cgi-bin/HTMLTemplates/USBM/Economics.ttml,v 0.01 2022/03/19 17:43:15 shanta Exp'%]
+[%# Version = '/cgi-bin/HTMLTemplates/USBM/ULCHomeView.ttml,v 0.01 2021/10/03 17:43:15 shanta Exp'%]
+[%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.10 2020/04/22 17:43:15 shanta Exp'%]
+[%# the ENCY template
+#	$Id: ULCHome.ttml,v 1.1 2012/09/21 19:25:15 shanta Exp $	
+#file location/cgi-bin/HTMLTemplates/ULC
+%]
+
+
+[%# embed('ErrorDisplayView') %]
+
+
+
+
+
+</div>
+<div ALIGN="center">
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+
+<A NAME="PageTop"></A>
+</div>
+<h2>Our Department of Economics.</h2>
+
+<h3>Sustainable Economics.</h3>
+
+<p>Join us in the development of our Economics program.  </p>
+<p>Our economy has always been under heavy control of the baking system. Join us in changing the system.</p>
+<h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Departments">Back to departments</a></h3>
+<ul>
+ <li><h2>Current types of systems </h2>
+  <ul>
+   <li><h3><a href="https:///cgi-bin/index.cgi?site=[% SiteName %]">Banks</a></h3><p>A debt base system. This system is based on migrating wealth to a few from the many. It is totally unsustainable and destructive to the planet. </p></li>  
+   <li><h3><a href="https:/usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&procedure=CrytoCurrency">Cryto Currency</a></h3><p>A computer boaster system that is an attempt by the people to replace the dept based system. Problem here is it is online only. It all so broth a lot of the problems with the dept based system primarily speculation. In short brings something for nothing and taking from others. </p></li>  
+   <li><h3><a href="https://forager.com" target="_blank">Green Dollar Trading systems.</a></h3><p>Green Dollar trading system and local currency plans have been around for a long time and have been proven to be vary good for the local economies. Unfortunately the banking monopoly have constantly attacked these wealth based systems as it under minds the debt based system which depends on scarcity to function. Primarily method of attack is counterfeiting legislation. Even governments are not allowed to print their own money.</p></li>   
+   <li><h3>Standard accounting system.</h3><p>Any company can create their own accounting policies in regard to customer payments.</p></li>
+  </ul> 
+ </li>
+</ul>
+
+<p>We will be exploring ways to share the world we live in with better harmony and respect for all it's inhabitants.</p>
+
+<a href="http://helpdesk.computersystemconsulting.ca" target="_Blank" > HelpDesk</a>
+

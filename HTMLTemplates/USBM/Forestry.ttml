@@ -1,0 +1,50 @@
+[% Version = '/cgi-bin/HTMLTemplates/USBM/Forestry.ttml,v 0.01 2022/03/19 17:43:15 shanta Exp'%]
+[%# Version = '/cgi-bin/HTMLTemplates/USBM/ULCHomeView.ttml,v 0.01 2021/10/03 17:43:15 shanta Exp'%]
+[%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.10 2020/04/22 17:43:15 shanta Exp'%]
+[%# the ENCY template
+#	$Id: ULCHome.ttml,v 1.1 2012/09/21 19:25:15 shanta Exp $	
+#file location/cgi-bin/HTMLTemplates/ULC
+%]
+
+
+[%# embed('ErrorDisplayView') %]
+
+
+
+
+
+</div>
+<div ALIGN="center">
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+
+<A NAME="PageTop"></A>
+</div>
+<h2>Our Department of Forestry and Wild Land Usel.</h2>
+
+<h3>Sustainable Wild Land Use.</h3>
+
+<p>Join us in the development of our forestry program.  </p>
+<p>Appropriate forestry practices for a given are is essential. Multi use is also critical for sustainability.</p>
+
+<ul>
+ <li><h2>Forest lands provide use for </h2>
+  <ul>
+   <li><h3><a href="https://telmark.usbm.ca/cgi-bin/index.cgi?site=TelMark">Recreation</a></h3><p>There are many uses here hiking skiing camping etc.</p></li>  
+   <li><h3><a href="https:/usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&procedure=Forestry">Forestry</a></h3><p>Trees are a resource that we need but it need to be dune wisely. Current clearcut practices have failed in most areas were corporate profit is the primary motivator. This practice has lead to all kinds of environmental disaster. Climate change, land slides. We are currently removing our trees faster than they can be replaces. This has lead to a complete destruction of the C02 Sequestering. The removal of all the timber has lead to timber shortages. We will be expanding more on this topic </p></li>  
+   <li><h3><a href="https://forager.com" target="_blank">Herb Foraging</a></h3><p>The herbal resources in the wilds is a valuable resource that can be expanded to utilize and preserve our wild lands</p></li>   
+   <li><h3>Mushroom </h3><p>Another valuable resource that can help both economical y and for the health of the trees they grow with. Fungi can either kill a tree or ensure its health. Trees being replanted need to be inoculated with the appropriate group of fungi for that species of tree and the area they are being planted in.</p></li>
+   <li><h3>Mining</h3><p>We require all kinds of minerals that mining provides. In the future we will be getting most of these from space. In the mean time we needs to do mining wisely to prevent the problems that current practices create. We will be exploring the reduction in the need to extract more by changing use, reuse, recycling of already extracted resources. </p></li>  
+   <li><h3>Wild life</h3><p>A healthy forest creates healthy habitat for our wildlife. Which are a valuable resource for the health of the plant.</p></li>
+   <li><h3>Indigenous</h3><p>People have lived on the land since humanity began to evolve on the planet. The right for those that chose to live in the woods vs the urban areas needs to be respected and encouraged. It is these hands on peoples that provide the knowledge of the balance needed to maintain and monitor the health of the plant.</p></li>  
+   <li><h3>Agricultural</h3><p>Some forms of agricultural practices can augment wild lands other such as Agra bis should not be allowed here.</p></li>     
+   <li><h3>Environmental</h3><p>This is the most important reason to maintain wild land in there natural flourishing state. Trees are a major part of the planets lungs. The CO2 they take in and oxygen they release make the planet a place we can all live. They also encourage rainfall and stabilize the soils to prevent soil erosion and slides. </p></li>
+  </ul> 
+ </li>
+</ul>
+
+<p>We will be exploring ways to share the world we live in with better harmony and respect for all it's inhabitants.</p>
+
+<a href="http://helpdesk.computersystemconsulting.ca" target="_Blank" > HelpDesk</a>
+

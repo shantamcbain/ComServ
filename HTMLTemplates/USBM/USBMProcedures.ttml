@@ -28,34 +28,39 @@
  
 
 [% embed ('ShamanismView') %]
- [% ELSIF procedure  == ('BotanicalNameView') %]
+ [% ELSIF procedure  == ('AmuAdminList') %]
+ [% embed ('AmuAdminList') %]
  
+ [% ELSIF procedure  == ('BotanicalNameView') %]
+
   [% embed ('BotanicalNameView') %]
+  
 [% ELSIF procedure  == ('ButterflyHome') %]
  
  [% embed ('ButterflyHome') %]
 [% ELSIF procedure  == ('Currency') %]
  
  [% embed ('Currency') %]
-[% ELSIF procedure  == ('StreamingView') %]
- 
- [% embed ('StreamingView') %]
- [% ELSIF procedure  == ('AmuAdminList') %]
- 
- [% embed ('AmuAdminList') %]
-[% ELSIF procedure  == ('HiveManHomeView') %]
+  [% ELSIF procedure  == ('Forestry') %]
+   [% embed ('Forestry') %]
+
+ [% ELSIF procedure  == ('HiveManHomeView') %]
  
   [% embed ('HiveManHomeView') %]
- [% ELSIF procedure  == ('FirstEval') %]
-   [% embed ('FirstEval') %]
+[% ELSIF procedure  == ('JoinDiscoussionList') %]
+ 
+ [% embed ('JoinDiscoussionList') %]
 
  [% ELSIF procedure  == ('LandingPage') %]
 [% embed ('LandingPage') %]
 
- [% ELSIF procedure  == ('JoinDiscoussionList') %]
+ [% ELSIF procedure  == ('Reforestation') %]
+   [% embed ('Reforestation') %]
+
+ [% ELSIF procedure  == ('StreamingView') %]
  
- [% embed ('JoinDiscoussionList') %]
- [% ELSIF procedure  == ('YardManagementSystem') %]
+ [% embed ('StreamingView') %]
+[% ELSIF procedure  == ('YardManagementSystem') %]
  
  [% embed ('YardManagementSystem') %]
  

@@ -1,4 +1,4 @@
-[% ViewVersion =  ' v0.11 2022/04/03  /cgi-bin/HTMLTemplates/USBM/Departments.ttml, '%]
+[% ViewVersion =  ' v0.1 2022/03/19  /cgi-bin/HTMLTemplates/USBM/Departments.ttml, '%]
 
 
 
@@ -16,8 +16,11 @@
 <ul>
  <li><h2>Science and technology</h2>
   <ul>
+   <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Economics">Economics/a></h3></li>  
+
    <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Electonics">Electronics</a></h3></li>  
-   <li><h3>Material</h3></li>  
+   <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Forestry">Forestry/a></h3></li>  
+      <li><h3>Material</h3></li>  
    <li><h3>Mechanical</h3></li>  
    <li><h3>Agriculture</h3></li>  
   </ul> 
