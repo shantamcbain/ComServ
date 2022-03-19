@@ -44,6 +44,9 @@
  [% ELSIF procedure  == ('Departments') %]
  
  [% embed ('Departments') %]
+[% ELSIF procedure  == ('Economics') %]
+ 
+ [% embed ('Economics') %]
  [% ELSIF procedure  == ('Forestry') %]
    [% embed ('Forestry') %]
 
