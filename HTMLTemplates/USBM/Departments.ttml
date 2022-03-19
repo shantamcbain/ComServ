@@ -16,10 +16,7 @@
 <ul>
  <li><h2>Science and technology</h2>
   <ul>
-   <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Economics">Economics</a></h3></li>  
-
-   <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Electronics">Electronics</a></h3></li>  
-   <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Forestry">Forestry</a></h3></li>  
+    <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Electronics">Electronics</a></h3></li>  
       <li><h3>Material</h3></li>  
    <li><h3>Mechanical</h3></li>  
    <li><h3>Agriculture</h3></li>  
@@ -29,13 +26,15 @@
   <ul>
    <li><h3>Biology</h3></li>  
    <li><h3>Health</h3></li>  
-   <li><h3>Forestry</h3></li>  
+    <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Forestry">Forestry</a></h3></li>  
+ 
    <li><h3>Agriculture</h3></li>  
   </ul> 
  </li>
  <li><h2>Social</h2>
   <ul>
-   <li><h3>Spiritual</h3></li>  
+    <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Economics">Economics</a></h3></li>  
+  <li><h3>Spiritual</h3></li>  
    <li><h3>Health</h3></li>  
    <li><h3>Emotional</h3></li>  
   </ul> 
