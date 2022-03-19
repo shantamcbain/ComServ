@@ -41,7 +41,10 @@
 [% ELSIF procedure  == ('Currency') %]
  
  [% embed ('Currency') %]
-  [% ELSIF procedure  == ('Forestry') %]
+ [% ELSIF procedure  == ('Departments') %]
+ 
+ [% embed ('Departments') %]
+ [% ELSIF procedure  == ('Forestry') %]
    [% embed ('Forestry') %]
 
  [% ELSIF procedure  == ('HiveManHomeView') %]
