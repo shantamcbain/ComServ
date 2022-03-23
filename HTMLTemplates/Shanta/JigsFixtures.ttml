@@ -1,0 +1,23 @@
+[% ViewVersion = 'v 0.001 2022/03/23 /cgi-bin/HTMLTemplates/Shanta/JigsFixtures.ttml' %]
+
+[%#	$Id: BatteryList.ttml,v 0.001 2020/08/12 11:42:47 shanta Exp shanta $	%]
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	   
+[% END %] 
+
+ 
+[% PROCESS ApisConstants.ttml %]
+[%# PROCESS ApisInventorySQL.ttml %]
+
+<A NAME="PageTop"></A>
+<h2>Our Jigs and Fixtures.</h2>
+<p>These are our jigs etc. we user to make our equipment</p><p>
+<ul>
+ <li><h2>Finger Joint Sled.</h2><p>We use finger joints on all of our boxes. The make the box far stronger than other methought and are easy to do with a with this sled. The basic design can be modified to be used with any width of board.</p>
+ <img src="https://www.finewoodworking.com/app/uploads/uploadedimages/fine_woodworking_network/image_resources/magazine/213/011213014_04_finger-joint-jig_lg.jpg" alt="">
+ <p>A good tutorial on how to make and use the jig. <a href="https://www.finewoodworking.com/2018/02/07/build-simple-box-joint-sled">Fine woodworking finger jig</a>.</p>
+ </li>
+
+</ul>
+

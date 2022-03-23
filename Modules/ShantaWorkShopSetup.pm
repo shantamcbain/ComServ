@@ -48,8 +48,8 @@ my $self = {
 	    -DATASOURCE_TYPE   => $site,
        -AUTH_TABLE        => 'shanta_user_auth_tb',
        -AUTH_MSQL_USER_NAME => 'forager',
-       -HTTP_HEADER_DESCRIPTION => "Shanta Workshop. Fine woodworking",
-       -HTTP_HEADER_KEYWORDS    => "Woodworking, woodworking workshops. wooden toys.    ",
+       -HTTP_HEADER_DESCRIPTION => "Shantas Workshop. Fine woodworking",
+       -HTTP_HEADER_KEYWORDS    => "Woodworking, woodworking workshops. wooden toys. beekeeping   ",
 	    -VALID_FORUMS                   => (
             HelpDesk           =>  'System HelpDesk',
  	         ) ,

@@ -1,4 +1,4 @@
-[% ViewVersion = 'v 0.14 202201/15 /cgi-bin/HTMLTemplates/ShantaWorkShomHome.ttml,'%]
+[% ViewVersion = 'v 0.15 2022/03/23 /cgi-bin/HTMLTemplates/ShantaWorkShomHome.ttml,'%]
 [%
 #	$Id: ShantaHome.ttml,v 1.1 2001/12/16 03:45:30 shanta Exp shanta $	
 
@@ -23,7 +23,7 @@
 
 [% IF username == 'Shanta' %]
 <h3>Things you need to do.</h3>
-[% embed(todolistview) %]
+[% embed(ToDoList) %]
 [% END %]
 [% IF procedure %]
 
@@ -35,17 +35,18 @@
 <p>Here  we create things with wood and learn how to do it.
 
 <ul>
-<li><h3><a href="/cgi-bin/index.cgi?site=ShantaWorkShop&amp;procedure=YurtView">Yurt construction Parts, and Kits.</a></h3>
+<li><h3><a href="/cgi-bin/index.cgi?site=ShantaWorkShop&amp;[% session_string %]&amp;procedure=YurtView">Yurt construction Parts, and Kits.</a></h3>
 
 <li><h3>Carving projects</h3>
 
-<li><h3><a href="/cgi-bin/index.cgi?site=ShantaWorkShop&amp;procedure=BeeHiveWoodWare">Bee hive wood ware.</a></h3> Frames, boxes, top, etc.
+<li><h3><a href="/cgi-bin/index.cgi?site=ShantaWorkShop&amp;[% session_string %]&amp;procedure=BeeHiveWoodWare">Bee hive wood ware.</a></h3> Frames, boxes, top, etc.
+<li><h3><a href="/cgi-bin/index.cgi?site=ShantaWorkShop&amp;[% session_string %]&amp;procedure=JigsFixtures">Jigs and Fixtures </a></h3></li>
 </ul>
 
-<p>See Products list for more Details.
+<p>See <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProductView">Products </a> for more Details.
 [% END %] 
-<a href="http://usbm.ca" target="_Blank" >USBM</a>. We are proud to sponsor The Universal School of Biological Life Site.
-<br>
+<p><a href="http://usbm.ca" target="_Blank" >USBM</a>. We are proud to sponsor The Universal School of Biological Life Site.
+</p><br>
 <br>                      <script type=" text/javascript" src="/cgi-bin/News/news.cgi?embed=1&amp;site=Shanta&amp;simple_search_string=Shanta&amp;records_per_page=20">
 </script>
 
