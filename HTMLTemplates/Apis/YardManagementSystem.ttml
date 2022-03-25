@@ -1,36 +1,31 @@
+[% ViewVersion = 'v 1.12 /cgi-bin/HTMLTemplates/Apis/YardManagementSystem.ttml,'%]
+
 [%# ViewVersion = 'v 1.12 2020/05/03 YardManagementSystem.ttml'%]
 [%
 #	$Id: YardManagementSystem.ttml,v 1.1 2014/11/29 06:42:47 shanta Exp shanta $	%]
+[% PROCESS DefautVariables.ttml %]
 [% PROCESS DefaultDbi.ttml %]
 
 [% embed('ErrorDisplayView') %] 
 
 
-[% IF data.session_object %]
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
 
-	[% session_id = data.session_object.getId() %]
-   [% session_string = "session_id=$session_id" %]
+[% END %] 
 
-[% END %]
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-[% email = data.session_object.getAttribute('-KEY','auth_email') %]
-[% ViewVersion  %]
+
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td >
-<h3>Our Yard Management System.<
-/h3>
+<h3>Our Yard Management System.</h3>
 <p>We developing a system to Plan your season in the bee yard</p> 
 <p>Here is a list of our current system modules </p> 
 
 <ul> 
 	<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=HiveManHomeView">	HiveManHomeView</a></li>
-	<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisQueensView">	Queens</a></li>
+<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=InventoryView">	Inventory System</a></li>	
+<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisQueensView">	Queens</a></li>
 <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisQueensNucView">	ApisQueensNucView</a></li>
 <li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisActiveQueensView">	Active Queens</a></li>
 <li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardsView">	YardsView</a></li>
