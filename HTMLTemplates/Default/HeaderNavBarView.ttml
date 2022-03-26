@@ -26,14 +26,14 @@
  [%	Version %] header	   
 [% END %] 
 
-  
+  <table><tr>
 <div id="menu">
 [% IF data.header_image != "none"%]
-  [% embed('HeaderBannerView')%]	
+<td>  [% embed('HeaderBannerView')%]	
   			[%# embed('HeaderBannerView') %] 
 
-[% END %]
-
+</td>[% END %]
+<td>
 [%# embed('TopDropListView')%]
 
 [% IF SiteName == 'Skye' OR
@@ -67,8 +67,8 @@
 	
 </div>
  
-   <div class="clear-float"></div> 
-
+   <div class="clear-float"></div></td> </tr>
+</table>
 <!--This is the end of TopNavBarView.ttml-->
 
  

@@ -101,9 +101,6 @@ break;
 
 
  [% END %]
- <!-- Page head row Begin PageHeaderView -->
-
- <!--End page header row PageHeaderView-->
 
  </td>
  </tr>  

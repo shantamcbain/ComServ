@@ -4,30 +4,31 @@
 
 [%# All content of this view is confined to a table cell in PageTopView %]
 	<!-- PageHeadView 0.01 Begin -->
-	[% embed('HeaderNavBarView') %] 
+
+
 	  <table CLASS="tablePageTopHeaderStyle">
 		<tr align="top" >
-		<td > 	  <!-- LogoHomeLink -->[% embed ('') %]
-<!-- LogoHomeLink -->
-
-	<!-- HeaderHostingView -->
-			[%# embed('HeaderHostingView') %] 
-		<!-- HeaderHostingView -->
-	 		         
-		</td> 
-		<td align="center" valign="middle" >
-
-			   
- [% IF data.debug == 1 %]
- [% PageVersion %]
+		<td > 	
+[% IF data.debug == 1 %]
+<p> [% PageVersion %]</p>
 
 
 
  [% END %]
+ <p>		
+[% embed('HeaderNavBarView') %] 
 
+</p>
+
+	</td>
+	   </tr>
+<tr align="top" >
+		<td align="center" valign="middle" >
+
+ 
 
 		   
-			
+<!-- Call Header BannerView -->		
 [%# embed('HeaderBannerView')%]	
 
 
@@ -38,7 +39,6 @@
 		</td>
 	   </tr>
      </table>
-		<h6>
-</h6>
+
 	
 <!--End PageHeaderView -->
