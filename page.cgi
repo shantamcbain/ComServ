@@ -80,120 +80,132 @@ foreach ($CGI->param()) {
 #                          SITE SETUP                             #
 ######################################################################
 
+my $SiteName =  $CGI->param('site');
+my $additonalautusernamecomments;
+my $Affiliate = 001;
+my $allow_add;
+my $allow_mod;
+my $allow_del;
+my $ANI_FAVICON;
+my $APP_DATAFILES_DIRECTORY;
+my $app_logo;
+my $app_logo_height;
+my $app_logo_width;
+my $app_logo_alt;
 my $APP_NAME = "page"; 
 my $APP_NAME_TITLE ;
-my $SiteName =  $CGI->param('site');
-my $site_update;
-my $username;
-my $group;
-my $CustCode =  $CGI->param('custcode') || "BMaster";
-my $home_view; 
+my $auth;
+my $AUTH_TABLE;
+my $AUTH_MSQL_USER_NAME;
 my $BASIC_DATA_VIEW; 
-my $View     = $CGI->param('view')||'PageView';
-my $Page     = $CGI->param('page')||'HomeView';
-my $page_top_view;
-my $page_bottom_view;
-my $page_left_view;
+my $CSS_VIEW_NAME= '/styles/CSCCSSView';
+my $CustCode =  $CGI->param('custcode') || "BMaster";
+my $DATAFILES_DIRECTORY;
+my $DBI_DSN;
+my $DEFAULT_CHARSET;
+my $DOCUMENT_ROOT_URL;
+my $FAVICON_TYPE;
+my $FAVICON;
+my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
+my $group;
+my $HasMembers;
+my $HeaderImage;
+my $Header_height;
+my $Header_width;
+my $Header_alt;
+my $home_view; 
+my $HostName   = $ENV{'SERVER_NAME'};
+my $HTTP_HEADER_PARAMS;
+my $HTTP_HEADER_KEYWORDS;
+my $HTTP_HEADER_DESCRIPTION;
+my $IMAGE_ROOT_URL; 
+my $LINK_TARGET;
+my $LineStatus = "yes";
+my $last_update = 'March 31, 2022';
+my $mail_to_user;
 #Mail settings
 my $mail_from; 
 my $mail_to;
 my $auth_mail_to;
 my $mail_replyto;
-my $CSS_VIEW_NAME= '/styles/CSCCSSView';
-my $app_logo;
-my $app_logo_height;
-my $app_logo_width;
-my $app_logo_alt;
-my $IMAGE_ROOT_URL; 
-my $apsubmenu ='' ;
-
-my $DOCUMENT_ROOT_URL;
-my $site;
-my $GLOBAL_DATAFILES_DIRECTORY="/home/shanta/Datafiles";
-my $TEMPLATES_CACHE_DIRECTORY;
-my $APP_DATAFILES_DIRECTORY;
-my $DATAFILES_DIRECTORY;
-my $site_session;
-my $auth;
+my $mail_to_member;
+my $mail_to_discussion;
 my $MySQLPW;
-my $HTTP_HEADER_PARAMS;
-my $HTTP_HEADER_KEYWORDS;
-my $HTTP_HEADER_DESCRIPTION;
-my $LINK_TARGET;
-my $additonalautusernamecomments;
-my $DBI_DSN;
-my $AUTH_TABLE;
-my $AUTH_MSQL_USER_NAME;
+my $NEWS_TB;
 my $PAGE_DBI; 
 my $PAGE_MySQLPW;
 my $PAGE_MSQL_USER_NAME;
 my $pageMySQLPW ;
-my $DEFAULT_CHARSET;
-my $mail_to_user;
-my $mail_to_member;
-my $mail_to_discussion;
-my $LineStatus = "yes";
-my $last_update = 'Dec 24, 2021';
-my $SITE_DISPLAY_NAME = 'None Defined for this site.';
-my $FAVICON;
-my $ANI_FAVICON;
-my $FAVICON_TYPE;
-my $SiteLastUpdate;
+my $Page     = $CGI->param('page')||'HomeView';
+my $page_top_view;
+my $page_bottom_view;
+my $page_left_view;
 my $shop = 'cs';
-my $NEWS_TB;
+my $site;
+my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+my $SiteLastUpdate;
+my $site_session;
+my $site_update;
 my $search = 0;
-my $Affiliate = 001;
+my $site_for_search = 0;
+my $style = $CGI->param('pagestyle');
 my $StoreUrl = 'countrystores.ca';
-my $allow_add;
-my $allow_mod;
-my $allow_del;
-my $HasMembers;
+my $TEMPLATES_CACHE_DIRECTORY;
+my $title          = $CGI->param('title');
+my $username;
+my $View     = $CGI->param('view')||'PageView';
 use SiteSetup;
   my $UseModPerl = 1;
   my $SetupVariables  = new SiteSetup($UseModPerl, $SiteName);
 #    $SiteName 		   = $SetupVariables->{-SITE_NAME};
-    $APP_NAME_TITLE        = "LiveEdit";
-    $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
-    $home_view             = $BASIC_DATA_VIEW||$SetupVariables->{-HOME_VIEW};
-    $DBI_DSN               = $SetupVariables->{-DBI_DSN};
-    $AUTH_TABLE            = $SetupVariables->{-AUTH_TABLE};
-    $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
-    $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW};
-    $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
-    $page_left_view        = $SetupVariables->{-page_left_view};
-    $MySQLPW               = $SetupVariables->{-MySQLPW};
-#Mail settings
-    $mail_from              = $SetupVariables->{-MAIL_FROM}||'csc@computersystemconsulting.ca';
-    $mail_to                = $SetupVariables->{-MAIL_TO}||'csc@computersystemconsulting.ca';
-    $auth_mail_to           = $SetupVariables->{-MAIL_TO_AUTH}||'csc@computersystemconsulting.ca';
-    $mail_replyto           = $SetupVariables->{-MAIL_REPLYTO}||'csc@computersystemconsulting.ca';
-    $CSS_VIEW_NAME          = $SetupVariables->{-CSS_VIEW_NAME};
-    my $CSS_VIEW_URL        = $SetupVariables->{-CSS_VIEW_NAME};
-    $app_logo               = $SetupVariables->{-APP_LOGO};
-    $app_logo_height        = $SetupVariables->{-APP_LOGO_HEIGHT};
-    $app_logo_width         = $SetupVariables->{-APP_LOGO_WIDTH};
-    $app_logo_alt           = $SetupVariables->{-APP_LOGO_ALT};
-    $IMAGE_ROOT_URL         = $SetupVariables->{-IMAGE_ROOT_URL}; 
-    $DOCUMENT_ROOT_URL      = $SetupVariables->{-DOCUMENT_ROOT_URL};
-    $LINK_TARGET            = $SetupVariables->{-LINK_TARGET};
-    $HTTP_HEADER_PARAMS     = $SetupVariables->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_KEYWORDS   = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
-    $FAVICON                 = $SetupVariables->{-FAVICON};
+    $Affiliate               = $SetupVariables->{-AFFILIATE};
     $ANI_FAVICON             = $SetupVariables->{-ANI_FAVICON};
-    $FAVICON_TYPE            = $SetupVariables->{-FAVICON_TYPE};
+    $APP_DATAFILES_DIRECTORY = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
+    $app_logo                = $SetupVariables->{-APP_LOGO};
+    $app_logo_height         = $SetupVariables->{-APP_LOGO_HEIGHT};
+    $app_logo_width          = $SetupVariables->{-APP_LOGO_WIDTH};
+    $app_logo_alt            = $SetupVariables->{-APP_LOGO_ALT};    $APP_NAME_TITLE        = "LiveEdit";
+  $APP_NAME_TITLE          = $SetupVariables->{-APP_NAME_TITLE};
+  $AUTH_TABLE              = $SetupVariables->{-AUTH_TABLE};
+    $AUTH_MSQL_USER_NAME     = $SetupVariables->{-AUTH_MSQL_USER_NAME};
+    $BASIC_DATA_VIEW         = $SetupVariables->{-BASIC_DATA_VIEW};
+    $CSS_VIEW_NAME           = $SetupVariables->{-CSS_VIEW_NAME};
+    my $CSS_VIEW_URL         = $SetupVariables->{-CSS_VIEW_NAME};
+    $DBI_DSN                 = $SetupVariables->{-DBI_DSN};
+    $DOCUMENT_ROOT_URL       = $SetupVariables->{-DOCUMENT_ROOT_URL};
+    $FAVICON                 = $SetupVariables->{-FAVICON};
+  $ANI_FAVICON             = $SetupVariables->{-ANI_FAVICON};
+  $FAVICON_TYPE            = $SetupVariables->{-FAVICON_TYPE};
+    $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'/home/grindrod/Datafiles/';
+   $HeaderImage             = $SetupVariables->{-HEADER_IMAGE};
+$Header_height           = $SetupVariables->{-HEADER_HEIGHT};
+$Header_width            = $SetupVariables->{-HEADER_WIDTH};
+$Header_alt              = $SetupVariables->{-HEADER_ALT};
+   $home_view               = $BASIC_DATA_VIEW||$SetupVariables->{-HOME_VIEW};
+    $HTTP_HEADER_PARAMS      = $SetupVariables->{-HTTP_HEADER_PARAMS};
+    $HTTP_HEADER_KEYWORDS    = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
+    $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+  $IMAGE_ROOT_URL          = $SetupVariables->{-IMAGE_ROOT_URL}; 
+    $LINK_TARGET             = $SetupVariables->{-LINK_TARGET};
+    my $LocalIp              = $SetupVariables->{-LOCAL_IP};
+#Mail settings
+    $mail_from               = $SetupVariables->{-MAIL_FROM}||'csc@computersystemconsulting.ca';
+    $mail_to                 = $SetupVariables->{-MAIL_TO}||'csc@computersystemconsulting.ca';
+    $auth_mail_to            = $SetupVariables->{-MAIL_TO_AUTH}||'csc@computersystemconsulting.ca';
+    $mail_replyto            = $SetupVariables->{-MAIL_REPLYTO}||'csc@computersystemconsulting.ca';
+    $MySQLPW                 = $SetupVariables->{-MySQLPW};
+    $PAGE_DBI                = $SetupVariables ->{-PAGE_DBI};
+    $PAGE_MySQLPW            = $SetupVariables ->{-PAGE_MySQLPW};
+    $PAGE_MSQL_USER_NAME     = $SetupVariables ->{-PAGE_MSQL_USER_NAME};
+    $page_top_view           = $SetupVariables->{-PAGE_TOP_VIEW};
+    $page_bottom_view        = $SetupVariables->{-PAGE_BOTTOM_VIEW};
+    $page_left_view          = $SetupVariables->{-page_left_view};
     $SiteName                =  $CGI->param('site')|| $SetupVariables->{-FAVICON_TYPE};
     $site                    = $SetupVariables->{-DATASOURCE_TYPE};
     $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
-    $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'/home/grindrod/Datafiles/';
-    $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
-    $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
-    my $LocalIp                 = $SetupVariables->{-LOCAL_IP};
     my $site_for_search         = 0;
-    $PAGE_DBI                   = $SetupVariables ->{-PAGE_DBI};
-    $PAGE_MySQLPW               = $SetupVariables ->{-PAGE_MySQLPW};
-    $PAGE_MSQL_USER_NAME        = $SetupVariables ->{-PAGE_MSQL_USER_NAME};
-
+    $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
+ 
 
 
 
@@ -280,7 +292,7 @@ if ($username eq "Shanta") {
   $allow_mod = 1;
   $allow_del = 1;  
 }
-$apsubmenu = 'ApplicationSubMenuView';
+my $apsubmenu = 'ApplicationSubMenuView';
 
 
 
@@ -1364,31 +1376,24 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -ADD_EMAIL_BODY_VIEW                    => 'AddEventEmailView',
     -ADD_FORM_VIEW_NAME                     => 'AddRecordView',
     -AFFILIATE_NUMBER                       => $Affiliate,
-    -ALLOW_ADDITIONS_FLAG                   => $allow_add,
-    -ALLOW_MODIFICATIONS_FLAG               => $allow_mod,
-    -ALLOW_DELETIONS_FLAG                   => $allow_del,
+    -ALLOW_ADDITIONS_FLAG                   => $allow_add||1,
+    -ALLOW_MODIFICATIONS_FLAG               => $allow_mod||1,
+    -ALLOW_DELETIONS_FLAG                   => $allow_del||1,
     -ALLOW_DUPLICATE_ENTRIES                => 0,
     -ALLOW_USERNAME_FIELD_TO_BE_SEARCHED    => 1,
     -APPLICATION_SUB_MENU_VIEW_NAME         => $apsubmenu,
-    -OPTIONS_FORM_VIEW_NAME                 => 'OptionsView',
     -AUTH_MANAGER_CONFIG_PARAMS             => \@AUTH_MANAGER_CONFIG_PARAMS,
     -ADD_RECORD_CONFIRMATION_VIEW_NAME      => 'AddRecordConfirmationView',
     -BASIC_DATA_VIEW_NAME                   => $home_view,
-    -DEFAULT_ACTION_NAME                    => 'DisplayDayViewAction',
+    -BASIC_INPUT_WIDGET_DISPLAY_COLSPAN     => 4,
     -CGI_OBJECT                             => $CGI,
     -CSS_VIEW_URL                           => $CSS_VIEW_URL,
     -CSS_VIEW_NAME                          => $CSS_VIEW_NAME,
     -DATASOURCE_CONFIG_PARAMS               => \@DATASOURCE_CONFIG_PARAMS,
+    -Debug                                  => $CGI->param('debug')||0,
+    -DEFAULT_ACTION_NAME                    => 'DisplayDayViewAction',
     -DELETE_ACKNOWLEDGEMENT_VIEW_NAME       => 'DeleteAcknowledgementView',
     -DELETE_RECORD_CONFIRMATION_VIEW_NAME   => 'DeleteRecordConfirmationView',
-    -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
-    -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || 5,
-    -SORT_FIELD1                            => $CGI->param('sort_field1') || 'sitename',
-    -SORT_FIELD2                            => $CGI->param('sort_field2') || 'abstract',
-#    -SORT_DIRECTION                         => $CGI->param('sort_direction') || 'ASEN',
-    -SORT_DIRECTION                         => 'DESC',
-    -Debug                                  => $CGI->param('debug')||0,
-    -MOBILE                                 => $CGI->param('m')||0,
     -DELETE_FORM_VIEW_NAME                  => 'DetailsRecordView',
     -DELETE_EMAIL_BODY_VIEW                 => 'DeleteEventEmailView',
     -DETAILS_VIEW_NAME                      => 'DetailsRecordView',
@@ -1399,7 +1404,9 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -DISPLAY_CONFIRMATION_ON_ADD_FLAG       => 1,
     -DISPLAY_CONFIRMATION_ON_DELETE_FLAG    => 1,
     -DISPLAY_CONFIRMATION_ON_MODIFY_FLAG    => 1,
+    -DOMAIN_NAME                            => $HostName,
     -ENABLE_SORTING_FLAG                    => 1,
+    -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
     -GROUP                                  => $group,
     -HAS_MEMBERS                            => $HasMembers,
     -HTTP_HEADER_PARAMS                     => $HTTP_HEADER_PARAMS||'test',
@@ -1407,24 +1414,29 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -HTTP_HEADER_DESCRIPTION                => $HTTP_HEADER_DESCRIPTION,
     -HIDDEN_ADMIN_FIELDS_VIEW_NAME          => 'HiddenAdminFieldsView',
     -INPUT_WIDGET_DEFINITIONS               => \@INPUT_WIDGET_DEFINITIONS,
-    -BASIC_INPUT_WIDGET_DISPLAY_COLSPAN     => 4,
     -KEY_FIELD                              => 'record_id',
     -LineStatus                             => $LineStatus,
     -LOGOFF_VIEW_NAME                       => 'LogoffView',
-    -URL_ENCODED_ADMIN_FIELDS_VIEW_NAME     => 'URLEncodedAdminFieldsView',
     -LAST_UPDATE                            => $last_update,
-    -SITE_LAST_UPDATE                       => $site_update,
+    -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
     -LOCAL_IP                               => $LocalIp,
     -LOG_CONFIG_PARAMS                      => \@LOG_CONFIG_PARAMS,
+    -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || 5,
+    -MOBILE                                 => $CGI->param('m')||0,
     -MODIFY_ACKNOWLEDGEMENT_VIEW_NAME       => 'ModifyAcknowledgementView',
     -MODIFY_RECORD_CONFIRMATION_VIEW_NAME   => 'ModifyRecordConfirmationView',
     -MAIL_CONFIG_PARAMS                     => \@MAIL_CONFIG_PARAMS,
     -MAIL_SEND_PARAMS                       => \@MAIL_SEND_PARAMS,
     -MODIFY_FORM_VIEW_NAME                  => 'ModifyRecordView',
     -MODIFY_EMAIL_BODY_VIEW                 => 'ModifyEventEmailView',
+    -NEWS_TB                                => $NEWS_TB,
+    -OPTIONS_FORM_VIEW_NAME                 => 'OptionsView',
     -POWER_SEARCH_VIEW_NAME                 => 'PowerSearchFormView',
     -PAGE_NAME                              => $Page,
-    -NEWS_TB                                => $NEWS_TB,
+    -PAGE_TOP_VIEW                          => $page_top_view,
+    -PAGE_LEFT_VIEW                         => $page_left_view,
+    -PAGE_BOTTOM_VIEW                       => $page_bottom_view,
+    -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
     -REQUIRE_AUTH_FOR_SEARCHING_FLAG        => $search,
     -REQUIRE_AUTH_FOR_ADDING_FLAG           => $allow_add ,
     -REQUIRE_AUTH_FOR_MODIFYING_FLAG        => $allow_mod ,
@@ -1442,21 +1454,24 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -SEND_EMAIL_ON_ADD_FLAG                 => 1,
     -SESSION_OBJECT                         => $SESSION,
     -SESSION_TIMEOUT_VIEW_NAME              => 'SessionTimeoutErrorView',
+    -SHOP                                   => $shop,
+    -SIMPLE_SEARCH_STRING                   => $CGI->param('simple_search_string') || "",
+    -SITE_LAST_UPDATE                       => $site_update,
     -SITE_NAME                              => $SiteName,
+    -SORT_FIELD1                            => $CGI->param('sort_field1') || 'sitename',
+    -SORT_FIELD2                            => $CGI->param('sort_field2') || 'abstract',
+#    -SORT_DIRECTION                        => $CGI->param('sort_direction') || 'ASEN',
+    -SORT_DIRECTION                         => 'DESC',
     -STORE_URL                              => $StoreUrl,
+    -STYLE                                  => $style,
     -TEMPLATES_CACHE_DIRECTORY              => $TEMPLATES_CACHE_DIRECTORY,
+    -TITLE                                  => $title,
     -VALID_VIEWS                            => \@VALID_VIEWS,
     -VIEW_DISPLAY_PARAMS                    => \@VIEW_DISPLAY_PARAMS,
     -VIEW_FILTERS_CONFIG_PARAMS             => \@VIEW_FILTERS_CONFIG_PARAMS,
     -VIEW_LOADER                            => $VIEW_LOADER,
-    -SIMPLE_SEARCH_STRING                   => $CGI->param('simple_search_string') || "",
-    -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
-    -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
-    -SHOP                                   => $shop,
     -USERNAME                               => $username,
-    -PAGE_TOP_VIEW                          => $page_top_view,
-    -PAGE_LEFT_VIEW                         => $page_left_view,
-    -PAGE_BOTTOM_VIEW                       => $page_bottom_view,
+    -URL_ENCODED_ADMIN_FIELDS_VIEW_NAME     => 'URLEncodedAdminFieldsView',
     -DATETIME_CONFIG_PARAMS                 => \@DATETIME_CONFIG_PARAMS,
     -ACTION_HANDLER_PLUGINS                 => \%ACTION_HANDLER_PLUGINS,
 );

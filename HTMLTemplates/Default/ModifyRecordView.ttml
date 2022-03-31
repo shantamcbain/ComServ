@@ -1,3 +1,4 @@
+[% ViewVersion = 'v 0.02 2022/03/31 shanta /cgi-bin/HTMLTemplates/Default/ModifyRecordView.ttml' %]
 [%
 
 # this template takes a single value's args listed in @required below
@@ -14,6 +15,10 @@
 [% embed(data.page_top_view,{'-PAGE_TITLE' => 'Modify Form'}) %]
 
 [% embed('ErrorDisplayView') %]
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+  [% embed  ('InheretedVariablesView') %]
+[% END %] 
 
 	<FORM METHOD = "POST" 
               TARGET = "[% data.link_target %]"
