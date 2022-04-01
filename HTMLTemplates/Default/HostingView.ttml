@@ -1,9 +1,12 @@
-[% ViewVersion = 'v 1.11 /cgi-bin/HTMLTemplates/Default/Hostingiew.ttml,'%]
+[% ViewVersion = 'v 1.12 /cgi-bin/HTMLTemplates/Default/Hostingiew.ttml,2022/03/31'%]
 [%
 #	$Id: HostingView.ttml,v 1.1 2005/12/13 20:25:14 shanta Exp shanta $
 
 
 %]
+
+[% PROCESS DefautVariables.ttml %]
+
  [% PROCESS DefaultDbi.ttml %]
 [% PROCESS Affiliateid.ttml %]
 [% embed(data.page_top_view,['-PAGE_TITLE','Hosting']) %]
@@ -11,38 +14,7 @@
 [% embed('ErrorDisplayView') %] 
 
 
-[% IF data.session_object %]
 
-	[% session_id = data.session_object.getId() %]
-       [% session_string = "session_id=$session_id" %]
-
-[% END %] 
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-   [% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-   [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
-   [% LastUpdate = data.last_update %]
-   [% SiteUpdate = data.site_last_update %]
-   [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-   [% SiteDisplayName = data.site_display_name %]
-   [% site = SiteName %]
-   [% Page = data.page_name  %]
-   [% PageSiteName = data.site_display_name %]
-   [% username = data.session_object.getAttribute('-KEY','auth_username') %]
-   [% PrintMode    = data.session_object.getAttribute('-KEY','PrintMode') %]
-   [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
-	[% IF data.session_object %]
-   [% PID  = data.pid %]
-   [% AffiliateID = data.affiliate_number %] 
-   [% session_id = data.session_object.getId() %]
-   [% session_string = "session_id=$session_id" %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-[% email = data.session_object.getAttribute('-KEY','auth_email') %]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
 
 
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -58,6 +30,7 @@
 		<h3>Sites hosted with us.</h3>
 
 <ul>	
+
 [% FOREACH link = DBI.query("SELECT * FROM url_tb
                                 WHERE  category = 'Hosted_link' AND (username_of_poster = '$username' OR share = 'public')
                                   AND (sitename =  '$SiteName' OR sitename =  'All')
@@ -65,7 +38,8 @@
                                     ")%]    
 
 <li>       <a href="[% link.url %]" name="Contact" target="[%link.target %]"title="[% link.name %] "><font   class="LeftSideBarNavStyle">[% link.name %]</font></a>
-</li> [% END %]
+</li> 
+[% END %]
 	
 </ul> 
 			<h3> Hosting with us.</h3
