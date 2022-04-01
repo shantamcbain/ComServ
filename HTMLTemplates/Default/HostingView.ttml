@@ -43,8 +43,7 @@
 	
 </ul> 
 			<h3> Hosting with us.</h3
-<p>We offer discounted hosting services to our members. We have Three types of services.
-</p>
+<p>We offer discounted hosting services to our members. We have Three types of services. A portion of your fees support [% SiteDisplayName %]</p>
 
 <ol>
 	<li>Sub domain. Your URL to the site will look like this <a href="http://ecf.[% data.domain_name %]" target="_blank" name="subdomain link" title = "Click here to see what this site looks like.">Http://ecf.[% data.domain_name %]</a> You get 5 email addresess, Web space, and more. Order your sub domain <a href="http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&pid=21&amp;aff=[% AffiliateID %]">here</a></li>
