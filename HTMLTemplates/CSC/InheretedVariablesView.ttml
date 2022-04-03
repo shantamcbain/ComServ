@@ -28,7 +28,7 @@
  <td	class="InharatedVariablesCell">vertual server  TTML  = </td>       
  <td	class="InharatedVariablesCell">[% virtual_server_name %]</td>
 </tr>
-
+<tr> <td	class="InharatedVariablesCell"> -GLOBAL_DATAFILES_DIRECTORY .data</td>     <td	class="InharatedVariablesCell">          [% data.global_datafiles_directory %]</td></tr>
 <tr> 
  <td	class="InharatedVariablesCell">Virtual server name .data= </td>
  <td	class="InharatedVariablesCell"> [% data.virtual_server_name %]</td>
