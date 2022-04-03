@@ -1,7 +1,11 @@
+[% ViewVersion = 'v 0.03 2022/04/04 /cgi-bin/HTMLTemplates/Apis/YardsSQL.ttml,'%]
 [% # YardsSQL.ttml Created 2019/07/03 Shanta  %]
 
 <h2>Your yards. [% SiteName %]</h2>
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
 
+[% END %] 
 <table>
 <tr><th>Yard <a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Yard">Add</a></th><th>status</th><th>Max</th><th>Current</th><th>View pallets</th></tr>
 [% FOREACH link = DBI.query("SELECT * FROM apis_yards_tb
@@ -13,7 +17,7 @@
   [% yard_code = link.yard_code %]                                
                                   <tr>
    
-   <td><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&amp;record_id=[% link.record_id %]&view=ProceduresView&procedure=YardsView" name="Contact"  title="[% link.yard_name %] "><font   class="LeftSideBarNavStyle">[% yard_code %] </td>
+   <td><a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&[% session_string %]&amp;record_id=[% link.record_id %]&procedure=YardsView" name="Contact"  title="[% link.yard_name %] "><font   class="LeftSideBarNavStyle">[% yard_code %] </td>
   <a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;sort_field1=yard_code&amp;sort_field2=status&amp;first_record_to_display=0&amp;records_per_page=&&amp;[% session_string %]&amp;record_id=[% link.record_id %]&display_details_view.x=15&amp;display_details_view.y=12&amp;display_details_view=on" name="Contact"  title="[% link.yard_name %] "><font   class="LeftSideBarNavStyle">[% link.yard_name %]
    <td>[% link.status  %]</td>
    <td>[% link.total_yard_size %]</td>
@@ -57,3 +61,6 @@
  </td></tr>
 
 </table>
+[% IF data.debug == 1 %]
+ End [%	ViewVersion %] 	   
+[% END %] 

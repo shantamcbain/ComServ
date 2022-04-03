@@ -140,7 +140,8 @@
 [% ELSE %]
                                   <tr>Botanical Name<td></td><td>Common Names</td><td>Image</td><td>link</td></tr>
  [% FOREACH link = DBI.query("SELECT * FROM ency_herb_tb
-                                  WHERE (botanical_name != '')
+                                  WHERE (botanical_name != '
+                                 ')
                                   ORDER BY botanical_name                                ")%]    
                                   
 

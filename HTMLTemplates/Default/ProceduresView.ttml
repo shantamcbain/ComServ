@@ -1,4 +1,4 @@
-[% ViewVersion = 'v 2.011 /cgi-bin/HTMLTemplates/Default/ProceduresView.ttml, 2022/02/06'%]
+[% ViewVersion = 'v 2.012 /cgi-bin/HTMLTemplates/Default/ProceduresView.ttml, 2022/02/06'%]
 [%# ViewVersion = 'v 2.01 /cgi-bin/HTMLTemplates/Default/ProceduresView.ttml, 2022/02/06'%]
 [% Version = 'v 1.97 2021/12/22 /HTTMLTemplates/Default/ProceduresView.ttml'%]
 [%# Version = 'v 1.968 2021/08/03 ProceduresView.ttml'%]
@@ -89,11 +89,12 @@
 		         SiteName == "ENCYDev"  %]
 		         <p>Call USBMProcedures</p>
 			[% embed ('USBMProcedures') %]
-			<p>Leave [% ViewName  %] ECFProcedures</p>
-			[%# embed ('SBHomeView') %]
+			
+		%]
 		[% ELSIF SiteName == "ECF" OR
 		         SiteName == "ECFDev"  %]
-		         <p>Call ECFProcedures</p>
+		     [% embed ('BMasterProcedures') %] 
+		        
 		[% ELSIF SiteName == "SMO" %]
 			[% embed ('BMasterProcedures') %]
 		[% ELSIF SiteName == "HE" OR

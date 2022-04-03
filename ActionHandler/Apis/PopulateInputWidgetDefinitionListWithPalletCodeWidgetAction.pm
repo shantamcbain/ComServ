@@ -79,7 +79,7 @@ my $user_group = $session->getAttribute(-KEY => 'auth_groups')||'normal';
 if ($user_group eq 'CSC_admin'){
 $GroupBoolion = 0;
 }else{ 
-$GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||1;
+$GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||0;
 }
 
     my $datasource_config_params = shift (@config_params);
@@ -99,8 +99,8 @@ $GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||1;
         -CGI_OBJECT                  => $params->{-CGI_OBJECT},
         -SESSION_OBJECT              => $params->{-SESSION_OBJECT},
         -MAX_RECORDS_PER_PAGE        => 200 || $cgi->param('records_per_page'),
-        -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG =>  $params->{-REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG},
-        -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG => $GroupBoolion,
+        -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG =>  0||$params->{-REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG},
+        -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG => 0||$GroupBoolion,
     ));
 
     my @pallet_code;

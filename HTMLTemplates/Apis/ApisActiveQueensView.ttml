@@ -1,27 +1,24 @@
-[%
-#	$Id: ApisActiveQueensView.ttml,v 1.1 2015/09/08 06:42:47 shanta Exp shanta $	%]
- [% PROCESS DefaultDbi.ttml %]
+[% ViewVersion = 'v 0.01 /cgi-bin/HTMLTemplates/Apis/ApisActiveQueensView.ttml,'%]
+
+
+
+[% IF procedure %]
+
+[% ELSE %]
+[% PROCESS DefautVariables.ttml %]
+
+[% PROCESS DefaultDbi.ttml %]
 
 [% embed(data.page_top_view,['-PAGE_TITLE','Active Queens']) %]
-
+[% END %]
 [% embed('ErrorDisplayView') %]
 
 
 
-[% IF data.session_object %]
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
 
-	[% session_id = data.session_object.getId() %]
-   [% session_string = "session_id=$session_id" %]
-
-[% END %]
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-[% email = data.session_object.getAttribute('-KEY','auth_email') %]
-  
+[% END %]  
 
  
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -70,7 +67,7 @@
 [% ELSE %]
 
 [% END %]
-<tr><td><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add a New Queen</a> tttt
+<tr><td><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add a New Queen</a> 
 </td></tr>
 
 <tr><td><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ApisNucQueensView">Nucs</a>

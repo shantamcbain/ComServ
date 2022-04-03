@@ -19,6 +19,8 @@
 # Boston, MA  02111-1307, USA.
  
 use strict;
+my $AppVer = "ver 0.01, Mar 15, 2022";
+
 BEGIN{
     use vars qw(@dirs);
     @dirs = qw(../Modules
@@ -62,103 +64,120 @@ foreach ($CGI->param()) {
 #                          PORTING SETUP                             #
 ######################################################################
 my $SiteName =  $CGI->param('site') || "Apis";
+my $additonalautusernamecomments;
+my $Affiliate = 001;
+my $APP_DATAFILES_DIRECTORY;
+my $app_logo;
+my $app_logo_height;
+my $app_logo_width;
+my $app_logo_alt;
 my $APP_NAME = "queens";
 my $APP_NAME_TITLE = $SiteName."Queen  Manager";
-my $SiteLastUpdate;
-my $SITE_DISPLAY_NAME = 'None Defined for this site.';
-my $site_update;
-my $last_update = 'Febuary 5, 2015';
+my $auth;
+my $AUTH_TABLE;
+my $AUTH_MSQL_USER_NAME;
+my $BASIC_DATA_VIEW; 
+my $CAL_TABLE;
+my $CSS_VIEW_NAME;
+my $CSS_VIEW_URL = $CSS_VIEW_NAME;
 my $CustCode =  $CGI->param('custcode') || "BMaster";
-    my $homeviewname ;
-    my $home_view; 
-    my $BASIC_DATA_VIEW; 
-    my $page_top_view;
-    my $page_bottom_view;
-    my $left_page_view;
-    my $page_left_view;
-#Mail settings
-    my $mail_from; 
-    my $mail_to;
-    my $mail_replyto;
-my $NEWS_TB;
-    my $CSS_VIEW_NAME;
-    my $app_logo;
-    my $app_logo_height;
-    my $app_logo_width;
-    my $app_logo_alt;
-    my $IMAGE_ROOT_URL; 
-    my $DOCUMENT_ROOT_URL;
-my $Page_tb;
-    my $site;
-    my $GLOBAL_DATAFILES_DIRECTORY;
-    my $TEMPLATES_CACHE_DIRECTORY;
-    my $APP_DATAFILES_DIRECTORY;
-    my $DATAFILES_DIRECTORY;
-    my $site_session;
-    my $auth;
-    my $MySQLPW;
-    my $LINK_TARGET;
-    my $HTTP_HEADER_PARAMS;
-    my $HTTP_HEADER_KEYWORDS;
-    my $HTTP_HEADER_DESCRIPTION;
-    my  $DBI_DSN;
-    my $AUTH_TABLE;
-    my  $AUTH_MSQL_USER_NAME;
-    my $DEFAULT_CHARSET;
-    my $additonalautusernamecomments;
-    my $SetupVariables  ;
-    my $CAL_TABLE;
-    my $HasMembers;
-    my $shop = 'cs';
-    my $Affiliate = 001;
-    my $StoreUrl = 'countrystores.ca';
-    my $HeaderImage;
-    my $Header_height;
-    my $Header_width;
-    my $Header_alt;
+my $DATAFILES_DIRECTORY;
+my $DBI_DSN;
+my $DEFAULT_CHARSET;
+my $DOCUMENT_ROOT_URL;
 my $FAVICON;
 my $ANI_FAVICON;
 my $FAVICON_TYPE;
-my $Page     = $CGI->param('page')||'HomeView';
+my $GLOBAL_DATAFILES_DIRECTORY;
+my $HasMembers;
+my $HasMembers;
+my $HeaderImage;
+my $Header_height;
+my $Header_width;
+my $Header_alt;
+my $homeviewname ;
+my $home_view; 
+my $HostName   = $ENV{'SERVER_NAME'};
+my $HTTP_HEADER_PARAMS;
+my $HTTP_HEADER_KEYWORDS;
+my $HTTP_HEADER_DESCRIPTION;
+my $additonalautusernamecomments;
+my $IMAGE_ROOT_URL; 
+my $last_update = 'March 15, 2022';my $left_page_view;
+my $LINK_TARGET;
+#Mail settings
+my $mail_from; 
+my $mail_to;
+my $mail_replyto;
+my $mail_to_user;
+my $mail_to_member;
+my $mail_to_discussion;
+my $MySQLPW;
+my $NEWS_TB;
+my $Page           = $CGI->param('page');
+my $Page_tb;
+my $page_left_view;
+my $page_bottom_view;
+my $page_top_view;
+my $procedure      = $CGI->param('procedure');
+my $project        = $CGI->param('project');
+my $SetupVariables  ;
+my $StoreUrl = 'countrystores.ca';
+my $shop = 'cs';
+my $site_session;
+my $site;
+my $SiteLastUpdate;
+my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+my $site_update;
+my $TEMPLATES_CACHE_DIRECTORY;
+my $title          = $CGI->param('title');
+my $username;
+my $View           = $CGI->param('view') ;
    
 use SiteSetup;
   my $UseModPerl = 0;
    $SetupVariables  = new SiteSetup($UseModPerl);
-    $home_view             = $SetupVariables->{-HOME_VIEW}; 
-    $homeviewname          = $SetupVariables->{-HOME_VIEW_NAME};
+    $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
+    $app_logo              = $SetupVariables->{-APP_LOGO};
+    $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
+    $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
+    $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
+    $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+    $AUTH_TABLE            = $SetupVariables->{-AUTH_TABLE};
     $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
+    $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
+    $CSS_VIEW_URL          = $SetupVariables->{-CSS_VIEW_NAME};
+    $DATAFILES_DIRECTORY   = $APP_DATAFILES_DIRECTORY;
+    $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
+    $DBI_DSN               = $SetupVariables->{-DBI_DSN};
+    $homeviewname          = $SetupVariables->{-HOME_VIEW_NAME};
+    $home_view             = $SetupVariables->{-HOME_VIEW}||'HomeView';
+    $HeaderImage           = $SetupVariables->{-HEADER_IMAGE};
+    $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
+    $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
+    $HTTP_HEADER_KEYWORDS  = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
+    $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+    $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
     $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW}||'PageTopView';
     $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
+    $page_left_view        = $CGI->param('page_left_view')||$page_left_view;
+$Page_tb                 = $SetupVariables->{-PAGE_TB} || 'page_tb';
+my $pid                     = $SetupVariables->{-PID};
     $left_page_view        = $SetupVariables->{-LEFT_PAGE_VIEW};
-#MySQL settings
+    $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
+# MySQL settings
     $MySQLPW               = $SetupVariables->{-MySQLPW};
-    $DBI_DSN               = $SetupVariables->{-DBI_DSN};
-    $AUTH_TABLE            = $SetupVariables->{-AUTH_TABLE};
-    $CAL_TABLE             = $SetupVariables->{-CAL_TABLE};
     $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
 #Mail settings
     $mail_from             = $SetupVariables->{-MAIL_FROM}; 
     $mail_to               = $SetupVariables->{-MAIL_TO};
     $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
-    $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
-    $app_logo              = $SetupVariables->{-APP_LOGO};
-    $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
-    $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
-    $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
-    $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
-    $DOCUMENT_ROOT_URL     = $SetupVariables->{-DOCUMENT_ROOT_URL};
-    $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
-    $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_KEYWORDS  = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+
     $site = $SetupVariables->{-DATASOURCE_TYPE};
-    $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
-    $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
-    $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
-    $DATAFILES_DIRECTORY = $APP_DATAFILES_DIRECTORY;
     $site_session = $DATAFILES_DIRECTORY.'/Sessions';
-    $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-    $page_left_view   = $CGI->param('page_left_view')||$page_left_view;
+    $shop                    = $SetupVariables->{-SHOP};
+$StoreUrl                = $SetupVariables->{-STORE_URL};
+$TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
 
 my $VIEW_LOADER = new Extropia::Core::View
     (\@VIEWS_SEARCH_PATH,\@TEMPLATES_SEARCH_PATH) or
@@ -192,7 +211,6 @@ my $SESSION_MGR = Extropia::Core::SessionManager->create(
 
 my $SESSION    = $SESSION_MGR->createSession();
 my $SESSION_ID = $SESSION->getId();
-my $CSS_VIEW_URL = $CGI->script_name(). "?display_css_view=on&session_id=$SESSION_ID";
 
 if ($CGI->param('site')){
     if  ($CGI->param('site') ne $SESSION ->getAttribute(-KEY => 'SiteName') ){
@@ -1192,7 +1210,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -MODIFY_EMAIL_BODY_VIEW                 => 'ModifyEventEmailView',
     -NEWS_TB                                => $NEWS_TB,
     -PAGE_NAME                              => $Page,
-    -REQUIRE_AUTH_FOR_SEARCHING_FLAG        => 1,
+    -REQUIRE_AUTH_FOR_SEARCHING_FLAG        => 0,
     -REQUIRE_AUTH_FOR_ADDING_FLAG           => 1,
     -REQUIRE_AUTH_FOR_MODIFYING_FLAG        => 1,
     -REQUIRE_AUTH_FOR_DELETING_FLAG         => 1,
@@ -1201,7 +1219,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -REQUIRE_MATCHING_USERNAME_FOR_DELETIONS_FLAG     => 1,
     -REQUIRE_MATCHING_GROUP_FOR_MODIFICATIONS_FLAG    => 0,
     -REQUIRE_MATCHING_GROUP_FOR_DELETIONS_FLAG        => 0,
-    -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG     => 1,
+    -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG     => 0,
     -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG        => 0,
     -SEND_EMAIL_ON_DELETE_FLAG              => 0,
     -SEND_EMAIL_ON_MODIFY_FLAG              => 0,
@@ -1226,6 +1244,10 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
     -KEY_FIELD                              => 'record_id',
     -SITE_NAME                              => $SiteName,
+    -SHOP                       => $shop,
+    -TITLE                      => $title,
+    -PROJECT                    => $project,
+    -PROCEDURE                  => $procedure,
     -PAGE_TOP_VIEW                          => $page_top_view ,
     -LEFT_PAGE_VIEW                         => $left_page_view,
     -PAGE_LEFT_VIEW                         => $page_left_view,

@@ -1,6 +1,11 @@
+[% ViewVersion = 'v 0.02 2022/03/15 /cgi-bin/HTMLTemplates/Apis/PopulatepalletWithPallet.ttml,'%]
 [%#	$Id: PopulatepalletWithPallet.ttml,v 1.1 2015/08/12 12:53:47 shanta Exp shanta $	%]
 
 <tr><td>
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+
+[% END %] 
 Active Hives [% yard_code %]</li>     
 [% FOREACH link = DBI.query("SELECT * FROM apis_pallet_tb
                                   WHERE (sitename = '$SiteName'

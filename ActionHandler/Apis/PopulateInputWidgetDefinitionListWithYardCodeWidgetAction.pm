@@ -29,6 +29,7 @@ sub execute {
     my ($params) = _rearrangeAsHash([
         -ALLOW_USERNAME_FIELD_TO_BE_SEARCHED,
         -APPLICATION_OBJECT,
+        -APP_NAME,
         -CGI_OBJECT,
         -DATASOURCE_CONFIG_PARAMS,
         -ENABLE_SORTING_FLAG,
@@ -39,6 +40,7 @@ sub execute {
         -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG,
         -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG,
         -SIMPLE_SEARCH_STRING,
+        -SITE_NAME,      
         -SESSION_OBJECT,
         -SORT_DIRECTION,
         -SORT_FIELD1,
@@ -56,12 +58,13 @@ sub execute {
     my $cgi = $params->{-CGI_OBJECT};
     my $session = $params->{-SESSION_OBJECT};
     my $sitename = $cgi->param('site');
-
+#$params->{-SITE_NAME}
     $cgi->param(
         -NAME  => 'raw_search',
-        -VALUE => "status == '' AND
+        -VALUE => "
                    sitename == '$params->{-SITE_NAME}'
-         "
+                   AND status =='In-Use'
+      "
     );  
 
 
@@ -82,7 +85,7 @@ my $user_group = $session->getAttribute(-KEY => 'auth_groups')||'normal';
 if ($user_group eq 'CSC_admin'){
 $GroupBoolion = 0;
 }else{
-$GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||1;
+$GroupBoolion = 0;
 }
 
     my $datasource_config_params = shift (@config_params);
@@ -103,19 +106,19 @@ $GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||1;
         -SESSION_OBJECT              => $params->{-SESSION_OBJECT},
         -MAX_RECORDS_PER_PAGE        => 200 || $cgi->param('records_per_page'),
         -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG =>  0 ||$params->{-REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG},
-        -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG => $GroupBoolion,
+        -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG => 0 || $GroupBoolion,
     ));
 
      my @yard_code;
     foreach my $record (@$ra_records) {
-        my $username = $record->{'yard_code'};
-        push (@yard_code, $username);
+        my $yard_code = $record->{'yard_code'};
+        push (@yard_code, $yard_code);
     }
     my @labels;
     foreach my $record (@$ra_records) {
         my $displayvalue = $record->{'yard_name'};
-        my $subject = $record->{'yard_code'};
-        push (@labels,$subject => $displayvalue);
+        my $yard_code = $record->{'yard_code'};
+        push (@labels,$yard_code => $displayvalue);
     }
     my %labels = @labels;
 
@@ -134,7 +137,7 @@ $GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||1;
     my $input_widget_definitions = shift (@input_widget_config_params);
 
     my @yard_code_widget = (
-        -DISPLAY_NAME => 'Yard Code',
+        -DISPLAY_NAME => 'Yard Code test',
         -TYPE         => 'popup_menu',
         -NAME         => 'yard_code',
         -VALUES       => \@yard_code,

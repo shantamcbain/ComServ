@@ -1,17 +1,4 @@
-[% ViewVersion = 'v 0.01 /cgi-bin/HTMLTemplates/Apis/InventoryProjectionView.ttml,'%]
-[%
-#	$Id:InvneoryProjectionView.ttml,v 1.9 2010/09/28 17:43:15 shanta Exp shanta $	
-
-# Ideally this template should be converted into a static CSS file and
-# be served as /foo/bar.css and not via CGI, since it slows things
-# down and doesn't allow browsers to cache the CSS content.
-
-# otherwise this template is stand-alone, i.e. it doesn't rely on any
-# variables from outside.
-
-%]
-
-
+[% ViewVersion = 'v 0.02 2022/04/04 /cgi-bin/HTMLTemplates/Apis/InventoryProjectionView.ttml,'%]
 
 [% embed('ErrorDisplayView') %]
 

@@ -1,6 +1,8 @@
-[% ViewVersion = 'v 0.02 2022/03/31 shanta /cgi-bin/HTMLTemplates/Default/AddRecordView.ttml' %]
- [% PROCESS DefautVariables.ttml %]
+[% ViewVersion = 'v 0.03 2022/04/04 shanta /cgi-bin/HTMLTemplates/Default/AddRecordView.ttml' %]
+
+[% PROCESS DefautVariables.ttml %]
 [% PROCESS DefaultDbi.ttml %]
+
 [% set_headers(data.http_header_params) %]
   [% form_name = 'Add Form' %]
   [% form_table_header = 'Add Record' %]
@@ -10,9 +12,11 @@
   [% form_table_header = 'Add record' %]
 
 [% END -%]
-[% embed(data.page_top_view,{'-PAGE_TITLE' =>  form_name}) %]
+
+[% embed(data.page_top_view,{'-PAGE_TITLE' =>  $form_name}) %]
 
 [% embed('ErrorDisplayView') -%]
+
 [% IF data.debug == 1 %]
  [%	ViewVersion %] 	
   [% embed  ('InheretedVariablesView') %]

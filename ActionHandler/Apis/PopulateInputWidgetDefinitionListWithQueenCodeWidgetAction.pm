@@ -80,7 +80,7 @@ my $user_group = $session->getAttribute(-KEY => 'auth_groups')||'normal';
 if ($user_group eq 'CSC_admin'){
 $GroupBoolion = 0;
 }else{ 
-$GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||1;
+$GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||0;
 }
 
     my $datasource_config_params = shift (@config_params);

@@ -1,16 +1,5 @@
-[% ViewVersion = 'v 2.00 /cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
+[% ViewVersion = 'v 2.01 2022/04/04/cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
 
-[%# ViewVersion = 'v 1.99 /cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
-[% Version = 'v 1.99 2021/11/29 17:43:15 /cgi-bin/HTMLTemplates/Default/HomeView.ttml, '%]
-
-[% # Ideally this template should be converted into a static CSS file and
-# be served as /foo/bar.css and not via CGI, since it slows things
-# down and dozen't allow browsers to cache the CSS content.
-
-# otherwise this template is stand-alone, i.e. it dozen't rely on any
-# variables from outside.
-
-%]
 [% PROCESS DefautVariables.ttml %]
 
  

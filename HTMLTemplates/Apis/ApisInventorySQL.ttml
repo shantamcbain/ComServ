@@ -1,15 +1,13 @@
-[% ViewVersion = 'v 0.01 /cgi-bin/HTMLTemplates/Apis/ApisInventorySQL.ttml,'%]
+[% ViewVersion = 'v 0.02 2022/04/04 /cgi-bin/HTMLTemplates/Apis/ApisInventorySQL.ttml,'%]
 
 [% IF data.debug == 1 %]
  [%	ViewVersion %] 	
 
 [% END %] 
 
-[% total_frames = 0 %]
-[% total_wired_frames = 0 %]
 [% FOREACH item = DBI.query("SELECT * FROM apis_inventory_tb
 	                                WHERE  ( item_code  LIKE  '%broodbox%' AND
-	                                	sitename   =  '$SiteName' OR
+	                                	sitename   =  '$SiteName' 
 	                                	
 	                                        )
  	                            ") %]  

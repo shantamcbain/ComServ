@@ -1,17 +1,4 @@
-[%  ViewVersion = 'v 1.21 2022/03/15 /cgi-bin/HTMLTemplates/Apis/BMasterProcedures.ttml '%]
-[%# ViewVersion = 'v 1.15 2021/08/03 BMasterProcedures.ttml '%]
-[%# ViewVersion = 'v 1.14 2021/03/08 BMasterProcedures.ttml '%]
-[%# ViewVersion = 'v 1.13 2020/03/10 BMasterProcedures.ttml '%]
-[% 
-# BMasterProcedures, v 1.13 2020/03/10
-# BMasterProcedures, v 1.12 2019/05/09
-# BMasterProcedures, v 1.1 2019/05/08 
-# 2018 Dec 12 renamed AltPowerProjets
-# the AltPowerProductsView template
-#	$Id: StatsView.ttml,v 1.2 2019/04/27
-#	$Id: StatsView.ttml,v 1.1 2003/11/29 06:31:35 shanta Exp shanta $	
-
-%]
+[%  ViewVersion = 'v 1.23 2022/04/04 /cgi-bin/HTMLTemplates/Apis/BMasterProcedures.ttml '%]
 
 [% embed('ErrorDisplayView') %] 
 
@@ -23,22 +10,22 @@
 
 
 
- [% IF procedure  == 'HiveManHomeView' %]
-
-[% embed ('HiveManHomeView') %]
+[% IF procedure  == 'HiveManHomeView' %]
+  [% embed ('HiveManHomeView') %]
 
 [% ELSIF procedure  == ('ApisShopHome') %]
- 
  [% embed ('ApisShopHome') %]
+
 [% ELSIF procedure  == ('ApisQueensView') %]
- 
-[% embed ('ApisQueensView') %]
-[% ELSIF procedure  == ('ApisQueensNucView') %]
- 
- [% embed ('ApisQueensNucView') %] 
+ [% embed ('ApisQueensView') %]
+
+[% ELSIF procedure  == ('ApisActiveQueensView') %]
+ [% embed ('ApisActiveQueensView') %]
+
+[% ELSIF procedure  == ('ApisNucQueensView') %]
+ [% embed ('ApisNucQueensView') %] 
  
 [% ELSIF procedure  == ('ClokeBoardView') %]
- 
  [% embed ('ClockeBoardView') %]
 
 
@@ -52,20 +39,13 @@
    [% embed ('Forestry') %]
    
 [% ELSIF procedure  == ('ForumsView') %]
- 
  [% embed ('ForumsView') %]
 
 [% ELSIF procedure  == ('InventoryView') %]
    [% embed ('InventoryView') %]
 
-
-
-
-
 [% ELSIF procedure  == ('LiveStream') %]
-
-[% embed ('StreamingView') %]
-
+ [% embed ('StreamingView') %]
 
 [% ELSIF procedure  == ('PollenHarvest') %]
    [% embed ('PollenHarvest') %] 
@@ -77,23 +57,19 @@
   [% embed ('ProgramingView') %]
 
 [% ELSIF procedure  == ('Reforestation') %]
- 
  [% embed ('Reforestation') %]
  
 [% ELSIF procedure  == ('SeasonView') %]
- 
  [% embed ('SeasonView') %]
  
 [% ELSIF procedure  == ('ShopHome') %]
- 
  [% embed ('ShopHome') %]
 
 [% ELSIF procedure  == ('StreamingServices') %]
-[% embed ('StreamingServices') %]
+ [% embed ('StreamingServices') %]
 
 [% ELSIF procedure  == ('Support') %]
-[% embed ('Spport') %]
-
+ [% embed ('Spport') %]
 
 [% ELSIF procedure  == ('YardLayout') %]
  [% embed ('YardLayout') %]
@@ -101,14 +77,12 @@
 [% ELSIF procedure  == ('YardManagementSystem') %]
  
  [% embed ('YardManagementSystem') %]
+
 [% ELSIF procedure  == ('YardsView') %]
- 
  [% embed ('YardsView') %]
 
 [% ELSIF procedure  == ('WinterVisits') %]
- 
  [% embed ('WinterVisits') %]
-
 
 [% ELSIF procedure  == ('WinterizingYard') %]
  [% embed ('WinterizingYard') %]

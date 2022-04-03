@@ -1,22 +1,13 @@
-[% ViewVersion = 'v 0.15 2022/00/18 /cgi-bin/HTMLTemplates/Apis/InventoryView.ttml,'%]
+[% ViewVersion = 'v 0.16 2022/04/04 /cgi-bin/HTMLTemplates/Apis/InventoryView.ttml,'%]
+[% IF procedure %]
 
-[%#	$Id: /HTMLTemplates/Apis/InventoryView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
-
-# Ideally this template should be converted into a static CSS file and
-# be served as /foo/bar.css and not via CGI, since it slows things
-# down and doesn't allow browsers to cache the CSS content.
-
-# otherwise this template is stand-alone, i.e. it doesn't rely on any
-# variables from outside.
-
-%]
-
+[% ELSE %]
 [% PROCESS DefautVariables.ttml %]
  
 [% PROCESS DefaultDbi.ttml %]
 
-[% embed(data.page_top_view,['-PAGE_TITLE','Inventory module homeView.']) %]
-
+[% embed(data.page_top_view,['-PAGE_TITLE','$SiteDisplayName Inventory module.']) %]
+[% END %]
 [% embed('ErrorDisplayView') %]
 
 [% IF data.debug == 1 %]

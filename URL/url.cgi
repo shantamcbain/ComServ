@@ -1423,12 +1423,12 @@ my @VIEW_DISPLAY_PARAMS = (
     -SELECTED_DISPLAY_FIELDS => [qw(
         name 
         sitename
+        category
         description
         share
         url
         )],
     -SORT_FIELDS             => [qw(
-        category
         subject
         )],
 );  
