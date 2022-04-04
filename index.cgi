@@ -214,6 +214,7 @@ my $mail_to_user         = $SetupVariables->{-MAIL_USER};
 my $mail_to_member       = $SetupVariables->{-MAIL_MEMBER};
 my $mail_to_discussion   = $SetupVariables->{-MAIL_DISCUSSION};
 $MySQLPW                 = $SetupVariables->{-MySQLPW};
+$NEWS_TB               = $SetupVariables->{-NewsTable};
 $page_top_view           = $SetupVariables->{-PAGE_TOP_VIEW};
 $page_bottom_view        = $SetupVariables->{-PAGE_BOTTOM_VIEW};
 $page_left_view          = $SetupVariables->{-page_left_view};
@@ -1373,7 +1374,8 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
  -MAIL_DISCUSSION                        => $mail_to_discussion ,
  -MAIL_SEND_PARAMS                       => \@MAIL_SEND_PARAMS,
  -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || 50,
- -MOBILE                                 => $CGI->param('m') || 0,  -PID                                  => $pid,
+ -MOBILE                                 => $CGI->param('m') || 0,  
+ -PID                                  => $pid,
  -NEWS_TB                                => $NEWS_TB,
  -LOG_CONFIG_PARAMS                      => \@LOG_CONFIG_PARAMS,
  -MODIFY_ACKNOWLEDGEMENT_VIEW_NAME       => 'ModifyAcknowledgementView',
@@ -1445,4 +1447,3 @@ my $APP =
 
 #print "Content-type: text/html\n\n";
 print $APP->execute();
-$SITE_DISPLAY_NAME

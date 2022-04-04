@@ -137,7 +137,7 @@ $GroupBoolion = 0;
     my $input_widget_definitions = shift (@input_widget_config_params);
 
     my @yard_code_widget = (
-        -DISPLAY_NAME => 'Yard Code test',
+        -DISPLAY_NAME => 'Yard Code ',
         -TYPE         => 'popup_menu',
         -NAME         => 'yard_code',
         -VALUES       => \@yard_code,

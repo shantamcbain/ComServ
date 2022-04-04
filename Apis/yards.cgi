@@ -19,7 +19,7 @@
 # Boston, MA  02111-1307, USA.
  
 use strict;
-my $AppVer = "ver 10.02, April 2, 2022";
+my $AppVer = "ver 10.03, April 4, 2022";
 BEGIN{
     use vars qw(@dirs);
     @dirs = qw(../Modules
@@ -296,6 +296,14 @@ my %USER_FIELDS_TO_DATASOURCE_MAPPING = (
     'auth_lastname'  => 'lastname',
     'auth_groups'    => 'groups',
     'auth_email'     => 'email'
+);
+my @ADMIN_EMAIL_DISPLAY_FIELDS = qw(
+  username
+  password
+  groups
+  firstname
+  lastname
+  email
 );
 
 my @AUTH_CACHE_PARAMS = (
@@ -1023,6 +1031,7 @@ my @VIEW_DISPLAY_PARAMS = (
         client_name
         status
         )],
+-SITE_DISPLAY_NAME       => $SITE_DISPLAY_NAME,
 );  
 
 ######################################################################

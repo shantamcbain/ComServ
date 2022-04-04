@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA  02111-1307, USA.
- $version = "v .02";
+ $version = "v .03 April 4, 2022";
 use strict;
 BEGIN{
     use vars qw(@dirs);
@@ -41,6 +41,7 @@ my @TEMPLATES_SEARCH_PATH =
        ../HTMLTemplates/Default);
 
 use CGI qw(-debug);
+my $AppVer = "ver 0.02, April 04, 2022";
 
 #Carp commented out due to Perl 5.60 bug. Uncomment when using Perl 5.61.
 #use CGI::Carp qw(fatalsToBrowser);
@@ -90,7 +91,6 @@ my $FAVICON;
 my $ANI_FAVICON;
 my $FAVICON_TYPE;
 my $GLOBAL_DATAFILES_DIRECTORY;
-my $group    =  $SESSION ->getAttribute(-KEY => 'auth_groups');
 my $HeaderImage;
 my $Header_height;
 my $Header_width;
@@ -103,6 +103,7 @@ my $HTTP_HEADER_PARAMS;
 my $HTTP_HEADER_KEYWORDS;
 my $HTTP_HEADER_DESCRIPTION;
 my $IMAGE_ROOT_URL; 
+my $last_update       =  $AppVer|| 'April 04, 2022';
 my $LINK_TARGET;
 my $left_page_view;
 #Mail settings
@@ -134,10 +135,9 @@ my $site;
 my $site_session;
 my $style = $CGI->param('pagestyle');
 my $title          = $CGI->param('title');
-my $username =  $SESSION ->getAttribute(-KEY => 'auth_username');
 my $View           = $CGI->param('view') ;
 my $TEMPLATES_CACHE_DIRECTORY;
-
+my    $DATAFILES_DIRECTORY;
 my $VIEW_LOADER = new Extropia::Core::View
     (\@VIEWS_SEARCH_PATH,\@TEMPLATES_SEARCH_PATH) or
     die("Unable to construct the VIEW LOADER object in " . $CGI->script_name() .
@@ -152,7 +152,7 @@ use SiteSetup;
     $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
     $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
     $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
-    $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
+    $auth                  = $APP_DATAFILES_DIRECTORY.'/csc.admin.users.dat';
     $AUTH_TABLE            = $SetupVariables->{-AUTH_TABLE};
     $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
     $CAL_TABLE             = $SetupVariables->{-CAL_TABLE};
@@ -176,6 +176,7 @@ $Header_alt              = $SetupVariables->{-HEADER_ALT};
     $IMAGE_ROOT_URL        = $SetupVariables->{-IMAGE_ROOT_URL}; 
     $left_page_view        = $SetupVariables->{-LEFT_PAGE_VIEW};
     $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
+my $LocalIp              = $SetupVariables->{-LOCAL_IP};
 #Mail settings
     $mail_from             = $SetupVariables->{-MAIL_FROM}; 
     $mail_to               = $SetupVariables->{-MAIL_TO};
@@ -189,11 +190,11 @@ $Header_alt              = $SetupVariables->{-HEADER_ALT};
 $Page_tb             = $SetupVariables->{-PAGE_TB} || 'page_tb';
 $pid                     = $SetupVariables->{-PID};
     $site = $SetupVariables->{-DATASOURCE_TYPE};
- $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
+my $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
     $site_session = $DATAFILES_DIRECTORY.'/Sessions';
-$site_update   = $SetupVariables->{-SITE_LAST_UPDATE};
+my $site_update   = $SetupVariables->{-SITE_LAST_UPDATE};
 $shop          = $SetupVariables->{-SHOP};
-$StoreUrl      = $SetupVariables->{-STORE_URL};
+my $StoreUrl      = $SetupVariables->{-STORE_URL};
     $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
 
 
@@ -241,6 +242,8 @@ if ($CGI->param('site')){
 	$SESSION ->setAttribute(-KEY => 'SiteName', -VALUE => $SiteName );
       }
 }
+my $group    =  $SESSION ->getAttribute(-KEY => 'auth_groups');
+my $username =  $SESSION ->getAttribute(-KEY => 'auth_username');
 
  
 if ($username = 'Shanta'){
@@ -403,7 +406,14 @@ my %USER_FIELD_TYPES = (
     -GROUP_FIELD    => 'auth_groups',
     -EMAIL_FIELD    => 'auth_email'
 );
-
+my @ADMIN_EMAIL_DISPLAY_FIELDS = qw(
+  username
+  password
+  groups
+  firstname
+  lastname
+  email
+);
 my @MAIL_PARAMS = (
     -TYPE         => 'Sendmail',
 );
@@ -624,7 +634,11 @@ my @DATASOURCE_FIELD_NAMES = qw(
         B4Top     => 'B top 4 hives',
         Cross     => 'Cross ways',
         );
-
+        
+        
+my %site_code = (
+       $SiteName => $SiteName,
+       );
 my %BASIC_INPUT_WIDGET_DEFINITIONS = (
     status => [
         -DISPLAY_NAME => 'Status',
@@ -663,7 +677,15 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 #        -NAME         => 'yard_code',
 #     ],
 
-    pallet_size => [
+       sitename => [
+        -DISPLAY_NAME => 'Site Name *',
+        -TYPE         => 'popup_menu',
+        -NAME         => 'sitename',
+                 -VALUES       => [sort {$a <=> $b} keys %site_code],
+                 -LABELS       => \%site_code,
+                 -INPUT_CELL_COLSPAN => 3, 
+    ],
+  pallet_size => [
         -DISPLAY_NAME => 'Total Number of Hives',
         -TYPE         => 'textfield',
         -NAME         => 'pallet_size',
@@ -699,6 +721,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = qw(
         status
+        sitename
         yard_code
         pallet_code
         pallet_name
@@ -873,7 +896,7 @@ my @DATASOURCE_CONFIG_PARAMS = (
     -CLIENT_DATASOURCE_CONFIG_PARAMS    => \@CLIENT_DATASOURCE_CONFIG_PARAMS,
     -PALLET_DATASOURCE_CONFIG_PARAMS    => \@PALLET_DATASOURCE_CONFIG_PARAMS,
     -QUEENS_DATASOURCE_CONFIG_PARAMS    => \@QUEENS_DATASOURCE_CONFIG_PARAMS,
-    -YARD_DATASOURCE_CONFIG_PARAMS    => \@YARD_DATASOURCE_CONFIG_PARAMS,
+    -YARD_DATASOURCE_CONFIG_PARAMS      => \@YARD_DATASOURCE_CONFIG_PARAMS,
     -AUTH_USER_DATASOURCE_CONFIG_PARAMS => \@AUTH_USER_DATASOURCE_PARAMS
 );
 

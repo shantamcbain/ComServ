@@ -39,6 +39,7 @@ sub execute {
         -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG,
         -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG,
         -SIMPLE_SEARCH_STRING,
+        -SITE_NAME,              
         -SESSION_OBJECT,
         -SORT_DIRECTION,
         -SORT_FIELD1,
@@ -58,8 +59,8 @@ sub execute {
 
     $cgi->param(
         -NAME  => 'raw_search',
-        -VALUE => "status = '' 
-         "
+        -VALUE => "status == 'In-Use' AND 
+                   sitename =='$params->{-SITE_NAME}'"
     );  
 
     my @config_params = _rearrange([
@@ -124,7 +125,7 @@ $GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||0;
     my $input_widget_definitions = shift (@input_widget_config_params);
 
     my @pallet_code_widget = (
-        -DISPLAY_NAME => 'Pallet Code',
+        -DISPLAY_NAME => 'Pallet Code test',
         -TYPE         => 'popup_menu',
         -NAME         => 'pallet_code',
         -VALUES       => \@pallet_code

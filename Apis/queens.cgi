@@ -174,6 +174,7 @@ my $pid                     = $SetupVariables->{-PID};
     $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
 
     $site = $SetupVariables->{-DATASOURCE_TYPE};
+    $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
     $site_session = $DATAFILES_DIRECTORY.'/Sessions';
     $shop                    = $SetupVariables->{-SHOP};
 $StoreUrl                = $SetupVariables->{-STORE_URL};
@@ -647,13 +648,13 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],
-    pallet_code => [
-        -DISPLAY_NAME => 'Pallet Code',
-        -TYPE         => 'textfield',
-        -NAME         => 'pallet_code',
-        -SIZE         => 30,
-        -MAXLENGTH    => 80
-    ],
+    #pallet_code => [
+    #    -DISPLAY_NAME => 'Pallet Code',
+    #    -TYPE         => 'textfield',
+    #    -NAME         => 'pallet_code',
+    #   -SIZE         => 30,
+    #    -MAXLENGTH    => 80
+    #],
 
     queen_colour => [
         -DISPLAY_NAME => 'Queen Colour',
@@ -760,6 +761,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
 );
 
 my @BASIC_INPUT_WIDGET_DISPLAY_ORDER = qw(
+        sitename
         status
         queen_code
         queen_name
@@ -858,6 +860,7 @@ my	@CLIENT_DATASOURCE_CONFIG_PARAMS = (
 	        },
 	);
 my @PALLET_DATASOURCE_FIELD_NAMES = qw(
+       sitename
        pallet_code
        status
        username_of_poster
@@ -1097,6 +1100,7 @@ my @VIEW_DISPLAY_PARAMS = (
         pallet_code
         comments        
          )],
+
 );  
 
 ######################################################################
