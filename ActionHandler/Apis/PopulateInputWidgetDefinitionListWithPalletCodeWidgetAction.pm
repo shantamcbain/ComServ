@@ -125,7 +125,7 @@ $GroupBoolion = $params->{-REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG}||0;
     my $input_widget_definitions = shift (@input_widget_config_params);
 
     my @pallet_code_widget = (
-        -DISPLAY_NAME => 'Pallet Code test',
+        -DISPLAY_NAME => 'Pallet Code ',
         -TYPE         => 'popup_menu',
         -NAME         => 'pallet_code',
         -VALUES       => \@pallet_code

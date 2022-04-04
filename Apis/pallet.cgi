@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA  02111-1307, USA.
- $version = "v .03 April 4, 2022";
+my $AppVer = "v .03 April 5, 2022";
 use strict;
 BEGIN{
     use vars qw(@dirs);
@@ -41,7 +41,6 @@ my @TEMPLATES_SEARCH_PATH =
        ../HTMLTemplates/Default);
 
 use CGI qw(-debug);
-my $AppVer = "ver 0.02, April 04, 2022";
 
 #Carp commented out due to Perl 5.60 bug. Uncomment when using Perl 5.61.
 #use CGI::Carp qw(fatalsToBrowser);
@@ -154,7 +153,7 @@ use SiteSetup;
     $app_logo_alt          = $SetupVariables->{-APP_LOGO_ALT};
     $auth                  = $APP_DATAFILES_DIRECTORY.'/csc.admin.users.dat';
     $AUTH_TABLE            = $SetupVariables->{-AUTH_TABLE};
-    $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
+    $BASIC_DATA_VIEW       = 'PalletView'||$SetupVariables->{-BASIC_DATA_VIEW};
     $CAL_TABLE             = $SetupVariables->{-CAL_TABLE};
     $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
     $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
@@ -167,8 +166,8 @@ $HeaderImage             = $SetupVariables->{-HEADER_IMAGE};
 $Header_height           = $SetupVariables->{-HEADER_HEIGHT};
 $Header_width            = $SetupVariables->{-HEADER_WIDTH};
 $Header_alt              = $SetupVariables->{-HEADER_ALT};
-    $home_view             = $SetupVariables->{-HOME_VIEW}; 
-    $homeviewname          = $SetupVariables->{-HOME_VIEW_NAME};
+$home_view             = $SetupVariables->{-HOME_VIEW}; 
+$homeviewname          = 'PalletView'||$SetupVariables->{-HOME_VIEW_NAME};
     $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
     $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
     $HTTP_HEADER_KEYWORDS     = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
@@ -346,7 +345,7 @@ my @AUTH_VIEW_DISPLAY_PARAMS = (
     -HTTP_HEADER_PARAMS      => $HTTP_HEADER_PARAMS,
     -IMAGE_ROOT_URL          => $IMAGE_ROOT_URL,
     -SCRIPT_DISPLAY_NAME     => $APP_NAME_TITLE,
-    -SCRIPT_NAME             => $CGI->script_name(),
+    -SCRIPT_NAME             => 'pallet.cgi'||$CGI->script_name(),
     -PAGE_TOP_VIEW           => $CGI->param('page_top_view')||$page_top_view,
     -PAGE_BOTTOM_VIEW        => $CGI->param('page_bottom_view')||$page_bottom_view,
     -LEFT_PAGE_VIEW          => $CGI->param('left_page_view')||$left_page_view,
@@ -992,6 +991,7 @@ my @VALID_VIEWS = qw(
        ModifyRecordConfirmationView
        SessionTimeoutErrorView
        AddRecordView
+       PalletView
        PowerSearchFormView
        BasicDataView
        DetailsRecordView
@@ -1069,7 +1069,7 @@ my @VIEW_DISPLAY_PARAMS = (
     -IMAGE_ROOT_URL          => $IMAGE_ROOT_URL,
     -LINK_TARGET             => $LINK_TARGET,
     -SCRIPT_DISPLAY_NAME     => $APP_NAME_TITLE,
-    -SCRIPT_NAME             => $APP_NAME_TITLE||$CGI->script_name(),
+    -SCRIPT_NAME             => 'pallet.cgi'||$CGI->script_name(),
     -SELECTED_DISPLAY_FIELDS        => [qw(
         yard_code
         pallet_code
@@ -1166,7 +1166,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -APP_VER                              => $AppVer,
     -AUTH_MANAGER_CONFIG_PARAMS             => \@AUTH_MANAGER_CONFIG_PARAMS,
     -APPLICATION_SUB_MENU_VIEW_NAME         => 'ApplicationSubMenuView',
-    -BASIC_DATA_VIEW_NAME                   => 'BasicDataView',
+    -BASIC_DATA_VIEW_NAME                   => $BASIC_DATA_VIEW,
     -BASIC_INPUT_WIDGET_DISPLAY_COLSPAN     => 2,
     -CGI_OBJECT                             =>  $CGI,
     -CSS_VIEW_URL                           => $CSS_VIEW_URL,
