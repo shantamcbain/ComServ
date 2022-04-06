@@ -1,4 +1,4 @@
-[% Version = 'v 0.004 2022/03/06 shanta MailListView.ttml' %]
+[% Version = 'v 0.005 2022/04/06 shanta MailListView.ttml' %]
 [%# Version = 'v 0.002 2021/03/23 shanta MailListView.ttml' %]
 [%# Version = 'v 0.001 2021/03/22 shanta MailListView.ttml' %]
 [%
@@ -7,23 +7,6 @@
 
 %]
 
-
-[% embed('ErrorDisplayView') %] 
-
-
-[% IF data.session_object %]
-
-	[% session_id = data.session_object.getId() %]
-
-[% END %] 
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]`			`
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-[% email = data.session_object.getAttribute('-KEY','auth_email') %]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
- 	[% session_string = "session_id=$session_id" %]
  
  
  [% IF SiteName == 'ENCY' OR
@@ -125,7 +108,8 @@ beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
 <li><a href="https://beemaster.ca/mailman/listinfo/breeder_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>breeder_beemaster.ca</b></a></h2>
 </li>
 <li>
-<a href="https://beemaster.ca/mailman/listinfo/landtrust_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>landtrust_beemaster.ca</b></a></h2>
+<a href="https://beemaster.ca/mailman/listinfo/landtrust_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>landtrust_beemaster.ca</b></a></h2></li>
+<li><a href="https://usbm.ca//mailman/listinfo/byandsell_usbm.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Buy And Sell List Join to Receive buy and Sell updates</b></a></h2>
 </li>
 </ul>
 
@@ -146,7 +130,31 @@ beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
 <li>
 <a href="https://beemaster.ca/mailman/listinfo/landtrust_beemaster.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>landtrust_beemaster.ca</b></a></h2>
 </li>
+
+<li><a href="https://usbm.ca//mailman/listinfo/byandsell_usbm.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Buy And Sell List Join to Receive buy and Sell updates</b></a></h2>
+</li>
+
+</ul></ul>
+[% ELSIF SiteName == "USBM" %]	
+
+
+<ul> 
+ <li><a href="https://usbm.ca/mailman/listinfo/3d_3d.usbm.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>3d printing</b></a>
+ </li>
+ <li><a href="https://usbm.ca/mailman/listinfo/altpoweruserlist_altpower.usbm.ca"window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>AltPower user list. Keep informed about whats happening with are 3d printing.</b></a>
+ </li>
+ <li><a href="https://usbm.ca/mailman/listinfo/evlist_usbm.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Electric Vehicle discussion</b></a>
+ </li>
+ <li><a href="https://usbm.ca/mailman/listinfo/telmark_telmark.usbm.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>TelMark our out door adventure list.</b></a>
+ </li>
+ <li><a href="https://usbm.ca/mailman/listinfo/usbm_discussion_usbm.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>General School announcements and discussion list.</b></a>
+ </li>
+
+ <li><a href="https://usbm.ca//mailman/listinfo/byandsell_usbm.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Buy And Sell List Join to Receive buy and Sell updates</b></a></h2>
+</li>
 </ul>
+
+
 [% ELSE %]
 	<h2> Here you will find the lists our site offers. <h2>
 
