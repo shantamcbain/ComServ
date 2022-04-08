@@ -79,7 +79,7 @@ exists $rh_data->{$_} or die "$_ is not set" for @required;
     }
 
     my $previous_page_link = generatePreviousPageLink(
-        -SITE                     => $sitename,
+        -SITE_NAME                => $sitename,
         -SORT_FIELD1              => $sort_field1,
         -SORT_FIELD2              => $sort_field2,
         -SIMPLE_SEARCH_STRING     => $simple_search_string,
@@ -94,7 +94,7 @@ exists $rh_data->{$_} or die "$_ is not set" for @required;
     );
 
     my $next_page_link =  generateNextPageLink(
-        -SITE                     => $sitename,
+        -SITE_NAME                => $sitename,
         -SORT_FIELD1              => $sort_field1,
         -SORT_FIELD2              => $sort_field2,
         -SIMPLE_SEARCH_STRING     => $simple_search_string,
@@ -152,7 +152,7 @@ exists $rh_data->{$_} or die "$_ is not set" for @required;
 
 sub generatePreviousPageLink {
     @_ = _rearrange([
-        -SITE,
+        -SITE_NAME,
         -SORT_FIELD1,
         -SORT_FIELD2,
         -SIMPLE_SEARCH_STRING,
@@ -218,7 +218,7 @@ sub generatePreviousPageLink {
 
 sub generateNextPageLink {
     @_ = _rearrange([
-        -Site,
+        -SITE_NAME,
         -SORT_FIELD1,
         -SORT_FIELD2,
         -SIMPLE_SEARCH_STRING,
