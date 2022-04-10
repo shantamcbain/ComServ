@@ -16,32 +16,24 @@
 <ul>
  <li><h2>Online Courses and Lectures.</h2>
   <ul>
-   <li><h3>Basic electronics lesson 1</h3><video src="https://youtu.be/nb4ovfwqup8" controls width="200" height="200"  controls="" alt=""></li>  
+   <li><h3>Basic electronics lesson 1</h3>
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/nb4ovfwqup8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  
+   
+
    <li><h3>Material</h3></li>  
    <li><h3>Mechanical</h3></li>  
    <li><h3>Agriculture</h3></li>  
   </ul> 
+  <li><h2>Projects</h2>
+   <ul>
+    <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&page=WaterDepthbyPressure">Measuring depth of water in an open tank.</a></h3></li>
+   </ul>
+  </li>
  </li>
- <li><h2>YouTube Channels</h2>
-  <ul>
-   <li><h3>Biology</h3></li>  
-   <li><h3>Health</h3></li>  
-   <li><h3>Forestry</h3></li>  
-   <li><h3>Agriculture</h3></li>  
-  </ul> 
- </li>
- <li><h2>Social</h2>
-  <ul>
-   <li><h3>Spiritual</h3></li>  
-   <li><h3>Health</h3></li>  
-   <li><h3>Emotional</h3></li>  
-  </ul> 
- </li>
-</ul>
+ </ul>
 
-  <p> Our <a href="/cgi-bin/ENCY/ency.cgi?site=USBM&[% session_string %]">Encyclopidia of life </a></p>
-  <p>   <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BotanicalNameView">Herbs by botanical name</a></p>
-<a href="http://helpdesk.computersystemc"onsulting.ca" target="_Blank" > HelpDesk</a>
+ <a href="http://helpdesk.computersystemc"onsulting.ca" target="_Blank" > HelpDesk</a>
 [% embed('LiveEditAdmin') %]	      
  
 [%# embed('CSCCopyRight') %]

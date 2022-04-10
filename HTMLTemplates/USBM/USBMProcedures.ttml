@@ -25,9 +25,11 @@
  <li> 
 
  [% IF procedure  == 'ShamanismView' %]
- 
+ [% embed ('ShamanismView') %]
 
-[% embed ('ShamanismView') %]
+[% ELSIF procedure  == ('AltPower') %]
+ [% embed ('AltPower') %]
+ 
  [% ELSIF procedure  == ('AmuAdminList') %]
  [% embed ('AmuAdminList') %]
  

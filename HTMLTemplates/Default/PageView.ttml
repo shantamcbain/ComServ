@@ -1,15 +1,5 @@
-[% Version = 'v 0.14 2021/10/26 shanta /cgi-bin/HTMLTemplates/Default/PageView.ttml' %]
-[%#	$Id: /cgi-bin/HTMLTemplates/Default/PageView.ttml,v 0.12 2020/04/20 17:43:15 shanta Exp shanta $	%]
-[%#	$Id: /cgi-bin/HTMLTemplates/Default/PageView.ttml,v 0.1 2013/12/20 17:43:15 shanta Exp shanta $	
+[% Version = 'v 0.16 2022/04/11 shanta /cgi-bin/HTMLTemplates/Default/PageView.ttml' %]
 
-# Ideally this template should be converted into a static CSS file and
-# be served as /foo/bar.css and not via CGI, since it slows things
-# down and dozen't allow browsers to cache the CSS content.
-
-# otherwise this template is stand-alone, i.e. it dozen't rely on any
-# variables from outside.
-
-%] 
  [%# HostName = data.domain_name %]
  [%# PROCESS DefautVariables.ttml %]
  [%# PROCESS DefaultDbi.ttml %]
@@ -20,16 +10,14 @@
  [%# embed('SiteMysql') %]   
  
   [% FOREACH link = DBI.query("SELECT * FROM page_tb
-                                  WHERE  (
-                                         page_code = '$Page' AND
-                                         sitename = '$SiteName )
+                                  WHERE  (sitename = '$SiteName' AND
+                                         page_code = '$Page' )                                         
                                   ORDER BY sitename
                                   ")%]    
                 [% PROCESS pagefields.ttml %]
        [% END %]                  
 
-
-
+ 
 
 
 

@@ -1,4 +1,6 @@
-<!-- Last update Febuary 15, 20120 fixed errors -->
+[% ViewVersion =  ' v0.1 2022/04/11  /cgi-bin/HTMLTemplates/AltPower/AltpoerHomeView.ttml, '%]
+
+
 <!-- Last update November 22, 2018 Moved to view -->
 <!-- Last update October , 2018  -->
 
@@ -6,7 +8,9 @@
 <!-- Last update August 03, 2017  -->
 <!-- Last update July 16, 2016 -->
 [% group = data.session_object.getAttribute('-KEY','auth_groups') %]
-
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 
+[% END %]
 <h1>Sustainable Power.</h1>
 
 <h3>'In order to change an existing paradigm you do not struggle to try and change the problematic model. You create a new model and make the old one obsolete' - R. Buckminster Fuller</h3>
@@ -26,14 +30,14 @@
 
 [% ELSE %]
 
-<p><a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&page=Co-generation&amp;[% session_string %]' >Co-generation</a> of power and heat maximize fuel sources. 
+<p><a href='/cgi-bin/index.cgi?site=[% SiteName %]&page=Co-generation&amp;[% session_string %]' >Co-generation</a> of power and heat maximize fuel sources. 
 
 <h3>Site Goals</h3>
 <ul>
  <li>Education
   <ul>
   <li>The first is rethinking our personal power needs. Most will find that this is far less usage than you. We will provide to track your power usage. Armed with this you will be able to plan were you need to shift to obtain the desired goals.
-  <li>Tools to <a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=AltPower&page=PowerPlanning&amp;[% session_string %]' >plan</a> your power node.
+  <li>Tools to <a href='/cgi-bin/index.cgi?site=AltPower&page=PowerPlanning&amp;[% session_string %]' >plan</a> your power node.
   <li>Tools to monitor power use
   <li>Tools to manage and maintain the equipment invested in.
   </ul>
@@ -41,12 +45,12 @@
   <ul>
    <li>Reduce your need for power
      <ul>
-      <li><a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&view=EVHomeView&amp;[% session_string %]&amp;[% session_string %]'> Electric Vehicles</a>
+      <li><a href='/cgi-bin/index.cgi?site=[% SiteName %]&view=EVHomeView&amp;[% session_string %]&amp;[% session_string %]'> Electric Vehicles</a>
      </ul>
    <li>Power sources of power to clean renewable sources.
     <ul>
-	<li>Electricity: <a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&page=SolarPower&amp;[% session_string %]' target='_blank' onmouseover='Learn about and build solar power systems.'>Solar</a>, wind, water, zero point</li>
-	<li>Gas: switch from natural gas and propane to <a href='https://altpower.usbm.ca/cgi-bin/index.cgi?site=[% SiteName %]&page=Methane' target='_blank' onmouseover='How to produce Methane.'>methane</a> produced from plant material, animal and human manure. See the <a href='https://grindrodproject.grindrodbc.com' target='_blank'>grindrod project</a> for some links here </li>
+	<li>Electricity: <a href='/cgi-bin/index.cgi?site=AltPower&page=SolarPower&amp;[% session_string %]' target='_blank' onmouseover='Learn about and build solar power systems.'>Solar</a>, wind, water, zero point</li>
+	<li>Gas: switch from natural gas and propane to <a href='/cgi-bin/index.cgi?site=[% SiteName %]&page=Methane' target='_blank' onmouseover='How to produce Methane.'>methane</a> produced from plant material, animal and human manure. See the <a href='https://grindrodproject.grindrodbc.com' target='_blank'>grindrod project</a> for some links here </li>
      </ul>
    <li>Monitor and predict power needs  
     <ul>
