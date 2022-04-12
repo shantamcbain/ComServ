@@ -1,5 +1,6 @@
 [% ViewVersion = 'v 2.01 2022/04/04/cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
 
+
 [% PROCESS DefautVariables.ttml %]
 
  
@@ -122,6 +123,8 @@
 		[% ELSIF SiteName == "LandTrust" OR
 		         SiteName == "LandTrustDev"  %]
 			[% embed ('LtrustHomeView') %]
+		[% ELSIF SiteName == "MonasheeSupport" %]
+			[% embed ('MonasheeCoopHomeView') %]
 		[% ELSIF SiteName == "PSP"%]
 			[% embed ('PSPHome') %]
 		[% ELSIF SiteName == "Skye" %]

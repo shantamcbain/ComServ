@@ -1,0 +1,42 @@
+[% ViewVersion =  ' v0.1 2022/04/12  /cgi-bin/HTMLTemplates/Monashee/MonasheeHomeView.ttml, '%]
+
+
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 
+[% END %]
+
+<h1>Monashee Coop Site support.</h1>
+
+<h2>'In order to change an existing paradigm you do not struggle to try and change the problematic model. You create a new model and make the old one obsolete' - R. Buckminster Fuller</h2>
+
+
+<p>Thanks for joining us. Here you will get support for the main site. This application will help your organizations handle the issues and plans for your web presents.</p>
+<p>
+[%  group  %]
+
+[% IF group == 'MonasheeCoop_Admin' %]
+			[% embed ('MonasheeCoopAdmin') %]
+
+
+[% ELSE %]
+<h3>To use this site as admin you will need to create an account. Fallow the following steps</h3>
+<ul>
+ <li>Click any of the log on links. There are 3 on most pages One in the top drop list one at the head of the page the other in the page footer.</li>
+ <li>Click the register link</li>
+ <li>Fill in the fields</li>
+ <li>We will get a notification of your registration. We will upgrade your log in to admin as soon as possible. </li>
+</ul>
+<h3>Site Goals</h3>
+<ul>
+ <li>Education
+  <ul>
+  <li>Admin users in how to edit and maintain the main site.  </li>
+  <li>  </li>
+  </ul>
+ <li>Plan the future of the site.
+  </li>
+     </ul>
+ </ul>
+
+[% END %]
