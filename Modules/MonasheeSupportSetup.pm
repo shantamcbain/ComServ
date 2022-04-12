@@ -8,8 +8,6 @@ sub new {
 my $package    = shift;
 my $UseModPerl = shift || 0;
 
-
-
 my $self = {-HOME_VIEW_NAME    => 'HomeView',
 	    -HOME_VIEW         => 'HomeView',
  	    -AFFILIATE           => '1',
