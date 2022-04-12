@@ -51,7 +51,8 @@ my @TEMPLATES_SEARCH_PATH = qw(HTMLTemplates/AltPower
   HTMLTemplates/HE
   HTMLTemplates/HelpDesk
   HTMLTemplates/LT
-  HTMLTemplates/MW
+  HTMLTemplates/MonasheeCoop
+  HTMLTemplates/MW  
   HTMLTemplates/News
   HTMLTemplates/Organic
   HTMLTemplates/PSP
@@ -181,7 +182,7 @@ $app_logo_alt            = $SetupVariables->{-APP_LOGO_ALT};
 $APP_NAME_TITLE          = $SetupVariables->{-APP_NAME_TITLE};
 $AUTH_TABLE              = $SetupVariables->{-AUTH_TABLE};
 $AUTH_MSQL_USER_NAME     = $SetupVariables->{-AUTH_MSQL_USER_NAME};
-$BASIC_DATA_VIEW         = $SetupVariables->{-HOME_VIEW}  ||$SetupVariables->{-BASIC_DATA_VIEW};
+$BASIC_DATA_VIEW         = $SetupVariables->{-HOME_VIEW}  || $SetupVariables->{-BASIC_DATA_VIEW};
 $CSS_VIEW_NAME           = $SetupVariables->{-CSS_VIEW_NAME};
 $CSS_VIEW_URL            = $SetupVariables->{-CSS_VIEW_NAME};
 $DBI_DSN                 = $SetupVariables->{-DBI_DSN};
@@ -189,7 +190,7 @@ $DOCUMENT_ROOT_URL       = $SetupVariables->{-DOCUMENT_ROOT_URL};
 $FAVICON                 = $SetupVariables->{-FAVICON};
 $ANI_FAVICON             = $SetupVariables->{-ANI_FAVICON};
 $FAVICON_TYPE            = $SetupVariables->{-FAVICON_TYPE};
-$GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'blank';
+$GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'/home/shanta/Datafiles';
 $HeaderImage             = $SetupVariables->{-HEADER_IMAGE};
 $Header_height           = $SetupVariables->{-HEADER_HEIGHT};
 $Header_width            = $SetupVariables->{-HEADER_WIDTH};
