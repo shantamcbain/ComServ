@@ -12,13 +12,7 @@
 
 
 
-<h3>To use this site as admin you will need to create an account. Fallow the following steps</h3>
-<ul>
- <li>Click any of the log on links. There are 3 on most pages One in the top drop list one at the head of the page the other in the page footer.</li>
- <li>Click the register link</li>
- <li>Fill in the fields</li>
- <li>We will get a notification of your registration. We will upgrade your log in to admin as soon as possible. </li>
-</ul>
+
 <h3>Site Goals</h3>
 <ul>
  <li>Education
@@ -34,4 +28,3 @@
    </li>
  </ul>
 
-[% END %]

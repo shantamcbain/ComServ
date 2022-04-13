@@ -1,4 +1,4 @@
-[% Version = 'v 0.005 2022/04/06 shanta MailListView.ttml' %]
+[% Version = 'v 0.006 2022/04/13 shanta MailListView.ttml' %]
 [%# Version = 'v 0.002 2021/03/23 shanta MailListView.ttml' %]
 [%# Version = 'v 0.001 2021/03/22 shanta MailListView.ttml' %]
 [%
@@ -112,6 +112,18 @@ beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
 <li><a href="https://usbm.ca//mailman/listinfo/byandsell_usbm.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Buy And Sell List Join to Receive buy and Sell updates</b></a></h2>
 </li>
 </ul>
+[% ELSIF SiteName == "MonasheeSupport" %]		
+ 
+  [% IF group == "MonasheeSupport_admin" %]
+	<ul> 
+	 <li>
+	  <h2><a href="https://monasheecoopsupport.computersystemconsulting.ca/mailman/listinfo/monasheesupport_monasheecoopsupport.computersystemconsulting.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Monasheesupport</b></a></h2><p>Please join our support list. We  will use this list to announce updates to the support site. Discuss changes to the WordPress site. You will get instructions on joining to view the archives to see what has gone on in the past.</p>
+	 </li>
+   </ul>	 
+
+
+
+[% END %]
 
 [% ELSIF SiteName == "ULC" %]		
 

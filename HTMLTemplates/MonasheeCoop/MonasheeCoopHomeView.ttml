@@ -15,7 +15,7 @@
 <p>
 [%  group  %]
 
-[% IF group == 'MonasheeSupport_Admin' %]
+[% IF group == 'MonasheeSupport_admin' %]
 			[% embed ('MonasheeCoopAdmin') %]
 
 
