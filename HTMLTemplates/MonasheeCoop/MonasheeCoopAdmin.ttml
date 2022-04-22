@@ -1,4 +1,4 @@
-[% ViewVersion =  ' v0.1 2022/04/12  /cgi-bin/HTMLTemplates/Monashee/MonasheeCoopAdmin.ttml, '%]
+[% ViewVersion =  ' v0.02 2022/04/22  /cgi-bin/HTMLTemplates/Monashee/MonasheeCoopAdmin.ttml, '%]
 
 
 
@@ -7,24 +7,32 @@
 [% END %]
 
 
-<p>Thanks for joining us. Here you will get support for the main site. This application will help your organizations handle the issues and plans for your web presents.</p>
-<p>
+
+<p>Thanks for logging in! This is your admin view of the site.</p>
 
 
 
 
-<h3>Site Goals</h3>
+
 <ul>
- <li>Education
+ <li><h2>Education</h2>
   <ul>
-  <li>Admin users in how to edit and maintain the main site.  </li>
-  <li>Provide todo, loggs etc for admin to see what is being worked on on the site. </li>
+   <li>Admin users in how to edit and maintain the main site.  </li>
+  <li>Provide ToDo's, logs etc for admin to see what is being worked on on the site. This can also apply to internal activities of the coop as well.</li>
   </ul>
- <li>Plan the future of the site.
+ <li><h2>Plan the future of the site.</h2>
   </li>
   
-   <li>Customer Support.
-   
-   </li>
+   <li><h2>Customer Support.</h2>
+    <ul>
+     <li>Added Chat link to site.</li>
+     <li>Added HelpDesk link</li>    
+    </ul>
+  </li>
+   <li><h2>Perks provided by CSC for the.</h2>
+    <ul>
+     <li><a href="http://www.computersystemconsulting.ca/whmcs/affiliates.php" target="_blank">Affiliate program</a>. We have an affiliate system System available. If you opt  in to this program you will receive a credit to your support account for any payed referral to our services. We pay a percent each time the referral pays for as long as they stay with us.</li>    
+    </ul>
+  </li>
  </ul>
 
