@@ -1,4 +1,4 @@
-[% Version = 'v 0.03 2022/01/18 /HTMLTemplates/USBM/USBMProcedures.ttml'%]
+[% Version = 'v 0.05 2022/04/22 /HTMLTemplates/USBM/USBMProcedures.ttml'%]
 [%# Version = 'v 0.01 2021/12/22 /HTMLTemplates/USBM/USBMProcedures.ttml'%]
 [% # 2019/10/09 AnuProcedures.ttml %]
 
@@ -49,9 +49,11 @@
 [% ELSIF procedure  == ('Economics') %]
  
  [% embed ('Economics') %]
-  [% ELSIF procedure  == ('Electronics') %]
+  [% ELSIF procedure  == ('ENCYHome') %]
  
- [% embed ('Electronics') %]
+ [% embed ('ENCYHome') %]
+
+
 [% ELSIF procedure  == ('Forestry') %]
    [% embed ('Forestry') %]
 
