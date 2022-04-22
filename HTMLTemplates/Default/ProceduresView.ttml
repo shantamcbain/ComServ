@@ -94,7 +94,9 @@
 		[% ELSIF SiteName == "ECF" OR
 		         SiteName == "ECFDev"  %]
 		     [% embed ('BMasterProcedures') %] 
-		        
+[% ELSIF SiteName == "MonasheeSupport" %]
+			[% embed ('USBMProcedures') %]
+				        
 		[% ELSIF SiteName == "SMO" %]
 			[% embed ('BMasterProcedures') %]
 		[% ELSIF SiteName == "HE" OR
@@ -125,8 +127,6 @@
 			[% embed ('CoopHomeView') %]		
 		[% ELSIF SiteName == "GrindrodBC" %]
 			[%# embed ('GrindrodHomeView') %]
-		[% ELSIF SiteName == "GRA" %]
-			[%# embed ('GRAHomeView') %]
 		[% ELSIF SiteName == "GrindrodProject" %]
 			[%# embed ('GrindrodProjectHomeView') %]
 		[% ELSIF SiteName == "GPMarket" %]
