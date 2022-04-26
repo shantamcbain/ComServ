@@ -144,7 +144,9 @@
 			[% embed ('ULCHome') %]
 		[% ELSIF SiteName == "USBM"%]
 			[% embed ('USBMHome') %]
-		[% ELSE %]
+		[% ELSIF SiteName == "VOIP"%]
+			[% embed ('VOIPHome') %]
+			[% ELSE %]
 		<!-- Begin Demo Home View -->  
 			[% embed ('DemoHomeView') %]
 			<!-- End Demo home view -->
