@@ -1,4 +1,4 @@
-[% ViewVersion =  ' v0.1 2022/03/19  /cgi-bin/HTMLTemplates/USBM/Departments.ttml, '%]
+[% ViewVersion =  ' v0.2 2022/04/26  /cgi-bin/HTMLTemplates/USBM/Departments.ttml, '%]
 
 
 
@@ -38,7 +38,8 @@
     <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Economics">Economics</a></h3></li>  
   <li><h3>Spiritual</h3></li>  
    <li><h3>Health</h3></li>  
-   <li><h3>Emotional</h3></li>  
+   <li><h3>Emotional</h3></li>
+   <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=music">Music</a></h3></li>  
   </ul> 
  </li>
 </ul>

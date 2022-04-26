@@ -1,0 +1,41 @@
+[% Version = '/cgi-bin/HTMLTemplates/USBM/Music.ttml,v 0.01 2022/04/26 17:43:15 shanta Exp'%]
+
+
+[%# embed('ErrorDisplayView') %]
+
+
+
+
+
+</div>
+<div ALIGN="center">
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+
+<A NAME="PageTop"></A>
+</div>
+<h2>Our Department of Music.</h2>
+
+<h3>Music is fundamental to health..</h3>
+
+<p>Join us in the development of our Music program.  </p>
+<p></p>
+<h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Departments">Back to departments</a></h3>
+<ul>
+ <li><h3>Composers</h3>.
+  <ul>
+   <li><a href="https://youtu.be/FrFIohURbi4">Lili Boulanger</a><p>Marie-Juliette Olga "Lili" Boulanger 
+   (French:  21 August 1893 – 15 March 1918) As a Parisian-born child prodigy, Boulanger's talent was apparent at the age of two, when Gabriel Fauré, a friend of the family, discovered she had perfect pitch. Her parents, both of whom were musicians, encouraged their daughter's musical education. Her mother, Raissa Myshetskaya (Mischetzky), was a Russian princess who married her Paris Conservatoire teacher, Ernest Boulanger (1815–1900), who won the Prix de Rome in 1835. Her father was 77 years old when she was born and she became very attached to him. Her grandfather Frédéric Boulanger had been a noted cellist and her grandmother Juliette a singer.
+</p>
+<p>Boulanger accompanied her ten-year-old sister Nadia to classes at the Paris Conservatoire before she was five, shortly thereafter sitting in on classes on music theory and studying organ with Louis Vierne. She also sang and played piano, violin, cello and harp. Her teachers included Marcel Tournier and Alphonse Hasselmans for harp, Mme Hélène Chaumont for piano and Fernand Luquin for violin. </p>
+<p><a href="https://archive.org/search.php?query=Lili%20Boulanger" onmousedown="See many of her works.">Arcive.org</a> A great collection of her works.</p>
+</li>  
+  </ul>
+ </li>
+</ul>
+
+<p>We will be exploring ways to share the world we live in with better harmony and respect for all it's inhabitants.</p>
+
+<a href="http://helpdesk.computersystemconsulting.ca" target="_Blank" > HelpDesk</a>
+

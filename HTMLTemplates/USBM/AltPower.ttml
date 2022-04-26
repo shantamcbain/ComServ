@@ -1,0 +1,39 @@
+[% ViewVersion =  ' v0.01 2022/04/11  /cgi-bin/HTMLTemplates/USBM/AltPower.ttml, '%]
+
+
+
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 
+[% END %]
+
+
+<div ALIGN="center">
+<A NAME="PageTop"></A>
+</div>
+<h1>Power Production</h1>
+
+<ul>
+ <li><h2>Solar</h2>
+  <ul>
+   <li><h3>Captureing Heat from Panels/h3>
+   
+  <p> <iframe width="560" height="315" src="https://www.youtube.com/embed/Ow0BHlSZg5M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  
+   </p>
+
+</ul> 
+  <li><h2>Projects</h2>
+   <ul>
+    <li><h3><a href="https//altpower.usbm.ca/cgi-bin/index.cgi">Our Dedicated site.</a></h3></li>
+   </ul>
+  </li>
+ </li>
+ </ul>
+
+ <a href="http://helpdesk.computersystemc"onsulting.ca" target="_Blank" > HelpDesk</a>
+[% embed('LiveEditAdmin') %]	      
+ 
+[%# embed('CSCCopyRight') %]
+[%# embed(data.page_bottom_view) %]
+
