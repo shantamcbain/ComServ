@@ -1,4 +1,4 @@
-[% Version = 'v 0.01 /cgi-bin/HTMLTemplates/CSC/InharatedVariablesView.ttml,'%]
+[% Version = 'v 0.02 2022/04/25 /cgi-bin/HTMLTemplates/CSC/InharatedVariablesView.ttml,'%]
 [%# InharatedVariablesView.ttml v.0 active Inharated variables Variables %]
 <!-- InharatedVariablesView.ttml -->
 <table cellspacing="2" align="center" rules="cols">
@@ -43,7 +43,8 @@
 <tr> <td	class="InharatedVariablesCell">UserName   TTML   </td>        
 
 <td	class="InharatedVariablesCell"> [% username %]</td></tr>
-<tr> <td	class="InharatedVariablesCell">UserName    .data     </td>    
+<tr> <td	class="InharatedVariablesCell">UserName    .data     </td> 
+   
 <td	class="InharatedVariablesCell"> [% data.username %] .data</td></tr>
 
 <tr> <td	class="InharatedVariablesCell">Group  TTML  </td>         
@@ -52,8 +53,10 @@
 
 <td	class="InharatedVariablesCell">   [% data.group %]</td></tr>
 <tr> <td	class="InharatedVariablesCell">Mobile  .data     </td>    <td	class="InharatedVariablesCell">  [% data.mobile %]</td></tr>
+<tr> <td	class="InharatedVariablesCell">mysqlpw  .data  </td>         
 
-<tr> <td	class="InharatedVariablesCell">View   TTML   </td>     <td	class="InharatedVariablesCell">     [% View %]</td></tr>
+<td	class="InharatedVariablesCell">   [% data.mysqlpw %]</td></tr>
+
 
 <td	class="InharatedVariablesCell">debug   .data     </td>     <td	class="InharatedVariablesCell"> [% data.debug %]</td></tr>
 
@@ -80,9 +83,13 @@
  <td	class="InharatedVariablesCell">image url  </td>     <td	class="InharatedVariablesCell">            [% data.image_root_url %] .data</td></tr>
 	<td	class="InharatedVariablesCell">flavicon </td>     <td	class="InharatedVariablesCell">            [% data.flavicon %] .data</td></tr>
  <tr> <td	class="InharatedVariablesCell">PageTopView  .data  </td>     <td	class="InharatedVariablesCell">   [% data.page_top_view %] </td></tr>
+ 
  <tr> <td  class="InharatedVariablesCell">Page name .data   </td>     <td	class="InharatedVariablesCell">          [%  data.page_name %]</td></tr>
+ 
  <tr> <td	class="InharatedVariablesCell">Page name  TTML  </td>     <td	class="InharatedVariablesCell">          [% Page %]</td></tr>
- <tr> <td	class="InharatedVariablesCell"> PageSiteName  .data </td>     <td	class="InharatedVariablesCell">          >[%  data.site_display_name %]</td></tr
+ 
+ <tr> <td	class="InharatedVariablesCell"> PageSiteName  .data </td>     <td	class="InharatedVariablesCell">          [%  data.site_display_name %]</td></tr
+
 <tr> <td	class="InharatedVariablesCell" >Procedure Name .data   </td>     <td	class="InharatedVariablesCell">         [% data.procedure %] </td></tr>		
 
 <tr> <td	class="InharatedVariablesCell" Procedure Name .session   </td>     
@@ -103,5 +110,8 @@
 <tr> <td>image_root_url </td>
 <td>[% data.image_root_url %] </tr>
 </table>
+
+<tr> <td	class="InharatedVariablesCell">View   TTML   </td>     <td	class="InharatedVariablesCell">     [% View %]</td></tr>
+
 <!-- InharatedVariablesView.ttml -->
  

@@ -1,37 +1,33 @@
-[% ViewVersion = 'v 1.99 /cgi-bin/HTMLTemplates/Default/DefultVariables'  %]
+[% ViewVersion = 'v 2.00 2022/04/25 /cgi-bin/HTMLTemplates/Default/DefultVariables'  %]
 [% IF data.debug == 1 %]
  [%	ViewVersion %] 	
 
 [% END %] 
-   [% AffiliateID = data.affiliate_number %] 
-   [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
-	[% firstname   = data.session_object.getAttribute('-KEY','auth_firstname')%]
-   [% HostName = data.domain_name %]  [% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-   [% group       = data.session_object.getAttribute('-KEY','auth_groups') %]
-   [% Page        = data.page_name  %]
-   [% PageSiteName = data.site_display_name %]
-   [% PID         = data.pid %]
-   [% PrintMode   = data.session_object.getAttribute('-KEY','PrintMode') %]
-   [% procedure   = data.procedure %]
-   [% project     = data.project  %]
-	[% lastname    = data.session_object.getAttribute('-KEY','auth_lastname')%]
-   [% LastUpdate  = data.last_update %]
-   [% localip     = data.local_ip %]
-   [% script_name = data.app_name %]
-   [% session_id  = data.session_object.getId() %]
-   [% session_string = "session_id=$session_id" %]
-   [% SiteUpdate  = data.site_last_update %]
-   [% SiteName    = data.session_object.getAttribute('-KEY','SiteName') %]
-   [% SiteDisplayName = data.site_display_name %]
-   [% site        = SiteName %]
-   [% title       = data.title %]
-  	[% Version     = data.version %]
-   [% username       = data.session_object.getAttribute('-KEY','auth_username') %]
-[% IF data.session_object %]
-	[% session_id     = data.session_object.getId() %]
-   [% session_string = "session_id=$session_id" %]
-
-[% END %] 
-
+   [% AffiliateID = data.affiliate_number
+      developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status')   
+      firstname    = data.session_object.getAttribute('-KEY','auth_firstname')
+      MYSQLPW      = data.mysqlpw
+      HostName     = data.domain_name
+      is_authenticated = subs.is_authenticated(data.auth_manager_config_params)
+      group        = data.session_object.getAttribute('-KEY','auth_groups')
+      Page         = data.page_name
+      PageSiteName = data.site_display_name
+      PID          = data.pid
+      PrintMode    = data.session_object.getAttribute('-KEY','PrintMode')
+      procedure    = data.procedure
+      project      = data.project
+      lastname     = data.session_object.getAttribute('-KEY','auth_lastname')
+      LastUpdate   = data.last_update
+      localip      = data.local_ip
+      script_name  = data.app_name
+      session_id   = data.session_object.getId()
+      session_string = "session_id=$session_id" 
+      SiteUpdate   = data.site_last_update
+      SiteName     = data.session_object.getAttribute('-KEY','SiteName')
+      SiteDisplayName = data.site_display_name
+      site         = SiteName
+      title        = data.title
+      Version      = data.versionu
+      username     = data.session_object.getAttribute('-KEY','auth_username') %]
 
 

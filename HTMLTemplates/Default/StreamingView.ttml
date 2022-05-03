@@ -27,6 +27,8 @@
          SiteName == "SMO"	%]
          
 		  [% embed ('BMasterStream') %]
+[% ELSIF SiteName == "Forager" %]
+        [% embed ('ForagerLive') %]
 [% ELSIF SiteName == "ULC" %]
         [% embed ('SundayLive') %]
 [% END %]       
