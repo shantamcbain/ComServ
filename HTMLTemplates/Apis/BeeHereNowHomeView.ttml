@@ -1,4 +1,4 @@
-[% Version = 'v 0.01 2021/10/06 BeeHereNowHomeView.ttml shanta' %]
+[% Version = 'v 0.02 2022/05/04 /cgi-bin/HTMLTemplaes/Apis/BeeHereNowHomeView.ttml shanta' %]
 
 [%#	$Id: SaddleMountinOrganicsHomeView.ttml,v 0.01 2021/02/21 06:42:47 shanta Exp shanta %]
 
@@ -20,17 +20,18 @@
 
 
 <ul>
- <li><h3>Set up Honey house and Shop.</h3>
-   </li><li><h3>Setup bee yards </h3>
-  <ul>
-    <li>Teaching Yard</li>
-     <ul>
-      <li><h2>Temporary teaching yard</h2> 
-         <p>We are setup primarily set up for video recordings. We are creating a season long view of the management of a yard.</p>
-         <li><h2>Next event.</h2><p>Wednesday August 4 Evaluation and Video taping.</p></li>
+ <li><h3>Season Planing.</h3>
+   <ul>
+      <li><h2>Hive evaluation</h2> 
+         <p>Evaluate and record data</p>
+       <li><h2>Next event.</h2><p>Friday 06, 11am to 3pm  Evaluation and Video taping. Setup for <a href="/cgi-bin/index.cgi?site=BHN&session_id=VJADX4SEBJHKC8NF&procedure=LiveStream">live streaming</a> of session.</p></li>
       </li>
-     </ul>
-     <li>Honey Yards</li>
+     </ul></li>
+ <li><h3>Queen Rearing. </h3>
+  <ul>
+    <li>Starter Maintenance</li>
+     
+     <li>Creating nucs</li>
     <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=WinterizingYard">
         Winterizing your yard.</a></li>
    </ul>

@@ -1,4 +1,4 @@
-[% ViewVersion = 'v 0.005 2022/03/07 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
+[% ViewVersion = 'v 0.006 2022/05/04 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
 [%# ViewVersion = 'v 0.003 2022/02/10 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
 [%# ViewVersion = 'v 0.002 2022/02/09 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
 [%# ViewVersion = 'v 0.001 2022/02/08 /cgi-bin/HTMLTemplates/Apis/BMasterStream.ttml,' %]
@@ -18,11 +18,11 @@ Please register <a href="mailto:shanta@beemaster.ca.ca?subject=Register%20for%20
 To Receive info on events future events <a href="http://beemaster.ca/mailman/listinfo/betalklive_beemaster.ca" target="_blank">Join the BeeTalkLive list</a>
 
 </p>
-<p><h1><a href="https://youtu.be/gDiCMDW1ors" target="_blank">BeeTalkLive #4 First beework visit of the season.</a> </h1>on YouTube. Saturday Feb 19 at 7 pm</p>
+<p><h1><a href="https://youtu.be/vE3tUMTScdM">BeeTalkLive #5 3rd bee work visit of the season.</a> </h1>on YouTube. Friday May 06 at 10 am</p>
 <ul>
  <li><h2>Agenda</h2>
   <ul>
-  <li><h3>Overview</h3> <p>We will be talking about <a href="https://beemaster.ca/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&page=FirstVisit">First Evaluation</a> visits to the yards.  Now is the time to actually look at the brood in your hives. Planning for bee pasture planting.  We have limited number of guest sets. Register early to get a seat. Of course there is no limit to YouTube guests but you will be limited to text chat.</p>
+  <li><h3>Overview</h3> <p>We will be talking about <a href="https://beemaster.ca/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&page=HiveEvaluation"Evaluation</a> visits to the yards.  We will look at the brood in your hives. Planning for bee pasture planting.  We have limited number of guest sets. Register early to get a seat. Of course there is no limit to YouTube guests but you will be limited to text chat.</p>
   
 
   
@@ -36,7 +36,9 @@ To Receive info on events future events <a href="http://beemaster.ca/mailman/lis
   </li>
   <li><h3>Technical Start </h3>Time: 1 hour before start. If you are a guest log we will send you a invitation when we go online at Streemyard. Please log in early to work out the bugs in your connection. You will need to register be a guest.</li>
   <li>Event Start time 7 pm PST</li>
-
+<li><h3>The Future.</h3> Our Next Visit. Bee pasture. Talk about the things we would like to focus on in future episodes.<p></li>
+</p>
+</li>
  </ul>
   <li><h3>Streaming services</h3>
   <ul>
@@ -44,13 +46,11 @@ To Receive info on events future events <a href="http://beemaster.ca/mailman/lis
   </ul>
  </li>
  </ul>
- <li><h3>The Future.</h3> Our Next Visit. Bee pasture. Talk about the things we would like to focus on in future episodes.<p>
-</p>
-</li>
-<li><h3>Q and A</h3> Have any beekeeping questions ask it now. If you missed the stream ask in the comments and we will add the question to the next live stream.</li>
+ <li><h3>Q and A</h3> Have any beekeeping questions ask it now. If you missed the stream ask in the comments and we will add the question to the next live stream.</li>
 <li><h3>Past BeeTalkLive</h3> 
  <ul>
- <li><p><h3><a href="https://youtu.be/6CGM6aSPjgs" target="_blank">BeeTalkLive #3 First beework visit of the season.</a> </h3>o</p> </li>
+ <li><p><h1><a href="https://youtu.be/gDiCMDW1ors" target="_blank">BeeTalkLive #4 First beework visit of the season.</a> </h1>on YouTube. Saturday Feb 19 at 7 pm</p>
+<li><p><h3><a href="https://youtu.be/6CGM6aSPjgs" target="_blank">BeeTalkLive #3 First beework visit of the season.</a> </h3>o</p> </li>
  <li><h3><a href="https://youtu.be/L3cmfpPUkxw" target="_blank"> BeeTalkLive #2 Winter Yard Visit's.</a> </h3></p></li>
   <li><a href="https://youtu.be/LKO97yLnCas" target="_blank">BeeTalkLive #1</a></li>
  </ul>
