@@ -19,7 +19,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 1.7, Jan 14, 2022";
+my $AppVer = "ver 1.71, May 04, 2022";
 
 BEGIN
 {
@@ -89,7 +89,7 @@ my $group;
 my $APP_NAME_TITLE = "Todo Manager";
 my $site_update;
 my $SITE_DISPLAY_NAME = 'None Defined for this site.';
-my $last_update  = 'Febuary 13, 2020';
+my $last_update  = 'May 04, 2022';
 my $homeviewname ;
 my $home_view = 'ToDoHomeView'; 
 my $procedure      = $CGI->param('procedure')||"ToDoHomeView";
@@ -317,12 +317,12 @@ if  ($CGI->param('view') eq 'ContactView'){
 my $modify = '1';
 my $delete = '1';
 my $add ='1';
-my $group_search = '1';
+my $group_search = '0';
 
  if ($username eq "Shanta"  ) {
     $modify = '1';
     $delete = '1';
-    $group_search = '1';
+    $group_search = '0';
     $add ='1';
   }
 if ($CGI->param('embed')){
