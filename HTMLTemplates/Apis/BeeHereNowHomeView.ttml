@@ -17,14 +17,15 @@
 
 <p>Our adventure will be in the fallowing areas<p>
 
-
+<h2>Next event.</h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=FirstEval">
+        Hive Introduction, Evaluation, Data entry and feed.</a>	Live stream on Friday June 17, 10 am. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream" onmouseover="Join us live.">BeeTalkLive</a></h2>
 
 <ul>
  <li><h3>Season Planing.</h3>
    <ul>
       <li><h2>Hive evaluation</h2> 
          <p>Evaluate and record data</p>
-       <li><h2>Next event.</h2><p>Friday 06, 11am to 3pm  Evaluation and Video taping. Setup for <a href="/cgi-bin/index.cgi?site=BHN&session_id=VJADX4SEBJHKC8NF&procedure=LiveStream">live streaming</a> of session.</p></li>
+       
       </li>
      </ul></li>
  <li><h3>Queen Rearing. </h3>

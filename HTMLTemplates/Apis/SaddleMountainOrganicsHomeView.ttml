@@ -19,6 +19,8 @@
  	
 <h2>Next season projections.</h2>
 
+<h2>Next event.</h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=FirstEval">
+        Hive Introduction, Evaluation, Data entry and feed.</a>	Live stream on Friday June 17, 10 am. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream" onmouseover="Join us live.">BeeTalkLive</a></h2>
 
 
 

@@ -1,4 +1,4 @@
-[% ViewVersion = 'v 1.11 22/03/08 /cgi-bin/HTMLTemplates/BuyAndSell/BuySellHomeView.ttml,'%]
+[% ViewVersion = 'v 1.12 22/04/23 /cgi-bin/HTMLTemplates/BuyAndSell/BuySellHomeView.ttml,'%]
 [%# the home  Page template#	$Id: BuySellHomeView.ttml,v 1.1 2002/01/09 22:01:26 shanta Exp $
 
 %]
@@ -6,7 +6,7 @@
 
 [% PROCESS DefaultDbi.ttml %]
 
-[% embed(data.page_top_view,['-PAGE_TITLE','Buy and Sell']) %]
+[% embed(data.page_top_view,['-PAGE_TITLE','Home']) %]
 
 [% embed('ErrorDisplayView') %]
 
