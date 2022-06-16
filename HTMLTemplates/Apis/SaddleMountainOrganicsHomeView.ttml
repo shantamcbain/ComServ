@@ -48,7 +48,7 @@
 
  
 
-   <li><h4>Next event.</h4><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream">BeeTalkLive</a> Live #3 Saturday Feb 19</p></li>
+   
    <li><h2>Up Coming events.</h4>
    <li><h4>View</h4> <p>How the site looks. If you have skills <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&view=JobView">Join</a> our team.</p></li>
    <li><h4><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&procedure=ProgramingView" target="_blank" name="ProgramingView" onmouseover="See what we are working on.">Programming</a></h4><p>We will be tuning the software to reflect our usage. Learning/teaching. Yard Management. Shop management. Honey House management.</p></li>
