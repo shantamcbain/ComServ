@@ -91,10 +91,11 @@ my $ANI_FAVICON;
 my $FAVICON_TYPE;
 my $CSS_VIEW_NAME = '/styles/CSCCSSView';
 my $CSS_VIEW_URL = $CSS_VIEW_NAME;
+my $DBI_DSN;
+my $details = $CGI->param('details');
+my $MySQLPW;
 my $SITE_DISPLAY_NAME = 'None Defined for this site.';
 my $style = $CGI->param('pagestyle');
-my $MySQLPW;
-my $DBI_DSN;
 my $SiteName = $CGI->param('site') ;
 my $UseModPerl = 1;
 my $AUTH_TABLE;
@@ -666,6 +667,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
                  -DISPLAY_NAME => 'Description',
                  -TYPE         => 'textarea',
                  -NAME         => 'details',
+                 -VALUE        => $details,
                  -ROWS         => 8,
                  -COLS         => 42,
                  -WRAP         => 'VIRTUAL',

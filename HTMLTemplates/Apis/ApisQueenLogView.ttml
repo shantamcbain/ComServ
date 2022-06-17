@@ -1,6 +1,9 @@
+[% ViewVersion = 'v 1.11 2022/04/07/cgi-bin/HTMLTemplates/Apis/ApisActiveQueensView.ttml,'%]
 [%
 #	$Id: ApisActiveQueensView.ttml,v 1.1 2015/09/08 06:42:47 shanta Exp shanta $	%]
  [% PROCESS DefaultDbi.ttml %]
+[% PROCESS DefautVariables.ttml %]
+
 
 [% embed(data.page_top_view,['-PAGE_TITLE','Active Queens']) %]
 
@@ -8,19 +11,6 @@
 
 
 
-[% IF data.session_object %]
-
-	[% session_id = data.session_object.getId() %]
-   [% session_string = "session_id=$session_id" %]
-
-[% END %]
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-[% email = data.session_object.getAttribute('-KEY','auth_email') %]
   
 
  
@@ -31,6 +21,7 @@
 
 [% CurrentSize = 0 %][% totalbees = 0  %][% totalcomb = 0 %]
 <h2>This is your Queens Management view.</h2>
+<a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=HiveManHomeView" name="Retern to Hive management">Return to Hive Management.</a>
 <p>See how and where your queens are. What needs to be done and plan how to get it done.</p>
 
 <p>You will need to track what your bees are doing.</p>

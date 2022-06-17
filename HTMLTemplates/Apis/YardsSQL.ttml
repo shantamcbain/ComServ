@@ -7,7 +7,7 @@
 
 [% END %] 
 <table>
-<tr><th>Yard <a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Yard">Add</a></th><th>status</th><th>Max</th><th>Current</th><th>View pallets</th></tr>
+<tr><th>Yard <a href="/cgi-bin/Apis/yards.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Yard">Add</a>  <a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add Queen</a></th><th>status</th><th>Max</th><th>Current</th><th>View pallets</th></tr>
 [% FOREACH link = DBI.query("SELECT * FROM apis_yards_tb
                                   WHERE  (sitename = '$SiteName'
                                  ) 

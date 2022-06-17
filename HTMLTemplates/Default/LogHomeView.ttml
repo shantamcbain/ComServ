@@ -1,3 +1,4 @@
+[% ViewVersion = 'v 0.11 2022/06/16 /cgi-bin/HTMLTemplates/Default/LogHomeView.ttml,'%]
 [%#	$Id: LogHomeView.ttml,v 0.1 2012/01/14 17:43:15 shanta Exp shanta $	
 
 # Ideally this template should be converted into a static CSS file and
@@ -8,6 +9,10 @@
 # variables from outside.
 
 %]
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+
+[% END %] 
  [% PROCESS DefautVariables.ttml %]
 [% PROCESS DefaultDbi.ttml %]
    [% PAGE = data.page_name || 'LogHomeView' %]
@@ -48,16 +53,7 @@
 [% END %]
 
 
-[%# query = 'SELECT * FROM page_tb WHERE  (status  = 2 AND page_code = "
-_ data.page_name  + " AND sitename = " _ data.sitename _" ) ORDER BY
-sitename' %]
 
-[%# FOREACH link = DBI.query( query ) %]
-              [%# site#      = link.sitename        %]
-                [%# PageName#  = link.view_name %]
-                [%# Record_id# = link.record_id  %]
-                [%#body      = link.body %]
-      [%# END %]
 
 
    	[% embed(data.page_top_view,["-PAGE_TITLE","$PageName",]) %]
@@ -124,13 +120,15 @@ You can modify anything from here to the last update. You may use Html code in t
 
   [% embed('LogList') %]
 
- 
+
 
 [% IF lastupdate %]
 <p>Last Update [% lastupdate %][% IF SiteName == 'Demo' %]&nbsp; This value is stored in your setup file. [% END %]
 		<br>
 [% END %]
-[% embed('CSCCopyRight') %]
+ [% embed('TimeView') %]
+ 
+ [% embed('CSCCopyRight') %]
 
 	
 

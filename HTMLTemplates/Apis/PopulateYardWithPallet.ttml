@@ -18,7 +18,7 @@ Active Hives [% yard_code %]</li>
 [% link.status  %]   &nbsp; [% link.queen_code %]   &nbsp; 
    [% link.total_pallet_size %]   &nbsp; 
    [% link.current %]
-   &nbsp;<a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;record_id=[% link.record_id %]&display_modification_form=on>[% link.queen_code %]"> Queen </a>
+   &nbsp;<a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;record_id=[% link.record_id %]&queen_code=[% link.queen_code %]&display_details_view=on"> Queen </a>
  
 	  &nbsp; <a href="/cgi-bin/Apis/queen_log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;queen_code=[% link.queen_code %]&amp;record_id=[% link.record_id %]">Queen log</a>   </li> </font >
 

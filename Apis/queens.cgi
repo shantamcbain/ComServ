@@ -72,7 +72,7 @@ my $app_logo_height;
 my $app_logo_width;
 my $app_logo_alt;
 my $APP_NAME = "queens";
-my $APP_NAME_TITLE = $SiteName."Queen  Manager";
+my $APP_NAME_TITLE = " Queen  Manager";
 my $auth;
 my $AUTH_TABLE;
 my $AUTH_MSQL_USER_NAME;
@@ -121,6 +121,8 @@ my $page_bottom_view;
 my $page_top_view;
 my $procedure      = $CGI->param('procedure');
 my $project        = $CGI->param('project');
+my $QueenCode      = $CGI->param('queen_code');
+my $recordId =  $CGI->param('record_id') ;
 my $SetupVariables  ;
 my $StoreUrl = 'countrystores.ca';
 my $shop = 'cs';
@@ -1011,6 +1013,7 @@ my @VALID_VIEWS = qw(
        ApisQueensView
        ApisNucQueensView
        ApisActiveQueensView
+       QueensRecordView
        InventoryProjectionView
        InventoryView
 );
@@ -1035,19 +1038,20 @@ my @VIEW_DISPLAY_PARAMS = (
     -APPLICATION_LOGO_HEIGHT => $app_logo_height,
     -APPLICATION_LOGO_WIDTH  => $app_logo_width,
     -APPLICATION_LOGO_ALT    => $app_logo_alt,
+    -CUST_CODE               => $CustCode,
     -DOCUMENT_ROOT_URL       => $DOCUMENT_ROOT_URL,
-    -IMAGE_ROOT_URL          => $IMAGE_ROOT_URL,
+    -EMAIL_DISPLAY_FIELDS    => \@EMAIL_DISPLAY_FIELDS,
     -HEADER_IMAGE            => $HeaderImage||'none',
     -HEADER_HEIGHT           => $Header_height,
     -HEADER_WIDTH            => $Header_width,
+    -HOME_VIEW               => $home_view,
     -HEADER_ALT              => $Header_alt,
     -HTTP_HEADER_PARAMS      => $HTTP_HEADER_PARAMS,
+    -IMAGE_ROOT_URL          => $IMAGE_ROOT_URL,
     -LINK_TARGET             => $LINK_TARGET,
     -SCRIPT_DISPLAY_NAME     => $APP_NAME_TITLE,
     -SCRIPT_NAME             => $CGI->script_name(),
     -SITE_DISPLAY_NAME       => $SITE_DISPLAY_NAME,
-    -CUST_CODE               => $CustCode,
-    -EMAIL_DISPLAY_FIELDS    => \@EMAIL_DISPLAY_FIELDS,
     -FIELDS_TO_BE_DISPLAYED_AS_EMAIL_LINKS => [qw(
         email
     )],
@@ -1057,7 +1061,6 @@ my @VIEW_DISPLAY_PARAMS = (
     -FIELDS_TO_BE_DISPLAYED_AS_MULTI_LINE_TEXT => [qw(
         body
     )],
-    -HOME_VIEW               => $home_view,
     -FIELD_NAME_MAPPINGS     => {
         status              => 'Status',
         queen_code          => 'Queen Code',
@@ -1169,12 +1172,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -ACTION_HANDLER_LIST                    => \@ACTION_HANDLER_LIST,
     -AFFILIATE_NUMBER                       => $Affiliate,
     -ADD_ACKNOWLEDGEMENT_VIEW_NAME          => 'AddAcknowledgementView',
-    -DELETE_ACKNOWLEDGEMENT_VIEW_NAME       => 'DeleteAcknowledgementView',
-    -MODIFY_ACKNOWLEDGEMENT_VIEW_NAME       => 'ModifyAcknowledgementView',
-    -POWER_SEARCH_VIEW_NAME                 => 'PowerSearchFormView',
     -ADD_RECORD_CONFIRMATION_VIEW_NAME      => 'AddRecordConfirmationView',
-    -MODIFY_RECORD_CONFIRMATION_VIEW_NAME   => 'ModifyRecordConfirmationView',
-    -DELETE_RECORD_CONFIRMATION_VIEW_NAME   => 'DeleteRecordConfirmationView',
     -ALLOW_ADDITIONS_FLAG                   => 1,
     -ALLOW_DELETIONS_FLAG                   => 1,
     -ALLOW_MODIFICATIONS_FLAG               => 1,
@@ -1183,51 +1181,70 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -ADD_FORM_VIEW_NAME                     => 'AddRecordView',
     -AUTH_MANAGER_CONFIG_PARAMS             => \@AUTH_MANAGER_CONFIG_PARAMS,
     -APPLICATION_SUB_MENU_VIEW_NAME         => 'ApplicationSubMenuView',
-    -OPTIONS_FORM_VIEW_NAME                 => 'OptionsView',
-    -BASIC_DATA_VIEW_NAME                   => 'BasicDataView',
-    -CGI_OBJECT                             =>  $CGI,
+    -BASIC_DATA_VIEW_NAME                   => $home_view||'BasicDataView',
+    -BASIC_INPUT_WIDGET_DISPLAY_COLSPAN     => 2,
+    -CGI_OBJECT                             => $CGI,
     -CSS_VIEW_URL                           => $CSS_VIEW_URL,
     -CSS_VIEW_NAME                          => $CSS_VIEW_NAME,
     -DATA_HANDLER_MANAGER_CONFIG_PARAMS     => \@DATA_HANDLER_MANAGER_CONFIG_PARAMS,
     -DATASOURCE_CONFIG_PARAMS               => \@DATASOURCE_CONFIG_PARAMS,
-    -DISPLAY_ACKNOWLEDGEMENT_ON_ADD_FLAG    => 0,
-    -DISPLAY_ACKNOWLEDGEMENT_ON_DELETE_FLAG => 1,
-    -DISPLAY_ACKNOWLEDGEMENT_ON_MODIFY_FLAG => 0,
-    -DISPLAY_CONFIRMATION_ON_ADD_FLAG       => 0,
-    -DISPLAY_CONFIRMATION_ON_DELETE_FLAG    => 1,
-    -DISPLAY_CONFIRMATION_ON_MODIFY_FLAG    => 1,
-    -DETAILS_VIEW_NAME                      => 'DetailsRecordView',
-    -DELETE_FORM_VIEW_NAME                  => 'DetailsRecordView',
-    -DELETE_EMAIL_BODY_VIEW                 => 'DeleteEventEmailView',
+    -Debug                                  => $CGI->param('debug') || 0,    
     -DEFAULT_SORT_FIELD1                    => 'status',
     -DEFAULT_SORT_FIELD2                    => 'queen_code',
+    -DELETE_ACKNOWLEDGEMENT_VIEW_NAME       => 'DeleteAcknowledgementView',
+    -DELETE_FORM_VIEW_NAME                  => 'DetailsRecordView',
+    -DELETE_EMAIL_BODY_VIEW                 => 'DeleteEventEmailView',
+    -DELETE_RECORD_CONFIRMATION_VIEW_NAME   => 'DeleteRecordConfirmationView',
+    -DETAILS_VIEW_NAME                      => 'QueensRecordView',
+    -DISPLAY_ACKNOWLEDGEMENT_ON_ADD_FLAG    => 0,
+    -DISPLAY_ACKNOWLEDGEMENT_ON_DELETE_FLAG => 0,
+    -DISPLAY_ACKNOWLEDGEMENT_ON_MODIFY_FLAG => 0,
+    -DISPLAY_CONFIRMATION_ON_ADD_FLAG       => 0,
+    -DISPLAY_CONFIRMATION_ON_DELETE_FLAG    => 0,
+    -DISPLAY_CONFIRMATION_ON_MODIFY_FLAG    => 0,
     -ENABLE_SORTING_FLAG                    => 1,
+    -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
     -HAS_MEMBERS                            => $HasMembers,
     -HIDDEN_ADMIN_FIELDS_VIEW_NAME          => 'HiddenAdminFieldsView',
     -INPUT_WIDGET_DEFINITIONS               => \@INPUT_WIDGET_DEFINITIONS,
-    -URL_ENCODED_ADMIN_FIELDS_VIEW_NAME     => 'URLEncodedAdminFieldsView',
+    -KEY_FIELD                              => 'record_id',
+    -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
     -LOG_CONFIG_PARAMS                      => \@LOG_CONFIG_PARAMS,
     -LOGOFF_VIEW_NAME                       => 'LogoffView',
+    -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || 100,
     -MAIL_CONFIG_PARAMS                     => \@MAIL_CONFIG_PARAMS,
     -MAIL_SEND_PARAMS                       => \@MAIL_SEND_PARAMS,
     -MODIFY_FORM_VIEW_NAME                  => 'ModifyRecordView',
     -MODIFY_EMAIL_BODY_VIEW                 => 'ModifyEventEmailView',
+    -MODIFY_ACKNOWLEDGEMENT_VIEW_NAME       => 'ModifyAcknowledgementView',
+    -MODIFY_RECORD_CONFIRMATION_VIEW_NAME   => 'ModifyRecordConfirmationView',
     -NEWS_TB                                => $NEWS_TB,
+    -OPTIONS_FORM_VIEW_NAME                 => 'OptionsView',
     -PAGE_NAME                              => $Page,
+    -PAGE_TOP_VIEW                          => $page_top_view ,
+    -LEFT_PAGE_VIEW                         => $left_page_view,
+    -PAGE_LEFT_VIEW                         => $page_left_view,
+    -PAGE_BOTTOM_VIEW                       => $page_bottom_view,
+    -PROCEDURE                              => $procedure,
+    -PROJECT                                => $project,
+    -POWER_SEARCH_VIEW_NAME                 => 'PowerSearchFormView',
+    -QUEEN_CODE                             => $QueenCode,
+    -RECORDID                              => $recordId,
+    -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
     -REQUIRE_AUTH_FOR_SEARCHING_FLAG        => 0,
     -REQUIRE_AUTH_FOR_ADDING_FLAG           => 1,
     -REQUIRE_AUTH_FOR_MODIFYING_FLAG        => 1,
     -REQUIRE_AUTH_FOR_DELETING_FLAG         => 1,
     -REQUIRE_AUTH_FOR_VIEWING_DETAILS_FLAG  => 1,
-    -REQUIRE_MATCHING_USERNAME_FOR_MODIFICATIONS_FLAG => 1,
-    -REQUIRE_MATCHING_USERNAME_FOR_DELETIONS_FLAG     => 1,
     -REQUIRE_MATCHING_GROUP_FOR_MODIFICATIONS_FLAG    => 0,
     -REQUIRE_MATCHING_GROUP_FOR_DELETIONS_FLAG        => 0,
+    -REQUIRE_MATCHING_USERNAME_FOR_MODIFICATIONS_FLAG => 0,
+    -REQUIRE_MATCHING_USERNAME_FOR_DELETIONS_FLAG     => 0,
     -REQUIRE_MATCHING_USERNAME_FOR_SEARCHING_FLAG     => 0,
     -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG        => 0,
-    -SEND_EMAIL_ON_DELETE_FLAG              => 0,
-    -SEND_EMAIL_ON_MODIFY_FLAG              => 0,
-    -SEND_EMAIL_ON_ADD_FLAG                 => 0,
+    -SEND_EMAIL_ON_DELETE_FLAG              => 1,
+    -SEND_EMAIL_ON_MODIFY_FLAG              => 1,
+    -SEND_EMAIL_ON_ADD_FLAG                 => 1,
     -SESSION_OBJECT                         => $SESSION,
     -SESSION_TIMEOUT_VIEW_NAME              => 'SessionTimeoutErrorView',
     -SIMPLE_SEARCH_BOX_VIEW_NAME            => 'SimpleSearchBoxView',
@@ -1238,25 +1255,14 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -TEMPLATES_CACHE_DIRECTORY              => $TEMPLATES_CACHE_DIRECTORY,
     -VALID_VIEWS                            => \@VALID_VIEWS,
     -VIEW_LOADER                            => $VIEW_LOADER,
-    -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
-    -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || 100,
     -SORT_FIELD1                            => $CGI->param('sort_field1') || 'queen_code',
     -SORT_FIELD2                            => $CGI->param('sort_field2') || 'status',
     -SORT_DIRECTION                         => $CGI->param('sort_direction') || 'ASC',
     -SIMPLE_SEARCH_STRING                   => $CGI->param('simple_search_string') || "",
-    -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
-    -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",
-    -KEY_FIELD                              => 'record_id',
     -SITE_NAME                              => $SiteName,
-    -SHOP                       => $shop,
-    -TITLE                      => $title,
-    -PROJECT                    => $project,
-    -PROCEDURE                  => $procedure,
-    -PAGE_TOP_VIEW                          => $page_top_view ,
-    -LEFT_PAGE_VIEW                         => $left_page_view,
-    -PAGE_LEFT_VIEW                         => $page_left_view,
-    -PAGE_BOTTOM_VIEW                       => $page_bottom_view,
-    -BASIC_INPUT_WIDGET_DISPLAY_COLSPAN     => 2,
+    -SHOP                                   => $shop,
+    -TITLE                                  => $title,
+    -URL_ENCODED_ADMIN_FIELDS_VIEW_NAME     => 'URLEncodedAdminFieldsView',
 );
 
 ######################################################################

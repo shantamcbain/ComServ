@@ -13,17 +13,17 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td >
-<h3>Our Yard Management System.</h3>
-<p>We developing a system to Plan your season in the bee yard</p> 
+<h3>Our Hive Management System.</h3>
+<p>We developing a system to Manage and plan your season in the bee yard</p> 
 <p>Here is a list of our current system modules </p> 
 
 <ul> 
-	<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=HiveManHomeView">	Track your bees.</a></li>
-<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=InventoryHomeView">	Inventory System</a></li>	
-<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisQueensView">	Queens</a></li>
-<li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisNucQueensView">	ApisQueensNucView</a></li>
-<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisActiveQueensView">	Active Queens</a></li>
-<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardsView">	YardsView</a></li>
+	<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=HiveManHomeView">	Track your bees.</a> This system will give you a list of your current yards with active pallets.</li>
+<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=InventoryHomeView">	Inventory System </a> This is were you manage your equipment inventory. Data is used by the projection system to let you know what you need to obtain to meet your objective.s</li>	
+<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisQueensView">	Queens</a> Here is a view of your active queens.</li>
+<li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisNucQueensView">	ApisQueensNucView</a> Queens in your nucs. For queen rearing.</li>
+<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisActiveQueensView">	Active Queens</a> </li>
+<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardsView">	YardsView</a> This is were you track your yards.</li>
 
 </ul>
 </td>
