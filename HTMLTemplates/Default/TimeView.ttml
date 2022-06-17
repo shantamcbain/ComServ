@@ -1,0 +1,43 @@
+[% ViewVersion = 'v 0.01 2022/06/16 /cgi-bin/HTMLTemplates/Default/TimeView.ttml,'%]
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+
+[% END %]
+<h3>Accumulated log.</h3>
+[% CurrentSize %] 
+<table>
+<tr><th><a href="/cgi-bin/ToDo/log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add log">Addlog</a></th><th>StartTime</th><th>Title</th><th>Status</th><th>Details</th><th>project_dode</th><th>time</th></tr>
+
+[% FOREACH link = DBI.query("SELECT * FROM log_tb
+                                  WHERE (sitename = '$SiteName'                                  
+                                   AND status = '3' )
+                                  ORDER BY start_date
+                                  ")%]    
+
+[%# FOREACH link = 'SELECT * FROM log_tb WHERE  (status  = 3 AND 
+                                       sitename = "$SiteNAME" ) ORDER BY
+start_date' %]
+ 
+ <tr>
+ 
+   
+   <td>[% link.start_date %]</td>
+   <td>[% link.abstract %]</td>
+   <td>[% link.status  %]</td>
+   <td>[% link.details %]</td>
+   <td>[% link.project_code %]</td>
+   <td>[% link.time %]</td>
+   <td><a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;submit_power_search=on&amp;simple_search_string=[% link.yard_code %]&amp;sort_field1=pallet_code">Pallet</a>    </td>
+[% HiveCap = HiveCap + link.total_yard_size %]
+[% CurrentSize = CurrentSize + link.time %]
+
+
+
+
+
+
+   
+ [% END %]
+ </table>
+ <p>Accumulated Time [% CurrentSize %] Hours</p>
