@@ -1,25 +1,8 @@
-[% ViewVersion = 'v 2.013 /cgi-bin/HTMLTemplates/Default/ProceduresView.ttml, 2022/04/22'%]
-[%# ViewVersion = 'v 2.01 /cgi-bin/HTMLTemplates/Default/ProceduresView.ttml, 2022/02/06'%]
-[% Version = 'v 1.97 2021/12/22 /HTTMLTemplates/Default/ProceduresView.ttml'%]
-[%# Version = 'v 1.968 2021/08/03 ProceduresView.ttml'%]
-[%# Version = 'v 1.967 2021/03.22 ProceduresView.ttml'%]
-[%# Version = 'v 1.966 2021/02/06 ProceduresView.ttml'%]
-[%# ViewVersion = 'v 1.965 2020/05/03 ProceduresView.ttml'%]
-[%#	$Id: ProceduresView.ttml,v 0.01 2020/04/20 17:43:15 shanta Exp shanta %]
-[%#	$Id: ProceduresView.ttml,v 0.01 2019/5/08 17:43:15 shanta Exp shanta
-    $Id: ProjectsView.ttml,v 1.9 2013/1/14 17:43:15 shanta Exp shanta $	
+[% ViewVersion = 'v 0.01 /cgi-bin/HTMLTemplates/Default/NextEvent.ttml, 2022/04/22'%]
 
-# Ideally this template should be converted into a static CSS file and
-# be served as /foo/bar.css and not via CGI, since it slows things
-# down and dozen't allow browsers to cache the CSS content.
-
-# otherwise this template is stand-alone, i.e. it dozen't rely on any
-# variables from outside.
-
-%]
  [%# PROCESS DefaultDbi.ttml %]
 [% developer_status = Data.session_object.getAttribute('-KEY', 'auth_developer_status') %]
-[% ViewName  = '/Default/ProceduresView.ttml' %] 
+[% ViewName  = '/Default/NextEvent.ttml' %] 
 
 
 
@@ -41,7 +24,7 @@
                     group == 'CSC_admin' OR
                     group == 'CSCDev_admin' OR
                     group == 'ECF_admin' OR
-                    group == 'MW_admin' OR
+                    group == 'BHN_admin' OR
                     group == 'SMO_admin' OR
                     group == 'WiseWoman_admin' OR
                     group == 'ShantaWorkShop_admin' OR
@@ -68,9 +51,9 @@
 		[% ELSIF SiteName == "BHN" OR
 		         SiteName == "BeeTalk" OR
 		         SiteName == "SMO" %]
-			[% embed ('BMasterProcedures') %]
+			[% embed ('BMasterNextEvent') %]
 		[% ELSIF SiteName == "BMaster"%]
-			[% embed ('BMasterProcedures') %]
+			[% embed ('BMasterNextEvent') %]
 		[% ELSIF SiteName == "CS" %]
 			[% embed ('CSWorkShops') %]
 		
@@ -155,7 +138,7 @@
 			[% embed ('USBMProcedures') %]
 			[% ELSE %]
 		
-		<p>This site has no Procedures at this time. </p>
+		<p>This site has no Events at this time. </p>
 		<!-- Begin Demo Home View --> 
 		<p>Here are some of the provided by <a href="http://CountryStores.ca/cgi-bin/index.cgi?site=CS&amp;[% session_string %]&amp;view=WorkShopsView" target=_"_blank">Country Stores.ca </a>
 

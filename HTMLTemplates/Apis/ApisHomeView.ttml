@@ -1,4 +1,5 @@
-[% Version = 'v 1.155 2022/06/16 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
+[% Version = 'v 1.156 2022/06/18 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
+[%# Version = 'v 1.155 2022/02/16 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.154 2022/02/10 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.153 2022/02/08 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.152 2021/12/02 shanta ApisHomeView.ttml' %]
@@ -51,10 +52,11 @@
 	
 	
 	
-<h2>Next event.</h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=FirstEval">
-        Hive Introduction, Evaluation, Data entry and feed.</a>	Live stream on Friday June 17, 10 am. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream" onmouseover="Join us live.">BeeTalkLive</a></h2>
+<h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=NextEvent">
+Next event.</a>	</h2>
         
-	
+	<h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=LiveStream">
+        BeeTalkLive </a>
 <h3><a href="https://beemaster.ca/mailman/listinfo/" onclick="window.open(this.href, '', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Join Our Apis lists</b></a>
 </h3>
  		
@@ -70,7 +72,7 @@
 			<tr>
 			<td >				
           
-            <h2>Tools you can use to help you manage your bee keeping and bee breeding operations. </h2>
+            <h2>Tools you can use to help you manage your beekeeping and bee breeding operations. </h2>
 
             <ul>
             <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardManagementSystem" target="Blank">Apiary Management System. </a><br>Track what is happening in your yards</li> In active development. drop by and give us a hand.
