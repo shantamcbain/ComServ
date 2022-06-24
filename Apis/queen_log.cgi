@@ -77,7 +77,8 @@ my $OffLine    = 'yes';
 my $Page           = $CGI->param('page');
 my $procedure      = $CGI->param('procedure');
 my $project        = $CGI->param('project');
-    my $QueenCode      = $CGI->param('record_id');
+    my $QueenCode      = $CGI->param('queen_code');
+    my $QueenRecordID      = $CGI->param('record_id');
 my $style = $CGI->param('pagestyle');
 my $title          = $CGI->param('title');
 my $View           = $CGI->param('view') ;
@@ -761,7 +762,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
         -DISPLAY_NAME => 'Queen Record Id',
         -TYPE         => 'textfield',
         -NAME         => 'queen_record_id',
-        -value        =>  $QueenCode,
+        -value        =>  $QueenRecordID,
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],
@@ -1460,6 +1461,7 @@ sub _generateEnvVarsString {
         push (@env_values, "$key=" . $ENV{$key});
     }   my @QUEENS_DATASOURCE_FIELD_NAMES = qw(
         status
+        record_id
         queen_code
         queen_name
         pallet_code

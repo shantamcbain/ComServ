@@ -18,12 +18,13 @@
 <p>Here is a list of our current system modules </p> 
 
 <ul> 
-	<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=HiveManHomeView">	Track your bees.</a> This system will give you a list of your current yards with active pallets.</li>
+	<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=HiveManHomeView">	Track your bees.</a> This system will give you a list of your current yards with active pallets. Log link not working yet use Queens below.</li>
 <li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=InventoryHomeView">	Inventory System </a> This is were you manage your equipment inventory. Data is used by the projection system to let you know what you need to obtain to meet your objective.s</li>	
 <li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisQueensView">	Queens</a> Here is a view of your active queens.</li>
 <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisNucQueensView">	ApisQueensNucView</a> Queens in your nucs. For queen rearing.</li>
-<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisActiveQueensView">	Active Queens</a> </li>
-<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardsView">	YardsView</a> This is were you track your yards.</li>
+<!--<li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ApisActiveQueensView">	Active Queens</a> </li>
+  -->
+  <li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardsView">	YardsView</a> This is were you track your yards.</li>
 
 </ul>
 </td>

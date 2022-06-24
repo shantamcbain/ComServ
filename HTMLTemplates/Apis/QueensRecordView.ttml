@@ -1,0 +1,147 @@
+
+
+[%# the ENCY template
+#	$Id: HerbDetailView.ttml,v 1.2 2011/09/21 19:25:15 shanta Exp $	
+#file location/cgi-bin/HTMLTemplates/ENCY
+%]
+
+
+[% PROCESS DefautVariables.ttml %]
+[% PROCESS DefaultDbi.ttml %]
+[% ViewVersion = 'v 0.02 2022/04/11 /cgi-bin/HTMLTemplates/Apis/QueensRecordView.ttml'  %]
+[% IF data.debug == 1 %]
+ <p>[%	ViewVersion %] </p>
+   [% embed  ('InheretedVariablesView') %]
+[% END %]
+
+[% embed(data.page_top_view,['-PAGE_TITLE','Queen Details.']) %]
+
+
+
+[% embed('ErrorDisplayView') %]
+
+
+
+
+
+
+	[% IF username %]
+
+<h3 > Hello  [% firstname %]  [% lastname %]! Welcome to     [% data.site_display_name %]
+!</h3>
+	  
+
+	[% ELSE %]
+
+	<h3>  Hello! Welcome to [%  data.site_display_name %]!</h3
+
+	[% END %]
+
+</div>
+<div ALIGN="center">
+<A NAME="PageTop"></A>
+</div>
+
+     
+        <h2>Queen Details.</h2>
+      
+      
+ 
+ <p>
+ [%   data.record_id%] 
+[% record_id = data.recordid %] 
+[% $queen_code = data.queen_code %] 
+[% $SiteName   = data.site_name %] 
+
+<p>queen_code [% data.queen_code %]    </p>
+<p>$queen_code [% $queen_code  %]</p>
+<p>$SiteName  [% $SiteName %]</p>
+    <p>  data.debug [%  data.debug %]   </p>       
+<p>data.SiteName [% data.site_name %] </p>
+[% data.debug %]
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 
+[% END %]
+<table> 
+
+[% FOREACH link = DBI.query("SELECT * FROM apis_queens_tb
+                                  WHERE (queen_code = '2' AND
+                                         sitename =  'BMaster'
+                                         )
+                                  ORDER BY queen_code                                
+                                  ")%]    
+                                  
+
+                                   <tr>
+    <tr><td>Record id</td><td class="NavTableCellStyle"> [% link.record_id %]  </td>  </tr>                            
+    <tr><td>Queen Code</td><td class="NavTableCellStyle"> [% link.queen_code %]  </td></tr>
+    <tr><td>Queen Name</td><td class="NavTableCellStyle"> [% link.queen_name %]  </td></tr>
+    <tr><td>Pallet Code</td><td class="NavTableCellStyle"> [% link.pallet_code %]  </td></tr>
+    <tr><td>Yard Code</td><td class="NavTableCellStyle"> [% link.yard_code %]  </td></tr>
+    <tr><td>Parent Queen</td><td class="NavTableCellStyle"> [% link.parent %]  </td></tr>
+    <tr><td>Her Colour</td><td class="NavTableCellStyle"> [% link.queen_colour %]  </td></tr>
+    <tr><td>Date of graft</td><td class="NavTableCellStyle"> [% link.date %]  </td></tr>
+    <tr><td>Number of Brood Boxes</td><td class="NavTableCellStyle"> [% link.box_number %]  </td></tr>
+    <tr><td>Pallet Code</td><td class="NavTableCellStyle"> [% link.pallet_code %]  </td></tr>
+    <tr><td>Site</td><td class="NavTableCellStyle"> [% link.client_name %]  </td></tr>
+    <tr><td>Comments</td><td class="NavTableCellStyle"> [% link.comments %]  </td></tr>        
+   [% QueenCode =  link.queen_record_id    %]  
+   <tr><td class="NavTableCellStyle">        
+  <a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&display_modify_on.x&record_id=[% link.record_id %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Modify </font></a>
+     </td>
+   </tr> 
+
+   [% END %]
+ </table>
+ <p>Soon to come Graph of development</p>[% $QueenCode  %]
+<ul>
+[% FOREACH value = DBI.query("SELECT * FROM apis_queen_log_tb
+                                  WHERE (queen_record_id= '$QueenCode' AND
+                                         sitename = 'BMaster')
+                                  ORDER BY queen_code                               
+                                  ")%]  
+                          
+       <li>Date of inspection [% value.start_date %] </li>
+       <li>Queen Code [% value.queen_code %] </li>
+       <li>Abstract [% value.abstract %] </li>
+       <li>Number of frames bees Top [% value.box_1_bees %] </li>
+       <li>Number of frames Brood Top [% value.box_1_brood %] </li>
+       <li>Number of frames broodadded Top [% value.box_1_broodadded %] </li>
+       <li>Number of frames foundation  Top [% value.box_1_foundation %] </li>
+       <li>Number of frames comb Top [% value.box_1_comb %] </li>
+       <li>Number of frames empty Top [% value.box_1_empty %] </li>
+       <li>Number of frames honey Top [% value.box_1_honey %] </li>
+       <li>Number of frames bees Bottom[% value.box_2_bees %] </li>
+       <li>Number of frames brood Bottom [% value.box_2_brood %] </li>
+       <li>Number of frames broodadded Bottom [% value.box_2_broodadded %] </li>
+       <li>Number of frames foundation Bottom [% value.box_2_foundation %] </li>
+       <li>Number of frames honey Bottom [% value.box_2_honey %] </li>
+       <li>Number of frames comb Bottom [% value.box_2_comb %] </li>
+       <li>Number of frames empty Bottom [% value.box_2_empty %] </li>
+       <li>Number of frames brood  Bottom [% value.box_2_brood_x %] </li>
+       <li>Number of frames bees broox ways[% value.box_x_bees %] </li>
+       <li>Number of frames broox ways [% value.box_x_brood %] </li>
+       <li>Number of frames broodadded x ways [% value.box_x_broodadded %] </li>
+       <li>Number of frames foundation x ways [% value.box_x_foundation %] </li>
+       <li>Number of frames comb x ways [% value.box_x_comb %] </li>
+       <li>Number of frames empty x ways[% value.box_x_empty %] </li>
+       <li>Number of frames honey x ways[% value.box_x_honey %] </li>
+       <li>Number of frames given x ways[% value.brood_given_x %] </li>
+       <li>Number of frames comb Honey boxes [% value.honey_box_comb %] </li>
+       <li>Number of frames foundation Honey boxes [% value.honey_box_foundation %] </li>
+       <li>Number of frames removed Honey boxes [% value.honey_removed %] </li>
+       <li>Number of frames honey_added [% value.honey_added %] </li>
+       <li>Number of frames Details [% value.details %] </li>
+       <li>Number of frames Start time [% value.start_time %] </li>
+</ul>
+   [% END %] 
+   
+[%#  embed('HerbDetailListSQL') %]
+  
+  
+      
+ <a href="http://helpdesk.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]" target="_Blank" > HelpDesk</a>
+
+[%# embed('CSCCopyRight') %]
+[% embed(data.page_bottom_view) %]
+

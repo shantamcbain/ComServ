@@ -31,9 +31,11 @@
 <p>Based on data collected from your yards we can plan what needs to be done next and what you need to do it.
 </p>
 <h2>Active Queens.</h2>
-<p>Your list of active Queens.</p><!-- Nave bar to QueenViews -->
+<p>Your log of active Queens.</p><!-- Nave bar to QueenViews -->
 <table>
-<tr><th>Yard <a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add</a></th><th>status</th><th>Queen code</th><th>Pallet code</th><th>View pallets</th><th>Graph of frames number of frames</th></tr>
+<tr><th>Yard <a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add Queen">Add</a></th><th>status</th><th>Queen code</th><th>Pallet code</th><th>View pallets</th><th>
+
+Graph of frames number of frames</th></tr>
 [% FOREACH link = DBI.query("SELECT * FROM apis_queens_tb
                                   WHERE   client_name = '$SiteName'
                                    AND (status != 'Sold' AND 
@@ -49,6 +51,8 @@
    <td>[% link.pallet_code %]</td>
    <td><a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;submit_power_search=on&amp;simple_search_string=[% link.pallet_code %] ">Pallet</a>    </td>
    [% queen_code = link.queen_code %]
+   </tr>
+   <tr>
    <td>[% PROCESS CurrentFrames.ttml ['-QUEEN_CODE', $queen_code ] %]  
      Date [% date %]<a href="/cgi-bin/Apis/queen_log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;queen_record_id=[% link.queen_record_id %]&amp;queen_code=[%link.queen_code%]&amp;[% link.pallet_code %]"> Add log [% link.queen_code %]</a>        <table>
              <tr><td>box 1 bees     </td><td> 	[% box_1_bees %]</td></tr>

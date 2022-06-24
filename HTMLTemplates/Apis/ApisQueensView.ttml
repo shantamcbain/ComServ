@@ -69,7 +69,7 @@
    <td><a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_details_view=on&amp;record_id=[% link.record_id %] ">[% link.queen_code %]</a> </td>
    <td>[% link.pallet_code %]</td>
    <td><a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;submit_power_search=on&amp;simple_search_string=[% link.pallet_code %] ">Pallet</a>    </td>
-  <td><a href="/cgi-bin/Apis/queen_log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;record_id=[% link.queen_code %] ">[% link.queen_code %]</a> </td>
+  <td><a href="/cgi-bin/Apis/queen_log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;record_id=[% link.record_id %]&amp;pallet_code=[% link.pallet_code %] ">[% link.queen_code %] log</a> </td>
  [% HiveCap = HiveCap + link.total_yard_size %]
  [% CurrentSize = CurrentSize + 1 %]
    </td>[% END %]

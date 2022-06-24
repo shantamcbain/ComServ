@@ -1,0 +1,57 @@
+[% Version = 'v 0.01 2022/04/22 /HTMLTemplates/CSC/CSCProcedures.ttml'%]
+[% # 2019/10/09 AnuProcedures.ttml %]
+
+[% embed('ErrorDisplayView') %] 
+
+
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+ 
+	   
+<ul>
+ <li> 
+
+ [% IF procedure  == 'NucBoxConstruction' %]
+ 
+
+[% embed ('NucBoxConstruction') %]
+ [% ELSIF procedure  == ('GraftingWorkShop') %]
+ 
+ [% embed ('GraftingWorkShop') %]
+ [% ELSIF procedure  == ('AmuAdminList') %]
+ 
+ [% embed ('AmuAdminList') %]
+[% ELSIF procedure  == ('HiveManHomeView') %]
+ 
+  [% embed ('HiveManHomeView') %]
+ [% ELSIF procedure  == ('FirstEval') %]
+   [% embed ('FirstEval') %]
+
+ [% ELSIF procedure  == ('ShamanDollarHome') %]
+
+[% embed ('ShamanDollarHomeView') %]
+
+ [% ELSIF procedure  == ('JoinDiscoussionList') %]
+ 
+ [% embed ('JoinDiscoussionList') %]
+ [% ELSIF procedure  == ('YardManagementSystem') %]
+ 
+ [% embed ('YardManagementSystem') %]
+ 
+ [% ELSE %]	
+
+ [% embed ('AnuProcedureList') %]
+
+ 
+ 
+</li>
+[% END %]
+
+
+</ul>
+   
+ 	 
+
+  
+ 	   
