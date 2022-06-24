@@ -40,6 +40,7 @@ sub execute {
         -REQUIRE_MATCHING_GROUP_FOR_SEARCHING_FLAG,
         -SIMPLE_SEARCH_STRING,
         -SESSION_OBJECT,
+        -SITE_NAME,
         -SORT_DIRECTION,
         -SORT_FIELD1,
         -SORT_FIELD2,

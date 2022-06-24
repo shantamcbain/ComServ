@@ -14,13 +14,13 @@ Active Hives [% yard_code %]</li>
                                   ORDER BY pallet_code
                                   ")%]    
                                   
-                                  <li><a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;sort_field1=pallet_code&amp;sort_field2=status&amp;first_record_to_display=0&amp;records_per_page=&&amp;[% session_string %]&amp;record_id=[% link.record_id %]&display_details_view.x=15&amp;display_details_view.y=12&amp;display_details_view=on" name="Contact"  title="[% link.pallet_name %] ">  &nbsp; <font   class="LeftSideBarNavStyle">[% link.pallet_name %]  &nbsp; 
+                                  <li><!-- <a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;sort_field1=pallet_code&amp;sort_field2=status&amp;first_record_to_display=0&amp;records_per_page=&&amp;[% session_string %]&amp;record_id=[% link.record_id %]&display_details_view.x=15&amp;display_details_view.y=12&amp;display_details_view=on" name="Contact"  title="[% link.pallet_name %] ">  &nbsp; <font   class="LeftSideBarNavStyle">[% link.pallet_name %]  &nbsp; 
 [% link.status  %]   &nbsp; [% link.queen_code %]   &nbsp; 
    [% link.total_pallet_size %]   &nbsp; 
    [% link.current %]
    &nbsp;<a href="/cgi-bin/Apis/queens.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;record_id=[% link.record_id %]&queen_code=[% link.queen_code %]&display_details_view=on"> Queen </a>
  
-	  &nbsp; <a href="/cgi-bin/Apis/queen_log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;queen_code=[% link.queen_code %]&amp;record_id=[% link.record_id %]">Queen log</a>   </li> </font >
+	  &nbsp; <a href="/cgi-bin/Apis/queen_log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on&amp;queen_code=[% link.queen_code %]&amp;record_id=[% link.record_id %]">Queen log <strong>Not working. Use queens view to enter logs.</strong></a>   </li> </font > -->
 
  [% END %]
  

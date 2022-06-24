@@ -151,10 +151,6 @@ use SiteSetup;
     $site_session = $DATAFILES_DIRECTORY.'/Sessions';
     $auth = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
 
-$mail_from        = "$CGI->param('email')||$mail_from"; 
-$page_top_view    = $CGI->param('page_top_view')||$page_top_view;
-$page_bottom_view = $CGI->param('page_bottom_view')||$page_bottom_view;
-$left_page_view   = $CGI->param('left_page_view')||$left_page_view;
 
 
 my $VIEW_LOADER = new Extropia::Core::View
@@ -1225,7 +1221,7 @@ my @MAIL_CONFIG_PARAMS = (
 
 my @EMAIL_DISPLAY_FIELDS = qw(
         therapeutic_action
-        botanical_nameclass="NavTableCellStyle"
+        botanical_name
         common_names
         key_name
         parts_used
