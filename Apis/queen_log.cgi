@@ -788,7 +788,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
 
     box_1_bees => [
         -DISPLAY_NAME => 'Frames of Bees in Box 1',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_1_bees',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -796,7 +796,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
     ],
     box_1_brood => [
         -DISPLAY_NAME => 'Frames of Brood in Box 1',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_1_brood',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -804,7 +804,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
     ],
       box_1_broodadded => [
         -DISPLAY_NAME => 'Frames of Brood added',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_1_broodadded',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -812,7 +812,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
     ],
   box_1_foundation => [
         -DISPLAY_NAME => 'Frames of Foundation in Box 1',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_1_foundation',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -820,7 +820,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
     ],
  box_1_comb => [
         -DISPLAY_NAME => 'Frames of Comb in Box 1',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_1_comb',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -829,7 +829,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
     ],
   box_1_honey => [
         -DISPLAY_NAME => 'Frames of Honey in Box 1',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_1_honey',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -837,7 +837,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
     ],
 box_1_empty => [
         -DISPLAY_NAME => 'Frames of Empty in Box 1',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_1_empty',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -846,7 +846,7 @@ box_1_empty => [
    
 box_2_bees => [
         -DISPLAY_NAME => 'Frames of Bees in Box 2',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_2_bees',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -854,7 +854,7 @@ box_2_bees => [
     ],
  box_2_brood => [
         -DISPLAY_NAME => 'Frames of Brood in Box 2',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_2_brood',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -862,7 +862,7 @@ box_2_bees => [
     ],
  box_2_comb => [
         -DISPLAY_NAME => 'Frames of Comb in Box 2',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_2_comb',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -870,7 +870,7 @@ box_2_bees => [
     ],
  box_2_empty => [
         -DISPLAY_NAME => 'Frames of Empty in Box 2',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_2_empty',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -878,7 +878,7 @@ box_2_bees => [
     ],
  box_2_honey => [
         -DISPLAY_NAME => 'Frames of honey in Box 2',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_2_honey',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -886,7 +886,7 @@ box_2_bees => [
     ],
 box_x_bees => [
         -DISPLAY_NAME => 'Frames of Bees in x',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_x_bees',
         -VALUES       =>  => [0..17],
         -LABELS       => \%xframes
@@ -894,7 +894,7 @@ box_x_bees => [
     ],
  box_x_brood => [
         -DISPLAY_NAME => 'Frames of Brood in  xBox ',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_x_brood',
         -VALUES       =>  => [0..17],
         -LABELS       => \%xframes
@@ -902,7 +902,7 @@ box_x_bees => [
     ],
  box_x_comb => [
         -DISPLAY_NAME => 'Frames of Comb in x Box ',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_x_comb',
         -VALUES       =>  => [0..17],
         -LABELS       => \%xframes
@@ -910,7 +910,7 @@ box_x_bees => [
     ],
  box_x_empty => [
         -DISPLAY_NAME => 'Frames of Empty in x Box ',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_x_empty',
         -VALUES       =>  => [0..17],
         -LABELS       => \%xframes
@@ -918,7 +918,7 @@ box_x_bees => [
     ], 
  box_x_honey => [
         -DISPLAY_NAME => 'Frames of honey in x Box ',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_x_honey',
         -VALUES       =>  => [0..17],
         -LABELS       => \%xframes
@@ -926,7 +926,7 @@ box_x_bees => [
     ],
 box_x_foundation => [
         -DISPLAY_NAME => 'Frames of Foundation in  xBox ',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_x_foundation',
         -VALUES       =>  => [0..17],
         -LABELS       => \%xframes
@@ -935,7 +935,7 @@ box_x_foundation => [
 
 brood_given_x => [
         -DISPLAY_NAME => 'Frames of X Brood Given',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'brood_given_x',
         -VALUES       =>  => [0..17],
         -LABELS       => \%xframes
@@ -944,7 +944,7 @@ brood_given_x => [
 
   brood_given => [
         -DISPLAY_NAME => 'Frames of Brood Given',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'brood_given',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -954,7 +954,7 @@ brood_given_x => [
  
    box_2_foundation => [
         -DISPLAY_NAME => 'Frames of Foundation in Box 2',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'box_2_foundation',
         -VALUES       =>  => [1..10],
         -LABELS       => \%frames
@@ -963,7 +963,7 @@ brood_given_x => [
 
   brood_added => [
         -DISPLAY_NAME => 'Frames of Brood added',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'brood_added',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -971,7 +971,7 @@ brood_given_x => [
     ],
  honey_box => [
         -DISPLAY_NAME => 'Frames of honey',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'honey_box',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -980,7 +980,7 @@ brood_given_x => [
 
     honey_box_foundation => [
         -DISPLAY_NAME => 'Frames of Foundation in honey box',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'honey_box_foundation',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -988,7 +988,7 @@ brood_given_x => [
     ],
      honey_added => [
         -DISPLAY_NAME => 'Frames of honey box added',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'honey_added',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -996,7 +996,7 @@ brood_given_x => [
     ],
      honey_removed => [
         -DISPLAY_NAME => 'Frames of honey box Removed',
-        -TYPE         => 'checkbox_group',
+        -TYPE         => 'textfield',
         -NAME         => 'honey_removed',
         -VALUES       =>  => [0..10],
         -LABELS       => \%frames
@@ -1110,11 +1110,11 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
      qw(details),
      qw(box_1_bees),
      qw(box_1_brood),
-     qw(box_1_broodadded),
      qw(box_1_foundation),
      qw(box_1_comb),
      qw(box_1_empty),
      qw(box_1_honey),
+     qw(box_1_broodadded),
      qw(box_2_bees),
      qw(box_2_brood),
      qw(box_2_foundation),
