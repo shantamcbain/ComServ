@@ -1,4 +1,5 @@
-
+[% ViewVersion = 'v 0.03 2022/07/28 /cgi-bin/HTMLTemplates/Apis/QueensRecordView.ttml'  %]
+[%# ViewVersion = 'v 0.02 2022/04/11 /cgi-bin/HTMLTemplates/Apis/QueensRecordView.ttml'  %]
 
 [%# the ENCY template
 #	$Id: HerbDetailView.ttml,v 1.2 2011/09/21 19:25:15 shanta Exp $	
@@ -8,7 +9,6 @@
 
 [% PROCESS DefautVariables.ttml %]
 [% PROCESS DefaultDbi.ttml %]
-[% ViewVersion = 'v 0.02 2022/04/11 /cgi-bin/HTMLTemplates/Apis/QueensRecordView.ttml'  %]
 [% IF data.debug == 1 %]
  <p>[%	ViewVersion %] </p>
    [% embed  ('InheretedVariablesView') %]

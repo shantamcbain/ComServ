@@ -1,0 +1,49 @@
+[% ViewVersion = 'v 0.001 2022/04/28 /cgi-bin/HTMLTemplates/Forager/ForagerLive.ttml,'%]
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+[% END %] 
+<h2>ForagerLive stream! </h2>
+
+<p>Come join us as we talk about Foraging. This, the first in the series, will be vary open ended.    </p>
+<p>LiveStream will go live at 10 am Sunday May 2</p>
+<h2>Foraging Nettles</h2>
+<ul>
+ <li><h3>Agenda</h3>
+  <ul>
+  <li><h4>Overview</h4> 
+  
+  </li>
+  <li>Technical Start time 9:30 am PST</li>
+  <li>Event Star time 10 am PST</li>
+
+ </ul>
+ <li><h3>Equipment needed</h3> The basic equipment needed for different levels of production.</li>
+ <li><h3>Hardware</h3></li>
+ <li><h3>Streaming services</h3>
+  <ul>
+ <li><a href="/cgi-bin/index.cgi?site=Forager&[% session_string %]&procedure=StreamingView">Details</a></li>  
+  </ul>
+ </li>
+ </ul>
+ <li><h3>Topic of live stream</h3> Harvest Nettles 
+</p>
+</li>
+</ul>
+
+To register <a href="mailto:shanta@forager.ca?subject=Register%20for%20ForagerLive&amp;body=Add%20me%20to%20your%20ForagerLive%20mailing%20list.%20Tell%20us%20if%20you%20like%20to%20be%20Guest"> Email</a> 
+<p>
+<!-- <a href="http://ulc.usbm.ca/mailman/listinfo/sundaylive_ulc.usbm.ca" target="_blank">Join the list</a>
+</p>
+<a href="https://youtu.be/cDUxlX7dAjo" target="_blank">This weeks Live stream at YouTube</a>
+ -->
+[%#https://ulc.usbm.ca/cgi-bin/page.cgi?site=ULC&[% session_string %]
+<!-- <p><a href="
+https://ulc.usbm.ca/cgi-bin/page.cgi?site=ULC&[% session_string %] &page=SundayLive&display_details_view.x&record_id=281&Sunday%20Live%20Stream">edit page view</a>
+ 
+</a></p>
+<p><a href="/cgi-bin/index.cgi?site=ULC&[% session_string %]&page=SundayLive">edit page view</a>
+
+<a href="/cgi-bin/index.cgi?site=ULC&[% session_string %]session_id=UPQRQ4OV7DGCK9SA&procedure=SundayLive">SundayLive</a>
+</p> 
+<p><a href="https://forager.com/cgi-bin/index.cgi?site=Forager&procedure=SundayLive>SundayLive public no session</a>
+</p>-->

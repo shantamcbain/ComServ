@@ -1,18 +1,24 @@
-[% ViewVersion = 'v 2.01 2022/04/04/cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
+[% ViewVersion = 'v 2.02 2022/07/29 /cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
+[%# ViewVersion = 'v 2.01 2022/04/04/cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
 
 
 [% PROCESS DefautVariables.ttml %]
-
  
 [% PROCESS DefaultDbi.ttml %]
 
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	
+  [% embed  ('InheretedVariablesView') %]
+[% END %] 
 
+[% SiteDisplayName%] 
 
+[%  Version  %] 
 
 [% IF group == "Mentoring"	%]
-	[% embed(data.page_top_view,['$SiteName','Mentor home.']) %]
+	[% embed(data.page_top_view,['$SiteDisplayName','Mentor home.']) %]
 [% ELSE %]
-	[% embed(data.page_top_view,['$SiteName $ViewVersion ','Home page. ']) %]
+	[% embed(data.page_top_view,['$SiteDisplayName $Version ','Home page. ']) %]
 [% END %]
 
 [% embed('ErrorDisplayView') %]
@@ -21,10 +27,7 @@
 	<tr>
 	<td>
 
-[% IF data.debug == 1 %]
- [%	ViewVersion %] 	
-  [% embed  ('InheretedVariablesView') %]
-[% END %] 
+
 [% $Page %]	
 [%# procedure  %]
 	[% IF username %]
@@ -38,7 +41,7 @@
  [% ELSE %]
 [% embed('JoinUsLink')	%]  
  [% END %]
-<h2><a href="/cgi-bin/BuyAndSell/buy.cgi?site=[% SiteName %]&[% session_string %]" target="_blank" name="BuyAndSell">Our Buy and Sell</a></h2>
+<h2><a href="/cgi-bin/BuyAndSell/buy.cgi?site=[% SiteName %]&amp[% session_string %]" target="_blank" name="BuyAndSell">Our Buy and Sell</a></h2>
 [% embed ("AdminTodoListLink")%]	
 		[% SiteName = data.site_name%]
 [% IF procedure %]

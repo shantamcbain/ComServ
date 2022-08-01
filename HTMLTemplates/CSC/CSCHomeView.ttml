@@ -27,7 +27,7 @@
 <p> Services provided: Click The product link in the main links group.
 <ul>
 <li><a href='http://www.computersystemconsulting.ca/whmcs/cart.php'>Website hosting</a> </li>
-<li> <a href='http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&domain=register' target=''_blank''>Register your domain with us.</a></li>
+<li> <a href='http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&amp;domain=register' target=''_blank''>Register your domain with us.</a></li>
 <li> Check out our <a href='http://demo.computersystemconsulting.ca' target='_blank'>Demo</a> </li>
 <li>
 <h1>Join our VOIP services</h1>
@@ -36,11 +36,11 @@
 </li>
 </ul>
 <h2>Crypto currency</h2>
-<p>BitCoin and other coins are in the news a lot lately. The air is filled with. Wallets. Exchanges. <a href='https://computersystemconsulting.ca/cgi-bin/index.cgi?site=CSC&page=MigratingToCrypto' target='_blank'>Join us in that adventure.</a> of fingerling it out.</p>
+<p>BitCoin and other coins are in the news a lot lately. The air is filled with. Wallets. Exchanges. <a href='https://computersystemconsulting.ca/cgi-bin/index.cgi?site=CSC&amp;page=MigratingToCrypto' target='_blank'>Join us in that adventure.</a> of fingerling it out.</p>
 <strong>
 New</strong>Pay for your services with us. Two BitCoin exchanges
 </p>
-<h2> <a href='/cgi-bin/index.cgi?site=CSC&page=vpn' target='_blank' name='Our VPN Services'>vpn </a></h2>
+<h2> <a href='/cgi-bin/index.cgi?site=CSC&amp;page=vpn' target='_blank' name='Our VPN Services'>vpn </a></h2>
 <p>We now offer several choices of Virtual Private Network option. Click the VPN link on the left for more information.</p>
 
 

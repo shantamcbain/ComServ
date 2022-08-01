@@ -40,7 +40,7 @@
  </td>
  <td>
   <h3>Graph<h3>
-  <a href="/cgi-bin/Brew/graph_debug.cgi?site=[% SiteName %]&batchnumber=[% batchnumber %]">Refresh graph</a>
+  <a href="/cgi-bin/Brew/graph_debug.cgi?site=[% SiteName %]&amp;batchnumber=[% batchnumber %]">Refresh graph</a>
 <p>
   <img src="/images/[% batchnumber %].png"width="100%" alt="temp graph">
 </p>

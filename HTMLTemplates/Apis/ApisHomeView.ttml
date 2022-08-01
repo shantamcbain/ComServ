@@ -1,4 +1,5 @@
-[% Version = 'v 1.156 2022/06/18 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
+[% Version = 'v 1.157 2022/07/22 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
+[%# Version = 'v 1.156 2022/06/18 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
 [%# Version = 'v 1.155 2022/02/16 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.154 2022/02/10 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.153 2022/02/08 shanta ApisHomeView.ttml' %]
@@ -52,7 +53,7 @@
 	
 	
 	
-<h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=NextEvent">
+<h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=NextEvent">
 Next event.</a>	</h2>
         
 	<h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=LiveStream">
@@ -77,7 +78,7 @@ Next event.</a>	</h2>
             <ul>
             <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardManagementSystem" target="Blank">Apiary Management System. </a><br>Track what is happening in your yards</li> In active development. drop by and give us a hand.
 
-            <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
+            <li><a href="/cgi-bin/FAQ/faq.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;first_record_to_display=0&amp;records_per_page=10">Apis FAQ. Find out how to do things.</a></li>
             <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=ForumsView" target="_content"> Forums </a>Ask question of other users.</li>
             <li>URL DataBase that contains links recommended by users. Add a few of your own will your looking.</li>
             <li>
@@ -88,10 +89,10 @@ Next event.</a>	</h2>
      <li><a href="https://www.patreon.com/beemaster" target="_blank" name="patreon" onmouseover="Support us">Patrion </a>
      <p>We have many levels of support that you can afford.</p>
      </li>	
-     <li><h3><a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&pid=8" target="_blank" name="Join our site">Membership on site.</a></h3></li>
+     <li><h3><a href="http://computersystemconsulting.ca/whmcs/cart.php?a=add&amp;pid=8" target="_blank" name="Join our site">Membership on site.</a></h3></li>
 	</ul>		
 
-<iframe src="https://calendar.google.com/calendar/embed?src=8a4699c0rh5ava93rklas1embk%40group.calendar.google.com&ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://calendar.google.com/calendar/embed?src=8a4699c0rh5ava93rklas1embk%40group.calendar.google.com&amp;ctz=America%2FVancouver" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 </td >	
 		</tr>
 	</tbody>

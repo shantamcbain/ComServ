@@ -45,12 +45,12 @@
 <FORM>
 <SELECT  NAME="url" WIDTH=20>
 <OPTION VALUE="None">Select a page from this list --->
-<OPTION VALUE="http://cgi.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BrewRecipeView&brewname=1516">1516
-<OPTION VALUE="http://cgi.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BrewRecipeView&brewname=ODM">ODM Stout
-<OPTION VALUE="http://cgi.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BrewRecipeView&brewname=TradAle">Trad Ale
-<OPTION VALUE="http://cgi.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BrewRecipeView&brewname=ArpicotAle">Apricot Ale
-<OPTION VALUE="http://cgi.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BrewRecipeView&brewname=TTKIrishRedAle">TTK Irish Red Ale
-<OPTION VALUE="http://cgi.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BrewRecipeView&brewname=GarlicAleVin">Garlic Ale (for Vineger)</SELECT>
+<OPTION VALUE="http://cgi.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BrewRecipeView&amp;brewname=1516">1516
+<OPTION VALUE="http://cgi.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BrewRecipeView&amp;brewname=ODM">ODM Stout
+<OPTION VALUE="http://cgi.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BrewRecipeView&amp;brewname=TradAle">Trad Ale
+<OPTION VALUE="http://cgi.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BrewRecipeView&amp;brewname=ArpicotAle">Apricot Ale
+<OPTION VALUE="http://cgi.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BrewRecipeView&amp;brewname=TTKIrishRedAle">TTK Irish Red Ale
+<OPTION VALUE="http://cgi.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BrewRecipeView&amp;brewname=GarlicAleVin">Garlic Ale (for Vineger)</SELECT>
 
 <INPUT TYPE=BUTTON VALUE="Go!" onClick="JumpToIt(this.form)">	  
 

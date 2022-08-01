@@ -27,7 +27,7 @@
       SiteDisplayName = data.site_display_name
       site         = SiteName
       title        = data.title
-      Version      = data.versionu
+      Version      = data.version
       username     = data.session_object.getAttribute('-KEY','auth_username') %]
 
 

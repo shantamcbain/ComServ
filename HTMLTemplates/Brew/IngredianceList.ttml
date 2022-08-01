@@ -62,7 +62,7 @@
 	        group     == 'Demo_admin' OR
 	        group    ==  'WB_admin' OR
 	        group     == 'MJB_Admin'        %]
-<a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&display_modification_form=on&record_id=[% link.record_id %]&[% session_string %]" name="Modify ingrediant"  title="Modify ingrediant Batch" style="AddButtonStyle">Modify</a>   [% END %]
+<a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;display_modification_form=on&amp;record_id=[% link.record_id %]&amp;[% session_string %]" name="Modify ingrediant"  title="Modify ingrediant Batch" style="AddButtonStyle">Modify</a>   [% END %]
 </td>
 </tr>                                 
 	   [% END %]
@@ -122,7 +122,7 @@
 <tr>
 <td > [% link.ingrediant_name %]</td>
 <td> [% link.weight %]</td>
-<td><a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&display_modification_form=on&record_id=[% link.record_id %]&[% session_string %]" name="Modify Batch"  title="Add New Batch" style="AddButtonStyle">Modify</a></td>
+<td><a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;display_modification_form=on&amp;record_id=[% link.record_id %]&amp;[% session_string %]" name="Modify Batch"  title="Add New Batch" style="AddButtonStyle">Modify</a></td>
 </tr>                                 
 		
 		    
@@ -174,7 +174,7 @@
 <tr>
 <td> [% link.ingrediant_name %]</td>
 <td> [% link.weight %]</td>
-<td><a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&display_modification_form=on&record_id=[% link.record_id %]&[% session_string %]" name="Modify item"  title="Add New item" style="AddButtonStyle">Modify</a></td>
+<td><a href="http://brew.computersystemconsulting.ca/cgi-bin/Brew/ingrediant.cgi?site=[% SiteName %]&amp;display_modification_form=on&amp;record_id=[% link.record_id %]&amp;[% session_string %]" name="Modify item"  title="Add New item" style="AddButtonStyle">Modify</a></td>
 </tr>                                
 		
 		    
