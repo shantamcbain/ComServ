@@ -1,0 +1,59 @@
+[% Version = ',v 0.01 2022/08/14 /cgi-bin/HTMLTemplates/USBM/TripCheckList.ttml'%]
+
+
+
+[%# embed('ErrorDisplayView') %]
+
+
+
+
+
+</div>
+<div ALIGN="center">
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+
+<A NAME="PageTop"></A>
+</div>
+<h2> Trip check list.</h2>
+
+<h3>What to take on a field trip.</h3>
+
+
+<ul>
+ <li><h2>Personal gear</h2>
+  <ul>
+    <li><h3>Footwear</h3><p>Good sturdy boots with good traction.</p></li>
+    <li><h3>Head Gear</h3><p>You will need to protect your head from the sun etc </p></li>
+    <li><h3>Gloves</h3><p>Hand coverings that you can use to protect your hands. </p></li>
+    <li><h3>Water</h3></li> 
+    <li><h3>Safety Gear</h3></li> 
+     <ul>
+      <li>Leather Gloves</li>
+      <li>Rubber</li>
+      <li>Neoprine</li>
+     </ul></p>
+    </li>
+   </ul>
+   <li><h3>Harvest Tools</h3>
+    <ul>
+     <li>Parafleches</li>
+     <li>Knives</li>
+     <li>Cychles</li>
+     <li>Pruners</li>
+     <li>Ropes</li>
+     <li>Shovels</li>
+    </ul>
+   </li>  
+   <li><h3>Data on herbs being harvested.</h3><p>go to Herb <a href="https://usbm.ca/cgi-bin/index.cgi?site=Forager&session_id=YTNDQV2NVAUUGHMQ&view=BotanicalNameView" target="_blank">DataBase</a> and save the page of each herb to your device(s) that you will be using in the field.</p></li>  
+   <li><h3>Navigation</h3>Gps Maps etc</li>   
+   <li><h3>Environmental</h3><p>Weather reports Etc </p></li>
+  </ul> 
+ </li>
+</ul>
+
+<p>We will be exploring ways to share the world we live in with better harmony and respect for all it's inhabitants.</p>
+
+<a href="http://helpdesk.computersystemconsulting.ca" target="_Blank" > HelpDesk</a>
+

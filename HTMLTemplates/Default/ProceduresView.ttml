@@ -92,7 +92,10 @@
 		     [% embed ('BMasterProcedures') %] 
 [% ELSIF SiteName == "MonasheeSupport" %]
 			[% embed ('USBMProcedures') %]
-				        
+		[% ELSIF SiteName == "Forager" OR
+		         SiteName == "ForagerDev"  %]
+			[% embed ('USBMProcedures') %]
+		        
 		[% ELSIF SiteName == "SMO" %]
 			[% embed ('BMasterProcedures') %]
 		[% ELSIF SiteName == "HE" OR

@@ -73,6 +73,9 @@
  [% ELSIF procedure  == ('StreamingView') %]
  
  [% embed ('StreamingView') %]
+ [% ELSIF procedure  == ('TripCheckList') %]
+ 
+ [% embed ('TripCheckList') %]
 [% ELSIF procedure  == ('YardManagementSystem') %]
  
  [% embed ('YardManagementSystem') %]

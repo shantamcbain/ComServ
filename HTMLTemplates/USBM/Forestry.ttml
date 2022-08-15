@@ -1,4 +1,4 @@
-[% Version = '/cgi-bin/HTMLTemplates/USBM/Forestry.ttml,v 0.01 2022/03/19 17:43:15 shanta Exp'%]
+[% Version = ',v 0.01 2022/08/14 /cgi-bin/HTMLTemplates/USBM/Forestry.ttml'%]
 [%# Version = '/cgi-bin/HTMLTemplates/USBM/ULCHomeView.ttml,v 0.01 2021/10/03 17:43:15 shanta Exp'%]
 [%# ViewVersion = '/cgi-bin/HTMLTemplates/USBM/USBMHomeView.ttml,v 1.10 2020/04/22 17:43:15 shanta Exp'%]
 [%# the ENCY template
@@ -21,12 +21,10 @@
 
 <A NAME="PageTop"></A>
 </div>
-<h2>Our Department of Forestry and Wild Land Usel.</h2>
+<h2> Trip check list.</h2>
 
-<h3>Sustainable Wild Land Use.</h3>
+<h3>What to take on a field trip.</h3>
 
-<p>Join us in the development of our forestry program.  </p>
-<p>Appropriate forestry practices for a given are is essential. Multi use is also critical for sustainability.</p>
 
 <ul>
  <li><h2>Forest lands provide use for </h2>
