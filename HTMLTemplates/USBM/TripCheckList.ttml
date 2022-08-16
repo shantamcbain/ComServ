@@ -26,13 +26,19 @@
   <ul>
     <li><h3>Footwear</h3><p>Good sturdy boots with good traction.</p></li>
     <li><h3>Head Gear</h3><p>You will need to protect your head from the sun etc </p></li>
-    <li><h3>Gloves</h3><p>Hand coverings that you can use to protect your hands. </p></li>
-    <li><h3>Water</h3></li> 
-    <li><h3>Safety Gear</h3></li> 
+    <li><h3>Gloves</h3><p>Hand coverings that you can use to protect your hands. </p>
      <ul>
       <li>Leather Gloves</li>
       <li>Rubber</li>
       <li>Neoprine</li>
+     </ul></p>
+</li>
+    <li><h3>Water</h3></li> 
+    <li><h3>Safety Gear</h3></li> 
+     <ul>
+      <li>Hardhat</li>
+      <li>FirstAid Kit</li>
+      <li>Rope</li>
      </ul></p>
     </li>
    </ul>
@@ -40,7 +46,7 @@
     <ul>
      <li>Parafleches</li>
      <li>Knives</li>
-     <li>Cychles</li>
+     <li>Cycles</li>
      <li>Pruners</li>
      <li>Ropes</li>
      <li>Shovels</li>
