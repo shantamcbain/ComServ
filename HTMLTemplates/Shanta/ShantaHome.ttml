@@ -1,4 +1,5 @@
-[% ViewVersion = 'v 1.151 2022/05/04 /cgi-bin/HTMLTemplates/Shanta/ShantaHome.ttml,'%]
+[% ViewVersion = 'v 1.151 2022/08/27 /cgi-bin/HTMLTemplates/Shanta/ShantaHome.ttml,'%]
+[%# ViewVersion = 'v 1.151 2022/05/04 /cgi-bin/HTMLTemplates/Shanta/ShantaHome.ttml,'%]
 [%# Version = 'v 1.149 2021/11/12 shanta' %]
 [%# Version = 'v 1.148 2020/09/21 shanta' %]
 [%# Version = 'v 1.147 2020/09/21 shanta' %]
@@ -42,11 +43,12 @@
 <li><a href="https://beeherenow.beemaster.ca/cgi-bin/index.cgi?site=BHN" target="_blank">Bee Here Now</a></li>
 	<li><a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster" target="_blank">Beemaster</a></li>
 	<li><a href="https://brew.computersystemconsulting.ca" target="_blank">Brew</a></li>
-	<li><a href="https://usbm.ca/cgi-bin/index.cgi?site=USBM" target="_blank">USBM</a></li>
+	<li><a href="https://forager.com/cgi-bin/index.cgi?site=Forager" target="_blank">Forager.com</a></li>
 	<li><a href="https://computersystemconsulting.ca/cgi-bin/index.cgi?site=CSC" target="_blank">CSC</a></li>
    <li><a href="https://beemaster.ca/cgi-bin/index.cgi?site=SMO" target="_blank">Saddle Mountain organics</a></li>
 	<li><a href="https://ulc.usbm.ca/cgi-bin/index.cgi?site=ULC" target="_blank">ULC</a></li>
 	<li><a href="/cgi-bin/index.cgi?site=ShantaWorkShop">Shanta's work shop</a></li>
+	<li><a href="https://usbm.ca/cgi-bin/index.cgi?site=USBM" target="_blank">USBM</a></li>
 	</ul>
 </ul>	
 
@@ -74,11 +76,12 @@
 <br>                      
 
 <ul>
-	<li><a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster" target="_blank">Beemaster</a></li>
-	<li><a href="https://brew.computersystemconsulting.ca" target="_blank">Brew</a></li>
-	<li><a href="https://usbm.ca/cgi-bin/index.cgi?site=USBM" target="_blank">USBM</a></li>
-	<li><a href="https://computersystemconsulting.ca/cgi-bin/index.cgi?site=CSC" target="_blank">CSC</a></li>
-   
+  <li><a href="https://beemaster.ca/cgi-bin/index.cgi?site=BMaster" target="_blank">Beemaster</a></li>
+  <li><a href="https://brew.computersystemconsulting.ca" target="_blank">Brew</a></li>
+  <li><a href="https://computersystemconsulting.ca/cgi-bin/index.cgi?site=CSC" target="_blank">CSC</a></li>
+  <li><a href="https://forager.com/cgi-bin/index.cgi?site=Forager" target="_blank">Forager.com</a></li>
+  <li><a href="https://usbm.ca/cgi-bin/index.cgi?site=USBM" target="_blank">USBM</a></li>
+	 
 </ul>
 
 [% END %]
