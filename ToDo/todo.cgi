@@ -50,6 +50,7 @@ my @TEMPLATES_SEARCH_PATH =
        ../HTMLTemplates/ECF
        ../HTMLTemplates/HE
        ../HTMLTemplates/HelpDesk
+       ../HTMLTemplates/Forager
        ../HTMLTemplates/Organic
        ../HTMLTemplates/Shanta
        ../HTMLTemplates/SkyeFarm
