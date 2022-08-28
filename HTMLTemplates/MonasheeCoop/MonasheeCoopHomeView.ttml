@@ -1,4 +1,5 @@
-[% ViewVersion =  ' v0.02 2022/04/22  /cgi-bin/HTMLTemplates/Monashee/MonasheeHomeView.ttml, '%]
+[% ViewVersion =  ' v0.03 2022/08/27  /cgi-bin/HTMLTemplates/Monashee/MonasheeHomeView.ttml, '%]
+[%# ViewVersion =  ' v0.02 2022/04/22  /cgi-bin/HTMLTemplates/Monashee/MonasheeHomeView.ttml, '%]
 
 
 
@@ -11,7 +12,15 @@
 <h2>'In order to change an existing paradigm you do not struggle to try and change the problematic model. You create a new model and make the old one obsolete' - R. Buckminster Fuller</h2>
 
 
-<p>Thanks for joining us. Here you will get support for the main site. This application will help your organizations handle the issues and plans for your web presents. It also can be used to support staff and volunteer's with training. The site has currently three groups. Not logged in which can view all public areas of the site but cannot enter any data into the site. Normal registered with the site sees all public areas and can add data to public applications such as the BuyAndSell. The 3rd is admin. They see all the site and admin only applications such as ToDo,s Logs, Pages, Streaming software create links etc. Future groups can be added such as members, volunteers and staff.</p>
+<p>Thanks for joining us. Here you will get support for the main [% SiteDisplayName %] site. This application will help your organizations handle the issues and plans for your web future. It also can be used to support staff and volunteer's with training. </p>
+<p>
+The site has currently three groups.</p> 
+
+<ul>
+ <li>Not logged in which can view all public areas of the site but cannot enter any data into the site.</li>
+ <li> Normal registered with the site sees all public areas and can add data to public applications such as the BuyAndSell.</li>
+ <li>  The 3rd is admin. They see all the site and admin only applications such as ToDo,s Logs, Pages, Streaming software create links etc. Future groups can be added such as members, volunteers and staff.</li>
+ </p>
 <p>
 
 <h2>Site Goals</h2>
@@ -20,12 +29,12 @@
 <p>Be sure to join the admin mailing list below!</p>
 
 [% ELSE %]
-<h3>To use this site as admin you will need to create an account. Fallow the following steps</h3>
+<h3>To use this site as admin you will need to create an account. Follow the following steps</h3>
 <ul>
  <li>Click any of the log on links. There are 3 on most pages One in the top drop list one at the head of the page the other in the page footer.</li>
  <li>Click the register link</li>
  <li>Fill in the fields</li>
- <li>We will get a notification of your registration. We will upgrade your log in to admin as soon as possible. </li>
+ <li>We will get a notification of your registration. We will upgrade your log in to admin as soon as possible. Ppresuming of course that you have the rights to become admin.</li>
 </ul>
 <p>Some of the below will be only seen by admin users</p>
 
@@ -42,7 +51,7 @@
   
    <li><h3>Customer Support</h3>
    
-   <p>Aid customers with website related problems.</p>
+   <p>Aid customers with web site related problems.</p>
    </li>
    <li><h3>create email address for board, staff and volunteer's.</h3>
    </li>
