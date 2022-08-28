@@ -4,6 +4,7 @@
 [%# AND (queen_code = '$queen_code') %]
 [% FOREACH link = DBI.query("SELECT * FROM apis_queen_log_tb
                                   WHERE   sitename = '$SiteName'
+                                   AND queen_code = '$queen_code'
                                    AND (status = 4)
                                    ORDER BY start_date  
                                   ")%]  
