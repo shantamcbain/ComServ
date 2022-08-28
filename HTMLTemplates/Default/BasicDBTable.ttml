@@ -1,4 +1,4 @@
-[% ViewVersion = 'v .010 /cgi-bin/HTMLTemplates/Default/BasicDataView.ttml,'%]
+[% ViewVersion = 'v .011 /cgi-bin/HTMLTemplates/Default/BasicDBTable.ttml,'%]
 	
 	[% IF data.debug == 1 %]
  [%	ViewVersion %] 	
@@ -19,6 +19,7 @@ my @required = (
         -CGI_OBJECT,
         -FIRST_RECORD_ON_PAGE,
         -SCRIPT_NAME,
+        -SITE_NAME,
         -KEY_FIELD,
         -FIELD_NAME_MAPPINGS,
             );
@@ -205,10 +206,13 @@ for my $rh_record (@records) {
   if ($script_name eq  '/cgi-bin/ToDo/todo.cgi'
 	|| $script_name eq  '/cgi-bin/ToDo/project_tracker.cgi'
 	){
-    $output .= qq[
+   
+ $output .= qq[
 <a href="/cgi-bin/ToDo/log.cgi?site=$sitename&amp;session_id=$session_id&amp;display_add_form=on&amp;todo_record_id=$record_id
 &amp;abstract=$subject&amp;project_code=$project_code&amp;details=$details&amp;priority=$priority" "target="_Blank">Log</a>
-                 ];
+ <a href="/cgi-bin/ToDo/log.cgi?site=$sitename&amp;session_id=$session_id&amp;display_details=on&amp;todo_record_id=$record_id
+&amp;abstract=$subject&amp;project_code=$project_code&amp;details=$details&amp;priority=$priority" "target="_Blank">Log history</a>                
+];
 
 	}
 
@@ -258,7 +262,7 @@ my $UserName = $rh_record->{'username'};
   if ($script_name eq   '/cgi-bin/Apis/pallet.cgi' 
 	){
     $output .= qq[
-<a href="queens.cgi?site=$sitename&amp;session_id=$session_id&amp;submit_power_search=on&amp;simple_search_string=$queen_code" >queen</a><br>
+<a href="queens.cgi?site=$sitename&amp;session_id=$session_id&amp;&display_details_view.x=9&display_details_view.y=8submit_power_search=on&amp;simple_search_string=$queen_code" >queen</a><br>
 <a href="queens.cgi?site=$sitename&amp;session_id=$session_id&amp;display_add_form=on&amp;pallet_code=$pallet_code&amp;queen_code=$queen_code" >add</a><br>
 
                  ];

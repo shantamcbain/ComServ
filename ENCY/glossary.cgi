@@ -19,7 +19,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 0.1, Dec 05, 2021";
+my $AppVer = "ver 0.11, Jan 22, 2022";
 
 BEGIN{
     use vars qw(@dirs);
@@ -58,6 +58,10 @@ my $CGI = new CGI() or
     die("Unable to construct the CGI object" .
         ". Please contact the webmaster.");
 
+foreach ( $CGI->param() )
+{
+ $CGI->param( $1, $CGI->param($_) ) if (/(.*)\.x$/);
+}
 
 ######################################################################
 #                          SITE SETUP                             #
@@ -84,6 +88,7 @@ my $app_logo_alt;
 my $IMAGE_ROOT_URL; 
 my $DOCUMENT_ROOT_URL;
 my $site;
+my $CSS_VIEW_NAME = '/styles/CSCCSSView';
 my $GLOBAL_DATAFILES_DIRECTORY;
 my $TEMPLATES_CACHE_DIRECTORY;
 my $APP_DATAFILES_DIRECTORY;
@@ -104,14 +109,17 @@ my $matchgroup=0;
 my $allow_additions = 0;
 my $allow_modifications = 0;
 my $username;
-my $last_update = 'September 11, 2015';
+my $last_update = $AppVer|| 'January 22, 2022';
 my $SITE_DISPLAY_NAME = 'None Defined for this site.';
 my $FAVICON;
 my $ANI_FAVICON;
 my $FAVICON_TYPE;
 my $Affiliate = 001;
 my $HasMembers = 0;
-    
+my $pid        = '15';
+my $site_for_search = 0; 
+my $HostName   = $ENV{'SERVER_NAME'};
+
 use SiteSetup;
   my $UseModPerl = 0;
   my $SetupVariables  = new SiteSetup($UseModPerl);
@@ -148,9 +156,10 @@ use SiteSetup;
      $DATAFILES_DIRECTORY    = $APP_DATAFILES_DIRECTORY;
      $site_session           = $DATAFILES_DIRECTORY.'/Sessions';
      $auth                   = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-     my $CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
+     $CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
      my $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
- 
+     $pid                     = $SetupVariables->{-PID};
+
      $mail_from              = $CGI->param('email')||$mail_from; 
      $page_top_view          = $CGI->param('page_top_view')||$page_top_view;
      $page_bottom_view       = $CGI->param('page_bottom_view')||$page_bottom_view;
@@ -576,8 +585,9 @@ my @DATASOURCE_FIELD_NAMES = qw(
         date_time_posted
 );
  my    %type_code = (
-         	therapeutic_action      => 'Therapeutic action',
-        constituents     => 'Constituents',
+        therapeutic_action => 'Therapeutic action',
+        constituents       => 'Constituents',
+        term               => 'Glossary term',
         
         
         );
@@ -1403,7 +1413,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -MODIFY_FORM_VIEW_NAME                  => 'ModifyRecordView',
     -MODIFY_EMAIL_BODY_VIEW                 => 'ModifyEventEmailView',
     -POWER_SEARCH_VIEW_NAME                 => 'PowerSearchFormView',
-    -REQUIRE_AUTH_FOR_SEARCHING_FLAG        => 0,
+    -REQUIRE_AUTH_FOR_SEARCHING_FLAG        => $site_for_search,
     -REQUIRE_AUTH_FOR_ADDING_FLAG           => 1,
     -REQUIRE_AUTH_FOR_MODIFYING_FLAG        => 1,
     -REQUIRE_AUTH_FOR_DELETING_FLAG         => 1,

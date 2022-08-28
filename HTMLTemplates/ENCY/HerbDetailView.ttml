@@ -1,29 +1,22 @@
+[% ViewVersion = 'v 1.99 /cgi-bin/HTMLTemplates/ENCY/HerbDetailView'  %]
+
 [%# the ENCY template
 #	$Id: HerbDetailView.ttml,v 1.2 2011/09/21 19:25:15 shanta Exp $	
 #file location/cgi-bin/HTMLTemplates/ENCY
 %]
+[% PROCESS DefautVariables.ttml %]
 [% PROCESS DefaultDbi.ttml %]
 
-[% embed(data.page_top_view,['-PAGE_TITLE','Bee Pasture by botanical name.']) %]
+[% embed(data.page_top_view,['-PAGE_TITLE','Herb Details.']) %]
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 
+[% END %]
 
 [% embed('ErrorDisplayView') %]
 
 
-[% IF data.session_object %]
 
-	[% session_id = data.session_object.getId() %]
-        [% session_string = "session_id=$session_id" %]
-
-[% END %] 
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-   [% LastUpdate = data.last_update %]
-   [% SiteLastUpdate = data.site_last_update %]
-   [% HerbCode = data.record_id %]
-   [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-[% PROCESS DefaultDbi.ttml %]
 
 
 <!-- /HTMLTemplates/ENCY/BeePastureView.ttml -->
@@ -31,13 +24,12 @@
 	[% IF username %]
 
 <h3 > Hello  [% firstname %]  [% lastname %]! Welcome to     [% data.site_display_name %]
- Plant data base!</h3>
+!</h3>
 	  
 
 	[% ELSE %]
 
-	<h3>  Hello! Welcome to [%  data.site_display_name %]
- Plant data base!</h3
+	<h3>  Hello! Welcome to [%  data.site_display_name %]!</h3
 
 	[% END %]
 
@@ -47,12 +39,35 @@
 </div>
 
      
-        <h2Herb Details.</h2>
+        <h2>Herb Details.</h2>
       
       
  
  <p>Herb detail
- [%  embed('HerbDetailListSQL') %]
+
+   
+[% record_id = data.session_object.getAttribute('-KEY','record_id') %]                                
+[% record_id  %] 
+<table>
+<tr>Botanical Name<td></td><td>Common Names</td><td>Image</td><td>link</td></tr>
+ [% FOREACH link = DBI.query("SELECT * FROM ency_herb_tb
+                                  WHERE (record_id = '')
+                                  ORDER BY botanical_name                                ")%]    
+                                  
+
+                                   <tr>
+<td class="NavTableCellStyle"> [% link.botanical_name %]  </td>
+<td class="NavTableCellStyle"> [% link.common_names %]  </td>
+<td class="NavTableCellStyle"><img src=" [% link.image %]" WIDTH ="300"      HEIGHT ="325" /> </td>
+<td class="NavTableCellStyle">        
+  <a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&display_details_view.x&record_id=[% link.record_id %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Details </font></a>
+     </td>
+   </tr> 
+
+   [% END %]
+ </table>
+ 
+ [%#  embed('HerbDetailListSQL') %]
   
   
       

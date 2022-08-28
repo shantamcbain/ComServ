@@ -680,7 +680,7 @@ else{
 #);
 
 
-my @BOOK_BOOKDATASOURCE_FIELD_NAMES = qw(
+my @BOOK_DATASOURCE_FIELD_NAMES = qw(
         record_id
         reference_code
         title
@@ -702,7 +702,7 @@ my @BOOK_DATASOURCE_CONFIG_PARAMS = (
 	        -TABLE        => 'books_tb',
 	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
-	        -FIELD_NAMES  => \@BOOK_BOOKDATASOURCE_FIELD_NAMES,
+	        -FIELD_NAMES  => \@BOOK_DATASOURCE_FIELD_NAMES,
 	        -KEY_FIELDS   => ['username'],
 	        -FIELD_TYPES  => {
 	            record_id        => 'Autoincrement'

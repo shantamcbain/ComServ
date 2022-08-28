@@ -129,7 +129,7 @@ my $shop = 'cs';
 my $site_session;
 my $site;
 my $SiteLastUpdate;
-my $SITE_DISPLAY_NAME = 'None Defined for this site.';
+my $SITE_DISPLAY_NAME = $HostName||'None Defined for this site.';
 my $site_update;
 my $TEMPLATES_CACHE_DIRECTORY;
 my $title          = $CGI->param('title');
@@ -1206,6 +1206,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -FIRST_RECORD_ON_PAGE                   => $CGI->param('first_record_to_display') || 0,
     -HAS_MEMBERS                            => $HasMembers,
     -HIDDEN_ADMIN_FIELDS_VIEW_NAME          => 'HiddenAdminFieldsView',
+    -DOMAIN_NAME                            => $HostName,  
     -INPUT_WIDGET_DEFINITIONS               => \@INPUT_WIDGET_DEFINITIONS,
     -KEY_FIELD                              => 'record_id',
     -LAST_RECORD_ON_PAGE                    => $CGI->param('first_record_to_display') || "0",

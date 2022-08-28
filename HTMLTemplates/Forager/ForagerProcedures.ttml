@@ -1,0 +1,103 @@
+[%  ViewVersion = 'v 0.01 2022/04/28 /cgi-bin/HTMLTemplates/Forager/ForagerProcedures.ttml '%]
+
+[% embed('ErrorDisplayView') %] 
+
+<div align="center">
+</div>
+[% IF data.debug == 1 %]
+ [%	ViewVersion %] 	   
+[% END %] 
+
+
+
+[% IF procedure  == 'HiveManHomeView' %]
+  [% embed ('HiveManHomeView') %]
+
+[% ELSIF procedure  == ('ApisShopHome') %]
+ [% embed ('ApisShopHome') %]
+
+[% ELSIF procedure  == ('ApisQueensView') %]
+ [% embed ('ApisQueensView') %]
+
+[% ELSIF procedure  == ('ApisActiveQueensView') %]
+ [% embed ('ApisActiveQueensView') %]
+
+[% ELSIF procedure  == ('ApisNucQueensView') %]
+ [% embed ('ApisNucQueensView') %] 
+ 
+[% ELSIF procedure  == ('ClokeBoardView') %]
+ [% embed ('ClockeBoardView') %]
+
+
+[% ELSIF procedure  == ('DistributedEditing') %]
+ [% embed ('DistributedEditing') %] 
+
+[% ELSIF procedure  == ('FirstEval') %]
+   [% embed ('FirstEval') %]
+   
+[% ELSIF procedure  == ('Forestry') %]
+   [% embed ('Forestry') %]
+   
+[% ELSIF procedure  == ('ForumsView') %]
+ [% embed ('ForumsView') %]
+
+[% ELSIF procedure  == ('InventoryView') %]
+   [% embed ('InventoryView') %]
+
+[% ELSIF procedure  == ('LiveStream') %]
+ [% embed ('StreamingView') %]
+
+[% ELSIF procedure  == ('PollenHarvest') %]
+   [% embed ('PollenHarvest') %] 
+   
+[% ELSIF procedure  == ('PollenPatties') %]
+   [% embed ('PollenPatties') %]
+
+[% ELSIF procedure  == ('ProgramingView') %]
+  [% embed ('ProgramingView') %]
+
+[% ELSIF procedure  == ('Reforestation') %]
+ [% embed ('Reforestation') %]
+ 
+[% ELSIF procedure  == ('SeasonView') %]
+ [% embed ('SeasonView') %]
+ 
+[% ELSIF procedure  == ('ShopHome') %]
+ [% embed ('ShopHome') %]
+
+[% ELSIF procedure  == ('StreamingServices') %]
+ [% embed ('StreamingServices') %]
+
+[% ELSIF procedure  == ('Support') %]
+ [% embed ('Spport') %]
+
+[% ELSIF procedure  == ('YardLayout') %]
+ [% embed ('YardLayout') %]
+
+[% ELSIF procedure  == ('YardManagementSystem') %]
+ 
+ [% embed ('YardManagementSystem') %]
+
+[% ELSIF procedure  == ('YardsView') %]
+ [% embed ('YardsView') %]
+
+[% ELSIF procedure  == ('WinterVisits') %]
+ [% embed ('WinterVisits') %]
+
+[% ELSIF procedure  == ('WinterizingYard') %]
+ [% embed ('WinterizingYard') %]
+[% ELSE %]	
+<h2>Beemaster Active procedures list</h2>
+ [%# embed ('BMasterProcedureList') %]
+
+ 
+ <a href="/cgi-bin/ToDo/procedures_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProceduresView&amp;project=PiPower">	PiPower</a></li>
+	
+<a href="/cgi-bin/ToDo/procedures_tracker.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ProceduresView&amp;project=WaterHeatView">	Water heat</a>
+
+[% END %]
+   
+ 	 
+
+  
+ 	   

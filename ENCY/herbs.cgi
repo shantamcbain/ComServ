@@ -114,7 +114,7 @@ my $Affiliate = 001;
 my $HasMembers = 0;
     
 use SiteSetup;
-  my $UseModPerl = 0;
+  my $UseModPerl = 1;
   my $SetupVariables  = new SiteSetup($UseModPerl);
      $Affiliate              = $SetupVariables->{-AFFILIATE};
      $home_view              = 'BotanicalName'||View$SetupVariables->{-HOME_VIEW}; 
@@ -1217,21 +1217,21 @@ my @DELETE_EVENT_MAIL_SEND_PARAMS = (
     -FROM     => $mail_from,
     -TO       => $mail_to,
     -REPLY_TO => $mail_replyto,
-    -SUBJECT  => $APP_NAME_TITLE.' Delete'
+    -SUBJECT  => $APP_NAME_TITLE.' ENCY Delete'
 );
 
 my @ADD_EVENT_MAIL_SEND_PARAMS = (
     -FROM     => $mail_from,
     -TO       => $mail_to,
     -REPLY_TO => $mail_replyto,
-    -SUBJECT  => $APP_NAME_TITLE.' Addition'
+    -SUBJECT  => $APP_NAME_TITLE.' ENCY Addition'
 );
 
 my @MODIFY_EVENT_MAIL_SEND_PARAMS = (
     -FROM     => $mail_to,
     -TO       => $mail_to,
     -REPLY_TO => $mail_replyto,
-    -SUBJECT  => $APP_NAME_TITLE.' Modification'
+    -SUBJECT  => $APP_NAME_TITLE.' ENCY Modification'
 );
 
 my @MAIL_SEND_PARAMS = (
@@ -1553,7 +1553,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -AUTH_MANAGER_CONFIG_PARAMS             => \@AUTH_MANAGER_CONFIG_PARAMS,
     -ADD_RECORD_CONFIRMATION_VIEW_NAME      => 'AddRecordConfirmationView',
     -MOD_NAME                               => 'herbs',
-    -BASIC_DATA_VIEW_NAME                   => 'BasicDataView',
+    -BASIC_DATA_VIEW_NAME                   => 'HerbDetailView',
     -CGI_OBJECT                             => $CGI,
     -CSS_VIEW_URL                           => $CSS_VIEW_URL,
     -CSS_VIEW_NAME                          => $CSS_VIEW_NAME,

@@ -134,7 +134,6 @@ my $mail_from;
 my $mail_to;
 my $auth_mail_to;
 my $mail_replyto;
-my $MySQLPW;
 my $NEWS_TB;
 my $OffLine    = 'yes';
 my $Page           = $CGI->param('page');
@@ -214,8 +213,8 @@ $mail_replyto            = $SetupVariables->{-MAIL_REPLYTO};
 my $mail_to_user         = $SetupVariables->{-MAIL_USER};
 my $mail_to_member       = $SetupVariables->{-MAIL_MEMBER};
 my $mail_to_discussion   = $SetupVariables->{-MAIL_DISCUSSION};
-$MySQLPW                 = $SetupVariables->{-MySQLPW};
-$NEWS_TB               = $SetupVariables->{-NewsTable};
+my $MySQLPW                 = $SetupVariables->{-MySQLPW};
+$NEWS_TB                 = $SetupVariables->{-NewsTable};
 $page_top_view           = $SetupVariables->{-PAGE_TOP_VIEW};
 $page_bottom_view        = $SetupVariables->{-PAGE_BOTTOM_VIEW};
 $page_left_view          = $SetupVariables->{-page_left_view};
@@ -1383,6 +1382,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
  -MODIFY_RECORD_CONFIRMATION_VIEW_NAME   => 'ModifyRecordConfirmationView',
  -MODIFY_FORM_VIEW_NAME                  => 'ModifyRecordView',
  -MODIFY_EMAIL_BODY_VIEW                 => 'ModifyEventEmailView',
+ -MYSQLPW                                => $MySQLPW,
  -OFF_LINE                               => $OffLine,
  -OPTIONS_FORM_VIEW_NAME                 => 'OptionsView',
  -PROCEDURE                              => $procedure,

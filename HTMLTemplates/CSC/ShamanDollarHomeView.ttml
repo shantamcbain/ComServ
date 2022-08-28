@@ -1,0 +1,59 @@
+[% Version = '/cgi-bin/HTMLTemplates/CSC/ShamanDollarHomeView.ttml,v 0.01 2022/04/22 17:43:15 shanta Exp shanta '%]
+[%
+#	$Id: CSCHomeView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
+
+# Ideally this template should be converted into a static CSS file and
+# be served as /foo/bar.css and not via CGI, since it slows things
+# down and dozen't allow browsers to cache the CSS content.
+
+# otherwise this template is stand-alone, i.e. it dozen't rely on any
+# variables from outside.
+
+%]
+
+[% PROCESS DefautVariables.ttml %]
+
+ 
+[% PROCESS DefaultDbi.ttml %]
+[% IF procedure   %]
+[% ELSE %]
+	[% embed(data.page_top_view,['$SiteName $ViewVersion ','Home page. ']) %]
+[% END %] 
+[% embed('ErrorDisplayView') %]
+<A NAME="PageTop"></A>
+
+<table>
+<tr>
+	<td>
+[% IF data.debug == 1 %]
+ [%	Version %] 	   
+[% END %] 
+<h2>Shaman Dollars</h2>
+
+<p>This is our Shaman Dollar system. [% SiteDisplayName %] and Participating member sites accepts Shaman Dollars. You may earn Shaman Dollars by working for Computer system consulting or by accepting Shaman Dollars for payment on your goods or services.</p>
+
+<p>By joining [% SiteDisplayName %] or any participating site hosted. You will be given and account with 100 Shaman Dollars in that account to get you started. </p>
+[% IF SiteName  == 'CSC' %]
+[% $MemberCode = 'computersystemconsultingca-support-membership' %]
+[% ELSIF SiteName  == 'BMaster' %]
+computersystemconsultingca-support-membership' %]
+[% ELSIF SiteName  == 'BMaster' %]
+[% $MemberCode = 'beemaster-general-membership' %]
+[% ELSIF SiteName  == 'USBM' %]
+[% $MemberCode = 'usbmca-membership' %]
+[% ELSIF SiteName  == 'ENCY' %]
+[% $MemberCode = 'usbmca-membership' %]
+[% ELSE %]
+[% END %] 
+<h2>How to Join.</h2>
+<ul>
+ <li>Use the login link to create an on the site. Click login Click Then Click register Fill in the requested data. </li>
+ <li>Now <a href="http://computersystemconsulting.ca/whmcs/store/club-and-site-memberships/[% $MemberCode  %]" target="_blank">join the team</a> </li>
+ <li>We will create your account. When complete you will be able to see your account statas when you next log in to the site.</li>
+</ul>
+
+
+
+
+</td></tr>
+</table>

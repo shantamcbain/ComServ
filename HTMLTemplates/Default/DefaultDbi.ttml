@@ -1,3 +1,9 @@
+[% ViewVersion = 'v 0.02 2022/04/25 /cgi-bin/HTMLTemplates/Default/DefalutDbi.ttml'  %]
+[% IF data.debug == 1 %]
+ <p>[%	ViewVersion %] </p>	
+ [% END %]
+[% MYSQLPW        = data.mysqlpw  %]
+
 [%# IF $ENV{'SERVER_NAME'} == 'shanta.computersystemconsulting.ca' %]
 [%# USE DBI( data_source = 'dbi:mysql:forager',
                 username = 'shanta',
