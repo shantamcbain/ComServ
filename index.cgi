@@ -22,6 +22,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
+use warnings FATAL => 'all';
 my $AppVer = "ver 1.15, Dec 02, 2021";
 
 BEGIN
@@ -89,7 +90,6 @@ foreach ( $CGI->param() )
 #                          SITE SETUP                             #
 ######################################################################
 my $SiteName       = $CGI->param('site');
-my $SESSION;
 my $Affiliate = 001;
 my $additonalautusernamecomments;
 my $APP_DATAFILES_DIRECTORY;
@@ -915,10 +915,7 @@ else
  );
 
 }
-my @INPUT_WIDGET_DEFINITIONS = (
-         -BASIC_INPUT_WIDGET_DEFINITIONS   => \%BASIC_INPUT_WIDGET_DEFINITIONS,
-         -BASIC_INPUT_WIDGET_DISPLAY_ORDER => \@BASIC_INPUT_WIDGET_DISPLAY_ORDER
-);
+
 my @PAGE_DATASOURCE_FIELD_NAMES = (
                   qw(sitename),  qw(page_code),  qw(pageheader), qw(link_order),
                   qw(app_title), qw(page_site),  qw(menu),       qw(view_name),

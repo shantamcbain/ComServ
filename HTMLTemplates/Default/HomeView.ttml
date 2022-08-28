@@ -11,7 +11,7 @@
   [% embed  ('InheretedVariablesView') %]
 [% END %] 
 
-[% SiteDisplayName%] 
+[%# SiteDisplayName %]
 
 [%  Version  %] 
 
