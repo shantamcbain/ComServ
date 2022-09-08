@@ -42,7 +42,7 @@
   [% END %] <li>
    <a href="http://devevelopment.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]"
     target="_blank">[% data
-   .domain_name %] development</a>
+   .domain_name %] Development</a>
  </li>
 	<li><a href="http://devevelopment.computersystemconsulting.ca/cgi-bin/index.cgi?site=CSCDev" name="DevSite"
 	title="DevSite See what we are working on." Target ="_Blank"><font   class="HeaderBarNavStyle">CSCDev</font></a>
