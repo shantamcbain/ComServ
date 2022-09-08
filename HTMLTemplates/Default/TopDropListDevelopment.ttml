@@ -44,7 +44,7 @@
     target="_blank">[% data
    .domain_name %]</a>
  </li>
-	<li><a href="http://devlopment.computersystemconsulting.ca/cgi-bin/index.cgi?site=CSCDev" name="DevSite"
+	<li><a href="http://devevelopment.computersystemconsulting.ca/cgi-bin/index.cgi?site=CSCDev" name="DevSite"
 	title="DevSite See what we are working on." Target ="_Blank"><font   class="HeaderBarNavStyle">CSCDev</font></a>
 	</li>
 	
