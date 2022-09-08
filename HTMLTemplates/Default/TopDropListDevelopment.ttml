@@ -38,10 +38,10 @@
   [% ELSE %]
    <li>
 	<a HREF ="?site=[% SiteName %]&amp;debug=1&amp;page=[% data.page_name %]&amp;view=[% data.view %]&amp;[% session_string %]"><font   class="LeftSideBarNavStyle">Debug</font></a> 
-	</li> 	 
+	</li> 	 [%# data.domain_name %]
   [% END %] <li>
-   <a href="http://development.computersystemconsulting.ca[%# data.domain_name %]/cgi-bin/index.cgi?site=[% SiteName %]"
-    target="_blank">dev.[% data
+   <a href="http://devevelopment.computersystemconsulting.ca/cgi-bin/index.cgi?site=[% SiteName %]"
+    target="_blank">[% data
    .domain_name %]</a>
  </li>
 	<li><a href="http://devlopment.computersystemconsulting.ca/cgi-bin/index.cgi?site=CSCDev" name="DevSite"
