@@ -1,4 +1,5 @@
-[% Version = 'v 0.01 2022/04/22 /HTMLTemplates/CSC/CSCProcedures.ttml'%]
+[% Version = 'v 0.02 2022/09/05 /HTMLTemplates/CSC/CSCProcedures.ttml'%]
+[%# Version = 'v 0.01 2022/04/22 /HTMLTemplates/CSC/CSCProcedures.ttml'%]
 [% # 2019/10/09 AnuProcedures.ttml %]
 
 [% embed('ErrorDisplayView') %] 
@@ -31,6 +32,9 @@
  [% ELSIF procedure  == ('ShamanDollarHome') %]
 
 [% embed ('ShamanDollarHomeView') %]
+[% ELSIF procedure  == ('TimeView') %]
+
+[% embed ('TimeView') %]
 
  [% ELSIF procedure  == ('JoinDiscoussionList') %]
  
