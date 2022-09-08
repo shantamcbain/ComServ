@@ -22,7 +22,6 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-use warnings FATAL => 'all';
 my $AppVer = "ver 1.15, Dec 02, 2021";
 
 BEGIN
