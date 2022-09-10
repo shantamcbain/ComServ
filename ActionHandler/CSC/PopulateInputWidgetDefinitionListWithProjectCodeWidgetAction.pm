@@ -56,7 +56,8 @@ sub execute {
     my $app = $params->{-APPLICATION_OBJECT};
     my $cgi = $params->{-CGI_OBJECT};
     my $session = $params->{-SESSION_OBJECT};
-    
+
+
  $cgi->param(
         -NAME  => 'raw_search',
         -VALUE => "status != 'Delivered' AND
