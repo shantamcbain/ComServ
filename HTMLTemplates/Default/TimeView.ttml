@@ -1,43 +1,51 @@
-[% ViewVersion = 'v 0.01 2022/06/16 /cgi-bin/HTMLTemplates/Default/TimeView.ttml,'%]
+[% ViewVersion = 'v 0.03 2022/09/05 /cgi-bin/HTMLTemplates/Default/TimeView.ttml,'%]
+[%# ViewVersion = 'v 0.02 2022/08/29 /cgi-bin/HTMLTemplates/Default/TimeView.ttml,'%]
+[%# ViewVersion = 'v 0.01 2022/06/16 /cgi-bin/HTMLTemplates/Default/TimeView.ttml,'%]
 
 [% IF data.debug == 1 %]
  [%	ViewVersion %] 	
 
 [% END %]
-<h3>Accumulated log.</h3>
-[% CurrentSize %] 
+<h3>Daily Time Sheet.</h3>
+[% totaltime = 0  %]
+[% estimatedTotal = 0 %]
 <table>
-<tr><th><a href="/cgi-bin/ToDo/log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on" target="_blank" name="Add log">Addlog</a></th><th>StartTime</th><th>Title</th><th>Status</th><th>Details</th><th>project_dode</th><th>time</th></tr>
+<tr><td>Today's ToDos</td><td>Things Needed.</td></tr>
+<tr>
+<th > <a href="/cgi-bin/ToDo/log.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_add_form=on"
+target="_blank" name="Add log">Addlog</a></th><th>StartTime</th><th>Title</th><th>Status</th><th>Details</th><th
+>project_code</th><th>time</th></tr>
 
-[% FOREACH link = DBI.query("SELECT * FROM log_tb
+[% FOREACH link = DBI.query("SELECT * FROM csc_todo_tb
                                   WHERE (sitename = '$SiteName'                                  
-                                   AND status = '3' )
-                                  ORDER BY start_date
+                                   AND status != '3'
+                                        )
+                                  ORDER BY priority
                                   ")%]    
 
-[%# FOREACH link = 'SELECT * FROM log_tb WHERE  (status  = 3 AND 
-                                       sitename = "$SiteNAME" ) ORDER BY
-start_date' %]
- 
- <tr>
+
+ <tr></td>
+
  
    
-   <td>[% link.start_date %]</td>
-   <td>[% link.abstract %]</td>
-   <td>[% link.status  %]</td>
-   <td>[% link.details %]</td>
-   <td>[% link.project_code %]</td>
-   <td>[% link.time %]</td>
-   <td><a href="/cgi-bin/Apis/pallet.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;submit_power_search=on&amp;simple_search_string=[% link.yard_code %]&amp;sort_field1=pallet_code">Pallet</a>    </td>
+   <td class="NavTableCellStyle">[% link.start_date %]  [% link.subject%] [% link.status  %] [% link.description %] [%
+   link.project_code %]</td>
+   <td class="NavTableCellStyle"><a href="/cgi-bin/ToDo/log.cgi?site=[% data.site_name %]&amp;[% session_string %]&amp;submit_power_search=on&amp;
+   simple_search_string=[% link.start_date %]&amp;sort_field1=pallet_code">Detail</a>
+   </td>
+   <td class="NavTableCellStyle">[% link.comments %]</td>
+
+ </tr>
 [% HiveCap = HiveCap + link.total_yard_size %]
-[% CurrentSize = CurrentSize + link.time %]
 
 
-
+[% totaltime = totaltime + link.accumulative_time %]
+[% estimatedTotal = estimatedTotal + link.estimated_man_hours %]
 
 
 
    
  [% END %]
  </table>
- <p>Accumulated Time [% CurrentSize %] Hours</p>
+ <p>Estimated Time [% estimatedTotal %] Hours</p>
+ <p>Accumulated Time [% totaltime %] Hours</p>

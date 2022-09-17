@@ -1,4 +1,5 @@
-[% ViewVersion = 'v 1.99 /cgi-bin/HTMLTemplates/ENCY/HerbDetailView'  %]
+[% ViewVersion = 'v 2.00 /cgi-bin/HTMLTemplates/ENCY/HerbDetailView'  %]
+[%# ViewVersion = 'v 1.99 /cgi-bin/HTMLTemplates/ENCY/HerbDetailView'  %]
 
 [%# the ENCY template
 #	$Id: HerbDetailView.ttml,v 1.2 2011/09/21 19:25:15 shanta Exp $	
@@ -58,7 +59,7 @@
                                    <tr>
 <td class="NavTableCellStyle"> [% link.botanical_name %]  </td>
 <td class="NavTableCellStyle"> [% link.common_names %]  </td>
-<td class="NavTableCellStyle"><img src=" [% link.image %]" WIDTH ="300"      HEIGHT ="325" /> </td>
+<td class="NavTableCellStyle"><img src="[% link.image %]"  WIDTH ="300"  HEIGHT ="325" alt=""></td>
 <td class="NavTableCellStyle">        
   <a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&display_details_view.x&record_id=[% link.record_id %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Details </font></a>
      </td>

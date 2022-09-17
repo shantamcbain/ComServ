@@ -50,6 +50,7 @@ my $self = {
        -AUTH_MSQL_USER_NAME => 'forager',
        -HTTP_HEADER_DESCRIPTION => "Shantas Workshop. Fine woodworking",
        -HTTP_HEADER_KEYWORDS    => "Woodworking, woodworking workshops. wooden toys. beekeeping   ",
+       -SITE_DISPLAY_NAME              => 'Shanta,s Workshop',
 	    -VALID_FORUMS                   => (
             HelpDesk           =>  'System HelpDesk',
  	         ) ,

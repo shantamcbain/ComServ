@@ -19,6 +19,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
+use warnings FATAL => 'all';
 my $AppVer = "ver 1.5, Dec 02, 2022";
 
 BEGIN{
@@ -85,6 +86,7 @@ my $app_logo_alt;
 my $IMAGE_ROOT_URL; 
 my $DOCUMENT_ROOT_URL;
 my $site;
+my $Record_id =  $CGI->param('record_id');
 my $GLOBAL_DATAFILES_DIRECTORY;
 my $TEMPLATES_CACHE_DIRECTORY;
 my $APP_DATAFILES_DIRECTORY;
@@ -104,7 +106,7 @@ my $matchuser =0;
 my $matchgroup=0;
 my $allow_additions = 0;
 my $allow_modifications = 0;
-my $username;
+my $username = 'Noone';
 my $last_update = 'September 11, 2015';
 my  $SITE_DISPLAY_NAME = 'None Defined for this site.';
 my $FAVICON;
@@ -149,7 +151,7 @@ use SiteSetup;
      $DATAFILES_DIRECTORY    = $APP_DATAFILES_DIRECTORY;
      $site_session           = $DATAFILES_DIRECTORY.'/Sessions';
      $auth                   = $DATAFILES_DIRECTORY.'/csc.admin.users.dat';
-     my $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
+     $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
      my $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
 
      $mail_from              = $CGI->param('email')||$mail_from; 
@@ -212,12 +214,7 @@ if ($CGI->param('site')){
 my $group    =  $SESSION ->getAttribute(-KEY => 'auth_group');
 
 
-if ($username = 'Shanta') {
-$allow_additions = 1;
-$allow_modifications = 1;
-$matchuser = 0;
-$matchgroup = 0;
- }
+
 
 ######################################################################
 #                       AUTHENTICATION SETUP                         #
@@ -621,7 +618,7 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS = (
         -DISPLAY_NAME => 'pollinator',
         -TYPE         => 'checkbox_group',
         -NAME         => 'pollinator',
-        -VALUES       => [sort {$a <=> $b} keys %pollinator ],
+        -VALUES       => [sort {$a cmp $b} keys %pollinator ],
         -LABELS       => \%pollinator,
     ],
     preparation => [
@@ -1391,7 +1388,6 @@ my @VIEW_DISPLAY_PARAMS = (
         sister_plants          	=> 'Sister Plants',
         preparation	        => 'Preparation',
         vetrinary	        => 'Vetrinary',
-        record_id	        => 'Record ID',
         administration	        => 'Administration',
         apis  	                => 'Bee plant',
         indicator 	        => 'Indicator plant',
@@ -1558,6 +1554,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -CSS_VIEW_URL                           => $CSS_VIEW_URL,
     -CSS_VIEW_NAME                          => $CSS_VIEW_NAME,
     -DATASOURCE_CONFIG_PARAMS               => \@DATASOURCE_CONFIG_PARAMS,
+    -Debug                                  => $CGI->param('debug') || 0,
     -DELETE_ACKNOWLEDGEMENT_VIEW_NAME       => 'DeleteAcknowledgementView',
     -DELETE_RECORD_CONFIRMATION_VIEW_NAME   => 'DeleteRecordConfirmationView',
     -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
@@ -1592,6 +1589,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -MODIFY_FORM_VIEW_NAME                  => 'ModifyRecordView',
     -MODIFY_EMAIL_BODY_VIEW                 => 'ModifyEventEmailView',
     -POWER_SEARCH_VIEW_NAME                 => 'PowerSearchFormView',
+    -RECORD_ID                              => $Record_id,
     -REQUIRE_AUTH_FOR_SEARCHING_FLAG        => 0,
     -REQUIRE_AUTH_FOR_ADDING_FLAG           => 1,
     -REQUIRE_AUTH_FOR_MODIFYING_FLAG        => 1,

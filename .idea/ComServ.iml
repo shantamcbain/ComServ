@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <perl5>
+      <path value="file://$MODULE_DIR$/ActionHandler/AltPower" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler" type="perl-library" />
+      <path value="file://$MODULE_DIR$" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler/Apis" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler/BBS" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler/Brew" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler/BugTracker" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler/BuyAndSell" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler/CSC" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler/Default" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler/Expense" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler/ENCY" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler/FAQ" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler/Inventory" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler/Plugin" type="perl-library" />
+      <path value="file://$MODULE_DIR$/ActionHandler/WebCal" type="perl-library" />
+      <path value="file://$MODULE_DIR$/HTMLTemplates" type="perl-library" />
+    </perl5>
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

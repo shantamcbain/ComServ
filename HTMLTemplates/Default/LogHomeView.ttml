@@ -1,5 +1,7 @@
-[% ViewVersion = 'v 0.11 2022/06/16 /cgi-bin/HTMLTemplates/Default/LogHomeView.ttml,'%]
-[%#	$Id: LogHomeView.ttml,v 0.1 2012/01/14 17:43:15 shanta Exp shanta $	
+[% ViewVersion = 'v 0.13 2022/09/05 /cgi-bin/HTMLTemplates/Default/LogHomeView.ttml,'%]
+[%# ViewVersion = 'v 0.12 2022/08/29 /cgi-bin/HTMLTemplates/Default/LogHomeView.ttml,'%]
+[%# ViewVersion = 'v 0.11 2022/06/16 /cgi-bin/HTMLTemplates/Default/LogHomeView.ttml,'%]
+[%#	$Id: LogHomeView.ttml,v 0.1 2012/01/14 17:43:15 shanta Exp shanta $
 
 # Ideally this template should be converted into a static CSS file and
 # be served as /foo/bar.css and not via CGI, since it slows things
@@ -16,7 +18,7 @@
  [% PROCESS DefautVariables.ttml %]
 [% PROCESS DefaultDbi.ttml %]
    [% PAGE = data.page_name || 'LogHomeView' %]
-[%# page = 'GarlicCulture' %]
+
  
 [% IF SiteName == 'CSC' %]
  [% PROCESS CSCLogHOMEPagesql.ttml %]
@@ -111,12 +113,14 @@ You can modify anything from here to the last update. You may use Html code in t
 	 [% IF  username == 'Shanta'    
 
 	 %]
- <p><a href="http://dev.computersystemconsulting.ca/cgi-bin/page.cgi?site=[% SiteName %]&[% session_string %]&display_add_form=on" target="_blank">Add page </a>
+ <p><a href="http://dev.computersystemconsulting.ca/cgi-bin/page.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form=on" target="_blank">Add page </a>
 
 	 [% END  %]
                                 
                                     
       [% body %]
+<p> <a href="/cgi-bin/index.cgi?site=[% data.SiteName %]&amp;[% session_string %]&amp;procedure=TimeView">Daily Log
+</a></p>
 
   [% embed('LogList') %]
 
@@ -126,7 +130,7 @@ You can modify anything from here to the last update. You may use Html code in t
 <p>Last Update [% lastupdate %][% IF SiteName == 'Demo' %]&nbsp; This value is stored in your setup file. [% END %]
 		<br>
 [% END %]
- [% embed('TimeView') %]
+ [%# embed('TimeView') %]
  
  [% embed('CSCCopyRight') %]
 

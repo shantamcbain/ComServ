@@ -1,3 +1,4 @@
+[% ViewVersion = 'v 1.21 2022/08/28 /cgi-bin/HTMLTemplates/ENCY/BotanicalNameView.ttml,'%]
 [%
 
 # the ENCY template
@@ -11,7 +12,10 @@
 
 [% embed('ErrorDisplayView') %]
 
-
+[% IF data.debug == 1 %]
+ [%	ViewVersion %]
+  [% embed  ('InheretedVariablesView') %]
+[% END %]
 
 
 	[% IF username %]
@@ -84,6 +88,9 @@ Search our herbal Database
 			 %] 
 			 <a href="/cgi-bin/ENCY/herbs_admin.cgi?site=[% SiteName %]&[% session_string %]&display_add_form=on" target="_blank"" target="_blank">Add new Herb</a>
 			[% END %]
+[%  IF data.debug == 1   %]
+<p>call PlantListSQL.</p>
+[% END %]
  [%  embed('PlantListSQL') %]
 
 

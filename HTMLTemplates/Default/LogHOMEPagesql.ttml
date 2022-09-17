@@ -11,4 +11,5 @@
                  [% status      = link.status %]
                  [%  page_code     = link.page_code %]
                  [% lastupdate = link.lastupdate %]
-       [% END %]                  
+
+  [% END %]

@@ -9,7 +9,8 @@
                                   ORDER BY project_code
                                   ")%]    
                                   
- <table>                                  
+ <table>
+ <th><td>B </td><td> Project Code</td><td> Subject</td><td> </td><td> </td></th>
                                    <tr>
 <td class="NavTableCellStyle"> [% link.sitename %]  </td>
 <td class="NavTableCellStyle"> [% link.project_code %]  </td>
@@ -29,7 +30,8 @@
                                   ORDER BY botanical_name
                                   ")%]  
 <table  width="100%">
- <tr>  
+<th><td>Botanical name </td><td> Project Code</td><td> Subject</td><td> </td><td> </td></th>
+  <tr>
  <td  colspan = 2> <t2 class="botanical_name">Botanical Name:   </t2>  <i>[% link.botanical_name %]</i> </td>
 </tr>
 <td  rowspan=5> <IMG SRC ="[% link.image %]"  WIDTH ="300"      HEIGHT ="325"> 	         </td>
@@ -95,18 +97,20 @@
      </td>
    </tr>
 [% ELSE %]
-                                  <tr>Botanical Name<td></td><td>Common Names</td><td>Image</td><td>link</td></tr>
+  <table>
+     <tr><th>Botanical Name</th><th>Common Names</th><th>Image</th><th>link</th></tr>
  [% FOREACH link = DBI.query("SELECT * FROM ency_herb_tb
                                   WHERE (botanical_name != '')
                                   ORDER BY botanical_name                                ")%]    
                                   
 
                                    <tr>
-<td class="NavTableCellStyle"><i> [% link.botanical_name %] </i> </td>
+
+ <td class="NavTableCellStyle"><i> [% link.botanical_name %] </i> </td>
 <td class="NavTableCellStyle"> [% link.common_names %]  </td>
 <td class="NavTableCellStyle"><img src=" [% link.image %]" WIDTH ="300"      HEIGHT ="325" /> </td>
 <td class="NavTableCellStyle">        
-  <a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=HerbDetailView&record_id=[% link.record_id %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Details</font></a>
+  <a href="/cgi-bin/ENCY/herbs.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;display_details_view.x=on&record_id=[% link.record_id %]" name="Contact" target="[% link.target %]" title="details "><font   class="LeftSideBarNavStyle">Details</font></a>
      </td>
    </tr> 
 

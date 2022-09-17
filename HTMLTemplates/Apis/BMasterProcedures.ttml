@@ -75,6 +75,9 @@
 [% ELSIF procedure  == ('Support') %]
  [% embed ('Spport') %]
 
+[% ELSIF procedure  == ('TimeView') %]
+ [% embed ('TimeView') %]
+
 [% ELSIF procedure  == ('YardLayout') %]
  [% embed ('YardLayout') %]
 
