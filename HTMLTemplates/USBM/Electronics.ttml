@@ -27,7 +27,10 @@
   </ul> 
   <li><h2>Projects</h2>
    <ul>
-    <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&page=WaterDepthbyPressure">Measuring depth of water in an open tank.</a></h3></li>
+    <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string
+    %]&amp;page=WaterDepthbyPressure">Measuring depth of water in an open tank.</a></h3></li>
+    <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=WeatherStation">Weather
+    Stations.</a></h3></li>
    </ul>
   </li>
  </li>

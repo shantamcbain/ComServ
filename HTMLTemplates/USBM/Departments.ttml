@@ -16,9 +16,12 @@
 <ul>
  <li><h2>Science and technology</h2>
   <ul>
-    <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=AltPower">Power and Energy</a></h3></li>
-    <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Computers">Computers</a></h3></li>  
-    <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=Electronics">Electronics</a></h3></li>  
+     <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=AltPower">Power and
+     Energy</a></h3></li>
+     <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string
+     %]&procedure=Computers">Computers</a></h3></li>
+     <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string
+     %]&procedure=Electronics">Electronics</a></h3></li>
       <li><h3>Material</h3></li>  
    <li><h3>Mechanical</h3></li>  
    <li><h3>Agriculture</h3></li>  
