@@ -1,4 +1,5 @@
-[% Version = '/cgi-bin/HTMLTemplates/USBM/3dHomeView.ttml,v 0.01 2022/03/06 17:43:15 shanta Exp'%]
+[% Version = '/cgi-bin/HTMLTemplates/USBM/3dHomeView.ttml,v 0.02 2022/10/09 17:43:15 shanta Exp'%]
+[%# Version = '/cgi-bin/HTMLTemplates/USBM/3dHomeView.ttml,v 0.01 2022/03/06 17:43:15 shanta Exp'%]
 
 
 [% IF data.debug == 1 %]
@@ -17,6 +18,7 @@
  <li><h3>Current Projects</h3> 
   <ul>
    <li><h3>LED Skull computer controlled LED lights.</h3> We will be </li>
+   <li><h3><a href="https://www.instructables.com/CUBOTino-a-Small-Simple-3D-Printed-Inexpensive-Rub/" target="_Blank" >Rubik's Cube solver.</a></h3> Interesting Micro Pyton project. <iframe width="560" height="315" src="https://www.youtube.com/embed/G5Ii6ENUXEs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></li>
   
   </ul></li>
 </ul>
