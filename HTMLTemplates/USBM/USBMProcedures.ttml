@@ -1,4 +1,5 @@
-[% Version = 'v 0.06 2022/09/28 /HTMLTemplates/USBM/USBMProcedures.ttml'%]
+[% Version = 'v 0.07 2022/10/09 /HTMLTemplates/USBM/USBMProcedures.ttml'%]
+[%# Version = 'v 0.06 2022/09/28 /HTMLTemplates/USBM/USBMProcedures.ttml'%]
 [%# Version = 'v 0.05 2022/04/22 /HTMLTemplates/USBM/USBMProcedures.ttml'%]
 [%# Version = 'v 0.01 2021/12/22 /HTMLTemplates/USBM/USBMProcedures.ttml'%]
 [% # 2019/10/09 AnuProcedures.ttml %]
@@ -41,6 +42,11 @@
 [% ELSIF procedure  == ('ButterflyHome') %]
  
  [% embed ('ButterflyHome') %]
+
+[% ELSIF procedure  == ('Computers') %]
+
+ [% embed ('Computers') %]
+
 [% ELSIF procedure  == ('Currency') %]
  
  [% embed ('Currency') %]
@@ -70,6 +76,8 @@
 
  [% ELSIF procedure  == ('LandingPage') %]
 [% embed ('LandingPage') %]
+[% ELSIF procedure  == ('Programing') %]
+[% embed ('Programing') %]
 
  [% ELSIF procedure  == ('Reforestation') %]
    [% embed ('Reforestation') %]

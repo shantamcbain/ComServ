@@ -1,5 +1,4 @@
-[% ViewVersion =  ' v0.12 2022/10/09  /cgi-bin/HTMLTemplates/USBM/Electronics.ttml, '%]
-[%# ViewVersion =  ' v0.11 2022/04/03  /cgi-bin/HTMLTemplates/USBM/Electronics.ttml, '%]
+[% ViewVersion =  ' v0.01 2022/10/09  /cgi-bin/HTMLTemplates/USBM/Programing.ttml, '%]
 
 
 
@@ -12,16 +11,22 @@
 <div ALIGN="center">
 <A NAME="PageTop"></A>
 </div>
-<h1>Electronics</h1>
+<h1>Programing</h1>
 
 <ul>
- <li><h2>Online Courses and Lectures.</h2>
+ <li><h2>Languages.</h2>
   <ul>
-   <li><h3>Basic electronics lesson 1</h3>
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/nb4ovfwqup8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  
-   
-
+   <li><h3>Perl</h3>
+   <li><h3>Python</h3></li>
+    <ul>
+   <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string
+    %]&amp;page=WaterDepthbyPressure">Measuring depth of water in an open tank.</a></h3></li>
+    </ul>
+   <li><h3>Micro Python</h3></li>
+    <ul>
+     <li><h3><a href="https://www.instructables.com/CUBOTino-a-Small-Simple-3D-Printed-Inexpensive-Rub/" target="_Blank" >Rubik's Cube solver.</a></h3> Interesting Micro Pyton project. <iframe width="560" height="315" src="https://www.youtube.com/embed/G5Ii6ENUXEs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></li>
+     </ul>
+ <li><h3>CSS</h3></li>
   </ul> 
   <li><h2>Projects</h2>
    <ul>
