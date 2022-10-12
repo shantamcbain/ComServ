@@ -28,6 +28,8 @@
 
  [% IF procedure  == 'ShamanismView' %]
  [% embed ('ShamanismView') %]
+[% ELSIF procedure  == ('Agriculture') %]
+ [% embed ('Agriculture') %]
 
 [% ELSIF procedure  == ('AltPower') %]
  [% embed ('AltPower') %]

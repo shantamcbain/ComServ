@@ -25,3 +25,21 @@ V
 &HTMLTemplates/Default/ProjectLIst.ttml,0/6/06461bf0c524c1929f777e59bb6abf924db2ef82
 Z
 *HTMLTemplates/Default/ProjectHomeView.ttml,5/8/589d9f551aaef0418bce6722f772a44c175f7b79
+N
+Modules/ShantaWorkShopSetup.pm,4/c/4ce1510bd5b53d37195bdeb936beabb22fe4d6f2
+V
+&HTMLTemplates/Default/LogHomeView.ttml,3/c/3cf6a6f33c44025b67acfc71cfd0ff17fb84e714
+N
+HTMLTemplates/CSC/LogList.ttml,9/5/950b3fe0e34c5d1ff8e1690dca209c2fc9ff564a
+U
+%HTMLTemplates/USBM/ULCProcedures.ttml,c/b/cb8bcdbe945364b02d2fb0354aee5bb9b7b927ec
+B
+Modules/WBSetup.pm,d/d/dd6c8fe762c69b55912ec790c47a38a56ce596d7
+I
+Modules/universalSetup.pm,c/1/c19723b5111d8983a0517eb5269071a961025fb5
+H
+Modules/SiteSetupusbm.pm,3/f/3f9b9cda56b5705dfcc62ef05ab435f48e68f8f9
+O
+Modules/MonasheeSupportSetup.pm,8/f/8f04fc9108143d56257150f69e56f64a9f30c534
+F
+Modules/ShantaSetup.pm,3/2/321f2edf6dfab5726bf54f4b211ebecf554cd6e9

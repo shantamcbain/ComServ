@@ -30,6 +30,7 @@
     <li><h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=WeatherStation">Weather
     Stations.</a></h3></li>
     <li><h3><a href="https://www.instructables.com/CUBOTino-a-Small-Simple-3D-Printed-Inexpensive-Rub/" target="_Blank" >Rubik's Cube solver.</a></h3> Interesting Micro Pyton project. <iframe width="560" height="315" src="https://www.youtube.com/embed/G5Ii6ENUXEs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></li>
+
   </ul>
   </li>
  </li>
