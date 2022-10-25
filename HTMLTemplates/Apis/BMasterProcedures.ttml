@@ -27,6 +27,8 @@
  
 [% ELSIF procedure  == ('ClokeBoardView') %]
  [% embed ('ClockeBoardView') %]
+[% ELSIF procedure  == ('BeePasture') %]
+ [% embed ('BeePasture') %]
 
 
 [% ELSIF procedure  == ('DistributedEditing') %]

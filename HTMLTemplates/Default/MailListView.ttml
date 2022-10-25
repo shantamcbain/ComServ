@@ -80,7 +80,7 @@
 		[% IF group == 'CSC_admin' OR
       group == 'BMast_admin' 		%] 	
     
-		<h3> Hello  [% firstname%]&nbsp;  [% lastname%]! Welcome to [% MailServer %]'s Mail List's page!</h3>
+		<h3> Hello  [% firstname%] &nbsp;  [% lastname%]! Welcome to [% MailServer %]'s Mail List's page!</h3>
 <p></p>
 
 anu_user_list@anucollective.beemaster.ca

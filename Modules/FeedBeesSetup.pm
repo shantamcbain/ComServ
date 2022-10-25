@@ -13,12 +13,12 @@ my $UseModPerl = shift || 0;
 
 
 my $self = {
-       -SITE_LAST_UPDATE       => 'August 16, 2012',
+       -SITE_LAST_UPDATE       => 'October 21, 2022',
  	    -AFFILIATE           => '1',
 	    -PID                 => '6',
 	    -APP_NAME_TITLE         => 'Beekeeping Application',
-       -SITE_DISPLAY_NAME      => 'feedthebees.Beemaster.ca',
-	    -HOME_VIEW              => 'PageView',
+        -SITE_DISPLAY_NAME      => 'feedthebees.beemaster.ca',
+	    -HOME_VIEW              => 'HomeView',
 	    -BASIC_DATA_VIEW        => 'BasicDataView',
 	    -APP_LOGO               => '/images/apis/bee.gif',
 	    -APP_LOGO_ALT           => 'apis Logo',

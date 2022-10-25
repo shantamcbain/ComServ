@@ -78,8 +78,7 @@
 
  	<tr>
 	<td>
-	[% embed('HelpDeskLinkView.ttml')%]
-	
+
 <!-- <A HREF ="/cgi-bin/CSC/helpdesk.cgi?&amp;view=HelpDeskHomeView&amp;site=[%
 	SiteName %]" Target ="blank"> <font class="LeftSideBarNavHelpDeskStyle">HelpDesk
  	</font></a>-->

@@ -24,7 +24,11 @@
 <td class="NavTableCellStyle">  </td>
     [% END %]
   [% ELSIF SiteName == 'BMaster' OR
-     SiteName == 'GrindrodProject' %]
+     SiteName == 'GrindrodProject' OR
+      SiteName == 'FeedBees' OR
+      SiteName == 'SMO' OR
+      SiteName == 'BHN'
+      %]
   [% FOREACH link = DBI.query("SELECT * FROM ency_herb_tb
                                   WHERE (apis !=  '' )
                                   ORDER BY botanical_name

@@ -1,31 +1,22 @@
+[% ViewVersion = 'v 0.02 2022/10/21 /cgi-bin/HTMLTemplates/Grindrod/GrindrodprojectView.ttml,'%]
 [%
 #	$Id: GrindRodProjectHomeView.ttml,v 1.1 2010/09/07 06:42:47 shanta Exp shanta $	%]
 
-[%# embed(data.page_top_view,['-PAGE_TITLE','The Grindrod Project']) %]
+[%# embed(data.page_top_view,['-PAGE_TITLE','$SiteDisplayName']) %]
 
 [%# embed('ErrorDisplayView') %]
-
-
-[% IF data.session_object %]
-
-	[% session_id = data.session_object.getId() %]
-   [% session_string = "session_id=$session_id" %]
+[% IF data.debug == 1 %]
+ [%	ViewVersion %]
 
 [% END %]
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%]
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')%]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
-[% email = data.session_object.getAttribute('-KEY','auth_email') %]
-<!-- GrindrodBreederHomeView  v 1.1 2010/09/07-->
+
+
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td>
 <A NAME="PageTop"></A>
 
-<h3> Welcome to the Grindrod project </h3>
+<h3> Welcome to [% SiteDisplayName  %]</h3>
 
 	[% IF username %]
 			[% IF  group == 'normal'%]
@@ -54,25 +45,30 @@
 				 		<h2>Promoting Sustainable Living with bees as our guide.</h2>
 
 
-		<p>We believe a world that supports healthy bee populations is good for all aspects of agriculture. With an eye to sustainability we are helping to develop a sustainable community in the Grindrod area. What the bees are eating are is the prime source of health on our bees. Honeybees and other pollinators are unique in they eat pollen and nectar as their primary food sources.They bring these things home to feed their young.They also retrieve water. This means that any  sprays, chemicals etc are in the feeding area of the the bee will get into the bees food sources.
+		<p>We believe a world that supports healthy bee populations is good for all aspects of agriculture. With an eye
+		 to sustainability we are helping to develop a sustainable community. What the bees are eating are is the prime source of health on our bees. Honeybees and other pollinators are unique in they eat pollen and nectar as their primary food sources.They bring these things home to feed their young.They also retrieve water. This means that any  sprays, chemicals etc are in the feeding area of the the bee will get into the bees food sources.
 		</p>
-		<p>As we discover what practices work the best for the community as a whole we will promote them though education and actions. 
+		<p>As we discover what practices work the best for the community as a whole we will promote them though
+		education and actions.
 		</p>
 		<p>
 			<ul>
-                          <li>Pollinator plant chart and recommended plantings 
-                          <li><a href="/cgi-bin/Apis/apis.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=ECFBreederProjectView" target="_content"> Bee Breeding program </a></li>
+                          <li>Pollinator plant chart and recommended  plantings <a href="/cgi-bin/index.cgi?site=[%
+                          SiteName %]&amp;[% session_string %]&amp;procedure=BeePasture" > Pollinator  related
+                          plants</a></li>
+                          <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;
+                          view=ECFBreederProjectView" target="_content"> Bee Breeding program </a></li>
       
-        		  <li>Stock management practices        		  
-         		  <li>Seed harvest program
-       		  	  <li>Workshops and seminars	        		  
+        		  <li>Stock management practices  </li>
+         		  <li>Seed harvest program</li>
+       		  	  <li>Workshops and seminars	</li>
 			</ul>
 		</p>
 		<p>
                  Projects in the community in which we support.
 			<ul>
-                          <li><a href="/cgi-bin/Apis/apis.cgi?site=GPMarket&amp;[% session_string %] " onmousedown="The Grindrod Park Market">The Grindrod Park Market</a> This markets currently are promoting a sustainable community access to exchange. 
-			  <li>Workshops and seminars	        		  
+                          <li></li>
+			  <li>Workshops and seminars</li>
 			</ul>
  		</p>			
 					
@@ -95,8 +91,7 @@
 	    </table>
 
 
-<H2><B><a href="/cgi-bin/index.cgi?site=GrindrodBC&amp;view=JoinListView">Join Our Grindrod Project list</a></b></H2>
-
+  [% embed ('ListJoinView' )   %]
 
 			</td>
 		</tr>

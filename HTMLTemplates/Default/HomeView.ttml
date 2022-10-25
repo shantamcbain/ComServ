@@ -75,6 +75,7 @@
 		     [% embed ('SaddleMountainOrganicsHomeView') %]
 		[% ELSIF SiteName == "BMastBreeder"%]
 			[% embed ('BMasterBreederHomeView') %]
+		[% ELSIF SiteName == "BMastBreeder"%]
 		[% ELSIF SiteName == "Forager" %]
  			[% embed ('ForagerHomeView') %]
 		[% ELSIF SiteName == "Brew" %]
@@ -167,6 +168,7 @@
 			       group    ==  'CSC_admin' OR
 			       group    ==  'CSPS_admin' OR
 			       group    ==  'ENCY_admin' OR
+			       group    ==  'FeedBees_admin' OR
 			       group    ==  'Forager_admin' OR
 			       group    ==  'eXtropia_admin' OR
 			       group    ==  'GPMarket_admin' OR

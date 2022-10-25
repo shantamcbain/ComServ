@@ -1053,6 +1053,7 @@ my @EMAIL_DISPLAY_FIELDS =
     qw(
        status
        sitename
+       username_of_poster
        page_code
        view_name
        body

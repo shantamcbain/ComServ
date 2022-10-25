@@ -1,4 +1,5 @@
-[% ViewVersion = 'v 2.013 /cgi-bin/HTMLTemplates/Default/ProceduresView.ttml, 2022/04/22'%]
+[% ViewVersion = 'v 2.014 /cgi-bin/HTMLTemplates/Default/ProceduresView.ttml, 2022/10/22'%]
+[%# ViewVersion = 'v 2.013 /cgi-bin/HTMLTemplates/Default/ProceduresView.ttml, 2022/04/22'%]
 [%# ViewVersion = 'v 2.01 /cgi-bin/HTMLTemplates/Default/ProceduresView.ttml, 2022/02/06'%]
 [% Version = 'v 1.97 2021/12/22 /HTTMLTemplates/Default/ProceduresView.ttml'%]
 [%# Version = 'v 1.968 2021/08/03 ProceduresView.ttml'%]
@@ -69,7 +70,8 @@
 		         SiteName == "BeeTalk" OR
 		         SiteName == "SMO" %]
 			[% embed ('BMasterProcedures') %]
-		[% ELSIF SiteName == "BMaster"%]
+		[% ELSIF SiteName == "BMaster" OR
+		         SiteName == "FeedBees"%]
 			[% embed ('BMasterProcedures') %]
 		[% ELSIF SiteName == "CS" %]
 			[% embed ('CSWorkShops') %]

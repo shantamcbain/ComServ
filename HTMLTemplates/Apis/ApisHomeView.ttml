@@ -1,4 +1,5 @@
-[% Version = 'v 1.157 2022/07/22 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
+[% Version = 'v 1.158 2022/10/25 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
+[%# Version = 'v 1.157 2022/07/22 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
 [%# Version = 'v 1.156 2022/06/18 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
 [%# Version = 'v 1.155 2022/02/16 shanta ApisHomeView.ttml' %]
 [%# Version = 'v 1.154 2022/02/10 shanta ApisHomeView.ttml' %]
@@ -62,13 +63,21 @@ Next event.</a>	</h2>
 </h3>
  		
 	 	
-		<p>Thanks for digging deeper.<p>              
-<h3><a href="https://email.labxmediagroup.com/e2t/tc/VXb1rk7ClB8ZW8k12lC2dKz-zW5wYw0_4sf4lbN5g75h75nxG7V3Zsc37CgHwZW6P_lD962cLvlV5N3vP5XMvwJW794Pny6BhhtwN6hysy7S5qYDW51Bvkr8qqHmXW2vZfv28JwqHzW6rFdVd4tQDMWW6J6Spf58-XqQW6WztgK1y55KjW5YmDf02hZS02W6N_D2D29f2jhW8430L78MFkYBW6JxZls6K0t29W5Fz-qL5cQHkQW81W9Dg6G647LW53Cqp-5qY5dtW1Gnw5v5vmqLbW2Z5VvB7_Jv6bW2-DnqH9f-SsQW92pQ6V7t14y9VqXP5Z5YgpWcW43x6Sy2gGkX3W4DbmsJ5m6WXyN6GQ9sqFWb1YW86YJ4d1KRy9ZW31l_b078HT2TW56g0tW5zPWs0W4tSdDm4qb1WhW3J38Zm2nLlHPW806-jX3P0l4PW2FD0dz9m46GlW3pk1LD4M_sSF364y1">Honeybee Microbes Shape the Colonies Social Behavior </a></h3>
+		<p>Thanks for digging deeper.<p>
 
+
+ <h3><a href="/cgi-bin/index.cgi?site=BMaster&amp;[% session_string %]&amp;procedure=SeasonView" name="Anucollective"
+ >This seasons active beekeeping</a>
+</h3>
+  <a href="https://www.the-scientist.com/news-opinion/some-honey-bee-swarms-generate-electrical-charges-stronger-than
+  -storms-70674?_hsmi=231109333&_hsenc=p2ANqtz-9vpqITBSVJa7gy9piyCTxDXi0ifCkWqJKEToZVpdrMwxwbuWz
+  -WXHq4hJJ_nQoN2DEYaUK5ChjF6krnxLkXSSSBorOcw"  >Some Honey Bee Swarms Generate Electrical Charges Stronger Than Storms.</a>
+<h3><a href="https://email.labxmediagroup
+  .com/e2t/tc/VXb1rk7ClB8ZW8k12lC2dKz
+   -zW5wYw0_4sf4lbN5g75h75nxG7V3Zsc37CgHwZW6P_lD962cLvlV5N3vP5XMvwJW794Pny6BhhtwN6hysy7S5qYDW51Bvkr8qqHmXW2vZfv28JwqHzW6rFdVd4tQDMWW6J6Spf58-XqQW6WztgK1y55KjW5YmDf02hZS02W6N_D2D29f2jhW8430L78MFkYBW6JxZls6K0t29W5Fz-qL5cQHkQW81W9Dg6G647LW53Cqp-5qY5dtW1Gnw5v5vmqLbW2Z5VvB7_Jv6bW2-DnqH9f-SsQW92pQ6V7t14y9VqXP5Z5YgpWcW43x6Sy2gGkX3W4DbmsJ5m6WXyN6GQ9sqFWb1YW86YJ4d1KRy9ZW31l_b078HT2TW56g0tW5zPWs0W4tSdDm4qb1WhW3J38Zm2nLlHPW806-jX3P0l4PW2FD0dz9m46GlW3pk1LD4M_sSF364y1">Honeybee Microbes Shape the Colonies Social Behavior </a></h3>
 
 <p>For many years now we have promoted the idea that the gut microbiomes are key to the health of the honey bee. This article from " The scientist.com" is an interesting insight on the effect on social behaviour. </p>                
-	   <a href="/cgi-bin/index.cgi?site=BMaster&amp;[% session_string %]&amp;procedure=SeasonView" name="Anucollective" >This seasons active beekeeping</a> 
-			</td >
+	   	</td >
 			</tr>
 			<tr>
 			<td >				

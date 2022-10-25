@@ -107,13 +107,13 @@
 
 	 %]
 
- <p><a href="http://dev.computersystemconsulting.ca/cgi-bin/page.cgi?site=[% SiteName %]&[% session_string %]&display_modification_form=on&record_id=[% Record_id %]" target="_blank">edit page</a>
+ <p><a href="/cgi-bin/page.cgi?site=[% SiteName %]&[% session_string %]&display_modification_form=on&record_id=[% Record_id %]" target="_blank">edit page</a>
 You can modify anything from here to the last update. You may use Html code in this area.
  	   [% END %]
 	 [% IF  username == 'Shanta'    
 
 	 %]
- <p><a href="http://dev.computersystemconsulting.ca/cgi-bin/page.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form=on" target="_blank">Add page </a>
+ <p><a href="/cgi-bin/page.cgi?site=[% SiteName %]&amp;[% session_string %]&display_add_form=on" target="_blank">Add page </a>
 
 	 [% END  %]
                                 

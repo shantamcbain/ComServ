@@ -1,34 +1,15 @@
 [%  ViewVersion = 'v 0.02 2022/03/19 /cgi-bin/HTMLTemplates/Apis/BeePatureView.ttml '%]
-[% Version = 'v 0.01 2021/07/31 BeePastureView.ttml shanta' %]
+[%# Version = 'v 0.01 2021/07/31 BeePastureView.ttml shanta' %]
 [%
 
 # the ENCY template
 #	$Id: BotanicalNameView.ttml,v 1.2 2011/09/21 19:25:15 shanta Exp $	
 #file location/cgi-bin/HTMLTemplates/ENCY
 %]
-[% PROCESS DefautVariables.ttml %]
-
- 
-[% PROCESS DefaultDbi.ttml %]
-
-[% embed(data.page_top_view,['-PAGE_TITLE','Bee Pasture by botanical name.']) %]
 
 [% embed('ErrorDisplayView') %]
 
 
-[% IF data.session_object %]
-
-	[% session_id = data.session_object.getId() %]
-        [% session_string = "session_id=$session_id" %]
-
-[% END %] 
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% username = data.session_object.getAttribute('-KEY','auth_username')%] 
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-   [% LastUpdate = data.last_update %]
-   [% SiteLastUpdate = data.site_last_update %]
-  [% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
 [% IF data.debug == 1 %]
  [%	ViewVersion %] 	   
 [% END %] 
@@ -55,7 +36,9 @@
     
      
         <h2>Bee Pasture</h2>
-     <h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BeePastureView">See our Database of Bee Forage.</a></h2>
+     <h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BeePastureView">See our
+     Database
+     of Bee Forage.</a></h2>
  <p>Your bees will need food to eat. With in an 3k radius of your hive is their pasture. The more abundant diverse the environment the healthier your bees will be. </p>
  
  <p>This season we doing the fallowing.</p>
@@ -64,11 +47,12 @@
   
   <li>Establish seed production of desired species. Every yard will have a different list.</li> 
   <li>Planing next seasons planting.</li>
-  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&procedure=Reforestation"><h3>Reforestation </h3></a></li>
+  <li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=Reforestation"><h3>Reforestation
+  </h3></a></li>
  </ul>
   
   
- <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BotanicalNameView">Herbs by botanical name</a></p>
+ <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BotanicalNameView">Herbs by botanical name</a></p>
      
  <a href="/cgi-bin/BuyAndSell/buy.cgi?site=[% SiteName %]&amp;[% session_string %]" target="_Blank" > Buy And Sell.</a>
 
