@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, 
 # Boston, MA  02111-1307, USA.
-
+my $AppVer = "ver 0.02, October 31, 2022";
 use strict;
 BEGIN{
     use vars qw(@dirs);
@@ -56,7 +56,7 @@ my $CGI = new CGI() or
 ######################################################################
 #                          SITE SETUP                             #
 ######################################################################
-    my $SiteName =  $CGI->param('site') || "ENCY";
+my $SiteName =  $CGI->param('site') || "ENCY";
 my $APP_NAME = "ENCY herb abmin";
 my $APP_NAME_TITLE = 'ENCY Formulas';
 my $SITE_DISPLAY_NAME = 'None Defined for this site.';
@@ -89,7 +89,7 @@ use SiteSetup;
   my $mail_to               = $SetupVariables->{-MAIL_TO};
   my $mail_replyto          = $SetupVariables->{-MAIL_REPLYTO};
   my $CSS_VIEW_NAME         = $SetupVariables->{-CSS_VIEW_NAME};
-  my $CSS_VIEW_NAME           = $SetupVariables->{-CSS_VIEW_NAME};
+  my $CSS_VIEW_URL           = $SetupVariables->{-CSS_VIEW_NAME};
   my $app_logo              = $SetupVariables->{-APP_LOGO};
   my $app_logo_height       = $SetupVariables->{-APP_LOGO_HEIGHT};
   my $app_logo_width        = $SetupVariables->{-APP_LOGO_WIDTH};
@@ -1201,6 +1201,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -ALLOW_USERNAME_FIELD_TO_BE_SEARCHED    => 1,
     -ALLOW_MODIFICATIONS_FLAG               => $allowMmod,
     -APPLICATION_SUB_MENU_VIEW_NAME         => 'ApplicationSubMenuView',
+    -APP_VER                                => $AppVer,
     -OPTIONS_FORM_VIEW_NAME                 => 'OptionsView',
     -AUTH_MANAGER_CONFIG_PARAMS             => \@AUTH_MANAGER_CONFIG_PARAMS,
     -ADD_RECORD_CONFIRMATION_VIEW_NAME      => 'AddRecordConfirmationView',
@@ -1212,7 +1213,7 @@ my @ACTION_HANDLER_ACTION_PARAMS = (
     -DELETE_ACKNOWLEDGEMENT_VIEW_NAME       => 'DeleteAcknowledgementView',
     -DELETE_RECORD_CONFIRMATION_VIEW_NAME   => 'DeleteRecordConfirmationView',
     -RECORDS_PER_PAGE_OPTS                  => [5, 10, 25, 50, 100],
-    -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || 5,
+    -MAX_RECORDS_PER_PAGE                   => $CGI->param('records_per_page') || 25,
     -SORT_FIELD1                            => $CGI->param('sort_field1') || 'formula_code',
     -SORT_FIELD2                            => $CGI->param('sort_field2') || 'lormula_name',
     -SORT_DIRECTION                         => $CGI->param('sort_direction') || 'ASC',
