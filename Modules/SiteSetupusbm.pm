@@ -367,7 +367,7 @@ use FeedBeesSetup;
      $home_view               = $SetupVariablesFeedBees->{-HOME_VIEW};
      $CSS_VIEW_URL            = $SetupVariablesFeedBees->{-CSS_VIEW_NAME};
      $last_update             = $SetupVariablesFeedBees->{-LAST_UPDATE}; 
-     $site_update              = $SetupVariablesFeedBees->{-SITE_LAST_UPDATE};
+     $site_update             = $SetupVariablesFeedBees->{-SITE_LAST_UPDATE};
 #Mail settings
      $mail_from               = $SetupVariablesFeedBees->{-MAIL_FROM};
      $mail_to                 = $SetupVariablesFeedBees->{-MAIL_TO};

@@ -1,4 +1,5 @@
-[% ViewVersion = 'v 2.02 2022/07/29 /cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
+[% ViewVersion = 'v 2.03 2022/11/07 /cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
+[%# ViewVersion = 'v 2.02 2022/07/29 /cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
 [%# ViewVersion = 'v 2.01 2022/04/04/cgi-bin/HTMLTemplates/Default/HomeView.ttml,'%]
 
 
@@ -148,6 +149,8 @@
 			[% embed ('ULCHome') %]
 		[% ELSIF SiteName == "USBM"%]
 			[% embed ('USBMHome') %]
+		[% ELSIF SiteName == "VE7TIT"%]
+			[% embed ('VE7TITHome') %]
 		[% ELSIF SiteName == "VOIP"%]
 			[% embed ('VOIPHome') %]
 			[% ELSE %]

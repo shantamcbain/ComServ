@@ -33,5 +33,3 @@ I
 Modules/universalSetup.pm,c/1/c19723b5111d8983a0517eb5269071a961025fb5
 O
 Modules/MonasheeSupportSetup.pm,8/f/8f04fc9108143d56257150f69e56f64a9f30c534
-F
-Modules/ShantaSetup.pm,3/2/321f2edf6dfab5726bf54f4b211ebecf554cd6e9

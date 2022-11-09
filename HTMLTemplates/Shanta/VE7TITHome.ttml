@@ -1,19 +1,6 @@
 [% ViewVersion = 'v 0.01 2022/11/07 /cgi-bin/HTMLTemplates/Shanta/VE7TITHome.ttml,'%]
 
-[%
 
-#	$Id: ShantaHome.ttml,v 1.11 2019/10/10 03:45:30 shanta Exp shanta $	
-
-#	$Id: ShantaHome.ttml,v 1.1 2001/12/16 03:45:30 shanta Exp shanta $	
-
-# Ideally this template should be converted into a static CSS file and
-# be served as /foo/bar.css and not via CGI, since it slows things
-# down and doesn't allow browsers to cache the CSS content.
-
-# otherwise this template is stand-alone, i.e. it doesn't rely on any
-# variables from outside.
-
-%]
 
 [% IF data.debug == 1 %]
  [%	ViewVersion %] 	   
@@ -54,18 +41,18 @@
 	[% IF username %]
 
 
-<h3 > Hello  [% firstname%]  [% lastname%]! Welcome to VE7TIT Radio Shack!</h3>
+<h3 > Hello  [% firstname%]  [% lastname%]! Welcome to VE7TIT  Shack!</h3>
 	  
 
 
 
 
-	<h3>  Hello! Welcome to Shantaloft!</h3
+
 	[% END %]
 	
 	
 
-	<p>This is my personal site. You will find some of the things I am into here. <p>
+
 
  <p>We are proud to sponsor <a href="https://usbm.ca" target="_blank" name="Universal Shool of Biological Life" title="Click here to see details.">The Universal School of Biological Life Site</a>.</p>
 <br>
