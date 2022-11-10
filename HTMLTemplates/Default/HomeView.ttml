@@ -142,14 +142,14 @@
 			[% embed ('SLTHomeView') %]
 		[% ELSIF SiteName == "TelMark"%]
 			[% embed ('TelMarkHome') %]
-			[% ELSIF SiteName == "WB" OR
+		[% ELSIF SiteName == "WB" OR
 		         SiteName == "WBDev" %]
 			[% embed ('WBHomeView') %]
 		[% ELSIF SiteName == "ULC"%]
 			[% embed ('ULCHome') %]
 		[% ELSIF SiteName == "USBM"%]
 			[% embed ('USBMHome') %]
-		[% ELSIF SiteName == "VE7TIT"%]
+		[% ELSIF SiteName == "VE7TIT" %]
 			[% embed ('VE7TITHome') %]
 		[% ELSIF SiteName == "VOIP"%]
 			[% embed ('VOIPHome') %]

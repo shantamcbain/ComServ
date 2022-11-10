@@ -97,7 +97,8 @@
  
 <tr> <td	class="InharatedVariablesCell">SiteName  .data</td>     <td	class="InharatedVariablesCell"> [% data.site_name %]</td></tr>
 
-<tr> <td	class="InharatedVariablesCell" >Mailto .data   </td>     <td	class="InharatedVariablesCell">         [% data. %] </td></tr>		
+<tr> <td	class="InharatedVariablesCell" >Mailto .data   </td>     <td	class="InharatedVariablesCell">         [%
+data.mail_to %] </td></tr>
 
 <tr> <td	class="InharatedVariablesCell">brewname  </td>     <td	class="InharatedVariablesCell">[% databrewname %].data</td></tr>
  <tr> <td	class="InharatedVariablesCell">Allow addition  .data </td>     <td	class="InharatedVariablesCell">      [% data.allow_additions_flag %].data</td></tr>
