@@ -51,9 +51,9 @@
 <p> 
 [% embed('LiveEditAdmin') %]
 	      
-                     
+
   <!-- Cut From Here down to the Cut To Here comment don't include the cut marks.   -->                                  
-      [% body %]
+     <p> [% body %]</p>
  <!-- Cut To Here  don't include the cut marks.   -->                                  
    <p>  
       [% IF news %]			<h3>News</h3>
@@ -73,8 +73,6 @@
 		<br>
 [% END %]
  
-
-  
 
 
 
