@@ -64,7 +64,7 @@
  >ICOM IC-U16</a></li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Z-100Plus"
  >Z-100Plus Autotuner </a></li>
- <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=/SignalinkUSB"
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=SignalinkUSB"
  >SignaLink USB Integrated USB Sound Card</li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=HamPi"
  >Raspberry Pi running HamPi</a></li>
