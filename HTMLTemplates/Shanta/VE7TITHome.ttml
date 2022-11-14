@@ -71,13 +71,24 @@
  </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=NanoVNA"
  >NanoVNS -H Network Analyzer</a>
- </li><li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=HamPi"
+ </li>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=HamPi"
  >Raspberry Pi running HamPi</a>
  </li>
 
 </ul>
+<h3>Ham activities.</h3>
+<ul>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=DigitalModes"
+ >Digital Modes</a></li>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Voice"
+ >Voice communications</a>
+ </li>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=CW"
+ >CW</a>
+ </li>
 
-<br>
+</ul><br>
 <br>
 <br>
 <p>
