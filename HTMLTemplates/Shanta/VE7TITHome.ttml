@@ -66,8 +66,12 @@
  >Z-100Plus Autotuner </a></li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=SignalinkUSB"
  >SignaLink USB Integrated USB Sound Card</li>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=WolfriverCoil"
+ >Wolfriver Coil Antenna</a>
+ </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=HamPi"
- >Raspberry Pi running HamPi</a></li>
+ >Raspberry Pi running HamPi</a>
+ </li>
 
 </ul>
 
