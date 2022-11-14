@@ -69,7 +69,9 @@
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=WolfriverCoil"
  >Wolfriver Coil Antenna</a>
  </li>
- <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=HamPi"
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=NanoVNA"
+ >NanoVNS -H Network Analyzer</a>
+ </li><li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=HamPi"
  >Raspberry Pi running HamPi</a>
  </li>
 
