@@ -13,15 +13,11 @@
  <li> 
 
  [% IF procedure  == 'ContactsView' %]
- 
-
-[% embed ('ContatsView') %]
+   [% embed ('ContactView') %]
  [% ELSIF procedure  == ('GraftingWorkShop') %]
- 
- [% embed ('GraftingWorkShop') %]
+  [% embed ('GraftingWorkShop') %]
  [% ELSIF procedure  == ('AmuAdminList') %]
- 
- [% embed ('AmuAdminList') %]
+  [% embed ('AmuAdminList') %]
 [% ELSIF procedure  == ('HiveManHomeView') %]
  
   [% embed ('HiveManHomeView') %]

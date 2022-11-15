@@ -1,0 +1,41 @@
+[% ViewVersion = 'v 0.01 /cgi-bin/HTMLTemplates/Default/ContactsSQL.ttml, 2022/11/15'%]
+
+[% IF data.debug == 1 %]
+ [%	ViewVersion %]
+[% END %]
+<table><tr><td colspan="5"> <a href="/cgi-bin/Addressbook/todo.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;
+display_add_form=on "target="_Blank">Todo</a>
+ </td></tr>
+<tr><td>Sitename </td><td>Name</td><td>Company Name</td><td>Priority </td><td>Comments</td></tr>
+
+    [%# FOREACH link = DBI.query("SELECT * FROM address_book_db
+                                  WHERE ( category =  '3' AND
+                                          sitename = 'Site_Contact' )
+                                  ORDER BY priority DESC  
+                                          
+                                  ")%]    
+  [% FOREACH link = DBI.query("SELECT * FROM address_book_tb
+                                  WHERE ( category = 'Site_Contact' AND
+                                          sitename = '$SiteName')
+                                  ORDER BY category DESC, sitename
+                                          
+                                  ")%]                                                                   
+                                 
+                                   <tr>
+<td > [% link.sitename %]  </td>
+<td > [% link.fname %]  [% link.lname %] </td>
+<td > [% link.company_name %]  </td>
+<td > [% link.email %]  </td>
+<td > [% link.comments %]  </td>
+[% IF group == "$SiteName_Admin" OR
+      group == "$SiteName_admin" OR
+      username == 'Shanta'%]
+<td >        
+   <a href="/cgi-bin/AddressBook/address_book.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;&display_details_view
+   .x=on&record_id=[% link.record_id %]" target="[% link.target %]" name="Contact" title="details"><font
+   class="LeftSideBarNavStyle">Details</font></a>
+    </td>
+  [% END %]
+    </tr>
+ [% END %] 
+</table>

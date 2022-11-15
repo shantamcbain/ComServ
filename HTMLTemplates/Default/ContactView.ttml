@@ -1,44 +1,43 @@
-[% Version = 'v 1.21 2021/10/12 17:43:15 /cgi-bin/HTMLTemplates/Default/ContactView.ttml, '%]
-[%
+[% Version = 'v 1.22 2022/11/15 17:43:15 /cgi-bin/HTMLTemplates/Default/ContactView.ttml, '%]
 
+[%# Version = 'v 1.21 2021/10/12 17:43:15 /cgi-bin/HTMLTemplates/Default/ContactView.ttml, '%]
+[%
 # the home  Page template
 #	$Id: ContactView.ttml,v 1.2 2002/01/09 22:01:26 shanta Exp $
 
 %]
-[% PROCESS DefaultDbi.ttml %]
-
-[% embed(data.page_top_view,['-PAGE_TITLE','Site Contacts']) %]
-	
-[% embed('ErrorDisplayView') %]
-
-
-[% IF data.session_object %]
-
-	[% session_id = data.session_object.getId() %]
-        [% session_string = "session_id=$session_id" %]
-
-[% END %] 
-[% is_authenticated = subs.is_authenticated(data.auth_manager_config_params) %]
-	[% Username = data.session_object.getAttribute('-KEY','auth_username')%]
-	[% firstname = data.session_object.getAttribute('-KEY','auth_firstname')%]
-	[% lastname = data.session_object.getAttribute('-KEY','auth_lastname')%]
-	[% group = data.session_object.getAttribute('-KEY','auth_groups')||data.group  %]
-[% SiteName = data.session_object.getAttribute('-KEY','SiteName') %]
- [% script_name = data.app_name %]
- [% PROCESS DefaultDbi.ttml %]
- [%# SiteName %]
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td>
 
 [% IF data.debug == 1 %]
  [%	Version %] 	   
-[% END %] 
+[% END %]
 
 <div align="center"><h2>Site Contacts</h2>
 </div><br>
 <br>
-<br>
+
+
+			[% embed ('ContactsSQL') %]
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: auto;">
+
+[% FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE
+                                                           category = "Site_Contact" AND
+                                                           sitename = "$SiteName"') %]
+   <tr><td class="tableRowHeaderStyle">Name</td><td class="tableCellStyle">[% user.fname %]&nbsp; [% user.lname %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle" style="table-layout: auto; ">address</td><td class="tableCellStyle">[% user.address1 %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Address2</td><td class="tableCellStyle">[% user.address2 %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">City</td><td class="tableCellStyle">[% user.city %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Prov</td><td class="tableCellStyle">[% user.prov %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Postal Code</td><td class="tableCellStyle">[% user.zip %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Country</td><td class="tableCellStyle">[% user.country %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Email</td><td class="tableCellStyle">[% user.email %]&nbsp; </td></tr>
+   <tr><td class="tableRowHeaderStyle">Website</td> <td class="tableCellStyle">&nbsp;<a href="[% user.url %]" name="Contact" target="_blank" title="Site Contact">
+        [% user.url %]</a> </td></tr>
+    [% END %]
+</table>
 <br>
 [% IF SiteName == "MARTS" 
        %]
@@ -283,28 +282,13 @@ embed ecfcontactview
 
 [% ELSE %]
 
-<table cellpadding="0" cellspacing="0" border="0" width="100%" style="table-layout: auto;">     
-
-[% FOREACH user = DBI.query('SELECT * FROM csc_client_tb WHERE  category  = "Site_Contact" AND
-       sitename = "$SiteName"') %]
-   <tr><td class="tableRowHeaderStyle">Name</td><td class="tableCellStyle">[% user.fname %]&nbsp; [% user.lname %]&nbsp; </td></tr>
-   <tr><td class="tableRowHeaderStyle" style="table-layout: auto; ">address</td><td class="tableCellStyle">[% user.address1 %]&nbsp; </td></tr>
-   <tr><td class="tableRowHeaderStyle"></td><td class="tableCellStyle">[% user.address2 %]&nbsp; </td></tr>
-   <tr><td class="tableRowHeaderStyle">City</td><td class="tableCellStyle">[% user.city %]&nbsp; </td></tr>
-   <tr><td class="tableRowHeaderStyle">Prov</td><td class="tableCellStyle">[% user.prov %]&nbsp; </td></tr>
-   <tr><td class="tableRowHeaderStyle">Postal Code</td><td class="tableCellStyle">[% user.zip %]&nbsp; </td></tr>
-   <tr><td class="tableRowHeaderStyle">Country</td><td class="tableCellStyle">[% user.country %]&nbsp; </td></tr>
-   <tr><td class="tableRowHeaderStyle">Email</td><td class="tableCellStyle">[% user.email %]&nbsp; </td></tr>
-   <tr><td class="tableRowHeaderStyle">Website</td> <td class="tableCellStyle">&nbsp;<a href="[% user.url %]" name="Contact" target="_blank" title="Site Contact">
-        [% user.url %]</a> </td></tr>
-    [% END %]
-</table>
 <p>
              <script type = "text/javascript"
  src="/cgi-bin/AddressBook/address_book.cgi?embed=1&amp;site=[% SiteName %]&amp;records_per_page=1&amp;display_details_view=on&amp;submit_power_search=on&amp;simple_search_string=[% SiteName %]_contact&amp;columns_to_view=category&amp;columns_to_view=fname&amp;columns_to_view=lname&amp;columns_to_view=email&amp;columns_to_view=phone&amp;[% session_string %]">
 </script>
 
-      [%# FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  category  = "Site_Contact"') %]
+      [%# FOREACH user = DBI.query('SELECT * FROM address_book_tb WHERE  category  = "Site_Contact" AND
+                                                                         sitename  = "$SiteName"') %]
         [% user.fname %]&nbsp; [% user.lname %]&nbsp; Website &nbsp;<a href="http://[% user.url %]" name="Contact" target="_blank" title="Site Contact">[% user.url %]</a> <br>
     [%# END %]
 

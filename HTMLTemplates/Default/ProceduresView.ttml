@@ -58,10 +58,12 @@
 		
    	[% IF SiteName == "OKB" %]
 		[%# embed('OkBeekeepersHomeView') %]
-      [% ELSIF procedure == "DistributedEditing" %]
+      [% ELSIF procedure == "ContactView" %]
+			[% embed ('ContactView') %]
+	   [% ELSIF procedure == "DistributedEditing" %]
 
 			[% embed ('DistributedEditing') %]
-	   [% ELSIF SiteName == "AltPower" %]
+	 [% ELSIF SiteName == "AltPower" %]
 
 			[% embed ('AltPowerProcedures') %]
 		[% ELSIF SiteName == "AnuCollective" %]
@@ -146,6 +148,9 @@
 			[%# embed ('LtrustHomeView') %]
 		[% ELSIF SiteName == "ShantaWorkShop" %]
 			[% embed ('ShantaWorkShopProjects') %]
+[% ELSIF SiteName == "Shanta" OR
+		         SiteName == "VE7TIT"  %]
+			[%# embed ('ShantaProcedures') %]
 
 		[% ELSIF SiteName == "Sky" %]
 			[%# embed ('SkyHomeView') %]
