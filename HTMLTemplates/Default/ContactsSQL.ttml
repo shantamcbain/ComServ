@@ -4,7 +4,7 @@
  [%	ViewVersion %]
 [% END %]
 <table>
-<tr><td>Sitename </td><td>Name</td><td>Company Name</td><td>Priority </td><td>Comments</td></tr>
+<tr><td>Sitename </td><td>Name</td><td>Company Name</td><td>Email</td><td>Comments</td></tr>
 
     [%# FOREACH link = DBI.query("SELECT * FROM address_book_db
                                   WHERE ( category =  '3' AND
