@@ -3,9 +3,7 @@
 [% IF data.debug == 1 %]
  [%	ViewVersion %]
 [% END %]
-<table><tr><td colspan="5"> <a href="/cgi-bin/Addressbook/todo.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;
-display_add_form=on "target="_Blank">Todo</a>
- </td></tr>
+<table>
 <tr><td>Sitename </td><td>Name</td><td>Company Name</td><td>Priority </td><td>Comments</td></tr>
 
     [%# FOREACH link = DBI.query("SELECT * FROM address_book_db
