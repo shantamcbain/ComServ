@@ -702,7 +702,8 @@ my %products;
       Package     => 'Custom Packaging',
       Pollinator  => 'Pollination Products',
       Pollen      => 'Pollen',
-      Queens      => 'Queens',
+      Site_Contact => 'Contact',
+         Queens      => 'Queens',
       Wax         => 'Wax',
     );
 }elsif ( $group eq "CSC_admin" ||
@@ -728,7 +729,7 @@ if ( $group eq "CSC_admin" ||
         Altpower  => 'Alternat Power',
         Apis      => 'Apis beekeepig',
         Brew      => 'Brewing',
-        CSC       => 'Computer System Consultin.ca',
+        CSC       => 'Computer System Consulting.ca',
         CS        => 'Country Stores',
         Demo      => " Demo",
         Forager   => 'Forager.com',
@@ -769,8 +770,9 @@ if  ( $group eq "ECF_admin" ||
        HCust      => 'Honey Customer',
        PCust      => 'Pollination Customer',
        supplier   => 'Supplier',
-       Cust       => 'Customer',
+       Site_Contact      => 'Contact',
        Beekeeper  => 'Bee Keeper',
+
     );
 }elsif( $group eq "AltPower_admin" ||
         $SiteName eq "AltPower" ){
@@ -778,17 +780,19 @@ if  ( $group eq "ECF_admin" ||
        Guest                       => 'Guest',
        Member                      => 'Member',
        Supplier                    => 'Suppler',
-       Publisher                   => 'Publisher',       
+       Publisher                   => 'Publisher',
+       Site_Contact      => 'Contact',
   );
 
 }elsif( $group eq "CSC_admin" ||
         $SiteName eq "CSC" ){
         %category =
         (
-          Guest                       => 'Guest',
-          Member                      => 'Member',
-          Supplier                    => 'Suppler',
-          CSC_admin                   => 'CSC_Admin',       
+            Guest        => 'Guest',
+            Member       => 'Member',
+            Supplier     => 'Suppler',
+            CSC_admin    => 'CSC_Admin',
+            Site_Contact => 'Contact',
         );
 }else{%category =   (
        author                    => 'Author',
@@ -799,6 +803,7 @@ if  ( $group eq "ECF_admin" ||
        Customer                    => 'Customer',
        Site_Contact                    => 'Contact',
        Doc                         => 'Physician',
+       Site_Contact      => 'Contact',
       );
 }
 my @months = qw(January February March April May June July August
