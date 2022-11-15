@@ -159,7 +159,7 @@ use SiteSetup;
     $DEFAULT_CHARSET       = $SetupVariables->{-DEFAULT_CHARSET};
     $LINK_TARGET           = $SetupVariables->{-LINK_TARGET};
     $HTTP_HEADER_PARAMS    = $SetupVariables->{-HTTP_HEADER_PARAMS};
-    $GLOBAL_DATAFILES_DIRECTORY = '/home/shanta/Datafiles/'||$SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
+    $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
     $additonalautusernamecomments  = $SetupVariables->{-ADDITIONALAUTHUSERNAMECOMMENTS};
 my $VIEW_LOADER = new Extropia::Core::View
     (\@VIEWS_SEARCH_PATH,\@TEMPLATES_SEARCH_PATH) or
