@@ -1,9 +1,7 @@
-[% Version = 'v 0.16 2022/04/11 shanta /cgi-bin/HTMLTemplates/Default/PageView.ttml' %]
+[% ViewVersion = 'v 0.17 2022/11/19 shanta /cgi-bin/HTMLTemplates/Default/PageView.ttml' %]
+[%# Version = 'v 0.16 2022/04/11 shanta /cgi-bin/HTMLTemplates/Default/PageView.ttml' %]
 
- [%# HostName = data.domain_name %]
- [%# PROCESS DefautVariables.ttml %]
- [%# PROCESS DefaultDbi.ttml %]
- [% Page = data.page_name  %]
+  [% Page = data.page_name  %]
  [% HomeLink = data.home_link || '' %]
 [% process = 'None defined' %]
 
@@ -32,7 +30,7 @@
 <p>PageView</p>
 
 [% IF data.debug == 1 %]
- [%	Version %] 	   
+ [%	ViewVersion %]
 [% END %] 
  [%# IN PAGEVIEW Call page%]    [% Page %]
 [% END %]  

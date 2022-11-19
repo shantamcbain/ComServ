@@ -54,7 +54,7 @@
  >Yaesu HT/VHF/UHF all mode
  transceiver FT-897</a></li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=FT-891"
- >Yaesu HT/50MHz all mode transceiver FT-891</a></li>
+ >Yaesu HT/50MHz transceiver FT-891</a></li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Baofeg"
  >Baofeng</a> only used for backcountry work as they transmit too widely and will interfere with other radio on
  nearby frequency's.</li>
@@ -65,7 +65,7 @@
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Z-100Plus"
  >Z-100Plus Autotuner </a></li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=SignalinkUSB"
- >SignaLink USB Integrated USB Sound Card</li>
+ >SignaLink USB Integrated USB Sound Card</a></li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=WolfriverCoil"
  >Wolfriver Coil Antenna</a>
  </li>
