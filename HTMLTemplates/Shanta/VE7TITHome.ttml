@@ -78,9 +78,21 @@
 
 </ul>
 <h3>Ham activities.</h3>
-<ul>
+<a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=CW"
+ >CW</a>
+
+<li>
+ <h3>Programing.</h3>
+  <ul>
+  <li><li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=NodeRedHam"
+  >Nodered </a>
+  </li>
+  </ul>
+</ul>
+
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=DigitalModes"
- >Digital Modes</a></li>
+ >Digital Modes</a>
+
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Voice"
  >Voice communications</a>
  </li>
