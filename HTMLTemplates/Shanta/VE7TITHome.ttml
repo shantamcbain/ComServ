@@ -78,9 +78,10 @@
 
 </ul>
 <h3>Ham activities.</h3>
-<a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=CW"
+  <ul>
+ <li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=CW"
  >CW</a>
-
+</li>
 <li>
  <h3>Programing.</h3>
   <ul>
