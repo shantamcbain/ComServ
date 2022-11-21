@@ -22,7 +22,7 @@
 <h2>Key navigation links.</h2>
 <ul>
    	<li><a href="https://usbm.ca/cgi-bin/index.cgi?site=USBM" target="_blank">USBM</a></li>
-	</ul>
+</ul>
 
 
 [% ELSE %]
@@ -39,7 +39,7 @@
 
 
 
- <p>We are proud to sponsor <a href="https://usbm.ca" target="_blank" name="Universal Shool of Biological Life" title="Click here to see details.">The Universal School of Biological Life Site</a>.</p>
+<p>We are proud to sponsor <a href="https://usbm.ca" target="_blank" name="Universal Shool of Biological Life" title="Click here to see details.">The Universal School of Biological Life Site</a>.</p>
 <br>
 <br>                      
 
@@ -51,20 +51,27 @@
 <ul>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=FT-897"
  >Yaesu HT/VHF/UHF all mode
- transceiver FT-897</a></li>
+ transceiver FT-897</a>
+ </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=FT-891"
- >Yaesu HT/50MHz transceiver FT-891</a></li>
+ >Yaesu HT/50MHz transceiver FT-891</a>
+ </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Baofeg"
  >Baofeng</a> only used for backcountry work as they transmit too widely and will interfere with other radio on
- nearby frequency's.</li>
+ nearby frequency's.
+ </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=IC-H16"
- >ICOM IC-H16 </a></li>
+ >ICOM IC-H16 </a>
+ </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=IC-U16"
- >ICOM IC-U16</a></li>
+ >ICOM IC-U16</a>
+ </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Z-100Plus"
- >Z-100Plus Autotuner </a></li>
+ >Z-100Plus Autotuner </a>
+ </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=SignalinkUSB"
- >SignaLink USB Integrated USB Sound Card</a></li>
+ >SignaLink USB Integrated USB Sound Card</a>
+ </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=WolfriverCoil"
  >Wolfriver Coil Antenna</a>
  </li>
@@ -74,20 +81,21 @@
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=HamPi"
  >Raspberry Pi running HamPi</a>
  </li>
-</ul>
+</ul>>
+
 <h3>Ham activities.</h3>
 <ul>
  <li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=CW"
  >CW</a>
  </li>
-<li>
+ <li>
  <h3>Programing.</h3>
   <ul>
-  <li><li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=NodeRedHam"
+   <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=NodeRedHam"
   >Nodered </a>
-  </li>
+   </li>
   </ul>
-</ul>
+
 
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=DigitalModes"
  >Digital Modes</a>
@@ -98,6 +106,9 @@
  </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=CW"
  >CW</a>
+ </li>
+<li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Power"
+ >Every thing needs Power</a>
  </li>
 
 </ul><br>
