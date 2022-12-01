@@ -33,11 +33,14 @@
 
   <li> <b>New</b> <a href="/cgi-bin/index.cgi?site=3d">3D Printing. </a> We now have a 3d printing department Have a look. </li>
   <li>
-  <p> Our <a href="/cgi-bin/index.cgi?site=ENCY&[% session_string %]&view=BotanicalNameView">Encyclopidia of Biological life </a></p>  </li>
-  <li>  <p>   <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BotanicalNameView">Herbs by botanical name</a> </li>
+  <p> Our <a href="/cgi-bin/index.cgi?site=ENCY&[% session_string %]&view=BotanicalNameView">Encyclopidia of Biological life </a></p>
+  </li>
+  <li>  <p>   <a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&view=BotanicalNameView">Herbs by botanical name</a>
+  </li>
   <li>
-   <h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&page=Butterfly Pathway </a></h3>Help the
-   butterfly and other Pollinators.
+   <h3><a href="/cgi-bin/index.cgi?site=[% SiteName %]&[% session_string %]&page=ButterFly">Butterfly Pathway
+   </a></h3>Help
+   butterfly's and other Pollinators.
    </li>
    <li></p>
 
