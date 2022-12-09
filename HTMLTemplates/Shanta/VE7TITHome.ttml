@@ -81,7 +81,13 @@
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=HamPi"
  >Raspberry Pi running HamPi</a>
  </li>
-</ul>>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=HamPi"
+ >Raspberry Pi running HamPi</a>
+ </li>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=FieldDays"
+ >Field Days</a>
+ </li>
+</ul>
 
 <h3>Ham activities.</h3>
 <ul>
