@@ -1,4 +1,5 @@
-[% Version = '/cgi-bin/HTMLTemplates/USBM/TelMarkView.ttml v 0.02 2021/11/12 shanta' %]
+[% Version = '/cgi-bin/HTMLTemplates/USBM/TelMarkView.ttml v 0.03 2022/12/09 shanta' %]
+[%# Version = '/cgi-bin/HTMLTemplates/USBM/TelMarkView.ttml v 0.02 2021/11/12 shanta' %]
 [%# Version = '/cgi-bin/HTMLTemplates/USBM/TelMarkView.ttml,v 0.01 2021/12/09 17:43:15 shanta Exp shanta '%]
 [%
 #	$Id: CSCHomeView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
@@ -25,7 +26,7 @@
 <h2>Join Us in our skiing adventures.</h2>
 comming soon
 <ul>
-	<li><a href="/cgi-bin/TelMark/telmark.cgi?site=TelMark&[% session_string %]&">The Adventure Log.</a></li>
+	<li><a href="/forum">The Adventure Log.</a></li>
 	<li>How to's
     <ul>
 	<li>Track creation and maintenance</li>
