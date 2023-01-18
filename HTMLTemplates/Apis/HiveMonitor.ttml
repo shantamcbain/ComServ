@@ -17,13 +17,13 @@
 	[% IF username %]
 
 <h3 > Hello  [% firstname%]  [% lastname%]! Welcome to     [% data.site_display_name %]
- Plant data base!</h3>
+ Hive Monitoring Project!</h3>
 	  
 
 	[% ELSE %]
 
 	<h3>  Hello! Welcome to [%  data.site_display_name %]
- Plant data base!</h3
+Hive Monitoring Project!</h3>
 
 	[% END %]
 
@@ -35,26 +35,58 @@
 
     
      
-        <h2>Bee Pasture</h2>
-     <h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BeePastureView">See our
-     Database
-     of Bee Forage.</a></h2>
- <p>Your bees will need food to eat. With in an 3k radius of your hive is their pasture. The more abundant diverse the environment the healthier your bees will be. </p>
- 
- <p>This season we doing the fallowing.</p>
+        <h2>Hive Monitoring</h2>
+
+ <p>This project is intended to provide data of what is happening your operation. Temperature, humidity, day light time,
+hive weight. Plants in flower. Activity time on the flowers. Activity at the entrance.
+ </p>
  <ul>
-  <li>Encourage bee friendly harvest in spraying practices </li> 
+  <li><h3>Inside the hive.<h3>   <p>cameras at the entrance can be used to track preditor levels, amount and
+  type of Pollen harvested. Time of day of harvest. Tracking the weight of the hive will tell us the amount of
+  forage coming in and being consumed.</p></li>
+  <li><h3>In the yard.<h3><p>Data from here will tell us the overall environment the hive is in.</p></li>
+  <li><h3>In the pasture zone. Cameras here and on drones will tell us what forage is avaible and when
+  they are being harvested. Drone footage will give an indication of avaible forage in the zone of the
+  yard. This data will help us to determine what and were to plant bee forage.<h3><p></p></li>
+
+ </ul>
+
+
+ <ul>
+  <li><p>Develop and over view of what equipment we need to assemble to do the above.
+    <ul>
+     <li>Computer related. Lan system that will connect all sensors to the database server and the website.</li>
+     <li>Sensors to collect data.</li>
+     <li>Power management to keep it all running.</li>
+     <li>3D printed cases etc.
+    </ul>
+   </p>
+  </li>
+  <li>Electronic circuit design</li>
   
-  <li>Establish seed production of desired species. Every yard will have a different list.</li> 
-  <li>Planing next seasons planting.</li>
-  <li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=Reforestation"><h3>Reforestation
-  </h3></a></li>
+  <li>Programming. Python programs will be needed to harvest, store and graph data.</li>
+  <li>AI will be needed to monitor video stream. This AI will track pollen on the legs of the bees for amount and
+  type. Track activity in the field and pasture availability.</li>
+  <li> </li>
  </ul>
   
-  
- <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BotanicalNameView">Herbs by botanical name</a></p>
-     
- <a href="/cgi-bin/BuyAndSell/buy.cgi?site=[% SiteName %]&amp;[% session_string %]" target="_Blank" > Buy And Sell.</a>
+ <h2>How can you help</h2>
+  <ul>
+     <li>Join our site. Host your site with us.</li>
+     <li>Support through <a href="https://www.patreon.com/beemaster" target="blank">Patreon.</a> </li>
+     <li>Help with.
+        <ul>
+         <li><h3>Programing. </h3> If you know or want to learn Check out our <a href="/cgi-bin/index.cgi?site=[%
+         SiteName %]&amp;[% session_string %]&amp;view=JobView"target="blank"> jobs</a> board.
+         </li>
+         <li><h3>Website design,</h3> If you know or want to learn Check out our <a href="/cgi-bin/index.cgi?site=[%
+         SiteName %]&amp;[% session_string %]&amp;view=JobView"target="blank"> jobs</a> board.</li>
+         <li><h3>Database entry such as the plant database.</h3></li>
+         <li><h3></h3></li>
+        </ul>
+     </li>
+    </ul>
+
 
 [%# embed('CSCCopyRight') %]
 [% embed(data.page_bottom_view) %]

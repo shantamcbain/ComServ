@@ -33,9 +33,23 @@
      <h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;view=BeePastureView">See our
      Database
      of Bee Forage.</a></h2>
- <p>Your bees will need food to eat. With in an 3k radius of your hive is their pasture. The more abundant diverse the
-  environment the healthier your bees will be. </p>
- 
+<p>The question of sustainability is a large one. Of the many things entailed in a community.  Here is a short list of
+what we are exploring. Feeding bees is of primary importance. Biodiversity depends on a healthy bee population.  Healthy
+ bee populations depend on Quality Biodiversity.</p>
+
+     <p>Your bees will need food to eat. All with in an 3k radius of your hive. The more abundant
+     diverse  the environment the healthier your bees will be.
+		<ul>
+		 <li>Sustainable farming depends Biodiversity which depends on a healthy bee population. Healthy bee populations
+		  depend on Quality Biodiversity.</li>
+		 <li>Planting food, flowers and tree with bees in mind create the biodiversity that we and our bees depend on
+		 .</li>
+		 <li>The quality of that biodiversity depend on the health of the soil. Toxic chemicals such
+		as Round up blocks the absorption of nutrients into the plant and kill soil organisms that make nutrients available to the plants.</li>
+		 <li>Planting guides as to what plants and there needs are provided here. Workshops will also be available for
+		 Planing the spring season</li>
+						</ul>
+
  <p>This season we doing the fallowing.</p>
  <ul>
   <li>Add a hive and pasture monitoring system. See <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[%
