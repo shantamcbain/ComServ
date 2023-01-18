@@ -33,7 +33,8 @@
 
 [% ELSIF procedure  == ('DistributedEditing') %]
  [% embed ('DistributedEditing') %] 
-
+[% ELSIF procedure  == ('FeedBees') %]
+   [% embed ('FeedBees') %]
 [% ELSIF procedure  == ('FirstEval') %]
    [% embed ('FirstEval') %]
    
@@ -42,6 +43,8 @@
    
 [% ELSIF procedure  == ('ForumsView') %]
  [% embed ('ForumsView') %]
+[% ELSIF procedure  == ('HiveMonitor') %]
+   [% embed ('HiveMonitor') %]
 
 [% ELSIF procedure  == ('InventoryView') %]
    [% embed ('InventoryView') %]

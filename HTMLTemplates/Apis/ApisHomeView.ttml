@@ -1,4 +1,5 @@
-[% Version = 'v 1.158 2022/10/25 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
+[% Version = 'v 1.159 2023/01/18 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
+[%# Version = 'v 1.158 2022/10/25 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
 [%# Version = 'v 1.157 2022/07/22 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
 [%# Version = 'v 1.156 2022/06/18 shanta /HTMLTemplates/Apis/ApisHomeView.ttml' %]
 [%# Version = 'v 1.155 2022/02/16 shanta ApisHomeView.ttml' %]
@@ -15,8 +16,7 @@
 [%# Version = 'v 1.145 2021/02/03 shanta ApisHomeView.ttml' %]
 [%#Version = 'v 1.14 2020/07/08 shanta' %]
 [%# Version = 'v 1.13 2020/06/08 ApisHomeView.ttml shanta' %]
-[%
-#	$Id: ApisHomeView.ttml,v 1.11 2020/03/10 06:42:47 shanta Exp shanta $	%]
+[%#	$Id: ApisHomeView.ttml,v 1.11 2020/03/10 06:42:47 shanta Exp shanta $	%]
 [%#	$Id: ApisHomeView.ttml,v 1.1 2003/11/29 06:42:47 shanta Exp shanta $	%]
 
 
@@ -64,6 +64,12 @@ Next event.</a>	</h2>
  		
 	 	
 		<p>Thanks for digging deeper.<p>
+<h3>Feed The Bees</h3>
+
+<p> We are pleased to announce our being apart of the Element 14 Save the bees challenger. Drop by
+ our<a href="https://feedthebees.beemaster.ca/cgi-bin/index.cgi?site=BMaster&amp;[% session_string %]&amp;procedure=FeedBees" name="Feed
+ The Bees"
+ > Feed The Bees</a> site for more details and how you can support the bees,</p>
 
 
  <h3><a href="/cgi-bin/index.cgi?site=BMaster&amp;[% session_string %]&amp;procedure=SeasonView" name="Anucollective"

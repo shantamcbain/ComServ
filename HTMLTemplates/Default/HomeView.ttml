@@ -106,6 +106,8 @@
 			[% embed ('ECFHomeView') %]
 	    [% ELSIF SiteName == "ENCY" %]
 			[% embed ('ENCYHome') %]
+		[% ELSIF SiteName == "FeedBees" %]
+			[% embed ('FeedBees') %]
 		[% ELSIF SiteName == "GrindrodBC" %]
 			[% embed ('GrindrodHomeView') %]
 		[% ELSIF SiteName == "GRA" %]
