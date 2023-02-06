@@ -52,11 +52,10 @@
 
 <h2>Next event.
 
-[%#
-</h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=FirstEval">
-        Hive Introduction, Evaluation, Data entry and feed.</a>	Live stream in mid to end of Febuary. <a
-        href="/cgi-bin/index
-        .cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream" onmouseover="Join us live.">BeeTalkLive</a></h2>
+[%# </h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=FirstEval">
+        Hive Introduction, Evaluation, Data entry and feed.</a>
+        Live stream in mid to end of Febuary.
+        <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream" onmouseover="Join us live.">BeeTalkLive</a></h2>
 
  %]
 
