@@ -34,7 +34,13 @@
  [% ELSIF procedure  == ('JoinDiscoussionList') %]
  
  [% embed ('JoinDiscoussionList') %]
- [% ELSIF procedure  == ('YardManagementSystem') %]
+ [% ELSIF procedure  == ('LiveEdit') %]
+
+ [% embed ('LiveEdit') %]
+[% ELSIF procedure  == ('JoinDiscoussionList') %]
+
+ [% embed ('JoinDiscoussionList') %]
+[% ELSIF procedure  == ('YardManagementSystem') %]
  
  [% embed ('YardManagementSystem') %]
  
