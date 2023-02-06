@@ -1,4 +1,5 @@
-[% Version = 'v 0.002 2022/02/18 /cgi-bin/HTMLTemplates/Apis/SaddleMountinOrganicsHomeView'%]
+[% Version = 'v 0.003 2023/02/06 /cgi-bin/HTMLTemplates/Apis/SaddleMountinOrganicsHomeView'%]
+[%# Version = 'v 0.002 2022/02/18 /cgi-bin/HTMLTemplates/Apis/SaddleMountinOrganicsHomeView'%]
 [%#	$Id: SaddleMountinOrganicsHomeView.ttml,v 0.01 2021/02/21 06:42:47 shanta Exp shanta %]
 [% #Version = 'v 0.01 2021/02/21 SaddleMountinOrganicsHomeView.ttml shanta' %]
 
@@ -17,12 +18,47 @@
 
 <h1>Our Beekeeping Operations.</h1>
  	
-<h2>Next season projections.</h2>
+<h2>Season projections.</h2>
+          <ol>
+			<li><h2><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=HiveMonitor">Hive
+			 monitoring system.</a></h2></li>
+             <ul>
+               <li>Setup electronics work station</li>
+               <li>design overall setup</li>
+               <li>Setup NodRed software on rpi. receive, manipulate and display data in dashboard.</li>
+             </ul>
+			<li><h2>Equipment maintenance and expansion</h2></li>
+            <ul>
+               <li>Setup workshop</li>
+               <li>plan equipment needed Old https://feedthebees.beemaster.ca/cgi-bin/index
+               .cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardManagementSystem">hive management<a> has most
+                of the math.</li>
+               <li></li>
+             </ul>
+			<li><h2>Yard work.</h2>
+             <ul>
+               <li>February hive check</li>
+               <li>March First eval and feed of the season</li>
+               <li>End of March next eval</li>
+               <li>April First graft</li>
+               <li>April first cells in nucs</li>
+               <li></li>
+               <li></li>
 
-<h2>Next event.</h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=FirstEval">
-        Hive Introduction, Evaluation, Data entry and feed.</a>	Live stream on Friday June 17, 10 am. <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream" onmouseover="Join us live.">BeeTalkLive</a></h2>
+             </ul>
 
+			</li>
+		  </ol>
 
+<h2>Next event.
+
+[%#
+</h2><p><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=FirstEval">
+        Hive Introduction, Evaluation, Data entry and feed.</a>	Live stream in mid to end of Febuary. <a
+        href="/cgi-bin/index
+        .cgi?site=[% SiteName %]&amp;[% session_string %]&procedure=LiveStream" onmouseover="Join us live.">BeeTalkLive</a></h2>
+
+ %]
 
 
 <ul>

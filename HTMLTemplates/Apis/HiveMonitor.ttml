@@ -16,7 +16,7 @@
 
 	[% IF username %]
 
-<h3 > Hello  [% firstname%]  [% lastname%]! Welcome to     [% data.site_display_name %]
+<h3 > Hello  [% firstname%]  [% lastname%]! Welcome to     [% data.site_display_name %] 
  Hive Monitoring Project!</h3>
 	  
 
