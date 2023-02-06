@@ -1,4 +1,4 @@
-package SMTSetup;
+package SMT;
 
 
 use strict;
