@@ -30,8 +30,8 @@
 			<li><h2>Equipment maintenance and expansion</h2></li>
             <ul>
                <li>Setup workshop</li>
-               <li>plan equipment needed Old <a href="https://feedthebees.beemaster.ca/cgi-bin/index
-               .cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardManagementSystem"target="_blank">hive management<a> has most
+               <li>plan equipment needed Old <a href="https://feedthebees.beemaster.ca/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;procedure=YardManagementSystem"
+               target="_blank">hive management<a> has most
                 of the math.</li>
                <li></li>
              </ul>
