@@ -170,7 +170,7 @@ beekeeping beemaster.ca</b></a></h2><p>Current yard and workshop activities</p>
  <li><a href="https://usbm.ca//mailman/listinfo/byandsell_usbm.ca" onclick="window.open(this.href, ', 'resizable=no,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;"><b>Buy And Sell List Join to Receive buy and Sell updates</b></a></h2>
 </li>
 </ul>
-[% ELSIF SiteName == "BMaster" AND
+[% ELSIF SiteName == "VE7TIT" AND
          username %]
 
 <ul>
