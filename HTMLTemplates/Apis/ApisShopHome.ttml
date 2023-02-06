@@ -11,7 +11,7 @@
 # variables from outside.
 
 %]
-
+[% PROCESS DefautVariables.ttml %]
 
 
 [% embed('ErrorDisplayView') %]
