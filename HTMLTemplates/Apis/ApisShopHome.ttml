@@ -1,4 +1,5 @@
-[% ViewVersion = 'v 0.01 /cgi-bin/HTMLTemplates/Default/ShopView.ttml,'%]
+[% ViewVersion = 'v 0.02 /cgi-bin/HTMLTemplates/Default/ShopView.ttml,'%]
+[%# ViewVersion = 'v 0.01 /cgi-bin/HTMLTemplates/Default/ShopView.ttml,'%]
 [%
 #	$Id:InvneoryProjectionView.ttml,v 1.9 2010/09/28 17:43:15 shanta Exp shanta $	
 
@@ -14,6 +15,7 @@
 
 
 [% embed('ErrorDisplayView') %]
+ [% PROCESS DefaultDbi.ttml %]
 
 [% PROCESS ApisConstants.ttml %]
 [% PROCESS ActiveQueensSQL.ttml %]
