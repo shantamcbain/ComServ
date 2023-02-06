@@ -30,8 +30,7 @@
 
 [% FOREACH item = DBI.query(" SELECT * FROM apis_inventory_tb
 	                                WHERE  ( item_code  =  'winteringunits' AND
-	                                         sitename   =  '$SiteName'
-	                                         )
+	                                         sitename   =  '$SiteName')
 
 	                                        ")%]
 	    [% WinterUnits = WinterUnits + item.number %]
