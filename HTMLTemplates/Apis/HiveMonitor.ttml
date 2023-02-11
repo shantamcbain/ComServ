@@ -45,10 +45,11 @@ hive weight. Plants in flower. Activity time on the flowers. Activity at the ent
   type of Pollen harvested. Time of day of harvest. Tracking the weight of the hive will tell us the amount of
   forage coming in and being consumed.</p></li>
   <li><h3>In the yard.<h3><p>Data from here will tell us the overall environment the hive is in.</p></li>
-  <li><h3>In the pasture zone. Cameras here and on drones will tell us what forage is avaible and when
-  they are being harvested. Drone footage will give an indication of avaible forage in the zone of the
+  <li><h3>In the pasture zone. Cameras here and on drones will tell us what forage is available and when
+  they are being harvested. Drone footage will give an indication of available forage in the zone of the
   yard. This data will help us to determine what and were to plant bee forage.<h3><p></p></li>
-
+<h3>  <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=InsideHive"
+ >Details</a></h3>
  </ul>
 
 
@@ -63,7 +64,7 @@ hive weight. Plants in flower. Activity time on the flowers. Activity at the ent
    </p>
   </li>
   <li>Electronic circuit design</li>
-  
+
   <li>Programming. Python programs will be needed to harvest, store and graph data.</li>
   <li>AI will be needed to monitor video stream. This AI will track pollen on the legs of the bees for amount and
   type. Track activity in the field and pasture availability.</li>
