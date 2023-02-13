@@ -54,6 +54,8 @@
 
 [% ELSIF procedure  == ('NextEvent') %]
  [% embed ('BMasterNextEvent') %]
+[% ELSIF procedure  == ('AIrpi400') %]
+   [% embed ('AIrpi400') %]
 
 
 [% ELSIF procedure  == ('PollenHarvest') %]

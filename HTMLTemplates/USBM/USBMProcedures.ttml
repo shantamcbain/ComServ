@@ -78,6 +78,8 @@
 
  [% ELSIF procedure  == ('LandingPage') %]
 [% embed ('LandingPage') %]
+[% ELSIF procedure  == ('AIrpi400') %]
+   [% embed ('AIrpi400') %]
 [% ELSIF procedure  == ('Programing') %]
 [% embed ('Programing') %]
 
