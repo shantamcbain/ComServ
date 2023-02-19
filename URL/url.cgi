@@ -1,6 +1,7 @@
 #!/usr/bin/perl -wT
-# 	$Id: url.cgi,v 1.71 2020/01/24 20:11:35 shanta Exp $	
-# 	$Id: url.cgi,v 1.7 2004/01/25 20:11:35 shanta Exp $	
+# 	$Id: url.cgi,v 1.72 2023/02/19 20:11:35 shanta Exp $
+# 	$Id: url.cgi,v 1.71 2020/01/24 20:11:35 shanta Exp $
+# 	$Id: url.cgi,v 1.7 2004/01/25 20:11:35 shanta Exp $
 #URL file location /cgi-bin/URL
 # Copyright (C) 1994 - 2001  eXtropia.com
 #
@@ -1010,7 +1011,6 @@ if ($group eq "BMaster_admin" ||
 	   qw(sitename),
       qw(category),
       qw(subject),
-      qw(share),
       qw(name),
       qw(url),
       qw(view_name),
