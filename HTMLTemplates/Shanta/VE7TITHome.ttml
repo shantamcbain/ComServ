@@ -61,13 +61,18 @@
  >Baofeng</a> only used for backcountry work as they transmit too widely and will interfere with other radio on
  nearby frequency's.
  </li>
- <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=IC-H16"
- >ICOM IC-H16 </a>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=IC-2at"
+ >ICOM IC-2AT </a>
  </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=IC-U16"
- >ICOM IC-U16</a>
+ >ICOM IC-h10</a>
  </li>
- <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Z-100Plus"
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=IC-F3-2"
+ >ICOM IC-F3-2 </a>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=TP8110B"
+ >Tait TO8110B-B100</a>
+ </li>
+ </li><li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Z-100Plus"
  >Z-100Plus Autotuner </a>
  </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=SignalinkUSB"
