@@ -11,11 +11,12 @@
                                    ORDER BY code
 	                            ")%] 
 	                            [%# this link takes you to item record. %] 
- <li><a href="/cgi-bin/AltPower/item.cgi?site=[% SiteName %]&amp;[% session_string %]&Battery=[% item.item_code %]"> 
+ <li><a href="/cgi-bin/AltPower/item.cgi?site=[% SiteName %] &amp;[% session_string %]&amp;
+ display_details_view.x=on&amp;record_id=[% item.record_id %]">
  [% item.name %]</a>
  [% name = item.Code %]
  &nbsp;<a href="/cgi-bin/AltPower/powerlog.cgi?site=[% SiteName %]&amp;droplist=1&amp;[% session_string %]&amp;display_add_form=on&amp;site_name=[% SiteName %]&amp;category=BrewIngrediant&amp;subject=Item_link&amp;Nav_link=1" name="Add voltage" target="_blank" title="Add New Voltage" style="AddButtonStyle">Add New Voltage Main Pack</a>
- <p> 
+ <p> Battery name [% name = item.Code %] [% item.Code %]</p>
  <table>
   <tr><td>datetime</td>
   <td>Panel Volts</td>

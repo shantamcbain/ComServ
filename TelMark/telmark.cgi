@@ -19,7 +19,7 @@
 # Boston, MA  02111-1307, USA.
 
 use strict;
-my $AppVer = "ver 0.015, Dec 18, 2022";
+my $AppVer = "ver 0.016, Nov, 2022";
 BEGIN{
     use vars qw(@dirs);
     @dirs = qw(../Modules/
@@ -41,6 +41,7 @@ my @TEMPLATES_SEARCH_PATH =
        ../HTMLTemplates/Organic
        ../HTMLTemplates/Shanta
        ../HTMLTemplates/USBM
+        ../HTMLTemplates/TelMark
        ../HTMLTemplates/Todo
        ../HTMLTemplates/Default);
 
@@ -68,82 +69,131 @@ foreach ($CGI->param()) {
 
 my $APP_NAME = "telmark"; 
 my $APP_NAME_TITLE = "Telmark Skiing and Adventures";
-my $SiteName =  $CGI->param('site') || "TelMark";
-    my $last_update  = 'March 11, 2006';
-    my $homeviewname ;
-    my $home_view; 
-    my $BASIC_DATA_VIEW; 
-    my $page_top_view;
-    my $page_bottom_view;
-    my $page_left_view;
-#Mail settings
-    my $mail_from; 
-    my $mail_to;
-    my $mail_replyto;
-    my $CSS_VIEW_NAME;
+    my $auth;
+    my $additonalautusernamecomments;
+my $Affiliate = 001;
     my $app_logo;
     my $app_logo_height;
     my $app_logo_width;
     my $app_logo_alt;
-    my $IMAGE_ROOT_URL; 
-    my $DOCUMENT_ROOT_URL;
-    my $site;
-    my $GLOBAL_DATAFILES_DIRECTORY;
-    my $TEMPLATES_CACHE_DIRECTORY;
     my $APP_DATAFILES_DIRECTORY;
+    my $AUTH_TABLE;
+    my $AUTH_MSQL_USER_NAME;
+    my $BASIC_DATA_VIEW;
+my $CSS_VIEW_NAME = '/styles/CSCCSSView';
+my $CSS_VIEW_URL = $CSS_VIEW_NAME;
+    my $DBI_DSN;
+my $CustCode = $CGI->param('custcode') || "BMaster";
     my $DATAFILES_DIRECTORY;
-    my $site_session;
-    my $auth;
-    my $MySQLPW;
+my $DEFAULT_CHARSET;
+my $DOCUMENT_ROOT_URL;
+my $FAVICON;
+my $ANI_FAVICON;
+my $FAVICON_TYPE;
+     my $GLOBAL_DATAFILES_DIRECTORY;
+my $group  ;
+my $HasMembers = 0;
+my $HeaderImage;
+my $Header_height;
+my $Header_width;
+my $Header_alt;
+my $HostName   = $ENV{'SERVER_NAME'};
+   my $homeviewname ;
+    my $home_view;
     my $HTTP_HEADER_PARAMS;
     my $HTTP_HEADER_KEYWORDS;
     my $HTTP_HEADER_DESCRIPTION;
+     my $IMAGE_ROOT_URL;
+   my $last_update  = 'November 24, 2022';
+#Mail settings
     my $LINK_TARGET;
-    my $additonalautusernamecomments;
-    my $DBI_DSN;
-    my $AUTH_TABLE;
-    my $AUTH_MSQL_USER_NAME;
-    my $DEFAULT_CHARSET;
-    my $mail_to_admin;
+ my $LineStatus        = "yes";
+    my $mail_from;
+    my $mail_to;
+   my $mail_to_admin;
+    my $mail_replyto;
+    my $MySQLPW;
+  my $NEWS_TB;
+my $OffLine    = 'yes';
+ my $Page           = $CGI->param('page');
+my $Page_tb;
+my $page_top_view;
+my $page_bottom_view;
+my $page_left_view;
+ my $pid        = '15';
+my $procedure      = $CGI->param('procedure');
+my $project        = $CGI->param('project');
+my $shop = 'cs';
+   my $site;
+my $SiteName =  $CGI->param('site') || "TelMark";
     my $SITE_DISPLAY_NAME = 'No display name defined for this site.';
+    my $site_session;
+ my $site_for_search = 0;
+my $site_update;
+my $StoreUrl  = 'countrystores.ca';
+my $style = $CGI->param('pagestyle');
+   my $TEMPLATES_CACHE_DIRECTORY;
+my $title          = $CGI->param('title');
+my $username;
+my $View           = $CGI->param('view') ;
 
 use SiteSetup;
   my $UseModPerl = 0;
   my $SetupVariables  = new SiteSetup($UseModPerl);
+ $Affiliate               = $SetupVariables->{-AFFILIATE};
+   $app_logo                   = $SetupVariables->{-APP_LOGO};
+    $app_logo_height            = $SetupVariables->{-APP_LOGO_HEIGHT};
+    $app_logo_width             = $SetupVariables->{-APP_LOGO_WIDTH};
+    $app_logo_alt               = $SetupVariables->{-APP_LOGO_ALT};
     $APP_NAME_TITLE        = "TelMark: A Free Healers Resource";
-    $homeviewname          = "SkiLogView"|| $SetupVariables->{-HOME_VIEW_NAME};
-    $home_view             = "SkiLogView"|| $SetupVariables->{-HOME_VIEW};
-    $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
-    $DBI_DSN               = $SetupVariables->{-DBI_DSN};
     $AUTH_TABLE            = $SetupVariables->{-AUTH_TABLE};
     $AUTH_MSQL_USER_NAME   = $SetupVariables->{-AUTH_MSQL_USER_NAME};
-    $page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW};
-    $page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
-    $page_left_view        = $SetupVariables->{-page_left_view};
-    $MySQLPW               = $SetupVariables->{-MySQLPW};
+    $BASIC_DATA_VIEW       = $SetupVariables->{-BASIC_DATA_VIEW};
+    $DBI_DSN               = $SetupVariables->{-DBI_DSN};
+    $CSS_VIEW_NAME              = $SetupVariables->{-CSS_VIEW_NAME};
+    $CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
+    $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
+    $DOCUMENT_ROOT_URL          = $SetupVariables->{-DOCUMENT_ROOT_URL};
+ $FAVICON                 = $SetupVariables->{-FAVICON};
+$ANI_FAVICON             = $SetupVariables->{-ANI_FAVICON};
+$FAVICON_TYPE            = $SetupVariables->{-FAVICON_TYPE};
+ $HeaderImage             = $SetupVariables->{-HEADER_IMAGE};
+$Header_height           = $SetupVariables->{-HEADER_HEIGHT};
+$Header_width            = $SetupVariables->{-HEADER_WIDTH};
+$Header_alt              = $SetupVariables->{-HEADER_ALT};
+$HasMembers              = $SetupVariables->{-HAS_MEMBERS};
+$homeviewname          = "SkiLogView"|| $SetupVariables->{-HOME_VIEW_NAME};
+$home_view             = "SkiLogView"|| $SetupVariables->{-HOME_VIEW};
+$HTTP_HEADER_PARAMS         = $SetupVariables->{-HTTP_HEADER_PARAMS};
+$HTTP_HEADER_KEYWORDS       = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
+$HTTP_HEADER_DESCRIPTION    = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
+$IMAGE_ROOT_URL             = $SetupVariables->{-IMAGE_ROOT_URL};
+$last_update             = $SetupVariables->{-LAST_UPDATE};
+$LineStatus              = $SetupVariables->{-Line_Status} || $LineStatus;
+$LINK_TARGET             = $SetupVariables->{-LINK_TARGET};
+my $LocalIp              = $SetupVariables->{-LOCAL_IP};
 #Mail settings
     $mail_from                  = $SetupVariables->{-MAIL_FROM};
     $mail_to                    = $SetupVariables->{-MAIL_TO};
     $mail_replyto               = $SetupVariables->{-MAIL_REPLYTO};
-    $CSS_VIEW_NAME              = $SetupVariables->{-CSS_VIEW_NAME};
-    $app_logo                   = $SetupVariables->{-APP_LOGO};
-    $app_logo_height            = $SetupVariables->{-APP_LOGO_HEIGHT};
-    $app_logo_width             = $SetupVariables->{-APP_LOGO_WIDTH};
-    $app_logo_alt               = $SetupVariables->{-APP_LOGO_ALT};
-    $IMAGE_ROOT_URL             = $SetupVariables->{-IMAGE_ROOT_URL}; 
-    $DOCUMENT_ROOT_URL          = $SetupVariables->{-DOCUMENT_ROOT_URL};
-    $LINK_TARGET                = $SetupVariables->{-LINK_TARGET};
-    $HTTP_HEADER_PARAMS         = $SetupVariables->{-HTTP_HEADER_PARAMS};
-    $HTTP_HEADER_KEYWORDS       = $SetupVariables->{-HTTP_HEADER_KEYWORDS};
-    $HTTP_HEADER_DESCRIPTION    = $SetupVariables->{-HTTP_HEADER_DESCRIPTION};
-    $site                       = $SetupVariables->{-DATASOURCE_TYPE};
-    $SITE_DISPLAY_NAME       = $SetupVariables->{-SITE_DISPLAY_NAME};
-    $GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
-    $TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
-    $APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
-    my $LocalIp                 = $SetupVariables->{-LOCAL_IP};
-    my $CSS_VIEW_NAME = $SetupVariables->{-CSS_VIEW_NAME};
-    my $CSS_VIEW_URL  = $SetupVariables->{-CSS_VIEW_NAME};
+my $mail_to_user         = $SetupVariables->{-MAIL_USER};
+my $mail_to_member       = $SetupVariables->{-MAIL_MEMBER};
+my $mail_to_discussion   = $SetupVariables->{-MAIL_DISCUSSION};
+$MySQLPW               = $SetupVariables->{-MySQLPW};
+$NEWS_TB                 = $SetupVariables->{-NewsTable};
+$page_top_view         = $SetupVariables->{-PAGE_TOP_VIEW};
+$page_bottom_view      = $SetupVariables->{-PAGE_BOTTOM_VIEW};
+$page_left_view        = $SetupVariables->{-page_left_view};
+$Page_tb                 = $SetupVariables->{-PAGE_TB} || 'page_tb';
+$pid                     = $SetupVariables->{-PID};
+$site                       = $SetupVariables->{-DATASOURCE_TYPE};
+$site_update                = $SetupVariables->{-SITE_LAST_UPDATE};
+$shop                       = $SetupVariables->{-SHOP};
+$StoreUrl                   = $SetupVariables->{-STORE_URL};
+$SITE_DISPLAY_NAME          = $SetupVariables->{-SITE_DISPLAY_NAME};
+$GLOBAL_DATAFILES_DIRECTORY = $SetupVariables->{-GLOBAL_DATAFILES_DIRECTORY}||'BLANK';
+$TEMPLATES_CACHE_DIRECTORY  = $GLOBAL_DATAFILES_DIRECTORY.$SetupVariables->{-TEMPLATES_CACHE_DIRECTORY,};
+$APP_DATAFILES_DIRECTORY    = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
 
 
 

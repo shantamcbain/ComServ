@@ -1,4 +1,6 @@
 #!/usr/bin/perl -wT
+# # 	$Id: powerlog.cgi,v 1.42 2023/02/09 22:08:42 shanta Exp shanta $
+
 # 	$Id: powerlog.cgi,v 1.41 202/02/20 22:08:42 shanta Exp shanta $	
 # 	$Id: powerlog.cgi,v 1.4 2019/10/26 22:08:42 shanta Exp shanta $	
 # 	$Id: powerlog.cgi,v 1.4 2004/01/23 22:08:42 shanta Exp shanta $	
@@ -77,7 +79,7 @@ foreach ($CGI->param()) {
 ######################################################################
 my $debug = 0;
 my $APP_NAME = "log"; 
-my $last_update  = 'Febuary 20, 2020';
+my $last_update  = 'Febuary 09, 2023';
 my $site_update;
 my $CSS_VIEW_NAME = '/styles/CSCCSSView';
 my $CSS_VIEW_URL = $CSS_VIEW_NAME;
@@ -1014,7 +1016,7 @@ else{
 	@BASIC_DATASOURCE_CONFIG_PARAMS = (
 	        -TYPE         => 'DBI',
 	        -DBI_DSN      => $DBI_DSN,
-	        -TABLE        => $log_tb||'altpower_system_log_tb',
+	        -TABLE        => $log_tb ||'altpower_system_log_tb',
 	        -USERNAME     => $AUTH_MSQL_USER_NAME,
 	        -PASSWORD     => $MySQLPW,
 	        -FIELD_NAMES  => \@DATASOURCE_FIELD_NAMES,

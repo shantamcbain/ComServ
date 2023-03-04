@@ -1,21 +1,48 @@
-[% ViewVersion = 'v 0.17 2022/11/19 shanta /cgi-bin/HTMLTemplates/Default/PageView.ttml' %]
+[% ViewVersion = 'v 0.18 2023/02/14 shanta /cgi-bin/HTMLTemplates/Default/PageView.ttml' %]
+[%# ViewVersion = 'v 0.17 2022/11/19 shanta /cgi-bin/HTMLTemplates/Default/PageView.ttml' %]
 [%# Version = 'v 0.16 2022/04/11 shanta /cgi-bin/HTMLTemplates/Default/PageView.ttml' %]
 
   [% Page = data.page_name  %]
  [% HomeLink = data.home_link || '' %]
 [% process = 'None defined' %]
 
- [%# embed('SiteMysql') %]   
+
  
-  [% FOREACH link = DBI.query("SELECT * FROM page_tb
+  [%# FOREACH link = DBI.query("SELECT * FROM page_tb
                                   WHERE  (sitename = '$SiteName' AND
                                          page_code = '$Page' )                                         
                                   ORDER BY sitename
                                   ")%]    
-                [% PROCESS pagefields.ttml %]
-       [% END %]                  
+                [%# PROCESS pagefields.ttml %]
+       [%# END %]
+       [% SET foundRecord = 0 %]
+[% FOREACH link = DBI.query("SELECT * FROM page_tb
+                             WHERE sitename = '$SiteName' AND
+                             page_code = '$Page'
+                             ORDER BY sitename
+                            ") %]
+  [% SET foundRecord = 1 %]
+  [% PROCESS pagefields.ttml %]
+[% END %]
+[% IF foundRecord == 0 %]
+ [% FOREACH link = DBI.query("SELECT * FROM page_tb
+                             WHERE sitename = 'ALL' AND
+                             page_code = '$Page'
+                             ORDER BY sitename
+                            ") %]
+  [% SET foundRecord = 1 %]
+  [% PROCESS pagefields.ttml %]
+[% END %]
 
- 
+[% IF foundRecord == 0 %]
+
+[% body = "<h2>No record Found </h2>" %]
+
+[% END %]
+[%# PROCESS pagefields.ttml %]
+
+
+
 
 
 
@@ -33,7 +60,7 @@
  [%	ViewVersion %]
 [% END %] 
  [%# IN PAGEVIEW Call page%]    [% Page %]
-[% END %]  
+[% END %]
 
   [% IF SiteName == 'CSC' %]
                              
@@ -50,7 +77,9 @@
 [% embed('LiveEditAdmin') %]
 	      
 
-  <!-- Cut From Here down to the Cut To Here comment don't include the cut marks.   -->                                  
+  <!-- Cut From Here down to the Cut To Here comment don't include the cut marks.   -->
+            <p> SiteName   [% SiteName %]   Page [% Page%] Found record [% foundRecord %]</p>
+
      <p> [% body %]</p>
  <!-- Cut To Here  don't include the cut marks.   -->                                  
    <p>  
