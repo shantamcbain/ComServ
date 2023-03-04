@@ -173,30 +173,6 @@
           </tr>
 </table>
  -->
-[% ELSIF SiteName == "SMT"
-     %]
-        <table border="0" width="100%" height="350" >
-           <tr>
-
-          <tr>
-            <td width="75%" height="19" colspan="2" align="center" valign="middle"><b>[% data.site_display_name  %] Contact:</b></td>
-           <td width="75%" height="19" colspan="2" align="center" </tr>
-       <tr> <td> <table border="0" width="95%" height="350" >
-
-
-   <tr bgcolor="#FFECA8"><td>President <Building A rep/td><td>[% link.fname  %]&nbsp; link to email address</td></tr>
-    <tr bgcolor="#FFECA8"><td>Secretary</td><td>link to email address</td></tr>
-    <tr bgcolor="#FFECA8"><td>Building A rep</td><td>slink to email address</td></tr>
-    <tr bgcolor="#FFECA8"><td>Building A rep</td><td>sklink to email address</td></tr>
-    <tr bgcolor="#FFECA8"><td>Building A rep</td><td>link to email address</td></tr>
-    <tr bgcolor="#FFECA8"><td>Building A rep</td><td>link to email address</td></tr>
-</table>
-
-
-    </td>
-    <td>                    <IMG SRC="http://skyefarm.com/contact_us/IMAG007.JPG" WIDTH=300 HEIGHT=400 BORDER=0>
-   </td></tr>
-</table>
 [% ELSIF SiteName == "BCHPA"
       %]
 [% embed(BCHPAContactView) %]     

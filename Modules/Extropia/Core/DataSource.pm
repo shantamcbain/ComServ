@@ -1293,9 +1293,6 @@ sub __compareWildcard {
     $opt .= "i" if $case_insensitive;
 
     my $string = "\$lhs_value $newop m/^$rhs\$/$opt";
-    #print "DEBUG-- $lhs $newop m/^$rhs\$/$opt => $boolean_value\n$@\n";
-    #print "DEBUG-- $lhs $newop m/^$rhs\$/$opt => $boolean_value\n";
-    #print "DEBUG-- $string
 #   E::dumper($string);
     my $boolean_value = eval $string;
 #    my $boolean_value = eval "\$lhs_value $newop m/^\\\Q$rhs\\\E\$/$opt";

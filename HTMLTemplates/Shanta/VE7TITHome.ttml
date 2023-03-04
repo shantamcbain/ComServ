@@ -64,7 +64,7 @@
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=IC-2at"
  >ICOM IC-2AT </a>
  </li>
- <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=IC-h10"
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=IC-U16"
  >ICOM IC-h10</a>
  </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=IC-F3-2"

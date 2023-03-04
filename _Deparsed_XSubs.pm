@@ -337,132 +337,6 @@ package B::UNOP_AUX {
 sub aux_list;
 sub string;
 }
-package Bit::Vector {
-sub Abs;
-sub Absolute;
-sub And;
-sub AndNot;
-sub Bit_Copy;
-sub Bit_Off;
-sub Bit_On;
-sub Block_Read;
-sub Block_Store;
-sub Chunk_List_Read;
-sub Chunk_List_Store;
-sub Chunk_Read;
-sub Chunk_Store;
-sub Clone;
-sub Closure;
-sub Compare;
-sub Complement;
-sub Concat;
-sub Concat_List;
-sub Copy;
-sub Create;
-sub DESTROY;
-sub Delete;
-sub Difference;
-sub Divide;
-sub Empty;
-sub Empty_Interval;
-sub ExclusiveOr;
-sub Fill;
-sub Fill_Interval;
-sub Flip;
-sub Flip_Interval;
-sub GCD;
-sub Index_List_Read;
-sub Index_List_Remove;
-sub Index_List_Store;
-sub Insert;
-sub Intersection;
-sub Interval_Copy;
-sub Interval_Empty;
-sub Interval_Fill;
-sub Interval_Flip;
-sub Interval_Reverse;
-sub Interval_Scan_dec;
-sub Interval_Scan_inc;
-sub Interval_Substitute;
-sub LSB;
-sub Lexicompare;
-sub Long_Bits;
-sub MSB;
-sub Max;
-sub Min;
-sub Move_Left;
-sub Move_Right;
-sub Multiplication;
-sub Multiply;
-sub Neg;
-sub Negate;
-sub Norm2;
-sub Norm3;
-sub Norm;
-sub Not;
-sub Or;
-sub Power;
-sub Primes;
-sub Product;
-sub Resize;
-sub Reverse;
-sub Shadow;
-sub Sign;
-sub Size;
-sub Transpose;
-sub Unfake;
-sub Union;
-sub Version;
-sub Word_Bits;
-sub Word_Delete;
-sub Word_Insert;
-sub Word_List_Read;
-sub Word_List_Store;
-sub Word_Read;
-sub Word_Size;
-sub Word_Store;
-sub Xor;
-sub add;
-sub bit_flip;
-sub bit_test;
-sub contains;
-sub dec;
-sub decrement;
-sub equal;
-sub flip;
-sub from_ASCII;
-sub from_Bin;
-sub from_Dec;
-sub from_Enum;
-sub from_Hex;
-sub from_string;
-sub in;
-sub inc;
-sub inclusion;
-sub increment;
-sub is_empty;
-sub is_full;
-sub lsb;
-sub msb;
-sub new;
-sub new_Bin;
-sub new_Dec;
-sub new_Enum;
-sub new_Hex;
-sub rotate_left;
-sub rotate_right;
-sub shift_left;
-sub shift_right;
-sub sub;
-sub subset;
-sub subtract;
-sub to_ASCII;
-sub to_Bin;
-sub to_Dec;
-sub to_Enum;
-sub to_Hex;
-sub to_String;
-}
 package Cairo {
 sub HAS_FT_FONT;
 sub HAS_PDF_SURFACE;
@@ -806,121 +680,6 @@ sub _nextcan;
 sub _plsubgen;
 sub calculateMRO;
 }
-package Class::Load {
-sub is_class_loaded;
-}
-package Class::Load::XS {
-sub is_class_loaded;
-}
-package Class::MOP {
-sub blessed($) ;
-sub check_package_cache_flag($) ;
-sub get_code_info($) ;
-sub isweak($) ;
-sub weaken($) ;
-}
-package Class::MOP::Attribute {
-sub associated_class;
-sub associated_methods;
-sub blessed($) ;
-sub weaken($) ;
-}
-package Class::MOP::Class {
-sub all(&@) ;
-sub blessed($) ;
-sub constructor_class;
-sub constructor_name;
-sub destructor_class;
-sub immutable_trait;
-sub instance_metaclass;
-sub set_subname;
-}
-package Class::MOP::Instance {
-sub associated_metaclass;
-sub blessed($) ;
-sub isweak($) ;
-sub slot_hash;
-sub slots;
-sub weaken($) ;
-}
-package Class::MOP::Method {
-sub blessed($) ;
-sub body;
-sub is_stub;
-sub name;
-sub package_name;
-sub reftype($) ;
-sub weaken($) ;
-}
-package Class::MOP::Method::Accessor {
-sub blessed($) ;
-sub weaken($) ;
-}
-package Class::MOP::Method::Constructor {
-sub blessed($) ;
-sub weaken($) ;
-}
-package Class::MOP::Method::Generated {
-sub definition_context;
-sub is_inline;
-}
-package Class::MOP::Method::Inlined {
-sub _expected_method_class;
-sub refaddr($) ;
-}
-package Class::MOP::Method::Meta {
-sub blessed($) ;
-sub weaken($) ;
-}
-package Class::MOP::Method::Wrapped {
-sub blessed($) ;
-sub set_subname;
-}
-package Class::MOP::Mixin {
-sub blessed($) ;
-}
-package Class::MOP::Mixin::AttributeCore {
-sub accessor;
-sub blessed($) ;
-sub builder;
-sub clearer;
-sub definition_context;
-sub init_arg;
-sub initializer;
-sub insertion_order;
-sub name;
-sub predicate;
-sub reader;
-sub writer;
-}
-package Class::MOP::Mixin::HasAttributes {
-sub _attribute_map;
-sub attribute_metaclass;
-sub blessed($) ;
-}
-package Class::MOP::Mixin::HasMethods {
-sub _method_map;
-sub blessed($) ;
-sub method_metaclass;
-sub reftype($) ;
-sub set_subname;
-sub wrapped_method_metaclass;
-}
-package Class::MOP::Mixin::HasOverloads {
-sub blessed($) ;
-}
-package Class::MOP::Object {
-sub blessed($) ;
-}
-package Class::MOP::Overload {
-sub blessed($) ;
-sub weaken($) ;
-}
-package Class::MOP::Package {
-sub blessed($) ;
-sub name;
-sub weaken($) ;
-}
 package Class::XSAccessor {
 sub __entersub_optimized__() ;
 sub _newxs_compat_accessor;
@@ -1074,84 +833,6 @@ sub uncompressedBytes;
 }
 package Config {
 sub AUTOLOAD;
-}
-package Cookie::Baker::XS {
-sub crush_cookie;
-}
-package Cpanel::JSON::XS {
-sub CLONE;
-sub DESTROY;
-sub _from_json($;$$) ;
-sub _to_json($;$) ;
-sub allow_barekey;
-sub allow_bignum;
-sub allow_blessed;
-sub allow_dupkeys;
-sub allow_nonref;
-sub allow_singlequote;
-sub allow_stringify;
-sub allow_tags;
-sub allow_unknown;
-sub ascii;
-sub binary;
-sub canonical;
-sub convert_blessed;
-sub decode;
-sub decode_json($;$$) ;
-sub decode_prefix;
-sub encode;
-sub encode_json($;$) ;
-sub escape_slash;
-sub filter_json_object;
-sub filter_json_single_key_object;
-sub get_allow_barekey;
-sub get_allow_bignum;
-sub get_allow_blessed;
-sub get_allow_dupkeys;
-sub get_allow_nonref;
-sub get_allow_singlequote;
-sub get_allow_stringify;
-sub get_allow_tags;
-sub get_allow_unknown;
-sub get_ascii;
-sub get_binary;
-sub get_canonical;
-sub get_convert_blessed;
-sub get_escape_slash;
-sub get_indent;
-sub get_indent_length;
-sub get_latin1;
-sub get_max_depth;
-sub get_max_size;
-sub get_relaxed;
-sub get_require_types;
-sub get_shrink;
-sub get_space_after;
-sub get_space_before;
-sub get_stringify_infnan;
-sub get_type_all_string;
-sub get_unblessed_bool;
-sub get_utf8;
-sub incr_parse;
-sub incr_reset;
-sub incr_skip;
-sub indent;
-sub indent_length;
-sub latin1;
-sub max_depth;
-sub max_size;
-sub new;
-sub pretty;
-sub relaxed;
-sub require_types;
-sub shrink;
-sub sort_by;
-sub space_after;
-sub space_before;
-sub stringify_infnan;
-sub type_all_string;
-sub unblessed_bool;
-sub utf8;
 }
 package Cwd {
 sub CLONE;
@@ -2412,74 +2093,6 @@ sub rows;
 package DBI::var {
 sub FETCH;
 }
-package Date::Calc::XS {
-sub Add_Delta_DHMS;
-sub Add_Delta_Days;
-sub Add_Delta_YM;
-sub Add_Delta_YMD;
-sub Add_Delta_YMDHMS;
-sub Add_N_Delta_YMD;
-sub Add_N_Delta_YMDHMS;
-sub Business_to_Standard;
-sub Calendar;
-sub Compress;
-sub Compressed_to_Text;
-sub Date_to_Days;
-sub Date_to_Text;
-sub Date_to_Text_Long;
-sub Date_to_Time;
-sub Day_of_Week;
-sub Day_of_Week_Abbreviation;
-sub Day_of_Week_to_Text;
-sub Day_of_Year;
-sub Days_in_Month;
-sub Days_in_Year;
-sub Decode_Date_EU;
-sub Decode_Date_US;
-sub Decode_Day_of_Week;
-sub Decode_Language;
-sub Decode_Month;
-sub Delta_DHMS;
-sub Delta_Days;
-sub Delta_YMD;
-sub Delta_YMDHMS;
-sub Easter_Sunday;
-sub English_Ordinal;
-sub Fixed_Window;
-sub Gmtime;
-sub ISO_LC;
-sub ISO_UC;
-sub Language;
-sub Language_to_Text;
-sub Languages;
-sub Localtime;
-sub Mktime;
-sub Monday_of_Week;
-sub Month_to_Text;
-sub Moving_Window;
-sub N_Delta_YMD;
-sub N_Delta_YMDHMS;
-sub Normalize_DHMS;
-sub Now;
-sub Nth_Weekday_of_Month_Year;
-sub Standard_to_Business;
-sub System_Clock;
-sub This_Year;
-sub Time_to_Date;
-sub Timezone;
-sub Today;
-sub Today_and_Now;
-sub Uncompress;
-sub Version;
-sub Week_Number;
-sub Week_of_Year;
-sub Weeks_in_Year;
-sub check_business_date;
-sub check_compressed;
-sub check_date;
-sub check_time;
-sub leap_year;
-}
 package Devel::CallChecker {
 sub callchecker0_h;
 }
@@ -2489,10 +2102,6 @@ sub _context_op;
 }
 package Devel::LexAlias {
 sub _lexalias;
-}
-package Devel::OverloadInfo {
-sub blessed($) ;
-sub subname;
 }
 package DynaLoader {
 sub CLONE;
@@ -2595,9 +2204,6 @@ sub renewed;
 package Encode::utf8 {
 sub decode;
 sub encode;
-}
-package Eval::Closure {
-sub reftype($) ;
 }
 package FCGI {
 sub Accept($) ;
@@ -3103,165 +2709,6 @@ sub _fn_catfile;
 sub canonpath;
 sub catdir;
 sub catfile;
-}
-package FileHandle {
-sub clearerr;
-sub error;
-sub flush;
-sub getline;
-sub getlines;
-sub getpos;
-sub gets;
-sub new_tmpfile;
-sub setbuf;
-sub setpos;
-sub setvbuf;
-sub ungetc;
-}
-package GD {
-sub LIBGD_VERSION;
-sub VERSION_STRING;
-sub constant;
-sub supportsFileType($;$) ;
-}
-package GD::Font {
-sub DESTROY($) ;
-sub Giant($) ;
-sub Large($) ;
-sub MediumBold($) ;
-sub Small($) ;
-sub Tiny($) ;
-sub height($) ;
-sub load($$) ;
-sub nchars($) ;
-sub offset($) ;
-sub width($) ;
-}
-package GD::Image {
-sub DESTROY($) ;
-sub STORABLE_freeze($$) ;
-sub STORABLE_thaw;
-sub _file($$) ;
-sub _new($;$$$) ;
-sub _newFromGd($$) ;
-sub _newFromGd2($$) ;
-sub _newFromGd2Part($$$$$$) ;
-sub _newFromGif($$) ;
-sub _newFromJpeg($$;$) ;
-sub _newFromPng($$;$) ;
-sub _newFromTiff($$;$) ;
-sub _newFromWBMP($$) ;
-sub _newFromWebp($$) ;
-sub _newFromXbm($$) ;
-sub alpha($$) ;
-sub alphaBlending($$) ;
-sub arc($$$$$$$$) ;
-sub boundsSafe($$$) ;
-sub brightness($$) ;
-sub char($$$$$$) ;
-sub charUp($$$$$$) ;
-sub clip($;$$$$) ;
-sub color($$$$$) ;
-sub colorAllocate($$$$) ;
-sub colorAllocateAlpha($$$$$) ;
-sub colorClosest($$$$) ;
-sub colorClosestAlpha($$$$$) ;
-sub colorClosestHWB($$$$) ;
-sub colorDeallocate($$) ;
-sub colorExact($$$$) ;
-sub colorExactAlpha($$$$$) ;
-sub colorMatch($$) ;
-sub colorResolve($$$$) ;
-sub colorResolveAlpha($$$$$) ;
-sub colorsTotal($) ;
-sub compare($$) ;
-sub contrast($$) ;
-sub copy($$$$$$$$) ;
-sub copyFlipHorizontal($) ;
-sub copyFlipVertical($) ;
-sub copyGaussianBlurred($$$) ;
-sub copyMerge($$$$$$$$$) ;
-sub copyMergeGray($$$$$$$$$) ;
-sub copyResampled($$$$$$$$$$) ;
-sub copyResized($$$$$$$$$$) ;
-sub copyReverseTranspose($) ;
-sub copyRotate180($) ;
-sub copyRotate270($) ;
-sub copyRotate90($) ;
-sub copyRotateInterpolated($$$) ;
-sub copyRotated($$$$$$$$$) ;
-sub copyScaleInterpolated($$$) ;
-sub copyTranspose($) ;
-sub createPaletteFromTrueColor($;$$) ;
-sub dashedLine($$$$$$) ;
-sub edgeDetectQuick($) ;
-sub emboss($) ;
-sub fill($$$$) ;
-sub fillToBorder($$$$$) ;
-sub filledArc($$$$$$$$$) ;
-sub filledEllipse($$$$$$) ;
-sub filledPolygon($$$) ;
-sub filledRectangle($$$$$$) ;
-sub flipHorizontal($) ;
-sub flipVertical($) ;
-sub gaussianBlur($) ;
-sub gd($) ;
-sub gd2($) ;
-sub getBounds($) ;
-sub getPixel($$$) ;
-sub gif($) ;
-sub gifanimadd($$$$$$$) ;
-sub gifanimbegin($$$) ;
-sub gifanimend($) ;
-sub grayscale($) ;
-sub interlaced($;$) ;
-sub interpolationMethod($;$) ;
-sub isTrueColor($) ;
-sub jpeg($) ;
-sub line($$$$$$) ;
-sub meanRemoval($) ;
-sub negate($) ;
-sub neuQuant($;$$) ;
-sub newFromGd2Data($$) ;
-sub newFromGdData($$) ;
-sub newFromGifData($$) ;
-sub newFromJpegData($$;$) ;
-sub newFromPngData($$;$) ;
-sub newFromWBMPData($$;$) ;
-sub newFromWebpData($$) ;
-sub newFromXpm($$) ;
-sub openPolygon($$$) ;
-sub paletteCopy($$) ;
-sub pixelate($$$) ;
-sub png($;$) ;
-sub rectangle($$$$$$) ;
-sub rgb($$) ;
-sub rotate180($) ;
-sub saveAlpha($$) ;
-sub scatter($$$) ;
-sub scatterColor($$$\@) ;
-sub selectiveBlur($) ;
-sub setAntiAliased($$) ;
-sub setAntiAliasedDontBlend($$$) ;
-sub setBrush($$) ;
-sub setPixel($$$$) ;
-sub setStyle($;$) ;
-sub setThickness($$) ;
-sub setTile($$) ;
-sub smooth($$) ;
-sub string($$$$$$) ;
-sub stringFT($$$$$$$$;$) ;
-sub stringFTCircle($$$$$$$$$$$) ;
-sub stringTTF($$$$$$$$;$) ;
-sub stringUp($$$$$$) ;
-sub tiff($) ;
-sub transparent($;$) ;
-sub trueColor($$) ;
-sub trueColorToPalette($;$$) ;
-sub unclosedPolygon($$$) ;
-sub useFontConfig($$) ;
-sub wbmp($) ;
-sub webp($;$) ;
 }
 package Glib {
 sub CHECK_VERSION;
@@ -3973,9 +3420,6 @@ sub first(&@) ;
 sub head($@) ;
 sub max(@) ;
 sub maxstr(@) ;
-sub mesh;
-sub mesh_longest;
-sub mesh_shortest;
 sub min(@) ;
 sub minstr(@) ;
 sub none(&@) ;
@@ -3999,9 +3443,6 @@ sub uniqint(@) ;
 sub uniqnum(@) ;
 sub uniqstr(@) ;
 sub unpairs(@) ;
-sub zip;
-sub zip_longest;
-sub zip_shortest;
 }
 package Locale::gettext {
 sub LC_SYNTAX;
@@ -4027,115 +3468,6 @@ sub textdomain;
 }
 package MIME::Charset {
 sub is_utf8($;$) ;
-}
-package Math::Random::ISAAC::XS {
-sub DESTROY;
-sub irand;
-sub new;
-sub rand;
-}
-package Moose {
-sub is_class_loaded;
-}
-package Moose::Exporter {
-sub _export_is_flagged;
-sub _flag_as_reexport;
-sub is_class_loaded;
-sub reftype($) ;
-sub set_subname;
-sub uniq(@) ;
-}
-package Moose::Meta::Attribute {
-sub any(&@) ;
-sub blessed($) ;
-}
-package Moose::Meta::Class {
-sub any(&@) ;
-sub blessed($) ;
-}
-package Moose::Meta::Class::Immutable::Trait {
-sub blessed($) ;
-}
-package Moose::Meta::Method::Constructor {
-sub weaken($) ;
-}
-package Moose::Meta::Method::Delegation {
-sub blessed($) ;
-sub weaken($) ;
-}
-package Moose::Meta::Method::Destructor {
-sub blessed($) ;
-sub weaken($) ;
-}
-package Moose::Meta::Object::Trait {
-sub blessed($) ;
-}
-package Moose::Meta::Role {
-sub blessed($) ;
-}
-package Moose::Meta::Role::Application {
-sub all(&@) ;
-}
-package Moose::Meta::Role::Application::RoleSummation {
-sub all(&@) ;
-sub blessed($) ;
-}
-package Moose::Meta::Role::Application::ToClass {
-sub first(&@) ;
-sub weaken($) ;
-}
-package Moose::Meta::Role::Application::ToInstance {
-sub _reset_amagic;
-sub all(&@) ;
-sub blessed($) ;
-}
-package Moose::Meta::Role::Attribute {
-sub all(&@) ;
-sub blessed($) ;
-sub weaken($) ;
-}
-package Moose::Meta::Role::Composite {
-sub blessed($) ;
-}
-package Moose::Meta::TypeCoercion::Union {
-sub blessed($) ;
-}
-package Moose::Meta::TypeConstraint {
-sub refaddr($) ;
-sub set_subname;
-}
-package Moose::Meta::TypeConstraint::DuckType {
-sub all(&@) ;
-sub blessed($) ;
-}
-package Moose::Meta::TypeConstraint::Parameterized {
-sub blessed($) ;
-}
-package Moose::Meta::TypeConstraint::Registry {
-sub blessed($) ;
-}
-package Moose::Meta::TypeConstraint::Union {
-sub all(&@) ;
-sub first(&@) ;
-}
-package Moose::Util {
-sub all(&@) ;
-sub any(&@) ;
-sub blessed($) ;
-sub first(&@) ;
-}
-package Moose::Util::MetaRole {
-sub all(&@) ;
-sub blessed($) ;
-sub first(&@) ;
-}
-package Moose::Util::TypeConstraints {
-sub blessed($) ;
-}
-package Moose::Util::TypeConstraints::Builtins {
-sub _RegexpRef;
-sub blessed($) ;
-sub is_class_loaded;
 }
 package Net::DBus::Binding::Bus {
 sub _open($) ;
@@ -5442,24 +4774,6 @@ sub setlflag;
 sub setoflag;
 sub setospeed;
 }
-package Package::DeprecationManager {
-sub _HASH0($) ;
-sub any(&@) ;
-sub subname;
-}
-package Package::Stash {
-sub add_symbol;
-sub get_all_symbols;
-sub get_or_add_symbol;
-sub get_symbol;
-sub has_symbol;
-sub list_all_symbols;
-sub name;
-sub namespace;
-sub new;
-sub remove_glob;
-sub remove_symbol;
-}
 package Package::Stash::XS {
 sub add_symbol;
 sub get_all_symbols;
@@ -5582,59 +4896,6 @@ sub tainted($) ;
 sub unweaken($) ;
 sub weaken($) ;
 }
-package Scope::Upper {
-sub CALLER(;$) ;
-sub CLONE;
-sub EVAL(;$) ;
-sub HERE() ;
-sub SCOPE(;$) ;
-sub SUB(;$) ;
-sub UP(;$) ;
-sub context_info(;$) ;
-sub leave;
-sub localize($$;$) ;
-sub localize_delete($$;$) ;
-sub localize_elem($$$;$) ;
-sub reap(&;$) ;
-sub uid(;$) ;
-sub unwind;
-sub uplevel(&@) ;
-sub validate_uid($) ;
-sub want_at(;$) ;
-sub yield;
-}
-package Set::Object {
-sub CLONE;
-sub DESTROY;
-sub _STORABLE_thaw;
-sub _ish_int($) ;
-sub _strengthen;
-sub _weaken;
-sub blessed($) ;
-sub clear;
-sub get_flat($) ;
-sub get_magic($) ;
-sub includes;
-sub insert;
-sub is_double($) ;
-sub is_int($) ;
-sub is_null;
-sub is_object($) ;
-sub is_overloaded($) ;
-sub is_string($) ;
-sub is_weak;
-sub members;
-sub new;
-sub rc;
-sub refaddr($) ;
-sub reftype($) ;
-sub remove;
-sub rvrc;
-sub size;
-}
-package Set::Object::Weak {
-sub blessed($) ;
-}
 package Socket {
 sub AF_802() ;
 sub AF_AAL() ;
@@ -5755,9 +5016,6 @@ sub pretrieve($;$) ;
 sub pstore($$) ;
 sub stack_depth() ;
 sub stack_depth_hash() ;
-}
-package String::CRC32 {
-sub crc32;
 }
 package Sub::Identify {
 sub get_code_info($) ;
@@ -5919,9 +5177,6 @@ sub ualarm($;$) ;
 sub usleep($) ;
 sub utime($$@) ;
 }
-package Try::Tiny {
-sub _subname;
-}
 package UNIVERSAL {
 sub DOES;
 sub VERSION;
@@ -5931,16 +5186,6 @@ sub isa;
 package URI::Escape::XS {
 sub decodeURIComponent($) ;
 sub encodeURIComponent($) ;
-}
-package URL::Encode::XS {
-sub url_decode;
-sub url_decode_utf8;
-sub url_encode;
-sub url_encode_utf8;
-sub url_params_each;
-sub url_params_flat;
-sub url_params_mixed;
-sub url_params_multi;
 }
 package Unicode::GCString {
 sub DESTROY($) ;
@@ -5989,13 +5234,6 @@ sub strsize($$$$$;$) ;
 package Unicode::LineBreak::SouthEastAsian {
 sub supported() ;
 }
-package Unicode::Map {
-sub _map_hash;
-sub _map_hashlist;
-sub _read_binary_mapping;
-sub _reverse_unicode;
-sub _system_test;
-}
 package Unicode::UTF8 {
 sub decode_utf8;
 sub encode_utf8;
@@ -6007,12 +5245,6 @@ sub _wizard;
 sub cast(\[$@%&*]$@) ;
 sub dispell(\[$@%&*]$) ;
 sub getdata(\[$@%&*]$) ;
-}
-package WWW::Form::UrlEncoded::XS {
-sub build_urlencoded;
-sub build_urlencoded_utf8;
-sub parse_urlencoded;
-sub parse_urlencoded_arrayref;
 }
 package XML::LibXML {
 sub AUTOLOAD;
