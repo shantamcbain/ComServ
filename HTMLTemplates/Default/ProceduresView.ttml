@@ -152,8 +152,9 @@
 		[% ELSIF SiteName == "ShantaWorkShop" %]
 			[% embed ('ShantaWorkShopProjects') %]
 [% ELSIF SiteName == "Shanta" OR
-		         SiteName == "VE7TIT"  %]
-			[%# embed ('ShantaProcedures') %]
+		         SiteName == "VE7TIT" OR
+		         SiteName == "SMT" %]
+			[% embed ('ShantaProcedures') %]
 
 		[% ELSIF SiteName == "Sky" %]
 			[%# embed ('SkyHomeView') %]

@@ -1,4 +1,5 @@
-[% ViewVersion = 'v 0.02 2022/11/11 /cgi-bin/HTMLTemplates/Shanta/VE7TITHome.ttml,'%]
+[% ViewVersion = 'v 0.03 2023/04/06 /cgi-bin/HTMLTemplates/Shanta/VE7TITHome.ttml,'%]
+[%# ViewVersion = 'v 0.02 2022/11/11 /cgi-bin/HTMLTemplates/Shanta/VE7TITHome.ttml,'%]
 [%# ViewVersion = 'v 0.01 2022/11/07 /cgi-bin/HTMLTemplates/Shanta/VE7TITHome.ttml,'%]
 
 
@@ -40,7 +41,7 @@
 
 
 
-<p>We are proud to sponsor <a href="https://usbm.ca" target="_blank" name="Universal Shool of Biological Life" title="Click here to see details.">The Universal School of Biological Life Site</a>.</p>
+<p>We are proud to sponsor <a href="https://usbm.ca" target="_blank" name="Universal School of Biological Life" title="Click here to see details.">The Universal School of Biological Life Site</a>.</p>
 <br>
 <br>                      
 
@@ -48,7 +49,7 @@
 
 [% END %]
 <h3>Our Current list of equipment.</h3>
-
+<h4>Radio Equipment:</h4>
 <ul>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=FT-897"
  >Yaesu HT/VHF/UHF all mode
@@ -58,69 +59,87 @@
  >Yaesu HT/50MHz transceiver FT-891</a>
  </li>
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Baofeg"
- >Baofeng</a> only used for backcountry work as they transmit too widely and will interfere with other radio on
+ >Baofeng</a> only used for back-country work as they transmit too widely and will interfere with other radio on
  nearby frequency's.
  </li>
-  <li><a href="/cgi-bin/index.cgi?site=VE7TIT&amp;session_id=PRPQR6OY86FKUDSX&amp;page=IC-2at"
+  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=IC-2at"
  >ICOM IC-2AT </a>
  </li>
- <li><a href="/cgi-bin/index.cgi?site=VE7TIT&amp;session_id=PRPQR6OY86FKUDSX&amp;page=IC-H10"
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=IC-H10"
  >ICOM IC-h10</a>
  </li>
- <li><a href="/cgi-bin/index.cgi?site=VE7TIT&amp;session_id=PRPQR6OY86FKUDSX&amp;page=IC-F3-2"
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=IC-F3-2"
  >ICOM IC-F3-2 </a>
- <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Z-100Plus"
+  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=TaitTP8110B-B100"
+ >Tait TP8110B-B100</a>
+ </li>
+
+ </ul>
+<h4>Antenna Equipment:</h4>
+<ul>
+<li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Z-100Plus"
  >Z-100Plus Autotuner </a>
  </li>
- <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=SignalinkUSB"
- >SignaLink USB Integrated USB Sound Card</a>
- </li>
+
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=WolfriverCoil"
  >Wolfriver Coil Antenna</a>
  </li>
- <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=NanoVNA"
+</ul>
+<h4>Test Equipment:</h4>
+<ul>
+<li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=NanoVNA"
  >NanoVNS -H Network Analyzer</a>
  </li>
- <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=HamPi"
- >Raspberry Pi running HamPi</a>
+<li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=HeathkitIM-2410"
+ >Heathkit Digital frequency counter IM-2410</a>
+ </li> <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Textronixtype422"
+ >Textronix type 422 Oscilloscope</a>
  </li>
- <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=HamPi"
- >Raspberry Pi running HamPi</a>
- </li>
-
+<li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=BKModle2050"
+ >B&K Model 2050 RF Generator.</a>
+</ul>
 </ul>
 
-<h3>Ham activities.</h3>
+<h4>Modes of operation:</h4>
 <ul>
- <li> <a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=CW"
- >CW</a>
- </li>
- <li>
- <h4>Programing.</h4>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=CW">CW</a></li>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=DigitalModes">Digital Modes</a></li>
   <ul>
-   <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=NodeRedHam"
-  >Nodered </a>
-   </li>
+   <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=SignalinkUSB"
+ >SignaLink USB Integrated USB Sound Card</a>
+ </li>
   </ul>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Voice">Voice communications</a></li>
+</ul>
+
+<h4>Programing:</h4>
+
+<ul>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=NodeRedHam">Nodered</a></li>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Perl">Perl</a></li>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Python">Python</a></li>
+</ul>
 
 
- <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=DigitalModes"
- >Digital Modes</a>
-  </li>
-
- <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Voice"
- >Voice communications</a>
- </li>
- <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=CW"
- >CW</a>
- </li>
-<li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Power"
- >Every thing needs Power</a>
- </li>
-<li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=FieldDays"
- >Field Days</a>
- </li>
-</ul><br>
+<h4>Programs:</h4>
+<ul>
+  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=WSJTXFieldDays">WSJTX</a></li>
+</ul>
+<h4>Activities:</h4>
+<ul>
+  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=FieldDays">Field Days</a></li>
+</ul>
+<h4>Power:</h4>
+<ul/
+<li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Power">Every thing needs Power</a></li>
+</ul>
+<h4>Restoration projects:</h4>
+<ul/
+<li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Hallicrafters-S-40A">Hallicrafters
+ S-40A</a></li>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=HeathkitVTVMIM-11">Heathkit VTVM IM-11</a></li>
+ S-40A</a></li>
+</ul>
 <br>
 <br>
 <p>

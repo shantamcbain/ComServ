@@ -23,6 +23,10 @@
   [% embed ('HiveManHomeView') %]
  [% ELSIF procedure  == ('FirstEval') %]
    [% embed ('FirstEval') %]
+[% ELSIF procedure  == ('BKModle2050') %]
+   [% embed ('BKModle2050') %]
+[% ELSIF procedure  == ('Textronixtype422') %]
+   [% embed ('Textronixtype422') %]
 
  [% ELSIF procedure  == ('ShamanDollarHome') %]
 
@@ -37,7 +41,13 @@
  [% ELSIF procedure  == ('LiveEdit') %]
 
  [% embed ('LiveEdit') %]
-[% ELSIF procedure  == ('JoinDiscoussionList') %]
+ [% ELSIF procedure  == ('HeathkitIM-2410') %]
+
+ [% embed ('HeathkitIM-2410') %]
+ [% ELSIF procedure  == ('NewsLetter') %]
+
+ [% embed ('NewsLetter') %]
+ [% ELSIF procedure  == ('JoinDiscoussionList') %]
 
  [% embed ('JoinDiscoussionList') %]
 [% ELSIF procedure  == ('YardManagementSystem') %]
