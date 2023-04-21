@@ -672,7 +672,7 @@ my @DATASOURCE_FIELD_NAMES =
        app_title
        view_name
        body
-       facebook
+       newsletter
        linkedin
        description
        keywords
@@ -807,10 +807,10 @@ my %BASIC_INPUT_WIDGET_DEFINITIONS =
                  -WRAP         => 'VIRTUAL',
                  -INPUT_CELL_COLSPAN => 3,
                ],
-    facebook => [
-        -DISPLAY_NAME => 'Your face book link for this page',
+    newsletter => [
+        -DISPLAY_NAME => 'News Letter issue and number..',
         -TYPE         => 'textfield',
-        -NAME         => 'facebook',
+        -NAME         => 'newsletter',
         -SIZE         => 30,
         -MAXLENGTH    => 80
     ],
@@ -970,7 +970,8 @@ my @BASIC_INPUT_WIDGET_DISPLAY_ORDER =
       qw(link_order),
       qw(app_title),
       qw(page_site),
-      qw(menu),      
+      qw(menu),
+      qw(newsletter),
       qw(view_name),
       qw(body), 
       qw(status),
