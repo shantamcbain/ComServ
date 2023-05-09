@@ -104,7 +104,7 @@ method="post" enctype="text/plain">
 </section>
 </main>
    <section>
-        <h2><a href="index.cgi?site=SMT&page=HVAC" title="Learn how the HVAC system works">How the HVAC System works.</a></h2>
+        <h2><a href="index.cgi?site[% SiteName %]&amp;[% session_string %]&amp;page=HVAC" title="Learn how the HVAC system works">How the HVAC System works.</a></h2>
         <p>Learn How the system work. Pros and Cons. Health risks. Especially if not properly maintained.</p>
 
     </section>
@@ -120,7 +120,7 @@ method="post" enctype="text/plain">
 
 
 
-	[% END %]
+
 	
 	
 
