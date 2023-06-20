@@ -58,7 +58,7 @@
 [% END %]
 <link rel="shortcut icon" href="[% data.favicon %]" >
  [% IF  SiteName == "CSC" %]
-  [% embed('CSCWHMCSInterface') %]
+  [%# embed('CSCWHMCSInterface') %]
  
  [% END %]
      
