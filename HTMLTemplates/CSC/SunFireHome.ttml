@@ -1,0 +1,41 @@
+
+
+[% embed('ErrorDisplayView') %]
+
+ <table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td>
+<div ALIGN="center">
+
+</div>
+<A NAME="PageTop"></A>
+</div>
+<p>On this site we will track the progress of the SunFire server.</p>
+<h2> Please create and account and I will update you to admin so todos logs etc are available.</h2>
+<p> We are currently working on setting up cPanel with DNS. </p>
+<h2>Key links</h2>
+<p>This list will provide links to the SunFire server.</p>
+<ul>
+  <li>       <A HREF="https://209.121.123.102:2087" TARGET = "_blank" ><font   class="LeftSideBarNavStyle"> Whm via
+  ip address.</A> </font></a><p>Current access to the WHM interface. check out the todo list to see the status of the
+  server install and setup.
+  </p>
+</ul>
+
+
+
+<div ALIGN="center">
+
+<p>Last Updated: Thurday June 21 2023</p>
+
+
+[% embed('CSCCopyRight') %]
+
+
+</td>
+</tr>
+</table>
+
+
+[% embed(data.page_bottom_view) %]
+
