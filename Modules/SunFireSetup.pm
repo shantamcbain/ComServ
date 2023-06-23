@@ -1,4 +1,4 @@
-package CSCSetup;
+package SunFireSetup;
 
 use strict;
 use CGI::Carp qw(fatalsToBrowser);
