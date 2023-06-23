@@ -23,8 +23,21 @@
     are int the utility room one on the wall one on top of the computer.
     </p>
   </li>
-  <li>Begin the creation of the g999 node sites. My suggestion is to start with the ones that are not currently working.
-  then move to moving the working sites over. </li>
+  <li><h3>Begin the creation of the g999 node sites. </h3> <p>My suggestion is to start with the ones that are not
+  currently
+  working.
+  then move to moving the working sites over.</p>
+  <h3>My reasoning is</h3>
+    <ol>
+     <li>We can get non producing nodes producing! </li>
+     <li>We can test the ability to use one IP for multiple noses.</li>
+     <li>We will be able to get a list of ports that need to be open.</li>
+     <li> We can practice the process before moving working nodes.</li>
+     <li>We get get a picture of the needed security to operate a node safely. A copy of the requirements should
+     give us this information.</li>
+
+    </ol>
+  </li>
   <li>Setup the firewall and SSL for security.</li>
   <li>The DNS is now setup to use the NS on my
   computersystemconsulting.ca the nameservers defined are ns1.computersystemconsulting.ca the primary NS ns3
