@@ -31,7 +31,7 @@ sub new
   -FAVICON                        => '/images/apis/favicon.ico',
   -ANI_FAVICON                    => '/images/apis/extra/animated_favicon.gif',
   -FAVICON_TYPE                   => '/image/x-icon',
-  -CSS_VIEW_NAME                  => '/styles/USBMCSSView.css',
+  -CSS_VIEW_NAME                  => '/styles/usbmstyle.css',
   -DEFAULT_CHARSET                => 'ISO-8859-1',
   -DOCUMENT_ROOT_URL              => '/',
   -TEMPLATES_CACHE_DIRECTORY      => '/TemplatesCache',

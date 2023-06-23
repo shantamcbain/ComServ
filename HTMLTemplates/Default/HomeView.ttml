@@ -145,6 +145,8 @@
 			[% embed ('SLTHomeView') %]
 		[% ELSIF SiteName == "SMT"%]
 			[% embed ('SMTHome') %]
+		[% ELSIF SiteName == "SunFire"%]
+			[% embed ('SunFireHome') %]
 		[% ELSIF SiteName == "TelMark"%]
 			[% embed ('TelMarkHome') %]
 		[% ELSIF SiteName == "WB" OR
