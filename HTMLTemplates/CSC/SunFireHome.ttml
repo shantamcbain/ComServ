@@ -11,10 +11,9 @@
 <A NAME="PageTop"></A>
 </div>
 <p>On this site we will track the progress of the SunFire server.</p>
-<h2> Please create and account and I will update you to admin so todos logs etc are available.</h2>
+<h2> Gillian you are now part of the admin group.</h2>
 <ul>
-  <li><p>Setup the hosting and reseller account definitions. This will allow the creation of accounts for the nodes and
-  sites to be hosted on the system. I have added 3 new account packages g999, hosting, and reseller. All can be set to
+  <li><p> I have added 3 new account packages g999, hosting, and reseller. All can be set to
   having a fixed IP assigned but as we don't have that fixed yet. we will have to add it later. </p></li>
   <li>
    <p>Fixed IP: Need to contact Telus again to continue this process. Question to ask Can we attach an Ip to a
@@ -38,10 +37,11 @@
 
     </ol>
   </li>
-  <li>Setup the firewall and SSL for security.</li>
+  <li>Setup the firewall and SSL for security. I will start working on this </li>
   <li>The DNS is now setup to use the NS on my
   computersystemconsulting.ca the nameservers defined are ns1.computersystemconsulting.ca the primary NS ns3
-  .computersystemconsulting.ca is the sunfire server.</li>
+  .computersystemconsulting.ca is the sunfire server. Having truble getting enom, My registar set to using the ns3
+  nameserver will try again soon. May be it knows it is a dynamic IP.</li>
 </ul>
 
 <h2>Key links</h2>
@@ -51,6 +51,11 @@
   ip address.</A> </font></a><p>Current access to the WHM interface. check out the todo list to see the status of the
   server install and setup.
   </p>
+  <li>       <A HREF="https://sunfire.computersystemconsulting.ca:2087" TARGET = "_blank" ><font
+  class="LeftSideBarNavStyle"> Whm
+  via
+  sunfire.computersystemconsulting.ca</A> </font></a><p>Current access to the WHM interface. check out the todo list to see the status of the
+  server install and setup.
 </ul>
 
 
