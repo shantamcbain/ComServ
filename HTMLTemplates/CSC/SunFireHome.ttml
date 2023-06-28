@@ -36,6 +36,19 @@
      give us this information.</li>
 
     </ol>
+    </li>
+  <li>
+    <ol>
+     <li><A HREF="https://www.newegg.ca/p/N82E16833704677  549.99 10 wan port ships from canada" TARGET = "_blank"><font   class="LeftSideBarNavStyle">New egg 549.99</A><li>
+
+     ><font   class="LeftSideBarNavStyle">New egg 549.99</A></li>
+      <li><A HREF="https://www.amazon.com/dp/B0771YYT3K?tag=easytopte
+      n-20&linkCode=osi&th=1&psc=1&keywords=Firewall%20Routers%20for%20Small%20Business" TARGET = "_blank" ><font
+      class="LeftSideBarNavStyle"></li>
+      <li> <A HREF="https://www.ebay.ca/sch/i.html?_dkr=1&iconV2Request=true&_blrs=recall_filtering&_ssn=neweggcanada&store_cat=0
+      &store_name=neweggcanada&_oac=1&_nkw=tp-link%20er7206" TARGET = "_blank" ><font   class="LeftSideBarNavStyle">
+      TP-Link ER7206</A> </li>
+    </ol>
   </li>
   <li>Setup the firewall and SSL for security. I will start working on this </li>
   <li>The DNS is now setup to use the NS on my
@@ -48,13 +61,15 @@
 <p>This list will provide links to the SunFire server.</p>
 <ul>
   <li>       <A HREF="https://209.121.123.102:2087" TARGET = "_blank" ><font   class="LeftSideBarNavStyle"> Whm via
-  ip address.</A> </font></a><p>Current access to the WHM interface. check out the todo list to see the status of the
+  ip address.</A> </font></a><p>Current access to the WHM interface. check out the ToDo list to see the status of the
   server install and setup.
   </p>
-  <li>       <A HREF="https://sunfire.computersystemconsulting.ca:2087" TARGET = "_blank" ><font
+  <li>       <A HREF="https://c999patrick.computersystemconsulting.ca:2087" TARGET = "_blank" ><font
   class="LeftSideBarNavStyle"> Whm
   via
-  sunfire.computersystemconsulting.ca</A> </font></a><p>Current access to the WHM interface. check out the todo list to see the status of the
+  g999patrick.computersystemconsulting.ca</A> </font></a><p>Current access to the WHM interface. check out the 'ToDo'
+  list to
+  see the status of the
   server install and setup.
 </ul>
 
