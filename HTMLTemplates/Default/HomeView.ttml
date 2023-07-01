@@ -169,6 +169,7 @@
 		
 		[% IF group    ==  'Alegro_admin' OR
 			       group    ==  'Apis_Admin' OR
+			       group    ==  'admin' OR
 		          group    == 'BHN_Admin' OR
 			       group    ==  'AltPower_admin' OR
 		  	       group    ==  'Apis_Admin' OR
