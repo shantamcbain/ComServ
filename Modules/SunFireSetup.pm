@@ -19,7 +19,7 @@ sub new
   -HOME_VIEW_NAME                 => 'HomeView',
 	    -AFFILIATE           => '6',
 	    -PID                 => '134',
-  -SITE_LAST_UPDATE               => 'January 28, 2020',
+  -SITE_LAST_UPDATE               => 'July 1, 2023',
   -HOME_VIEW                      => 'HomeView',
   -BASIC_DATA_VIEW                => 'BasicDataView',
   -ADDITIONALAUTHUSERNAMECOMMENTS => 'Please do not use spaces.',
@@ -41,7 +41,7 @@ sub new
   -IMAGE_ROOT_URL                 => '/images/extropia',
   -LINK_TARGET                    => '_self',
   -MAIL_FROM                      => 'support@computersystemconsulting.ca',
-  -MAIL_TO                        => 'csc@computersystemconsulting.ca',
+  -MAIL_TO                        => 'csc@computersystemconsulting.ca, gillian@sunfiresystems.ca',
   -MAIL_TO_ADMIN                  => 'support@computersystemconsulting.ca',
   -MAIL_TO_USER                   => 'csc_user_list@computersystemconsulting.ca',
   -MAIL_TO_CLIENT                 => 'csc_client@computersystemconsulting.ca',
@@ -58,11 +58,10 @@ sub new
   -HAS_MEMBERS                    => 1,
   -HTTP_HEADER_PARAMS             => "[-EXPIRES => '-1d']",
   -HTTP_HEADER_DESCRIPTION        =>
-"Computer System Consulting.ca is dedicated to online applications using secure Linux/Unix systems. ",
+"sunfiresystems.ca Sunfire Systems • Woodstoves, gas stoves, chimney sweep, off-grid appliances, solar panels,
+inverters, charge controllers, led lighting, accessories, mounts and everything else you might need to achieve energy independence. Serving Lumby, Vernon &amp; North America since 1992!",
   -HTTP_HEADER_KEYWORDS           =>
-"web development, CGI, Perl, scripting, interactive, e-commerce, SSL, third party card processing, integration, PayPal, Selena Sol, WebWare, Webstore, Extropia, Devlopers, Network,
-                                      Unix, Linux, Apache, Modules, Sendmail, Majordomo, security, programming, webmaster, HTML5, B.C., British Columbia,
-                                      Canada, Canadian, Virtual, Server, Host, Development, Custom,Perl Scripting, Secure, Domain Name Registration, Hosting, Web appilcation hosting",
+"Woodstoves, gas stoves, chimney sweep, off-grid appliances, solar panels, inverters, charge controllers, led lighting, accessories, mounts",
  };
 
  #return your variables to the application file.
