@@ -288,9 +288,9 @@ sub deleteRecord() {
     my $key_field                    = shift;
     my $record_id                    = $cgi->param($key_field);
 
-    my $delete_ds = Extropia::Core::DataSource->create(
-         @$datasource_config_params_ref
-    );
+        my $delete_ds = Extropia::Core::DataSource->create(
+              %{$datasource_config_params_ref}
+        );
 
     if ($delete_ds->getErrorCount()) {
         die("Whoopsy!  I was unable to construct the " .
