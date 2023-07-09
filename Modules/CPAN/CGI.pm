@@ -362,14 +362,15 @@ sub init {
     # if we get called more than once, we want to initialize
     # ourselves from the original query (which may be gone
     # if it was read from STDIN originally.)
-    if (defined(@QUERY_PARAM) && !defined($initializer)) {
-	foreach (@QUERY_PARAM) {
-	    $self->param('-name'=>$_,'-value'=>$QUERY_PARAM{$_});
-	}
-	$self->charset($QUERY_CHARSET);
-	$self->{'.fieldnames'} = {%QUERY_FIELDNAMES};
-	return;
+ if (@QUERY_PARAM && !defined($initializer)) {
+    foreach (@QUERY_PARAM) {
+        $self->param('-name' => $_, '-value' => $QUERY_PARAM{$_});
     }
+    $self->charset($QUERY_CHARSET);
+    $self->{'.fieldnames'} = {%QUERY_FIELDNAMES};
+    return;
+}
+
 
     $meth=$ENV{'REQUEST_METHOD'} if defined($ENV{'REQUEST_METHOD'});
     $content_length = defined($ENV{'CONTENT_LENGTH'}) ? $ENV{'CONTENT_LENGTH'} : 0;
