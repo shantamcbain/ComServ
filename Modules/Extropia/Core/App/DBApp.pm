@@ -216,7 +216,8 @@ sub loadData {
             my @records = ();
             $record_set->moveFirst();
             while (!$record_set->endOfRecords()) {
-                push @records, $record_set->getRecordAsHash;
+                push (@records, \%{ $record_set->getRecordAsHash() });
+
                 $record_set->moveNext();
             }
 
