@@ -446,7 +446,7 @@ sub _checkValidity {
         }
     }
 
-}
+
 
 sub setMaxInactiveInterval {
     my $self = shift;
