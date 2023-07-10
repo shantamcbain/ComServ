@@ -172,7 +172,7 @@ sub getLastAccessedTime {
     if ($self->_trackAccess()) {
         $lat = -A $self->_getSessionFilename();
         return undef if (!defined($lat));
-        $lat = $ - ($lat * 24 * 60 * 60);
+        $lat = -$lat * 24 * 60 * 60;
         return($lat);
     } else {
         confess("attempt to call getLastAccessedTime for a session " .
@@ -180,8 +180,19 @@ sub getLastAccessedTime {
     }
 }
 
-sub _setLastModifiedTime {
-    # empty since file system does it for us...
+sub getLastModifiedTime {
+    my $self = shift;
+
+    my $mt;
+    if ($self->_trackModify()) {
+        $mt = -M $self->_getSessionFilename();
+        return undef if (!defined($mt));
+        $mt = -$mt * 24 * 60 * 60;
+        return($mt);
+    } else {
+        confess("attempt to call getLastModifiedTime for a session " .
+                "object that is not tracking modifications");
+    }
 }
 
 sub getLastModifiedTime {
