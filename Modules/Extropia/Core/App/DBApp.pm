@@ -773,14 +773,14 @@ sub modifyRecord {
 #
 # WRITE OUT THE LOG ENTRY
 #
-            if ($log) {
-                $log->log(
-                 -SEVERITY => Extropia::Core::Log::INFO,
-                 -EVENT    => "MODIFY PERFORMED\|" .
-                              "MODIFY_DEFINITION: $modify_string\|" .
-                              "ORIGNAL_ROWS: " . join (" AND ", @records)
-                );
-            }
+if ($log) {
+    $log->log(
+        -SEVERITY => Extropia::Core::Log::INFO,
+        -EVENT    => "MODIFY PERFORMED\|" .
+                     "MODIFY_DEFINITION: $modify_string\|" .
+                     "ORIGNAL_ROWS: " . join(" AND ", map { "$_=" . $record->{$_} } keys %$record)
+    );
+}
         }
     }
     return 1;
