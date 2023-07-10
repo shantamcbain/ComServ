@@ -386,13 +386,12 @@ sub deleteRecord() {
 #
 # CREATE LOG ENTRY
 #
-                    if ($log) {
-                        my $key;
-                        foreach $key (keys %$record) {
-                            push (@records, "$key=" . %$record->{$key});
-                        }
-                    }
-                }
+  if ($log) {
+    my $key;
+    foreach $key (keys %$record) {
+        push (@records, "$key=" . $record->{$key});
+    }
+}                }
             }
 #
 # WRITE OUT THE LOG ENTRY
