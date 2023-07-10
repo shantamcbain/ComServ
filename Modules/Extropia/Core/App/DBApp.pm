@@ -763,7 +763,7 @@ sub modifyRecord {
                         my $key;
                         foreach $key (keys %$record) {
                             # This additional conditional check for defined value is added to avoid uninitialized value warning.
-                            if(defined(%$record->{$key})) {
+                            if(defined($record->{$key})) {
                             push (@records, "$key=" . %$record->{$key});
                             }	
                         }
