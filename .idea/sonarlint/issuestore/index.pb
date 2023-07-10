@@ -11,8 +11,6 @@ E
 addingadmintosite.txt,4/f/4fd7eb3294ca8fcc968bf9d6759ca62b9ba209e6
 a
 1HTMLTemplates/Default/TopDropListDevelopment.ttml,9/5/9563f7c8da9021899d29a25643fadd705018e505
-=
-ToDo/todo.cgi,8/d/8d69d2932a4b64e8483bdd03411c4d1533a95bd6
 Å
 QActionHandler/CSC/PopulateInputWidgetDefinitionListWithProjectCodeWidgetAction.pm,f/a/fad05a6b664b807e3b773baa91b9dabf4e6b4155
 ;
@@ -33,3 +31,13 @@ I
 Modules/universalSetup.pm,c/1/c19723b5111d8983a0517eb5269071a961025fb5
 O
 Modules/MonasheeSupportSetup.pm,8/f/8f04fc9108143d56257150f69e56f64a9f30c534
+V
+&HTMLTemplates/Default/PageTopView.ttml,8/5/8522239544d2d926a1c309c192455a71647653d5
+R
+"HTMLTemplates/CSC/SunFireHome.ttml,3/c/3cccc2ea15a667dedd7958806dd929e3adf85991
+V
+&HTMLTemplates/CSC/CSLeftLinksView.ttml,b/2/b22905c2955115fed8414376f139b6fc57b94ede
+D
+Modules/USBMSetup.pm,8/c/8c2170c85ea773d92acae4b43e525cf8fbcc57c7
+F
+AltPower/controler.cgi,3/f/3fa251fe162e7ec3e2fbd4872d91da272e149f27
