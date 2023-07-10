@@ -388,23 +388,24 @@ sub _checkValidity {
     my $last_time;
 
     if ($self->_trackAccess() &&
-        defined($max_interval = $self->{-MAX_ACCESS_TIME}) && 
+        defined($max_interval = $self->{-MAX_ACCESS_TIME}) &&
         defined($last_time = $self->getLastAccessedTime()) &&
         ($max_interval + $last_time) < time()) {
         $self->invalidate();
         if ($self->{-FATAL_TIMEOUT}) {
-            confess("TIMEOUT: session with id " . $self->getId() . 
-            "has exceeded max_access_time: $max_interval.");
-        } else {
+            confess("TIMEOUT: session with id " . $self->getId() .
+                "has exceeded max_access_time: $max_interval.");
+        }
+        else {
             require Extropia::Core::Error;
             my $error = new Extropia::Core::Error(
-                    -MESSAGE => "TIMEOUT: session with id " . $self->getId() . 
-                                "has exceeded max_access_time: $max_interval.",
-                    -CODE    => Extropia::Core::Session::ACCESS_TIME_EXCEEDED);
+                -MESSAGE => "TIMEOUT: session with id " . $self->getId() .
+                    "has exceeded max_access_time: $max_interval.",
+                -CODE    => Extropia::Core::Session::ACCESS_TIME_EXCEEDED);
             $self->addError($error);
         }
     }
-
+}
 #print "TrackModify:" . $self->_trackModify() . "\n";
 #   print "Current time: " . time() . "\n";
 #   print "Last Mod Time: " . $self->getLastModifiedTime() . "\n";
