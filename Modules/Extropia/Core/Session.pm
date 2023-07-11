@@ -15,7 +15,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330,
 # Boston, MA  02111-1307, USA.
-
 package Extropia::Core::Session;
 
 use strict;
@@ -52,13 +51,12 @@ sub create {
     my $type = shift;
     my @fields = @_;
 
-    my $session_class = 
+    my $session_class =
         Extropia::Core::Base::_getDriver("Extropia::Core::Session", $type) or
         Carp::croak("Extropia::Core::Session type '$type' is not supported");
     # hand-off to scheme specific implementation sub-class
     $session_class->new(@fields);
 }
-
 #
 # Drivers must implement the following methods
 #
