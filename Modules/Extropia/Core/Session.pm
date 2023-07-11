@@ -404,41 +404,44 @@ sub _checkValidity {
         }
     }
 
-#print "TrackModify:" . $self->_trackModify() . "\n";
-#   print "Current time: " . time() . "\n";
-#   print "Last Mod Time: " . $self->getLastModifiedTime() . "\n";
-if ($self->_trackModify() &&
-    defined($max_interval = $self->{-MAX_MODIFY_TIME}) &&
-    defined($last_time = $self->getLastModifiedTime()) &&
-    ($max_interval + $last_time) < time()) {
-    $self->invalidate();
-    if ($self->{-FATAL_TIMEOUT}) {
-        confess("TIMEOUT: session with id " . $self->getId() .
-        "has exceeded max_modify_time: $max_interval.");
-    } else {
-        require Extropia::Core::Error;
-        my $error = new Extropia::Core::Error(
+    #print "TrackModify:" . $self->_trackModify() . "\n";
+    #   print "Current time: " . time() . "\n";
+    #   print "Last Mod Time: " . $self->getLastModifiedTime() . "\n";
+    if ($self->_trackModify() &&
+        defined($max_interval = $self->{-MAX_MODIFY_TIME}) &&
+        defined($last_time = $self->getLastModifiedTime()) &&
+        ($max_interval + $last_time) < time()) {
+        $self->invalidate();
+        if ($self->{-FATAL_TIMEOUT}) {
+            confess("TIMEOUT: session with id " . $self->getId() .
+                "has exceeded max_modify_time: $max_interval.");
+        }
+        else {
+            require Extropia::Core::Error;
+            my $error = new Extropia::Core::Error(
                 -MESSAGE => "TIMEOUT: session with id " . $self->getId() .
-                            "has exceeded max_modify_time: $max_interval.",
+                    "has exceeded max_modify_time: $max_interval.",
                 -CODE    => Extropia::Core::Session::MODIFY_TIME_EXCEEDED);
-        $self->addError($error);
+            $self->addError($error);
+        }
     }
-}
- if ($self->_trackCreation() &&
-    defined($max_interval = $self->{-MAX_CREATION_TIME}) &&
-    defined($last_time = $self->getCreationTime()) &&
-    ($max_interval + $last_time) < time()) {
-    $self->invalidate();
-    if ($self->{-FATAL_TIMEOUT}) {
-        confess("TIMEOUT: session with id " . $self->getId() .
-        "has exceeded max_creation_time: $max_interval.");
-    } else {
-        require Extropia::Core::Error;
-        my $error = new Extropia::Core::Error(
+    if ($self->_trackCreation() &&
+        defined($max_interval = $self->{-MAX_CREATION_TIME}) &&
+        defined($last_time = $self->getCreationTime()) &&
+        ($max_interval + $last_time) < time()) {
+        $self->invalidate();
+        if ($self->{-FATAL_TIMEOUT}) {
+            confess("TIMEOUT: session with id " . $self->getId() .
+                "has exceeded max_creation_time: $max_interval.");
+        }
+        else {
+            require Extropia::Core::Error;
+            my $error = new Extropia::Core::Error(
                 -MESSAGE => "TIMEOUT: session with id " . $self->getId() .
-                            "has exceeded max_creation_time: $max_interval.",
+                    "has exceeded max_creation_time: $max_interval.",
                 -CODE    => Extropia::Core::Session::CREATION_TIME_EXCEEDED);
-        $self->addError($error);
+            $self->addError($error);
+        }
     }
 }
  sub setMaxInactiveInterval {
@@ -608,98 +611,6 @@ sub _invalidateOldSessions {
 }
 
 #
-# Tied Hash representation of a raw session object
-#
-package Extropia::Core::Session::TiedHashRepresentation;
-
-use strict;
-
-sub TIEHASH {
-    my $self = shift;
-
-    my $session = shift;
-    
-    my $node ={
-        _session_object => $session
-    };
-    return bless $node, $self;
-}
-
-sub FETCH {
-    my $self = shift;
-
-    my $key = shift;
-
-    my $session = $self->{_session_object};
-
-    # Take care of "private" variables
-    if ($key =~ /^_ID$/i || $key =~ /^_SESSION_ID$/i) {
-      return $session->getId();
-    } elsif ($key =~ /^_SESSION_OBJECT$/i) {
-      return $session;
-    }
-    return($session->getAttribute("-KEY" => $key));
-}
-
-sub STORE {
-    my $self = shift;
-
-    my $key   = shift;
-    my $value = shift;
-
-    return if ($value =~ /^_/);
-    my $session = $self->{_session_object};
-
-    $session->setAttribute(-KEY => $key,-VALUE => $value);
-}
-
-sub DELETE {
-    my $self = shift;
-
-    my $key = shift;
-
-    my $session = $self->{_session_object};
-    $session->removeAttribute(-KEY => $key);
-}
-
-sub CLEAR {
-    my $self = shift;
-
-    my $session = $self->{_session_object};
-    $session->removeAttributes();
-}
-
-sub EXISTS{
-    my $self = shift;
-
-    my $key = shift;
-
-    my $session = $self->{_session_object};
-    return defined($session->getAttribute(-KEY => $key));
-}
-
-sub FIRSTKEY {
-    my $self = shift;
-
-    my $session = $self->{_session_object};
-
-    $self->{_data_cache_hash} = {};
-    my @keys = $session->getAttributes();
-    foreach (@keys) {
-        $self->{_data_cache_hash}->{$_} = 
-            $session->getAttribute(-KEY => $_);
-    }
-    return each %{$session->{_data_cache_hash}};
-}
-
-sub NEXTKEY {
-    my $self = shift;
-
-    return each %{$self->{_data_cache_hash}};
-}
-
-1;
-
 __END__
 
 =head1 OVERVIEW
