@@ -405,7 +405,7 @@ sub _checkValidity {
             $self->addError($error);
         }
     }
-}
+
 #print "TrackModify:" . $self->_trackModify() . "\n";
 #   print "Current time: " . time() . "\n";
 #   print "Last Mod Time: " . $self->getLastModifiedTime() . "\n";
