@@ -409,101 +409,77 @@ sub _checkValidity {
 #print "TrackModify:" . $self->_trackModify() . "\n";
 #   print "Current time: " . time() . "\n";
 #   print "Last Mod Time: " . $self->getLastModifiedTime() . "\n";
-   
-    if ($self->_trackModify() &&
-        defined($max_interval = $self->{-MAX_MODIFY_TIME}) && 
-        defined($last_time = $self->getLastModifiedTime()) &&
-        ($max_interval + $last_time) < time()) {
-        $self->invalidate();
-        if ($self->{-FATAL_TIMEOUT}) {
-            confess("TIMEOUT: session with id " . $self->getId() . 
-            "has exceeded max_modify_time: $max_interval.");
-        } else {
-            require Extropia::Core::Error;
-            my $error = new Extropia::Core::Error(
-                    -MESSAGE => "TIMEOUT: session with id " . $self->getId() . 
-                                "has exceeded max_modify_time: $max_interval.",
-                    -CODE    => Extropia::Core::Session::MODIFY_TIME_EXCEEDED);
-            $self->addError($error);
-        }
+if ($self->_trackModify() &&
+    defined($max_interval = $self->{-MAX_MODIFY_TIME}) &&
+    defined($last_time = $self->getLastModifiedTime()) &&
+    ($max_interval + $last_time) < time()) {
+    $self->invalidate();
+    if ($self->{-FATAL_TIMEOUT}) {
+        confess("TIMEOUT: session with id " . $self->getId() .
+        "has exceeded max_modify_time: $max_interval.");
+    } else {
+        require Extropia::Core::Error;
+        my $error = new Extropia::Core::Error(
+                -MESSAGE => "TIMEOUT: session with id " . $self->getId() .
+                            "has exceeded max_modify_time: $max_interval.",
+                -CODE    => Extropia::Core::Session::MODIFY_TIME_EXCEEDED);
+        $self->addError($error);
     }
-
-    if ($self->_trackCreation() &&
-        defined($max_interval = $self->{-MAX_CREATION_TIME}) && 
-        defined($last_time = $self->getCreationTime()) &&
-        ($max_interval + $last_time) < time()) {
-        $self->invalidate();
-        if ($self->{-FATAL_TIMEOUT}) {
-            confess("TIMEOUT: session with id " . $self->getId() . 
-            "has exceeded max_creation_time: $max_interval.");
-        } else {
-            require Extropia::Core::Error;
-            my $error = new Extropia::Core::Error(
-                    -MESSAGE => "TIMEOUT: session with id " . $self->getId() . 
-                                "has exceeded max_creation_time: $max_interval.",
-                    -CODE    => Extropia::Core::Session::CREATION_TIME_EXCEEDED);
-            $self->addError($error);
-        }
+}
+ if ($self->_trackCreation() &&
+    defined($max_interval = $self->{-MAX_CREATION_TIME}) &&
+    defined($last_time = $self->getCreationTime()) &&
+    ($max_interval + $last_time) < time()) {
+    $self->invalidate();
+    if ($self->{-FATAL_TIMEOUT}) {
+        confess("TIMEOUT: session with id " . $self->getId() .
+        "has exceeded max_creation_time: $max_interval.");
+    } else {
+        require Extropia::Core::Error;
+        my $error = new Extropia::Core::Error(
+                -MESSAGE => "TIMEOUT: session with id " . $self->getId() .
+                            "has exceeded max_creation_time: $max_interval.",
+                -CODE    => Extropia::Core::Session::CREATION_TIME_EXCEEDED);
+        $self->addError($error);
     }
-
-
-
-sub setMaxInactiveInterval {
+}
+ sub setMaxInactiveInterval {
     my $self = shift;
     @_ = _rearrange([-AGE],[-AGE],@_);
-
-    my $age = shift;
-
-    $self->{-MAX_ACCESS_TIME} = $age;
-    
-    $self->_checkValidity();
+     my $age = shift;
+     $self->{-MAX_ACCESS_TIME} = $age;
+     $self->_checkValidity();
 }
-
-sub getMaxInactiveInterval {
+ sub getMaxInactiveInterval {
     my $self = shift;
-
-    return($self->{-MAX_ACCESS_TIME});
+     return $self->{-MAX_ACCESS_TIME};
 }
-
-sub setMaxModifyInterval {
+ sub setMaxModifyInterval {
     my $self = shift;
     @_ = _rearrange([-AGE],[-AGE],@_);
-
-    my $age = shift;
-
-    $self->{-MAX_MODIFY_TIME} = $age;
-    
-    $self->_checkValidity();
+     my $age = shift;
+     $self->{-MAX_MODIFY_TIME} = $age;
+     $self->_checkValidity();
 }
-
-sub getMaxModifyInterval {
+ sub getMaxModifyInterval {
     my $self = shift;
-
-    return($self->{-MAX_MODIFY_TIME});
+     return $self->{-MAX_MODIFY_TIME};
 }
-
-
-sub setMaxCreationInterval {
+ sub setMaxCreationInterval {
     my $self = shift;
     @_ = _rearrange([-AGE],[-AGE],@_);
-
-    my $age = shift;
-
-    $self->{-MAX_CREATION_TIME} = $age;
-    
-    $self->_checkValidity();
+     my $age = shift;
+     $self->{-MAX_CREATION_TIME} = $age;
+     $self->_checkValidity();
 }
-
-sub getMaxCreationInterval {
+ sub getMaxCreationInterval {
     my $self = shift;
-
-    return($self->{-MAX_CREATION_TIME});
+     return $self->{-MAX_CREATION_TIME};
 }
 
 
 sub _setLastModifiedTime {
     my $self = shift;
-
     if ($self->_trackModify()) {
         $self->_policyRead();
         $self->_setDataCacheAttribute(-KEY   => '_MODIFY_TIME',
