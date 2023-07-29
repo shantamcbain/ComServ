@@ -30,10 +30,10 @@
       </ul>
 
       <h2>Cryptocurrency</h2>
-      <p>Interested in cryptocurrencies? Learn more about BitCoin and other coins by joining our adventure in the world of wallets and exchanges. <a href='https://computersystemconsulting.ca/cgi-bin/index.cgi?site=CSC&amp;page=MigratingToCrypto' target='_blank'>Join us now</a>.</p>
+      <p>Interested in cryptocurrencies? Learn more about BitCoin and other coins by joining our adventure in the world of wallets and exchanges. <a href='https://computersystemconsulting.ca/cgi-bin/index.cgi?site=CSC&amp;[% session_string %]&amp;page=MigratingToCrypto' target='_blank'>Join us now</a>.</p>
       <p><strong>New:</strong> Pay for your services with us using BitCoin or other cryptocurrencies.</p>
 
-      <h2><a href='/cgi-bin/index.cgi?site=CSC&amp;page=vpn' target='_blank'>VPN Services</a></h2>
+      <h2><a href='/cgi-bin/index.cgi?site=CSC&amp;[% session_string %]&amp;page=vpn' target='_blank'>VPN Services</a></h2>
       <p>Ensure your online security and privacy with our various Virtual Private Network options. Click the VPN link on the left for more information.</p>
     </td>
   </tr>
