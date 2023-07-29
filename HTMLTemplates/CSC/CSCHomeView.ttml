@@ -1,51 +1,40 @@
-[% Version = '/cgi-bin/HTMLTemplates/CSC/CSCHomeView.ttml,v 1.91 2020/04/22 17:43:15 shanta Exp shanta '%]
-[%
-#	$Id: CSCHomeView.ttml,v 1.9 2002/11/08 17:43:15 shanta Exp shanta $	
-
-# Ideally this template should be converted into a static CSS file and
-# be served as /foo/bar.css and not via CGI, since it slows things
-# down and dozen't allow browsers to cache the CSS content.
-
-# otherwise this template is stand-alone, i.e. it dozen't rely on any
-# variables from outside.
-
-%]
-
-
+[% Version = '/cgi-bin/HTMLTemplates/CSC/CSCHomeView.ttml,v 1.92 2023/07/29 17:43:15 shanta Exp shanta' %]
+[%# Version = '/cgi-bin/HTMLTemplates/CSC/CSCHomeView.ttml,v 1.91 2020/04/22 17:43:15 shanta Exp shanta' %]
+[%# USE error = embed('ErrorDisplayView') %]
 [% embed('ErrorDisplayView') %]
 <A NAME="PageTop"></A>
 
+
+
 <table>
-<tr>
-	<td>
-[% IF data.debug == 1 %]
- [%	Version %] 	   
-[% END %] 
-<p>Here at computersystemconsulting.ca we develop, host and support Web based applications for your distributed organization.
+  <tr>
+    <td>
+      [% IF data.debug == 1 %]
+        [% Version %]
+      [% END %]
 
-<p>We are in the need of Perl programmers and graphic designers. Be sure to check the jobs link in the top links.
-<p> Services provided: Click The product link in the main links group.
-<ul>
-<li><a href='http://www.computersystemconsulting.ca/whmcs/cart.php'>Website hosting</a> </li>
-<li> <a href='http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&amp;domain=register' target=''_blank''>Register your domain with us.</a></li>
-<li> Check out our <a href='http://demo.computersystemconsulting.ca' target='_blank'>Demo</a> </li>
-<li>
-<h1>Join our VOIP services</h1>
-<p> <a href='https://voip.computersystemconsulting.ca/' name='Contact' target='_blank' title=' '>Learn more</a>
-<li>We now offer over 1000 new communities to our phone options. Get one from your target community.</li>
-</li>
-</ul>
-<h2>Crypto currency</h2>
-<p>BitCoin and other coins are in the news a lot lately. The air is filled with. Wallets. Exchanges. <a href='https://computersystemconsulting.ca/cgi-bin/index.cgi?site=CSC&amp;page=MigratingToCrypto' target='_blank'>Join us in that adventure.</a> of fingerling it out.</p>
-<strong>
-New</strong>Pay for your services with us. Two BitCoin exchanges
-</p>
-<h2> <a href='/cgi-bin/index.cgi?site=CSC&amp;page=vpn' target='_blank' name='Our VPN Services'>vpn </a></h2>
-<p>We now offer several choices of Virtual Private Network option. Click the VPN link on the left for more information.</p>
+      <h1>Welcome to ComputerSystemConsulting.ca</h1>
+      <p>At ComputerSystemConsulting.ca, we specialize in developing, hosting, and supporting web-based applications for your distributed organization.</p>
+      <p>We are currently looking for skilled Perl programmers and graphic designers. Check out the Jobs section in the top links for more details.</p>
 
+      <h2>Our Services</h2>
+      <ul>
+        <li><a href='http://www.computersystemconsulting.ca/whmcs/cart.php'>Website Hosting</a></li>
+        <li><a href='http://www.computersystemconsulting.ca/whmcs/cart.php?a=add&amp;domain=register' target='_blank'>Register Your Domain</a></li>
+        <li><a href='http://demo.computersystemconsulting.ca' target='_blank'>Demo</a></li>
+        <li>
+          <h3>Join Our VOIP Services</h3>
+          <p><a href='https://voip.computersystemconsulting.ca/' target='_blank'>Learn More</a></p>
+          <p>Explore our VOIP services and discover over 1000 new communities to choose from.</p>
+        </li>
+      </ul>
 
+      <h2>Cryptocurrency</h2>
+      <p>Interested in cryptocurrencies? Learn more about BitCoin and other coins by joining our adventure in the world of wallets and exchanges. <a href='https://computersystemconsulting.ca/cgi-bin/index.cgi?site=CSC&amp;page=MigratingToCrypto' target='_blank'>Join us now</a>.</p>
+      <p><strong>New:</strong> Pay for your services with us using BitCoin or other cryptocurrencies.</p>
 
-
-
-</td></tr>
+      <h2><a href='/cgi-bin/index.cgi?site=CSC&amp;page=vpn' target='_blank'>VPN Services</a></h2>
+      <p>Ensure your online security and privacy with our various Virtual Private Network options. Click the VPN link on the left for more information.</p>
+    </td>
+  </tr>
 </table>

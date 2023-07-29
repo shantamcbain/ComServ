@@ -25,11 +25,16 @@
   
    <li><h2>Customer Support.</h2>
     <ul>
-     <li>Added Chat link to site.</li>
+     <li>Added Chat link to site. Removed due to incompatability of plug in.</li>
      <li>Added HelpDesk link</li>    
     </ul>
   </li>
-   <li><h2>Perks provided by CSC for the.</h2>
+   <li><h2>Staff Support.</h2>
+    <ul>
+     <li>Use the Chat link for imedeate help from support.</li>
+     <li>Please use the Submit a suport ticket link in the HelpDesk Drop list in the upper right.</li>
+    </ul>
+  </li><li><h2>Perks provided by CSC for the.</h2>
     <ul>
      <li><a href="http://www.computersystemconsulting.ca/whmcs/affiliates.php" target="_blank">Affiliate program</a>. We have an affiliate system System available. If you opt  in to this program you will receive a credit to your support account for any payed referral to our services. We pay a percent each time the referral pays for as long as they stay with us.</li>    
     </ul>
