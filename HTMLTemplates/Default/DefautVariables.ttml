@@ -23,7 +23,7 @@
       session_id   = data.session_object.getId()
       session_string = "session_id=$session_id" 
       SiteUpdate   = data.site_last_update
-      SiteName     = data.session_object.getAttribute('-KEY','SiteName')
+      SiteName     = data.SiteName
       SiteDisplayName = data.site_display_name
       site         = SiteName
       title        = data.title
