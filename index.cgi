@@ -170,7 +170,7 @@ use SiteSetup;
 my $UseModPerl     = 1;
 my $SetupVariables = new SiteSetup($UseModPerl, 
 $CGI->param('site'), $HostName);
-#$SiteName            = $SiteName || $SetupVariables->{-SITE_NAME};
+$SiteName            = $SiteName || $SetupVariables->{-SITE_NAME};
 $Affiliate               = $SetupVariables->{-AFFILIATE};
 $APP_DATAFILES_DIRECTORY = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
 $app_logo                = $SetupVariables->{-APP_LOGO};
