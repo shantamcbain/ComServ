@@ -19,7 +19,7 @@
 [% favicon =  "/images/favicon.ico" %]
 
 [% END %]
-[%# SiteName = data.SiteName %]
+[% SiteName = data.site_name %]
 	[%# ScriptDisplayName = 'TEST' %]
 <!DOCTYPE html>
 <html >

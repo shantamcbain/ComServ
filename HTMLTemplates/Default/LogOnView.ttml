@@ -22,5 +22,5 @@
 
 
 	<A HREF ="[% data.script_name %]?session_id=[% session_id %]&amp;submit_logon=on&amp;
-	site=[% datea.site_name %]"
+	site=[% data.site_name %]"
 	TARGET ="[% data.link_target %]"  title="You need to create an account. Click here to create one or logon"> Logon</A>
