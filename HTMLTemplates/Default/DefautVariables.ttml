@@ -33,7 +33,7 @@
 <table cellspacing="2" align="center" rules="cols">
 <tr>
  <td	class="InharatedVariablesCell">SiteName  TTML =  </td>
- <td	class="InharatedVariablesCell">[% SiteName %]</td>
+ <td	class="InharatedVariablesCell">[% SiteName %]  data.[% data.site_name %]</td>
 </tr>
  <tr>
  <td	class="InharatedVariablesCell">First name  TTML </td>
