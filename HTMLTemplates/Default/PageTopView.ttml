@@ -20,6 +20,7 @@
 
 [% END %]
 [% SiteName = data.site_name %]
+[% PROCESS DefautVariables.ttml %]
 	[%# ScriptDisplayName = 'TEST' %]
 <!DOCTYPE html>
 <html >
