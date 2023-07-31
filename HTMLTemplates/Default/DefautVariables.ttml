@@ -19,7 +19,7 @@
 [% session_id = data.session_object.getId() %]
 [% session_string = "session_id=${session_id}" %]
 [% site_update = data.site_last_update %]
-[% site_name = data.SiteName %]
+[% Site_Name = data.SiteName %]
 [% site_display_name = data.site_display_name %]
 [% site = site_name %]
 [% title = data.title %]
@@ -30,7 +30,7 @@
   <table cellspacing="2" align="center" rules="cols">
     <tr>
       <td class="InharatedVariablesCell">SiteName  TTML =</td>
-      <td class="InharatedVariablesCell">[% site_name %]</td>
+      <td class="InharatedVariablesCell">[% SiteName %]</td>
     </tr>
     <tr>
       <td class="InharatedVariablesCell">First name  TTML</td>
