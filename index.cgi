@@ -1,35 +1,15 @@
 #!/usr/bin/perl -wT
 # 	$Id: index.cgi,v 1.15 2020/01/13 14:27:36 shanta Exp $
-# 	$Id: index.cgi,v 1.14 2019/04/08 14:27:36 shanta Exp $
-# 	$Id: index.cgi,v 1.13 2019/03/215 14:27:36 shanta Exp $
-# 	$Id: index.cgi,v 1.12 2014/03/20 14:27:36 shanta Exp $
-
-# Copyright (C) 1994 - 2001  eXtropia.com
-#
-# This program is free software; you can redistribute it and/or
-# modify it under the terms of the GNU General Public License
-# as published by the Free Software Foundation; either version 2
-# of the License, or (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place - Suite 330,
-# Boston, MA  02111-1307, USA.
 
 use strict;
 my $AppVer = "ver 1.15, Dec 02, 2021";
 
-BEGIN
-{
- use vars qw(@dirs);
- @dirs = qw(Modules/
-   Modules/CPAN .);
+our @dirs;
+
+BEGIN {
+    @dirs = qw(Modules/ Modules/CPAN .);
 }
+
 use lib @dirs;
 unshift @INC, @dirs unless $INC[0] eq $dirs[0];
 
@@ -76,7 +56,7 @@ use Extropia::Core::View;
 use Extropia::Core::Action;
 use Extropia::Core::SessionManager;
 
-my $CGI = new CGI()
+my $CGI = CGI->new()
   or die(
      "Unable to construct the CGI object" . ". Please contact the webmaster." );
 
@@ -160,7 +140,7 @@ my $View           = $CGI->param('view') ;
 
 
 my $VIEW_LOADER =
-  new Extropia::Core::View( \@VIEWS_SEARCH_PATH, \@TEMPLATES_SEARCH_PATH )
+    Extropia::Core::View->new(\@VIEWS_SEARCH_PATH, \@TEMPLATES_SEARCH_PATH)
   or die(   "Unable to construct the VIEW LOADER object in "
           . $CGI->script_name()
           . " Please contact the webmaster." );
@@ -168,9 +148,9 @@ my $VIEW_LOADER =
 
 use SiteSetup;
 my $UseModPerl     = 1;
-my $SetupVariables = new SiteSetup($UseModPerl, 
-$CGI->param('site'), $HostName);
-$SiteName            = $SiteName || $SetupVariables->{-SITE_NAME};
+my $SetupVariables = SiteSetup->new($UseModPerl,
+    $CGI->param('site'), $HostName);
+#$SiteName            = $SiteName || $SetupVariables->{-SITE_NAME};
 $Affiliate               = $SetupVariables->{-AFFILIATE};
 $APP_DATAFILES_DIRECTORY = $SetupVariables->{-APP_DATAFILES_DIRECTORY};
 $app_logo                = $SetupVariables->{-APP_LOGO};
