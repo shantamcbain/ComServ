@@ -60,7 +60,7 @@ sub new {
                    {
                     '-ENCRYPT_PARAMS' => [-TYPE => 'Crypt'],
                     '-ADD_REGISTRATION_TO_USER_DATASOURCE' => 1,
-                    '-USER_FIELDS_TO_DATASOURCE_MAPPING' => 
+                    '-USER_FIELDS_TO_DATASOURCE_MAPPING' =>
                       {'auth_username' => 'username',
                        'auth_password' => 'password'},
                     '-AUTH_CACHE_PARAMS' => [-TYPE => 'None']
@@ -85,7 +85,7 @@ sub _retrieveAuthDataStore {
         return $self->{_data_store};
     }
 
-    my @ds_params = 
+    my @ds_params =
       @{$self->{-USER_DATASOURCE_PARAMS}};
 
     my $username_field = $self->{-USER_FIELD_TYPES}->{-USERNAME_FIELD};
@@ -96,16 +96,16 @@ sub _retrieveAuthDataStore {
     _dieIfError($ds);
 
     my $search_term;
-    if($self->{-AUTH_CASE_SENSITIVE_SEARCH}) { 
+    if($self->{-AUTH_CASE_SENSITIVE_SEARCH}) {
       $search_term = $ds_username .
-                                " == " . qq!"$username"!;    
-    
+                                " == " . qq!"$username"!;
+
     } else {
       $search_term = $ds_username .
-                                " =i " . qq!"$username"!;    
+                                " =i " . qq!"$username"!;
     }
 
-    
+
     my $record_set = $ds->search($search_term);
     _dieIfError($ds);
 
@@ -115,7 +115,7 @@ sub _retrieveAuthDataStore {
                 sprintf($self->{-USERNAME_NOT_FOUND_ERROR},$username));
         return undef;
     }
-    
+
     my $rh_record = $record_set->getRecordAsHash();
     $self->{_data_store} = $rh_record;
 
@@ -126,19 +126,19 @@ sub _retrieveAuthDataStore {
 # In the context of the Auth Module
 # authenticate takes a username and password and checks to
 # see if a problem has occurred
-# 
+#
 # If the logon is successful, then that information is
 # cached for further querying by the AuthManager object
 #
 # If the logon fails it is either because the username does
 # not match an existing one or because the password failed to match
-# 
+#
 # If password is undef, then it is assumed that the authentication
 # is merely trying to get the user information for passing back to
 # the authentication manager which may be managing security issues
 #
 # returns a true if successful, false if not.
-# 
+#
 
 sub authenticate {
     my $self = shift;
@@ -177,7 +177,7 @@ sub authenticate {
     my $rh_record = $self->retrieveAuthDataStore(-USERNAME => $username);
     return undef if (!$rh_record);
 
-    if (defined($password) && 
+    if (defined($password) &&
             (!$encrypt->compare(
                         -ENCRYPTED_CONTENT  => $rh_record->{
                            $ds_password},
@@ -198,25 +198,25 @@ sub authenticate {
 } # end of authenticate
 
 #
-# _prePopulateCache prepopulates the cache with the 
+# _prePopulateCache prepopulates the cache with the
 # information passed to it.
 #
 sub _prePopulateCache {
     my $self = shift;
-  
+
     my $auth_cache = $self->getAuthCacheObject();
     my $rh_user_ds_record = $self->retrieveAuthDataStore();
 
     my $field;
     foreach $field (@{$self->{-USER_FIELDS}}) {
-        my $user_field = 
+        my $user_field =
             $self->{-USER_FIELDS_TO_DATASOURCE_MAPPING}->{$field};
 #die($user_field);
-        my $user_value = 
+        my $user_value =
             $rh_user_ds_record->{$user_field};
         $auth_cache->setCachedUserField(-USER_FIELD => $field,
                                   -USER_VALUE => $user_value);
-    } 
+    }
 
 } # end of _prePopulateCache
 
@@ -240,11 +240,11 @@ sub _getRawUserField {
 
     my $username = $self->{_username_parameter};
     if (!defined($username)) {
-# we haven't logged on yet...we may want to get/set session cache 
+# we haven't logged on yet...we may want to get/set session cache
 # data anyway...
         return undef;
     }
-    my $rh_user_ds_record = 
+    my $rh_user_ds_record =
         $self->retrieveAuthDataStore(-USERNAME => $username);
 
     if (!defined($rh_user_ds_record)) {
@@ -288,14 +288,14 @@ sub register {
 
     my $field_map = $self->{'-USER_FIELDS_TO_DATASOURCE_MAPPING'};
 
-    my @ds_params = 
+    my @ds_params =
       @{$self->{"-USER_DATASOURCE_PARAMS"}};
 
     # derived...
     my $ds = Extropia::Core::DataSource->create(@ds_params);
     _dieIfError($ds);
 
-    my $username_value = 
+    my $username_value =
           $rh_user_field_name_to_value_mapping->{$username_field};
 
     # Check whether user is already in the datasource..
@@ -304,15 +304,15 @@ sub register {
     #
 
     my $search_term;
-    if($self->{-AUTH_CASE_SENSITIVE_SEARCH}) { 
-      $search_term = $field_map->{$username_field} . 
-                                  " == " . qq{"$username_value"}; 
-    
+    if($self->{-AUTH_CASE_SENSITIVE_SEARCH}) {
+      $search_term = $field_map->{$username_field} .
+                                  " == " . qq{"$username_value"};
+
     } else {
-      $search_term = $field_map->{$username_field} . 
-                                  " =i " . qq{"$username_value"}; 
+      $search_term = $field_map->{$username_field} .
+                                  " =i " . qq{"$username_value"};
     }
-				    
+
     my $record_set = $ds->search($search_term);
 
     $record_set->moveFirst();
@@ -333,7 +333,7 @@ sub register {
     my $encrypt = Extropia::Core::Encrypt->create(@encrypt_params);
     _dieIfError($encrypt);
 
-    my $password_value = 
+    my $password_value =
         $rh_user_field_name_to_value_mapping->{$password_field};
     if (defined($password_value)) {
         $rh_user_field_name_to_value_mapping->{$password_field} =
@@ -341,17 +341,17 @@ sub register {
                 -CONTENT_TO_ENCRYPT => $password_value
             );
     }
-        
+
 
     #
     # set up the fields for adding to the datasource...
     #
     my %fields = ();
-    
+
     my $field;
     foreach $field (@{$ra_user_field_names}) {
-      $fields{$field_map->{$field}} = 
-        $rh_user_field_name_to_value_mapping->{$field}; 
+      $fields{$field_map->{$field}} =
+        $rh_user_field_name_to_value_mapping->{$field};
     }
 
     if ($self->{'-ADD_REGISTRATION_TO_USER_DATASOURCE'}) {
@@ -381,7 +381,7 @@ sub search {
     my $user_search_value    = shift;
 
     # globals used in this method
-    my @ds_params = 
+    my @ds_params =
         @{$self->{-USER_DATASOURCE_PARAMS}};
     my $field_map = $self->{-USER_FIELDS_TO_DATASOURCE_MAPPING};
     my $username_field = $self->{-USER_FIELD_TYPES}->{-USERNAME_FIELD};
@@ -393,7 +393,7 @@ sub search {
 
     my $ds = Extropia::Core::DataSource->create(@ds_params);
     _dieIfError($ds);
-    
+
     my $search_term;
     if($self->{-AUTH_CASE_SENSITIVE_SEARCH}) {
        $search_term = $field_map->{$user_search_field} .
@@ -403,7 +403,7 @@ sub search {
        $search_term = $field_map->{$user_search_field} .
                     " =i " . qq`"$user_search_value"`;
     }
-                                                                                                 
+
 
     my $record_set = $ds->search($search_term);
     _dieIfError($ds);

@@ -42,19 +42,9 @@ my @TEMPLATES_SEARCH_PATH =
        ../HTMLTemplates/AltPower
        ../HTMLTemplates/BuyAndSell
        ../HTMLTemplates/ECF
-       ../HTMLTemplates/CSPS 
+       ../HTMLTemplates/CSPS
        ../HTMLTemplates/CSC
-       ../HTMLTemplates/ENCY 
-       ../HTMLTemplates/HelpDesk
-       ../HTMLTemplates/HE
-       ../HTMLTemplates/IM
-       ../HTMLTemplates/Organic
-       ../HTMLTemplates/Shanta
-       ../HTMLTemplates/Skye
-       ../HTMLTemplates/Todo
-       ../HTMLTemplates/TelMark
-       ../HTMLTemplates/VitalVic
-       ../HTMLTemplates/Default);
+       ../HTMLTemplates/ENCY;
 
 use CGI qw(-debug);
 
@@ -355,7 +345,7 @@ my @AUTH_USER_DATASOURCE_FIELD_NAMES = qw(
     email
 );
 
-#CSC comversion to auth swiching from SiteSetup.pm At momet this is only set to switch from  
+#CSC comversion to auth swiching from SiteSetup.pm At momet this is only set to switch from
 # file to MySQL
 
 my @AUTH_USER_DATASOURCE_PARAMS;
