@@ -427,10 +427,8 @@ sub getFieldName {
     my $self = shift;
     my $index = shift;
     my @fields = $self->getFieldNames();
-    carp "Index $index is out of range";
-if ($index < 0 || $index > scalar @fields) {
-    # Code to handle the condition
-}
+    carp "Index $index is out of range"
+        if $index < 0 || $index > #@fields;
     return $fields[$index];
 }
 
@@ -1272,26 +1270,34 @@ sub __compareWildcard {
     my $op = shift;
     my $rhs = shift;
     my $case_insensitive = shift || ($op =~ s/i$//i);
-     # If operator is relational, wildcard must be only at end,
+
+    # if operator is relational, wildcard must be only at end,
     # and then can be ignored
-    if ($op =~ /^[><]=?$/) {
-        if (substr($rhs, 0, -1) !~ m/[\*\?]/) {
-            return $self->compare_one_field($lhs, $lhs_value, $op, substr($rhs, 0, -1), $case_insensitive);
-        }
+    if ($op =~ /^[><]=?$/ ) {
+        return $self->__compareOneField($lhs, $lhs_value, $op, 
+                        substr($rhs,0,-1), $case_insensitive)
+            if substr($rhs,0,-1) !~ m/[\*\?]/;
         die("Can't combine relational operator with wildcard\n");
     }
 
     $rhs =~ s/\*/\.\*/g;
     $rhs =~ s/\?/\./g;
-     # Temp correction, before quotemeta will be used: escape unsafe chars
+#    $rhs = quotemeta $rhs;
+#    $rhs =~ s/\*/.*/g;
+#    $rhs =~ s/\?/./g;
+    # temp correction, before quotemeta will be used: escape unsafe chars
     $rhs =~ s/([\$\@\%])/\\$1/g;
-     my $new_op = "=~";
-    $new_op = "!~" if ($op eq "!=" || $op eq "<>");
-     my $opt = "s";
+    my $newop = "=~";
+    $newop = "!~" if ($op eq "!=" || $op eq "<>");
+    my $opt = "s";
     $opt .= "i" if $case_insensitive;
-my $regex_string = "\$lhs_value $new_op m/^" . quotemeta($rhs) . "\$/$opt";
-    my $boolean_value = eval $regex_string;
-     return $boolean_value || "0";
+
+my $regex_string = "\$lhs_value $newop m/^$rhs\$/$opt";
+#   E::dumper($string);
+    my $boolean_value = eval $string;
+#    my $boolean_value = eval "\$lhs_value $newop m/^\\\Q$rhs\\\E\$/$opt";
+    #print "DEBUG-- $lhs $newop m/^$rhs\$/$opt => $boolean_value\n$@\n";
+    return $boolean_value || "0";
 }
 
 1;

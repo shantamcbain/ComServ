@@ -212,7 +212,7 @@ sub runPlugins{
 
 sub setAdditionalViewDisplayParam {
     my $self = shift;
-        my (@params) = _rearrange([
+            my (@params) = `_rearrange`([
         -PARAM_NAME,
         -PARAM_VALUE
             ],

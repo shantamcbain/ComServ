@@ -216,8 +216,7 @@ sub loadData {
             my @records = ();
             $record_set->moveFirst();
             while (!$record_set->endOfRecords()) {
-                push (@records, \%{ $record_set->getRecordAsHash() });
-#changed above code
+                push @records, $record_set->getRecordAsHash;
                 $record_set->moveNext();
             }
 
@@ -288,9 +287,9 @@ sub deleteRecord() {
     my $key_field                    = shift;
     my $record_id                    = $cgi->param($key_field);
 
-        my $delete_ds = Extropia::Core::DataSource->create(
-              %{$datasource_config_params_ref}
-        );
+    my $delete_ds = Extropia::Core::DataSource->create(
+         @$datasource_config_params_ref
+    );
 
     if ($delete_ds->getErrorCount()) {
         die("Whoopsy!  I was unable to construct the " .
@@ -386,12 +385,13 @@ sub deleteRecord() {
 #
 # CREATE LOG ENTRY
 #
-  if ($log) {
-    my $key;
-    foreach $key (keys %$record) {
-        push (@records, "$key=" . $record->{$key});
-    }
-}                }
+                    if ($log) {
+                        my $key;
+                        foreach $key (keys %$record) {
+                            push (@records, "$key=" . %$record->{$key});
+                        }
+                    }
+                }
             }
 #
 # WRITE OUT THE LOG ENTRY
@@ -763,8 +763,8 @@ sub modifyRecord {
                         my $key;
                         foreach $key (keys %$record) {
                             # This additional conditional check for defined value is added to avoid uninitialized value warning.
-                            if(defined($record->{$key})) {
-                            push (@records, "$key=" . $record->{$key});
+                            if(defined(%$record->{$key})) {
+                            push (@records, "$key=" . %$record->{$key});
                             }	
                         }
                     }
@@ -773,14 +773,14 @@ sub modifyRecord {
 #
 # WRITE OUT THE LOG ENTRY
 #
-if ($log) {
-    $log->log(
-        -SEVERITY => Extropia::Core::Log::INFO,
-        -EVENT    => "MODIFY PERFORMED\|" .
-                     "MODIFY_DEFINITION: $modify_string\|" .
-                     "ORIGNAL_ROWS: " . join(" AND ", map { "$_=" . $record->{$_} } keys %$record)
-    );
-}
+            if ($log) {
+                $log->log(
+                 -SEVERITY => Extropia::Core::Log::INFO,
+                 -EVENT    => "MODIFY PERFORMED\|" .
+                              "MODIFY_DEFINITION: $modify_string\|" .
+                              "ORIGNAL_ROWS: " . join (" AND ", @records)
+                );
+            }
         }
     }
     return 1;

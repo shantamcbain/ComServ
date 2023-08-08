@@ -371,7 +371,6 @@ sub init {
     return;
 }
 
-
     $meth=$ENV{'REQUEST_METHOD'} if defined($ENV{'REQUEST_METHOD'});
     $content_length = defined($ENV{'CONTENT_LENGTH'}) ? $ENV{'CONTENT_LENGTH'} : 0;
 
