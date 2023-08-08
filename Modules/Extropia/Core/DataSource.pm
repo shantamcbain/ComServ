@@ -427,7 +427,7 @@ sub getFieldName {
     my $self = shift;
     my $index = shift;
     my @fields = $self->getFieldNames();
-    carp "Index $index is out of range"
+    carp "Index $index is out of range" 
         if $index < 0 || $index > #@fields;
     return $fields[$index];
 }
@@ -1292,7 +1292,7 @@ sub __compareWildcard {
     my $opt = "s";
     $opt .= "i" if $case_insensitive;
 
-my $regex_string = "\$lhs_value $newop m/^$rhs\$/$opt";
+    my $string = "\$lhs_value $newop m/^$rhs\$/$opt";
 #   E::dumper($string);
     my $boolean_value = eval $string;
 #    my $boolean_value = eval "\$lhs_value $newop m/^\\\Q$rhs\\\E\$/$opt";
