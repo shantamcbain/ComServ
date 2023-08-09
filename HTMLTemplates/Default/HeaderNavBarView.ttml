@@ -21,7 +21,7 @@
 #Set needed values
 
 %]
-
+<div class="dropdown-overlay"></div>
 [% IF data.debug == 1 %]
  [%	Version %] header	   
 [% END %] 
