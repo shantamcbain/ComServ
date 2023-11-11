@@ -388,7 +388,7 @@ sub deleteRecord() {
                     if ($log) {
                         my $key;
                         foreach $key (keys %$record) {
-                            push (@records, "$key=" . %$record->{$key});
+                            push (@records, "$key=" . $record->{$key});
                         }
                     }
                 }
