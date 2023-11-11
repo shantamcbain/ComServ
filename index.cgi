@@ -1,10 +1,13 @@
-#!/usr/bin/perl -wT
+#!/usr/bin/perl -w
 # 	$Id: index.cgi,v 1.15 2020/01/13 14:27:36 shanta Exp $
 
 use strict;
+use warnings;
 my $AppVer = "ver 1.15, Dec 02, 2021";
 
-our @dirs;
+my @dirs = qw(Modules/ Modules/CPAN .);
+use lib @dirs;
+unshift @INC, @dirs unless $INC[0] eq $dirs[0];
 
 BEGIN {
     @dirs = qw(Modules/ Modules/CPAN .);
@@ -46,7 +49,7 @@ my @TEMPLATES_SEARCH_PATH = qw(HTMLTemplates/AltPower
   HTMLTemplates/WW
   HTMLTemplates/Default);
 
-use CGI qw(-debug);
+use CGI;
 
 #Carp commented out due to Perl 5.60 bug. Uncomment when using Perl 5.61.
 use CGI::Carp qw(fatalsToBrowser);
@@ -110,7 +113,7 @@ my $LineStatus        = "yes";
 my $LINK_TARGET;
 #Mail settings
 my $mail_from;
-my $mail_to;
+my $mail_to; 0.0.0.0:38729
 my $auth_mail_to;
 my $mail_replyto;
 my $NEWS_TB;

@@ -13,8 +13,6 @@ V
 &HTMLTemplates/Default/ManagerView.ttml,7/f/7f4c10168d55a9485d85f91ce4dff7b178830baf
 V
 &HTMLTemplates/Default/MembersView.ttml,d/b/dbca590547b2dc1503c0bbd64a8d12973d825704
-C
-Modules/CSCSetup.pm,5/b/5bb698e05dcec2ca6df11c51619aae9e159e1e39
 T
 $HTMLTemplates/Shanta/ShantaHome.ttml,4/a/4ab5e7aaadaead4258c31ad88798812f3ea7460d
 Y
@@ -27,8 +25,6 @@ V
 &HTMLTemplates/Default/HostingView.ttml,c/e/ce481fa6f25edeb0472641dd1b0e85a0062a5ae3
 R
 "HTMLTemplates/Default/JobView.ttml,b/3/b3b25c861e24eb94d3620cbab45f6178ec0364b8
-S
-#HTMLTemplates/Default/PageView.ttml,9/7/97a2a670da75edeb88e65fee9a985b90179dedde
 V
 &HTMLTemplates/Default/ProductView.ttml,9/1/9130415804275e6610bb088c499172d1135cb8f2
 V
@@ -43,8 +39,6 @@ S
 #HTMLTemplates/Default/ToDoList.ttml,9/8/98bf32ce3f3f70e30a2a64330aabd5756ee7e2e8
 R
 "HTMLTemplates/Default/ToDoSQL.ttml,8/b/8be5414363396f76c36e46bf52e1002025eba969
-[
-+HTMLTemplates/Default/HeaderNavBarView.ttml,2/4/24a46a9ddf18ac6060377cedc27cec1809def088
 Q
 !HTMLTemplates/USBM/Computers.ttml,a/e/ae9d189de008028294c3446ec343e981402486bc
 U
@@ -53,3 +47,37 @@ R
 "HTMLTemplates/USBM/Programing.ttml,b/7/b7be01db3f830aabca6b7be68d75738d026846c7
 M
 HTMLTemplates/USBM/webap.html,0/a/0ad2910a649a2c9a54ebe835f81f91617f92ab4c
+V
+&HTMLTemplates/CSC/CSLeftLinksView.ttml,b/2/b22905c2955115fed8414376f139b6fc57b94ede
+D
+Modules/USBMSetup.pm,8/c/8c2170c85ea773d92acae4b43e525cf8fbcc57c7
+8
+page.cgi,c/f/cf819855db7d4d72c984514dba1cc637e1a27152
+V
+&Modules/Extropia/Core/Encrypt/Crypt.pm,f/e/fef132454d19203d3197986552f2ded674ef27b2
+U
+%HTMLTemplates/Default/DefaultDbi.ttml,e/3/e377411346720b356c1e967a40f7489765389ffe
+9
+	index.cgi,3/7/3739e6bf98c184e064ec0a299371f4b1ef0fe8ae
+G
+Modules/SunFireSetup.pm,f/2/f2848b98efe642366ba27bf3ab7c285298f30bb0
+M
+Modules/Extropia/Core/Auth.pm,0/7/07c9906ba144984478a7e960c67d554d27a0a74e
+T
+$Modules/Extropia/Core/AuthManager.pm,d/0/d07633dee3bb2a4e66ca59d699c314d5da230058
+R
+"HTMLTemplates/CSC/SunFireHome.ttml,3/c/3cccc2ea15a667dedd7958806dd929e3adf85991
+V
+&HTMLTemplates/Default/PageTopView.ttml,8/5/8522239544d2d926a1c309c192455a71647653d5
+S
+#HTMLTemplates/Default/HomeView.ttml,e/b/eb0bd3f04b48d4e0dd5d5a958ec5cbe9000a22f6
+X
+(Modules/Extropia/Core/AuthManager/CGI.pm,e/c/ec06e94cbab92dedd2e1b94401931ad822ec5a16
+h
+8ActionHandler/Expense/ExpenseSearchForMyClosedRecords.pm,d/0/d09e7231ee2ac0c2a324498e55ba7718b2af61b1
+f
+6ActionHandler/Expense/ExpenseSearchForMyOpenRecords.pm,0/8/080d969ba0bda9491c9e9ae65eb83147b30e9abc
+R
+"Modules/Extropia/Core/App/DBApp.pm,5/5/5509f60a2d5969ead2f658867ce814bb7910f053
+B
+_Deparsed_XSubs.pm,f/d/fd3edf060e387bc38e76bb9b254b2556cda90269
