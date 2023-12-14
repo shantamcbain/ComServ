@@ -81,3 +81,19 @@ R
 "Modules/Extropia/Core/App/DBApp.pm,5/5/5509f60a2d5969ead2f658867ce814bb7910f053
 B
 _Deparsed_XSubs.pm,f/d/fd3edf060e387bc38e76bb9b254b2556cda90269
+=
+ToDo/todo.cgi,8/d/8d69d2932a4b64e8483bdd03411c4d1533a95bd6
+H
+ToDo/project_tracker.cgi,b/e/be4b816278957016ece751b727faeeda173fa7b6
+<
+ToDo/log.cgi,f/b/fbf8f8ac452ff91483f8fd36b0161f8925cdc86f
+>
+CSC/client.cgi,c/2/c27f50e414101000c6dec3eeeeb60416e7085a6e
+d
+4HTMLTemplates/MonasheeCoop/MonasheeCoopHomeView.ttml,e/9/e9b1f64bff729abff0a4471986bac5244b2bed68
+O
+Modules/MonasheeSupportSetup.pm,8/f/8f04fc9108143d56257150f69e56f64a9f30c534
+a
+1HTMLTemplates/MonasheeCoop/MonasheeCoopAdmin.ttml,d/4/d4fb9a078eb1e5f6a4c6c2bd047e2ba2c1be81fb
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e
