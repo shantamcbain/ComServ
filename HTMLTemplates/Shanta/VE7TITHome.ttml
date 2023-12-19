@@ -120,6 +120,20 @@
  <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Python">Python</a></li>
 </ul>
 
+<h<h4>Electronics:</h4>
+
+<ul>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Electronics">Electronics
+ .</a></li>
+</ul>
+
+4>Programing:</h4>
+
+<ul>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=NodeRedHam">Nodered</a></li>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Perl">Perl</a></li>
+ <li><a href="/cgi-bin/index.cgi?site=[% SiteName %]&amp;[% session_string %]&amp;page=Python">Python</a></li>
+</ul>
 
 <h4>Programs:</h4>
 <ul>

@@ -97,3 +97,7 @@ a
 1HTMLTemplates/MonasheeCoop/MonasheeCoopAdmin.ttml,d/4/d4fb9a078eb1e5f6a4c6c2bd047e2ba2c1be81fb
 ]
 -.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e
+C
+FAQ/faq_manager.cgi,a/a/aafe00fcc6b62f9cd588b8fd25b4f70654d2b6f4
+T
+$HTMLTemplates/Shanta/VE7TITHome.ttml,1/c/1cd8c47272a0913173e8df3250778cef10aafefc
