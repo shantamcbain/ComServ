@@ -188,6 +188,7 @@
 			       group    ==  'News_admin' OR
 			       group    ==  'OKB_admin'OR
 			       group    ==  'Organic_admin' OR
+			       group    ==  ' Monashee_admin' OR
 			       group    ==  'Shanta_admin' OR
 			       group    ==  'VitalVic_admin' OR
 			       group    ==  'rv_admin' OR
