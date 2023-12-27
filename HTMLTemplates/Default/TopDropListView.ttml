@@ -148,6 +148,7 @@ currently only DevCSC Not working right yet miss forming the first after login d
 	       group    ==  'VitalVic_admin' OR
 	       group    ==  'rv_admin' OR
 	       group    == 'MJB_Admin' OR
+	       group    == 'MonasheeSupport_admin' OR
 	       group    ==  'WB_admin' OR
 	       group    ==  'WW_admin' OR
 	       username == 'Shanta' OR
