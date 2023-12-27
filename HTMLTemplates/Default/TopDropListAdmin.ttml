@@ -21,7 +21,7 @@
            group    ==  'Shanta_admin' OR
 	       group    ==  'SMO_admin' OR
            group    ==  'USBM_admin' OR
-           group    ==  ' MonasheeSupport_admin' OR
+           group    ==  'MonasheeSupport_admin' OR
 	       group    ==  'VitalVic_admin' OR
 	       group    ==  'MJB_Admin' OR
 	       group    ==  'WB_admin' OR
