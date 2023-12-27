@@ -27,6 +27,7 @@
 	       group    ==  'WB_admin' OR
 	       group    ==  'WW_admin' OR
 	       username == 'Shanta' OR
+	       username == 'admin' OR
 	      group    == 'Demo_admin'
 	 %]
 
