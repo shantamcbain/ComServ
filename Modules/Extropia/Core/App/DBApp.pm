@@ -724,9 +724,7 @@ if ($modify_item > 0) {
             my $records;
             foreach $records (@orig_records) {
                 foreach $record (@$records) {
-#
-# HANDLE FILE DELETION CASE IF A NEW FILE WAS UPLOADED...
-#
+
                     if ($modify_file_field_list) {
                         require Extropia::Core::UploadManager;
                         my $upload_manager = 
@@ -741,16 +739,14 @@ if ($modify_item > 0) {
                             }
                         }
                     }
-#
-# CREATE LOG ENTRY
-#
+
                     if ($log) {
                         my $key;
                         foreach $key (keys %$record) {
                             # This additional conditional check for defined value is added to avoid uninitialized value warning.
-                            if(defined(%$record->{$key})) {
-                            push (@records, "$key=" . %$record->{$key});
-                            }	
+if (defined($record->{$key})) {
+    push(@records, "$key=" . $record->{$key});
+}
                         }
                     }
                 }
