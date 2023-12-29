@@ -113,7 +113,7 @@ my $LineStatus        = "yes";
 my $LINK_TARGET;
 #Mail settings
 my $mail_from;
-my $mail_to; 0.0.0.0:38729
+my $mail_to;
 my $auth_mail_to;
 my $mail_replyto;
 my $NEWS_TB;
