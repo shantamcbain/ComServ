@@ -251,9 +251,7 @@ sub loadData {
     }
 }
 
-###################################################################
-#                 _deleteRecord() Method                          # 
-###################################################################
+
 
 sub deleteRecord() {
     my $self = shift;
@@ -355,11 +353,7 @@ sub deleteRecord() {
 
         return undef;
     }
-#
-# This handles the case of what if the records need logging or 
-# if we need to delete a file that was contained in the original
-# record
-#
+
     else {   
         if ($log || $delete_file_field_list) {
             my @records;
@@ -368,9 +362,8 @@ sub deleteRecord() {
             my $records;
             foreach $records (@orig_records) {
                 foreach $record (@$records) {
-#
-# HANDLE FILE DELETION CASE
-#
+
+
                     if ($delete_file_field_list) {
                         require Extropia::Core::UploadManager;
                         my $upload_manager = 
@@ -382,10 +375,8 @@ sub deleteRecord() {
                                     $record->{$field});
                         }
                     }
-#
-# CREATE LOG ENTRY
-#
-                    if ($log) {
+
+                if ($log) {
                         my $key;
                         foreach $key (keys %$record) {
                             push (@records, "$key=" . $record->{$key});
@@ -393,9 +384,7 @@ sub deleteRecord() {
                     }
                 }
             }
-#
-# WRITE OUT THE LOG ENTRY
-#
+
             if ($log) {
                 $log->log(
                  -SEVERITY => Extropia::Core::Log::INFO,
@@ -409,9 +398,7 @@ sub deleteRecord() {
     return 1;
 }
 
-###################################################################
-#                    _addRecord() Method                          #
-###################################################################
+
 
 sub addRecord {
     my $self = shift;
@@ -562,9 +549,7 @@ sub addRecord {
     return wantarray ? (1,$last_id) : 1;
 }
 
-###################################################################
-#                 _modifyRecord() Method                          #
-###################################################################
+
 
 sub modifyRecord {
     my $self = shift;
@@ -686,16 +671,16 @@ sub modifyRecord {
         print STDERR Data::Dumper::Dumper \%modifyHash;
     }
 
-    my $original_rows_rs;
-    if($modify_item > 0) {
-        $original_rows_rs = $modify_ds->update(
-            -QUERY  => $modify_string,
-            -UPDATE => \%modifyHash,
-            -RETURN_ORIGINAL  => 1
-            );
-    } else {
-    	return 1;	
-    };
+my $original_rows_rs;
+if ($modify_item > 0) {
+    $original_rows_rs = $modify_ds->update(
+        -QUERY            => $modify_string,
+        -UPDATE           => \%modifyHash,  # Ensure \%modifyHash is a hash reference
+        -RETURN_ORIGINAL  => 1
+    );
+} else {
+    return 1;  # No modifications to be made
+}
 
     if ($modify_ds->getErrorCount()) {
         if ($log) {
